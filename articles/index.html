@@ -1,0 +1,2708 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>수리 칼럼 — 아이폰·애플워치·맥북 수리 전 꼭 알아야 할 것들 | 다올리페어</title>
+  <meta name="description" content="전문가가 직접 쓰는 아이폰·아이패드·애플워치·맥북 수리 칼럼. 수리비 낭비를 막는 정보, 올바른 수리 선택 가이드.">
+  <link rel="canonical" href="https://xn--2j1bq2k97kxnah86c.com/articles/">
+  <meta property="og:title" content="수리 칼럼 | 다올리페어">
+  <meta property="og:description" content="전문가가 직접 쓰는 애플 기기 수리 칼럼 — 수리비 낭비를 막는 정보">
+  <meta property="og:image" content="https://da-2gx.pages.dev/%EB%8B%A4%EC%98%AC%20%EB%A9%94%EC%9D%B8.jpg">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --orange: #E8732A; --dark: #0A0A0A; --border: #e8e8e8; --muted: #666; --font: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
+    body { font-family: var(--font); background: #fff; color: var(--dark); -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
+    @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
+
+    /* 네비 — 메인과 동일 */
+    .art-nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(10,10,10,0.82);
+      backdrop-filter: saturate(180%) blur(24px);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      border-bottom: 1px solid rgba(255,255,255,0.09);
+      transition: background 0.3s;
+    }
+    .art-nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 28px;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .art-nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .art-nav-logo img { width: 38px; height: 38px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+    .art-nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .art-nav-logo-ko { font-size: 15px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
+    .art-nav-logo-ko em { color: #E8732A; font-style: normal; }
+    .art-nav-logo-en { font-size: 8px; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
+    .art-nav-links { display: flex; gap: 0; list-style: none; align-items: center; }
+    .art-nav-links li { display: flex; align-items: center; }
+    .art-nav-links li + li::before { content: ''; display: block; width: 1px; height: 12px; background: rgba(255,255,255,0.12); flex-shrink: 0; margin: 0 1px; }
+    .art-nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 12.5px; font-weight: 400; transition: color 0.2s; padding: 0 9px; }
+    .art-nav-links a:hover { color: #fff; }
+    .art-nav-home { position: relative; background: none; border: none; color: rgba(255,255,255,0.75); cursor: pointer; padding: 6px; display: flex; align-items: center; justify-content: center; margin-left: 4px; margin-right: 4px; text-decoration: none; transition: color 0.2s; flex-shrink: 0; }
+    .art-nav-home:hover { color: #fff !important; }
+    /* 수리예약 드롭다운 */
+    .art-nav-reserve { position: relative; }
+    .art-nav-reserve-btn {
+      background: #E8732A; color: #fff;
+      padding: 6px 13px; border-radius: 20px;
+      font-size: 12.5px; font-weight: 700;
+      border: none; cursor: pointer;
+      transition: background 0.2s; white-space: nowrap; font-family: var(--font);
+    }
+    .art-nav-reserve-btn:hover { background: #C55E1A; }
+    .art-nav-reserve-dropdown {
+      display: none; position: absolute; top: calc(100% + 10px); right: 0;
+      background: #1D1D1F; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; overflow: hidden; min-width: 160px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    }
+    .art-nav-reserve.open .art-nav-reserve-dropdown { display: block; }
+    .art-nav-reserve-dropdown a {
+      display: block; padding: 13px 18px;
+      color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 600;
+      text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: all 0.15s;
+    }
+    .art-nav-reserve-dropdown a:last-child { border-bottom: none; }
+    .art-nav-reserve-dropdown a:hover { background: rgba(232,115,42,0.12); color: #E8732A; }
+    .art-nav-reserve-dropdown a span { font-size: 11px; color: rgba(255,255,255,0.35); display: block; margin-top: 2px; font-weight: 400; }
+    @media (max-width: 768px) {
+      .art-nav-links { display: none; }
+      .art-nav-inner { padding: 0 20px; }
+    }
+
+    /* 헤더 */
+    .list-wrap { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
+    .list-header { margin-bottom: 36px; }
+    .list-eyebrow { font-size: 12px; color: var(--orange); font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; }
+    .list-title { font-size: clamp(24px, 5vw, 36px); font-weight: 900; line-height: 1.3; margin-bottom: 12px; }
+    .list-desc { font-size: 15px; color: var(--muted); line-height: 1.7; }
+
+    /* 탭 */
+    .tab-wrap { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+    .tab-btn { display: flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 50px; border: 1.5px solid var(--border); background: #fff; font-size: 13px; font-weight: 700; color: var(--muted); cursor: pointer; transition: all 0.18s; font-family: var(--font); white-space: nowrap; }
+    .tab-btn:hover { border-color: var(--orange); color: var(--orange); }
+    .tab-btn.active { background: var(--dark); border-color: var(--dark); color: #fff; }
+    .tab-btn .tab-count { font-size: 11px; font-weight: 800; background: rgba(255,255,255,0.2); padding: 1px 6px; border-radius: 10px; }
+    .tab-btn.active .tab-count { background: rgba(255,255,255,0.2); color: rgba(255,255,255,0.8); }
+    .tab-btn:not(.active) .tab-count { background: #f0f0f0; color: #999; }
+    .tab-btn.tab-soon { opacity: 0.45; cursor: default; pointer-events: none; }
+    .tab-soon-badge { font-size: 10px; font-weight: 700; background: #f0f0f0; color: #aaa; padding: 1px 6px; border-radius: 10px; }
+
+    /* 바로가기 */
+    .quick-nav { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 28px; }
+    .quick-nav-link { display: flex; align-items: center; gap: 8px; padding: 14px 16px; border: 1.5px solid var(--border); border-radius: 12px; text-decoration: none; color: var(--dark); font-size: 13px; font-weight: 700; transition: all 0.18s; background: #fff; }
+    .quick-nav-link:hover { border-color: var(--orange); color: var(--orange); box-shadow: 0 2px 12px rgba(232,115,42,0.08); }
+    .quick-nav-icon { font-size: 16px; flex-shrink: 0; }
+    .quick-nav-label { line-height: 1.3; }
+    .quick-nav-sub { display: block; font-size: 11px; color: var(--muted); font-weight: 400; margin-top: 2px; }
+    @media (max-width: 480px) { .quick-nav { grid-template-columns: repeat(2, 1fr); gap: 8px; } .quick-nav-link { padding: 12px; } }
+
+    /* 카드 그리드 */
+    .article-grid { display: grid; gap: 16px; }
+    .article-card { border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-decoration: none; color: inherit; display: block; transition: border-color 0.2s, box-shadow 0.2s; }
+    .article-card:hover { border-color: var(--orange); box-shadow: 0 4px 20px rgba(232,115,42,0.1); }
+    .article-card.hidden { display: none; }
+    .card-category { display: inline-block; background: rgba(232,115,42,0.1); color: var(--orange); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; }
+    .card-title { font-size: 17px; font-weight: 800; line-height: 1.45; margin-bottom: 8px; color: var(--dark); }
+    .card-desc { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+    .card-meta { font-size: 12px; color: #bbb; display: flex; gap: 12px; }
+
+    /* 검색 */
+    .search-wrap { position: relative; margin-bottom: 20px; }
+    .search-input { width: 100%; padding: 13px 44px 13px 44px; border: 1.5px solid var(--border); border-radius: 12px; font-size: 15px; font-family: var(--font); outline: none; transition: border-color 0.2s, box-shadow 0.2s; background: #fafafa; color: var(--dark); }
+    .search-input:focus { border-color: var(--orange); background: #fff; box-shadow: 0 0 0 3px rgba(232,115,42,0.08); }
+    .search-input::placeholder { color: #bbb; }
+    .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; pointer-events: none; color: #ccc; }
+    .search-clear { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 20px; line-height: 1; color: #bbb; cursor: pointer; padding: 4px 8px; display: none; }
+    .search-clear:hover { color: var(--dark); }
+    .search-result-count { font-size: 13px; color: var(--muted); margin-bottom: 16px; display: none; }
+    .search-result-count.show { display: block; }
+    .search-result-count strong { color: var(--orange); }
+
+    /* 빈 카테고리 */
+    .empty-state { text-align: center; padding: 60px 20px; display: none; }
+    .empty-state.show { display: block; }
+    .empty-icon { font-size: 36px; margin-bottom: 14px; }
+    .empty-title { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+    .empty-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* 푸터 */
+    .art-footer { text-align: center; padding: 36px 20px; font-size: 13px; color: #bbb; border-top: 1px solid var(--border); margin-top: 60px; }
+    .art-footer a { color: var(--orange); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav class="art-nav">
+  <div class="art-nav-inner">
+    <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-logo">
+      <img src="../로고신규1.jpg" alt="다올리페어">
+      <div class="art-nav-logo-text">
+        <span class="art-nav-logo-ko">다올<em>리페어</em></span>
+        <span class="art-nav-logo-en">Device Repair Master</span>
+      </div>
+    </a>
+    <ul class="art-nav-links">
+      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#philosophy">철학</a></li>
+      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#services">서비스</a></li>
+      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#estimate">수리 견적</a></li>
+      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#courier">택배접수</a></li>
+      <li><a href="index.html" style="color:#E8732A;font-weight:700;">수리 칼럼</a></li>
+      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#reviews">후기</a></li>
+      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#locations">지점안내</a></li>
+      <li class="art-nav-reserve" id="artNavReserve">
+        <button class="art-nav-reserve-btn" onclick="this.closest('.art-nav-reserve').classList.toggle('open')">수리 예약 ▾</button>
+        <div class="art-nav-reserve-dropdown">
+          <a href="https://naver.me/xyjKp1eq" target="_blank" rel="noopener">가산점 예약<span>네이버 예약으로 이동</span></a>
+          <a href="https://naver.me/Faf1J0yG" target="_blank" rel="noopener">신림점 예약<span>네이버 예약으로 이동</span></a>
+          <a href="https://naver.me/5nojklP7" target="_blank" rel="noopener">목동점 예약<span>네이버 예약으로 이동</span></a>
+        </div>
+      </li>
+    </ul>
+    <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-home" title="메인으로"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
+  </div>
+</nav>
+<script>
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.art-nav-reserve')) {
+      document.querySelectorAll('.art-nav-reserve').forEach(el => el.classList.remove('open'));
+    }
+  });
+</script>
+
+<div class="list-wrap">
+  <div class="list-header">
+    <div class="list-eyebrow">수리 칼럼</div>
+    <h1 class="list-title">수리 전 꼭 알아야 할<br>전문가 칼럼</h1>
+    <p class="list-desc">수리비 낭비를 막는 정보, 올바른 수리 선택 가이드.</p>
+  </div>
+
+  <!-- 기기별 가이드 + FAQ 바로가기 -->
+  <div class="quick-nav">
+    <a href="hub-iphone.html" class="quick-nav-link">
+      <span class="quick-nav-icon">📱</span>
+      <span class="quick-nav-label">아이폰 가이드<span class="quick-nav-sub">71편 모아보기</span></span>
+    </a>
+    <a href="hub-ipad.html" class="quick-nav-link">
+      <span class="quick-nav-icon">📋</span>
+      <span class="quick-nav-label">아이패드 가이드<span class="quick-nav-sub">28편 모아보기</span></span>
+    </a>
+    <a href="hub-macbook.html" class="quick-nav-link">
+      <span class="quick-nav-icon">💻</span>
+      <span class="quick-nav-label">맥북 가이드<span class="quick-nav-sub">26편 모아보기</span></span>
+    </a>
+    <a href="hub-watch.html" class="quick-nav-link">
+      <span class="quick-nav-icon">⌚</span>
+      <span class="quick-nav-label">애플워치 가이드<span class="quick-nav-sub">39편 모아보기</span></span>
+    </a>
+    <a href="hub-airpods.html" class="quick-nav-link">
+      <span class="quick-nav-icon">🎧</span>
+      <span class="quick-nav-label">에어팟·펜슬<span class="quick-nav-sub">20편 모아보기</span></span>
+    </a>
+    <a href="hub-guide.html" class="quick-nav-link">
+      <span class="quick-nav-icon">📖</span>
+      <span class="quick-nav-label">수리 상식<span class="quick-nav-sub">34편 모아보기</span></span>
+    </a>
+    <a href="faq.html" class="quick-nav-link" style="border-color:var(--orange);background:rgba(232,115,42,0.04);">
+      <span class="quick-nav-icon">❓</span>
+      <span class="quick-nav-label" style="color:var(--orange);">FAQ 1,038개<span class="quick-nav-sub" style="color:var(--orange);opacity:0.7;">질문 검색하기</span></span>
+    </a>
+  </div>
+
+  <!-- 검색 -->
+  <div class="search-wrap">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input type="text" id="searchInput" class="search-input" placeholder="배터리, 침수, 화면... 검색어를 입력하세요" oninput="handleSearch(this.value)">
+    <button class="search-clear" id="searchClear" onclick="clearSearch()">×</button>
+  </div>
+  <div class="search-result-count" id="searchResultCount"></div>
+
+  <!-- 카테고리 탭 -->
+  <div class="tab-wrap">
+    <button class="tab-btn active" onclick="filterTab('all', this)">
+      전체 <span class="tab-count">304</span>
+    </button>
+    <button class="tab-btn" onclick="filterTab('iphone', this)">
+      아이폰 <span class="tab-count">109</span>
+    </button>
+    <button class="tab-btn" onclick="filterTab('watch', this)">
+      애플워치 <span class="tab-count">51</span>
+    </button>
+    <button class="tab-btn" onclick="filterTab('ipad', this)">
+      아이패드 <span class="tab-count">41</span>
+    </button>
+    <button class="tab-btn" onclick="filterTab('pencil', this)">
+      애플펜슬 <span class="tab-count">8</span>
+    </button>
+    <button class="tab-btn" onclick="filterTab('macbook', this)">
+      맥북 <span class="tab-count">36</span>
+    </button>
+    <button class="tab-btn" onclick="filterTab('airpods', this)">
+      에어팟 <span class="tab-count">12</span>
+    </button>
+    <button class="tab-btn" onclick="filterTab('guide', this)">
+      수리 가이드 <span class="tab-count">46</span>
+    </button>
+  </div>
+
+  <!-- 카드 목록 -->
+  <div class="article-grid" id="articleGrid">
+
+    <a href="iphone-screen-broken-before-travel.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 긴급 대처 가이드</div>
+      <div class="card-title">내일 해외여행 가는데 오늘 아이폰 액정이 깨짐 — 지금 당장 해야 할 것</div>
+      <div class="card-desc">출국 전날 파손. 지금 당장 해야 할 3가지와 해외에서 수리받으면 안 되는 이유를 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 긴급 수리</span></div>
+    </a>
+
+    <a href="iphone-same-day-repair-possible.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리 완전 가이드</div>
+      <div class="card-title">아이폰 당일 수리 가능한 경우 vs 불가능한 경우</div>
+      <div class="card-desc">액정·배터리·충전포트는 당일 완료. 침수·기판·데이터 복구는 당일 어렵습니다. 고장 유형별 소요 시간과 당일 수리 여부를 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 당일 수리</span></div>
+    </a>
+
+    <a href="iphone-wont-turn-on-before-work.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 긴급 대처 가이드</div>
+      <div class="card-title">출근 전에 아이폰이 안 켜짐 — 원인별 대처 순서</div>
+      <div class="card-desc">출근 준비 중 아이폰이 반응이 없습니다. 5분 안에 해결되는 경우와 수리가 필요한 경우를 원인별로 구분해 지금 행동 순서를 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 전원 불량</span></div>
+    </a>
+
+    <a href="iphone-broken-on-exam-day.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 긴급 대처 가이드</div>
+      <div class="card-title">면접·시험 당일 아이폰 파손 — 최단 시간 해결 경로</div>
+      <div class="card-desc">면접이나 시험 당일 아이폰이 파손됐습니다. 파손 상태별 즉시 행동 순서와 면접·시험 전후 최단 수리 경로를 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 당일 수리</span></div>
+    </a>
+
+    <a href="iphone-drop-screen-damage.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 긴급 대처 가이드</div>
+      <div class="card-title">아이폰 낙하 후 화면 이상 — 깨짐·멍·줄·먹통 원인별 판단법</div>
+      <div class="card-desc">아이폰을 떨어뜨린 뒤 화면이 이상합니다. 단순 유리 파손인지 내부 패널 손상인지 — 유형별 원인과 지금 당장 해야 할 행동 순서를 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 화면 수리</span></div>
+    </a>
+
+    <a href="iphone-battery-sudden-shutdown.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 배터리 가이드</div>
+      <div class="card-title">아이폰 배터리 30%인데 갑자기 꺼짐 — 배터리 수명 판단 기준</div>
+      <div class="card-desc">배터리가 30%나 남았는데 아이폰이 꺼집니다. 방전이 아니라 배터리 수명 문제입니다. 원인과 지금 확인해야 할 것, 교체 타이밍을 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 배터리</span></div>
+    </a>
+
+    <a href="iphone-screen-line-appeared.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 화면 이상 가이드</div>
+      <div class="card-title">아이폰 화면에 줄이 생겼어요 — 원인과 당장 해야 할 것</div>
+      <div class="card-desc">아이폰 화면에 갑자기 줄이 생겼습니다. 낙하 충격인지, 자연 노화인지, 지금 계속 써도 되는지 — 원인별 해결법과 지금 해야 할 행동을 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 화면 줄</span></div>
+    </a>
+
+    <a href="iphone-screen-frozen.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 멈춤·먹통 가이드</div>
+      <div class="card-title">아이폰 잠금화면 멈춤 — 원인별 해결 순서와 수리 판단 기준</div>
+      <div class="card-desc">아이폰 잠금화면이 멈추고 아무 반응이 없습니다. 소프트웨어인지 하드웨어인지 원인별로 지금 해야 할 행동 순서와 수리 판단 기준을 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 멈춤</span></div>
+    </a>
+
+    <a href="iphone-touch-not-working.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 터치 불량 가이드</div>
+      <div class="card-title">아이폰 터치가 안 돼요 — 원인별 해결법과 수리 판단 기준</div>
+      <div class="card-desc">아이폰 화면을 눌러도 반응이 없거나 오작동합니다. 부분 불량인지 전체인지, 소프트웨어인지 하드웨어인지 — 원인별 해결법을 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 터치 불량</span></div>
+    </a>
+
+    <a href="applewatch-suddenly-off-no-charge.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 긴급 대처 가이드</div>
+      <div class="card-title">애플워치 갑자기 꺼지고 충전도 안 됨 — 오늘 해결 가능한가</div>
+      <div class="card-desc">강제 재시작으로 집에서 해결되는 경우와 수리가 필요한 경우를 원인별로 구분해 지금 당장 해야 할 순서를 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>애플워치 전원 불량</span></div>
+    </a>
+
+    <a href="ipad-suddenly-frozen-during-class.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 긴급 대처 가이드</div>
+      <div class="card-title">아이패드 수업·업무 중에 갑자기 먹통 — 지금 바로 할 수 있는 것</div>
+      <div class="card-desc">수업이나 업무 중 아이패드가 반응을 멈췄습니다. 기종별 강제 재시작 방법과 데이터 보호 여부, 수리가 필요한 경우를 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이패드 먹통</span></div>
+    </a>
+
+    <a href="iphone16-repair-cost.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리</div>
+      <div class="card-title">아이폰 16 수리 비용 총정리 — 2026년 기준</div>
+      <div class="card-desc">아이폰 16·16 Plus·16 Pro·16 Pro Max 모델별 화면·배터리·카메라·기판 수리 비용. 공식 센터 vs 사설 수리점 비교까지.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 16 수리비</span></div>
+    </a>
+
+    <a href="iphone15-screen-repair-cost.html" class="article-card" data-cat="iphone">
+      <div class="card-category">액정 수리 비용 비교</div>
+      <div class="card-title">아이폰 15 액정 수리 비용 — 공식 센터 vs 사설, 실제 차이는 얼마나 날까</div>
+      <div class="card-desc">기종별 공식·사설 수리비 비교표, 부품 등급 차이, 보증 조건까지 — 손해 없이 결정하는 법을 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이폰 액정 수리</span>
+      </div>
+    </a>
+
+    <a href="iphone15-screen-repair.html" class="article-card" data-cat="iphone">
+      <div class="card-category">액정 수리 가이드</div>
+      <div class="card-title">아이폰 15 액정 수리, 얼마가 적정 가격일까?</div>
+      <div class="card-desc">공식 센터 vs 사설 수리점 비용 차이, 부품 품질, 데이터 보존까지. 수리 전 꼭 알아야 할 것들을 솔직하게 알려드립니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>액정 수리</span>
+      </div>
+    </a>
+
+    <a href="iphone14-screen-repair.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 14 액정 수리</div>
+      <div class="card-title">아이폰 14 액정 수리비가 비싼 이유 — OLED 패널 교체, 이렇게 아낄 수 있습니다</div>
+      <div class="card-desc">OLED 구조상 유리만 교체가 불가능한 이유, 기종별 수리비 현실, 비용을 줄이는 3가지 방법을 솔직하게 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이폰 14 액정</span>
+      </div>
+    </a>
+
+    <a href="iphone13-screen-line.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 13 화면 이상</div>
+      <div class="card-title">아이폰 13 액정에 줄이 생겼을 때 — 원인 3가지와 수리 필요 여부 판단법</div>
+      <div class="card-desc">낙하 충격인지, OLED 번인인지, 내부 커넥터 문제인지 — 4단계 자가진단으로 원인을 찾고 최선의 선택을 내리세요.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이폰 화면 줄</span>
+      </div>
+    </a>
+
+    <a href="iphone-installment-screen-broken.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 긴급 대처 가이드</div>
+      <div class="card-title">아이폰 할부 남았는데 액정 깨짐 — 지금 고치는 게 맞나</div>
+      <div class="card-desc">할부 중인 기기, 수리해야 할지 교체해야 할지 — 이중 할부 비용, 보험 여부, 사용 기간별 현실적 판단 기준을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 액정 수리</span></div>
+    </a>
+
+    <a href="iphone-lcd-black-spreading.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 긴급 대처 가이드</div>
+      <div class="card-title">아이폰 화면 안쪽 검은 번짐 퍼지고 있음 — 빨리 고쳐야 하나</div>
+      <div class="card-desc">검은 번짐은 LCD 내부 손상입니다. 크기와 무관하게 수리 비용은 같고, 방치할수록 확산됩니다. 지금 상태별 판단 기준을 확인하세요.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 검은 번짐</span></div>
+    </a>
+
+    <a href="iphone-two-repairs-at-once.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 긴급 대처 가이드</div>
+      <div class="card-title">아이폰 두 군데 동시 고장 — 한 번에 고치면 비용이 달라지나</div>
+      <div class="card-desc">액정 깨짐 + 배터리 방전, 동시에 고치면 얼마나 효율적일까. 수리 조합별 효율과 우선순위 판단 기준을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 복합 수리</span></div>
+    </a>
+
+    <a href="iphone-screen-protector-broken.html" class="article-card" data-cat="iphone">
+      <div class="card-category">액정 손상 자가진단</div>
+      <div class="card-title">보호필름이 깨진 건지 액정이 깨진 건지 — 5단계로 확인하는 법</div>
+      <div class="card-desc">터치 반응, 색상 번짐, 줄 유무, 빛 번짐 — 이 5가지만 확인하면 수리 필요 여부를 집에서 판단할 수 있습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>액정 손상 확인법</span>
+      </div>
+    </a>
+
+    <a href="iphone-oled-burn-in.html" class="article-card" data-cat="iphone">
+      <div class="card-category">화면·디스플레이</div>
+      <div class="card-title">아이폰 OLED 화면 번인·잔상 — 생기는 이유, 예방법, 교체 시점</div>
+      <div class="card-desc">번인과 잔상의 차이, 빨리 생기는 원인, 예방 방법, 그리고 언제 교체해야 하는지 수리 현장 경험을 바탕으로 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>OLED 번인</span></div>
+    </a>
+
+    <a href="iphone-touch-sensitivity-after-repair.html" class="article-card" data-cat="iphone">
+      <div class="card-category">화면·터치</div>
+      <div class="card-title">아이폰 액정 교체 후 터치 먹통·민감도 저하 — 원인과 해결 방법</div>
+      <div class="card-desc">교체 후 터치가 안 되거나 잘못 인식되는 원인, 비정품 패널의 터치 성능 차이, 수리점에서 해결 가능한 것과 재수리가 필요한 경우를 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>터치 민감도</span></div>
+    </a>
+
+    <a href="iphone-screen-color-issue.html" class="article-card" data-cat="iphone">
+      <div class="card-category">화면·디스플레이</div>
+      <div class="card-title">아이폰 화면 색상 이상 — 노랗거나 파랗게 보일 때 원인과 해결법</div>
+      <div class="card-desc">True Tone 오작동인지, 디스플레이 설정 문제인지, 패널 불량인지 — 화면 색상이 이상하게 보이는 원인별 해결법을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>화면 색상 이상</span></div>
+    </a>
+
+    <a href="iphone-screen-wont-turn-on.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리</div>
+      <div class="card-title">아이폰 화면이 안 켜질 때 — 배터리·소프트웨어·화면 고장 구분법</div>
+      <div class="card-desc">완전 방전인지, 강제 재시동으로 해결되는지, 화면 자체가 고장인지 — 단계별로 확인하면 수리 없이 해결되는 경우도 있습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 화면 꺼짐</span></div>
+    </a>
+
+    <a href="iphone16pro-back-glass-repair.html" class="article-card" data-cat="iphone">
+      <div class="card-category">외관 수리 가이드</div>
+      <div class="card-title">아이폰 16 프로 후면 유리 교체 — 뒷면 파손, 이렇게 수리하세요</div>
+      <div class="card-desc">공식 센터는 기기 전체 교체를 권유합니다. 하지만 후면 유리만 교체하면 데이터도 살리고 비용도 아낄 수 있습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>외관 수리</span>
+      </div>
+    </a>
+
+    <a href="iphone14-back-glass-repair.html" class="article-card" data-cat="iphone">
+      <div class="card-category">후면유리 수리 가이드</div>
+      <div class="card-title">아이폰 14 후면유리 교체 — 이 기종부터 뒷면만 따로 분리됩니다</div>
+      <div class="card-desc">아이폰 13까지는 전면을 먼저 열어야 했습니다. 14부터 달라진 구조와 기종별 수리 비용, 당일 수리가 가능한 이유를 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>후면유리 수리</span>
+      </div>
+    </a>
+
+    <a href="iphone-back-glass-broken-danger.html" class="article-card" data-cat="iphone">
+      <div class="card-category">후면유리 방치 주의</div>
+      <div class="card-title">아이폰 뒷면 유리 깨진 채로 쓰면 안 되는 이유</div>
+      <div class="card-desc">뒷면만 깨진 거라 괜찮겠지 — 실제로는 5가지 문제가 생깁니다. 손 부상, 수분 침투, 열 방출, 균열 확대, 중고가 급락까지.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>후면유리 방치 위험</span>
+      </div>
+    </a>
+
+    <a href="iphone-battery-swollen.html" class="article-card" data-cat="iphone">
+      <div class="card-category">배터리</div>
+      <div class="card-title">아이폰 배터리 팽창 — 방치하면 안 되는 이유와 즉시 해야 할 것</div>
+      <div class="card-desc">배터리 팽창은 화면 들뜸이나 기기 두께 변화로 확인할 수 있습니다. 방치 시 위험성과 즉시 취해야 할 행동을 수리 현장 경험으로 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>배터리 팽창</span></div>
+    </a>
+
+    <a href="iphone-battery-replacement-guide.html" class="article-card" data-cat="iphone">
+      <div class="card-category">배터리 교체 가이드</div>
+      <div class="card-title">아이폰 배터리 교체, 언제 해야 할까요?</div>
+      <div class="card-desc">갑자기 꺼짐, 발열, 하루도 안 가는 배터리 — 교체 시기를 알려주는 증상과 성능 수치 확인 방법을 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>배터리 교체</span>
+      </div>
+    </a>
+
+    <a href="iphone-battery-drains-fast-despite-high-percentage.html" class="article-card" data-cat="iphone">
+      <div class="card-category">배터리</div>
+      <div class="card-title">아이폰 배터리 잔량 80%인데 갑자기 꺼짐 — 원인과 해결법</div>
+      <div class="card-desc">배터리 퍼센트는 높은데 갑자기 꺼지거나 빠르게 닳는 현상의 원인, 배터리 캘리브레이션 방법, 교체가 필요한 시점을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>배터리 갑자기 꺼짐</span></div>
+    </a>
+
+    <a href="iphone-battery-replacement-options.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 배터리</div>
+      <div class="card-title">아이폰 배터리 교체, 3가지 방식의 차이 — 셀 교체·일반·인증 배터리 비교</div>
+      <div class="card-desc">경고 문구 여부, 배터리 이력, 데이터 초기화, 비용까지 — 다올리페어의 배터리 교체 3가지 방식을 정확히 비교합니다. 내 상황에 맞는 선택을 도와드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>배터리 교체 방식</span></div>
+    </a>
+
+    <a href="iphone-battery-max-capacity-after-replacement.html" class="article-card" data-cat="iphone">
+      <div class="card-category">배터리</div>
+      <div class="card-title">아이폰 배터리 교체 후 최대 용량 80%대 — 정상인가 불량인가</div>
+      <div class="card-desc">배터리 교체 직후 최대 용량이 낮게 표시되는 이유, 정품 배터리와 비정품 배터리의 용량 차이, 실제로 불량인 케이스를 구분하는 기준을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>배터리 교체 후 용량</span></div>
+    </a>
+
+    <a href="iphone-water-damage-dos-donts.html" class="article-card" data-cat="iphone">
+      <div class="card-category">침수 대처 가이드</div>
+      <div class="card-title">아이폰 물에 빠졌다면 — 지금 당장 멈춰야 할 것들</div>
+      <div class="card-desc">드라이기, 쌀에 넣기, 강제 충전 — 이것들이 수리비를 두 배로 만듭니다. 침수 직후 절대 하면 안 되는 행동 6가지.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>침수 응급 대처</span>
+      </div>
+    </a>
+
+    <a href="iphone-liquid-detected.html" class="article-card" data-cat="iphone">
+      <div class="card-category">수리 전 꼭 읽기</div>
+      <div class="card-title">아이폰 액체 감지됨 경고 — 물에 빠뜨린 적 없는데 왜 뜰까?</div>
+      <div class="card-desc">드라이기로 말리거나 강제로 충전기를 꽂으면 절대 안 됩니다. 정확한 원인과 올바른 해결 방법을 알려드립니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>수리 칼럼</span>
+      </div>
+    </a>
+
+    <a href="iphone-water-speaker-muffled.html" class="article-card" data-cat="iphone">
+      <div class="card-category">침수·스피커</div>
+      <div class="card-title">아이폰 물 들어간 후 스피커 먹먹함 — 집에서 해결 가능한 것 vs 수리 필요한 것</div>
+      <div class="card-desc">물 배출 기능으로 해결되는 경우와 스피커 메시 막힘·내부 손상이 원인인 경우를 구분하는 법, 잘못된 대처(쌀·드라이기)의 위험성을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>침수 스피커</span></div>
+    </a>
+
+    <a href="iphone-charging-not-working.html" class="article-card" data-cat="iphone">
+      <div class="card-category">충전 문제 자가진단</div>
+      <div class="card-title">아이폰 충전이 갑자기 안 될 때 — 5단계로 원인 찾는 법</div>
+      <div class="card-desc">케이블 불량인지, 어댑터 문제인지, 단자 오염인지, 배터리 이상인지 — 집에서 5단계로 원인을 좁혀보고 수리 여부를 결정하세요.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>충전 자가진단</span>
+      </div>
+    </a>
+
+    <a href="iphone-charging-port-replacement-cost.html" class="article-card" data-cat="iphone">
+      <div class="card-category">충전 단자 교체 비용</div>
+      <div class="card-title">아이폰 충전 단자 교체 비용 — 라이트닝 vs USB-C, 기종별 정리</div>
+      <div class="card-desc">아이폰 12·13·14는 라이트닝, 15부터는 USB-C. 기종별 교체 비용과 교체 후 주의사항을 한눈에 확인하세요.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>단자 교체 비용</span>
+      </div>
+    </a>
+
+    <a href="iphone-charging-port-damage.html" class="article-card" data-cat="iphone">
+      <div class="card-category">충전 단자 파손</div>
+      <div class="card-title">아이폰 충전 단자 물리 파손 — 방치하면 어떻게 될까</div>
+      <div class="card-desc">핀 휨, 이물질 끼임, 낙하 충격 — 단자 파손 유형 3가지와 방치 시 발생하는 문제, 교체 타이밍을 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>단자 파손</span>
+      </div>
+    </a>
+
+    <a href="iphone-charging-slow.html" class="article-card" data-cat="iphone">
+      <div class="card-category">충전 속도 저하</div>
+      <div class="card-title">아이폰 충전 속도가 갑자기 느려졌을 때 — 원인 4가지 구분법</div>
+      <div class="card-desc">케이블·어댑터·배터리 열화·설정 문제 — 원인에 따라 해결법이 다릅니다. 단계별로 확인해 쓸데없는 교체를 줄이세요.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>충전 속도</span>
+      </div>
+    </a>
+
+    <a href="iphone-camera-lens-broken.html" class="article-card" data-cat="iphone">
+      <div class="card-category">카메라</div>
+      <div class="card-title">아이폰 카메라 렌즈 깨짐 — 수리비·촬영 영향·방치 리스크</div>
+      <div class="card-desc">렌즈 유리만 깨진 경우와 카메라 모듈까지 손상된 경우의 차이, 촬영 품질 저하 정도, 수리 비용을 기종별로 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>카메라 렌즈 파손</span></div>
+    </a>
+
+    <a href="iphone-camera-broken.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리</div>
+      <div class="card-title">아이폰 카메라 고장 — 검은 화면·초점 흔들림·렌즈 균열</div>
+      <div class="card-desc">카메라 앱을 열었을 때 검은 화면이 나오거나, 사진이 흐릿하거나, 렌즈가 깨진 경우. 증상별로 원인과 수리 범위가 다릅니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 카메라</span></div>
+    </a>
+
+    <a href="iphone-face-id-not-working.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리</div>
+      <div class="card-title">아이폰 Face ID 안 됨 — 소프트웨어 문제인지 하드웨어 고장인지</div>
+      <div class="card-desc">마스크 쓸 때만 안 된다면 설정 문제, 아예 인식을 못한다면 TrueDepth 모듈 불량일 수 있습니다. 원인에 따라 해결법이 완전히 다릅니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>Face ID</span></div>
+    </a>
+
+    <a href="iphone-battery-kc-certification-truth.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 배터리</div>
+      <div class="card-title">KC인증 배터리가 정품급이라는 말 — 믿으면 안 되는 이유</div>
+      <div class="card-desc">KC인증은 전기 안전 규격일 뿐, 셀 품질과는 무관합니다. 저렴한 셀로 규격만 통과시킨 배터리를 정품급으로 파는 실태와 소비자가 진짜 확인해야 할 기준을 정리합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>KC인증 배터리</span></div>
+    </a>
+
+    <a href="iphone-screen-types-guide.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 액정 교체</div>
+      <div class="card-title">아이폰 액정 종류 총정리 — 정품 재생·DD OLED·RJ·GX, 뭐가 다른가</div>
+      <div class="card-desc">정품 추출·정품 재생·FOG·DD OLED·RJ·GX·INCELL까지 종류별 품질과 가격 차이. 다올리페어가 정품 재생과 DD OLED를 선택한 이유도 설명합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>액정 종류 비교</span></div>
+    </a>
+
+    <a href="iphone-16e-repair-cost.html" class="article-card" data-cat="iphone">
+      <div class="card-category">수리 비용</div>
+      <div class="card-title">아이폰 16e 수리 비용 총정리 — 항목별 공식 vs 사설 가격 비교</div>
+      <div class="card-desc">아이폰 16e 액정·배터리·후면 유리 수리 비용을 공식 센터와 사설 전문점으로 나눠 비교했습니다. 어떤 수리를 어디서 받아야 유리한지 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 16e 수리비</span></div>
+    </a>
+
+    <a href="ipad-repair-or-buy-new.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 수리 가이드</div>
+      <div class="card-title">아이패드 액정이 깨졌을 때 — 고치는 게 나을까 새로 사는 게 나을까</div>
+      <div class="card-desc">드로잉, 학습, 영상, 아이 전용까지 — 어떻게 쓰느냐에 따라 답이 달라집니다. 용도별 판단 기준 정리.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이패드 수리</span>
+      </div>
+    </a>
+
+    <a href="ipad-pro-screen-repair-cost.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 프로 수리</div>
+      <div class="card-title">아이패드 프로 수리비 견적 받고 멘붕 왔습니다</div>
+      <div class="card-desc">왜 이렇게 비싼지, 어떤 선택지가 있는지 — 아이패드 프로 세대별 수리 비용과 현실적인 판단 기준.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이패드 프로 수리</span>
+      </div>
+    </a>
+
+    <a href="ipad-screen-repair-vs-iphone.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 수리 가이드</div>
+      <div class="card-title">아이패드 액정 수리, 왜 아이폰보다 비쌀까</div>
+      <div class="card-desc">같은 화면 수리인데 아이패드가 더 비싼 이유 — 크기, 구조, 부품 단가까지 정확히 비교했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이패드 액정 수리</span>
+      </div>
+    </a>
+
+    <a href="ipad-mini-repair-cost.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 수리</div>
+      <div class="card-title">아이패드 미니 수리 비용 총정리 — 미니 5·6세대 2026년 기준</div>
+      <div class="card-desc">화면·배터리·충전포트·카메라 항목별 공식 vs 사설 수리 비용 비교. 미니 5세대(Lightning)와 6세대(USB-C) 차이도 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이패드 미니 수리비</span></div>
+    </a>
+
+    <a href="ipad-air-repair-cost.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 수리</div>
+      <div class="card-title">아이패드 에어 수리 비용 총정리 — 에어 4·5세대·M2 2026년 기준</div>
+      <div class="card-desc">측면 Touch ID 수리 한계, Apple Pencil 2세대 지원 영향, M1·M2 비모듈식 설계까지. 항목별 공식 vs 사설 비용 비교.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이패드 에어 수리비</span></div>
+    </a>
+
+    <a href="ipad-screen-jitter-after-replacement.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 액정 수리 가이드</div>
+      <div class="card-title">아이패드 액정 교체 후 지터링 — 기종별 원인과 다올리페어의 대응</div>
+      <div class="card-desc">손가락 터치 지터링과 애플펜슬 지터링은 원인이 다릅니다. 기종별 발생 위험도와 수리 전에 반드시 확인해야 할 것들을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이패드 지터링</span></div>
+    </a>
+
+    <a href="ipad-screen-flickering.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 디스플레이 가이드</div>
+      <div class="card-title">아이패드 화면이 깜빡이거나 줄이 생겼을 때</div>
+      <div class="card-desc">소프트웨어 문제인지 디스플레이 손상인지 구분하는 법 — 방치할수록 범위가 넓어지고 수리 비용이 올라갑니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이패드 화면 이상</span>
+      </div>
+    </a>
+
+    <a href="ipad-touch-partial-failure.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 터치 가이드</div>
+      <div class="card-title">아이패드 화면 한쪽만 터치가 안 될 때</div>
+      <div class="card-desc">전체가 아니라 특정 부분만 안 된다면 디지타이저 손상일 수 있습니다. 방치할수록 범위가 넓어집니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이패드 터치 불량</span>
+      </div>
+    </a>
+
+    <a href="ipad-battery-replacement-guide.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 배터리 가이드</div>
+      <div class="card-title">아이패드 배터리 교체, 언제 해야 할까</div>
+      <div class="card-desc">80% 미만이면 무조건 교체? 그렇지 않습니다. 사용 패턴과 증상에 따라 교체 시점이 달라지는 이유를 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이패드 배터리</span>
+      </div>
+    </a>
+
+    <a href="ipad-battery-replacement-worth-it.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 배터리 가이드</div>
+      <div class="card-title">3년 된 아이패드, 배터리 교체하면 얼마나 더 쓸 수 있을까</div>
+      <div class="card-desc">새 기기를 살지 배터리만 교체할지 — 교체 효과와 한계, 진짜 계산해보면 답이 나옵니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이패드 배터리 교체</span>
+      </div>
+    </a>
+
+    <a href="ipad-not-charging.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 충전 가이드</div>
+      <div class="card-title">아이패드 충전이 안 될 때 — 케이블 문제인지 포트 문제인지 구분하는 법</div>
+      <div class="card-desc">5단계 자가진단으로 케이블인지, 포트인지, 배터리인지 원인을 찾고 — 집에서 해결 가능한 것과 수리가 필요한 것을 구분해 드립니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이패드 충전 불량</span>
+      </div>
+    </a>
+
+    <a href="ipad-charging-intermittent.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 충전 가이드</div>
+      <div class="card-title">아이패드 충전이 됐다 안 됐다 반복될 때</div>
+      <div class="card-desc">케이블을 바꿔도 똑같다면 포트 내부 문제입니다. 이물질인지 핀 손상인지 구분하는 방법과 집에서 해결하는 법.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이패드 충전 불량</span>
+      </div>
+    </a>
+
+    <a href="ipad-camera-broken.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 수리</div>
+      <div class="card-title">아이패드 카메라 고장 — 화면이 검게 나오거나 앱이 멈출 때</div>
+      <div class="card-desc">권한 문제인지 카메라 모듈 불량인지 먼저 확인. 전면과 후면 카메라 구분, 모델별 수리 비용까지 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이패드 카메라</span></div>
+    </a>
+
+    <a href="applewatch-series10-screen-repair.html" class="article-card" data-cat="applewatch">
+      <div class="card-category">애플워치 수리</div>
+      <div class="card-title">애플워치 Series 10 액정 수리 비용 — 41mm·46mm 기종별 비교</div>
+      <div class="card-desc">Series 10의 얇아진 설계가 수리 난이도에 미치는 영향, 공식 vs 사설 비용 비교, 수리 vs 리퍼 판단 기준을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>Series 10 수리비</span></div>
+    </a>
+
+    <a href="applewatch-screen-repair.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 수리 가이드</div>
+      <div class="card-title">애플워치 액정 파손 수리 — 비용·방법·선택 기준 완전 정리</div>
+      <div class="card-desc">깨진 채로 계속 차면 안 되는 이유, 기종마다 다른 수리 방법, LCD 이상 없으면 유리만 교체해 비용을 줄이는 방법까지.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>애플워치 수리</span>
+      </div>
+    </a>
+
+    <a href="applewatch-se-screen-repair.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 SE 액정 수리</div>
+      <div class="card-title">애플워치 SE 액정 수리 — 가성비 기종인데 수리비도 현실적일까</div>
+      <div class="card-desc">SE 1·2세대 기종별 수리 비용, 유리만 파손됐을 때와 OLED 패널까지 손상됐을 때 차이, 수리 vs 교체 현실적 판단 기준까지.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>SE 액정 수리</span>
+      </div>
+    </a>
+
+    <a href="applewatch-series9-ultra2-repair-cost.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 수리</div>
+      <div class="card-title">애플워치 시리즈9·Ultra2 수리 비용 총정리 — 2026년 기준</div>
+      <div class="card-desc">배터리·화면·크라운·케이스 항목별 공식 vs 사설 수리 비용. Ultra2 티타늄 케이스 특이사항과 수리 vs 교체 판단 기준 포함.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>애플워치 수리비</span></div>
+    </a>
+
+    <a href="applewatch-repair-or-replace.html" class="article-card" data-cat="watch">
+      <div class="card-category">수리 vs 교체 판단</div>
+      <div class="card-title">애플워치 화면 수리 vs 기기 교체 — 기종별로 어느 쪽이 나을까</div>
+      <div class="card-desc">수리비가 중고가의 50% 미만이면 수리, 70% 이상이면 교체 검토. Series 4부터 Ultra까지 기종별 판단 기준을 한눈에 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>수리 판단 기준</span>
+      </div>
+    </a>
+
+    <a href="applewatch-battery-replacement-timing.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 배터리 가이드</div>
+      <div class="card-title">애플워치 배터리 교체 타이밍 — 이 신호가 보이면 교체할 때</div>
+      <div class="card-desc">최대 용량 기준, 팽창 신호, 방치했을 때 생기는 문제까지. 배터리 교체 타이밍을 판단하는 명확한 기준.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>배터리 교체 시기</span>
+      </div>
+    </a>
+
+    <a href="applewatch-battery-replacement-guide.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 배터리 가이드</div>
+      <div class="card-title">애플워치 배터리 교체, 언제 해야 할까</div>
+      <div class="card-desc">하루도 못 버티는 배터리, 갑자기 꺼짐, 케이스 들뜸 — 교체 시점을 알려주는 증상과 기준, 방치하면 안 되는 팽창 증상까지 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>애플워치 배터리</span>
+      </div>
+    </a>
+
+    <a href="applewatch-se-battery-replacement.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 SE 배터리</div>
+      <div class="card-title">애플워치 SE 배터리 교체 — 교체 시점과 비용 총정리</div>
+      <div class="card-desc">하루도 못 버티거나 케이스가 들뜬다면 즉시 교체해야 합니다. SE 1·2세대 교체 비용과 당일 수리 가능 여부를 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>SE 배터리 교체</span>
+      </div>
+    </a>
+
+    <a href="applewatch-water-damage.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 침수 가이드</div>
+      <div class="card-title">애플워치 방수 믿었다가 침수됐을 때 — WR50·수영 방수의 실제 의미</div>
+      <div class="card-desc">방수 등급이 있어도 침수됩니다. 등급의 실제 한계와 침수 직후 절대 하면 안 되는 것들, 응급 처치법을 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>애플워치 침수</span>
+      </div>
+    </a>
+
+    <a href="applewatch-crown-issues.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 크라운 가이드</div>
+      <div class="card-title">애플워치 크라운이 뻑뻑하거나 눌리지 않을 때</div>
+      <div class="card-desc">땀·이물질로 인한 일시적 문제인지 내부 손상인지 구분하는 법 — 집에서 해볼 수 있는 세척법과 수리가 필요한 상태를 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>애플워치 크라운</span>
+      </div>
+    </a>
+
+    <a href="applewatch-digital-crown-stiff.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 Crown 가이드</div>
+      <div class="card-title">애플워치 Digital Crown 뻑뻑해졌을 때 해결법</div>
+      <div class="card-desc">용두가 뻑뻑하거나 클릭이 안 될 때 집에서 해볼 수 있는 방법과 수리가 필요한 시점을 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>Digital Crown 이물질</span>
+      </div>
+    </a>
+
+    <a href="applewatch-charging-guide.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 충전 가이드</div>
+      <div class="card-title">애플워치 충전이 안 될 때 — 충전기 문제인지 기기 문제인지 구분하는 법</div>
+      <div class="card-desc">자석이 붙는데 왜 충전이 안 될까? 5단계 자가진단으로 어댑터·케이블·기기 문제를 찾고 집에서 해결되는 것과 수리가 필요한 것을 구분합니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>애플워치 충전 불량</span>
+      </div>
+    </a>
+
+    <a href="macbook-screen-repair.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 화면 수리 가이드</div>
+      <div class="card-title">맥북 화면이 깨졌을 때 — 수리비가 얼마인지 알면 결정이 쉬워집니다</div>
+      <div class="card-desc">유리만 깨진 건지 패널까지 손상됐는지 구분하는 법, 기종별 수리 난이도, 공식 vs 사설 선택 기준을 솔직하게 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>맥북 액정 수리</span>
+      </div>
+    </a>
+
+    <a href="macbook-water-damage.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 침수 가이드</div>
+      <div class="card-title">맥북에 물 쏟았을 때 — 지금 이 순간이 살릴 수 있는 마지막 기회</div>
+      <div class="card-desc">커피, 물, 음료 — 맥북에 쏟는 순간 해야 할 것과 절대 하면 안 되는 것. 빠르게 행동할수록 살릴 확률이 높아집니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>맥북 침수</span>
+      </div>
+    </a>
+
+    <a href="macbook-battery-replacement-guide.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 배터리 가이드</div>
+      <div class="card-title">맥북 배터리 교체, 언제 해야 할까 — 사이클 수보다 이 증상을 보세요</div>
+      <div class="card-desc">갑자기 꺼짐, 트랙패드 들뜸, 하루도 못 버팀 — 사이클 수 확인법부터 팽창 대처까지. 맥북 배터리 교체 완전 가이드.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>맥북 배터리 교체</span>
+      </div>
+    </a>
+
+    <a href="macbook-air-m2-repair-cost.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 수리</div>
+      <div class="card-title">맥북 에어 M2 수리 비용 총정리 — 2026년 기준</div>
+      <div class="card-desc">배터리·화면·키보드·트랙패드·USB-C·로직보드 항목별 공식 vs 사설 수리 비용 비교. 수리 vs 새 제품 기준선도 함께.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>맥북 에어 M2 수리비</span></div>
+    </a>
+
+    <a href="macbook-screen-yellow-line.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 화면</div>
+      <div class="card-title">맥북 화면에 노란 줄 생김 — 방치하면 번지는 이유와 수리 시점</div>
+      <div class="card-desc">노란 줄이 생기는 원인, 시간이 지나면서 번지는 이유, 초기에 수리하면 비용이 달라지는 이유를 수리 현장 경험으로 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>맥북 화면 노란 줄</span></div>
+    </a>
+
+    <a href="macbook-magsafe-cable-damage.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 충전</div>
+      <div class="card-title">맥북 MagSafe 케이블 꺾임·충전 불량 — 케이블 교체 vs 포트 수리 판단법</div>
+      <div class="card-desc">MagSafe 케이블 손상 유형, 충전 불량이 케이블 문제인지 충전 포트 문제인지 구별하는 법, 교체 비용과 수리 시점을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>MagSafe 충전 불량</span></div>
+    </a>
+
+    <a href="macbook-charging-issues.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 충전 가이드</div>
+      <div class="card-title">맥북 충전 중인데 배터리가 줄어들어요 — 충전기 탓인지 포트 탓인지 찾는 법</div>
+      <div class="card-desc">와트수 부족인지, 포트 불량인지, 배터리 노화인지 — 5단계 자가진단으로 원인을 찾고 최소 비용으로 해결하는 방법.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>맥북 충전 불량</span>
+      </div>
+    </a>
+
+    <a href="macbook-charging-cable-vs-port.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 충전 가이드</div>
+      <div class="card-title">맥북 충전이 안 될 때 — 케이블 문제인지 포트 문제인지 구분하는 법</div>
+      <div class="card-desc">충전기 바꿔도 안 되고, 포트를 봐도 멀쩡해 보이는데 충전이 안 될 때. 케이블·포트·배터리 세 가지를 단계별로 구분하는 방법을 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>맥북 충전</span>
+      </div>
+    </a>
+
+    <a href="macbook-keyboard-issues.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 키보드 가이드</div>
+      <div class="card-title">맥북 키보드 키가 안 눌리거나 혼자 눌릴 때 — 교체 전에 꼭 확인하세요</div>
+      <div class="card-desc">이물질인지, 버터플라이 결함인지, 침수 손상인지 — 원인마다 해결법이 다릅니다. 전체 키보드 교체 전에 먼저 확인하세요.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>맥북 키보드 고장</span>
+      </div>
+    </a>
+
+    <a href="macbook-trackpad-broken.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 수리</div>
+      <div class="card-title">맥북 트랙패드 고장 — 클릭이 안 되거나 반응이 없을 때</div>
+      <div class="card-desc">트랙패드 고장의 절반은 배터리 팽창이 원인입니다. 수리 전 SMC 리셋으로 해결되는 경우도 있으니 원인부터 파악하세요.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>맥북 트랙패드</span></div>
+    </a>
+
+    <a href="macbook-hinge-broken.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 수리</div>
+      <div class="card-title">맥북 힌지 파손 — 화면이 쓰러지거나 각도 유지가 안 될 때</div>
+      <div class="card-desc">힌지만 교체할 수 있는 경우와 상판 어셈블리 전체 교체가 필요한 경우를 구분하는 기준, 공식 센터 한계도 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>맥북 힌지</span></div>
+    </a>
+
+    <a href="macbook-usbc-not-recognized.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 수리</div>
+      <div class="card-title">맥북 USB-C 포트 인식 안 됨 — 충전도 외부 모니터도 안 될 때</div>
+      <div class="card-desc">케이블 문제인지 포트 자체 문제인지 교차 테스트로 먼저 구분. 충전 IC 불량은 기판 레벨 수리가 필요합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>맥북 USB-C</span></div>
+    </a>
+
+    <a href="ipad-repair-applepencil-issue.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 수리 가이드</div>
+      <div class="card-title">아이패드 수리 맡겼더니 애플펜슬이 안 됩니다</div>
+      <div class="card-desc">수리 전엔 잘 됐는데 수리 후 갑자기 애플펜슬이 안 된다면 — 원인은 수리 자체에 있습니다. 이유와 해결법 정리.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이패드 애플펜슬</span>
+      </div>
+    </a>
+
+    <a href="ipad-apple-unrepairable-warning.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 수리 가이드</div>
+      <div class="card-title">"수리 불가입니다" — 애플에서 이 말 듣기 전에 확인할 것</div>
+      <div class="card-desc">애플 공식 수리 불가 = 진짜 수리 불가가 아닙니다. 수리 불가 기준과 포기하기 전에 해볼 수 있는 것들.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이패드 수리 불가</span>
+      </div>
+    </a>
+
+    <a href="ipad-official-repair-data-backup.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 수리 가이드</div>
+      <div class="card-title">아이패드 공식 수리 맡기면 왜 데이터 백업을 강제로 시키나</div>
+      <div class="card-desc">귀찮다고 건너뛰면 사진과 데이터를 영영 잃을 수 있습니다. 5분 백업으로 지키는 방법을 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이패드 수리 백업</span>
+      </div>
+    </a>
+
+    <a href="ipad-drop-internal-damage.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 낙하 손상 가이드</div>
+      <div class="card-title">아이패드 낙하 후 화면은 멀쩡한데 이상한 이유 — 내부 손상 판별법</div>
+      <div class="card-desc">화면이 안 깨졌다고 안심하셨나요. 배터리 변형·디지타이저 분리·기판 충격은 겉으로 보이지 않습니다. 낙하 후 반드시 확인해야 할 것들.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이패드 낙하 손상</span>
+      </div>
+    </a>
+
+    <a href="ipad-model-repair-comparison.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 모델별 수리 가이드</div>
+      <div class="card-title">아이패드 Pro vs Air vs Mini — 모델별 수리 자주 나오는 부위와 비용 차이</div>
+      <div class="card-desc">같은 아이패드라도 모델마다 취약한 부위가 다릅니다. 수리점에서 실제로 보는 패턴과 비용 차이를 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이패드 모델 비교</span>
+      </div>
+    </a>
+
+    <a href="ipad-used-buying-checklist.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 구매 가이드</div>
+      <div class="card-title">아이패드 중고 구매 전 반드시 확인할 체크리스트 — 수리점 관점</div>
+      <div class="card-desc">활성화 잠금·배터리·침수 이력·사설 수리 이력까지 — 거래 전 10분 확인으로 나중에 수리비로 날아갈 돈을 지킬 수 있습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이패드 중고 구매</span>
+      </div>
+    </a>
+
+    <a href="ipad-overheating.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 발열 가이드</div>
+      <div class="card-title">아이패드 과열 — 뜨거워지는 원인별 대처와 배터리 손상 연관성</div>
+      <div class="card-desc">충전하면서 쓰는 습관이 배터리를 가장 빠르게 망가뜨립니다. 원인에 따라 그냥 둬도 되는 것과 점검이 필요한 것이 다릅니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이패드 발열</span>
+      </div>
+    </a>
+
+    <a href="airpods-lost-replacement.html" class="article-card" data-cat="airpods">
+      <div class="card-category">에어팟 분실 가이드</div>
+      <div class="card-title">에어팟 한쪽을 잃어버렸어요 — 새로 사는 것보다 훨씬 저렴한 방법이 있습니다</div>
+      <div class="card-desc">나의 찾기 활용법, 한쪽만 단품 교체 비용 비교, 기종별 페어링 방법까지 — 분실 후 가장 현명한 선택을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>에어팟 분실 대처</span></div>
+    </a>
+
+    <a href="airpods-one-side-no-sound.html" class="article-card" data-cat="airpods">
+      <div class="card-category">에어팟 자가진단</div>
+      <div class="card-title">에어팟 한쪽만 소리가 안 나와요 — 고장 아닐 수도 있습니다, 이것부터 확인하세요</div>
+      <div class="card-desc">블루투스 설정, 오디오 밸런스, 이물질까지 — 집에서 5분이면 확인할 수 있는 자가진단 순서를 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>에어팟 소리 문제</span></div>
+    </a>
+
+    <a href="airpods-battery-draining-fast.html" class="article-card" data-cat="airpods">
+      <div class="card-category">에어팟 배터리 가이드</div>
+      <div class="card-title">에어팟 배터리가 너무 빨리 닳아요 — 교체 전에 이것부터 확인하세요</div>
+      <div class="card-desc">정상 수명 기준, 배터리 상태 확인법, 언제 교체해야 하는지 — 새로 사기 전에 꼭 읽어보세요.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>에어팟 배터리 교체</span></div>
+    </a>
+
+    <a href="airpods-keeps-disconnecting.html" class="article-card" data-cat="airpods">
+      <div class="card-category">에어팟 연결 문제</div>
+      <div class="card-title">에어팟이 자꾸 연결이 끊겨요 — 원인 4가지와 각각 해결법</div>
+      <div class="card-desc">블루투스 간섭, 자동 전환, 귀 감지 센서, 하드웨어 문제 — 어디서 막히는지 찾으면 바로 해결됩니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>에어팟 연결 끊김</span></div>
+    </a>
+
+    <a href="airpods-not-charging.html" class="article-card" data-cat="airpods">
+      <div class="card-category">에어팟 충전 문제</div>
+      <div class="card-title">에어팟 충전이 안 될 때 — 케이스 문제인지 이어폰 문제인지 3분 만에 구분하는 법</div>
+      <div class="card-desc">충전 단자 이물질, 케이스 배터리, 이어폰 자체 문제 — 단계별 자가진단 방법을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>에어팟 충전 안됨</span></div>
+    </a>
+
+    <a href="macbook-fan-noise.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 팬·과열 가이드</div>
+      <div class="card-title">맥북 팬 소음이 갑자기 심해졌다면 — 정상 반응인지 고장 신호인지</div>
+      <div class="card-desc">고부하 작업 중 정상 냉각인지, 먼지·써멀 페이스트·팬 불량인지 — 원인을 구분하는 법과 직접 해볼 수 있는 조치를 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>맥북 팬 소음</span>
+      </div>
+    </a>
+
+    <a href="macbook-repair-or-buy-new.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 수리 가이드</div>
+      <div class="card-title">맥북, 수리할까요 새로 살까요?</div>
+      <div class="card-desc">기종 나이, 고장 부위, 수리 비용 세 가지 기준으로 후회 없는 결정을 내리는 방법을 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>맥북 수리</span>
+      </div>
+    </a>
+
+    <a href="macbook-sudden-shutdown.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 전원 가이드</div>
+      <div class="card-title">맥북 전원이 갑자기 꺼질 때 — 배터리 문제인지 기판 문제인지 구분하는 법</div>
+      <div class="card-desc">배터리 30%가 남았는데 꺼진다, 충전 중에도 꺼진다 — 원인에 따라 배터리 교체로 끝나는 경우도 있고 메인보드 문제로 이어지는 경우도 있습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>맥북 전원</span>
+      </div>
+    </a>
+
+    <a href="macbook-battery-cycle-check.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 배터리 가이드</div>
+      <div class="card-title">맥북 배터리 사이클 수 확인하는 법 — 교체 시점은 언제인가</div>
+      <div class="card-desc">내 맥북이 몇 사이클인지, 교체가 필요한 시점은 언제인지 10분 안에 직접 확인할 수 있습니다. 기종별 기준과 배터리 상태 3가지 의미도 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>맥북 배터리</span>
+      </div>
+    </a>
+
+    <a href="macbook-m1-m2-overheating.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 발열 가이드</div>
+      <div class="card-title">맥북 M1·M2 뜨거워지는 게 정상인가요 — 과열 vs 정상 온도 구분</div>
+      <div class="card-desc">맥북이 뜨겁다고 다 고장은 아닙니다. 에어는 팬이 없어 본체가 방열판입니다. 뜨거운 게 정상인 상황과 문제가 있는 신호를 구분하는 법을 알려드립니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>맥북 발열</span>
+      </div>
+    </a>
+
+    <a href="macbook-used-buying-checklist.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 구매 가이드</div>
+      <div class="card-title">중고 맥북 구매 전 반드시 확인할 체크리스트</div>
+      <div class="card-desc">배터리 사이클, 화면 얼룩, Apple ID 잠금, 침수 흔적 — 수리 현장에서 직접 분해한 경험을 바탕으로 반드시 확인해야 할 항목만 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>중고 맥북</span>
+      </div>
+    </a>
+
+    <a href="iphone-repair-backup-guide.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 가이드</div>
+      <div class="card-title">아이폰 수리 맡기기 전에 꼭 해야 할 백업</div>
+      <div class="card-desc">어떤 수리에서 데이터가 위험한지, iCloud·컴퓨터 백업 방법, 수리점에 기기를 넘기기 전 체크리스트까지 한 번에 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>수리 전 체크리스트</span>
+      </div>
+    </a>
+
+    <a href="iphone-damage-wrong-actions.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 가이드</div>
+      <div class="card-title">아이폰 파손 직후 하면 안 되는 행동 5가지</div>
+      <div class="card-desc">금 간 액정 그냥 쓰기, 침수 후 전원 켜기, 쌀통에 넣기 — 수리비를 두 배로 키우는 행동들을 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>파손 후 대처법</span>
+      </div>
+    </a>
+
+    <a href="repair-quote-comparison-guide.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 가이드</div>
+      <div class="card-title">수리비 견적이 두 배 차이 나는 이유</div>
+      <div class="card-desc">부품 등급, 기술 차이, 숨겨진 추가 비용 구조까지 — 싼 곳이 무조건 좋은 게 아닌 이유를 솔직하게 설명합니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>견적 비교 가이드</span>
+      </div>
+    </a>
+
+    <a href="courier-repair-guide.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 가이드</div>
+      <div class="card-title">택배 수리, 기기를 보내도 정말 괜찮을까요</div>
+      <div class="card-desc">안전한 곳 구별하는 법, 포장 방법, 보내기 전 체크리스트까지 — 택배 수리 전 반드시 읽어보세요.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>택배 수리 가이드</span>
+      </div>
+    </a>
+
+    <a href="smartphone-damage-insurance-guide.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 비용 가이드</div>
+      <div class="card-title">여행 중 아이폰·맥북이 파손됐다면 — 여행자 보험으로 수리비 돌려받는 방법</div>
+      <div class="card-desc">휴대품 손해 특약이 있으면 수리비 대부분을 돌려받을 수 있습니다. 적용 조건, 필요 서류, 청구 절차까지 한 번에 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>파손보험 가이드</span>
+      </div>
+    </a>
+
+    <a href="apple-official-vs-private-repair.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리점 선택 가이드</div>
+      <div class="card-title">애플 공식 수리 vs 사설 수리점 — 어떨 때 어디 가야 할까요</div>
+      <div class="card-desc">비용, 속도, 부품, 보증 4가지 기준으로 비교했습니다. 상황별로 어디서 수리받는 게 유리한지 솔직하게 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>수리점 선택 가이드</span>
+      </div>
+    </a>
+
+    <a href="applecare-plus-worth-it.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 비용 가이드</div>
+      <div class="card-title">애플케어플러스, 가입하면 무조건 이득일까요</div>
+      <div class="card-desc">기기별 수리비와 애플케어+ 비용을 직접 계산해봤습니다. 이럴 때는 이득, 이럴 때는 오히려 손해입니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>수리 비용 비교</span>
+      </div>
+    </a>
+
+    <a href="apple-refurb-warning.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 전 꼭 읽기</div>
+      <div class="card-title">공식 센터에서 "리퍼로 교체하세요"라는 말을 들었다면</div>
+      <div class="card-desc">리퍼는 수리가 아닙니다. iCloud 백업이 없다면 모든 데이터가 사라집니다. 결정 전에 꼭 알아야 할 것들을 솔직하게 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>수리 전 꼭 읽기</span>
+      </div>
+    </a>
+
+    <a href="iphone-repair-shop-guide.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리점 선택 가이드</div>
+      <div class="card-title">아이폰 사설 수리점, 어떻게 골라야 할까요?</div>
+      <div class="card-desc">부품 품질, 데이터 보안, A/S 보장까지 — 싼 곳만 찾다가 후회하기 전에 확인해야 할 6가지 기준을 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>수리점 선택 가이드</span>
+      </div>
+    </a>
+
+    <a href="used-iphone-buying-guide.html" class="article-card" data-cat="guide">
+      <div class="card-category">중고 구매 가이드</div>
+      <div class="card-title">중고 아이폰 샀다가 후회하는 사람들이 빠뜨린 것들</div>
+      <div class="card-desc">iCloud 잠금, 배터리, 침수 흔적, 수리 이력, IMEI까지 — 현장에서 5분이면 확인할 수 있는 7가지 체크리스트.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>중고 구매 체크리스트</span>
+      </div>
+    </a>
+
+    <a href="iphone-after-repair-check.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 후 점검 가이드</div>
+      <div class="card-title">아이폰 수리 후 이상한데 — 정상인지 아닌지 구분하는 법</div>
+      <div class="card-desc">액정·배터리·후면 유리·카메라 교체 후 나타나는 증상들 — 그냥 두면 되는 것과 즉시 연락해야 할 것을 구분해 드립니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>수리 후 체크리스트</span>
+      </div>
+    </a>
+
+    <a href="apple-official-refurb-policy.html" class="article-card" data-cat="guide">
+      <div class="card-category">공식 수리 가이드</div>
+      <div class="card-title">공식 센터 리퍼 정책 완전 정리 — 리퍼란 무엇이고 거부할 수 있나요</div>
+      <div class="card-desc">애플 공식 센터에서 "리퍼로 처리됩니다"라는 말을 들었다면 먼저 이 글을 읽어보세요. 리퍼 거부 여부부터 비용까지 솔직하게 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>공식 수리 정책</span>
+      </div>
+    </a>
+
+    <a href="apple-refurb-device-quality.html" class="article-card" data-cat="guide">
+      <div class="card-category">공식 수리 가이드</div>
+      <div class="card-title">리퍼 기기, 실제로 새 제품이랑 얼마나 차이가 있나요</div>
+      <div class="card-desc">배터리는 새것인지, 케이스는 그대로인지, 보증은 어떻게 되는지 — 리퍼 수령 전에 꼭 알아야 할 것들을 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>리퍼 기기 품질 비교</span>
+      </div>
+    </a>
+
+
+    <a href="private-repair-data-safety.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 전 꼭 읽기</div>
+      <div class="card-title">사설 수리점에 맡기면 내 사진·연락처가 유출될까요</div>
+      <div class="card-desc">수리 종류별 데이터 위험도부터 맡기기 전 준비사항까지 — 수리점 데이터 안전 문제를 솔직하게 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>수리 데이터 안전</span>
+      </div>
+    </a>
+
+    <a href="repair-questions-to-ask.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리점 선택 가이드</div>
+      <div class="card-title">수리 맡기기 전에 꼭 물어봐야 할 질문 5가지</div>
+      <div class="card-desc">부품 출처, 보증 조건, 수리 방식, 추가 손상 대처, 수리 시간 — 이 5가지 질문으로 믿을 수 있는 수리점을 구별할 수 있습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>수리점 선택 체크리스트</span>
+      </div>
+    </a>
+
+    <a href="iphone13-12-back-glass-repair.html" class="article-card" data-cat="iphone">
+      <div class="card-category">후면유리 수리 가이드</div>
+      <div class="card-title">아이폰 13 / 12 후면유리 수리 — 전면을 먼저 열어야 하는 이유</div>
+      <div class="card-desc">많은 수리점이 대행업체에 맡겨 3~7일 걸리는 이유가 구조에 있습니다. 기종별 비용과 당일 직접 수리가 가능한 곳을 선택하는 기준을 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>후면유리 수리</span>
+      </div>
+    </a>
+
+    <a href="iphone11-back-glass-repair.html" class="article-card" data-cat="iphone">
+      <div class="card-category">후면유리 수리 가이드</div>
+      <div class="card-title">아이폰 11 후면유리 수리 비용 — 지금도 고칠 가치가 있을까</div>
+      <div class="card-desc">배터리, 성능, 추가 손상 여부를 기준으로 수리 vs 교체를 판단하는 법. 기종별 수리 비용과 당일 직접 수리 방법을 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>후면유리 수리</span>
+      </div>
+    </a>
+
+    <a href="iphone-back-glass-refurb-vs-repair.html" class="article-card" data-cat="iphone">
+      <div class="card-category">수리 vs 리퍼 비교</div>
+      <div class="card-title">공식 센터에서 후면 파손에 리퍼를 권유했다면 — 후면유리만 교체하면 됩니다</div>
+      <div class="card-desc">리퍼는 기기 전체 교환입니다. 데이터가 사라지고 비용도 훨씬 비쌉니다. 후면유리 교체로 충분한 경우와 리퍼가 맞는 경우를 구분해 드립니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>리퍼 vs 수리 비교</span>
+      </div>
+    </a>
+
+    <a href="iphone-back-glass-self-repair-risk.html" class="article-card" data-cat="iphone">
+      <div class="card-category">자가수리 주의</div>
+      <div class="card-title">아이폰 후면유리 자가수리 키트, 유튜브 보고 따라 해도 될까</div>
+      <div class="card-desc">배터리 파열, 카메라 단선, 균열 확대 — 자가수리 실패 후 수리점을 찾아오는 분들이 실제로 많습니다. 시도 전에 반드시 읽어보세요.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>자가수리 위험</span>
+      </div>
+    </a>
+
+    <a href="iphone-back-glass-durability-truth.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 후면유리</div>
+      <div class="card-title">아이폰 후면유리 파손, 뒷면 수리 했는데 또 깨질까봐 걱정된다면?</div>
+      <div class="card-desc">수리 후 내구성이 달라지는 이유는 유리 품질이 아니라 프레임 변형과 구조적 문제입니다. 수천 건 수리 현장의 솔직한 이야기와 리퍼를 고려해야 할 기준을 안내합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>후면유리 내구성</span></div>
+    </a>
+
+    <a href="iphone-charging-port-cleaning.html" class="article-card" data-cat="iphone">
+      <div class="card-category">충전 단자 청소</div>
+      <div class="card-title">아이폰 충전 단자 청소, 이렇게 하면 됩니다 — 면봉·핀 사용법</div>
+      <div class="card-desc">먼지가 쌓이면 충전 접촉이 불량해집니다. 안전하게 청소하는 5단계와 절대 하면 안 되는 것들을 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>단자 청소</span>
+      </div>
+    </a>
+
+    <a href="iphone12-self-repair-warning.html" class="article-card" data-cat="iphone">
+      <div class="card-category">자가수리 주의</div>
+      <div class="card-title">아이폰 12 자가수리, 절대 하면 안 되는 이유 3가지</div>
+      <div class="card-desc">방수 기능 소멸, Face ID 영구 비활성화, OLED 패널 손상 — 유튜브 보고 따라 했다가 수리비가 3배 되는 실제 사례를 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>아이폰 자가수리 위험</span>
+      </div>
+    </a>
+
+    <a href="applewatch-sensor-damage.html" class="article-card" data-cat="watch">
+      <div class="card-category">후면 센서 파손</div>
+      <div class="card-title">애플워치 후면 센서 파손 — 심박수·혈중산소 이상, 수리가 가능한가</div>
+      <div class="card-desc">후면 유리가 깨지면 심박·혈중산소 측정 오류가 생기고 내부 부식 위험도 높아집니다. 자가진단법과 수리 가능 여부를 확인하세요.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>센서 파손</span>
+      </div>
+    </a>
+
+    <a href="applewatch-shower-water-resistance.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 방수 가이드</div>
+      <div class="card-title">애플워치 차고 샤워해도 되나요 — 방수 한계를 정확히 알아야 하는 이유</div>
+      <div class="card-desc">방수 등급이 있어도 샤워·사우나·수영 상황마다 위험도가 다릅니다. Series별 방수 한계와 상황별 판단 기준을 정확히 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>애플워치 방수</span>
+      </div>
+    </a>
+
+    <a href="applewatch-screen-on-off-issue.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 디스플레이 가이드</div>
+      <div class="card-title">애플워치 화면이 저절로 켜지거나 꺼질 때 — 항상 켜기 기능 vs 고장 구분법</div>
+      <div class="card-desc">설정 문제인지 하드웨어 고장인지 먼저 구분하면 수리비 쓸 일이 없을 수도 있습니다. 5분 안에 원인을 파악하는 방법.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>애플워치 화면 이상</span>
+      </div>
+    </a>
+
+    <a href="applewatch-strap-slot-damage.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 스트랩 가이드</div>
+      <div class="card-title">애플워치 스트랩이 잘 빠지거나 교체하다 기기가 손상됐을 때</div>
+      <div class="card-desc">스트랩 교체는 간단해 보이지만 잘못된 방법으로 하면 슬롯이 파손됩니다. 올바른 교체법과 슬롯 손상 수리 가능 여부를 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>애플워치 스트랩</span>
+      </div>
+    </a>
+
+    <a href="applewatch-top5-failure-patterns.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 수리 가이드</div>
+      <div class="card-title">수리점에서 가장 많이 보는 애플워치 고장 패턴 TOP 5</div>
+      <div class="card-desc">수백 건의 수리 데이터로 뽑은 고장 유형 1~5위. 어떤 습관이 고장으로 이어지는지 알면 미리 막을 수 있습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>애플워치 고장 패턴</span>
+      </div>
+    </a>
+
+    <a href="applewatch-used-buying-checklist.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 구매 가이드</div>
+      <div class="card-title">애플워치 중고 구매 전 반드시 확인해야 할 체크리스트</div>
+      <div class="card-desc">수리점 관점에서 정리한 실전 체크리스트. 거래 전 이것만 확인해도 대부분의 숨겨진 결함을 잡아낼 수 있습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>중고 구매 주의사항</span>
+      </div>
+    </a>
+
+    <a href="applewatch-summer-damage.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 관리 가이드</div>
+      <div class="card-title">애플워치가 여름에 특히 많이 망가지는 이유</div>
+      <div class="card-desc">배터리 팽창, 침수, Crown 이물질이 7~8월에 집중되는 이유. 여름철 워치 손상 메커니즘을 설명합니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>여름철 워치 관리</span>
+      </div>
+    </a>
+
+    <a href="applewatch-aluminum-vs-stainless.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 구매 가이드</div>
+      <div class="card-title">애플워치 알루미늄 vs 스테인리스 — 실제 내구성 차이</div>
+      <div class="card-desc">수리점에서 실제로 확인한 두 소재의 차이. 긁힘, 화면 파손, 낙하 충격에서 어떤 차이가 있는지 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>케이스 소재 비교</span>
+      </div>
+    </a>
+
+    <a href="applewatch-after-swim-care.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 관리 가이드</div>
+      <div class="card-title">수영·운동 후 애플워치 관리법 — 수리점이 알려주는 루틴</div>
+      <div class="card-desc">5분짜리 관리 루틴으로 Crown 이물질, 충전 불량, 방수 열화를 예방할 수 있습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>수영 후 관리</span>
+      </div>
+    </a>
+
+    <a href="applewatch-sauna-danger.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 관리 가이드</div>
+      <div class="card-title">애플워치 사우나·찜질방 착용이 위험한 진짜 이유</div>
+      <div class="card-desc">방수 워치라도 사우나는 다릅니다. 고온이 배터리와 실링에 주는 손상을 수리 전문가가 설명합니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>고온 환경 주의</span>
+      </div>
+    </a>
+
+    <a href="applewatch-nfc-screen-replacement.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 수리 가이드</div>
+      <div class="card-title">애플워치 액정 교체하면 NFC 결제 기능이 사라질까? — 세대별 완전 정리</div>
+      <div class="card-desc">6세대까지는 NFC 칩이 액정 안에 있습니다. 유리만 교체해야 NFC를 살릴 수 있는 이유를 수리 전문가가 설명합니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>NFC·결제 기능 보존</span>
+      </div>
+    </a>
+
+    <a href="applepencil-gen1-vs-gen2-vs-pro.html" class="article-card" data-cat="pencil">
+      <div class="card-category">애플펜슬 가이드</div>
+      <div class="card-title">애플펜슬 1세대 vs 2세대 vs Pro — 내 아이패드에 맞는 건 어느 것?</div>
+      <div class="card-desc">세대별 충전 방식·호환 기종·기능 차이를 한눈에 비교합니다. 잘못 사면 내 아이패드에 아예 안 꽂힙니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>애플펜슬 세대 비교</span>
+      </div>
+    </a>
+
+    <a href="applepencil-connection-failure.html" class="article-card" data-cat="pencil">
+      <div class="card-category">애플펜슬 가이드</div>
+      <div class="card-title">애플펜슬이 갑자기 연결이 안 될 때 — 충전 문제인지 아이패드 문제인지 구분법</div>
+      <div class="card-desc">어제까지 잘 됐는데 오늘 갑자기 인식이 안 됩니다. 수리점 가기 전에 이 순서대로만 확인해도 대부분 해결됩니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>애플펜슬 연결 불량</span>
+      </div>
+    </a>
+
+    <a href="applepencil-tip-replacement.html" class="article-card" data-cat="pencil">
+      <div class="card-category">애플펜슬 가이드</div>
+      <div class="card-title">애플펜슬 촉 교체 타이밍 — 이 증상 나오면 지금 바로 바꾸세요</div>
+      <div class="card-desc">촉이 닳은 것을 모르고 쓰다가 화면에 스크래치가 생기는 경우가 있습니다. 어떤 신호가 나올 때 바꿔야 하는지, 직접 교체하는 방법을 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>애플펜슬 촉 교체</span>
+      </div>
+    </a>
+
+    <a href="applepencil-drop-damage.html" class="article-card" data-cat="pencil">
+      <div class="card-category">애플펜슬 가이드</div>
+      <div class="card-title">애플펜슬을 떨어뜨렸더니 인식이 안 됩니다 — 원인과 확인 방법</div>
+      <div class="card-desc">외관상 멀쩡해 보여도 충격 후 인식이 안 되는 경우가 있습니다. 촉 교체로 해결되는 케이스인지, 내부 문제인지 먼저 구분해보세요.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>애플펜슬 낙하 고장</span>
+      </div>
+    </a>
+
+    <a href="applepencil-not-charging.html" class="article-card" data-cat="pencil">
+      <div class="card-category">애플펜슬 가이드</div>
+      <div class="card-title">애플펜슬이 충전이 안 될 때 — 세대별 원인과 확인 방법</div>
+      <div class="card-desc">1세대·2세대·USB-C 모델마다 충전 방식이 달라서 문제가 생기는 원인도 다릅니다. 내가 가진 모델을 먼저 확인하고 해당 방법으로 점검해보세요.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>애플펜슬 충전 불량</span>
+      </div>
+    </a>
+
+    <a href="applepencil-stroke-lag.html" class="article-card" data-cat="pencil">
+      <div class="card-category">애플펜슬 가이드</div>
+      <div class="card-title">애플펜슬 필기가 끊기거나 떨립니다 — 설정 문제인지 하드웨어인지 구분법</div>
+      <div class="card-desc">선이 중간에 끊기거나 미세하게 떨리는 증상은 대부분 설정이나 앱 문제입니다. 하드웨어 문제와 구분하는 방법을 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>애플펜슬 필기 끊김</span>
+      </div>
+    </a>
+
+    <a href="applepencil-genuine-vs-compatible.html" class="article-card" data-cat="pencil">
+      <div class="card-category">애플펜슬 가이드</div>
+      <div class="card-title">애플펜슬 정품 vs 호환펜슬 — 가격 차이만큼 성능도 다를까?</div>
+      <div class="card-desc">정품 애플펜슬은 10~15만 원, 호환 펜슬은 1~5만 원. 가격이 3~10배 차이 나는데 실제로 무엇이 다른지, 어떤 상황에서 어떤 걸 사야 하는지 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>애플펜슬 정품 비교</span>
+      </div>
+    </a>
+
+    <a href="applepencil-repair-or-buy-new.html" class="article-card" data-cat="pencil">
+      <div class="card-category">애플펜슬 가이드</div>
+      <div class="card-title">망가진 애플펜슬, 수리할까 새로 살까 — 비용과 기준 정리</div>
+      <div class="card-desc">공식 수리 비용이 신품의 60~70%에 달하는 경우도 있습니다. 어떤 상황에서 수리하고, 어떤 상황에서 새로 사는 것이 나은지 기준을 정리했습니다.</div>
+      <div class="card-meta">
+        <span>금동평 대표</span>
+        <span>2026년 4월</span>
+        <span>애플펜슬 수리 vs 구매</span>
+      </div>
+    </a>
+
+    <a href="iphone-speaker-not-working.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리</div>
+      <div class="card-title">아이폰 스피커 소리 안 됨 — 이어스피커와 라우드스피커 구분부터</div>
+      <div class="card-desc">통화 중 소리가 안 들리는 것과 유튜브 소리가 안 나오는 건 다른 부품 문제입니다. 어느 스피커가 고장났는지부터 파악해야 합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 스피커</span></div>
+    </a>
+
+    <a href="iphone-microphone-broken.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리</div>
+      <div class="card-title">아이폰 마이크 안 됨 — 상대방이 내 목소리를 못 들을 때</div>
+      <div class="card-desc">아이폰에는 마이크가 3개 있습니다. 어떤 상황에서 문제가 생기는지에 따라 고장난 마이크 위치가 다르고, 수리 방법도 달라집니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 마이크</span></div>
+    </a>
+
+    <a href="iphone-vibration-not-working.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리</div>
+      <div class="card-title">아이폰 진동 안 됨 — 알림이 와도 떨리지 않을 때</div>
+      <div class="card-desc">무음 모드 설정인지 Taptic Engine 고장인지 먼저 구분해야 합니다. 소프트웨어 체크리스트 5가지로 자가 진단 후 수리 여부를 판단하세요.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 진동</span></div>
+    </a>
+
+    <a href="iphone-sim-not-recognized.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리</div>
+      <div class="card-title">아이폰 유심 인식 안 됨 — SIM 오류 메시지가 뜰 때</div>
+      <div class="card-desc">"SIM 없음" 또는 "유효하지 않은 SIM" 오류가 뜰 때 자가 해결 5단계. 해결이 안 되면 유심 슬롯 또는 모뎀 칩 수리가 필요합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 유심</span></div>
+    </a>
+
+    <a href="iphone-keeps-restarting.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리</div>
+      <div class="card-title">아이폰 혼자 꺼졌다 켜지는 재부팅 반복 — 원인과 해결법</div>
+      <div class="card-desc">배터리 불량인지, 소프트웨어 충돌인지, 기판 문제인지에 따라 해결 방법이 완전히 다릅니다. 원인 파악이 먼저입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 재부팅</span></div>
+    </a>
+
+    <a href="iphone-button-broken.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리</div>
+      <div class="card-title">아이폰 버튼 고장 — 볼륨·전원·무음 스위치가 안 눌릴 때</div>
+      <div class="card-desc">버튼 수리 전 보조 터치(AssistiveTouch)로 임시 대응하는 법과, 어느 버튼이 어떤 방식으로 고장나는지 모델별로 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이폰 버튼</span></div>
+    </a>
+
+    <a href="macbook-camera-not-working.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 수리</div>
+      <div class="card-title">맥북 카메라 안 됨 — 화상회의 때 검은 화면이 나올 때</div>
+      <div class="card-desc">권한 문제인지 카메라 케이블 불량인지 먼저 확인. 소프트웨어 점검 후에도 해결이 안 되면 하드웨어 수리가 필요합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>맥북 카메라</span></div>
+    </a>
+
+    <a href="macbook-running-slow.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 수리</div>
+      <div class="card-title">맥북 느려짐·버벅임 — 원인 별로 해결법이 다릅니다</div>
+      <div class="card-desc">SSD 용량 부족인지, 배터리 팽창인지, 과열인지, 기판 문제인지에 따라 해결 방법이 완전히 달라집니다. 원인 진단이 먼저입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>맥북 성능 저하</span></div>
+    </a>
+
+    <a href="applewatch-gps-issues.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 수리</div>
+      <div class="card-title">애플워치 GPS 오류 — 위치가 안 잡히거나 산책 기록이 이상할 때</div>
+      <div class="card-desc">GPS 고장의 40%는 수분 침투 후 안테나 부식이 원인입니다. 자가 진단 5단계와 수리가 필요한 시점을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>애플워치 GPS</span></div>
+    </a>
+
+    <a href="applewatch-haptic-not-working.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 수리</div>
+      <div class="card-title">애플워치 진동(햅틱) 안 됨 — 알림이 와도 손목이 떨리지 않을 때</div>
+      <div class="card-desc">설정 문제인지 Taptic Engine 고장인지 먼저 구분. 낙하·수분 침투 후 진동이 약해졌다면 교체가 필요할 수 있습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>애플워치 햅틱</span></div>
+    </a>
+
+    <a href="ipad-speaker-not-working.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 수리</div>
+      <div class="card-title">아이패드 스피커 소리 안 됨 — 유튜브·동영상 소리가 갑자기 끊길 때</div>
+      <div class="card-desc">4스피커(프로)와 2스피커(미니·에어) 구조가 다릅니다. 이물질 청소로 해결되는 경우와 스피커 교체가 필요한 경우를 구분합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이패드 스피커</span></div>
+    </a>
+
+    <a href="ipad-microphone-broken.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 수리</div>
+      <div class="card-title">아이패드 마이크 안 됨 — 화상회의·녹음이 안 될 때</div>
+      <div class="card-desc">상단·하단 마이크 중 어느 쪽이 고장났는지 진단법. 권한 문제인지 하드웨어 불량인지 먼저 확인하세요.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이패드 마이크</span></div>
+    </a>
+
+    <a href="ipad-home-button-broken.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 수리</div>
+      <div class="card-title">아이패드 홈버튼 고장 — Touch ID가 안 되거나 눌러도 반응 없을 때</div>
+      <div class="card-desc">홈버튼은 기기와 페어링되어 있어 교체 시 Touch ID 기능이 사라집니다. 보조 터치로 임시 대응하는 법도 함께 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>아이패드 홈버튼</span></div>
+    </a>
+
+    <a href="iphone-official-vs-private-repair.html" class="article-card" data-cat="iphone">
+      <div class="card-category">수리점 선택</div>
+      <div class="card-title">아이폰 공식 수리 vs 사설 수리점 — 비용·부품·보증 차이 완전 비교</div>
+      <div class="card-desc">공식 센터와 전문 수리점의 실제 차이를 비용·부품 품질·보증·속도 4가지로 정리했습니다. 어떤 수리를 어디서 받아야 하는지 알 수 있습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>수리점 비교</span></div>
+    </a>
+
+    <a href="iphone-overheating.html" class="article-card" data-cat="iphone">
+      <div class="card-category">발열·성능</div>
+      <div class="card-title">아이폰 발열 — 뜨거워지는 원인과 배터리·기판 손상 연관성</div>
+      <div class="card-desc">정상 발열과 비정상 발열을 구분하는 법, 발열이 심해지는 상황, 그리고 배터리와 기판에 미치는 영향을 수리 현장 경험으로 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>발열 원인</span></div>
+    </a>
+
+    <a href="iphone-bluetooth-wifi-not-working.html" class="article-card" data-cat="iphone">
+      <div class="card-category">네트워크·연결</div>
+      <div class="card-title">아이폰 블루투스·와이파이 연결 안 될 때 — 원인별 해결법과 수리 시점</div>
+      <div class="card-desc">소프트웨어 문제인지 무선 칩 불량인지 구별하는 법, 집에서 해결하는 4단계, 수리가 필요한 상황을 수리 현장 경험으로 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>블루투스·와이파이</span></div>
+    </a>
+
+    <a href="iphone-screen-color-after-repair.html" class="article-card" data-cat="iphone">
+      <div class="card-category">화면·디스플레이</div>
+      <div class="card-title">아이폰 수리 후 화면 색감이 달라졌을 때 — 원인과 대처법</div>
+      <div class="card-desc">정품 패널과 비정품 패널의 색재현율 차이, True Tone 재설정 방법, 불량 패널 구별법을 수리 현장 경험으로 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>수리 후 색감</span></div>
+    </a>
+
+    <a href="iphone-gps-error.html" class="article-card" data-cat="iphone">
+      <div class="card-category">위치·GPS</div>
+      <div class="card-title">아이폰 GPS 오류 — 위치가 틀리거나 튀는 이유와 해결법</div>
+      <div class="card-desc">소프트웨어 설정 문제인지 GPS 안테나 손상인지 구별하는 법, 낙하·수리 후 GPS 불량 패턴, 집에서 해결되는 것과 수리가 필요한 것을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>GPS 오류</span></div>
+    </a>
+
+    <a href="iphone-insurance-vs-repair.html" class="article-card" data-cat="iphone">
+      <div class="card-category">수리 비용·선택</div>
+      <div class="card-title">통신사 보험 vs 직접 수리 — 아이폰 어디서 수리하는 게 맞을까</div>
+      <div class="card-desc">자기부담금 계산법, 리퍼기기 교환 조건, 데이터 보존 여부까지 — 비용·속도·편의성을 비교해 상황별로 어떤 선택이 유리한지 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>보험 vs 수리</span></div>
+    </a>
+
+    <a href="iphone-15pro-titanium-frame-damage.html" class="article-card" data-cat="iphone">
+      <div class="card-category">외관·프레임</div>
+      <div class="card-title">아이폰 15 Pro 티타늄 프레임 긁힘·찌그러짐 — 수리 가능 범위와 비용</div>
+      <div class="card-desc">티타늄 프레임은 알루미늄보다 단단하지만 수리는 더 까다롭습니다. 수리 가능한 손상과 불가능한 손상 구분, 비용 기준을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>티타늄 프레임</span></div>
+    </a>
+
+    <a href="iphone-esim-before-repair.html" class="article-card" data-cat="iphone">
+      <div class="card-category">수리 전 준비</div>
+      <div class="card-title">아이폰 수리 맡기기 전 eSIM 백업 — 안 하면 번호 날아갑니다</div>
+      <div class="card-desc">eSIM은 기기 초기화 시 삭제됩니다. 수리 전 eSIM 백업 방법, 통신사별 재발급 절차, 분실·도난 대비 확인사항을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>eSIM 백업</span></div>
+    </a>
+
+    <a href="applewatch-ultra2-battery-degradation.html" class="article-card" data-cat="applewatch">
+      <div class="card-category">애플워치 배터리</div>
+      <div class="card-title">애플워치 Ultra 2 배터리 열화 — 60시간 광고와 실사용 차이의 진실</div>
+      <div class="card-desc">Ultra 2 배터리가 빠르게 닳는 원인, 열화 속도를 높이는 사용 패턴, 교체 시점과 비용을 수리 현장 데이터로 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>Ultra 2 배터리</span></div>
+    </a>
+
+    <a href="applewatch-health-sensor-not-working.html" class="article-card" data-cat="applewatch">
+      <div class="card-category">애플워치 센서</div>
+      <div class="card-title">애플워치 혈중산소·심박수 측정 오류 — 소프트웨어 문제 vs 센서 고장 구분법</div>
+      <div class="card-desc">측정값이 튀거나 아예 작동 안 할 때 원인별 대처법, 소프트웨어로 해결 가능한 케이스와 센서 수리가 필요한 케이스를 구분하는 기준을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>건강 센서 오류</span></div>
+    </a>
+
+    <a href="applewatch-screen-freeze-after-swim.html" class="article-card" data-cat="applewatch">
+      <div class="card-category">애플워치 침수</div>
+      <div class="card-title">수영 후 애플워치 화면 먹통 — 워터락 해제 방법과 진짜 고장 구별법</div>
+      <div class="card-desc">수영 후 터치가 안 되는 것이 워터락 정상 동작인지 실제 고장인지 구별하는 법, 워터락 해제 절차, 수영 후 관리 주의사항을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>수영 후 먹통</span></div>
+    </a>
+
+    <a href="applewatch-band-wearing-detection.html" class="article-card" data-cat="applewatch">
+      <div class="card-category">애플워치 센서</div>
+      <div class="card-title">애플워치 호환 밴드 착용 감지 안 됨 — 원인과 센서 손상 구별법</div>
+      <div class="card-desc">서드파티 밴드 사용 시 착용 감지가 안 되는 원인, 광학 심박 센서와 밴드 연결 방식의 관계, 실제 센서 손상인지 판단하는 방법을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>착용 감지 오류</span></div>
+    </a>
+
+    <a href="applewatch-drop-internal-damage.html" class="article-card" data-cat="applewatch">
+      <div class="card-category">애플워치 낙하 손상</div>
+      <div class="card-title">애플워치 떨어뜨렸는데 화면이 멀쩡해 보여요 — 내부 손상 여부 확인하는 법</div>
+      <div class="card-desc">화면이 멀쩡해 보여도 낙하 충격은 내부에 먼저 갑니다. OLED 크랙·배터리 변형·센서 탈락까지, 수리 현장에서 보는 낙하 내부 손상 확인법을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>애플워치 낙하 점검</span></div>
+    </a>
+
+    <a href="applewatch-battery-swollen.html" class="article-card" data-cat="applewatch">
+      <div class="card-category">애플워치 배터리 긴급</div>
+      <div class="card-title">애플워치 배터리 팽창 — 화면 들뜸·뒤판 분리, 지금 바로 해야 할 것</div>
+      <div class="card-desc">배터리 팽창은 수리 문제가 아니라 안전 문제입니다. 팽창 여부 확인법, 즉시 중단할 행동, 빠른 처리 기준을 현장 시점에서 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>배터리 팽창 위험</span></div>
+    </a>
+
+    <a href="applewatch-ultra-repair-cost.html" class="article-card" data-cat="applewatch">
+      <div class="card-category">애플워치 Ultra 수리비</div>
+      <div class="card-title">애플워치 Ultra·Ultra 2 수리 비용 — 티타늄 케이스 기종, 얼마나 나올까</div>
+      <div class="card-desc">공식 리퍼 가격과 사설 수리 비용을 항목별로 비교했습니다. 사파이어 크리스탈·티타늄 케이스 구조가 수리비에 미치는 영향까지 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>Ultra 수리비</span></div>
+    </a>
+
+    <a href="applewatch-series7-8-repair-cost.html" class="article-card" data-cat="applewatch">
+      <div class="card-category">애플워치 수리비 비교</div>
+      <div class="card-title">애플워치 Series 7·8 수리 비용 — 단종 기종, 지금도 수리 가능할까</div>
+      <div class="card-desc">Series 7·8은 단종됐지만 부품 수급은 안정화됐습니다. 41mm·45mm별 액정·배터리·크라운 수리비와 수리 vs 교체 판단 기준을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>Series 7·8 수리비</span></div>
+    </a>
+
+    <a href="applewatch-se2-repair-cost.html" class="article-card" data-cat="applewatch">
+      <div class="card-category">애플워치 SE 2세대 수리비</div>
+      <div class="card-title">애플워치 SE 2세대 수리 비용 — 가성비 기종, 수리비도 합리적일까</div>
+      <div class="card-desc">SE 2세대 신품 가격 대비 수리비 효용성 계산법, 40mm·44mm 항목별 사설 vs 공식 비용 비교, 수리 vs 신품 구매 기준을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>SE 2세대 수리비</span></div>
+    </a>
+
+    <a href="applewatch-speaker-not-working.html" class="article-card" data-cat="applewatch">
+      <div class="card-category">애플워치 스피커 고장</div>
+      <div class="card-title">애플워치 스피커 소리가 안 나요 — 소프트웨어 문제 vs 하드웨어 고장 구분법</div>
+      <div class="card-desc">무음 모드·워터락 미해제부터 스피커 그릴 막힘·모듈 손상까지, 집에서 확인 가능한 것과 수리가 필요한 것을 구분했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>애플워치 스피커 무음</span></div>
+    </a>
+
+    <a href="applewatch-microphone-broken.html" class="article-card" data-cat="applewatch">
+      <div class="card-category">애플워치 마이크 고장</div>
+      <div class="card-title">애플워치 통화할 때 상대방이 내 목소리를 못 들어요 — 마이크 고장 진단법</div>
+      <div class="card-desc">시리·음성 메모·통화 테스트로 마이크 생존 여부를 확인하는 방법, 수분·이물질·낙하 충격으로 인한 마이크 손상 구분법을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>애플워치 마이크 불량</span></div>
+    </a>
+
+    <a href="applewatch-screen-discoloration.html" class="article-card" data-cat="applewatch">
+      <div class="card-category">애플워치 화면 색상 이상</div>
+      <div class="card-title">애플워치 화면이 노랗게 변했어요 — 설정 문제 vs OLED 손상 구분법</div>
+      <div class="card-desc">Night Shift·True Tone 설정으로 해결되는 경우와 OLED 열화·침수 수분 잔류로 수리가 필요한 경우를 구분하는 방법을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>OLED 색상 이상</span></div>
+    </a>
+
+    <a href="applewatch-wrist-detection-failure.html" class="article-card" data-cat="applewatch">
+      <div class="card-category">애플워치 착용 감지 오류</div>
+      <div class="card-title">애플워치 착용해도 손목 감지가 안 돼요 — 착용법 문제 vs 센서 손상 구분</div>
+      <div class="card-desc">느슨한 착용·호환 밴드·털·문신 등 착용법 개선으로 해결되는 경우와 후면 광학 센서 손상으로 수리가 필요한 경우를 구분했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>손목 감지 오류</span></div>
+    </a>
+
+    <a href="macbook-speaker-crackling.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 스피커</div>
+      <div class="card-title">맥북 스피커 지지직 소리 — 소프트웨어 문제 vs 스피커 교체 필요 구분법</div>
+      <div class="card-desc">특정 볼륨·음역대에서만 나는 잡음인지 항상 나는 잡음인지에 따라 원인이 다릅니다. 집에서 해결 가능한 케이스와 수리 필요 케이스를 구분했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>맥북 스피커 잡음</span></div>
+    </a>
+
+    <a href="macbook-m3-battery-draining.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 배터리</div>
+      <div class="card-title">맥북 M3 배터리 빨리 닳음 — 정상 소모 vs 불량 판단 기준</div>
+      <div class="card-desc">M3 맥북의 실사용 배터리 시간이 광고보다 짧은 원인, 비정상적으로 빠른 방전을 일으키는 앱·설정, 배터리 교체 시점을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>M3 배터리 수명</span></div>
+    </a>
+
+    <a href="airpods-pro2-noise-cancelling-weak.html" class="article-card" data-cat="airpods">
+      <div class="card-category">에어팟 노캔</div>
+      <div class="card-title">에어팟 프로 2세대 노이즈 캔슬링 약해짐 — 이어팁 문제 vs 하드웨어 고장 구분</div>
+      <div class="card-desc">노캔 성능 저하의 가장 흔한 원인은 이어팁 밀착도입니다. 이어팁 교체로 해결되는 케이스와 ANC 칩 불량을 구분하는 방법을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>프로 2세대 노캔</span></div>
+    </a>
+
+    <a href="airpods-max-ear-cushion-damage.html" class="article-card" data-cat="airpods">
+      <div class="card-category">에어팟 맥스</div>
+      <div class="card-title">에어팟 맥스 이어쿠션 손상·벗겨짐 — 정품 교체 vs 호환 제품 비교</div>
+      <div class="card-desc">에어팟 맥스 이어쿠션이 벗겨지거나 오염됐을 때 정품 교체 비용, 호환 쿠션의 차이점, 음질과 ANC 성능에 미치는 영향을 비교했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>이어쿠션 교체</span></div>
+    </a>
+
+    <!-- ── 2026-04-15 추가 30개 ── -->
+
+    <a href="iphone-esim-repair-caution.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 eSIM 복구</div>
+      <div class="card-title">아이폰 수리 후 eSIM 사라짐 — 통신사별 복구 방법과 소요 시간</div>
+      <div class="card-desc">수리 후 eSIM이 삭제됐습니다. SKT·KT·LGU+ 통신사별 재발급 절차, 소요 시간, 해외에서 복구하는 방법을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>eSIM 복구</span></div>
+    </a>
+
+    <a href="iphone-camera-ois-malfunction.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 카메라 수리</div>
+      <div class="card-title">아이폰 카메라 흔들림(OIS 고장) — 자가 점검법과 수리 판단 기준</div>
+      <div class="card-desc">사진이 흔들리거나 카메라에서 딸깍 소리가 납니다. OIS 고장인지 소프트웨어 문제인지 자가 점검하는 방법과 수리 시기를 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>카메라 OIS 수리</span></div>
+    </a>
+
+    <a href="iphone-nfc-not-working.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 NFC 불량</div>
+      <div class="card-title">아이폰 NFC 안됨 — 애플페이 결제 불가 원인과 해결법</div>
+      <div class="card-desc">애플페이가 갑자기 안 됩니다. NFC 안테나 위치, 케이스 간섭, 화면 수리 후 불량까지 — 원인별 해결법을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>NFC 애플페이</span></div>
+    </a>
+
+    <a href="iphone-earpiece-no-sound.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 통화 불량</div>
+      <div class="card-title">아이폰 통화 중 상대방 소리 안 들림 — 이어피스 고장 판단법</div>
+      <div class="card-desc">전화 받으면 상대방 목소리가 안 들립니다. 이어피스 스피커 고장인지 소프트웨어 문제인지 구분하는 방법을 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>이어피스 수리</span></div>
+    </a>
+
+    <a href="iphone-se-repair-cost.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리비 가이드</div>
+      <div class="card-title">아이폰SE 3세대/4세대 수리비 총정리 — 항목별 비용 비교</div>
+      <div class="card-desc">아이폰SE 모델별 화면·배터리·충전단자 수리비를 애플 공식과 사설 수리점 기준으로 비교 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>SE 수리비</span></div>
+    </a>
+
+    <a href="iphone-data-recovery.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 데이터 복구</div>
+      <div class="card-title">아이폰 데이터 복구, 수리점에서 가능한가? — 가능한 경우와 불가능한 경우</div>
+      <div class="card-desc">아이폰이 안 켜지는데 사진과 연락처가 걱정됩니다. 수리점에서 데이터 복구가 가능한 경우와 불가능한 경우, 비용을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>데이터 복구</span></div>
+    </a>
+
+    <a href="iphone-waterproof-after-repair.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리 후 관리</div>
+      <div class="card-title">아이폰 수리 후 방수 성능, 유지될까? — 수리 종류별 영향 정리</div>
+      <div class="card-desc">화면이나 배터리를 교체하면 방수가 풀릴까요? 수리 종류별 방수 영향과 수리 후 주의사항을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>수리 후 방수</span></div>
+    </a>
+
+    <a href="ipad-pro-m4-repair-cost.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 수리비 가이드</div>
+      <div class="card-title">아이패드 프로 M4 수리비 총정리 — 항목별 애플 공식 vs 사설 비교</div>
+      <div class="card-desc">아이패드 프로 M4 화면·배터리·충전단자 수리비를 항목별로 비교했습니다. AppleCare+ 활용 팁도 포함.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>M4 수리비</span></div>
+    </a>
+
+    <a href="ipad-usbc-port-repair.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 충전 수리</div>
+      <div class="card-title">아이패드 충전단자(USB-C) 고장 수리 — 접촉불량 원인과 자가 점검법</div>
+      <div class="card-desc">충전 케이블을 꽂아도 반응이 없거나 접촉이 불안정합니다. 이물질인지 포트 손상인지 자가 점검하는 방법을 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>USB-C 수리</span></div>
+    </a>
+
+    <a href="ipad-student-repair-vs-new.html" class="article-card" data-cat="ipad">
+      <div class="card-category">학부모 가이드</div>
+      <div class="card-title">학교 수업용 아이패드 고장 — 학기 중 수리 vs 방학 때 새로 사기 판단법</div>
+      <div class="card-desc">학기 중이면 수리 우선, 방학이면 새 제품 고려. iPadOS 지원 종료 모델, 학습 앱 최소 사양, 교육 할인 활용법까지 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>학교 아이패드</span></div>
+    </a>
+
+    <a href="ipad-screen-lifting-battery-sign.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 배터리 가이드</div>
+      <div class="card-title">아이패드 액정 들뜸 — 배터리 부풀음 전조 증상과 응급 조치</div>
+      <div class="card-desc">아이패드 화면이 살짝 떠 있습니다. 배터리 팽창 전조일 수 있습니다. 응급 조치법과 방치 시 위험성을 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>배터리 팽창</span></div>
+    </a>
+
+    <a href="macbook-staingate-fix.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 화면 관리</div>
+      <div class="card-title">맥북 액정에 자국(스테인게이트) — 원인과 해결법 총정리</div>
+      <div class="card-desc">맥북 화면에 번진 듯한 자국이 생겼습니다. 스테인게이트 현상의 원인과 자가 해결·전문 수리 방법을 비교합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>스테인게이트</span></div>
+    </a>
+
+    <a href="macbook-air-vs-pro-repair-cost.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 수리비 비교</div>
+      <div class="card-title">맥북 에어 vs 프로 수리비 차이 비교 — 항목별 가격 비교표</div>
+      <div class="card-desc">맥북 에어와 프로, 같은 고장인데 수리비가 다릅니다. 액정·배터리·키보드 등 항목별 비용 차이를 비교했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>에어 vs 프로 수리비</span></div>
+    </a>
+
+    <a href="macbook-ssd-data-recovery.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 데이터 복구</div>
+      <div class="card-title">맥북 SSD 데이터 복구 가능한가? — M1 이후 달라진 점</div>
+      <div class="card-desc">맥북이 안 켜지는데 중요한 파일이 있습니다. M1 이후 SSD가 메인보드에 붙어 복구가 어려워진 이유와 가능한 방법을 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>SSD 데이터 복구</span></div>
+    </a>
+
+    <a href="macbook-external-monitor-not-working.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 연결 문제</div>
+      <div class="card-title">맥북 외부 모니터 연결 안 됨 — 소프트웨어 점검부터 수리 판단까지</div>
+      <div class="card-desc">외부 모니터를 연결해도 화면이 안 뜹니다. 케이블·허브 문제인지 GPU 고장인지 단계별로 점검하는 방법을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>외부 모니터</span></div>
+    </a>
+
+    <a href="airpods-pro2-eartip-falling.html" class="article-card" data-cat="airpods">
+      <div class="card-category">에어팟 관리 가이드</div>
+      <div class="card-title">에어팟 프로 2 이어팁 빠짐 — 교체 가이드와 호환 이어팁 주의점</div>
+      <div class="card-desc">에어팟 프로 2 이어팁이 자꾸 빠집니다. 정품 이어팁 규격, 올바른 교체 방법, 호환 이어팁 주의점을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>이어팁 교체</span></div>
+    </a>
+
+    <a href="airpods-case-charging-port-broken.html" class="article-card" data-cat="airpods">
+      <div class="card-category">에어팟 충전 불량</div>
+      <div class="card-title">에어팟 케이스 충전단자 고장 — 접촉불량 자가 점검과 수리 가능 여부</div>
+      <div class="card-desc">에어팟 케이스에 충전 케이블을 꽂아도 충전이 안 됩니다. 이물질인지 포트 고장인지 구분하는 방법을 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>케이스 충전</span></div>
+    </a>
+
+    <a href="airpods-battery-left-right-difference.html" class="article-card" data-cat="airpods">
+      <div class="card-category">에어팟 배터리</div>
+      <div class="card-title">에어팟 한쪽만 배터리 빨리 닳는 이유 — 원인과 해결법</div>
+      <div class="card-desc">왼쪽·오른쪽 에어팟 배터리 소모 속도가 다릅니다. 좌우 편차 원인과 해결법, 배터리 교체 시기를 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>배터리 편차</span></div>
+    </a>
+
+    <a href="airpods-max-headband-replacement.html" class="article-card" data-cat="airpods">
+      <div class="card-category">에어팟 맥스 수리</div>
+      <div class="card-title">에어팟 맥스 헤드밴드 교체 비용 — 교체 방법과 자가 교체 가능 여부</div>
+      <div class="card-desc">에어팟 맥스 헤드밴드가 늘어나거나 변색됐습니다. 교체 방법별 비용과 자가 교체 시 주의점을 비교했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>헤드밴드 교체</span></div>
+    </a>
+
+    <a href="airpods-genuine-vs-fake.html" class="article-card" data-cat="airpods">
+      <div class="card-category">에어팟 구매 가이드</div>
+      <div class="card-title">에어팟 정품 vs 가품 구별법 — 시리얼 확인부터 외관 차이까지</div>
+      <div class="card-desc">중고로 에어팟을 구매하려는데 가품이 걱정됩니다. 시리얼 번호 확인, 외관 차이, 구매 시 체크리스트를 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>정품 구별법</span></div>
+    </a>
+
+    <a href="rainy-season-water-damage-guide.html" class="article-card" data-cat="guide">
+      <div class="card-category">시즌 가이드</div>
+      <div class="card-title">장마철 애플기기 침수 대처법 총정리 — 기기별 응급 조치와 골든타임</div>
+      <div class="card-desc">장마철 침수 사고가 급증합니다. 아이폰·맥북·에어팟 기기별 응급 조치, 하면 안 되는 행동, 수리 골든타임을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>침수 대처</span></div>
+    </a>
+
+    <a href="overseas-iphone-broken.html" class="article-card" data-cat="guide">
+      <div class="card-category">여행 가이드</div>
+      <div class="card-title">해외여행 중 아이폰 고장, 어떻게 하나? — 현지 수리 vs 귀국 후</div>
+      <div class="card-desc">해외에서 아이폰이 고장났습니다. 현지 수리와 귀국 후 수리 중 어떤 게 나은지, 여행자보험 활용법까지 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>해외 고장 대처</span></div>
+    </a>
+
+    <a href="kids-ipad-broken-parent-guide.html" class="article-card" data-cat="guide">
+      <div class="card-category">학부모 가이드</div>
+      <div class="card-title">자녀 아이패드 고장, 부모가 알아야 할 것 — 수리 판단부터 예방까지</div>
+      <div class="card-desc">아이가 아이패드를 떨어뜨렸습니다. 수리 판단 기준, 보호 케이스 추천, AppleCare+·보험 활용법을 학부모 눈높이로 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>자녀 아이패드</span></div>
+    </a>
+
+    <a href="apple-device-pre-repair-checklist.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 준비 가이드</div>
+      <div class="card-title">애플 기기 수리 전 꼭 해야 할 5가지 체크리스트</div>
+      <div class="card-desc">수리 맡기기 전 백업, 나의 찾기 해제, Apple ID 확인, 데이터 정리, 보증 확인 — 이 5가지를 빠뜨리면 수리 후 문제가 생깁니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>수리 전 체크</span></div>
+    </a>
+
+    <a href="ignoring-repair-consequences.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 상식</div>
+      <div class="card-title">수리비 아깝다고 방치하면 생기는 일 — 악화 사례와 비용 증가 패턴</div>
+      <div class="card-desc">작은 금이 전체 파손으로, 충전 불량이 기판 손상으로. 방치하면 수리비가 2~5배 뛰는 실제 사례를 보여드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>방치 위험</span></div>
+    </a>
+
+    <a href="2026-apple-repair-cost-guide.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리비 가이드</div>
+      <div class="card-title">2026년 애플 수리비 총정리 — 아이폰·아이패드·맥북·애플워치 전 기기</div>
+      <div class="card-desc">2026년 기준 애플 전 기기 수리비를 한눈에 정리했습니다. 공식 센터 vs 사설 수리점 비용 비교 포함.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>수리비 총정리</span></div>
+    </a>
+
+    <a href="applecare-vs-private-vs-insurance.html" class="article-card" data-cat="guide">
+      <div class="card-category">상황별 가이드</div>
+      <div class="card-title">아이폰 고장났을 때 어디서 고칠까 — 상황별 최적 선택 가이드</div>
+      <div class="card-desc">화면 파손, 침수, 배터리, 기판 — 고장 유형과 보증 상태에 따라 최적의 수리 경로가 다릅니다. 4가지 시나리오별로 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>상황별 선택</span></div>
+    </a>
+
+    <a href="courier-vs-visit-repair-safety.html" class="article-card" data-cat="guide">
+      <div class="card-category">택배수리 가이드</div>
+      <div class="card-title">택배 수리 vs 방문 수리, 어떤 게 안전한가? — 장단점 비교</div>
+      <div class="card-desc">택배 수리와 방문 수리 각각의 장단점, 안전한 택배 포장법, 상황별 선택 기준을 비교합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>택배 vs 방문</span></div>
+    </a>
+
+    <a href="repair-then-sell-depreciation.html" class="article-card" data-cat="guide">
+      <div class="card-category">중고거래 가이드</div>
+      <div class="card-title">수리 후 중고 판매, 감가는 얼마나 되나? — 수리 이력별 감가율</div>
+      <div class="card-desc">화면 교체, 배터리 교체, 침수 수리 이력별 중고 감가율과 수리 후 파는 게 나은지 그냥 파는 게 나은지 판단 기준을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>중고 감가</span></div>
+    </a>
+
+    <a href="private-repair-apple-service-refused.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 상식</div>
+      <div class="card-title">사설 수리 후 애플 공식 서비스 거부당하는 경우 — 사유와 대처법</div>
+      <div class="card-desc">사설에서 수리하면 애플 센터 서비스를 못 받나요? 거부 사유, 영향 범위, 수리 전 확인해야 할 것을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>공식 서비스 거부</span></div>
+    </a>
+
+    <!-- ── 2026-04-15 수리 가이드 9개 추가 ── -->
+
+    <a href="repair-parts-quality-guide.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 부품 가이드</div>
+      <div class="card-title">수리 부품의 종류 — 정품·호환·재생 부품 차이와 선택 기준</div>
+      <div class="card-desc">같은 화면 수리인데 부품에 따라 품질과 가격이 다릅니다. 정품·호환·재생 부품의 실제 차이와 상황별 선택 기준을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>부품 등급</span></div>
+    </a>
+
+    <a href="apple-self-repair-program.html" class="article-card" data-cat="guide">
+      <div class="card-category">자가 수리 가이드</div>
+      <div class="card-title">애플 자가 수리 프로그램 — 한국에서 직접 고칠 수 있나?</div>
+      <div class="card-desc">애플 공식 자가 수리 프로그램의 이용 방법, 비용, 대여 도구. 직접 해볼 만한 수리와 전문점이 나은 수리를 구분합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>자가 수리</span></div>
+    </a>
+
+    <a href="used-device-broken-after-purchase.html" class="article-card" data-cat="guide">
+      <div class="card-category">중고 기기 수리 가이드</div>
+      <div class="card-title">중고로 산 기기가 고장났을 때 — 수리 가능 여부 판단 가이드</div>
+      <div class="card-desc">중고 기기를 산 뒤 문제가 발견됐습니다. 수리 가능 여부, 판매자 책임, 수리 vs 환불 판단 기준을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>중고 기기 수리</span></div>
+    </a>
+
+    <a href="activation-lock-guide.html" class="article-card" data-cat="guide">
+      <div class="card-category">활성화 잠금 가이드</div>
+      <div class="card-title">활성화 잠금(나의 찾기 잠금) 걸린 기기 — 해제 방법과 수리 가능 여부</div>
+      <div class="card-desc">활성화 잠금이 걸린 기기, 해제할 수 있나요? 상황별 해제 방법과 잠금 상태에서 수리 가능 여부를 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>활성화 잠금</span></div>
+    </a>
+
+    <a href="upselling-detection-guide.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 상식</div>
+      <div class="card-title">수리점에서 "추가 수리가 필요합니다" 라고 하면 — 정당한 경우 vs 과잉 수리</div>
+      <div class="card-desc">추가 수리가 정말 필요한 경우와 과잉 수리를 구분하는 방법. 추가 견적을 받았을 때 해야 할 3단계를 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>과잉 수리 판단</span></div>
+    </a>
+
+    <a href="repair-delay-what-to-do.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 과정 가이드</div>
+      <div class="card-title">수리 맡겼는데 연락이 없어요 — 수리 지연 시 확인할 것과 대처법</div>
+      <div class="card-desc">수리가 예상보다 오래 걸립니다. 정상적인 지연과 문제 있는 지연을 구분하고, 효과적으로 대처하는 방법을 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>수리 지연</span></div>
+    </a>
+
+    <a href="check-repair-history.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 이력 가이드</div>
+      <div class="card-title">애플 기기 수리 이력 확인하는 방법 — 중고 거래 전 필수 체크</div>
+      <div class="card-desc">내 기기 또는 구매하려는 기기의 수리 이력을 확인하는 구체적 방법. Apple 지원 앱, 시리얼 조회, 수리점 진단까지.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>수리 이력 확인</span></div>
+    </a>
+
+    <a href="repair-vs-new-decision-formula.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 판단 가이드</div>
+      <div class="card-title">수리비가 기기값의 절반을 넘을 때 — 고치는 게 맞나?</div>
+      <div class="card-desc">수리비/기기가치 비율, 기기 나이, 고장 부위 — 3가지 기준으로 수리 vs 새 제품을 판단하는 공식을 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>수리 판단 공식</span></div>
+    </a>
+
+    <a href="prevention-vs-repair-cost.html" class="article-card" data-cat="guide">
+      <div class="card-category">예방 가이드</div>
+      <div class="card-title">보호 필름·케이스 없이 쓰다가 깨졌을 때 — 예방 비용 vs 수리 비용 비교</div>
+      <div class="card-desc">필름 1.5만원 vs 화면수리 15~35만원. 예방 장비와 수리 비용을 실제 수치로 비교하고, 기기별 보호 장비를 추천합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>예방 vs 수리</span></div>
+    </a>
+
+    <!-- ── 2026-04-15 SEO 키워드 글 30개 추가 ── -->
+
+    <a href="iphone14-pro-repair-cost.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리비</div>
+      <div class="card-title">아이폰 14 Pro / Pro Max 수리비 총정리 — 2026년 기준</div>
+      <div class="card-desc">아이폰 14 Pro 시리즈의 화면·배터리·후면유리·카메라 수리비를 항목별로 비교했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>14 Pro 수리비</span></div>
+    </a>
+
+    <a href="iphone13-mini-repair-cost.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리비</div>
+      <div class="card-title">아이폰 13 mini 수리비 총정리 — 작지만 수리비는 같습니다</div>
+      <div class="card-desc">아이폰 13 mini는 크기만 작을 뿐 내부 구조와 수리비는 13과 동일합니다. 항목별 비용을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>13 mini 수리비</span></div>
+    </a>
+
+    <a href="iphone12-repair-cost.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리비</div>
+      <div class="card-title">아이폰 12 수리비 총정리 — 2026년에도 고칠 가치가 있을까</div>
+      <div class="card-desc">5년 된 아이폰 12, 수리비를 들여서 고칠 만한지 수리 vs 새 제품 판단 기준까지 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>12 수리비</span></div>
+    </a>
+
+    <a href="iphone11-repair-cost.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리비</div>
+      <div class="card-title">아이폰 11 수리비 총정리 — 수리할까, 바꿀까 판단 기준</div>
+      <div class="card-desc">LCD 화면이라 수리비는 저렴하지만 iOS 지원 종료가 다가옵니다. 수리 가치 판단 기준을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>11 수리비</span></div>
+    </a>
+
+    <a href="iphone17-repair-cost-preview.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리비</div>
+      <div class="card-title">아이폰 17 수리비 총정리 — 에어·프로·프로맥스 항목별 비용 (2026년 기준)</div>
+      <div class="card-desc">아이폰 17 시리즈(에어/프로/프로맥스)의 화면·배터리·후면유리 수리비를 공식/사설 기준으로 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>17 수리비</span></div>
+    </a>
+
+    <a href="iphone-screen-flickering.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 화면 이상 가이드</div>
+      <div class="card-title">아이폰 화면 깜빡임 — 소프트웨어 문제 vs 패널 불량 구분법</div>
+      <div class="card-desc">화면이 깜빡거립니다. OLED 패널 불량인지 소프트웨어 글리치인지 자가 점검하는 방법을 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>화면 깜빡임</span></div>
+    </a>
+
+    <a href="iphone-camera-black-screen.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 카메라 가이드</div>
+      <div class="card-title">아이폰 카메라 검은 화면 — 앱 문제인지 하드웨어인지 3분 판단법</div>
+      <div class="card-desc">카메라를 켰는데 검은 화면만 나옵니다. 앱 오류, 소프트웨어, 하드웨어 문제를 3분 안에 구분하는 방법입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>카메라 검은 화면</span></div>
+    </a>
+
+    <a href="iphone-no-sound-at-all.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 소리 문제 가이드</div>
+      <div class="card-title">아이폰 소리가 전혀 안 나요 — 스피커·벨소리·통화 전부 안 될 때</div>
+      <div class="card-desc">스피커, 벨소리, 통화 소리가 전부 안 납니다. 무음모드부터 오디오 IC칩까지 원인별 점검 순서를 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>소리 전체 안 남</span></div>
+    </a>
+
+    <a href="iphone-screen-yellow-tint.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 화면 이상 가이드</div>
+      <div class="card-title">아이폰 화면 노란색 — 트루톤 때문인지 패널 불량인지 확인법</div>
+      <div class="card-desc">화면이 노랗게 보입니다. True Tone, Night Shift 설정 문제인지 실제 패널 변색인지 확인하는 방법입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>화면 노란색</span></div>
+    </a>
+
+    <a href="iphone-storage-full-repair.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 관리 가이드</div>
+      <div class="card-title">아이폰 저장공간 부족 — 수리점에서 해결할 수 있나?</div>
+      <div class="card-desc">저장공간이 꽉 찼습니다. 수리점에서 할 수 있는 것과 못 하는 것, 직접 정리하는 방법을 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>저장공간 부족</span></div>
+    </a>
+
+    <a href="ipad-wifi-not-working.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 연결 문제</div>
+      <div class="card-title">아이패드 와이파이 안됨 — 소프트웨어 설정 vs 안테나 고장 구분법</div>
+      <div class="card-desc">와이파이에 연결이 안 되거나 자꾸 끊깁니다. 설정 문제인지 안테나 고장인지 점검하는 방법입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>와이파이 안됨</span></div>
+    </a>
+
+    <a href="ipad-10th-gen-repair-cost.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 수리비</div>
+      <div class="card-title">아이패드 10세대 수리비 총정리 — 2026년 기준 항목별 비용</div>
+      <div class="card-desc">가장 많이 팔린 아이패드 10세대의 화면·배터리·충전단자 수리비를 항목별로 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>10세대 수리비</span></div>
+    </a>
+
+    <a href="ipad-mini6-repair-guide.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 미니 수리</div>
+      <div class="card-title">아이패드 미니 6 수리 — 젤리스크롤 현상과 화면 수리 비용</div>
+      <div class="card-desc">미니 6 특유의 젤리스크롤 현상과 화면 수리 방법·비용을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>미니 6 수리</span></div>
+    </a>
+
+    <a href="ipad-bending-repair.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 구조 문제</div>
+      <div class="card-title">아이패드 벤딩(휨) — 수리 가능한가? 원인과 대처법</div>
+      <div class="card-desc">아이패드가 휘어졌습니다. 구조적 벤딩과 외관 벤딩의 차이, 수리 가능 여부를 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>벤딩 수리</span></div>
+    </a>
+
+    <a href="ipad-pro-size-repair-comparison.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 수리비 비교</div>
+      <div class="card-title">아이패드 프로 12.9 vs 11 수리비 차이 — 크기에 따라 달라지는 비용</div>
+      <div class="card-desc">같은 프로인데 사이즈에 따라 수리비가 다릅니다. 항목별 비교표로 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>프로 사이즈별 비교</span></div>
+    </a>
+
+    <a href="ipad-oled-burn-in.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 화면 관리</div>
+      <div class="card-title">아이패드 프로 OLED 번인(잔상) — M4 모델 사용자 주의사항</div>
+      <div class="card-desc">M4 프로부터 OLED가 적용됐습니다. 번인 위험, 예방법, 발생 시 수리 방법을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>OLED 번인</span></div>
+    </a>
+
+    <a href="ipad-charging-slow.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 충전 가이드</div>
+      <div class="card-title">아이패드 충전 느림 — 정상 속도 vs 고장 판단 기준</div>
+      <div class="card-desc">충전이 너무 느립니다. 모델별 정상 충전 시간과 고장이 의심되는 기준을 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>충전 느림</span></div>
+    </a>
+
+    <a href="macbook-wifi-not-working.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 연결 문제</div>
+      <div class="card-title">맥북 와이파이 안됨 — 소프트웨어 점검부터 안테나 수리까지</div>
+      <div class="card-desc">맥북이 와이파이에 연결되지 않습니다. 소프트웨어 리셋부터 하드웨어 진단까지 단계별로 안내합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>와이파이 안됨</span></div>
+    </a>
+
+    <a href="macbook-pro-m4-repair-cost.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 수리비</div>
+      <div class="card-title">맥북 프로 M4 수리비 총정리 — 2026년 기준</div>
+      <div class="card-desc">최신 맥북 프로 M4/M4 Pro/M4 Max의 액정·배터리·키보드·메인보드 수리비를 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>M4 수리비</span></div>
+    </a>
+
+    <a href="macbook-air-m3-repair-cost.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 수리비</div>
+      <div class="card-title">맥북 에어 M3 수리비 총정리 — 가장 많이 팔린 맥북의 수리 비용</div>
+      <div class="card-desc">2024년 가장 많이 팔린 맥북 에어 M3의 항목별 수리비를 공식/사설 기준으로 비교했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>에어 M3 수리비</span></div>
+    </a>
+
+    <a href="macbook-battery-swollen.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 배터리 가이드</div>
+      <div class="card-title">맥북 배터리 팽창 — 키보드가 볼록해지거나 트랙패드가 눌리지 않을 때</div>
+      <div class="card-desc">맥북 하판이 볼록하거나 트랙패드가 안 눌립니다. 배터리 팽창 응급 조치와 교체 방법을 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>배터리 팽창</span></div>
+    </a>
+
+    <a href="macbook-screen-flickering.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 화면 가이드</div>
+      <div class="card-title">맥북 화면 깜빡임 — 내장 디스플레이 문제 vs 그래픽 오류 구분법</div>
+      <div class="card-desc">맥북 화면이 깜빡거립니다. 그래픽 드라이버 문제인지 디스플레이 케이블 불량인지 점검합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>화면 깜빡임</span></div>
+    </a>
+
+    <a href="macbook-bluetooth-issues.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 연결 문제</div>
+      <div class="card-title">맥북 블루투스 끊김 — 에어팟·마우스·키보드 연결 불안정 해결법</div>
+      <div class="card-desc">에어팟이나 마우스가 자꾸 끊깁니다. 소프트웨어 리셋부터 블루투스 모듈 고장 판단까지 안내합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>블루투스 끊김</span></div>
+    </a>
+
+    <a href="macbook-screen-cost-by-model.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 수리비</div>
+      <div class="card-title">맥북 액정 교체 비용 — 모델별 완전 비교표 (2026년 기준)</div>
+      <div class="card-desc">맥북 에어·프로 전 모델의 액정 교체 비용을 한 표로 비교했습니다. 공식 vs 사설 가격 포함.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>액정 비용 비교</span></div>
+    </a>
+
+    <a href="applewatch-series10-vs-9-repair-cost.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 수리비 비교</div>
+      <div class="card-title">애플워치 시리즈 10 vs 9 수리비 차이 — 무엇이 달라졌나</div>
+      <div class="card-desc">시리즈 10의 새 디스플레이가 수리비에 미치는 영향. 9와 비교하여 항목별로 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>S10 vs S9 비교</span></div>
+    </a>
+
+    <a href="applewatch-band-replacement-guide.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 관리 가이드</div>
+      <div class="card-title">애플워치 밴드 교체 방법 — 호환 밴드 선택과 교체 시 주의점</div>
+      <div class="card-desc">밴드 교체 방법, 호환 밴드 종류, 교체 시 스트랩 슬롯 손상 방지법을 안내합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>밴드 교체</span></div>
+    </a>
+
+    <a href="applewatch-reset-before-repair.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 수리 준비</div>
+      <div class="card-title">애플워치 초기화 방법 — 판매 전·수리 전 완전 가이드</div>
+      <div class="card-desc">애플워치 초기화 순서, 아이폰과 페어링 해제, 활성화 잠금 제거까지 단계별로 안내합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>초기화 방법</span></div>
+    </a>
+
+    <a href="repair-warranty-comparison.html" class="article-card" data-cat="guide">
+      <div class="card-category">보증 가이드</div>
+      <div class="card-title">수리 보증 기간 비교 — 공식 센터·사설 수리점·자가수리별 정리</div>
+      <div class="card-desc">수리 후 보증이 얼마나 되나요? 공식(90일), 사설(30일~6개월), 자가수리(없음)를 비교합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>보증 비교</span></div>
+    </a>
+
+    <a href="repair-time-guide.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 시간 가이드</div>
+      <div class="card-title">애플 기기 수리에 걸리는 시간 — 항목별·기기별 소요 시간</div>
+      <div class="card-desc">화면 교체 30분, 배터리 20분, 침수 1~3일. 기기별·항목별 수리 소요 시간을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>수리 시간</span></div>
+    </a>
+
+    <a href="repair-quality-honest-answer.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 품질 가이드</div>
+      <div class="card-title">수리 후 원래 성능이 나오나요? — 수리 품질에 대한 솔직한 답변</div>
+      <div class="card-desc">수리 후 화면 색감, 배터리 수명, 방수 — 원래랑 같을까요? 솔직하게 답변합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>수리 품질</span></div>
+    </a>
+
+    <!-- ── 2026-04-16 SEO+신뢰+지역 글 20개 추가 ── -->
+
+    <a href="repair-process-transparent.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 과정 공개</div>
+      <div class="card-title">아이폰 화면 교체, 실제로 어떻게 하나 — 수리 과정 완전 공개</div>
+      <div class="card-desc">접수부터 출고까지 수리 전 과정을 단계별로 공개합니다. 수리점 실력이 갈리는 포인트도 함께.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>수리 과정</span></div>
+    </a>
+    <a href="repairs-we-refuse.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 철학</div>
+      <div class="card-title">수리점 대표가 직접 쓰는 — 이런 수리는 받지 않습니다</div>
+      <div class="card-desc">수리비가 기기값을 넘는 경우, 복구 불가능한 기판 손상. 거절하는 이유를 솔직하게 공개합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>수리 철학</span></div>
+    </a>
+    <a href="re-repair-cases.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 사례</div>
+      <div class="card-title">다른 곳에서 수리 받다가 오는 분들 — 재수리 사례와 원인</div>
+      <div class="card-desc">방수 미처리, 나사 빠뜨림, Face ID 미연결. 재수리가 필요한 흔한 원인과 예방법입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>재수리 사례</span></div>
+    </a>
+    <a href="genuine-vs-fake-parts-visual.html" class="article-card" data-cat="guide">
+      <div class="card-category">부품 감별 가이드</div>
+      <div class="card-title">수리 부품 진짜 vs 가짜 — 육안으로 구별하는 법</div>
+      <div class="card-desc">화면 색감, 배터리 라벨, 케이블 두께. 전문가가 부품 품질을 판단하는 기준을 공개합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>부품 감별</span></div>
+    </a>
+    <a href="iphone17-pro-bending-issue.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 17 이슈</div>
+      <div class="card-title">아이폰 17 프로 휘어짐 문제 — 케이스 벗기다 프레임 벤딩, 수리 가능한가</div>
+      <div class="card-desc">알루미늄 유니바디로 바뀐 17 프로, 케이스 탈착 시 프레임이 휘는 문제가 보고되고 있습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>17 프로 휘어짐</span></div>
+    </a>
+    <a href="iphone17-pro-scratch-issue.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 17 이슈</div>
+      <div class="card-title">아이폰 17 프로 스크래치 논란 — 알루미늄 프레임의 약점과 보호법</div>
+      <div class="card-desc">티타늄에서 알루미늄으로 바뀌면서 스크래치에 취약해졌습니다. 원인과 보호 방법을 정리합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>17 프로 스크래치</span></div>
+    </a>
+    <a href="iphone17-vs-16-repair-comparison.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 수리비 비교</div>
+      <div class="card-title">아이폰 17 vs 16 수리비 차이 — 소재 변경이 수리에 미치는 영향</div>
+      <div class="card-desc">티타늄(16)에서 알루미늄(17)으로. 수리비와 수리 난이도가 어떻게 달라졌는지 비교합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>17 vs 16 비교</span></div>
+    </a>
+    <a href="iphone17-pro-camera-repair.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 카메라 수리</div>
+      <div class="card-title">아이폰 17 프로 카메라 고장 — 48MP 트리플 카메라 수리 시 주의점</div>
+      <div class="card-desc">OIS 고장, 렌즈 깨짐, 검은 화면. 17 프로 카메라 모듈 수리 시 알아야 할 것을 정리합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>17 프로 카메라</span></div>
+    </a>
+    <a href="iphone17-cellular-issue.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 셀룰러 가이드</div>
+      <div class="card-title">아이폰 17 통화 끊김·데이터 불안정 — 셀룰러 문제 해결법</div>
+      <div class="card-desc">출시 이후 보고된 통화 끊김과 데이터 불안정. 소프트웨어 점검부터 안테나 진단까지 안내합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>17 셀룰러 문제</span></div>
+    </a>
+    <a href="macbook-neo-repair-cost.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 수리비</div>
+      <div class="card-title">맥북 네오 수리비 총정리 — 99만원 맥북, 고장나면 얼마?</div>
+      <div class="card-desc">2026년 3월 출시된 99만원 맥북 네오. LCD 디스플레이라 수리비는 상대적으로 저렴합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>네오 수리비</span></div>
+    </a>
+    <a href="macbook-neo-vs-air-comparison.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 비교 가이드</div>
+      <div class="card-title">맥북 네오 vs 맥북 에어 — 수리비와 내구성까지 비교</div>
+      <div class="card-desc">99만원 네오와 159만원 에어. 가격·스펙·수리비·내구성을 전방위 비교합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>네오 vs 에어</span></div>
+    </a>
+    <a href="repair-gasan-iphone.html" class="article-card" data-cat="guide">
+      <div class="card-category">가산점 수리 안내</div>
+      <div class="card-title">가산디지털단지 아이폰 수리 — 당일 수리 가능한 곳과 선택 기준</div>
+      <div class="card-desc">가산디지털단지역 근처에서 아이폰 당일 수리를 받을 수 있는 곳과 선택 기준을 안내합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>가산 수리</span></div>
+    </a>
+    <a href="repair-sillim-macbook.html" class="article-card" data-cat="guide">
+      <div class="card-category">신림점 수리 안내</div>
+      <div class="card-title">신림 맥북 수리 — 서울대·신림역 근처 당일 수리 안내</div>
+      <div class="card-desc">신림역 근처에서 맥북 당일 수리. 대학생·직장인 맞춤 안내입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>신림 수리</span></div>
+    </a>
+    <a href="repair-mokdong-watch.html" class="article-card" data-cat="guide">
+      <div class="card-category">목동점 수리 안내</div>
+      <div class="card-title">목동 애플워치 수리 — 당일 배터리·화면 교체 가능</div>
+      <div class="card-desc">목동에서 애플워치 배터리·화면·충전 수리를 당일 처리합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>목동 수리</span></div>
+    </a>
+    <a href="seoul-iphone-repair-guide.html" class="article-card" data-cat="guide">
+      <div class="card-category">서울 수리 가이드</div>
+      <div class="card-title">서울 아이폰 수리 추천 — 지역별 수리점 선택 가이드</div>
+      <div class="card-desc">가산·신림·목동 방문 수리 + 서울 전 지역 택배 수리. 지역별 최적의 수리 방법을 안내합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>서울 수리</span></div>
+    </a>
+    <a href="iphone16-pro-common-failures.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 16 Pro 고장 분석</div>
+      <div class="card-title">아이폰 16 Pro 가장 많이 고장나는 부위 TOP 5 — 수리점 실제 데이터</div>
+      <div class="card-desc">화면, 후면유리, 배터리, 카메라 컨트롤, 충전포트 — 실제 수리 접수 기준 고장 빈도 순위입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>16 Pro 고장 TOP5</span></div>
+    </a>
+    <a href="iphone15-common-failures.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 15 고장 분석</div>
+      <div class="card-title">아이폰 15 시리즈 출시 1년 반 — 가장 흔한 고장 패턴 5가지</div>
+      <div class="card-desc">배터리 80% 근접, 화면 줄, USB-C 접촉불량, 카메라 렌즈 크랙, 후면유리 파손 — 1.5년차 고장 패턴.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>15 고장 패턴</span></div>
+    </a>
+    <a href="macbook-air-m2-m3-common-failures.html" class="article-card" data-cat="macbook">
+      <div class="card-category">맥북 에어 고장 분석</div>
+      <div class="card-title">맥북 에어 M2/M3 — 수리점에서 가장 많이 보는 고장 3가지</div>
+      <div class="card-desc">액정 파손, 배터리 팽창, USB-C 포트 손상. 얇은 맥북 에어의 약점과 예방법입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>에어 고장 TOP3</span></div>
+    </a>
+    <a href="genuine-vs-compatible-battery.html" class="article-card" data-cat="guide">
+      <div class="card-category">배터리 비교 가이드</div>
+      <div class="card-title">정품 배터리 vs 호환 배터리 — 체감 차이가 있을까? 솔직한 비교</div>
+      <div class="card-desc">용량, 수명, 충전 속도, "서비스" 메시지 여부까지. 정품과 호환 배터리의 실제 차이를 비교합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>배터리 비교</span></div>
+    </a>
+    <a href="same-day-official-vs-private.html" class="article-card" data-cat="guide">
+      <div class="card-category">당일 수리 비교</div>
+      <div class="card-title">공식 센터 당일 수리 vs 사설 당일 수리 — 실제로 뭐가 다른가</div>
+      <div class="card-desc">예약, 소요 시간, 수리 항목, 비용, 부품. 공식과 사설 당일 수리의 실제 차이를 비교합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>당일 수리 비교</span></div>
+    </a>
+
+    <!-- ── 2026-04-17 기종별 수리 글 18개 추가 ── -->
+
+    <a href="iphone17-pro-green-line.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 17 Pro 화면</div>
+      <div class="card-title">아이폰 17 프로 화면 초록줄 — OLED 패널 손상 원인과 수리</div>
+      <div class="card-desc">화면에 초록색 세로줄이 갑자기 생겼습니다. 낙하 충격 없이도 발생하는 OLED 패널 손상 원인과 수리 방법입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>17 Pro 초록줄</span></div>
+    </a>
+    <a href="iphone17-pro-max-partial-touch.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 17 Pro Max 터치</div>
+      <div class="card-title">아이폰 17 프로 맥스 화면 터치 일부 안 됨 — 부분 터치 불량</div>
+      <div class="card-desc">특정 영역만 터치가 안 됩니다. 소프트웨어 문제인지 패널 불량인지 구분하는 방법입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>17 Pro Max 터치</span></div>
+    </a>
+    <a href="iphone17-charging-overheating.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 17 발열</div>
+      <div class="card-title">아이폰 17 충전 중 발열 심함 — 정상 vs 고장 판단 기준</div>
+      <div class="card-desc">충전할 때 너무 뜨겁습니다. 정상 발열 범위와 수리가 필요한 위험 신호를 구분합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>17 충전 발열</span></div>
+    </a>
+    <a href="iphone17-pro-wont-turn-on.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 17 Pro 전원</div>
+      <div class="card-title">아이폰 17 프로 전원 안 켜짐 — 충전해도 반응 없을 때</div>
+      <div class="card-desc">충전해도 아무 반응이 없습니다. 강제 재시작부터 기판 문제까지 단계별 확인 방법입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>17 Pro 전원</span></div>
+    </a>
+    <a href="iphone17-pro-max-battery-drain.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 17 Pro Max 배터리</div>
+      <div class="card-title">아이폰 17 프로 맥스 배터리 하루 못 가요 — 출시 7개월 배터리 점검</div>
+      <div class="card-desc">출시 7개월인데 배터리가 하루를 못 갑니다. 정상 수명과 교체 시기를 알려드립니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>17 Pro Max 배터리</span></div>
+    </a>
+    <a href="iphone16-pro-green-line.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 16 Pro 화면</div>
+      <div class="card-title">아이폰 16 프로 화면 초록줄 — 낙하 없이 갑자기 생기는 경우</div>
+      <div class="card-desc">떨어뜨린 적 없는데 초록줄이 생겼습니다. OLED 패널 자연 불량 원인과 수리 방법입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>16 Pro 초록줄</span></div>
+    </a>
+    <a href="iphone16-pro-max-camera-ois.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 16 Pro Max 카메라</div>
+      <div class="card-title">아이폰 16 프로 맥스 후면 카메라 흔들림 — OIS 고장 판단법</div>
+      <div class="card-desc">사진이 흔들리거나 카메라에서 딱딱 소리가 납니다. OIS 고장인지 자가 점검하는 방법입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>16 Pro Max OIS</span></div>
+    </a>
+    <a href="iphone16-battery-80-percent.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 16 배터리</div>
+      <div class="card-title">아이폰 16 배터리 80% 근접 — 교체 시기와 비용</div>
+      <div class="card-desc">출시 1.5년, 배터리 최대 용량이 80%에 가까워지고 있습니다. 교체 시기와 비용을 정리합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>16 배터리 교체</span></div>
+    </a>
+    <a href="iphone16-pro-usbc-loose.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 16 Pro 충전</div>
+      <div class="card-title">아이폰 16 프로 충전 포트 접촉불량 — USB-C 헐거움 수리</div>
+      <div class="card-desc">충전 케이블이 헐겁거나 접촉이 불안정합니다. 이물질인지 포트 손상인지 구분합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>16 Pro USB-C</span></div>
+    </a>
+    <a href="iphone16-pro-max-touch-dead.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 16 Pro Max 터치</div>
+      <div class="card-title">아이폰 16 프로 맥스 화면 터치 안 됨 — 전체 먹통 vs 부분 불량</div>
+      <div class="card-desc">터치가 전혀 안 되거나 일부만 됩니다. 전체 먹통과 부분 불량의 원인과 대처법입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>16 Pro Max 터치</span></div>
+    </a>
+    <a href="iphone15-pro-battery-under-80.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 15 Pro 배터리</div>
+      <div class="card-title">아이폰 15 프로 배터리 80% 미만 — 지금 교체해야 하는 이유</div>
+      <div class="card-desc">출시 2.5년, 배터리 80% 미만이면 성능 저하가 시작됩니다. 교체 비용과 타이밍입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>15 Pro 배터리</span></div>
+    </a>
+    <a href="iphone15-usbc-charging-disconnect.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 15 충전</div>
+      <div class="card-title">아이폰 15 USB-C 충전 포트 고장 — 케이블 빼면 충전 끊기는 증상</div>
+      <div class="card-desc">USB-C 첫 도입 모델, 충전 케이블을 조금만 건드려도 끊깁니다. 포트 수리 방법입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>15 USB-C 포트</span></div>
+    </a>
+    <a href="iphone15-pro-max-burn-in.html" class="article-card" data-cat="iphone">
+      <div class="card-category">아이폰 15 Pro Max 화면</div>
+      <div class="card-title">아이폰 15 프로 맥스 화면 잔상(번인) — OLED 수명과 수리</div>
+      <div class="card-desc">2.5년 사용 후 화면에 잔상이 남습니다. OLED 번인 원인과 수리 방법입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>15 Pro Max 번인</span></div>
+    </a>
+    <a href="ipad-pro-m4-half-screen-black.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 프로 M4 화면</div>
+      <div class="card-title">아이패드 프로 M4 화면 한쪽 까맣게 됨 — 내부 액정 파손 수리</div>
+      <div class="card-desc">외관은 멀쩡한데 화면 절반이 검정입니다. 내부 OLED 파손 원인과 수리 비용입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>M4 화면 파손</span></div>
+    </a>
+    <a href="ipad-10th-power-button-broken.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 10세대 버튼</div>
+      <div class="card-title">아이패드 10세대 전원 버튼 안 눌림 — 물리 버튼 수리</div>
+      <div class="card-desc">전원 버튼이 안 눌리거나 반응이 없습니다. 임시 해결법과 수리 방법입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>10세대 버튼</span></div>
+    </a>
+    <a href="ipad-air-m2-screen-cracked.html" class="article-card" data-cat="ipad">
+      <div class="card-category">아이패드 에어 M2 화면</div>
+      <div class="card-title">아이패드 에어 M2 화면 깨짐 — 수리비와 수리 vs 교체 판단</div>
+      <div class="card-desc">에어 M2 화면이 깨졌습니다. 수리 비용과 수리할 가치가 있는지 판단 기준입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>에어 M2 화면</span></div>
+    </a>
+    <a href="applewatch-screen-green-line.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 화면</div>
+      <div class="card-title">애플워치 화면에 줄이 생겼어요 — OLED 패널 손상 수리</div>
+      <div class="card-desc">애플워치 화면에 세로줄이나 가로줄이 생겼습니다. 원인과 수리 방법입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>워치 화면 줄</span></div>
+    </a>
+    <a href="applewatch-touch-not-responding.html" class="article-card" data-cat="watch">
+      <div class="card-category">애플워치 터치</div>
+      <div class="card-title">애플워치 터치가 안 돼요 — 화면은 켜지는데 반응 없음</div>
+      <div class="card-desc">화면은 정상인데 터치가 안 됩니다. 물 잠금 확인부터 터치 패널 수리까지 안내합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>워치 터치 불량</span></div>
+    </a>
+
+    <!-- ── 2026-04-17 부분수리 글 18개 추가 ── -->
+
+    <a href="iphone17-pro-charging-port-repair.html" class="article-card" data-cat="iphone"><div class="card-category">아이폰 17 Pro 충전단자</div><div class="card-title">아이폰 17 프로 충전단자 수리 — USB-C 포트 교체 비용</div><div class="card-desc">USB-C 접촉불량, 충전 안 됨. 포트만 부분 교체하는 수리 방법과 비용입니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>17 Pro 충전단자</span></div></a>
+    <a href="iphone16-charging-port-repair.html" class="article-card" data-cat="iphone"><div class="card-category">아이폰 16 충전단자</div><div class="card-title">아이폰 16 충전단자 수리 — USB-C 포트 교체 비용과 수리 시간</div><div class="card-desc">충전 케이블 접촉이 불안정합니다. USB-C 포트 교체 수리 안내입니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>16 충전단자</span></div></a>
+    <a href="iphone14-pro-charging-port-repair.html" class="article-card" data-cat="iphone"><div class="card-category">아이폰 14 Pro 충전단자</div><div class="card-title">아이폰 14 프로 충전단자 수리 — Lightning 포트 교체</div><div class="card-desc">Lightning 마지막 세대, 포트 내구성 문제와 교체 수리 안내입니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>14 Pro Lightning</span></div></a>
+    <a href="iphone13-charging-port-repair.html" class="article-card" data-cat="iphone"><div class="card-category">아이폰 13 충전단자</div><div class="card-title">아이폰 13 충전단자 수리 — 3년 사용 후 접촉불량 해결</div><div class="card-desc">3년 이상 사용한 아이폰 13 충전 포트 접촉불량. 포트 교체 수리입니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>13 충전단자</span></div></a>
+    <a href="iphone17-pro-mainboard-repair.html" class="article-card" data-cat="iphone"><div class="card-category">아이폰 17 Pro 메인보드</div><div class="card-title">아이폰 17 프로 메인보드 수리 — 전원 불량·터치 불량·데이터 복구</div><div class="card-desc">메인보드 수리가 필요한 증상과 수리 가능 범위, 데이터 보존 여부를 안내합니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>17 Pro 메인보드</span></div></a>
+    <a href="iphone16-pro-mainboard-repair.html" class="article-card" data-cat="iphone"><div class="card-category">아이폰 16 Pro 메인보드</div><div class="card-title">아이폰 16 프로 메인보드 수리 — 침수·낙하 후 기판 손상 복구</div><div class="card-desc">침수, 낙하 충격으로 인한 기판 손상. 마이크로 솔더링으로 수리합니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>16 Pro 메인보드</span></div></a>
+    <a href="iphone15-pro-mainboard-repair.html" class="article-card" data-cat="iphone"><div class="card-category">아이폰 15 Pro 메인보드</div><div class="card-title">아이폰 15 프로 메인보드 수리 — 갑자기 안 켜질 때 기판 점검</div><div class="card-desc">2.5년 사용 모델, 갑자기 전원이 안 켜지면 기판 문제일 수 있습니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>15 Pro 메인보드</span></div></a>
+    <a href="iphone14-mainboard-repair.html" class="article-card" data-cat="iphone"><div class="card-category">아이폰 14 메인보드</div><div class="card-title">아이폰 14 메인보드 수리 — 수리비와 데이터 복구 가능성</div><div class="card-desc">구형 모델 기판 수리, 수리 가치 판단과 데이터 복구 가능성을 안내합니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>14 메인보드</span></div></a>
+    <a href="ipad-pro-m4-charging-port-repair.html" class="article-card" data-cat="ipad"><div class="card-category">아이패드 프로 M4 충전단자</div><div class="card-title">아이패드 프로 M4 충전단자 수리 — USB-C 포트 교체 비용</div><div class="card-desc">아이패드 프로 M4 USB-C 충전 포트 접촉불량. 포트만 교체하는 수리입니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>M4 충전단자</span></div></a>
+    <a href="ipad-air-m2-charging-port-repair.html" class="article-card" data-cat="ipad"><div class="card-category">아이패드 에어 M2 충전단자</div><div class="card-title">아이패드 에어 M2 충전단자 수리 — USB-C 접촉불량 교체</div><div class="card-desc">아이패드 에어 M2 충전 포트 접촉불량. USB-C 포트 교체 수리입니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>에어 M2 충전단자</span></div></a>
+    <a href="ipad-pro-mainboard-repair.html" class="article-card" data-cat="ipad"><div class="card-category">아이패드 프로 메인보드</div><div class="card-title">아이패드 프로 메인보드 수리 — 전원 불량·침수 후 기판 복구</div><div class="card-desc">아이패드 프로 전원 불량, 침수 후 기판 손상. 마이크로 솔더링 수리입니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>프로 메인보드</span></div></a>
+    <a href="applewatch-series6-back-glass-repair.html" class="article-card" data-cat="watch"><div class="card-category">애플워치 시리즈 6 후면</div><div class="card-title">애플워치 시리즈 6 후면유리 깨짐 — 센서 유리 교체 수리</div><div class="card-desc">후면 센서 유리가 깨지면 심박수·혈중산소 측정 불가. 후면유리만 교체합니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>시리즈6 후면유리</span></div></a>
+    <a href="applewatch-series5-back-glass-repair.html" class="article-card" data-cat="watch"><div class="card-category">애플워치 시리즈 5 후면</div><div class="card-title">애플워치 시리즈 5 후면유리 깨짐 — 수리 가능한가</div><div class="card-desc">5년 이상 된 모델이지만 후면유리 부분 수리가 가능합니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>시리즈5 후면유리</span></div></a>
+    <a href="applewatch-se-back-glass-repair.html" class="article-card" data-cat="watch"><div class="card-category">애플워치 SE 후면</div><div class="card-title">애플워치 SE 후면유리 깨짐 — 1세대·2세대 센서 유리 교체</div><div class="card-desc">SE 1세대와 2세대 모두 후면유리 부분 수리가 가능합니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>SE 후면유리</span></div></a>
+    <a href="applewatch-series4-crown-repair.html" class="article-card" data-cat="watch"><div class="card-category">애플워치 시리즈 4 크라운</div><div class="card-title">애플워치 시리즈 4 디지털 크라운 고장 — 회전 안 됨·눌림 불량 수리</div><div class="card-desc">크라운이 회전이 안 되거나 눌러도 반응이 없습니다. 부품 교체 수리입니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>시리즈4 크라운</span></div></a>
+    <a href="applewatch-series6-crown-button-repair.html" class="article-card" data-cat="watch"><div class="card-category">애플워치 시리즈 6 버튼</div><div class="card-title">애플워치 시리즈 6 크라운·사이드 버튼 고장 — 부품 교체 수리</div><div class="card-desc">크라운과 사이드 버튼 동시 고장. 각각 개별 부품 교체로 수리합니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>시리즈6 버튼</span></div></a>
+    <a href="applewatch-se-power-button-repair.html" class="article-card" data-cat="watch"><div class="card-category">애플워치 SE 버튼</div><div class="card-title">애플워치 SE 사이드 버튼 안 눌림 — 전원·SOS 버튼 수리</div><div class="card-desc">사이드 버튼 고장으로 전원·SOS 기능이 안 됩니다. 버튼 모듈 교체 수리입니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>SE 사이드버튼</span></div></a>
+    <a href="applewatch-series5-battery-replacement.html" class="article-card" data-cat="watch"><div class="card-category">애플워치 시리즈 5 배터리</div><div class="card-title">애플워치 시리즈 5 배터리 교체 — 5년 사용 배터리 수명과 비용</div><div class="card-desc">5년 이상 사용한 배터리, 하루를 못 갑니다. 교체 시기와 비용입니다.</div><div class="card-meta"><span>금동평 대표</span><span>2026년 4월</span><span>시리즈5 배터리</span></div></a>
+
+  </div>
+
+</div>
+
+<footer class="art-footer">
+  <p><a href="https://xn--2j1bq2k97kxnah86c.com">다올리페어</a> · 가산점 · 신림점 · 목동점 · 전국 택배 수리</p>
+  <p style="margin-top:6px;">© 2026 다올리페어. All rights reserved.</p>
+</footer>
+
+<script>
+var currentTab = 'all';
+var currentQuery = '';
+
+function filterTab(cat, btn) {
+  currentTab = cat;
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  filterCards();
+}
+
+function handleSearch(value) {
+  currentQuery = value.trim().toLowerCase();
+  document.getElementById('searchClear').style.display = currentQuery ? 'block' : 'none';
+  filterCards();
+}
+
+function clearSearch() {
+  var input = document.getElementById('searchInput');
+  input.value = '';
+  currentQuery = '';
+  document.getElementById('searchClear').style.display = 'none';
+  filterCards();
+  input.focus();
+}
+
+function filterCards() {
+  var cards = document.querySelectorAll('.article-card');
+  var visibleCount = 0;
+
+  cards.forEach(function(card) {
+    var catMatch = (currentTab === 'all' || card.dataset.cat === currentTab);
+    var searchMatch = true;
+    if (currentQuery) {
+      var text = card.textContent.toLowerCase();
+      searchMatch = text.includes(currentQuery);
+    }
+    if (catMatch && searchMatch) {
+      card.classList.remove('hidden');
+      visibleCount++;
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+
+  var empty = document.getElementById('emptyState');
+  var countEl = document.getElementById('searchResultCount');
+
+  if (currentQuery) {
+    countEl.innerHTML = '<strong>' + currentQuery + '</strong> 검색 결과 ' + visibleCount + '개';
+    countEl.classList.add('show');
+    if (visibleCount === 0) {
+      document.getElementById('emptyIcon').textContent = '🔍';
+      document.getElementById('emptyTitle').textContent = '검색 결과가 없습니다';
+      document.getElementById('emptyDesc').textContent = '"' + currentQuery + '"에 해당하는 칼럼을 찾지 못했습니다.\n다른 키워드로 검색해 보세요.';
+      empty.classList.add('show');
+    } else {
+      empty.classList.remove('show');
+    }
+  } else {
+    countEl.classList.remove('show');
+    if (visibleCount === 0) {
+      document.getElementById('emptyIcon').textContent = '✍️';
+      document.getElementById('emptyTitle').textContent = '준비 중인 칼럼입니다';
+      document.getElementById('emptyDesc').innerHTML = '곧 업데이트될 예정입니다.<br>아이폰·애플워치 칼럼은 지금 바로 보실 수 있습니다.';
+      empty.classList.add('show');
+    } else {
+      empty.classList.remove('show');
+    }
+  }
+}
+</script>
+
+</body>
+</html>

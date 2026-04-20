@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글쓰기 | 다올리페어 커뮤니티</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --orange: #E8732A; --dark: #0A0A0A; --text: #1a1a1a; --muted: #666; --border: #e8e8e8; --font: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
+    body { font-family: var(--font); color: var(--text); background: #f8f8f8; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; }
+    .nav-logo span { font-size: 15px; font-weight: 800; color: var(--dark); }
+    .nav-back { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--orange); }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 32px 16px 80px; }
+    .page-title { font-size: 22px; font-weight: 900; color: var(--dark); margin-bottom: 24px; }
+    .form-card { background: #fff; border-radius: 16px; border: 1px solid var(--border); padding: 28px 24px; }
+    .form-group { margin-bottom: 20px; }
+    .form-label { font-size: 13px; font-weight: 800; color: var(--dark); margin-bottom: 8px; display: block; }
+    .form-select { width: 100%; border: 1.5px solid var(--border); border-radius: 10px; padding: 12px 14px; font-size: 14px; font-family: var(--font); outline: none; background: #fff; cursor: pointer; transition: border-color 0.2s; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+    .form-select:focus { border-color: var(--orange); }
+    .form-input { width: 100%; border: 1.5px solid var(--border); border-radius: 10px; padding: 12px 14px; font-size: 15px; font-family: var(--font); outline: none; transition: border-color 0.2s; }
+    .form-input:focus { border-color: var(--orange); }
+    .form-textarea { width: 100%; border: 1.5px solid var(--border); border-radius: 10px; padding: 14px; font-size: 14px; font-family: var(--font); outline: none; resize: vertical; min-height: 200px; transition: border-color 0.2s; line-height: 1.8; }
+    .form-textarea:focus { border-color: var(--orange); }
+    .form-hint { font-size: 12px; color: #aaa; margin-top: 6px; }
+    /* 이미지 업로드 */
+    .img-upload-zone {
+      border: 2px dashed var(--border); border-radius: 12px;
+      padding: 28px 20px; text-align: center; cursor: pointer;
+      transition: all 0.2s; background: #fafafa;
+    }
+    .img-upload-zone:hover, .img-upload-zone.dragover { border-color: var(--orange); background: rgba(232,115,42,0.04); }
+    .img-upload-zone .upload-icon { font-size: 32px; margin-bottom: 8px; }
+    .img-upload-zone p { font-size: 14px; color: var(--muted); }
+    .img-upload-zone span { font-size: 12px; color: #bbb; display: block; margin-top: 4px; }
+    .img-upload-zone input[type=file] { display: none; }
+    .img-preview-wrap { position: relative; display: inline-block; margin-top: 12px; }
+    .img-preview { max-width: 100%; max-height: 320px; border-radius: 10px; display: block; object-fit: cover; }
+    .img-remove-btn {
+      position: absolute; top: 8px; right: 8px;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(0,0,0,0.6); color: #fff; border: none;
+      font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      line-height: 1;
+    }
+    .img-remove-btn:hover { background: rgba(0,0,0,0.85); }
+    .upload-progress { font-size: 12px; color: var(--orange); margin-top: 6px; display: none; }
+    /* 액션 */
+    .form-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 24px; }
+    .btn-cancel { background: transparent; border: 1.5px solid var(--border); color: var(--muted); padding: 12px 24px; border-radius: 20px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: var(--font); text-decoration: none; display: inline-flex; align-items: center; transition: all 0.2s; }
+    .btn-cancel:hover { border-color: var(--orange); color: var(--orange); }
+    .btn-submit { background: var(--orange); color: #fff; border: none; padding: 12px 32px; border-radius: 20px; font-size: 14px; font-weight: 800; cursor: pointer; font-family: var(--font); transition: background 0.2s; }
+    .btn-submit:hover { background: #d4621f; }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+    .error-msg { background: #fff5f5; border: 1px solid #fca5a5; border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #b91c1c; margin-bottom: 16px; display: none; }
+    .loading-screen { display: flex; align-items: center; justify-content: center; min-height: 60vh; font-size: 14px; color: #aaa; }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a href="https://xn--2j1bq2k97kxnah86c.com" class="nav-logo">
+    <img src="../로고신규1.jpg" alt="다올리페어">
+    <span>다올리페어</span>
+  </a>
+  <a href="index.html" class="nav-back">← 목록으로</a>
+</nav>
+
+<div class="wrap" id="wrap">
+  <div class="loading-screen">로딩 중...</div>
+</div>
+
+<script>
+  const SUPABASE_URL = 'https://eybuyorlvbqxbvwyugcs.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_QqBHHM529mkONmJD_2kofA_1gCLrB0p';
+  const { createClient } = supabase;
+  const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  let selectedFile = null;
+
+  async function init() {
+    const { data: { user } } = await sb.auth.getUser();
+    if (!user) {
+      location.href = 'login.html?redirect=' + encodeURIComponent(location.href);
+      return;
+    }
+
+    document.getElementById('wrap').innerHTML = `
+      <h1 class="page-title">글쓰기</h1>
+      <div class="form-card">
+        <div class="error-msg" id="error-msg"></div>
+        <div class="form-group">
+          <label class="form-label" for="category">카테고리</label>
+          <select class="form-select" id="category" onchange="updatePlaceholder()">
+            <option value="">카테고리 선택</option>
+            <option value="애플 소식">📰 애플 소식</option>
+            <option value="자유토론">💬 자유토론</option>
+            <option value="사용 팁">💡 사용 팁</option>
+            <option value="구매 추천">🛒 구매 추천</option>
+            <option value="기기 비교">⚖️ 기기 비교</option>
+            <option value="수리 Q&A">🔧 수리 Q&A</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="post_type">글 유형</label>
+          <select class="form-select" id="post_type">
+            <option value="질문">❓ 질문</option>
+            <option value="토론">💬 토론</option>
+            <option value="팁 공유">💡 팁 공유</option>
+            <option value="후기">⭐ 후기</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="title">제목</label>
+          <input class="form-input" type="text" id="title" placeholder="제목을 입력해주세요" maxlength="100">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="body">내용</label>
+          <textarea class="form-textarea" id="body" placeholder="내용을 자유롭게 입력해주세요."></textarea>
+          <div class="form-hint">욕설·광고·도배 게시물은 삭제될 수 있습니다.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">사진 첨부 <span style="font-weight:400;color:#aaa;">(선택)</span></label>
+          <div class="img-upload-zone" id="upload-zone" onclick="document.getElementById('img-input').click()" ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event)">
+            <input type="file" id="img-input" accept="image/*" onchange="onFileSelect(event)">
+            <div id="upload-placeholder">
+              <div class="upload-icon">📷</div>
+              <p>클릭하거나 사진을 여기에 끌어다 놓으세요</p>
+              <span>JPG, PNG, GIF, WEBP · 최대 5MB</span>
+            </div>
+            <div id="img-preview-area" style="display:none;">
+              <div class="img-preview-wrap">
+                <img id="img-preview" class="img-preview" src="" alt="미리보기">
+                <button class="img-remove-btn" onclick="removeImage(event)" title="사진 제거">✕</button>
+              </div>
+            </div>
+          </div>
+          <div class="upload-progress" id="upload-progress">업로드 중...</div>
+        </div>
+        <div class="form-actions">
+          <a href="index.html" class="btn-cancel">취소</a>
+          <button class="btn-submit" id="submit-btn" onclick="submitPost()">등록하기</button>
+        </div>
+      </div>`;
+  }
+
+  function onDragOver(e) {
+    e.preventDefault();
+    document.getElementById('upload-zone').classList.add('dragover');
+  }
+  function onDragLeave(e) {
+    document.getElementById('upload-zone').classList.remove('dragover');
+  }
+  function onDrop(e) {
+    e.preventDefault();
+    document.getElementById('upload-zone').classList.remove('dragover');
+    const file = e.dataTransfer.files[0];
+    if (file) handleFile(file);
+  }
+  function onFileSelect(e) {
+    const file = e.target.files[0];
+    if (file) handleFile(file);
+  }
+
+  function handleFile(file) {
+    if (!file.type.startsWith('image/')) { alert('이미지 파일만 업로드할 수 있습니다.'); return; }
+    if (file.size > 5 * 1024 * 1024) { alert('5MB 이하 파일만 업로드할 수 있습니다.'); return; }
+    selectedFile = file;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      document.getElementById('img-preview').src = e.target.result;
+      document.getElementById('upload-placeholder').style.display = 'none';
+      document.getElementById('img-preview-area').style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function removeImage(e) {
+    e.stopPropagation();
+    selectedFile = null;
+    document.getElementById('img-input').value = '';
+    document.getElementById('img-preview').src = '';
+    document.getElementById('upload-placeholder').style.display = 'block';
+    document.getElementById('img-preview-area').style.display = 'none';
+  }
+
+  async function uploadImage(user) {
+    if (!selectedFile) return null;
+    const ext = selectedFile.name.split('.').pop();
+    const fileName = `${user.id}/${Date.now()}.${ext}`;
+    const { data, error } = await sb.storage.from('community-images').upload(fileName, selectedFile, { upsert: false });
+    if (error) throw new Error('이미지 업로드 실패: ' + error.message);
+    const { data: { publicUrl } } = sb.storage.from('community-images').getPublicUrl(fileName);
+    return publicUrl;
+  }
+
+  async function submitPost() {
+    const category = document.getElementById('category').value.trim();
+    const title = document.getElementById('title').value.trim();
+    const body = document.getElementById('body').value.trim();
+    const post_type = document.getElementById('post_type').value;
+    const btn = document.getElementById('submit-btn');
+
+    if (!category) { showError('카테고리를 선택해주세요.'); return; }
+    if (!title) { showError('제목을 입력해주세요.'); return; }
+    if (title.length < 5) { showError('제목은 5자 이상 입력해주세요.'); return; }
+    if (!body) { showError('내용을 입력해주세요.'); return; }
+    if (body.length < 10) { showError('내용은 10자 이상 입력해주세요.'); return; }
+
+    btn.disabled = true;
+    btn.textContent = '등록 중...';
+    document.getElementById('error-msg').style.display = 'none';
+
+    const { data: { user } } = await sb.auth.getUser();
+    if (!user) { location.href = 'login.html'; return; }
+
+    const nickname = user.user_metadata?.nickname || user.email?.split('@')[0] || '사용자';
+
+    let image_url = null;
+    if (selectedFile) {
+      btn.textContent = '사진 업로드 중...';
+      document.getElementById('upload-progress').style.display = 'block';
+      try {
+        image_url = await uploadImage(user);
+      } catch (err) {
+        showError(err.message);
+        btn.disabled = false;
+        btn.textContent = '등록하기';
+        document.getElementById('upload-progress').style.display = 'none';
+        return;
+      }
+      document.getElementById('upload-progress').style.display = 'none';
+    }
+
+    btn.textContent = '등록 중...';
+    const { data, error } = await sb.from('posts').insert({
+      user_id: user.id,
+      author_nickname: nickname,
+      category,
+      post_type,
+      title,
+      body,
+      image_url
+    }).select().single();
+
+    if (error) { showError('오류가 발생했습니다: ' + error.message); btn.disabled = false; btn.textContent = '등록하기'; return; }
+
+    location.href = 'post.html?id=' + data.id;
+  }
+
+  function showError(msg) {
+    const el = document.getElementById('error-msg');
+    el.textContent = msg;
+    el.style.display = 'block';
+  }
+
+  function updatePlaceholder() {
+    const cat = document.getElementById('category').value;
+    const textarea = document.getElementById('body');
+    if (!textarea) return;
+    const hints = {
+      '수리 Q&A': '기기 모델명, 증상, 발생 시점 등을 자세히 적어주시면 더 정확한 답변을 드릴 수 있습니다.',
+      '사용 팁': '어떤 기능인지, 어떻게 활용하는지 알려주세요. 스크린샷이나 설명을 자세히 적어주세요.',
+      '구매 추천': '예산, 용도, 고민하는 모델 등을 알려주시면 추천해드리기 쉽습니다.',
+      '기기 비교': '어떤 기기들을 비교하시나요? 사용 목적과 중요하게 생각하는 점을 알려주세요.',
+      '자유토론': '자유롭게 의견을 나눠보세요!',
+      '애플 소식': '애플 관련 소식을 공유해주세요. 출처 링크가 있다면 함께 남겨주세요.',
+    };
+    textarea.placeholder = hints[cat] || '내용을 자유롭게 입력해주세요.';
+  }
+
+  init();
+</script>
+</body>
+</html>

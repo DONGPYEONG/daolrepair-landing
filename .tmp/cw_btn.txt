@@ -1,0 +1,10 @@
+<div class="cw-cta-wrap reveal d2">
+        <p class="cw-cta-sub">접수부터 반송까지 — 전국 어디서나</p>
+        <button class="cw-open-btn" onclick="cwOpenModal()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          택배 접수하기
+        </button>
+        <div class="cw-cta-tags">
+          <span>무료 진단</span><span>수리 불가 시 비용 0원</span><span>3개월 무상 A/S</span>
+        </div>
+      </div>

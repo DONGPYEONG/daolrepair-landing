@@ -1,0 +1,157 @@
+<script>
+/* ── COURIER WIZARD ── */
+(function(){
+  var cwSel = { device: null, model: null, repairs: [] };
+  var cwScrolled = false;
+
+  /* Build device grid */
+  (function(){
+    var g = document.getElementById('cwDeviceGrid');
+    if(!g) return;
+    DEVICES.forEach(function(d){
+      var btn = document.createElement('button');
+      btn.className = 'device-btn';
+      btn.innerHTML = '<div class="device-btn-icon">' + DEVICE_SVGS[d.key] + '</div><span class="device-btn-label">' + d.label + '</span>';
+      btn.addEventListener('click', function(){
+        g.querySelectorAll('.device-btn').forEach(function(b){ b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        cwSel.device = d.key;
+        cwSel.model = null;
+        cwSel.repairs = [];
+        document.getElementById('cwNext1').disabled = false;
+      });
+      g.appendChild(btn);
+    });
+  })();
+
+  window.cwGoStep = function(n){
+    [1,2,3,4,5].forEach(function(i){
+      var panel = document.getElementById('cwp'+i);
+      if(panel) panel.classList.toggle('active', i===n);
+      var ps = document.getElementById('cwps'+i);
+      if(ps){
+        ps.classList.remove('active','done');
+        if(i===n) ps.classList.add('active');
+        else if(i<n) ps.classList.add('done');
+      }
+      if(i<5){
+        var pd = document.getElementById('cwpd'+i);
+        if(pd) pd.classList.toggle('done', i<n);
+      }
+    });
+  };
+
+  window.cwToStep2 = function(){
+    var d = DEVICES.find(function(x){ return x.key===cwSel.device; });
+    document.getElementById('cws2DeviceName').textContent = d.label;
+    var g = document.getElementById('cwModelGrid');
+    g.innerHTML = '';
+    d.models.forEach(function(m){
+      var btn = document.createElement('button');
+      btn.className = 'model-btn';
+      btn.textContent = m;
+      btn.addEventListener('click', function(){
+        g.querySelectorAll('.model-btn').forEach(function(b){ b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        cwSel.model = m;
+        document.getElementById('cwNext2').disabled = false;
+      });
+      g.appendChild(btn);
+    });
+    document.getElementById('cwNext2').disabled = true;
+    cwGoStep(2);
+  };
+
+  window.cwToStep3 = function(){
+    var d = DEVICES.find(function(x){ return x.key===cwSel.device; });
+    var g = document.getElementById('cwRepairGrid');
+    g.innerHTML = '';
+    cwSel.repairs = [];
+    d.repairs.forEach(function(r){
+      var btn = document.createElement('button');
+      btn.className = 'repair-btn';
+      btn.innerHTML = '<span class="repair-btn-icon">'+r.i+'</span><span class="repair-btn-label">'+r.l+'</span><div class="repair-btn-check">&#10003;</div>';
+      btn.addEventListener('click', function(){
+        btn.classList.toggle('selected');
+        if(btn.classList.contains('selected')) cwSel.repairs.push(r.l);
+        else cwSel.repairs = cwSel.repairs.filter(function(x){ return x!==r.l; });
+        document.getElementById('cwNext3').disabled = cwSel.repairs.length===0;
+      });
+      g.appendChild(btn);
+    });
+    document.getElementById('cwNext3').disabled = true;
+    cwGoStep(3);
+  };
+
+  window.cwToStep5 = function(){
+    var name = document.getElementById('cwName').value.trim();
+    var phone = document.getElementById('cwPhone').value.trim();
+    if(!name||!phone){ alert('이름과 연락처를 입력해주세요.'); return; }
+    var body = document.getElementById('cwConsentBody');
+    body.scrollTop = 0;
+    cwScrolled = false;
+    document.getElementById('cwScrollHint').classList.remove('hidden');
+    document.getElementById('cwConsentCheck').checked = false;
+    document.getElementById('cwCheckRow').classList.remove('checked');
+    var btn = document.getElementById('cwAgreeBtn');
+    btn.disabled = true; btn.classList.remove('active');
+    body.onscroll = function(){
+      if(!cwScrolled && body.scrollHeight - body.scrollTop - body.clientHeight < 80){
+        cwScrolled = true;
+        document.getElementById('cwScrollHint').classList.add('hidden');
+      }
+      cwUpdateAgreeBtn();
+    };
+    setTimeout(function(){
+      if(body.scrollHeight <= body.clientHeight + 10){
+        cwScrolled = true;
+        document.getElementById('cwScrollHint').classList.add('hidden');
+        cwUpdateAgreeBtn();
+      }
+    }, 100);
+    cwGoStep(5);
+  };
+
+  function cwUpdateAgreeBtn(){
+    var chk = document.getElementById('cwConsentCheck');
+    var ok = cwScrolled && chk.checked;
+    var btn = document.getElementById('cwAgreeBtn');
+    btn.disabled = !ok;
+    btn.classList.toggle('active', ok);
+  }
+
+  window.cwToggleConsent = function(fromDiv){
+    var chk = document.getElementById('cwConsentCheck');
+    if(fromDiv) chk.checked = !chk.checked;
+    document.getElementById('cwCheckRow').classList.toggle('checked', chk.checked);
+    cwUpdateAgreeBtn();
+  };
+
+  window.cwSubmit = function(){
+    var d = DEVICES.find(function(x){ return x.key===cwSel.device; });
+    var name = document.getElementById('cwName').value.trim();
+    var phone = document.getElementById('cwPhone').value.trim();
+    document.getElementById('cwProgress').style.display = 'none';
+    [1,2,3,4,5].forEach(function(i){
+      var p = document.getElementById('cwp'+i);
+      if(p) p.classList.remove('active');
+    });
+    var success = document.getElementById('cwSuccess');
+    success.innerHTML =
+      '<div style="text-align:center;padding:30px 10px 10px">' +
+      '<div style="font-size:52px;margin-bottom:16px">&#x2705;</div>' +
+      '<h4 style="font-size:22px;font-weight:800;color:#fff;margin-bottom:10px">접수가 완료되었습니다!</h4>' +
+      '<p style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.7">입력하신 연락처로 담당자가<br>빠른 시간 내 연락드립니다.<br><br>' +
+      '<strong style="color:var(--orange)">수리 완료 후 비용은 0원입니다.</strong></p>' +
+      '<div style="background:rgba(255,255,255,0.05);border-radius:14px;padding:18px 20px;margin:20px 0;text-align:left">' +
+      '<div style="display:flex;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.07)"><span style="font-size:13px;color:rgba(255,255,255,0.4);min-width:60px">이름</span><span style="font-size:13px;font-weight:700;color:#fff">' + name + '</span></div>' +
+      '<div style="display:flex;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.07)"><span style="font-size:13px;color:rgba(255,255,255,0.4);min-width:60px">연락처</span><span style="font-size:13px;font-weight:700;color:#fff">' + phone + '</span></div>' +
+      '<div style="display:flex;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.07)"><span style="font-size:13px;color:rgba(255,255,255,0.4);min-width:60px">기기</span><span style="font-size:13px;font-weight:700;color:#fff">' + (d?d.label:'') + ' · ' + (cwSel.model||'') + '</span></div>' +
+      '<div style="display:flex;gap:8px;padding:6px 0"><span style="font-size:13px;color:rgba(255,255,255,0.4);min-width:60px">증상</span><span style="font-size:13px;font-weight:700;color:#fff">' + cwSel.repairs.join(', ') + '</span></div>' +
+      '</div>' +
+      '<p style="font-size:12px;color:rgba(255,255,255,0.25)">선불 택배로 발송해주세요 · 3개월 무상 A/S</p>' +
+      '</div>';
+    success.classList.add('show');
+  };
+})();
+</script>

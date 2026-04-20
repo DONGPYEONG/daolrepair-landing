@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:xn--oy2bn5du4disb8yh90dh43a.com)",
+      "WebFetch(domain:applerepair2.qshop.ai)",
+      "Bash(python -c \":*)",
+      "Bash(powershell -Command \"Get-Content ''c:\\\\Users\\\\다올리페어\\\\Downloads\\\\landingpage-20260326T082547Z-3-001\\\\landingpage\\\\index.html'' | Measure-Object -Line\")",
+      "Bash(powershell -Command \":*)"
+    ]
+  }
+}
