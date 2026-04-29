@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>다올리페어로 이동 중...</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh; margin: 0;
+      background: #0f0f0f; color: #fff; text-align: center; padding: 20px;
+    }
+    .wrap { max-width: 360px; }
+    .spin {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.15);
+      border-top-color: #FF6B00;
+      animation: spin 0.9s linear infinite;
+      margin: 0 auto 20px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    h1 { font-size: 18px; margin: 0 0 10px; font-weight: 700; }
+    p { font-size: 14px; color: #999; margin: 0 0 16px; line-height: 1.5; }
+    .btn {
+      display: inline-block; padding: 14px 32px;
+      background: #FF6B00; color: #fff;
+      text-decoration: none; border-radius: 12px;
+      font-weight: 700; font-size: 15px;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.9; }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="spin" id="spin"></div>
+  <h1 id="title">다올리페어로 이동 중...</h1>
+  <p id="hint">잠시만 기다려주세요</p>
+  <a class="btn hidden" id="manual" href="https://xn--2j1bq2k97kxnah86c.com/">바로가기</a>
+</div>
+<script>
+(function(){
+  var APPS_SCRIPT = 'https://script.google.com/macros/s/AKfycbyue4JSRIza_2adIaU6Kz99MmJ33sp9HR71lLMn-lY-aivA5ME3RsP3RXNxxd33mZD77g/exec';
+  var FALLBACK    = 'https://xn--2j1bq2k97kxnah86c.com/#estimate';
+
+  function getParam(name) {
+    var m = location.search.match(new RegExp('[?&]' + name + '=([^&]*)'));
+    return m ? decodeURIComponent(m[1].replace(/\+/g, ' ')) : '';
+  }
+
+  function showManual(url, msg) {
+    document.getElementById('spin').classList.add('hidden');
+    document.getElementById('title').textContent = '바로가기 버튼을 눌러주세요';
+    document.getElementById('hint').textContent = msg || '자동 이동이 차단되어 직접 이동이 필요합니다';
+    var btn = document.getElementById('manual');
+    btn.href = url;
+    btn.classList.remove('hidden');
+  }
+
+  function navigate(url) {
+    try {
+      window.location.replace(url);
+    } catch(e) {
+      window.location.href = url;
+    }
+  }
+
+  var goKey = getParam('go');
+  var reviewKey = getParam('review');
+
+  if (!goKey && !reviewKey) {
+    navigate(FALLBACK);
+    return;
+  }
+
+  var apiUrl = APPS_SCRIPT + '?format=json&'
+             + (goKey ? 'go=' + encodeURIComponent(goKey)
+                      : 'review=' + encodeURIComponent(reviewKey));
+
+  // 5초 안에 응답 없으면 fallback 버튼 표시
+  var timeoutId = setTimeout(function(){
+    showManual(FALLBACK, '응답이 지연되어 홈페이지로 이동합니다');
+  }, 5000);
+
+  fetch(apiUrl, { method: 'GET', mode: 'cors' })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      clearTimeout(timeoutId);
+      var url = (data && data.url) ? data.url : FALLBACK;
+      navigate(url);
+      // 자동 이동 실패 대비 — 1.5초 뒤 수동 버튼 표시
+      setTimeout(function(){ showManual(url); }, 1500);
+    })
+    .catch(function(err){
+      clearTimeout(timeoutId);
+      showManual(FALLBACK, '연결에 실패했습니다. 버튼을 눌러 이동해주세요');
+    });
+})();
+</script>
+</body>
+</html>

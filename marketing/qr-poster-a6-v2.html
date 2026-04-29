@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>다올리페어 카카오 친구추가 — A6 포스터</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Do+Hyeon&display=swap" rel="stylesheet">
+<style>
+  /* A6 사이즈: 105mm × 148mm */
+  @page {
+    size: A6 portrait;
+    margin: 0;
+  }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    background: #f0f0f0; /* 화면에서만 보이는 배경 */
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .poster {
+    width: 105mm;
+    height: 148mm;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    color: #1a1a1a;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 카카오 노란색 띠 — 이벤트 강조 */
+  .kakao-bar {
+    background: #FEE500;
+    color: #181600;
+    padding: 3.5mm 5mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2mm;
+    border-bottom: 2.5px solid #181600;
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  }
+  .kakao-bar svg { flex-shrink: 0; }
+  .kakao-bar-text {
+    font-size: 12pt;
+    font-weight: 900;
+    letter-spacing: -0.3px;
+  }
+  .kakao-bar-text .spark {
+    display: inline-block;
+    margin: 0 0.5mm;
+    transform: rotate(-12deg);
+  }
+
+  /* 메인 헤더 — 5,000원 + 안내 카피까지 통합 (확장) */
+  .header {
+    background: linear-gradient(165deg, #E8732A 0%, #FF8538 60%, #FF9148 100%);
+    color: #fff;
+    padding: 3mm 5mm 5mm;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .header::before, .header::after { z-index: 0; }
+  .header > * { position: relative; z-index: 1; }
+  .header::before, .header::after {
+    content: ''; position: absolute; border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    pointer-events: none;
+  }
+  .header::before { width: 26mm; height: 26mm; top: -10mm; right: -8mm; }
+  .header::after  { width: 18mm; height: 18mm; bottom: -8mm; left: -6mm; }
+
+  .header .greet {
+    display: inline-block;
+    background: #FEE500;
+    color: #181600;
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    font-weight: 900;
+    font-size: 9pt;
+    padding: 0.8mm 3mm;
+    border-radius: 999px;
+    margin-bottom: 2.5mm;
+    letter-spacing: -0.2px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    transform: rotate(-3deg);
+  }
+  .header .price {
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    font-weight: 900;
+    font-size: 26pt;
+    line-height: 1.4;          /* 시스템 폰트 한글은 더 큰 line-height 필요 */
+    letter-spacing: -1.2px;
+    margin: 0;
+    padding: 2mm 0 3mm;        /* 위아래 충분한 안전 여백 */
+    text-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    white-space: nowrap;
+    display: block;
+    text-align: center;
+  }
+  .header .price-deco {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5mm;
+    width: 100%;
+  }
+  .header .price-deco .star {
+    font-size: 14pt;
+    transform: rotate(-15deg);
+    display: inline-block;
+  }
+  .header .price-deco .star.right { transform: rotate(15deg); }
+  .header .sub {
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 10pt;
+    margin-top: 2.5mm;
+    opacity: 0.98;
+    letter-spacing: -0.3px;
+    line-height: 1.35;
+  }
+  .header .sub strong { color: #FEE500; }
+
+  /* 중앙 본문 */
+  .body {
+    flex: 1;
+    padding: 5mm 6mm 3mm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* 헤더 안에 들어간 안내 카피 */
+  .header .lead {
+    margin-top: 2.5mm;
+    width: 100%;
+  }
+  .header .lead-text {
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    font-weight: 600;
+    font-size: 8.5pt;
+    color: #fff;
+    line-height: 1.45;
+    letter-spacing: -0.3px;
+  }
+  .header .lead-text .hl {
+    background: #FEE500;
+    color: #181600;
+    padding: 0.4mm 1.5mm;
+    border-radius: 1.5mm;
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    font-weight: 900;
+  }
+
+  /* QR 코드 자리 */
+  .qr-wrap {
+    background: #fff;
+    border: 2px dashed #E8732A;
+    border-radius: 4mm;
+    padding: 2.5mm;
+    margin: 0 auto 4mm;
+    width: 42mm;
+    height: 42mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(232,115,42,0.12);
+  }
+  .qr-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .qr-placeholder {
+    font-size: 7pt;
+    color: #999;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* 사용 방법 (3단계) — QR과 가운데 밸런스 */
+  .steps {
+    width: 60mm;              /* QR 코드 42mm와 균형 */
+    margin: 0 auto 3mm;
+    background: #FFF8F2;
+    border-radius: 3mm;
+    padding: 3mm 4mm;
+    text-align: left;
+    border: 1.5px dashed rgba(232,115,42,0.35);
+  }
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 2.5mm;
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    font-weight: 600;
+    font-size: 9pt;
+    color: #1a1a1a;
+    line-height: 1.4;
+    padding: 0.8mm 0;
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 5mm; height: 5mm;
+    background: #E8732A;
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    font-weight: 900;
+    font-size: 8pt;
+  }
+  .step strong { color: #E8732A; font-weight: 900; }
+
+  /* 푸터 — 깔끔한 단일 메시지 */
+  .footer {
+    background: #FFF8F2;
+    color: #6b6b6b;
+    padding: 3mm 5mm;
+    text-align: center;
+    border-top: 1.5px dashed rgba(232,115,42,0.35);
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  }
+  .footer .validity {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #E8732A;
+    letter-spacing: -0.2px;
+  }
+
+  /* 인쇄 시 화면 배경 제거 */
+  @media print {
+    body { background: #fff; padding: 0; min-height: 0; }
+    .poster { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="poster">
+
+  <!-- 카카오 노란색 띠 (이벤트 강조) -->
+  <div class="kakao-bar">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="#181600" aria-hidden="true">
+      <path d="M12 3C6.48 3 2 6.48 2 10.62c0 2.65 1.77 4.97 4.43 6.32-.18.65-.65 2.34-.74 2.7-.12.45.16.45.34.33.14-.1 2.27-1.55 3.18-2.17.92.13 1.86.21 2.79.21 5.52 0 10-3.48 10-7.62S17.52 3 12 3z"/>
+    </svg>
+    <span class="kakao-bar-text">다올리페어 채널 추가 <span class="spark">🎉</span> EVENT</span>
+  </div>
+
+  <!-- 메인 헤더 — 5,000원 + 안내 카피까지 통합 -->
+  <div class="header">
+    <div class="greet">🎁 친구추가 한정 혜택</div>
+    <div class="price">
+      <span class="price-deco">
+        <span class="star">⭐</span>
+        <span>5,000원</span>
+        <span class="star right">⭐</span>
+      </span>
+    </div>
+    <div class="sub">다올리페어 수리비 <strong>할인 쿠폰</strong></div>
+
+    <!-- 안내 카피 (헤더 안으로 통합) -->
+    <div class="lead">
+      <div class="lead-text">
+        QR 찍고 카톡 채널 친구가 되어주세요<br>
+        다음 수리비 <span class="hl">5,000원 할인</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 중앙 본문 -->
+  <div class="body">
+
+    <!-- QR 코드 -->
+    <div class="qr-wrap">
+      <img src="qr-code.png" alt="다올리페어 카카오 친구추가 QR">
+    </div>
+
+    <!-- 사용 방법 -->
+    <div class="steps">
+      <div class="step"><span class="step-num">1</span>카메라로 <strong>QR 스캔</strong></div>
+      <div class="step"><span class="step-num">2</span>다올리페어 <strong>친구추가</strong></div>
+      <div class="step"><span class="step-num">3</span>직원에게 보여주고 <strong>즉시 할인</strong></div>
+    </div>
+
+  </div>
+
+  <!-- 푸터 -->
+  <div class="footer">
+    <div class="validity">⏰ 6개월 이내 사용 유효</div>
+  </div>
+
+</div>
+
+</body>
+</html>
