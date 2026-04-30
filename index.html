@@ -343,11 +343,11 @@
       transform: rotate(45deg); animation: bounce 2s ease infinite;
     }
 
-    /* ── 카카오 채널 가로 프로모 배너 (nav 아래 고정) ─── */
+    /* ── 가로 프로모 배너 (nav 아래 고정) — 메시지 종류에 따라 배경색 자동 변경 ─── */
     .promo-banner {
       position: fixed; top: 64px; left: 0; right: 0;
       z-index: 999;
-      background: #FEE500;
+      background: #FEE500; /* 기본: 카카오 노랑 */
       color: #181600;
       padding: 9px 16px;
       display: flex; align-items: center; justify-content: center;
@@ -356,12 +356,24 @@
       letter-spacing: -0.2px;
       border-bottom: 1.5px solid rgba(0,0,0,0.1);
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      transition: transform var(--t-normal) var(--ease-soft);
+      transition: background-color 0.5s ease, color 0.5s ease, transform var(--t-normal) var(--ease-soft);
     }
+    .promo-banner.is-kakao {
+      background: #FEE500;
+      color: #181600;
+      border-bottom-color: rgba(0,0,0,0.1);
+    }
+    .promo-banner.is-kakao .promo-slide a strong { color: #C55E1A; }
+    .promo-banner.is-article {
+      background: #E8732A; /* 다올 주황 */
+      color: #fff;
+      border-bottom-color: rgba(0,0,0,0.15);
+    }
+    .promo-banner.is-article .promo-slide a strong { color: #fff; }
     .promo-banner a {
       display: inline-flex; align-items: center; gap: 8px;
       color: inherit; text-decoration: none;
-      max-width: calc(100% - 32px);
+      max-width: 100%;
     }
     .promo-banner svg { flex-shrink: 0; }
     .promo-banner strong { color: #C55E1A; font-weight: 900; }
@@ -380,6 +392,21 @@
     .promo-banner .promo-close:hover { background: rgba(0,0,0,0.2); }
     .promo-banner.hidden { transform: translateY(-100%); pointer-events: none; }
     body.has-promo { padding-top: 38px; }
+    /* 회전 메시지 슬롯 */
+    .promo-slide {
+      position: relative; min-height: 1.4em;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; max-width: 100%; padding: 0 12px;
+    }
+    .promo-slide a {
+      color: inherit; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      opacity: 1; transition: opacity 0.45s ease;
+      max-width: 100%;
+    }
+    .promo-slide a > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+    .promo-slide.fading a { opacity: 0; }
+    .promo-slide a strong { color: #C55E1A; font-weight: 900; }
     @media (max-width: 768px) {
       .promo-banner { font-size: 12px; padding: 8px 30px 8px 12px; gap: 6px; }
       .promo-banner svg { width: 16px; height: 16px; }
@@ -1140,16 +1167,141 @@
 </head>
 <body class="has-promo">
 
-<!-- 카카오 채널 가로 프로모 배너 (메뉴바 아래 고정) -->
+<!-- 카카오 채널 + 칼럼 자동 회전 프로모 배너 (메뉴바 아래 고정) -->
 <div class="promo-banner" id="promoBanner">
-  <a href="http://pf.kakao.com/_xfRNMX/friend" target="_blank" rel="noopener noreferrer">
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="#181600" aria-hidden="true">
-      <path d="M12 3C6.48 3 2 6.48 2 10.62c0 2.65 1.77 4.97 4.43 6.32-.18.65-.65 2.34-.74 2.7-.12.45.16.45.34.33.14-.1 2.27-1.55 3.18-2.17.92.13 1.86.21 2.79.21 5.52 0 10-3.48 10-7.62S17.52 3 12 3z"/>
-    </svg>
-    <span>카카오톡 채널 추가 시 <strong>5,000원 할인!</strong></span>
-  </a>
-  <button class="promo-close" onclick="closePromoBanner()" aria-label="배너 닫기">×</button>
+  <div class="promo-slide" id="promoSlide">
+    <!-- 메시지가 자바스크립트로 자동 회전 -->
+  </div>
 </div>
+
+<script>
+/* ── 프로모 배너 자동 회전 (B안 — 5천원 할인 자주 + 시즌 자동 교체) ── */
+(function(){
+  // SVG 아이콘들
+  var ICON_KAKAO = '<svg viewBox="0 0 24 24" width="18" height="18" fill="#181600" aria-hidden="true"><path d="M12 3C6.48 3 2 6.48 2 10.62c0 2.65 1.77 4.97 4.43 6.32-.18.65-.65 2.34-.74 2.7-.12.45.16.45.34.33.14-.1 2.27-1.55 3.18-2.17.92.13 1.86.21 2.79.21 5.52 0 10-3.48 10-7.62S17.52 3 12 3z"/></svg>';
+  var EMOJI = function(e){ return '<span style="font-size:15px">'+e+'</span>'; };
+
+  // 핵심 5천원 할인 (가장 자주 노출)
+  var KAKAO_PROMO = {
+    icon: ICON_KAKAO,
+    text: '카카오톡 채널 추가 시 <strong>5,000원 할인!</strong>',
+    href: 'http://pf.kakao.com/_xfRNMX/friend',
+    target: '_blank',
+    kind: 'kakao',
+  };
+
+  // 12개월 시즌별 칼럼 메시지 풀 (월별 자동 교체) — 모바일 한 줄 노출용 짧은 카피
+  var SEASON_POOL = {
+    1:  [ // 1월
+      {emoji:'📱', text:'아이폰 분실 24시간 골든타임', href:'/articles/iphone-lost-24h-checklist.html'},
+      {emoji:'⚡', text:'갑자기 안 켜짐 원인별 대처', href:'/articles/iphone-wont-turn-on-before-work.html'},
+      {emoji:'💧', text:'침수 시 절대 하면 안 될 것', href:'/articles/iphone-water-damage-dos-donts.html'},
+    ],
+    2:  [ // 2월
+      {emoji:'💝', text:'부모님 폰 12가지 안전 세팅', href:'/articles/senior-iphone-safety-setup-guide.html'},
+      {emoji:'📱', text:'아이폰 분실 24시간 골든타임', href:'/articles/iphone-lost-24h-checklist.html'},
+      {emoji:'🎓', text:'중고 아이폰 9가지 체크리스트', href:'/articles/parents-day-used-iphone-checklist.html'},
+    ],
+    3:  [ // 3월
+      {emoji:'🌸', text:'봄철 황사 충전포트 청소법', href:'/articles/iphone-spring-dust-charging-port.html'},
+      {emoji:'🎒', text:'자녀 아이패드 학부모 가이드', href:'/articles/student-ipad-spring-broken-parent-guide.html'},
+      {emoji:'⚡', text:'아이폰 충전 단자 청소법', href:'/articles/iphone-charging-port-cleaning.html'},
+    ],
+    4:  [ // 4월
+      {emoji:'💝', text:'어버이날 부모님 폰 9가지 체크', href:'/articles/parents-day-used-iphone-checklist.html'},
+      {emoji:'🌸', text:'봄철 황사 충전포트 청소법', href:'/articles/iphone-spring-dust-charging-port.html'},
+      {emoji:'🎒', text:'자녀 아이패드 학부모 가이드', href:'/articles/student-ipad-spring-broken-parent-guide.html'},
+    ],
+    5:  [ // 5월
+      {emoji:'👶', text:'어린이날 자녀 첫 폰 가이드', href:'/articles/children-day-first-iphone-guide.html'},
+      {emoji:'💝', text:'어버이날 부모님 폰 9가지 체크', href:'/articles/parents-day-used-iphone-checklist.html'},
+      {emoji:'🌳', text:'캠핑·등산 출발 전 점검', href:'/articles/spring-camping-hiking-iphone-watch-care.html'},
+    ],
+    6:  [ // 6월
+      {emoji:'☔', text:'장마철 침수 응급 대처법', href:'/articles/iphone-water-damage-dos-donts.html'},
+      {emoji:'💧', text:'IP68 방수 한계 — 라이더 케어', href:'/articles/delivery-rider-iphone-care-guide.html'},
+      {emoji:'🌳', text:'캠핑·등산 출발 전 점검', href:'/articles/spring-camping-hiking-iphone-watch-care.html'},
+    ],
+    7:  [ // 7월
+      {emoji:'☔', text:'침수 시 절대 하면 안 될 것', href:'/articles/iphone-water-damage-dos-donts.html'},
+      {emoji:'🔥', text:'아이폰 발열 진단 가이드', href:'/articles/iphone-overheating.html'},
+      {emoji:'🏖️', text:'해외여행 전 폰 깨짐 대처', href:'/articles/iphone-screen-broken-before-travel.html'},
+    ],
+    8:  [ // 8월
+      {emoji:'☔', text:'침수 시 절대 하면 안 될 것', href:'/articles/iphone-water-damage-dos-donts.html'},
+      {emoji:'🔥', text:'아이폰 발열 진단 가이드', href:'/articles/iphone-overheating.html'},
+      {emoji:'🏖️', text:'해외여행 전 폰 깨짐 대처', href:'/articles/iphone-screen-broken-before-travel.html'},
+    ],
+    9:  [ // 9월
+      {emoji:'🎒', text:'자녀 아이패드 학부모 가이드', href:'/articles/student-ipad-spring-broken-parent-guide.html'},
+      {emoji:'🔋', text:'배터리 80% 미만 교체 시점', href:'/articles/iphone-battery-replacement-guide.html'},
+      {emoji:'📋', text:'AppleCare+ 갱신 결정 가이드', href:'/articles/applecare-plus-renewal-decision-guide.html'},
+    ],
+    10: [ // 10월
+      {emoji:'🔋', text:'배터리 80% 미만 교체 시점', href:'/articles/iphone-battery-replacement-guide.html'},
+      {emoji:'📋', text:'AppleCare+ 갱신 결정 가이드', href:'/articles/applecare-plus-renewal-decision-guide.html'},
+      {emoji:'⚡', text:'AI 배터리 빨리 닳음 원인', href:'/articles/apple-intelligence-battery-drain-guide.html'},
+    ],
+    11: [ // 11월
+      {emoji:'⚡', text:'갑자기 안 켜짐 원인별 대처', href:'/articles/iphone-wont-turn-on-before-work.html'},
+      {emoji:'🔋', text:'배터리 80% 미만 교체 시점', href:'/articles/iphone-battery-replacement-guide.html'},
+      {emoji:'⚠️', text:'중고폰 사기 7일 골든타임', href:'/articles/used-iphone-fraud-7day-action-guide.html'},
+    ],
+    12: [ // 12월
+      {emoji:'💝', text:'부모님 폰 12가지 안전 세팅', href:'/articles/senior-iphone-safety-setup-guide.html'},
+      {emoji:'📱', text:'아이폰 분실 24시간 골든타임', href:'/articles/iphone-lost-24h-checklist.html'},
+      {emoji:'⚠️', text:'중고폰 사기 7일 골든타임', href:'/articles/used-iphone-fraud-7day-action-guide.html'},
+    ],
+  };
+
+  // 현재 월 자동 감지
+  var month = new Date().getMonth() + 1;
+  var seasonMessages = (SEASON_POOL[month] || SEASON_POOL[4]);
+
+  // B안: 5천원 할인을 자주 노출 — 할인 → 시즌1 → 할인 → 시즌2 → 할인 → 시즌3
+  var rotation = [];
+  seasonMessages.forEach(function(msg){
+    rotation.push(KAKAO_PROMO);
+    rotation.push({
+      icon: EMOJI(msg.emoji),
+      text: msg.text,
+      href: msg.href,
+      target: '_self',
+      kind: 'article',
+    });
+  });
+
+  var banner = document.getElementById('promoBanner');
+  var slide = document.getElementById('promoSlide');
+  var idx = 0;
+  var INTERVAL = 5000; // 5초마다 교체
+  var FADE_MS = 450;
+
+  function render(item){
+    var target = item.target ? ' target="'+item.target+'" rel="noopener noreferrer"' : '';
+    slide.innerHTML = '<a href="'+item.href+'"'+target+'>'+item.icon+'<span>'+item.text+'</span></a>';
+    // 메시지 종류에 따라 배너 배경색 변경 (카카오=노랑, 칼럼=주황)
+    banner.classList.remove('is-kakao', 'is-article');
+    banner.classList.add(item.kind === 'kakao' ? 'is-kakao' : 'is-article');
+  }
+
+  function rotate(){
+    slide.classList.add('fading');
+    setTimeout(function(){
+      idx = (idx + 1) % rotation.length;
+      render(rotation[idx]);
+      slide.classList.remove('fading');
+    }, FADE_MS);
+  }
+
+  // 초기 렌더링
+  render(rotation[0]);
+  // 5초마다 회전 (메시지가 1개뿐이면 회전 안 함)
+  if (rotation.length > 1) {
+    setInterval(rotate, INTERVAL);
+  }
+})();
+</script>
 
 <!-- 비밀번호 잠금 화면 -->
 </script>
@@ -1513,6 +1665,175 @@ document.getElementById('mobReservePopup').addEventListener('click', function(e)
       </div>
     </div>
 
+    <!-- ── 증상·상황별 가이드 캐러셀 (다크 테마) ── -->
+    <style>
+      .dx-guide-section { margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,0.08); }
+      .dx-guide-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 22px; gap: 16px; flex-wrap: wrap; }
+      .dx-guide-head-left { flex: 1; min-width: 240px; }
+      .dx-guide-eyebrow { font-size: 12px; color: var(--orange); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+      .dx-guide-title { font-size: clamp(20px, 3.5vw, 26px); font-weight: 900; line-height: 1.35; color: #fff; margin: 0; word-break: keep-all; }
+      .dx-guide-sub { font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 8px; line-height: 1.6; }
+      .dx-guide-all-link { font-size: 13px; font-weight: 700; color: var(--orange); text-decoration: none; padding: 8px 16px; border: 1.5px solid var(--orange); border-radius: 50px; white-space: nowrap; transition: all 0.18s; }
+      .dx-guide-all-link:hover { background: var(--orange); color: #fff; }
+      .dx-guide-track-wrap { position: relative; overflow: hidden; }
+      .dx-guide-track {
+        display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+        scroll-behavior: smooth; padding-bottom: 12px;
+        scrollbar-width: thin; scrollbar-color: rgba(232,115,42,0.4) transparent;
+      }
+      .dx-guide-track::-webkit-scrollbar { height: 6px; }
+      .dx-guide-track::-webkit-scrollbar-thumb { background: rgba(232,115,42,0.35); border-radius: 4px; }
+      .dx-guide-card {
+        flex: 0 0 280px; scroll-snap-align: start;
+        background: rgba(255,255,255,0.04); border: 1.5px solid rgba(255,255,255,0.09);
+        border-radius: 18px; padding: 22px 20px; text-decoration: none; color: inherit;
+        transition: all 0.2s; display: flex; flex-direction: column; gap: 10px;
+      }
+      .dx-guide-card:hover { border-color: var(--orange); background: rgba(232,115,42,0.08); transform: translateY(-3px); }
+      .dx-guide-card-badge { display: inline-block; align-self: flex-start; background: rgba(232,115,42,0.18); color: var(--orange); font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 50px; }
+      .dx-guide-card-title { font-size: 16px; font-weight: 800; line-height: 1.45; color: #fff; margin: 0; word-break: keep-all; }
+      .dx-guide-card-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; flex: 1; word-break: keep-all; }
+      .dx-guide-card-cta { font-size: 12px; font-weight: 700; color: var(--orange); }
+      .dx-guide-nav { display: flex; gap: 8px; margin-top: 14px; justify-content: flex-end; }
+      .dx-guide-nav-btn {
+        width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.18);
+        background: transparent; color: #fff; cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: all 0.18s; font-family: inherit; font-size: 18px;
+      }
+      .dx-guide-nav-btn:hover { border-color: var(--orange); color: var(--orange); }
+      @media (max-width: 768px) {
+        .dx-guide-card { flex: 0 0 240px; padding: 18px 16px; }
+        .dx-guide-card-title { font-size: 15px; }
+      }
+      @media (max-width: 480px) {
+        .dx-guide-section { margin-top: 48px; padding-top: 36px; }
+        .dx-guide-card { flex: 0 0 220px; }
+      }
+    </style>
+
+    <div class="dx-guide-section reveal d1">
+      <div class="dx-guide-head">
+        <div class="dx-guide-head-left">
+          <div class="dx-guide-eyebrow">REPAIR GUIDE</div>
+          <h3 class="dx-guide-title">방문 전 — 미리 보는 가이드</h3>
+          <p class="dx-guide-sub">시기·증상·상황별로 미리 알아두면 좋은 칼럼들</p>
+        </div>
+        <a href="articles/index.html" class="dx-guide-all-link">전체 칼럼 보기 →</a>
+      </div>
+
+      <div class="dx-guide-track-wrap">
+        <div class="dx-guide-track" id="dxGuideTrack">
+          <a class="dx-guide-card" href="/articles/iphone-spring-dust-charging-port.html">
+            <span class="dx-guide-card-badge">🌸 봄철 시즌</span>
+            <h4 class="dx-guide-card-title">봄철 황사로 막힌 충전포트 — 청소 vs 수리</h4>
+            <p class="dx-guide-card-desc">황사 시즌엔 충전포트 막힘이 두 배. 청소로 끝나는지, 단자 교체가 필요한지 정확히 판단하는 신호 정리</p>
+            <span class="dx-guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="dx-guide-card" href="/articles/parents-day-used-iphone-checklist.html">
+            <span class="dx-guide-card-badge">💝 어버이날</span>
+            <h4 class="dx-guide-card-title">부모님 선물 중고 아이폰 — 9가지 체크</h4>
+            <p class="dx-guide-card-desc">드리시기 전 5분 점검으로 5년 안심. 배터리·침수·사설수리·활성화 잠금까지 확인할 9가지 항목</p>
+            <span class="dx-guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="dx-guide-card" href="/articles/children-day-first-iphone-guide.html">
+            <span class="dx-guide-card-badge">👶 어린이날</span>
+            <h4 class="dx-guide-card-title">자녀 첫 폰 — 안전 세팅 7단계</h4>
+            <p class="dx-guide-card-desc">결제 사고·보이스피싱·분실까지 막아주는 가족공유 + 스크린타임 처음 30분 세팅 가이드</p>
+            <span class="dx-guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="dx-guide-card" href="/articles/iphone-water-damage-dos-donts.html">
+            <span class="dx-guide-card-badge">💧 침수 응급</span>
+            <h4 class="dx-guide-card-title">침수됐을 때 — 절대 하면 안 되는 것</h4>
+            <p class="dx-guide-card-desc">전원·충전·드라이기 — 메인보드까지 살리려면 처음 30분이 골든타임. 시간 순서별 행동 매뉴얼</p>
+            <span class="dx-guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="dx-guide-card" href="/articles/iphone-lost-24h-checklist.html">
+            <span class="dx-guide-card-badge">⚡ 분실 응급</span>
+            <h4 class="dx-guide-card-title">아이폰 분실 24시간 — 도용·결제 골든타임</h4>
+            <p class="dx-guide-card-desc">통신사 골든타임, 나의 찾기, LOST112, 카드 정지까지 — 시간 순서대로 정리한 응급 매뉴얼</p>
+            <span class="dx-guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="dx-guide-card" href="/articles/used-iphone-fraud-7day-action-guide.html">
+            <span class="dx-guide-card-badge">⚠️ 분쟁 대처</span>
+            <h4 class="dx-guide-card-title">중고폰 사기 — 7일 골든타임 매뉴얼</h4>
+            <p class="dx-guide-card-desc">송금 막기, 사이버수사대 신고, 형사 절차, 배상명령제도까지. 처음 7일에 회수 가능성 결정</p>
+            <span class="dx-guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="dx-guide-card" href="/articles/applecare-plus-renewal-decision-guide.html">
+            <span class="dx-guide-card-badge">📋 의사결정</span>
+            <h4 class="dx-guide-card-title">AppleCare+ 갱신 — 5가지 질문</h4>
+            <p class="dx-guide-card-desc">갱신할까 말까 5분 만에 결정하는 플로우차트. 모델·사용 패턴·배터리 상태별 판단 기준</p>
+            <span class="dx-guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="dx-guide-card" href="/articles/senior-iphone-safety-setup-guide.html">
+            <span class="dx-guide-card-badge">👴 시니어</span>
+            <h4 class="dx-guide-card-title">부모님 폰 — 12가지 안전 세팅</h4>
+            <p class="dx-guide-card-desc">분실·결제 사기·보이스피싱·잘못 누름 사고를 막는 12가지 설정. 30분이면 평생 안심</p>
+            <span class="dx-guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="dx-guide-card" href="/articles/spring-camping-hiking-iphone-watch-care.html">
+            <span class="dx-guide-card-badge">🌳 야외</span>
+            <h4 class="dx-guide-card-title">캠핑·등산 출발 전 — 30분 점검</h4>
+            <p class="dx-guide-card-desc">이슬·결로·계곡물·낙하·저온 — 야외 환경에서 폰을 지키는 출발 전 7단계 + 위급 상황 대처</p>
+            <span class="dx-guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="dx-guide-card" href="/articles/iphone-charging-port-cleaning.html">
+            <span class="dx-guide-card-badge">⚡ 충전 단자</span>
+            <h4 class="dx-guide-card-title">아이폰 충전 단자 청소법 — 5분 가이드</h4>
+            <p class="dx-guide-card-desc">충전 안 되는 원인 1위는 단자 안 먼지. 집에서 안전하게 청소하는 법과 절대 하면 안 되는 것</p>
+            <span class="dx-guide-card-cta">자세히 보기 →</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="dx-guide-nav">
+        <button class="dx-guide-nav-btn" onclick="dxGuideScroll(-1)" aria-label="이전">‹</button>
+        <button class="dx-guide-nav-btn" onclick="dxGuideScroll(1)" aria-label="다음">›</button>
+      </div>
+    </div>
+
+    <script>
+    /* ── diagnosis 섹션 가이드 캐러셀 좌우 스크롤 + 자동 슬라이드 ── */
+    (function(){
+      var track = document.getElementById('dxGuideTrack');
+      if (!track) return;
+      window.dxGuideScroll = function(dir){
+        var card = track.querySelector('.dx-guide-card');
+        if (!card) return;
+        var step = card.offsetWidth + 14;
+        track.scrollBy({ left: dir * step, behavior: 'smooth' });
+      };
+      var autoTimer = null;
+      var paused = false;
+      function startAuto(){
+        if (autoTimer) return;
+        autoTimer = setInterval(function(){
+          if (paused) return;
+          if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 8) {
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            window.dxGuideScroll(1);
+          }
+        }, 7000);
+      }
+      track.addEventListener('mouseenter', function(){ paused = true; });
+      track.addEventListener('mouseleave', function(){ paused = false; });
+      track.addEventListener('touchstart', function(){ paused = true; }, {passive:true});
+      track.addEventListener('touchend', function(){ setTimeout(function(){ paused = false; }, 3000); }, {passive:true});
+      startAuto();
+    })();
+    </script>
+
     <div style="text-align:center; margin-top:56px;">
       <p style="font-size:14px; color:rgba(255,255,255,0.45); margin-bottom:18px;">이것 말고도 수십만 원을 아끼는 방법이 더 있습니다</p>
       <a href="articles/index.html" style="display:inline-flex; align-items:center; gap:10px; background:var(--orange); color:#fff; text-decoration:none; padding:16px 32px; border-radius:50px; font-size:15px; font-weight:800; font-family:inherit; transition:background 0.2s;">
@@ -1616,6 +1937,177 @@ document.getElementById('mobReservePopup').addEventListener('click', function(e)
       <div class="svc-card reveal d4" data-svc="water"><div class="svc-icon"></div><div class="svc-name">침수 수리</div><div class="svc-desc">습기·물 피해 기기 전문 복구</div></div>
       <div class="svc-card reveal d1" data-svc="data"><div class="svc-icon"></div><div class="svc-name">데이터 복원</div><div class="svc-desc">소중한 사진과 데이터, 포기하지 마세요</div></div>
     </div>
+
+    <!-- ── 수리 전 알아두면 좋은 가이드 (자동 슬라이드 + 좌우 스와이프) ── -->
+    <style>
+      .guide-section { margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(0,0,0,0.06); }
+      .guide-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 22px; gap: 16px; flex-wrap: wrap; }
+      .guide-head-left { flex: 1; min-width: 240px; }
+      .guide-eyebrow { font-size: 12px; color: var(--orange); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+      .guide-title { font-size: clamp(20px, 3.5vw, 26px); font-weight: 900; line-height: 1.35; color: var(--black, #0A0A0A); margin: 0; word-break: keep-all; }
+      .guide-sub { font-size: 14px; color: #666; margin-top: 8px; line-height: 1.6; }
+      .guide-all-link { font-size: 13px; font-weight: 700; color: var(--orange); text-decoration: none; padding: 8px 16px; border: 1.5px solid var(--orange); border-radius: 50px; white-space: nowrap; transition: all 0.18s; }
+      .guide-all-link:hover { background: var(--orange); color: #fff; }
+      .guide-track-wrap { position: relative; overflow: hidden; }
+      .guide-track {
+        display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+        scroll-behavior: smooth; padding-bottom: 12px;
+        scrollbar-width: thin; scrollbar-color: rgba(232,115,42,0.4) transparent;
+      }
+      .guide-track::-webkit-scrollbar { height: 6px; }
+      .guide-track::-webkit-scrollbar-thumb { background: rgba(232,115,42,0.35); border-radius: 4px; }
+      .guide-card {
+        flex: 0 0 280px; scroll-snap-align: start;
+        background: #fff; border: 1.5px solid #eaeaea; border-radius: 18px;
+        padding: 22px 20px; text-decoration: none; color: inherit;
+        transition: all 0.2s; display: flex; flex-direction: column; gap: 10px;
+      }
+      .guide-card:hover { border-color: var(--orange); box-shadow: 0 8px 24px rgba(232,115,42,0.12); transform: translateY(-3px); }
+      .guide-card-badge { display: inline-block; align-self: flex-start; background: rgba(232,115,42,0.08); color: var(--orange); font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 50px; }
+      .guide-card-title { font-size: 16px; font-weight: 800; line-height: 1.45; color: var(--black, #0A0A0A); margin: 0; word-break: keep-all; }
+      .guide-card-desc { font-size: 13px; color: #777; line-height: 1.6; flex: 1; word-break: keep-all; }
+      .guide-card-cta { font-size: 12px; font-weight: 700; color: var(--orange); }
+      .guide-nav { display: flex; gap: 8px; margin-top: 14px; justify-content: flex-end; }
+      .guide-nav-btn {
+        width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid #eaeaea;
+        background: #fff; color: var(--black, #0A0A0A); cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: all 0.18s; font-family: inherit;
+      }
+      .guide-nav-btn:hover { border-color: var(--orange); color: var(--orange); }
+      .guide-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+      @media (max-width: 768px) {
+        .guide-card { flex: 0 0 240px; padding: 18px 16px; }
+        .guide-card-title { font-size: 15px; }
+      }
+      @media (max-width: 480px) {
+        .guide-section { margin-top: 48px; padding-top: 36px; }
+        .guide-card { flex: 0 0 220px; }
+      }
+    </style>
+
+    <div class="guide-section reveal d1">
+      <div class="guide-head">
+        <div class="guide-head-left">
+          <div class="guide-eyebrow">DEVICE REPAIR GUIDE</div>
+          <h3 class="guide-title">기기별 수리 — 비용 · 기간 · 방법</h3>
+          <p class="guide-sub">아이폰·아이패드·애플워치·맥북 — 수리 전 꼭 알아두면 좋은 정보</p>
+        </div>
+        <a href="/articles/" class="guide-all-link">전체 칼럼 보기 →</a>
+      </div>
+
+      <div class="guide-track-wrap">
+        <div class="guide-track" id="guideTrack">
+          <a class="guide-card" href="/articles/iphone15-screen-repair.html">
+            <span class="guide-card-badge">📱 아이폰 액정</span>
+            <h4 class="guide-card-title">아이폰 액정 수리 — 비용·시간 가이드</h4>
+            <p class="guide-card-desc">모델별 액정 수리비, 정식 vs 사설 비교, 당일 수리 가능 여부까지 한 번에 정리</p>
+            <span class="guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="guide-card" href="/articles/iphone-battery-replacement-guide.html">
+            <span class="guide-card-badge">🔋 아이폰 배터리</span>
+            <h4 class="guide-card-title">아이폰 배터리 교체 — 80% 시점 가이드</h4>
+            <p class="guide-card-desc">최대 용량 80% 미만은 교체 시점. 정밀 진단으로 진짜 교체가 필요한지 판단하는 법</p>
+            <span class="guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="guide-card" href="/articles/iphone-charging-port-cleaning.html">
+            <span class="guide-card-badge">⚡ 아이폰 충전</span>
+            <h4 class="guide-card-title">아이폰 충전 안 됨 — 청소 vs 수리</h4>
+            <p class="guide-card-desc">충전 안 되는 원인 1위는 단자 안 먼지. 청소로 끝낼지, 단자 교체할지 정확히 판단</p>
+            <span class="guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="guide-card" href="/articles/ipad-pro-screen-repair-cost.html">
+            <span class="guide-card-badge">📋 아이패드 액정</span>
+            <h4 class="guide-card-title">아이패드 액정 수리 — 모델별 비용</h4>
+            <p class="guide-card-desc">아이패드 일반·에어·미니·프로 모델별 액정 수리비. LCD 멍·터치 이상까지 종합 진단</p>
+            <span class="guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="guide-card" href="/articles/ipad-battery-replacement-guide.html">
+            <span class="guide-card-badge">🔋 아이패드 배터리</span>
+            <h4 class="guide-card-title">아이패드 배터리 교체 가이드</h4>
+            <p class="guide-card-desc">아이패드는 배터리 일체형이라 교체가 까다롭습니다. 교체 시점·비용·데이터 보존 방법까지</p>
+            <span class="guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="guide-card" href="/articles/applewatch-screen-repair.html">
+            <span class="guide-card-badge">⌚ 워치 액정</span>
+            <h4 class="guide-card-title">애플워치 액정 수리 — 모델별 비용</h4>
+            <p class="guide-card-desc">Series 4~10·SE·Ultra 모델별 액정 수리비. OLED 변색·터치 이상까지 정밀 진단</p>
+            <span class="guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="guide-card" href="/articles/applewatch-battery-replacement-guide.html">
+            <span class="guide-card-badge">🔋 워치 배터리</span>
+            <h4 class="guide-card-title">애플워치 배터리 교체 가이드</h4>
+            <p class="guide-card-desc">워치는 배터리 부풀면 화면이 들립니다. 교체 시점·모델별 비용·당일 가능 여부 정리</p>
+            <span class="guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="guide-card" href="/articles/macbook-battery-replacement-guide.html">
+            <span class="guide-card-badge">💻 맥북 배터리</span>
+            <h4 class="guide-card-title">맥북 배터리 교체 — 사이클·비용</h4>
+            <p class="guide-card-desc">맥북 배터리 사이클 확인법, 교체 시점, M1·M2·M3·M4 모델별 비용 가이드</p>
+            <span class="guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="guide-card" href="/articles/airpods-battery-draining-fast.html">
+            <span class="guide-card-badge">🎧 에어팟</span>
+            <h4 class="guide-card-title">에어팟 배터리 빨리 닳음 — 진단</h4>
+            <p class="guide-card-desc">에어팟 배터리 노화 신호, 한쪽만 빨리 닳는 원인, 교체 vs 새 제품 판단 기준</p>
+            <span class="guide-card-cta">자세히 보기 →</span>
+          </a>
+
+          <a class="guide-card" href="/articles/applepencil-not-charging.html">
+            <span class="guide-card-badge">✏️ 애플펜슬</span>
+            <h4 class="guide-card-title">애플펜슬 충전 안 됨 — 진단 가이드</h4>
+            <p class="guide-card-desc">1세대·2세대·USB-C·Pro 모델별 충전 불량 원인과 정밀 진단으로 정확한 판단</p>
+            <span class="guide-card-cta">자세히 보기 →</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="guide-nav">
+        <button class="guide-nav-btn" onclick="guideScroll(-1)" aria-label="이전">‹</button>
+        <button class="guide-nav-btn" onclick="guideScroll(1)" aria-label="다음">›</button>
+      </div>
+    </div>
+
+    <script>
+    /* ── 가이드 캐러셀 좌우 스크롤 + 자동 슬라이드 ── */
+    (function(){
+      var track = document.getElementById('guideTrack');
+      if (!track) return;
+      window.guideScroll = function(dir){
+        var card = track.querySelector('.guide-card');
+        if (!card) return;
+        var step = card.offsetWidth + 14; // gap 포함
+        track.scrollBy({ left: dir * step, behavior: 'smooth' });
+      };
+      // 자동 슬라이드 — 7초마다 한 칸씩, 사용자가 만지면 일시 정지
+      var autoTimer = null;
+      var paused = false;
+      function startAuto(){
+        if (autoTimer) return;
+        autoTimer = setInterval(function(){
+          if (paused) return;
+          if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 8) {
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            window.guideScroll(1);
+          }
+        }, 7000);
+      }
+      track.addEventListener('mouseenter', function(){ paused = true; });
+      track.addEventListener('mouseleave', function(){ paused = false; });
+      track.addEventListener('touchstart', function(){ paused = true; }, {passive:true});
+      track.addEventListener('touchend', function(){ setTimeout(function(){ paused = false; }, 3000); }, {passive:true});
+      startAuto();
+    })();
+    </script>
   </div>
 </section>
 
