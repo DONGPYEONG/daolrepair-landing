@@ -1675,10 +1675,12 @@ document.getElementById('mobReservePopup').addEventListener('click', function(e)
       .dx-guide-sub { font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 8px; line-height: 1.6; }
       .dx-guide-all-link { font-size: 13px; font-weight: 700; color: var(--orange); text-decoration: none; padding: 8px 16px; border: 1.5px solid var(--orange); border-radius: 50px; white-space: nowrap; transition: all 0.18s; }
       .dx-guide-all-link:hover { background: var(--orange); color: #fff; }
-      .dx-guide-track-wrap { position: relative; overflow: hidden; }
+      .dx-guide-track-wrap { position: relative; }
       .dx-guide-track {
-        display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+        display: flex; gap: 14px; overflow-x: auto;
+        scroll-snap-type: x proximity;
         scroll-behavior: smooth; padding-bottom: 12px;
+        -webkit-overflow-scrolling: touch;
         scrollbar-width: thin; scrollbar-color: rgba(232,115,42,0.4) transparent;
       }
       .dx-guide-track::-webkit-scrollbar { height: 6px; }
@@ -1702,13 +1704,27 @@ document.getElementById('mobReservePopup').addEventListener('click', function(e)
         transition: all 0.18s; font-family: inherit; font-size: 18px;
       }
       .dx-guide-nav-btn:hover { border-color: var(--orange); color: var(--orange); }
+      /* 도트 인디케이터 */
+      .dx-guide-dots { display: none; justify-content: center; gap: 6px; margin-top: 16px; }
+      .dx-guide-dot {
+        width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.18);
+        transition: all 0.25s ease;
+      }
+      .dx-guide-dot.active { background: var(--orange); width: 22px; border-radius: 4px; }
       @media (max-width: 768px) {
-        .dx-guide-card { flex: 0 0 240px; padding: 18px 16px; }
-        .dx-guide-card-title { font-size: 15px; }
+        .dx-guide-track {
+          scroll-snap-type: x mandatory;
+          padding: 0 20px 12px;
+          margin: 0 -20px;
+          gap: 12px;
+        }
+        .dx-guide-card { flex: 0 0 calc(100vw - 60px); padding: 20px 18px; max-width: 320px; scroll-snap-align: center; }
+        .dx-guide-card-title { font-size: 15.5px; }
+        .dx-guide-nav { display: none; }
+        .dx-guide-dots { display: flex; }
       }
       @media (max-width: 480px) {
         .dx-guide-section { margin-top: 48px; padding-top: 36px; }
-        .dx-guide-card { flex: 0 0 220px; }
       }
     </style>
 
@@ -1800,23 +1816,58 @@ document.getElementById('mobReservePopup').addEventListener('click', function(e)
         <button class="dx-guide-nav-btn" onclick="dxGuideScroll(-1)" aria-label="이전">‹</button>
         <button class="dx-guide-nav-btn" onclick="dxGuideScroll(1)" aria-label="다음">›</button>
       </div>
+      <div class="dx-guide-dots" id="dxGuideDots" aria-hidden="true"></div>
     </div>
 
     <script>
-    /* ── diagnosis 섹션 가이드 캐러셀 좌우 스크롤 + 자동 슬라이드 ── */
+    /* ── diagnosis 섹션 가이드 캐러셀 — 데스크탑 자동 + 모바일 자유 스와이프 + 도트 ── */
     (function(){
       var track = document.getElementById('dxGuideTrack');
+      var dots = document.getElementById('dxGuideDots');
       if (!track) return;
+      var cards = track.querySelectorAll('.dx-guide-card');
+      var isMobile = function(){ return window.matchMedia('(max-width: 768px)').matches; };
+
+      cards.forEach(function(_, i){
+        var d = document.createElement('span');
+        d.className = 'dx-guide-dot' + (i===0 ? ' active' : '');
+        d.addEventListener('click', function(){
+          var card = cards[i];
+          if (card) card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        });
+        dots.appendChild(d);
+      });
+
       window.dxGuideScroll = function(dir){
         var card = track.querySelector('.dx-guide-card');
         if (!card) return;
-        var step = card.offsetWidth + 14;
+        var step = card.offsetWidth + (isMobile() ? 12 : 14);
         track.scrollBy({ left: dir * step, behavior: 'smooth' });
       };
+
+      function updateDots(){
+        var center = track.scrollLeft + track.clientWidth / 2;
+        var nearest = 0; var minDist = Infinity;
+        for (var i = 0; i < cards.length; i++){
+          var c = cards[i];
+          var cardCenter = c.offsetLeft + c.offsetWidth / 2;
+          var dist = Math.abs(cardCenter - center);
+          if (dist < minDist) { minDist = dist; nearest = i; }
+        }
+        Array.prototype.forEach.call(dots.children, function(d, i){
+          d.classList.toggle('active', i === nearest);
+        });
+      }
+      var scrollTimer;
+      track.addEventListener('scroll', function(){
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(updateDots, 80);
+      }, { passive: true });
+
       var autoTimer = null;
       var paused = false;
       function startAuto(){
-        if (autoTimer) return;
+        if (autoTimer || isMobile()) return;
         autoTimer = setInterval(function(){
           if (paused) return;
           if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 8) {
@@ -1826,10 +1877,14 @@ document.getElementById('mobReservePopup').addEventListener('click', function(e)
           }
         }, 7000);
       }
+      function stopAuto(){
+        if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+      }
       track.addEventListener('mouseenter', function(){ paused = true; });
       track.addEventListener('mouseleave', function(){ paused = false; });
-      track.addEventListener('touchstart', function(){ paused = true; }, {passive:true});
-      track.addEventListener('touchend', function(){ setTimeout(function(){ paused = false; }, 3000); }, {passive:true});
+      window.addEventListener('resize', function(){
+        if (isMobile()) stopAuto(); else startAuto();
+      });
       startAuto();
     })();
     </script>
@@ -1948,10 +2003,12 @@ document.getElementById('mobReservePopup').addEventListener('click', function(e)
       .guide-sub { font-size: 14px; color: #666; margin-top: 8px; line-height: 1.6; }
       .guide-all-link { font-size: 13px; font-weight: 700; color: var(--orange); text-decoration: none; padding: 8px 16px; border: 1.5px solid var(--orange); border-radius: 50px; white-space: nowrap; transition: all 0.18s; }
       .guide-all-link:hover { background: var(--orange); color: #fff; }
-      .guide-track-wrap { position: relative; overflow: hidden; }
+      .guide-track-wrap { position: relative; }
       .guide-track {
-        display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+        display: flex; gap: 14px; overflow-x: auto;
+        scroll-snap-type: x proximity;
         scroll-behavior: smooth; padding-bottom: 12px;
+        -webkit-overflow-scrolling: touch;
         scrollbar-width: thin; scrollbar-color: rgba(232,115,42,0.4) transparent;
       }
       .guide-track::-webkit-scrollbar { height: 6px; }
@@ -1976,13 +2033,27 @@ document.getElementById('mobReservePopup').addEventListener('click', function(e)
       }
       .guide-nav-btn:hover { border-color: var(--orange); color: var(--orange); }
       .guide-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+      /* 페이지 도트 인디케이터 */
+      .guide-dots { display: none; justify-content: center; gap: 6px; margin-top: 16px; }
+      .guide-dot {
+        width: 7px; height: 7px; border-radius: 50%; background: rgba(0,0,0,0.15);
+        transition: all 0.25s ease;
+      }
+      .guide-dot.active { background: var(--orange); width: 22px; border-radius: 4px; }
       @media (max-width: 768px) {
-        .guide-card { flex: 0 0 240px; padding: 18px 16px; }
-        .guide-card-title { font-size: 15px; }
+        .guide-track {
+          scroll-snap-type: x mandatory;
+          padding: 0 20px 12px;
+          margin: 0 -20px;
+          gap: 12px;
+        }
+        .guide-card { flex: 0 0 calc(100vw - 60px); padding: 20px 18px; max-width: 320px; scroll-snap-align: center; }
+        .guide-card-title { font-size: 15.5px; }
+        .guide-nav { display: none; }
+        .guide-dots { display: flex; }
       }
       @media (max-width: 480px) {
         .guide-section { margin-top: 48px; padding-top: 36px; }
-        .guide-card { flex: 0 0 220px; }
       }
     </style>
 
@@ -2074,24 +2145,61 @@ document.getElementById('mobReservePopup').addEventListener('click', function(e)
         <button class="guide-nav-btn" onclick="guideScroll(-1)" aria-label="이전">‹</button>
         <button class="guide-nav-btn" onclick="guideScroll(1)" aria-label="다음">›</button>
       </div>
+      <div class="guide-dots" id="guideDots" aria-hidden="true"></div>
     </div>
 
     <script>
-    /* ── 가이드 캐러셀 좌우 스크롤 + 자동 슬라이드 ── */
+    /* ── 가이드 캐러셀 — 데스크탑 자동 슬라이드 + 모바일 자유 스와이프 + 도트 인디케이터 ── */
     (function(){
       var track = document.getElementById('guideTrack');
+      var dots = document.getElementById('guideDots');
       if (!track) return;
+      var cards = track.querySelectorAll('.guide-card');
+      var isMobile = function(){ return window.matchMedia('(max-width: 768px)').matches; };
+
+      // 도트 생성
+      cards.forEach(function(_, i){
+        var d = document.createElement('span');
+        d.className = 'guide-dot' + (i===0 ? ' active' : '');
+        d.addEventListener('click', function(){
+          var card = cards[i];
+          if (card) card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        });
+        dots.appendChild(d);
+      });
+
       window.guideScroll = function(dir){
         var card = track.querySelector('.guide-card');
         if (!card) return;
-        var step = card.offsetWidth + 14; // gap 포함
+        var step = card.offsetWidth + (isMobile() ? 12 : 14);
         track.scrollBy({ left: dir * step, behavior: 'smooth' });
       };
-      // 자동 슬라이드 — 7초마다 한 칸씩, 사용자가 만지면 일시 정지
+
+      // 스크롤 위치 → 활성 도트 업데이트
+      function updateDots(){
+        var center = track.scrollLeft + track.clientWidth / 2;
+        var nearest = 0; var minDist = Infinity;
+        for (var i = 0; i < cards.length; i++){
+          var c = cards[i];
+          var cardCenter = c.offsetLeft + c.offsetWidth / 2;
+          var dist = Math.abs(cardCenter - center);
+          if (dist < minDist) { minDist = dist; nearest = i; }
+        }
+        Array.prototype.forEach.call(dots.children, function(d, i){
+          d.classList.toggle('active', i === nearest);
+        });
+      }
+      var scrollTimer;
+      track.addEventListener('scroll', function(){
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(updateDots, 80);
+      }, { passive: true });
+
+      // 자동 슬라이드 — 데스크탑만 (모바일은 사용자 스와이프만)
       var autoTimer = null;
       var paused = false;
       function startAuto(){
-        if (autoTimer) return;
+        if (autoTimer || isMobile()) return;
         autoTimer = setInterval(function(){
           if (paused) return;
           if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 8) {
@@ -2101,10 +2209,14 @@ document.getElementById('mobReservePopup').addEventListener('click', function(e)
           }
         }, 7000);
       }
+      function stopAuto(){
+        if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+      }
       track.addEventListener('mouseenter', function(){ paused = true; });
       track.addEventListener('mouseleave', function(){ paused = false; });
-      track.addEventListener('touchstart', function(){ paused = true; }, {passive:true});
-      track.addEventListener('touchend', function(){ setTimeout(function(){ paused = false; }, 3000); }, {passive:true});
+      window.addEventListener('resize', function(){
+        if (isMobile()) stopAuto(); else startAuto();
+      });
       startAuto();
     })();
     </script>
