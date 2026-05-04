@@ -23,6 +23,59 @@
   <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="canonical" href="https://xn--2j1bq2k97kxnah86c.com/">
+
+  <!-- LocalBusiness Schema (검색 결과에 매장 박스 노출) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://xn--2j1bq2k97kxnah86c.com/#business",
+    "name": "다올리페어",
+    "alternateName": "Daol Repair",
+    "description": "아이폰·아이패드·맥북·애플워치·에어팟 수리 전문. 가산·신림·목동 3직영점. 수리 실패 시 비용 0원, 90일 무상 보증.",
+    "url": "https://xn--2j1bq2k97kxnah86c.com/",
+    "image": "https://da-2gx.pages.dev/%EB%8B%A4%EC%98%AC%20%EB%A9%94%EC%9D%B8.jpg",
+    "logo": "https://xn--2j1bq2k97kxnah86c.com/android-chrome-512x512.png",
+    "address": {"@type": "PostalAddress", "addressCountry": "KR", "addressRegion": "서울특별시"},
+    "areaServed": ["서울특별시", "금천구", "관악구", "양천구", "가산디지털단지", "신림", "목동", "전국 (택배 수리)"],
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "10:00", "closes": "20:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "11:00", "closes": "20:00"}
+    ],
+    "priceRange": "₩₩",
+    "department": [
+      {"@type": "LocalBusiness", "name": "다올리페어 가산점", "areaServed": "가산디지털단지·금천구·독산", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"},
+      {"@type": "LocalBusiness", "name": "다올리페어 신림점", "areaServed": "신림·관악구·서울대입구·봉천", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"},
+      {"@type": "LocalBusiness", "name": "다올리페어 목동점", "areaServed": "목동·양천구·신정·신월", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"}
+    ],
+    "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "145", "bestRating": "5", "worstRating": "1"},
+    "makesOffer": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "iPhone 액정 수리"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "iPhone 배터리 교체"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "iPhone 침수 처리"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "iPad 수리"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "MacBook 수리"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Apple Watch 수리"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AirPods 수리"}}
+    ]
+  }
+  </script>
+
+  <!-- Organization + WebSite Schema (브랜드 검색·SearchAction) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "다올리페어",
+    "url": "https://xn--2j1bq2k97kxnah86c.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {"@type": "EntryPoint", "urlTemplate": "https://xn--2j1bq2k97kxnah86c.com/articles/?q={search_term_string}"},
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
 
   <title>다올리페어 | 아이폰·아이패드·맥북·애플워치 수리 전문 | 가산·신림·목동</title>
   <style>
@@ -369,6 +422,12 @@
       color: #fff;
       border-bottom-color: rgba(0,0,0,0.15);
     }
+    .promo-banner.is-download {
+      background: linear-gradient(135deg, #1D1D1F 0%, #3A3A3C 100%);
+      color: #fff;
+      border-bottom-color: rgba(255,255,255,0.1);
+    }
+    .promo-banner.is-download .promo-slide a strong { color: #FFB347; }
     .promo-banner.is-article .promo-slide a strong { color: #fff; }
     .promo-banner a {
       display: inline-flex; align-items: center; gap: 8px;
@@ -1190,6 +1249,16 @@
     kind: 'kakao',
   };
 
+  // 무료 PDF 다운로드 후킹 카피 (인쇄·저장 가능)
+  var DOWNLOAD_PROMOS = [
+    {emoji:'📄', text:'<strong>무료 PDF 가이드 10편</strong> 인쇄·저장 가능', href:'/articles/downloads.html'},
+    {emoji:'🚨', text:'<strong>침수 5분 응급</strong> — 무료 다운로드', href:'/articles/pdf-water-damage-emergency.html'},
+    {emoji:'📋', text:'<strong>수리 전 5분 체크리스트</strong> 무료', href:'/articles/repair-checklist-printable.html'},
+    {emoji:'💡', text:'<strong>부모님 폰 점검 7가지</strong> 무료 PDF', href:'/articles/pdf-parents-phone-checkup.html'},
+    {emoji:'🛡', text:'<strong>자녀 첫 폰 안전 12가지</strong> 무료', href:'/articles/pdf-kid-first-phone-setup.html'},
+    {emoji:'✈️', text:'<strong>여행자보험 폰 파손 청구 9단계</strong> 무료', href:'/articles/pdf-travel-insurance-claim.html'},
+  ];
+
   // 12개월 시즌별 칼럼 메시지 풀 (월별 자동 교체) — 모바일 한 줄 노출용 짧은 카피
   var SEASON_POOL = {
     1:  [ // 1월
@@ -1258,16 +1327,35 @@
   var month = new Date().getMonth() + 1;
   var seasonMessages = (SEASON_POOL[month] || SEASON_POOL[4]);
 
-  // B안: 5천원 할인을 자주 노출 — 할인 → 시즌1 → 할인 → 시즌2 → 할인 → 시즌3
-  var rotation = [];
+  // C안: 카카오 자주 + 시즌·다운로드 균등 노출
+  // 패턴: 할인 → 시즌1 → 할인 → 다운1 → 할인 → 시즌2 → 할인 → 다운2 → 할인 → 시즌3 → 할인 → 다운3
+  var contentPool = [];
   seasonMessages.forEach(function(msg){
+    contentPool.push({emoji: msg.emoji, text: msg.text, href: msg.href, kind: 'article'});
+  });
+  // 다운로드는 매번 다르게 — 인덱스 기반 (요일별로 다른 다운로드 노출)
+  var dayOffset = new Date().getDate() % DOWNLOAD_PROMOS.length;
+  for (var i = 0; i < seasonMessages.length; i++) {
+    var dl = DOWNLOAD_PROMOS[(dayOffset + i) % DOWNLOAD_PROMOS.length];
+    contentPool.push({emoji: dl.emoji, text: dl.text, href: dl.href, kind: 'download'});
+  }
+  // 시즌과 다운로드를 번갈아 섞기 (시즌1 → 다운1 → 시즌2 → 다운2 ...)
+  var mixed = [];
+  var seasonCount = seasonMessages.length;
+  for (var j = 0; j < seasonCount; j++) {
+    mixed.push(contentPool[j]);              // 시즌
+    mixed.push(contentPool[seasonCount + j]); // 다운로드
+  }
+
+  var rotation = [];
+  mixed.forEach(function(msg){
     rotation.push(KAKAO_PROMO);
     rotation.push({
       icon: EMOJI(msg.emoji),
       text: msg.text,
       href: msg.href,
       target: '_self',
-      kind: 'article',
+      kind: msg.kind,
     });
   });
 
@@ -1280,9 +1368,12 @@
   function render(item){
     var target = item.target ? ' target="'+item.target+'" rel="noopener noreferrer"' : '';
     slide.innerHTML = '<a href="'+item.href+'"'+target+'>'+item.icon+'<span>'+item.text+'</span></a>';
-    // 메시지 종류에 따라 배너 배경색 변경 (카카오=노랑, 칼럼=주황)
-    banner.classList.remove('is-kakao', 'is-article');
-    banner.classList.add(item.kind === 'kakao' ? 'is-kakao' : 'is-article');
+    // 메시지 종류에 따라 배너 배경색 변경 (카카오=노랑, 칼럼=주황, 다운로드=다크)
+    banner.classList.remove('is-kakao', 'is-article', 'is-download');
+    var cls = item.kind === 'kakao' ? 'is-kakao'
+            : item.kind === 'download' ? 'is-download'
+            : 'is-article';
+    banner.classList.add(cls);
   }
 
   function rotate(){
@@ -1317,7 +1408,7 @@
       </div>
     </a>
     <ul class="nav-links">
-      <li><a href="#philosophy">철학</a></li>
+      <li><a href="#" onclick="philoOpen();return false;">철학</a></li>
       <li><a href="#services">서비스</a></li>
       <li><a href="#estimate">수리 견적</a></li>
       <li><a href="#courier">택배접수</a></li>
@@ -1636,6 +1727,126 @@ document.getElementById('mobReservePopup').addEventListener('click', function(e)
 </section>
 
 <!-- ? REVIEWS ???????????????????????????????????????? -->
+
+<!-- ─ FREE DOWNLOADS — 예방 진심 메시지 + PDF 캐러셀 ───── -->
+<!-- ─ FREE DOWNLOADS — 예방 진심 메시지 + PDF 캐러셀 ───── -->
+<section id="free-downloads">
+  <style>
+    #free-downloads { background: var(--white); }
+    .fd-intro { max-width: 620px; }
+    .fd-track-wrap { margin-top: 56px; }
+    .fd-track {
+      display: flex; gap: 16px; overflow-x: auto;
+      scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+      padding: 4px 0 20px;
+      scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.18) transparent;
+    }
+    .fd-track::-webkit-scrollbar { height: 6px; }
+    .fd-track::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.18); border-radius: 4px; }
+    .fd-card {
+      flex: 0 0 280px; scroll-snap-align: start;
+      background: var(--gray-bg); border-radius: 22px;
+      padding: 28px 26px; text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; gap: 12px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .fd-card:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(0,0,0,0.08); }
+    .fd-card-cat { font-size: 11px; font-weight: 700; color: var(--orange); letter-spacing: 2px; text-transform: uppercase; }
+    .fd-card-title { font-size: 17px; font-weight: 800; color: var(--dark); line-height: 1.4; margin: 0; }
+    .fd-card-desc { font-size: 13px; line-height: 1.65; color: var(--gray-mid); margin: 0; flex: 1; }
+    .fd-card-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--orange); margin-top: 6px; }
+    .fd-card-btn::after { content: "→"; transition: transform 0.2s; }
+    .fd-card:hover .fd-card-btn::after { transform: translateX(3px); }
+    .fd-all { margin-top: 36px; }
+    .fd-all-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; background: var(--dark); color: var(--white);
+      border-radius: 30px; text-decoration: none;
+      font-size: 14px; font-weight: 700; transition: background 0.2s;
+    }
+    .fd-all-btn:hover { background: var(--orange); }
+    @media (max-width: 600px) {
+      .fd-card { flex: 0 0 240px; padding: 24px 22px; }
+    }
+  </style>
+  <div class="wrap">
+    <div class="fd-intro reveal">
+      <span class="eyebrow">무료 다운로드 PDF</span>
+      <h2 class="sec-title">오시기 전엔 예방,<br>오셨을 땐 최선의 수리</h2>
+      <p class="sec-body">매장에 오신 분께는 끝까지 책임지고 잘 고쳐드리는 것이 저희 일입니다. 다만 그 전에, 고객님이 미리 예방하셔서 수리비를 아끼고 익숙한 폰을 더 오래 쓰실 수 있다면 그것이 더 좋은 일이라 믿습니다.</p>
+    </div>
+
+    <div class="fd-track-wrap reveal d2">
+      <div class="fd-track">
+        <a class="fd-card" href="articles/pdf-water-damage-emergency.html">
+          <div class="fd-card-cat">응급 가이드</div>
+          <h3 class="fd-card-title">아이폰 침수 5분 응급 처치</h3>
+          <p class="fd-card-desc">변기·물·음료수에 빠졌을 때 살리는 5분 골든타임 액션.</p>
+          <span class="fd-card-btn">무료 다운로드</span>
+        </a>
+        <a class="fd-card" href="articles/pdf-drop-self-diagnosis.html">
+          <div class="fd-card-cat">자가 진단</div>
+          <h3 class="fd-card-title">떨어뜨렸을 때 자가진단 5단계</h3>
+          <p class="fd-card-desc">단순 유리 vs LCD 손상 1분 진단. 빨리 수리하면 비용 절반.</p>
+          <span class="fd-card-btn">무료 다운로드</span>
+        </a>
+        <a class="fd-card" href="articles/repair-checklist-printable.html">
+          <div class="fd-card-cat">매장 가기 전</div>
+          <h3 class="fd-card-title">수리 전 5분 체크리스트</h3>
+          <p class="fd-card-desc">백업·잠금·Find My 해제·외부 부속까지 한 페이지에 정리.</p>
+          <span class="fd-card-btn">무료 다운로드</span>
+        </a>
+        <a class="fd-card" href="articles/pdf-parents-phone-checkup.html">
+          <div class="fd-card-cat">가족 케어</div>
+          <h3 class="fd-card-title">부모님 폰 정기 점검 7가지</h3>
+          <p class="fd-card-desc">60·70대 부모님 아이폰 안전·편의 체크리스트.</p>
+          <span class="fd-card-btn">무료 다운로드</span>
+        </a>
+        <a class="fd-card" href="articles/pdf-kid-first-phone-setup.html">
+          <div class="fd-card-cat">자녀 보호</div>
+          <h3 class="fd-card-title">자녀 첫 폰 안전 세팅 12가지</h3>
+          <p class="fd-card-desc">결제·SNS·앱 다운로드 12가지 보호 설정.</p>
+          <span class="fd-card-btn">무료 다운로드</span>
+        </a>
+        <a class="fd-card" href="articles/pdf-used-iphone-check.html">
+          <div class="fd-card-cat">중고 구매</div>
+          <h3 class="fd-card-title">중고 아이폰 살 때 확인 9가지</h3>
+          <p class="fd-card-desc">사기·하자 피하고 좋은 중고 폰 고르는 자가 진단 9단계.</p>
+          <span class="fd-card-btn">무료 다운로드</span>
+        </a>
+        <a class="fd-card" href="articles/pdf-summer-water-prevention.html">
+          <div class="fd-card-cat">여름 시즌</div>
+          <h3 class="fd-card-title">여름 휴가 침수 예방 + 응급 키트</h3>
+          <p class="fd-card-desc">물놀이·캠핑·해변에서 폰 지키는 7가지 + 응급 처치.</p>
+          <span class="fd-card-btn">무료 다운로드</span>
+        </a>
+        <a class="fd-card" href="articles/pdf-rider-delivery-care.html">
+          <div class="fd-card-cat">라이더·외근</div>
+          <h3 class="fd-card-title">라이더·배달 폰 케어 루틴</h3>
+          <p class="fd-card-desc">비·땀·진동·낙하에서 폰 살리는 매일 30초 루틴 4가지.</p>
+          <span class="fd-card-btn">무료 다운로드</span>
+        </a>
+        <a class="fd-card" href="articles/pdf-travel-insurance-claim.html">
+          <div class="fd-card-cat">여행자보험</div>
+          <h3 class="fd-card-title">해외여행 폰 파손·분실 — 여행자보험 청구</h3>
+          <p class="fd-card-desc">여행자보험으로 수리비 환급받는 9단계. 영수증·진단서 활용.</p>
+          <span class="fd-card-btn">무료 다운로드</span>
+        </a>
+        <a class="fd-card" href="articles/pdf-non-genuine-message-guide.html">
+          <div class="fd-card-cat">정확한 사실</div>
+          <h3 class="fd-card-title">"비정품 부품" 메시지 완전 가이드</h3>
+          <p class="fd-card-desc">사설 수리 후 메시지가 뜨는 정확한 룰. 부품·기기별 다른 점.</p>
+          <span class="fd-card-btn">무료 다운로드</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="fd-all reveal d3">
+      <a href="articles/downloads.html" class="fd-all-btn">전체 다운로드 허브 보기 →</a>
+    </div>
+  </div>
+</section>
+
 <section id="diagnosis">
   <div class="wrap">
     <div class="dx-intro">

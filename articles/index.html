@@ -132,13 +132,42 @@
     .art-footer { text-align: center; padding: 36px 20px; font-size: 13px; color: #bbb; border-top: 1px solid var(--border); margin-top: 60px; }
     .art-footer a { color: var(--orange); text-decoration: none; }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "다올리페어",
+    "description": "가산·신림·목동 3지점에서 아이폰·아이패드·맥북·애플워치·에어팟을 정직한 가격으로 수리하는 애플 사설 수리 매장",
+    "url": "https://xn--2j1bq2k97kxnah86c.com",
+    "image": "https://da-2gx.pages.dev/%EB%8B%A4%EC%98%AC%20%EB%A9%94%EC%9D%B8.jpg",
+    "telephone": "+82-2-000-0000",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "KR",
+      "addressRegion": "서울특별시",
+      "addressLocality": "금천구·관악구·양천구"
+    },
+    "areaServed": ["서울특별시", "금천구", "관악구", "양천구", "가산디지털단지", "신림", "목동"],
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "10:00", "closes": "20:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "11:00", "closes": "20:00"}
+    ],
+    "department": [
+      {"@type": "LocalBusiness", "name": "다올리페어 가산점", "areaServed": "가산디지털단지·금천구·독산", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"},
+      {"@type": "LocalBusiness", "name": "다올리페어 신림점", "areaServed": "신림·관악구·서울대입구·봉천", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"},
+      {"@type": "LocalBusiness", "name": "다올리페어 목동점", "areaServed": "목동·양천구·신정·신월", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"}
+    ],
+    "priceRange": "₩₩"
+  }
+  </script>
 </head>
 <body>
 
 <nav class="art-nav">
   <div class="art-nav-inner">
     <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-logo">
-      <img src="../로고신규1.jpg" alt="다올리페어">
+      <img loading="lazy" src="../로고신규1.jpg" alt="다올리페어">
       <div class="art-nav-logo-text">
         <span class="art-nav-logo-ko">다올<em>리페어</em></span>
         <span class="art-nav-logo-en">Device Repair Master</span>
@@ -161,6 +190,7 @@
         </div>
       </li>
     </ul>
+    <button class="art-nav-share" onclick="daolShare()" aria-label="공유"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>공유</button>
     <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-home" title="메인으로"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
   </div>
 </nav>
@@ -177,7 +207,105 @@
     <div class="list-eyebrow">수리 칼럼</div>
     <h1 class="list-title">수리 전 꼭 알아야 할<br>전문가 칼럼</h1>
     <p class="list-desc">수리비 낭비를 막는 정보, 올바른 수리 선택 가이드.</p>
+
+    <!-- 무료 PDF 다운로드 배너 -->
+    <a href="downloads.html" class="dl-banner">
+      <div class="dl-banner-icon">📄</div>
+      <div class="dl-banner-body">
+        <strong>무료 PDF 가이드 10편 — 인쇄·저장 가능</strong>
+        <span>침수 응급 · 자가진단 · 부모님·자녀 폰 점검 · 라이더 케어 등</span>
+      </div>
+      <div class="dl-banner-arrow">→</div>
+    </a>
+
+    <!-- 사이트 검색 -->
+    <div class="search-box">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="siteSearch" placeholder="아이폰 14 액정, 가산 충전, 침수… 무엇이든 검색" oninput="doSearch(this.value)" autocomplete="off">
+      <button class="search-clear" onclick="clearSearch()" style="display:none">✕</button>
+    </div>
+    <div class="search-results" id="searchResults" style="display:none"></div>
   </div>
+  <style>
+    .dl-banner{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#fff8f0 0%,#fff3e6 100%);border:1.5px solid #f5c9a0;border-radius:14px;padding:14px 18px;margin-top:20px;text-decoration:none;color:inherit;transition:border-color .2s,transform .15s,box-shadow .2s}
+    .dl-banner:hover{border-color:#E8732A;box-shadow:0 4px 16px rgba(232,115,42,.12);transform:translateY(-1px)}
+    .dl-banner-icon{flex-shrink:0;width:42px;height:42px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;border:1.5px solid #f5c9a0}
+    .dl-banner-body{flex:1;min-width:0}
+    .dl-banner-body strong{display:block;font-size:14px;font-weight:800;color:#1D1D1F;margin-bottom:2px;line-height:1.3}
+    .dl-banner-body span{display:block;font-size:12px;color:#8a5a2a;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .dl-banner-arrow{flex-shrink:0;color:#E8732A;font-size:18px;font-weight:700}
+    .search-box{position:relative;margin-top:24px;background:#fff;border:1.5px solid #e8e8e8;border-radius:14px;padding:14px 18px 14px 46px;display:flex;align-items:center;transition:border-color .2s}
+    .search-box:focus-within{border-color:#E8732A;box-shadow:0 4px 16px rgba(232,115,42,.1)}
+    .search-icon{position:absolute;left:18px;color:#999}
+    .search-box input{flex:1;border:none;outline:none;font-size:15px;font-family:inherit;background:transparent}
+    .search-clear{background:#f0f0f0;border:none;width:24px;height:24px;border-radius:50%;color:#666;cursor:pointer;font-size:11px}
+    .search-results{margin-top:12px;background:#fff;border:1px solid #e8e8e8;border-radius:14px;max-height:480px;overflow-y:auto}
+    .search-result{display:block;padding:14px 18px;border-bottom:1px solid #f0f0f0;text-decoration:none;color:inherit;transition:background .15s}
+    .search-result:hover{background:#fff8f0}
+    .search-result:last-child{border-bottom:none}
+    .sr-cat{font-size:11px;color:#E8732A;font-weight:700;margin-bottom:4px}
+    .sr-title{font-size:14px;font-weight:700;color:#0a0a0a;line-height:1.4;margin-bottom:4px}
+    .sr-desc{font-size:12px;color:#999;line-height:1.5}
+    .sr-empty{padding:24px;text-align:center;color:#999;font-size:14px}
+  </style>
+  <script src="search-data.js"></script>
+  <script>
+    function doSearch(q){
+      const results=document.getElementById('searchResults');
+      const clear=document.querySelector('.search-clear');
+      const grid=document.getElementById('articleGrid');
+      const tabs=document.querySelector('.tab-wrap');
+      q=q.trim().toLowerCase();
+      if(!q){clearSearch();return}
+      clear.style.display='block';
+      results.style.display='block';
+      if(grid)grid.style.display='none';
+      if(tabs)tabs.style.display='none';
+
+      const data=window.DAOL_SEARCH_DATA||[];
+      const scored=[];
+      for(const item of data){
+        let score=0;
+        const t=(item.title||'').toLowerCase();
+        const d=(item.desc||'').toLowerCase();
+        const k=(item.kw||'').toLowerCase();
+        if(t.includes(q))score+=10;
+        if(t.startsWith(q))score+=5;
+        if(k.includes(q))score+=4;
+        if(d.includes(q))score+=2;
+        // 단어별 매칭
+        for(const w of q.split(/\s+/)){
+          if(!w)continue;
+          if(t.includes(w))score+=3;
+          if(k.includes(w))score+=1;
+          if(d.includes(w))score+=1;
+        }
+        if(score>0)scored.push({score,item});
+      }
+      scored.sort((a,b)=>b.score-a.score);
+      const top=scored.slice(0,30);
+      if(top.length===0){
+        results.innerHTML='<div class="sr-empty">검색 결과가 없어요. 다른 키워드로 시도해보세요.</div>';
+        return
+      }
+      results.innerHTML=top.map(({item})=>
+        `<a class="search-result" href="${item.slug}.html">`+
+        `<div class="sr-cat">${item.cat||'수리 가이드'}</div>`+
+        `<div class="sr-title">${item.title}</div>`+
+        `<div class="sr-desc">${(item.desc||'').slice(0,120)}</div>`+
+        `</a>`
+      ).join('');
+    }
+    function clearSearch(){
+      document.getElementById('siteSearch').value='';
+      document.getElementById('searchResults').style.display='none';
+      document.querySelector('.search-clear').style.display='none';
+      const grid=document.getElementById('articleGrid');
+      const tabs=document.querySelector('.tab-wrap');
+      if(grid)grid.style.display='';
+      if(tabs)tabs.style.display='';
+    }
+  </script>
 
   <!-- 기기별 가이드 + FAQ 바로가기 -->
   <div class="quick-nav">
@@ -224,13 +352,13 @@
   <!-- 카테고리 탭 -->
   <div class="tab-wrap">
     <button class="tab-btn active" onclick="filterTab('all', this)">
-      전체 <span class="tab-count">334</span>
+      전체 <span class="tab-count">400</span>
     </button>
     <button class="tab-btn" onclick="filterTab('iphone', this)">
-      아이폰 <span class="tab-count">130</span>
+      아이폰 <span class="tab-count">180</span>
     </button>
     <button class="tab-btn" onclick="filterTab('watch', this)">
-      애플워치 <span class="tab-count">52</span>
+      애플워치 <span class="tab-count">53</span>
     </button>
     <button class="tab-btn" onclick="filterTab('ipad', this)">
       아이패드 <span class="tab-count">43</span>
@@ -245,12 +373,381 @@
       에어팟 <span class="tab-count">12</span>
     </button>
     <button class="tab-btn" onclick="filterTab('guide', this)">
-      수리 가이드 <span class="tab-count">49</span>
+      수리 가이드 <span class="tab-count">64</span>
     </button>
   </div>
 
   <!-- 카드 목록 -->
   <div class="article-grid" id="articleGrid">
+
+
+    <!-- ── 2026-05-04 PDF 다운로드 허브 + 9개 가이드 ── -->
+    <a href="downloads.html" class="article-card" data-cat="guide">
+      <div class="card-category">📄 무료 다운로드 허브</div>
+      <div class="card-title">아이폰 수리·점검 무료 PDF 가이드 모음 (10편)</div>
+      <div class="card-desc">침수 응급, 자가진단, 부모님 폰, 자녀 폰, 라이더 케어 등 인쇄해서 보관할 수 있는 무료 가이드 모음. 카카오 친구 추가 시 5,000원 할인.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>📄 다운로드 허브</span></div>
+    </a>
+
+    <!-- ── 2026-05-04 후기 페이지 (AggregateRating Schema) ── -->
+    <a href="customer-reviews.html" class="article-card" data-cat="guide">
+      <div class="card-category">⭐ 다올리페어 고객 후기</div>
+      <div class="card-title">실제 고객님이 남기신 145+ 수리 후기 모음</div>
+      <div class="card-desc">가산·신림·목동 3지점에서 수리받으신 분들의 실제 후기. 아이폰·아이패드·맥북·애플워치 사례 모음. 평균 별점 4.9 · 90일 보증 · 실패 시 비용 0원.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>고객 후기</span></div>
+    </a>
+
+    <!-- ── 2026-05-04 배터리 롱테일 19편 (시기·증상·부풂·충전·구형) ── -->
+    <a href="iphone-16-pro-max-battery-80-percent-replacement-time.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 배터리 시기·교체</div>
+      <div class="card-title">iPhone 16 Pro Max 배터리 80% 미만 — 교체 시기와 비용</div>
+      <div class="card-desc">iPhone 16 Pro Max 배터리 최대 용량이 80% 미만이 되었을 때 교체 시점 판단법과 다올리페어 표준 가격, 작업 시간 안내.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>16프로맥스 80%</span></div>
+    </a>
+    <a href="iphone-15-pro-battery-important-message-decision.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 배터리 시기·교체</div>
+      <div class="card-title">iPhone 15 Pro 배터리 "중요한 메시지" 알림 — 교체할까 더 쓸까</div>
+      <div class="card-desc">iPhone 15 Pro에 "중요한 배터리 메시지" 알림이 떴을 때 의미와 교체 결정법, 다올리페어 옵션별 가격.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>15프로 배터리 알림</span></div>
+    </a>
+    <a href="iphone-14-battery-1-year-cycle-check.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 배터리 시기·교체</div>
+      <div class="card-title">iPhone 14 배터리 1년 사용 후 — 사이클 점검과 교체 신호</div>
+      <div class="card-desc">iPhone 14를 1년 이상 사용했을 때 배터리 사이클 수 확인법과 교체가 필요한 신호 5가지, 다올리페어 가격.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>14 1년 사이클</span></div>
+    </a>
+    <a href="iphone-13-battery-2-year-replacement-signs.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 배터리 시기·교체</div>
+      <div class="card-title">iPhone 13 배터리 2년 차 — 교체 시점 신호와 가격</div>
+      <div class="card-desc">iPhone 13을 2~3년 사용한 분들이 가장 많이 겪는 배터리 노화 신호와 교체 결정 가이드, 다올리페어 옵션별 가격.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>13 2년 차</span></div>
+    </a>
+    <a href="iphone-12-battery-under-80-cost-vs-new.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 배터리 시기·교체</div>
+      <div class="card-title">iPhone 12 배터리 80% 미만 — 비용 vs 새 폰 교체</div>
+      <div class="card-desc">iPhone 12 배터리 최대 용량 80% 미만 시점에 배터리 교체 vs 새 폰 결정을 도와주는 가이드. iOS 지원·다른 부품 상태와 함께 종합 판단.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>12 교체 vs 새 폰</span></div>
+    </a>
+    <a href="iphone-16-battery-sudden-shutdown-cell-vs-mainboard.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 배터리 증상 진단</div>
+      <div class="card-title">iPhone 16 배터리 갑자기 꺼짐 — 셀 노화 vs 메인보드 진단</div>
+      <div class="card-desc">iPhone 16이 배터리가 남았는데도 갑자기 꺼지는 증상. 셀 노화·메인보드 전원 IC·iOS 문제 중 어느 쪽인지 1분 자가진단.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>16 갑자기 꺼짐</span></div>
+    </a>
+    <a href="iphone-15-overheating-charging-stop-diagnosis.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 배터리 증상 진단</div>
+      <div class="card-title">iPhone 15 발열로 충전 멈춤 — 배터리 vs 메인보드 진단</div>
+      <div class="card-desc">iPhone 15에서 충전 중 발열로 충전이 자동 멈출 때 배터리 노화·메인보드·환경 중 어느 쪽 원인인지 진단 가이드.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>15 발열 멈춤</span></div>
+    </a>
+    <a href="iphone-14-battery-fast-drain-cell-aging.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 배터리 증상 진단</div>
+      <div class="card-title">iPhone 14 배터리 빠르게 닳음 — 셀 노화 측정과 교체</div>
+      <div class="card-desc">iPhone 14 배터리가 평소보다 빠르게 닳는 증상. 셀 노화·앱·iOS 중 어느 쪽 원인인지 1분 진단과 교체 가격.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>14 빠른 소모</span></div>
+    </a>
+    <a href="iphone-13-full-charge-30-percent-5hours.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 배터리 증상 진단</div>
+      <div class="card-title">iPhone 13 완충 후 5시간 만에 30% — 셀 노화 신호</div>
+      <div class="card-desc">iPhone 13 완충 후 5시간 안에 30% 이하로 떨어지는 증상이 셀 노화의 명확한 신호인 이유와 정확한 교체 가격.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>13 5시간 30%</span></div>
+    </a>
+    <a href="iphone-12-mini-winter-sudden-shutdown.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 배터리 증상 진단</div>
+      <div class="card-title">iPhone 12 mini 겨울철 갑자기 꺼짐 — 저온 셀 노화</div>
+      <div class="card-desc">iPhone 12 mini가 겨울철 50%인데도 갑자기 꺼지는 증상. 저온 환경에서 셀 노화가 더 빠르게 드러나는 이유와 교체 시점.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>12mini 겨울 꺼짐</span></div>
+    </a>
+    <a href="iphone-16-pro-battery-swelling-screen-popped.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 배터리 부풂 응급</div>
+      <div class="card-title">iPhone 16 Pro 배터리 부풀어 화면 뜸 — 즉시 사용 중지</div>
+      <div class="card-desc">iPhone 16 Pro에서 배터리 부풂으로 화면이 들리거나 후면 유리에 균열이 생겼을 때 즉시 해야 할 응급 처치와 교체 가격.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>16프로 부풂</span></div>
+    </a>
+    <a href="iphone-xr-battery-swelling-emergency.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 배터리 부풂 응급</div>
+      <div class="card-title">iPhone XR 배터리 스웰링 — 위험 신호와 응급 대응</div>
+      <div class="card-desc">iPhone XR을 오래 사용한 분들에게 흔히 발생하는 배터리 부풂(스웰링) 증상의 위험과 즉시 매장 가야 하는 이유, 교체 가격.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>XR 스웰링</span></div>
+    </a>
+    <a href="iphone-11-pro-max-back-rising-battery.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 배터리 부풂 응급</div>
+      <div class="card-title">iPhone 11 Pro Max 후면 떠오름 — 배터리 부풂 위험과 응급 대응</div>
+      <div class="card-desc">iPhone 11 Pro Max 후면이 떠오르거나 액정과 프레임 사이가 벌어졌을 때 배터리 부풂 신호. 즉시 응급 대응과 교체 가격.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>11프로맥스 후면 뜸</span></div>
+    </a>
+    <a href="iphone-14-not-charging-battery-port-diagnosis.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 충전·배터리 진단</div>
+      <div class="card-title">iPhone 14 충전기 꽂아도 충전 안 됨 — 배터리 단자 진단</div>
+      <div class="card-desc">iPhone 14에 충전기를 꽂아도 충전이 안 들어갈 때 배터리·단자·케이블·메인보드 4단계 자가진단과 매장 가야 하는 신호.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>14 충전 진단</span></div>
+    </a>
+    <a href="iphone-15-pro-overheating-fast-drain-battery-vs-app.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 충전·배터리 진단</div>
+      <div class="card-title">iPhone 15 Pro 발열 + 빠른 소모 — 배터리 vs 앱 진단</div>
+      <div class="card-desc">iPhone 15 Pro에서 발열과 함께 배터리가 빠르게 소모될 때 배터리 노화인지 앱 백그라운드 동작인지 정확히 구분하는 진단.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>15프로 발열 소모</span></div>
+    </a>
+    <a href="iphone-16-not-fully-charging-100-percent-cell-aging.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 충전·배터리 진단</div>
+      <div class="card-title">iPhone 16 충전 100% 안 채워짐 — 셀 노화 신호</div>
+      <div class="card-desc">iPhone 16에 충전기를 꽂아도 100%까지 안 채워지거나 95% 직전에서 멈출 때 셀 노화·iOS 80% 보호 모드 등을 정확히 구분하는 가이드.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>16 100% 안 채움</span></div>
+    </a>
+    <a href="iphone-x-battery-replacement-vs-new-6-year.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 구형 모델 배터리 결정</div>
+      <div class="card-title">iPhone X 배터리 교체 vs 새 폰 — 6년차 결정 가이드</div>
+      <div class="card-desc">iPhone X를 6년 이상 사용한 분들의 배터리 교체 vs 새 폰 결정 가이드. iOS 지원·다른 부품 상태·잔여 수명 종합 판단.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>X 6년차</span></div>
+    </a>
+    <a href="iphone-xs-max-battery-replacement-2-more-years.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 구형 모델 배터리 결정</div>
+      <div class="card-title">iPhone XS Max 배터리 — 교체 후 1~2년 더 사용 가능?</div>
+      <div class="card-desc">iPhone XS Max 배터리 교체 후 실제 추가 사용 가능 기간과 결정 기준. 다올리페어 옵션별 가격과 작업 시간.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>XS Max 1~2년 더</span></div>
+    </a>
+    <a href="iphone-se-3-battery-cycle-difference-from-others.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 구형 모델 배터리 결정</div>
+      <div class="card-title">iPhone SE 3세대 배터리 — 교체 시기와 일반 모델 차이</div>
+      <div class="card-desc">iPhone SE 3세대 배터리의 일반 모델과 다른 점, 교체 시기 신호와 다올리페어 가격. 작은 폼팩터의 배터리 특성.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>SE3 배터리</span></div>
+    </a>
+    <!-- ── 2026-05-04 롱테일 매트릭스 3차 (카메라 2 + 메인보드 1 + 침수 3) ── -->
+    <a href="iphone-14-pro-camera-shake-ois-damage.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 카메라 진단·수리</div>
+      <div class="card-title">iPhone 14 Pro 카메라 흔들림(OIS) — 진동·낙하 누적 손상과 수리비</div>
+      <div class="card-desc">iPhone 14 Pro 후면 카메라가 흔들리거나 영상이 떨릴 때 OIS 손상 신호와 정확한 모듈 교체 가격, 작업 시간 안내.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>14프로 OIS</span></div>
+    </a>
+    <a href="iphone-15-rear-camera-black-screen-module-vs-board.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 카메라 진단·수리</div>
+      <div class="card-title">iPhone 15 후면 카메라 검은 화면 — 모듈 vs 메인보드 진단</div>
+      <div class="card-desc">iPhone 15 후면 카메라 앱을 열었는데 화면이 검게만 나오거나 인식이 안 될 때 모듈 문제인지 메인보드 문제인지 구분하는 진단 가이드.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>15 카메라 검은 화면</span></div>
+    </a>
+    <a href="iphone-14-pro-max-apple-logo-stuck-mainboard.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 메인보드 진단·수리</div>
+      <div class="card-title">iPhone 14 Pro Max 사과 로고 멈춤 — 메인보드 진단과 수리 가격</div>
+      <div class="card-desc">iPhone 14 Pro Max 부팅 후 사과 로고에서 멈추거나 무한 재부팅 발생 시 메인보드 진단과 데이터 보존 절차, 수리 가격 안내.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>14프로맥스 사과 로고</span></div>
+    </a>
+    <a href="iphone-14-toilet-water-fall-emergency.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 침수 응급</div>
+      <div class="card-title">iPhone 14 변기·물에 빠짐 — 골든타임 24시간 응급 처치</div>
+      <div class="card-desc">iPhone 14가 변기·세면대·물에 빠졌을 때 24시간 골든타임 안에 살리는 응급 처치 단계와 절대 하면 안 되는 3가지.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>14 변기 침수</span></div>
+    </a>
+    <a href="iphone-16-coffee-drink-spill-6-hour-golden.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 침수 응급</div>
+      <div class="card-title">iPhone 16 커피·음료수 쏟음 — 6시간 골든타임 응급 처치</div>
+      <div class="card-desc">iPhone 16에 커피·음료·맥주를 쏟았을 때 당분·산성 부식이 빠르게 진행되는 6시간 골든타임 응급 처치와 매장 입고 우선순위.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>16 음료 침수</span></div>
+    </a>
+    <a href="iphone-15-rain-soaked-charging-port-corrosion.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 침수 응급</div>
+      <div class="card-title">iPhone 15 비 맞은 후 충전 안 됨 — USB-C 단자 부식 처리</div>
+      <div class="card-desc">iPhone 15가 비를 맞은 후 USB-C 충전이 안 되거나 액체 감지 알림이 안 사라질 때 단자 부식 처리 절차와 매장 가야 하는 신호.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>15 비 침수</span></div>
+    </a>
+
+    <!-- ── 2026-05-04 롱테일 매트릭스 2차 (LCD 손상 4 + 후면 유리 4) ── -->
+    <a href="iphone-16-pro-black-spot-spreading-display-damage.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · LCD 손상 진단·수리</div>
+      <div class="card-title">iPhone 16 Pro 화면 검은 멍 번짐 — 디스플레이 교체 가격과 시간</div>
+      <div class="card-desc">iPhone 16 Pro 화면에 검은 멍·점이 번지고 있다면 LCD까지 손상된 상태입니다. 방치 시 위험과 디스플레이 모듈 교체 가격, 작업 시간 안내.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>16프로 검은 멍</span></div>
+    </a>
+    <a href="iphone-15-screen-line-appearing-lcd-damage.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · LCD 손상 진단·수리</div>
+      <div class="card-title">iPhone 15 액정에 줄 생김 — 낙하 vs 자연 노화 구분과 수리비</div>
+      <div class="card-desc">iPhone 15 화면에 가로·세로 줄이 갑자기 생겼을 때 낙하 충격인지 자연 노화인지 구분법과 디스플레이 모듈 교체 가격.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>15 줄 생김</span></div>
+    </a>
+    <a href="iphone-14-partial-touch-not-working-lcd-damage.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · LCD 손상 진단·수리</div>
+      <div class="card-title">iPhone 14 화면 일부 터치 안 됨 — LCD 손상 신호와 수리비</div>
+      <div class="card-desc">iPhone 14 화면 일부 영역만 터치가 안 되거나 둔하게 반응할 때 LCD 디지타이저 손상 가능성과 디스플레이 교체 가격 안내.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>14 부분 터치</span></div>
+    </a>
+    <a href="iphone-13-lcd-ink-bleeding-spreading.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · LCD 손상 진단·수리</div>
+      <div class="card-title">iPhone 13 LCD 잉크 번짐 — 방치 시 위험과 수리 가격</div>
+      <div class="card-desc">iPhone 13 화면에 보라·녹색·파랑 잉크 번짐이 생겼다면 LCD 액체가 새고 있는 상태. 즉시 수리해야 하는 이유와 디스플레이 교체 가격.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>13 잉크 번짐</span></div>
+    </a>
+    <a href="iphone-16-pro-max-back-glass-broken-cost-risk.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 후면 유리 수리</div>
+      <div class="card-title">iPhone 16 Pro Max 후면 유리 깨짐 — 수리비와 방치 위험</div>
+      <div class="card-desc">iPhone 16 Pro Max 후면 유리가 깨졌을 때 정확한 수리 가격과 그냥 두면 발생하는 위험 3가지(균열 확산·침수·추가 손상).</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>16프로맥스 후면</span></div>
+    </a>
+    <a href="iphone-15-back-glass-camera-area-cracked.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 후면 유리 수리</div>
+      <div class="card-title">iPhone 15 카메라 부근 후면 균열 — 부분 vs 전체 교체 가격</div>
+      <div class="card-desc">iPhone 15 후면 유리에 카메라 부근만 균열이 생겼을 때 부분 교체 가능 여부와 정확한 가격, 카메라 모듈 동시 점검 안내.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>15 카메라 부근</span></div>
+    </a>
+    <a href="iphone-14-back-glass-broken-can-i-keep-using.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 후면 유리 수리</div>
+      <div class="card-title">iPhone 14 후면 깨졌는데 그냥 써도 되나 — 침수·균열 위험</div>
+      <div class="card-desc">iPhone 14 후면 유리가 깨졌을 때 그냥 사용해도 되는지, 빨리 수리해야 하는 이유와 정확한 수리 가격.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>14 후면 그냥 써도</span></div>
+    </a>
+    <a href="iphone-13-pro-max-back-glass-fully-broken.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 후면 유리 수리</div>
+      <div class="card-title">iPhone 13 Pro Max 뒷판 통째 깨짐 — 케이스로 가리는 건 답이 아님</div>
+      <div class="card-desc">iPhone 13 Pro Max 후면 유리가 크게 깨졌을 때 정확한 수리비와 케이스로 가리는 게 안전하지 않은 이유.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>13프로맥스 뒷판</span></div>
+    </a>
+
+    <!-- ── 2026-05-04 롱테일 모델×부품 매트릭스 1차 (충전단자 5 + 액정유리만 5) ── -->
+    <a href="iphone-16-pro-usb-c-liquid-detection-replacement.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 충전 단자 진단·수리</div>
+      <div class="card-title">iPhone 16 Pro USB-C 액체 감지 알림 — 교체 vs 청소 결정법과 가격</div>
+      <div class="card-desc">iPhone 16 Pro에서 "액체 감지" 알림이 사라지지 않거나 충전이 안 될 때, 청소로 해결되는 케이스와 단자 교체가 필요한 케이스를 정확히 구분하는 가이드.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>16프로 액체 감지</span></div>
+    </a>
+    <a href="iphone-15-charging-port-loose-cleaning-vs-replacement.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 충전 단자 진단·수리</div>
+      <div class="card-title">iPhone 15 충전 단자 헐거움 — 청소로 끝 vs 단자 교체 결정법과 가격</div>
+      <div class="card-desc">iPhone 15 USB-C 단자가 헐거워져 충전이 끊기거나 케이블이 빠질 때, 청소로 해결되는 케이스와 교체가 필요한 케이스를 구분하는 가이드.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>15 단자 헐거움</span></div>
+    </a>
+    <a href="iphone-14-lightning-port-debris-cleaning-guide.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 충전 단자 진단·수리</div>
+      <div class="card-title">iPhone 14 라이트닝 단자에 이물질 — 자가 청소 vs 매장 결정법과 가격</div>
+      <div class="card-desc">iPhone 14 라이트닝 단자에 먼지·실밥이 끼어 충전이 안 될 때, 자가 청소로 안전하게 해결되는 경우와 매장 정밀 청소가 필요한 경우를 구분합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>14 단자 이물질</span></div>
+    </a>
+    <a href="iphone-13-charging-overheating-diagnosis.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 충전 단자 진단·수리</div>
+      <div class="card-title">iPhone 13 충전 시 발열 — 단자·배터리·메인보드 어느 쪽 문제?</div>
+      <div class="card-desc">iPhone 13 충전 시 평소보다 뜨거워지거나 발열이 심한 경우, 단자·배터리·메인보드 중 어느 쪽 원인인지 구분하는 진단 가이드와 수리 가격.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>13 충전 발열</span></div>
+    </a>
+    <a href="iphone-12-not-charging-port-cable-battery-diagnosis.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 충전 단자 진단·수리</div>
+      <div class="card-title">iPhone 12 충전 안 들어감 — 단자·케이블·배터리 어느 쪽 문제?</div>
+      <div class="card-desc">iPhone 12에서 충전이 전혀 안 되거나 배터리가 안 차는 경우, 단자·케이블·배터리·메인보드 중 어느 쪽 원인인지 5분 안에 구분하는 진단 가이드.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>12 충전 진단</span></div>
+    </a>
+    <a href="iphone-16-glass-only-broken-lcd-normal-half-price.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 액정 단순 유리 파손</div>
+      <div class="card-title">iPhone 16 액정 유리만 파손 — LCD 정상이면 가격이 절반</div>
+      <div class="card-desc">iPhone 16 액정이 깨졌는데 화면 표시·터치가 정상이라면 LCD 교체 없이 유리만 교체로 가능합니다. 단순 유리 vs LCD 가격 비교와 자가진단 가이드.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>16 단순 유리</span></div>
+    </a>
+    <a href="iphone-15-pro-glass-only-cracked-repair-cost.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 액정 단순 유리 파손</div>
+      <div class="card-title">iPhone 15 Pro 화면 표면 균열만 — 단순 유리 교체 가격과 시간</div>
+      <div class="card-desc">iPhone 15 Pro 화면 표면에 균열만 있고 디스플레이가 정상이라면 단순 유리 교체로 해결됩니다. 정확한 가격과 작업 시간 안내.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>15프로 단순 유리</span></div>
+    </a>
+    <a href="iphone-14-glass-cracked-but-display-normal.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 액정 단순 유리 파손</div>
+      <div class="card-title">iPhone 14 액정 깨짐인데 표시는 정상 — 그냥 써도 될까</div>
+      <div class="card-desc">iPhone 14 화면이 깨졌는데 표시는 정상일 때 그냥 써도 되는지, 빨리 수리해야 하는지 결정하는 가이드. 단순 유리 vs LCD 가격 차이.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>14 깨짐 vs 표시</span></div>
+    </a>
+    <a href="iphone-13-mini-glass-only-vs-lcd-self-diagnosis.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 액정 단순 유리 파손</div>
+      <div class="card-title">iPhone 13 mini 유리만 깨짐 vs LCD까지 — 1분 자가진단</div>
+      <div class="card-desc">iPhone 13 mini 액정이 깨졌을 때 단순 유리만 손상인지 LCD까지인지 1분 안에 확인하는 자가진단법. 모델별 정확한 가격.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>13mini 진단</span></div>
+    </a>
+    <a href="iphone-12-pro-max-glass-only-broken-cost.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 액정 단순 유리 파손</div>
+      <div class="card-title">iPhone 12 Pro Max 단순 유리 파손 — 수리비와 시간</div>
+      <div class="card-desc">iPhone 12 Pro Max 화면 표면 균열만 있고 디스플레이가 정상일 때 단순 유리 교체 가격과 작업 시간. LCD까지 번지기 전 빨리 수리해야 하는 이유.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>12프로맥스 단순 유리</span></div>
+    </a>
+
+    <!-- ── 2026-05-04 시트 기반 가격표 글 (자동 갱신) ── -->
+    <a href="applewatch-screen-repair-cost-2026.html" class="article-card" data-cat="watch">
+      <div class="card-category">Apple Watch · 액정 수리비 가격표</div>
+      <div class="card-title">애플워치 액정 수리비 2026 — 시리즈·소재별 가격 총정리 (다올리페어)</div>
+      <div class="card-desc">애플워치 액정 수리비를 시리즈(3~10·SE·Ultra)·소재(알루미늄/스테인리스)·증상(단순 유리/LCD)별로 정확한 다올리페어 표준 가격으로 정리했습니다. 워치는 사설 수리 후에도 "비정품 부품" 메시지가 뜨지 않습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>워치 액정 가격표</span></div>
+    </a>
+
+    <a href="iphone-battery-replacement-types-cost-2026.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 배터리 교체 가격표</div>
+      <div class="card-title">아이폰 배터리 교체 종류·비용 총정리 — 셀 교체 vs 정품 인증 vs 일반 호환</div>
+      <div class="card-desc">아이폰 배터리 교체의 3가지 옵션(셀 교체·정품 인증·일반 호환)을 메시지 표시·내구성·가격으로 비교했습니다. 모델별 정확한 다올리페어 가격을 한 번에 정리.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>배터리 3옵션 비교</span></div>
+    </a>
+
+    <!-- ── 2026-05-04 광고 전환 깔때기 5편 (파워링크 → 매장 예약) ── -->
+    <a href="iphone-screen-repair-cost-2026.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 액정 수리비 가격표</div>
+      <div class="card-title">아이폰 액정 수리비 2026 — 모델별 정품 vs DD 액정 가격표 (다올리페어)</div>
+      <div class="card-desc">아이폰 액정 수리비를 모델별로 정확한 다올리페어 표준 가격으로 정리했습니다. 정품·DD 액정 차이, 단순 유리 vs LCD까지 4가지 옵션 가격을 한눈에 확인하세요.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>액정 가격표</span></div>
+    </a>
+
+    <a href="may-family-phone-checkup-package.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 5월 가정의 달 가이드</div>
+      <div class="card-title">5월 가족 폰 일괄 점검 — 부모님·자녀·본인 한 번에 어버이날 직전 체크</div>
+      <div class="card-desc">어버이날·어린이날 직후 가족 폰을 한 번에 점검하시는 분이 많아집니다. 부모님 폰·자녀 폰·본인 폰을 한 번에 가져와 일괄 점검·수리받는 동선과 우선순위를 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>가족 점검 패키지</span></div>
+    </a>
+
+    <a href="iphone-repair-photo-quote-guide.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 가이드 · 견적 받기</div>
+      <div class="card-title">수리 예약 전 5분 — 사진 1장으로 정확한 아이폰 수리 견적 받는 법</div>
+      <div class="card-desc">매장 방문 전 카톡 채널로 사진 한 장만 보내면 정확한 견적을 받을 수 있습니다. 어떻게 찍어야 진단이 정확한지, 견적 받기까지 5분 흐름을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>사진 견적</span></div>
+    </a>
+
+    <a href="iphone-private-repair-shop-checklist-8.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 가이드 · 사설 매장 선택</div>
+      <div class="card-title">아이폰 사설 수리 잘하는 곳 구별법 — 8가지 체크포인트</div>
+      <div class="card-desc">아이폰 사설 수리 매장이 너무 많아 어디가 잘하는지 헷갈리시죠. 부품·보증·절차·투명성까지 8가지 체크포인트로 정확하게 좋은 매장을 가려내는 가이드입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>사설 매장 8체크</span></div>
+    </a>
+
+    <a href="iphone-same-day-repair-by-symptom.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 당일 수리 가이드</div>
+      <div class="card-title">오늘 맡기고 오늘 받는 아이폰 수리 — 모델·증상별 당일 가능 여부 표</div>
+      <div class="card-desc">오늘 매장에 맡기면 그날 안에 받을 수 있는 아이폰 수리 항목과 그렇지 않은 항목을 모델·증상별로 정리했습니다. 입고 시각별 픽업 가능 여부도 함께.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>당일 수리 표</span></div>
+    </a>
+
+    <!-- ── 2026-05-01 수익 직결 5편 (객단가↑·전환↑·롱테일) ── -->
+    <a href="iphone-mainboard-vs-new-phone-breakeven.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 수리 결정 가이드</div>
+      <div class="card-title">메인보드 수리 vs 새 폰 — 모델별 손익분기점 계산법</div>
+      <div class="card-desc">아이폰 메인보드가 고장 났을 때 수리할지, 새 폰을 살지 결정하는 기준. 모델별 손익분기점과 중고 시세, 수리 후 잔여 수명까지 한 번에 계산할 수 있게 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>메인보드 손익분기</span></div>
+    </a>
+
+    <a href="iphone-water-damage-water-vs-drinks-comparison.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 침수 응급 가이드</div>
+      <div class="card-title">침수 아이폰 골든타임 24시간 — 물 vs 음료수 vs 맥주 회복률 차이</div>
+      <div class="card-desc">아이폰이 침수됐을 때 무엇에 빠졌는지에 따라 회복률이 크게 달라집니다. 물·음료수·맥주·바닷물·세제 — 액체 종류별 부식 속도와 회복률, 시간대별 응급 대처법을 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>침수 액체별 회복률</span></div>
+    </a>
+
+    <a href="iphone-multi-damage-bundle-vs-separate-repair.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 다중 파손 가이드</div>
+      <div class="card-title">액정+후면+카메라 동시 파손 — 한 번에 vs 따로 수리비 비교</div>
+      <div class="card-desc">아이폰을 떨어뜨려 액정·후면 유리·카메라가 동시에 손상됐을 때, 한 번에 수리하는 게 나을지 부분만 따로 수리할지 비용·기간·내구성 측면에서 비교합니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>다중 파손 번들</span></div>
+    </a>
+
+    <a href="applecare-void-real-cases-vs-myths.html" class="article-card" data-cat="guide">
+      <div class="card-category">수리 가이드 · 보증 정책</div>
+      <div class="card-title">사설 수리 후 애플케어 무효화 — 실제 무효 사례 vs 괜한 걱정</div>
+      <div class="card-desc">사설 수리를 받으면 애플케어가 무효화된다는 말이 정말일까요. 실제로 무효 처리되는 케이스와 그렇지 않은 케이스를 사례 기반으로 정리했습니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>애플케어 사설</span></div>
+    </a>
+
+    <a href="iphone-call-volume-low-vs-no-sound.html" class="article-card" data-cat="iphone">
+      <div class="card-category">iPhone · 통화 문제 진단</div>
+      <div class="card-title">통화 상대방 목소리 작음 vs 안 들림 — 원인별 수리 방법</div>
+      <div class="card-desc">아이폰 통화 시 상대방 목소리가 작거나 아예 안 들릴 때, 두 증상은 원인이 완전히 다릅니다. 증상별로 원인과 수리 비용을 정리한 가이드입니다.</div>
+      <div class="card-meta"><span>금동평 대표</span><span>2026년 5월</span><span>통화 음량 진단</span></div>
+    </a>
 
     <!-- ── 2026-04-30 지역 SEO 13편 (가산·신림·목동 3지점) ── -->
     <a href="find-nearest-daolrepair-gasan-sillim-mokdong.html" class="article-card" data-cat="guide">
@@ -2921,6 +3418,17 @@ function filterCards() {
     }
   }
 }
+</script>
+
+<div class="share-toast" id="daolToast">링크가 복사되었습니다 ✓</div>
+<style>
+.share-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:#1D1D1F;color:#fff;padding:12px 22px;border-radius:50px;font-size:14px;font-weight:600;box-shadow:0 4px 20px rgba(0,0,0,0.2);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:9999}
+.share-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.art-nav-share{position:relative;background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);cursor:pointer;padding:6px 12px;border-radius:50px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:4px;margin-right:6px;font-family:inherit;transition:background 0.15s}
+.art-nav-share:hover{background:rgba(255,255,255,0.18);color:#fff}
+</style>
+<script>
+window.daolShare=function(){var title=document.title.replace(/ \| .*$/,'').trim();var url=location.href;var text=(document.querySelector('meta[name=description]')||{}).content||'다올리페어';if(navigator.share){navigator.share({title:title,text:text,url:url}).catch(function(){});}else if(navigator.clipboard){navigator.clipboard.writeText(url).then(function(){var t=document.getElementById('daolToast');if(t){t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2000);}});}else{prompt('아래 링크를 복사하세요:',url);}};
 </script>
 
 </body>
