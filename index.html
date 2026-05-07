@@ -1693,8 +1693,8 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
 
     <div class="live-grid">
       <div class="live-stat live-stat-big">
+        <div class="live-lbl live-lbl-big">누적 수리 건수</div>
         <div class="live-num" id="liveTotal">0</div>
-        <div class="live-lbl">누적 수리 건수</div>
       </div>
       <div class="live-stat live-stat-rank live-stat-rank-1">
         <div class="live-rank-badge">🥇 이번 달 1위</div>
@@ -1741,7 +1741,9 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
 .live-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:14px; margin-bottom:32px; }
 .live-stat { background:#fff; border:1px solid rgba(0,0,0,0.07); border-radius:18px; padding:24px 20px; transition:border-color 0.2s, transform 0.2s, box-shadow 0.2s; box-shadow:0 2px 12px rgba(0,0,0,0.04); }
 .live-stat:hover { border-color:rgba(255,107,53,0.5); transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.08); }
-.live-stat-big { background:linear-gradient(135deg,rgba(255,107,53,0.08) 0%,rgba(255,107,53,0.02) 100%); border-color:rgba(255,107,53,0.3); }
+.live-stat-big { background:linear-gradient(135deg,rgba(255,107,53,0.08) 0%,rgba(255,107,53,0.02) 100%); border-color:rgba(255,107,53,0.3); display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:18px; }
+.live-stat-big .live-lbl-big { font-size:18px; font-weight:900; color:#1a1a1a; letter-spacing:-0.5px; flex-shrink:0; }
+.live-stat-big .live-num { margin-bottom:0; }
 /* Top 3 인기 수리 카드 */
 .live-stat-rank { display:flex; flex-direction:column; justify-content:space-between; min-height:110px; }
 .live-stat-rank-1 { background:linear-gradient(135deg,rgba(255,215,0,0.10) 0%,rgba(255,215,0,0.02) 100%); border-color:rgba(255,215,0,0.25); }
@@ -1772,6 +1774,7 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
   .live-stat-big { grid-column:1/-1; }
   .live-num { font-size:32px; }
   .live-stat-big .live-num { font-size:40px; }
+  .live-stat-big .live-lbl-big { font-size:15px; }
   .live-stat-rank { min-height:auto; padding:14px 10px; }
   .live-rank-badge { font-size:9px; letter-spacing:0.3px; margin-bottom:6px; }
   .live-rank-name { font-size:13px; line-height:1.2; word-break:keep-all; }
