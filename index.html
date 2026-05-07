@@ -2005,7 +2005,7 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
 .ba-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
 .ba-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:20px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.3); transition:transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
 .ba-card:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,0,0,0.5); border-color:rgba(255,107,53,0.3); }
-.ba-slider { position:relative; aspect-ratio:4/3; overflow:hidden; cursor:ew-resize; user-select:none; touch-action:pan-y; }
+.ba-slider { position:relative; aspect-ratio:1/1; overflow:hidden; cursor:ew-resize; user-select:none; touch-action:pan-y; background:#0a0a0a; }
 .ba-img { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#fff; overflow:hidden; }
 .ba-after { z-index:1; }
 .ba-before { clip-path:inset(0 50% 0 0); -webkit-clip-path:inset(0 50% 0 0); z-index:2; }
@@ -2116,9 +2116,9 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
           el.style.position = 'absolute';
           el.style.inset = '0';
           el.style.overflow = 'hidden';
-          el.style.backgroundColor = '#000';
+          el.style.backgroundColor = '#0a0a0a';
           el.style.backgroundImage = 'url("' + url + '")';
-          el.style.backgroundSize = 'cover';
+          el.style.backgroundSize = 'contain';   // 전체 사진 보이도록 (cropping X)
           el.style.backgroundPosition = 'center';
           el.style.backgroundRepeat = 'no-repeat';
           // 3) z-index 명시 (after는 1, before는 2 — 자식 라벨이 다른 형제 위로 못 새어나오도록 stacking context 격리)
