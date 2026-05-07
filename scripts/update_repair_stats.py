@@ -85,30 +85,31 @@ TYPE_LABELS = {
     "버튼교체": "버튼 수리",
 }
 
-# ─── 수리 종류별 작업 시간 (기존 칼럼 글 기준) ───
+# ─── 수리 종류별 작업 시간 (다올리페어 매장 실측 기준) ───
+# 모든 수리는 당일 수리 가능 (침수/메인보드 제외). 작업 시간만 다름.
 TIME_BY_TYPE = {
-    "screen":         "30~60분",
-    "battery":        "30~50분",
-    "back":           "1~2시간",
-    "back-glass":     "1~2시간",
-    "charge":         "30분~1시간",
-    "camera":         "1~2시간",
-    "sensor":         "30분~1시간",
-    "button":         "30~60분",
+    "screen":         "당일 · 30~60분",
+    "battery":        "당일 · 30~50분",
+    "back":           "당일 · 3~4시간",
+    "back-glass":     "당일 · 3~4시간",
+    "charge":         "당일 · 30분~1시간",
+    "camera":         "당일 · 1~2시간",
+    "sensor":         "당일 · 30분~1시간",
+    "button":         "당일 · 30~60분",
     "water":          "진단 후 안내",
-    "speaker":        "1시간~",
+    "speaker":        "당일 · 1시간~",
     "mainboard":      "진단 후 안내",
-    "screen+battery": "1~2시간",
-    "screen+back":    "1~2시간",
-    "back+battery":   "2시간~",
-    "battery+back":   "2시간~",
-    "battery+other":  "1시간~",
-    "charge+other":   "1시간~",
+    "screen+battery": "당일 · 1~2시간",
+    "screen+back":    "당일 · 3~4시간",
+    "back+battery":   "당일 · 3~4시간",
+    "battery+back":   "당일 · 3~4시간",
+    "battery+other":  "당일 · 1시간~",
+    "charge+other":   "당일 · 1시간~",
     "other":          "진단 후 안내",
     # 한국어 변형
-    "화면교체":       "30~60분",
-    "배터리교체":     "30~50분",
-    "후면유리":       "1~2시간",
+    "화면교체":       "당일 · 30~60분",
+    "배터리교체":     "당일 · 30~50분",
+    "후면유리":       "당일 · 3~4시간",
 }
 
 # ─── BEFORE/AFTER 사진에 표시할 설명 텍스트 ───
@@ -477,6 +478,8 @@ def main():
 
     portfolio_cases = []
     IMG_OUT_DIR.mkdir(parents=True, exist_ok=True)
+    # 사용된 폴더 추적 (나중에 미사용 폴더 prune)
+    used_folders = set()
     case_idx = 0
     print(f"   🔍 후보 풀 {len(slider_pool)}개 처리 시작")
     for idx_total, c in enumerate(slider_pool, 1):
@@ -521,24 +524,30 @@ def main():
             continue
 
         case_idx += 1
-        case_dir = IMG_OUT_DIR / f"case-{case_idx}"
+        # 폴더명을 Drive 케이스 ID 기반으로 (캐시 충돌 방지)
+        # 한 케이스 = 영구 고유 폴더 → 다른 케이스가 같은 자리 들어와도 사진 안 섞임
+        folder_id = c["id"][:24]  # Drive 폴더 ID 앞 24자
+        used_folders.add(folder_id)
+        case_dir = IMG_OUT_DIR / folder_id
         case_dir.mkdir(exist_ok=True)
         before_path = case_dir / "before.jpg"
         after_path  = case_dir / "after.jpg"
 
-        try:
-            download(before_file["id"], before_path)
-            download(after_file["id"], after_path)
-            print(f"   ✓ case-{case_idx}: {device_label(c['device'], c['model'])} ({c['repair_type']})")
-            print(f"      ↑ {before_file['name']} → {after_file['name']}")
-        except Exception as e:
-            print(f"   ⚠️ case-{case_idx} 다운로드 실패: {e}")
-            # 다운로드 실패 시 슬라이더에 안 넣음 (위험한 폴백 X)
-            case_idx -= 1
-            continue
+        # 이미 다운로드된 파일이 있으면 재사용 (속도 최적화)
+        if before_path.exists() and after_path.exists():
+            print(f"   ✓ case-{case_idx} ({folder_id[:10]}...): {device_label(c['device'], c['model'])} ({c['repair_type']}) — 캐시 사용")
+        else:
+            try:
+                download(before_file["id"], before_path)
+                download(after_file["id"], after_path)
+                print(f"   ✓ case-{case_idx} ({folder_id[:10]}...): {device_label(c['device'], c['model'])} ({c['repair_type']}) — 새로 다운로드")
+            except Exception as e:
+                print(f"   ⚠️ case-{case_idx} 다운로드 실패: {e}")
+                case_idx -= 1
+                used_folders.discard(folder_id)
+                continue
 
         before_text, after_text = BEFORE_AFTER_TEXTS.get(c["repair_type"], ("수리 전 상태", "수리 완료"))
-        # 폴더 createdTime 기준 표시일자
         try:
             d_iso = datetime.fromisoformat(c["createdTime"].replace("Z", "+00:00")).astimezone(KST)
             display_date = d_iso.strftime("%Y-%m-%d")
@@ -551,12 +560,28 @@ def main():
             "branch": c["branch"],
             "date": display_date,
             "repair_time": TIME_BY_TYPE.get(c["repair_type"], "진단 후 안내"),
-            "before_img": f"images/before-after/case-{case_idx}/before.jpg",
-            "after_img":  f"images/before-after/case-{case_idx}/after.jpg",
+            "before_img": f"images/before-after/{folder_id}/before.jpg",
+            "after_img":  f"images/before-after/{folder_id}/after.jpg",
             "before_text": before_text,
             "after_text": after_text,
             "case_id": c["id"],
         })
+
+    # ─── 5b. 사용하지 않는 폴더 prune (이전 run에서 생긴 잔여물) ───
+    pruned = 0
+    if IMG_OUT_DIR.exists():
+        import shutil
+        for child in IMG_OUT_DIR.iterdir():
+            if not child.is_dir(): continue
+            # case- 접두사는 옛날 인덱스 기반 폴더 → 모두 삭제
+            if child.name.startswith("case-"):
+                shutil.rmtree(child); pruned += 1
+                continue
+            # 사용 중인 폴더가 아니면 삭제
+            if child.name not in used_folders:
+                shutil.rmtree(child); pruned += 1
+    if pruned:
+        print(f"   🧹 미사용 폴더 {pruned}개 정리 완료")
 
     # ─── 6. JSON 저장 ───
     # 슬라이더는 최신 4개 (메인 페이지), 포트폴리오는 전체 (별도 페이지)
