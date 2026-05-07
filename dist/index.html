@@ -2153,8 +2153,10 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
       }
       var beforeEl = card.querySelector('.ba-before');
       var afterEl  = card.querySelector('.ba-after');
-      trySetBg(beforeEl, c.before_img, c.before_text);
-      trySetBg(afterEl,  c.after_img,  c.after_text);
+      // 캐시 버스터: JSON 업데이트 시각을 이미지 URL에 붙여 브라우저 캐시 무효화
+      var cacheBuster = '?v=' + encodeURIComponent(d.updated_at || Date.now());
+      trySetBg(beforeEl, c.before_img ? c.before_img + cacheBuster : '', c.before_text);
+      trySetBg(afterEl,  c.after_img  ? c.after_img  + cacheBuster : '', c.after_text);
     });
   }).catch(function(){ /* 데이터 없으면 기본 그라디언트 유지 */ });
 })();
