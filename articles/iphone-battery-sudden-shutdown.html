@@ -333,6 +333,29 @@
     ]
   }
   </script>
+
+  <!-- ─ Google Analytics 4 ─────────────────────────────── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TF9YKW0FW2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TF9YKW0FW2', {
+      'page_title': document.title,
+      'page_location': window.location.href
+    });
+    document.addEventListener('DOMContentLoaded', function(){
+      function track(n, p){ if(typeof gtag==='function') gtag('event', n, Object.assign({'page_path':window.location.pathname,'page_title':document.title}, p||{})); }
+      document.querySelectorAll('a[href*="pf.kakao.com"]').forEach(function(el){ el.addEventListener('click', function(){ track('kakao_click', {'destination': el.href}); }); });
+      document.querySelectorAll('a[href*="naver.me"]').forEach(function(el){ el.addEventListener('click', function(){
+        var t = el.textContent.trim().substring(0, 30);
+        var b = t.indexOf('가산')>=0?'가산점':t.indexOf('신림')>=0?'신림점':t.indexOf('목동')>=0?'목동점':'기타';
+        track('naver_click', {'branch': b, 'label': t});
+      }); });
+      document.querySelectorAll('a[href^="tel:"]').forEach(function(el){ el.addEventListener('click', function(){ track('phone_click', {'phone': el.href.replace('tel:','')}); }); });
+      document.querySelectorAll('a[href*="portfolio.html"]').forEach(function(el){ el.addEventListener('click', function(){ track('portfolio_view', {}); }); });
+    });
+  </script>
 </head>
 <body>
 <nav class="art-nav">

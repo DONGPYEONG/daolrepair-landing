@@ -1223,6 +1223,71 @@
   .fn-label { font-size: 10px; font-weight: 700; letter-spacing: -0.2px; }
   .fn-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.08); margin: 0 2px; flex-shrink: 0; }
   </style>
+
+  <!-- ─ Google Analytics 4 ─────────────────────────────── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TF9YKW0FW2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TF9YKW0FW2', {
+      'page_title': document.title,
+      'page_location': window.location.href
+    });
+
+    // 핵심 CTA 이벤트 자동 추적
+    document.addEventListener('DOMContentLoaded', function(){
+      function track(eventName, params){
+        if(typeof gtag === 'function'){
+          gtag('event', eventName, Object.assign({
+            'page_path': window.location.pathname,
+            'page_title': document.title
+          }, params || {}));
+        }
+      }
+      // 카카오톡 채널 추가 클릭
+      document.querySelectorAll('a[href*="pf.kakao.com"]').forEach(function(el){
+        el.addEventListener('click', function(){ track('kakao_click', {'destination': el.href}); });
+      });
+      // 네이버 예약 클릭 (지점별 자동 구분)
+      document.querySelectorAll('a[href*="naver.me"]').forEach(function(el){
+        el.addEventListener('click', function(){
+          var label = el.textContent.trim().substring(0, 30);
+          var branch = label.indexOf('가산') >= 0 ? '가산점'
+                     : label.indexOf('신림') >= 0 ? '신림점'
+                     : label.indexOf('목동') >= 0 ? '목동점' : '기타';
+          track('naver_click', {'branch': branch, 'label': label});
+        });
+      });
+      // 전화 클릭
+      document.querySelectorAll('a[href^="tel:"]').forEach(function(el){
+        el.addEventListener('click', function(){ track('phone_click', {'phone': el.href.replace('tel:','')}); });
+      });
+      // 견적 모달 열기 (다양한 버튼 onclick에 artWizOpen 호출)
+      ['artWizOpen','heroReserveToggle','mobReserveOpen'].forEach(function(fnName){
+        var orig = window[fnName];
+        if(typeof orig === 'function'){
+          window[fnName] = function(){
+            track('estimate_open', {'trigger': fnName});
+            return orig.apply(this, arguments);
+          };
+        }
+      });
+      // 견적 폼 제출 성공 (sendNotification 호출 시)
+      var origSend = window.sendNotification;
+      if(typeof origSend === 'function'){
+        window.sendNotification = function(payload){
+          var t = (payload && payload.type) || 'unknown';
+          track('cta_submit', {'cta_type': t, 'branch': (payload && payload.branch) || ''});
+          return origSend.apply(this, arguments);
+        };
+      }
+      // 포트폴리오 보기 클릭
+      document.querySelectorAll('a[href*="portfolio.html"]').forEach(function(el){
+        el.addEventListener('click', function(){ track('portfolio_view', {}); });
+      });
+    });
+  </script>
 </head>
 <body class="has-promo">
 
