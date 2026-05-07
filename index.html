@@ -1766,16 +1766,23 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
 .live-branch-num { font-size:22px; font-weight:900; letter-spacing:-0.5px; color:#1a1a1a; }
 @media (max-width:720px){
   .live-sub { font-size:13px; margin-bottom:24px; }
-  .live-grid { grid-template-columns:1fr 1fr; }
+  /* 누적은 풀폭 1줄, 1·2·3위는 한 줄에 3칸 */
+  .live-grid { grid-template-columns:1fr 1fr 1fr; gap:10px; }
   .live-stat-big { grid-column:1/-1; }
   .live-num { font-size:32px; }
   .live-stat-big .live-num { font-size:40px; }
+  .live-stat-rank { min-height:auto; padding:14px 10px; }
+  .live-rank-badge { font-size:9px; letter-spacing:0.3px; margin-bottom:6px; }
+  .live-rank-name { font-size:13px; line-height:1.2; word-break:keep-all; }
+  .live-rank-count { font-size:11px; margin-top:4px; }
   .live-ticker-row { font-size:13px; gap:8px; }
   .live-ticker-row .lt-time { font-size:11px; }
-  .live-rank-name { font-size:14px; }
-  .live-rank-badge { font-size:10px; }
-  .live-rank-count { font-size:12px; }
-  .live-stat-rank { min-height:90px; padding:18px 14px; }
+}
+@media (max-width:380px){
+  /* 아주 작은 화면(아이폰 SE 등)에서 더 작게 */
+  .live-rank-name { font-size:11px; }
+  .live-rank-count { font-size:10px; }
+  .live-rank-badge { font-size:8px; }
 }
 </style>
 
