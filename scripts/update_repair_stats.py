@@ -85,13 +85,39 @@ TYPE_LABELS = {
     "버튼교체": "버튼 수리",
 }
 
+# ─── 수리 종류별 작업 시간 (기존 칼럼 글 기준) ───
+TIME_BY_TYPE = {
+    "screen":         "30~60분",
+    "battery":        "30~50분",
+    "back":           "1~2시간",
+    "back-glass":     "1~2시간",
+    "charge":         "30분~1시간",
+    "camera":         "1~2시간",
+    "sensor":         "30분~1시간",
+    "button":         "30~60분",
+    "water":          "진단 후 안내",
+    "speaker":        "1시간~",
+    "mainboard":      "진단 후 안내",
+    "screen+battery": "1~2시간",
+    "screen+back":    "1~2시간",
+    "back+battery":   "2시간~",
+    "battery+back":   "2시간~",
+    "battery+other":  "1시간~",
+    "charge+other":   "1시간~",
+    "other":          "진단 후 안내",
+    # 한국어 변형
+    "화면교체":       "30~60분",
+    "배터리교체":     "30~50분",
+    "후면유리":       "1~2시간",
+}
+
 # ─── BEFORE/AFTER 사진에 표시할 설명 텍스트 ───
 # 원칙: "정품" 표기는 사용하지 않음. 사실(부품명·교체·측정값) 중심으로 표기.
 # 배터리 케이스는 BEFORE/AFTER 사진이 보통 iPhone 설정 → 배터리 성능 상태 화면이므로
 # "성능치" 단어로 명확히 안내.
 BEFORE_AFTER_TEXTS = {
     "screen":         ("전면 액정 파손",         "전면 액정 교체 완료"),
-    "battery":        ("이전 배터리 성능치",     "교체 후 배터리 성능치"),
+    "battery":        ("배터리 성능 노화",       "배터리 교체 완료"),
     "back":           ("후면 유리 파손",         "후면 유리 교체 완료"),
     "back-glass":     ("후면 유리 파손",         "후면 유리 교체 완료"),
     "charge":         ("충전 단자 손상",         "충전 단자 정밀 수리"),
@@ -105,12 +131,12 @@ BEFORE_AFTER_TEXTS = {
     "screen+back":    ("화면 + 후면 파손",       "화면 + 후면 교체"),
     "back+battery":   ("후면 + 배터리 노화",     "후면 교체 + 배터리 성능치 정상"),
     "battery+back":   ("배터리 + 후면 손상",     "배터리 + 후면 교체"),
-    "battery+other":  ("이전 배터리 성능치",     "교체 후 배터리 성능치"),
+    "battery+other":  ("배터리 성능 노화",       "배터리 교체 + 점검 완료"),
     "charge+other":   ("충전·기타 이상",         "충전 + 정밀 점검"),
     "other":          ("기타 손상",              "정밀 수리 완료"),
     # 한국어 변형
     "화면교체":       ("전면 액정 파손",         "전면 액정 교체 완료"),
-    "배터리교체":     ("이전 배터리 성능치",     "교체 후 배터리 성능치"),
+    "배터리교체":     ("배터리 성능 노화",       "배터리 교체 완료"),
     "후면유리":       ("후면 유리 파손",         "후면 유리 교체 완료"),
 }
 
@@ -162,9 +188,18 @@ def parse_case_folder(title):
     if re.search(r"[가-힣]", parts[-1]):
         repair_type = parts[-1]
 
+    # 테스트·검사·인코딩 깨진 케이스 제외
     if device.lower() in ("test", "inspection", "ipaddr"):
         return None
     if "test" in title.lower() or "테스트" in title:
+        return None
+    if "�" in title:    # 인코딩 깨진 한글 (replacement character)
+        return None
+    if any(suspicious in title.lower() for suspicious in ["검사용", "샘플", "sample", "demo", "데모"]):
+        return None
+    # 정상 케이스는 폴더명이 [device]-[model]-[name]-[phone]-[type] 패턴 → 5+ 토큰
+    # 토큰 4개 이하면 테스트일 가능성 (전화번호 없는 임시 폴더)
+    if len(parts) < 4:
         return None
 
     # 가운데 토큰 추출 (전화번호 만나면 멈춤)
@@ -364,21 +399,26 @@ def main():
     # ✅ 4단계 개인정보 안전장치
     PRIORITY_TYPES = ["screen", "back", "back-glass", "screen+battery", "screen+back", "water"]
     # 🛡️ 안전 1: 절대 사용 금지 파일 패턴 (개인정보 노출 위험)
-    # 시리얼번호 화면은 Apple ID·시리얼이 보여서 금지. 그 외는 사용 가능.
     FORBIDDEN_PATTERNS = ["시리얼번호", "Apple ID", "apple id"]
-    # 🛡️ 안전 2: BEFORE/AFTER 우선순위 (앞쪽일수록 우선 매칭)
-    # 파손부위/수리부위가 가장 임팩트 크고, 없으면 기기 사진(전면/후면)으로 폴백
-    SAFE_BEFORE_PATTERNS = [
-        ("수리전", "파손부위"),    # 1순위: 파손 클로즈업 (배터리는 성능치 화면)
-        ("수리전", "기기후면"),    # 2순위: 기기 후면 (외관)
-        ("수리전", "기기전면"),    # 3순위: 기기 전면 (잠금화면 가능성 — 직원이 화면 끄고 촬영 권장)
-    ]
-    SAFE_AFTER_PATTERNS  = [
-        ("수리후", "수리부위"),    # 1순위: 수리 부위 클로즈업
-        ("수리후", "기기후면"),    # 2순위: 기기 후면
-        ("수리후", "기기전면"),    # 3순위: 기기 전면 (켜진 화면)
-        ("수리후", "작동화면"),    # 4순위: 작동 확인 화면 (홈화면 가능성)
-    ]
+
+    # 🛡️ 안전 2: 수리 종류별 BEFORE/AFTER 사진 우선순위
+    # 외관 손상이 보이는 종류 → 파손부위 클로즈업 우선
+    # 외관 변화 없는 종류(배터리·충전·센서 등) → 기기 사진 우선 (내부 사진 회피)
+    DEFAULT_BEFORE = [("수리전", "파손부위"), ("수리전", "기기후면"), ("수리전", "기기전면")]
+    DEFAULT_AFTER  = [("수리후", "수리부위"), ("수리후", "기기후면"), ("수리후", "기기전면"), ("수리후", "작동화면")]
+    DEVICE_FIRST_BEFORE = [("수리전", "기기후면"), ("수리전", "기기전면"), ("수리전", "파손부위")]
+    DEVICE_FIRST_AFTER  = [("수리후", "기기후면"), ("수리후", "기기전면"), ("수리후", "작동화면"), ("수리후", "수리부위")]
+    # 외관 변화 없어 파손부위 사진이 내부 분해/배터리/회로 사진일 가능성 높은 종류
+    DEVICE_FIRST_TYPES = {
+        "battery", "charge", "sensor", "button", "speaker", "mainboard",
+        "battery+other", "charge+other", "other",
+        "배터리교체", "충전구", "충전단자",
+    }
+
+    def get_patterns(repair_type):
+        if repair_type in DEVICE_FIRST_TYPES:
+            return DEVICE_FIRST_BEFORE, DEVICE_FIRST_AFTER
+        return DEFAULT_BEFORE, DEFAULT_AFTER
 
     # 🛡️ 안전 3: 수동 차단 목록 — data/repair-blocklist.txt
     blocklist_file = ROOT / "data" / "repair-blocklist.txt"
@@ -445,15 +485,16 @@ def main():
             print(f"   ⏭️  [{idx_total}] 빈 폴더: {device_label(c['device'], c['model'])} {c['repair_type']}")
             continue
 
-        # 🛡️ 안전 4: 안전한 BEFORE/AFTER 짝 찾기 (FORBIDDEN 자동 배제)
+        # 🛡️ 안전 4: 안전한 BEFORE/AFTER 짝 찾기 (수리 종류별 우선순위)
+        before_patterns, after_patterns = get_patterns(c["repair_type"])
         before_file = None; after_file = None
-        for stage, body_part in SAFE_BEFORE_PATTERNS:
+        for stage, body_part in before_patterns:
             for f in inner:
                 if (stage in f["name"] and body_part in f["name"]
                     and is_safe_file(f["name"])):
                     before_file = f; break
             if before_file: break
-        for stage, body_part in SAFE_AFTER_PATTERNS:
+        for stage, body_part in after_patterns:
             for f in inner:
                 if (stage in f["name"] and body_part in f["name"]
                     and is_safe_file(f["name"])):
@@ -495,7 +536,7 @@ def main():
             "type": TYPE_LABELS.get(c["repair_type"], "수리"),
             "branch": c["branch"],
             "date": display_date,
-            "minutes": 30,
+            "repair_time": TIME_BY_TYPE.get(c["repair_type"], "진단 후 안내"),
             "before_img": f"images/before-after/case-{case_idx}/before.jpg",
             "after_img":  f"images/before-after/case-{case_idx}/after.jpg",
             "before_text": before_text,

@@ -2173,7 +2173,7 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
             '</div>' +
           '</div>' +
           '<div class="ba-meta">' +
-            '<span class="ba-meta-tag ba-meta-time">⏱ ' + (c.minutes || 30) + '분</span>' +
+            '<span class="ba-meta-tag ba-meta-time">⏱ ' + (c.repair_time || (c.minutes ? c.minutes + '분' : '30~60분')) + '</span>' +
             '<span class="ba-meta-tag ba-meta-branch">📍 ' + (c.branch || '') + '</span>' +
             '<span class="ba-meta-tag ba-meta-warranty">✓ 90일 보증</span>' +
           '</div>';

@@ -166,7 +166,7 @@
               '</div>',
             '</div>',
             '<div class="pf-caption-meta">',
-              '<span class="pf-meta-tag pf-meta-time">⏱ ' + (c.minutes || 30) + '분</span>',
+              '<span class="pf-meta-tag pf-meta-time">⏱ ' + (c.repair_time || (c.minutes ? c.minutes + '분' : '30~60분')) + '</span>',
               '<span class="pf-meta-tag pf-meta-branch">📍 ' + (c.branch || '') + '</span>',
               '<span class="pf-meta-tag pf-meta-warranty">✓ 90일 보증</span>',
             '</div>',
