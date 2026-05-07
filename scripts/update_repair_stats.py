@@ -1,0 +1,499 @@
+#!/usr/bin/env python3
+"""다올리페어 수리 사진 → 실시간 통계 JSON 자동 생성
+
+Google Drive의 수리 사진 폴더를 크롤링해서 다음을 산출:
+  - 누적 수리 건수 (지점별·수리종류별)
+  - 오늘/이번주/이번달 카운트
+  - 최근 활동 5개 (개인정보 제외)
+  - BEFORE/AFTER 슬라이더용 4건 + 사진 다운로드
+
+산출 파일:
+  - data/repair-stats.json
+  - images/before-after/case-{1..4}/before.jpg, after.jpg
+
+실행:
+  python3 scripts/update_repair_stats.py
+
+사전 준비 (1회):
+  1. Google Cloud Console → 서비스 계정 만들기 → JSON 키 다운로드
+  2. 키 파일을 .env/daolrepair-drive-sa.json 으로 저장
+  3. Drive 루트 폴더(다올리페어 수리사진)를 그 서비스 계정 이메일에 "뷰어" 권한으로 공유
+  4. pip3 install google-api-python-client google-auth
+"""
+import os, sys, json, re, io
+from pathlib import Path
+from datetime import datetime, timezone, timedelta
+
+ROOT = Path(__file__).parent.parent
+SA_JSON = ROOT / ".env" / "daolrepair-drive-sa.json"
+DRIVE_ROOT_ID = "1-JNrAO3m4x3OaYbA0NlJT5tWvbmypLbn"  # 다올리페어 수리사진
+DATA_OUT = ROOT / "data" / "repair-stats.json"
+IMG_OUT_DIR = ROOT / "images" / "before-after"
+KST = timezone(timedelta(hours=9))
+
+# ─────────────────────────────────────────────────────────
+# 📊 사장님이 조정 가능한 숫자 (실제 운영 규모 기준)
+# ─────────────────────────────────────────────────────────
+# 직원이 실제로 사진을 올리지 않는 케이스도 많기 때문에
+# Drive에서 추적되는 건수에 배수를 곱해 실제 운영 규모로 환산.
+PHOTO_UPLOAD_RATE = 0.30   # Drive 사진 업로드율 추정 (30% = 10건 중 3건만 사진 있음)
+                            # → 실제 매장이 더 바쁠수록 이 값을 낮추세요 (예: 0.20 → 5배 환산)
+
+# 앱 도입 전 누적 수리 건수 (지점별 베이스라인)
+# 가산 7년차, 신림 4년차 (비슷한 규모), 목동 6개월차 (신생).
+BASELINE_PER_BRANCH = {
+    "가산점": 5500,
+    "신림점": 5000,
+    "목동점": 300,
+}
+# ─────────────────────────────────────────────────────────
+
+# ─── 수리 종류 코드 → 한국어 라벨 ───
+TYPE_LABELS = {
+    # 영문
+    "screen": "화면 교체",
+    "battery": "배터리 교체",
+    "back": "후면 유리 교체",
+    "back-glass": "후면 유리 교체",
+    "charge": "충전 단자 수리",
+    "camera": "카메라 수리",
+    "sensor": "센서 수리",
+    "button": "버튼 수리",
+    "water": "침수 복구",
+    "mainboard": "메인보드 수리",
+    "speaker": "스피커 수리",
+    "other": "기타 정밀 수리",
+    "screen+battery": "화면 + 배터리 교체",
+    "screen+back": "화면 + 후면 유리 교체",
+    "back+battery": "후면 + 배터리 교체",
+    "battery+other": "배터리 + 기타",
+    "charge+other": "충전 + 기타",
+    "screen+back+battery": "종합 수리",
+    "battery+back": "배터리 + 후면 교체",
+    # 한국어 변형 (직원이 한글로 적은 경우)
+    "화면교체": "화면 교체",
+    "화면 교체": "화면 교체",
+    "배터리교체": "배터리 교체",
+    "배터리 교체": "배터리 교체",
+    "후면유리": "후면 유리 교체",
+    "후면유리교체": "후면 유리 교체",
+    "후면 유리": "후면 유리 교체",
+    "충전구": "충전 단자 수리",
+    "충전단자": "충전 단자 수리",
+    "카메라교체": "카메라 수리",
+    "스피커교체": "스피커 수리",
+    "버튼교체": "버튼 수리",
+}
+
+# ─── BEFORE/AFTER 사진에 표시할 설명 텍스트 ───
+# 원칙: "정품" 표기는 사용하지 않음. 사실(부품명·교체) 중심으로 깔끔하게 표기.
+BEFORE_AFTER_TEXTS = {
+    "screen":         ("전면 액정 파손",         "전면 액정 교체 완료"),
+    "battery":        ("배터리 노화·부풂",       "배터리 교체 완료"),
+    "back":           ("후면 유리 파손",         "후면 유리 교체 완료"),
+    "back-glass":     ("후면 유리 파손",         "후면 유리 교체 완료"),
+    "charge":         ("충전 단자 손상",         "충전 단자 정밀 수리"),
+    "camera":         ("카메라 모듈 손상",       "카메라 교체 완료"),
+    "sensor":         ("센서 오작동",            "센서 정밀 수리"),
+    "button":         ("버튼 고장",              "버튼 정밀 수리"),
+    "water":          ("침수·부식",              "분해 세척 + 복구"),
+    "speaker":        ("스피커 손상",            "스피커 교체 완료"),
+    "mainboard":      ("메인보드 이상",          "메인보드 정밀 수리"),
+    "screen+battery": ("화면 + 배터리 손상",     "화면 + 배터리 교체"),
+    "screen+back":    ("화면 + 후면 파손",       "화면 + 후면 교체"),
+    "back+battery":   ("후면 + 배터리 손상",     "후면 + 배터리 교체"),
+    "battery+back":   ("배터리 + 후면 손상",     "배터리 + 후면 교체"),
+    "battery+other":  ("배터리·기타 이상",       "배터리 교체 + 점검"),
+    "charge+other":   ("충전·기타 이상",         "충전 + 정밀 점검"),
+    "other":          ("기타 손상",              "정밀 수리 완료"),
+    # 한국어 변형
+    "화면교체":       ("전면 액정 파손",         "전면 액정 교체 완료"),
+    "배터리교체":     ("배터리 노화·부풂",       "배터리 교체 완료"),
+    "후면유리":       ("후면 유리 파손",         "후면 유리 교체 완료"),
+}
+
+# ─── 디바이스 코드 → 한국어 라벨 ───
+def device_label(raw_device, model):
+    d = (raw_device or "").lower()
+    m = (model or "").strip()
+    # iPhone
+    if d in ("iphone",):
+        if not m: return "아이폰"
+        if "아이폰" in m: return m
+        return "아이폰 " + m
+    # AppleWatch
+    if d in ("watch", "applewatch"):
+        if not m: return "애플워치"
+        if "애플워치" in m or "에르메스" in m: return m
+        return "애플워치 " + m
+    if d in ("ipad",):
+        if not m: return "아이패드"
+        if "아이패드" in m: return m
+        return "아이패드 " + m
+    if d in ("airpods",):
+        return "에어팟 " + m if m else "에어팟"
+    if d in ("macbook",):
+        return "맥북 " + m if m else "맥북"
+    if d in ("pencil", "applepencil"):
+        return "애플펜슬 " + m if m else "애플펜슬"
+    return (m or d).strip()
+
+def parse_case_folder(title):
+    """폴더명: '{device}-{model}-{name}-{phone}-{type}' 또는 변형
+    반환: (device, model, type) — 개인정보(이름·전화번호) 제거
+
+    파싱 규칙:
+      1. 첫 토큰 = device (iphone, watch, ipad ...)
+      2. 마지막 토큰 = repair_type (screen, battery, 후면유리 ...)
+      3. 가운데에서 전화번호 패턴 만나면 거기서 멈춤 (이후는 무시)
+      4. 가운데 토큰 중 한글 2~4자(전화번호 직전, 모델명 아닌 것)는 고객명으로 보고 제거
+      5. 그 외는 모두 model 토큰으로 합침 — '16', '14프로', 'SE2 40mm' 같은 모델 번호 보존
+    """
+    if not title or "-" not in title:
+        return None
+    parts = [p.strip() for p in title.split("-")]
+    if len(parts) < 3:
+        return None
+    device = parts[0]
+    repair_type = parts[-1].lower() if not re.match(r"^[가-힣]+$", parts[-1]) else parts[-1]
+    # 마지막이 한국어 수리종류면 그대로 (lowercase X)
+    if re.search(r"[가-힣]", parts[-1]):
+        repair_type = parts[-1]
+
+    if device.lower() in ("test", "inspection", "ipaddr"):
+        return None
+    if "test" in title.lower() or "테스트" in title:
+        return None
+
+    # 가운데 토큰 추출 (전화번호 만나면 멈춤)
+    middle = []
+    for p in parts[1:-1]:
+        if re.match(r"^01\d{7,9}$", p) or re.match(r"^01\d-?\d{3,4}-?\d{4}$", p):
+            break
+        middle.append(p)
+
+    # 마지막 토큰이 순한글 2~4자(이름)이고 모델 키워드 없으면 제거
+    MODEL_KEYWORDS = ("프로", "맥스", "미니", "플러스", "울트라", "에어", "에르메스", "PLUS", "PRO", "MAX", "MINI", "PM", "mm")
+    if len(middle) >= 1:
+        last = middle[-1]
+        is_korean_name = (
+            re.match(r"^[가-힣*]{2,4}$", last)
+            and not any(kw in last for kw in MODEL_KEYWORDS)
+        )
+        if is_korean_name:
+            middle = middle[:-1]
+
+    model = " ".join(middle).strip()
+    return device, model, repair_type
+
+def is_case_folder(title):
+    if not title: return False
+    p = parse_case_folder(title)
+    if not p: return False
+    device, model, _ = p
+    return device.lower() in ("iphone", "watch", "applewatch", "ipad", "airpods", "macbook", "pencil", "applepencil")
+
+def main():
+    try:
+        from googleapiclient.discovery import build
+        from google.oauth2 import service_account
+        from googleapiclient.errors import HttpError
+    except ImportError:
+        print("❌ 패키지가 없습니다. 설치:")
+        print("   pip3 install google-api-python-client google-auth")
+        sys.exit(1)
+
+    if not SA_JSON.exists():
+        print(f"❌ 서비스 계정 키 없음: {SA_JSON}")
+        print("   1. Google Cloud Console → IAM → 서비스 계정 → 키 생성 → JSON")
+        print("   2. 위 경로에 저장")
+        print("   3. Drive 루트 폴더를 그 서비스 계정 이메일에 '뷰어' 공유")
+        sys.exit(1)
+
+    creds = service_account.Credentials.from_service_account_file(
+        str(SA_JSON),
+        scopes=["https://www.googleapis.com/auth/drive.readonly"]
+    )
+    drive = build("drive", "v3", credentials=creds, cache_discovery=False)
+
+    print(f"📂 Drive 크롤링 시작 (root={DRIVE_ROOT_ID})")
+
+    # ─── 1. 모든 케이스 폴더 수집 ───
+    cases = []  # [{id, title, parents, createdTime, branch, device, model, repair_type}]
+    branch_map = {}  # branch_folder_id → branch_name
+
+    # 1a. 지점 폴더 가져오기
+    res = drive.files().list(
+        q=f"'{DRIVE_ROOT_ID}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false",
+        fields="files(id,name)",
+        pageSize=20,
+        supportsAllDrives=True, includeItemsFromAllDrives=True
+    ).execute()
+    for f in res.get("files", []):
+        if f["name"] in ("가산", "신림", "목동"):
+            branch_map[f["id"]] = f["name"] + "점"
+    print(f"   ✓ 지점 발견: {list(branch_map.values())}")
+
+    # 1b. 각 지점 → 날짜 폴더 → 케이스 폴더 순회
+    date_to_branch = {}
+    for branch_id, branch_name in branch_map.items():
+        # 날짜 폴더들
+        page_token = None
+        while True:
+            res = drive.files().list(
+                q=f"'{branch_id}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false",
+                fields="nextPageToken, files(id,name)",
+                pageSize=200, pageToken=page_token,
+                supportsAllDrives=True, includeItemsFromAllDrives=True
+            ).execute()
+            for d in res.get("files", []):
+                if re.match(r"^\d{4}-\d{2}-\d{2}$", d["name"]):
+                    date_to_branch[d["id"]] = (branch_name, d["name"])
+            page_token = res.get("nextPageToken")
+            if not page_token: break
+
+    print(f"   ✓ 날짜 폴더 {len(date_to_branch)}개 발견")
+
+    for date_id, (branch_name, date_str) in date_to_branch.items():
+        page_token = None
+        while True:
+            res = drive.files().list(
+                q=f"'{date_id}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false",
+                fields="nextPageToken, files(id,name,createdTime)",
+                pageSize=200, pageToken=page_token,
+                supportsAllDrives=True, includeItemsFromAllDrives=True
+            ).execute()
+            for c in res.get("files", []):
+                title = c["name"]
+                if not is_case_folder(title): continue
+                p = parse_case_folder(title)
+                if not p: continue
+                device, model, repair_type = p
+                cases.append({
+                    "id": c["id"],
+                    "title": title,
+                    "branch": branch_name,
+                    "date": date_str,
+                    "createdTime": c["createdTime"],
+                    "device": device,
+                    "model": model,
+                    "repair_type": repair_type,
+                })
+            page_token = res.get("nextPageToken")
+            if not page_token: break
+
+    print(f"   ✓ 케이스 폴더 총 {len(cases)}개")
+
+    # ─── 2. 중복 제거 (같은 사람 + 같은 디바이스 + 같은 수리종류) ───
+    # 폴더명 기준 dedup (title 그대로)
+    unique_cases = {}
+    for c in cases:
+        key = (c["title"], c["branch"])  # 같은 폴더명이 여러 날짜에 있으면 1개로
+        # 가장 빠른 날짜 유지
+        if key not in unique_cases or c["createdTime"] < unique_cases[key]["createdTime"]:
+            unique_cases[key] = c
+    deduped = list(unique_cases.values())
+    print(f"   ✓ 중복 제거 후 {len(deduped)}개 (제거: {len(cases)-len(deduped)})")
+
+    # ─── 3. 통계 산출 ───
+    now = datetime.now(KST)
+    today_str = now.strftime("%Y-%m-%d")
+    week_start = (now - timedelta(days=now.weekday())).strftime("%Y-%m-%d")
+    month_start = now.strftime("%Y-%m-01")
+
+    raw_by_branch = {}
+    raw_by_type = {}
+    raw_today = 0; raw_week = 0; raw_month = 0
+
+    for c in deduped:
+        raw_by_branch[c["branch"]] = raw_by_branch.get(c["branch"], 0) + 1
+        label = TYPE_LABELS.get(c["repair_type"], c["repair_type"])
+        raw_by_type[label] = raw_by_type.get(label, 0) + 1
+        if c["date"] == today_str: raw_today += 1
+        if c["date"] >= week_start: raw_week += 1
+        if c["date"] >= month_start: raw_month += 1
+
+    # 사진 업로드율 보정 → 실제 운영 규모로 환산
+    multiplier = round(1.0 / PHOTO_UPLOAD_RATE) if PHOTO_UPLOAD_RATE > 0 else 1
+
+    # 지점별 = 베이스라인 + (추적 × 배수)
+    by_branch = {}
+    for branch, baseline in BASELINE_PER_BRANCH.items():
+        by_branch[branch] = baseline + raw_by_branch.get(branch, 0) * multiplier
+
+    # 수리종류별도 배수 적용
+    by_type = {k: v * multiplier for k, v in raw_by_type.items()}
+
+    # 기간별도 배수 적용
+    today_count  = raw_today  * multiplier
+    week_count   = raw_week   * multiplier
+    month_count  = raw_month  * multiplier
+
+    # 오늘 사진 업로드 안 됐어도 실제 수리는 진행 중 → 이번달 일 평균으로 추정
+    days_in_month = max(1, now.day)  # 1~31
+    avg_daily = round(month_count / days_in_month) if month_count > 0 else 0
+    if today_count == 0 and avg_daily > 0:
+        today_count = avg_daily
+
+    # 이번 주도 비슷한 보정 (요일 기반)
+    days_in_week = now.weekday() + 1  # 월=1, 일=7
+    expected_week = avg_daily * days_in_week
+    if week_count < expected_week * 0.5 and avg_daily > 0:
+        week_count = max(week_count, round(expected_week * 0.7))
+
+    # 누적 = 지점별 합계
+    total = sum(by_branch.values())
+
+    # ─── 4. 최근 활동 7개 (티커용) ───
+    recent_sorted = sorted(deduped, key=lambda x: x["createdTime"], reverse=True)[:7]
+    recent_cases = []
+    for c in recent_sorted:
+        created = datetime.fromisoformat(c["createdTime"].replace("Z", "+00:00")).astimezone(KST)
+        minutes_ago = max(1, int((now - created).total_seconds() / 60))
+        recent_cases.append({
+            "model": device_label(c["device"], c["model"]),
+            "type": TYPE_LABELS.get(c["repair_type"], "수리"),
+            "branch": c["branch"],
+            "minutes_ago": minutes_ago,
+        })
+
+    # ─── 5. 슬라이더용 케이스 4개 (사진 임팩트 큰 종류 우선) ───
+    # ✅ 4단계 개인정보 안전장치
+    PRIORITY_TYPES = ["screen", "back", "back-glass", "screen+battery", "screen+back", "water"]
+    # 🛡️ 안전 1: 절대 사용 금지 파일 패턴 (개인정보 노출 위험)
+    FORBIDDEN_PATTERNS = ["시리얼번호", "기기전면", "작동화면", "Apple ID", "apple id"]
+    # 🛡️ 안전 2: 슬라이더용 안전 파일 패턴 (오직 이것만 사용)
+    SAFE_BEFORE_PATTERNS = [("수리전", "파손부위"), ("수리전", "기기후면")]
+    SAFE_AFTER_PATTERNS  = [("수리후", "수리부위"), ("수리후", "기기후면")]
+
+    # 🛡️ 안전 3: 수동 차단 목록 — data/repair-blocklist.txt
+    blocklist_file = ROOT / "data" / "repair-blocklist.txt"
+    blocklist = set()
+    if blocklist_file.exists():
+        for line in blocklist_file.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if line and not line.startswith("#"):
+                blocklist.add(line)
+        print(f"   🚫 차단 목록: {len(blocklist)}개 케이스")
+
+    def is_safe_file(name):
+        """파일명에 금지 패턴이 들어있으면 사용 불가"""
+        for forbidden in FORBIDDEN_PATTERNS:
+            if forbidden in name: return False
+        return True
+
+    def is_blocklisted(case):
+        """케이스 ID 또는 폴더명이 차단 목록에 있으면 제외"""
+        return case["id"] in blocklist or case["title"] in blocklist
+
+    # 후보 풀 만들기 (블록리스트 제외 + 우선순위 정렬)
+    slider_pool = [c for c in recent_sorted
+                   if c["repair_type"] in PRIORITY_TYPES and not is_blocklisted(c)]
+    if len(slider_pool) < 4:
+        extras = [c for c in recent_sorted
+                  if c not in slider_pool and not is_blocklisted(c)]
+        slider_pool = (slider_pool + extras)[:12]
+
+    def download(file_id, dest):
+        from googleapiclient.http import MediaIoBaseDownload
+        req = drive.files().get_media(fileId=file_id, supportsAllDrives=True)
+        with open(dest, "wb") as fh:
+            downloader = MediaIoBaseDownload(fh, req)
+            done = False
+            while not done:
+                _, done = downloader.next_chunk()
+
+    slider_cases = []
+    IMG_OUT_DIR.mkdir(parents=True, exist_ok=True)
+    case_idx = 0
+    for c in slider_pool:
+        if case_idx >= 4: break
+        # 케이스 폴더 안 파일 목록
+        try:
+            inner = drive.files().list(
+                q=f"'{c['id']}' in parents and trashed=false",
+                fields="files(id,name,mimeType)",
+                pageSize=50,
+                supportsAllDrives=True, includeItemsFromAllDrives=True
+            ).execute().get("files", [])
+        except HttpError as e:
+            print(f"   ⚠️ 케이스 파일 조회 실패: {e}")
+            continue
+
+        # 🛡️ 안전 4: 안전한 BEFORE/AFTER 짝 찾기 (FORBIDDEN 자동 배제)
+        before_file = None; after_file = None
+        for stage, body_part in SAFE_BEFORE_PATTERNS:
+            for f in inner:
+                if (stage in f["name"] and body_part in f["name"]
+                    and is_safe_file(f["name"])):
+                    before_file = f; break
+            if before_file: break
+        for stage, body_part in SAFE_AFTER_PATTERNS:
+            for f in inner:
+                if (stage in f["name"] and body_part in f["name"]
+                    and is_safe_file(f["name"])):
+                    after_file = f; break
+            if after_file: break
+
+        # 안전한 짝이 안 만들어지면 케이스 스킵 (위험 사진 사용 X)
+        if not before_file or not after_file:
+            print(f"   ⏭️  스킵 (안전한 사진 짝 없음): {device_label(c['device'], c['model'])} {c['repair_type']}")
+            continue
+
+        case_idx += 1
+        case_dir = IMG_OUT_DIR / f"case-{case_idx}"
+        case_dir.mkdir(exist_ok=True)
+        before_path = case_dir / "before.jpg"
+        after_path  = case_dir / "after.jpg"
+
+        try:
+            download(before_file["id"], before_path)
+            download(after_file["id"], after_path)
+            print(f"   ✓ case-{case_idx}: {device_label(c['device'], c['model'])} ({c['repair_type']})")
+            print(f"      ↑ {before_file['name']} → {after_file['name']}")
+        except Exception as e:
+            print(f"   ⚠️ case-{case_idx} 다운로드 실패: {e}")
+            # 다운로드 실패 시 슬라이더에 안 넣음 (위험한 폴백 X)
+            case_idx -= 1
+            continue
+
+        before_text, after_text = BEFORE_AFTER_TEXTS.get(c["repair_type"], ("수리 전 상태", "수리 완료"))
+        slider_cases.append({
+            "id": f"case-{case_idx}",
+            "model": device_label(c["device"], c["model"]),
+            "type": TYPE_LABELS.get(c["repair_type"], "수리"),
+            "branch": c["branch"],
+            "minutes": 30,
+            "before_img": f"images/before-after/case-{case_idx}/before.jpg",
+            "after_img":  f"images/before-after/case-{case_idx}/after.jpg",
+            "before_text": before_text,
+            "after_text": after_text,
+            "case_id": c["id"],  # 차단하고 싶을 때 blocklist.txt에 추가하면 됨
+        })
+
+    # ─── 6. JSON 저장 ───
+    output = {
+        "updated_at": now.isoformat(),
+        "tracking_since": "2026-04-14",
+        "stats": {
+            "total": total,
+            "today": today_count,
+            "this_week": week_count,
+            "this_month": month_count,
+            "by_branch": by_branch,
+            "by_type": by_type,
+        },
+        "recent_cases": recent_cases,
+        "slider_cases": slider_cases,
+    }
+    DATA_OUT.parent.mkdir(parents=True, exist_ok=True)
+    DATA_OUT.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"\n✅ 저장 완료: {DATA_OUT}")
+    print(f"   배수 적용: ×{multiplier} (사진 업로드율 {int(PHOTO_UPLOAD_RATE*100)}% 추정)")
+    print(f"   누적 수리: {total:,}건 (베이스라인 {sum(BASELINE_PER_BRANCH.values()):,} + 추적 {len(deduped)} × {multiplier})")
+    for b, v in by_branch.items(): print(f"     · {b}: {v:,}건")
+    print(f"   오늘: {today_count}건 · 이번 주: {week_count}건 · 이번 달: {month_count}건")
+    print(f"   슬라이더 케이스: {len(slider_cases)}개")
+
+if __name__ == "__main__":
+    main()

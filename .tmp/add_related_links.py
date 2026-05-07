@@ -10,7 +10,7 @@ import os
 import re
 from collections import Counter
 
-ARTICLES_DIR = r"c:\Users\다올리페어\Downloads\landingpage-20260326T082547Z-3-001\landingpage\articles"
+ARTICLES_DIR = "/Users/richgeum/Desktop/다올리페어 홈페이지/articles"
 
 # 기기 분류 키워드
 DEVICE_GROUPS = {

@@ -1,3 +1,6 @@
 User-agent: *
 Allow: /
 Sitemap: https://xn--2j1bq2k97kxnah86c.com/sitemap.xml
+
+# AI/LLM 크롤러용 사이트 정보
+# https://xn--2j1bq2k97kxnah86c.com/llms.txt
