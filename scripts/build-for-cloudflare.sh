@@ -36,6 +36,10 @@ rsync -a \
   --exclude='20260327160845.png' \
   ./ dist/
 
+# rsync exclude가 한글+공백 파일명에서 안 먹는 케이스 사후 제거
+find dist -maxdepth 1 -name "스크린샷*" -type f -delete 2>/dev/null || true
+find dist -maxdepth 1 -name "캡쳐*" -type f -delete 2>/dev/null || true
+
 COUNT=$(find dist -type f | wc -l | tr -d ' ')
 SIZE=$(du -sh dist | cut -f1)
 echo "✅ dist/ 생성 완료: $COUNT 파일, $SIZE"

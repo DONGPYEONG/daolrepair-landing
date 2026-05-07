@@ -13,6 +13,8 @@ google-indexing-sa.json
 # 시스템 파일
 .DS_Store
 Thumbs.db
+스크린샷*.png
+캡쳐*.png
 
 # Cloudflare 빌드 출력 — dist/는 의도적으로 git에 포함 (Cloudflare가 빌드 단계 없이 배포)
 .wrangler/

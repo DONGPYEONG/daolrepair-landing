@@ -387,12 +387,14 @@ def main():
         return case["id"] in blocklist or case["title"] in blocklist
 
     # 후보 풀 만들기 (블록리스트 제외 + 우선순위 정렬)
+    # 슬라이더는 4개만, 포트폴리오는 최대 30개까지
+    PORTFOLIO_MAX = 30
     slider_pool = [c for c in recent_sorted
                    if c["repair_type"] in PRIORITY_TYPES and not is_blocklisted(c)]
-    if len(slider_pool) < 4:
+    if len(slider_pool) < PORTFOLIO_MAX:
         extras = [c for c in recent_sorted
                   if c not in slider_pool and not is_blocklisted(c)]
-        slider_pool = (slider_pool + extras)[:12]
+        slider_pool = (slider_pool + extras)[:PORTFOLIO_MAX + 5]
 
     def download(file_id, dest):
         from googleapiclient.http import MediaIoBaseDownload
@@ -403,11 +405,11 @@ def main():
             while not done:
                 _, done = downloader.next_chunk()
 
-    slider_cases = []
+    portfolio_cases = []
     IMG_OUT_DIR.mkdir(parents=True, exist_ok=True)
     case_idx = 0
     for c in slider_pool:
-        if case_idx >= 4: break
+        if case_idx >= PORTFOLIO_MAX: break
         # 케이스 폴더 안 파일 목록
         try:
             inner = drive.files().list(
@@ -458,20 +460,29 @@ def main():
             continue
 
         before_text, after_text = BEFORE_AFTER_TEXTS.get(c["repair_type"], ("수리 전 상태", "수리 완료"))
-        slider_cases.append({
+        # 폴더 createdTime 기준 표시일자
+        try:
+            d_iso = datetime.fromisoformat(c["createdTime"].replace("Z", "+00:00")).astimezone(KST)
+            display_date = d_iso.strftime("%Y-%m-%d")
+        except Exception:
+            display_date = c.get("date", "")
+        portfolio_cases.append({
             "id": f"case-{case_idx}",
             "model": device_label(c["device"], c["model"]),
             "type": TYPE_LABELS.get(c["repair_type"], "수리"),
             "branch": c["branch"],
+            "date": display_date,
             "minutes": 30,
             "before_img": f"images/before-after/case-{case_idx}/before.jpg",
             "after_img":  f"images/before-after/case-{case_idx}/after.jpg",
             "before_text": before_text,
             "after_text": after_text,
-            "case_id": c["id"],  # 차단하고 싶을 때 blocklist.txt에 추가하면 됨
+            "case_id": c["id"],
         })
 
     # ─── 6. JSON 저장 ───
+    # 슬라이더는 최신 4개 (메인 페이지), 포트폴리오는 전체 (별도 페이지)
+    slider_cases = portfolio_cases[:4]
     output = {
         "updated_at": now.isoformat(),
         "tracking_since": "2026-04-14",
@@ -485,6 +496,7 @@ def main():
         },
         "recent_cases": recent_cases,
         "slider_cases": slider_cases,
+        "portfolio_cases": portfolio_cases,
     }
     DATA_OUT.parent.mkdir(parents=True, exist_ok=True)
     DATA_OUT.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -493,7 +505,7 @@ def main():
     print(f"   누적 수리: {total:,}건 (베이스라인 {sum(BASELINE_PER_BRANCH.values()):,} + 추적 {len(deduped)} × {multiplier})")
     for b, v in by_branch.items(): print(f"     · {b}: {v:,}건")
     print(f"   오늘: {today_count}건 · 이번 주: {week_count}건 · 이번 달: {month_count}건")
-    print(f"   슬라이더 케이스: {len(slider_cases)}개")
+    print(f"   슬라이더 케이스: {len(slider_cases)}개 / 포트폴리오 전체: {len(portfolio_cases)}개")
 
 if __name__ == "__main__":
     main()
