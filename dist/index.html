@@ -1696,17 +1696,20 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
         <div class="live-num" id="liveTotal">0</div>
         <div class="live-lbl">누적 수리 건수</div>
       </div>
-      <div class="live-stat">
-        <div class="live-num" id="liveToday">0</div>
-        <div class="live-lbl">오늘</div>
+      <div class="live-stat live-stat-rank live-stat-rank-1">
+        <div class="live-rank-badge">🥇 이번 달 1위</div>
+        <div class="live-rank-name" id="liveTop1Name">—</div>
+        <div class="live-rank-count" id="liveTop1Count">—</div>
       </div>
-      <div class="live-stat">
-        <div class="live-num" id="liveWeek">0</div>
-        <div class="live-lbl">이번 주</div>
+      <div class="live-stat live-stat-rank live-stat-rank-2">
+        <div class="live-rank-badge">🥈 이번 달 2위</div>
+        <div class="live-rank-name" id="liveTop2Name">—</div>
+        <div class="live-rank-count" id="liveTop2Count">—</div>
       </div>
-      <div class="live-stat">
-        <div class="live-num" id="liveMonth">0</div>
-        <div class="live-lbl">이번 달</div>
+      <div class="live-stat live-stat-rank live-stat-rank-3">
+        <div class="live-rank-badge">🥉 이번 달 3위</div>
+        <div class="live-rank-name" id="liveTop3Name">—</div>
+        <div class="live-rank-count" id="liveTop3Count">—</div>
       </div>
     </div>
 
@@ -1739,6 +1742,14 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
 .live-stat { background:#fff; border:1px solid rgba(0,0,0,0.07); border-radius:18px; padding:24px 20px; transition:border-color 0.2s, transform 0.2s, box-shadow 0.2s; box-shadow:0 2px 12px rgba(0,0,0,0.04); }
 .live-stat:hover { border-color:rgba(255,107,53,0.5); transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.08); }
 .live-stat-big { background:linear-gradient(135deg,rgba(255,107,53,0.08) 0%,rgba(255,107,53,0.02) 100%); border-color:rgba(255,107,53,0.3); }
+/* Top 3 인기 수리 카드 */
+.live-stat-rank { display:flex; flex-direction:column; justify-content:space-between; min-height:110px; }
+.live-stat-rank-1 { background:linear-gradient(135deg,rgba(255,215,0,0.10) 0%,rgba(255,215,0,0.02) 100%); border-color:rgba(255,215,0,0.25); }
+.live-stat-rank-2 { background:linear-gradient(135deg,rgba(192,192,192,0.10) 0%,rgba(192,192,192,0.02) 100%); border-color:rgba(192,192,192,0.25); }
+.live-stat-rank-3 { background:linear-gradient(135deg,rgba(205,127,50,0.10) 0%,rgba(205,127,50,0.02) 100%); border-color:rgba(205,127,50,0.25); }
+.live-rank-badge { font-size:11px; font-weight:800; color:rgba(0,0,0,0.6); letter-spacing:0.5px; margin-bottom:auto; }
+.live-rank-name { font-size:18px; font-weight:900; color:#1a1a1a; line-height:1.25; letter-spacing:-0.5px; word-break:keep-all; }
+.live-rank-count { font-size:13px; color:#FF6B35; font-weight:800; margin-top:6px; }
 .live-num { font-size:42px; font-weight:900; letter-spacing:-1.5px; line-height:1; margin-bottom:8px; font-variant-numeric:tabular-nums; color:#1a1a1a; }
 .live-stat-big .live-num { font-size:54px; background:linear-gradient(135deg,#FF6B35 0%,#ff8e5a 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
 .live-lbl { font-size:13px; color:rgba(0,0,0,0.5); font-weight:600; }
@@ -1761,6 +1772,10 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
   .live-stat-big .live-num { font-size:40px; }
   .live-ticker-row { font-size:13px; gap:8px; }
   .live-ticker-row .lt-time { font-size:11px; }
+  .live-rank-name { font-size:14px; }
+  .live-rank-badge { font-size:10px; }
+  .live-rank-count { font-size:12px; }
+  .live-stat-rank { min-height:90px; padding:18px 14px; }
 }
 </style>
 
@@ -1835,6 +1850,21 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
       rowsEl[idx].classList.add('active');
     }, TICKER_INTERVAL);
   }
+  function renderTopRanks(top){
+    if(!top || !top.length) return;
+    [1,2,3].forEach(function(i){
+      var item = top[i-1];
+      var nameEl = document.getElementById('liveTop'+i+'Name');
+      var cntEl  = document.getElementById('liveTop'+i+'Count');
+      if(item){
+        if(nameEl) nameEl.textContent = item.label;
+        if(cntEl)  cntEl.textContent  = '이번 달 ' + fmt(item.count) + '건';
+      } else {
+        if(nameEl) nameEl.textContent = '-';
+        if(cntEl)  cntEl.textContent  = '';
+      }
+    });
+  }
   function trigger(){
     fetch(dataUrl, {cache:'no-store'}).then(function(r){
       if(!r.ok) throw new Error('no data');
@@ -1842,9 +1872,7 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
     }).then(function(d){
       var s = d.stats || {};
       animateCount(document.getElementById('liveTotal'), s.total || 0, 1800);
-      animateCount(document.getElementById('liveToday'), s.today || 0, 1200);
-      animateCount(document.getElementById('liveWeek'), s.this_week || 0, 1400);
-      animateCount(document.getElementById('liveMonth'), s.this_month || 0, 1600);
+      renderTopRanks(d.top_repair_types);
       renderBranches(s.by_branch);
       renderTicker(d.recent_cases);
       var el = document.getElementById('liveUpdated');

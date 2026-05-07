@@ -340,6 +340,7 @@ def main():
 
     raw_by_branch = {}
     raw_by_type = {}
+    raw_month_by_type = {}   # 이번 달만 (Top 3 산출용)
     raw_today = 0; raw_week = 0; raw_month = 0
 
     for c in deduped:
@@ -348,7 +349,9 @@ def main():
         raw_by_type[label] = raw_by_type.get(label, 0) + 1
         if c["date"] == today_str: raw_today += 1
         if c["date"] >= week_start: raw_week += 1
-        if c["date"] >= month_start: raw_month += 1
+        if c["date"] >= month_start:
+            raw_month += 1
+            raw_month_by_type[label] = raw_month_by_type.get(label, 0) + 1
 
     # 사진 업로드율 보정 → 실제 운영 규모로 환산
     multiplier = round(1.0 / PHOTO_UPLOAD_RATE) if PHOTO_UPLOAD_RATE > 0 else 1
@@ -380,6 +383,17 @@ def main():
 
     # 누적 = 지점별 합계
     total = sum(by_branch.values())
+
+    # 이번 달 인기 수리 Top 3 (이번 달 데이터 부족하면 누적 기준 폴백)
+    month_pool = raw_month_by_type if raw_month_by_type else raw_by_type
+    top_3_raw = sorted(month_pool.items(), key=lambda x: -x[1])[:3]
+    top_repair_types = []
+    for rank, (label, cnt) in enumerate(top_3_raw, 1):
+        top_repair_types.append({
+            "rank": rank,
+            "label": label,
+            "count": cnt * multiplier,
+        })
 
     # ─── 4. 최근 활동 7개 (티커용) ───
     all_sorted = sorted(deduped, key=lambda x: x["createdTime"], reverse=True)
@@ -559,6 +573,7 @@ def main():
             "by_type": by_type,
         },
         "recent_cases": recent_cases,
+        "top_repair_types": top_repair_types,
         "slider_cases": slider_cases,
         "portfolio_cases": portfolio_cases,
     }
