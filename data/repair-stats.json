@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-07T16:47:30.064034+09:00",
+  "updated_at": "2026-05-07T16:56:38.293986+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 10986,
@@ -32,43 +32,43 @@
       "model": "아이폰 15프로",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 100
+      "minutes_ago": 109
     },
     {
       "model": "아이폰 16",
       "type": "화면 교체",
       "branch": "신림점",
-      "minutes_ago": 1360
+      "minutes_ago": 1370
     },
     {
       "model": "아이폰 14프로",
       "type": "후면 유리 교체",
       "branch": "신림점",
-      "minutes_ago": 1767
+      "minutes_ago": 1776
     },
     {
       "model": "아이패드 미니6",
       "type": "충전 단자 수리",
       "branch": "신림점",
-      "minutes_ago": 1816
+      "minutes_ago": 1825
     },
     {
       "model": "아이폰6s",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 3044
+      "minutes_ago": 3053
     },
     {
       "model": "애플워치 SE2 44mm",
       "type": "센서 수리",
       "branch": "가산점",
-      "minutes_ago": 3049
+      "minutes_ago": 3058
     },
     {
       "model": "아이폰 12미니",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 4350
+      "minutes_ago": 4359
     }
   ],
   "slider_cases": [
@@ -113,16 +113,16 @@
     },
     {
       "id": "case-4",
-      "model": "아이패드 미니6",
-      "type": "충전 단자 수리",
-      "branch": "신림점",
-      "date": "2026-05-06",
+      "model": "아이폰 12프로",
+      "type": "후면 유리 교체",
+      "branch": "목동점",
+      "date": "2026-05-04",
       "minutes": 30,
       "before_img": "images/before-after/case-4/before.jpg",
       "after_img": "images/before-after/case-4/after.jpg",
-      "before_text": "충전 단자 손상",
-      "after_text": "충전 단자 정밀 수리",
-      "case_id": "1vFX-wUWX_mgHb8Kr-inDvfYvzrxufFo_"
+      "before_text": "후면 유리 파손",
+      "after_text": "후면 유리 교체 완료",
+      "case_id": "1Vv7RtlP0nfSvWfJplYYUP6zz2HdAdfvO"
     }
   ],
   "portfolio_cases": [
@@ -167,42 +167,354 @@
     },
     {
       "id": "case-4",
+      "model": "아이폰 12프로",
+      "type": "후면 유리 교체",
+      "branch": "목동점",
+      "date": "2026-05-04",
+      "minutes": 30,
+      "before_img": "images/before-after/case-4/before.jpg",
+      "after_img": "images/before-after/case-4/after.jpg",
+      "before_text": "후면 유리 파손",
+      "after_text": "후면 유리 교체 완료",
+      "case_id": "1Vv7RtlP0nfSvWfJplYYUP6zz2HdAdfvO"
+    },
+    {
+      "id": "case-5",
+      "model": "아이폰 15프로",
+      "type": "후면 유리 교체",
+      "branch": "신림점",
+      "date": "2026-05-01",
+      "minutes": 30,
+      "before_img": "images/before-after/case-5/before.jpg",
+      "after_img": "images/before-after/case-5/after.jpg",
+      "before_text": "후면 유리 파손",
+      "after_text": "후면 유리 교체 완료",
+      "case_id": "1f2FXtA6qBWEQSqzw9DUQ96A7-emle3kA"
+    },
+    {
+      "id": "case-6",
+      "model": "아이폰 16프로",
+      "type": "화면 + 후면 유리 교체",
+      "branch": "목동점",
+      "date": "2026-04-30",
+      "minutes": 30,
+      "before_img": "images/before-after/case-6/before.jpg",
+      "after_img": "images/before-after/case-6/after.jpg",
+      "before_text": "화면 + 후면 파손",
+      "after_text": "화면 + 후면 교체",
+      "case_id": "1Qr6LX9HuVj5phOJdPaqQRJv8l8nfrxa8"
+    },
+    {
+      "id": "case-7",
+      "model": "아이폰 12",
+      "type": "후면 유리 교체",
+      "branch": "신림점",
+      "date": "2026-04-29",
+      "minutes": 30,
+      "before_img": "images/before-after/case-7/before.jpg",
+      "after_img": "images/before-after/case-7/after.jpg",
+      "before_text": "후면 유리 파손",
+      "after_text": "후면 유리 교체 완료",
+      "case_id": "1NVppdC5tP7cAyFGlk9aGGwCkHBZ1DsB_"
+    },
+    {
+      "id": "case-8",
+      "model": "아이폰 16프로",
+      "type": "화면 교체",
+      "branch": "신림점",
+      "date": "2026-04-28",
+      "minutes": 30,
+      "before_img": "images/before-after/case-8/before.jpg",
+      "after_img": "images/before-after/case-8/after.jpg",
+      "before_text": "전면 액정 파손",
+      "after_text": "전면 액정 교체 완료",
+      "case_id": "11Ceo0pEjUBL9ey5-DiSnVk7as7f4yvIF"
+    },
+    {
+      "id": "case-9",
+      "model": "아이폰 14프로",
+      "type": "후면 유리 교체",
+      "branch": "신림점",
+      "date": "2026-04-27",
+      "minutes": 30,
+      "before_img": "images/before-after/case-9/before.jpg",
+      "after_img": "images/before-after/case-9/after.jpg",
+      "before_text": "후면 유리 파손",
+      "after_text": "후면 유리 교체 완료",
+      "case_id": "1vyc6FljazH5ZsdoTiNwjGlsv74Xaep4Y"
+    },
+    {
+      "id": "case-10",
+      "model": "아이폰 17",
+      "type": "화면 교체",
+      "branch": "목동점",
+      "date": "2026-04-24",
+      "minutes": 30,
+      "before_img": "images/before-after/case-10/before.jpg",
+      "after_img": "images/before-after/case-10/after.jpg",
+      "before_text": "전면 액정 파손",
+      "after_text": "전면 액정 교체 완료",
+      "case_id": "1FGs9Dzmny2RLu-dDd0GEeTl7UbLPpbma"
+    },
+    {
+      "id": "case-11",
+      "model": "아이폰 11",
+      "type": "화면 교체",
+      "branch": "신림점",
+      "date": "2026-04-24",
+      "minutes": 30,
+      "before_img": "images/before-after/case-11/before.jpg",
+      "after_img": "images/before-after/case-11/after.jpg",
+      "before_text": "전면 액정 파손",
+      "after_text": "전면 액정 교체 완료",
+      "case_id": "1lOmdLXI-z0zJHqfxjVJCNUTg9S5bVdWw"
+    },
+    {
+      "id": "case-12",
+      "model": "아이폰 15",
+      "type": "후면 유리 교체",
+      "branch": "목동점",
+      "date": "2026-04-20",
+      "minutes": 30,
+      "before_img": "images/before-after/case-12/before.jpg",
+      "after_img": "images/before-after/case-12/after.jpg",
+      "before_text": "후면 유리 파손",
+      "after_text": "후면 유리 교체 완료",
+      "case_id": "1U3GDVjv89Ual7PluLlNfMlV5REzBMf_s"
+    },
+    {
+      "id": "case-13",
+      "model": "아이폰 13미니",
+      "type": "후면 유리 교체",
+      "branch": "목동점",
+      "date": "2026-04-18",
+      "minutes": 30,
+      "before_img": "images/before-after/case-13/before.jpg",
+      "after_img": "images/before-after/case-13/after.jpg",
+      "before_text": "후면 유리 파손",
+      "after_text": "후면 유리 교체 완료",
+      "case_id": "1fBI5NGpXK22yh8cnFTxzzsaMqhY5Kn7Z"
+    },
+    {
+      "id": "case-14",
+      "model": "아이폰 12프로맥스",
+      "type": "화면 교체",
+      "branch": "목동점",
+      "date": "2026-04-18",
+      "minutes": 30,
+      "before_img": "images/before-after/case-14/before.jpg",
+      "after_img": "images/before-after/case-14/after.jpg",
+      "before_text": "전면 액정 파손",
+      "after_text": "전면 액정 교체 완료",
+      "case_id": "1YTvaa_LzyizCxIr0smGdZoplWLdxAs_M"
+    },
+    {
+      "id": "case-15",
+      "model": "에르메스 5세대 44mm",
+      "type": "화면 + 배터리 교체",
+      "branch": "가산점",
+      "date": "2026-04-17",
+      "minutes": 30,
+      "before_img": "images/before-after/case-15/before.jpg",
+      "after_img": "images/before-after/case-15/after.jpg",
+      "before_text": "화면 + 배터리 노화",
+      "after_text": "화면 교체 + 배터리 성능치 정상",
+      "case_id": "1ybYHdi_ueiCzvFCZuxCWWssr0BfpVQbA"
+    },
+    {
+      "id": "case-16",
+      "model": "아이폰 15PLUS",
+      "type": "후면 유리 교체",
+      "branch": "목동점",
+      "date": "2026-04-17",
+      "minutes": 30,
+      "before_img": "images/before-after/case-16/before.jpg",
+      "after_img": "images/before-after/case-16/after.jpg",
+      "before_text": "후면 유리 파손",
+      "after_text": "후면 유리 교체 완료",
+      "case_id": "1izFb94bU42HNKMaSGjIodRmdFo08qC9E"
+    },
+    {
+      "id": "case-17",
+      "model": "아이폰 6",
+      "type": "화면 교체",
+      "branch": "목동점",
+      "date": "2026-04-16",
+      "minutes": 30,
+      "before_img": "images/before-after/case-17/before.jpg",
+      "after_img": "images/before-after/case-17/after.jpg",
+      "before_text": "전면 액정 파손",
+      "after_text": "전면 액정 교체 완료",
+      "case_id": "13Qv_rnPH0t9ciY5sfeYKCQE3L9dd5yr_"
+    },
+    {
+      "id": "case-18",
+      "model": "아이폰7",
+      "type": "화면 교체",
+      "branch": "목동점",
+      "date": "2026-04-15",
+      "minutes": 30,
+      "before_img": "images/before-after/case-18/before.jpg",
+      "after_img": "images/before-after/case-18/after.jpg",
+      "before_text": "전면 액정 파손",
+      "after_text": "전면 액정 교체 완료",
+      "case_id": "1l_qsfwchJ8yBU11A6pV0fcbp4XZkCGxc"
+    },
+    {
+      "id": "case-19",
       "model": "아이패드 미니6",
       "type": "충전 단자 수리",
       "branch": "신림점",
       "date": "2026-05-06",
       "minutes": 30,
-      "before_img": "images/before-after/case-4/before.jpg",
-      "after_img": "images/before-after/case-4/after.jpg",
+      "before_img": "images/before-after/case-19/before.jpg",
+      "after_img": "images/before-after/case-19/after.jpg",
       "before_text": "충전 단자 손상",
       "after_text": "충전 단자 정밀 수리",
       "case_id": "1vFX-wUWX_mgHb8Kr-inDvfYvzrxufFo_"
     },
     {
-      "id": "case-5",
+      "id": "case-20",
       "model": "아이폰6s",
       "type": "배터리 교체",
       "branch": "가산점",
       "date": "2026-05-05",
       "minutes": 30,
-      "before_img": "images/before-after/case-5/before.jpg",
-      "after_img": "images/before-after/case-5/after.jpg",
+      "before_img": "images/before-after/case-20/before.jpg",
+      "after_img": "images/before-after/case-20/after.jpg",
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "1bdNyoxif9BBqw8f53pwjRE3vZcNL4NsM"
     },
     {
-      "id": "case-6",
+      "id": "case-21",
       "model": "아이폰 12미니",
       "type": "배터리 교체",
       "branch": "목동점",
       "date": "2026-05-04",
       "minutes": 30,
-      "before_img": "images/before-after/case-6/before.jpg",
-      "after_img": "images/before-after/case-6/after.jpg",
+      "before_img": "images/before-after/case-21/before.jpg",
+      "after_img": "images/before-after/case-21/after.jpg",
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "1CU7VD5ld1RpZ2lOBDhtYwmRjaLsxaZ0C"
+    },
+    {
+      "id": "case-22",
+      "model": "아이폰 15프로",
+      "type": "배터리 교체",
+      "branch": "목동점",
+      "date": "2026-05-04",
+      "minutes": 30,
+      "before_img": "images/before-after/case-22/before.jpg",
+      "after_img": "images/before-after/case-22/after.jpg",
+      "before_text": "이전 배터리 성능치",
+      "after_text": "교체 후 배터리 성능치",
+      "case_id": "1P0o4qDL9IsS1eaG35f8wvkw_g_ZrM38E"
+    },
+    {
+      "id": "case-23",
+      "model": "애플워치 SE2 40mm",
+      "type": "배터리 교체",
+      "branch": "목동점",
+      "date": "2026-04-30",
+      "minutes": 30,
+      "before_img": "images/before-after/case-23/before.jpg",
+      "after_img": "images/before-after/case-23/after.jpg",
+      "before_text": "이전 배터리 성능치",
+      "after_text": "교체 후 배터리 성능치",
+      "case_id": "1jbdaG3NLgXd_kSgNcx077LDNcZupGYm4"
+    },
+    {
+      "id": "case-24",
+      "model": "아이폰 15프로",
+      "type": "배터리 교체",
+      "branch": "목동점",
+      "date": "2026-04-30",
+      "minutes": 30,
+      "before_img": "images/before-after/case-24/before.jpg",
+      "after_img": "images/before-after/case-24/after.jpg",
+      "before_text": "이전 배터리 성능치",
+      "after_text": "교체 후 배터리 성능치",
+      "case_id": "1HkvVe9sIlLXVxru308MTFGYPpJgh4ua3"
+    },
+    {
+      "id": "case-25",
+      "model": "애플워치 SE 40mm",
+      "type": "배터리 교체",
+      "branch": "목동점",
+      "date": "2026-04-29",
+      "minutes": 30,
+      "before_img": "images/before-after/case-25/before.jpg",
+      "after_img": "images/before-after/case-25/after.jpg",
+      "before_text": "이전 배터리 성능치",
+      "after_text": "교체 후 배터리 성능치",
+      "case_id": "1c74rh7iWYb3hexAzNbGcsJGGy_nYLqIA"
+    },
+    {
+      "id": "case-26",
+      "model": "아이폰 XS MAX",
+      "type": "배터리 교체",
+      "branch": "목동점",
+      "date": "2026-04-29",
+      "minutes": 30,
+      "before_img": "images/before-after/case-26/before.jpg",
+      "after_img": "images/before-after/case-26/after.jpg",
+      "before_text": "이전 배터리 성능치",
+      "after_text": "교체 후 배터리 성능치",
+      "case_id": "1DLJIHqBBJReHkfyuGyt8QRUrXlWIpKqk"
+    },
+    {
+      "id": "case-27",
+      "model": "애플워치 SE2 40mm",
+      "type": "배터리 교체",
+      "branch": "목동점",
+      "date": "2026-04-28",
+      "minutes": 30,
+      "before_img": "images/before-after/case-27/before.jpg",
+      "after_img": "images/before-after/case-27/after.jpg",
+      "before_text": "이전 배터리 성능치",
+      "after_text": "교체 후 배터리 성능치",
+      "case_id": "1FOnkpJ-X5f-XkBm8A9IrCPbu1QodwTm9"
+    },
+    {
+      "id": "case-28",
+      "model": "아이폰 15프로",
+      "type": "배터리 교체",
+      "branch": "목동점",
+      "date": "2026-04-27",
+      "minutes": 30,
+      "before_img": "images/before-after/case-28/before.jpg",
+      "after_img": "images/before-after/case-28/after.jpg",
+      "before_text": "이전 배터리 성능치",
+      "after_text": "교체 후 배터리 성능치",
+      "case_id": "1txy7HZ2zAbkVMdkqHjP6pu6u055DsT58"
+    },
+    {
+      "id": "case-29",
+      "model": "아이폰 13미니",
+      "type": "배터리 교체",
+      "branch": "목동점",
+      "date": "2026-04-25",
+      "minutes": 30,
+      "before_img": "images/before-after/case-29/before.jpg",
+      "after_img": "images/before-after/case-29/after.jpg",
+      "before_text": "이전 배터리 성능치",
+      "after_text": "교체 후 배터리 성능치",
+      "case_id": "17S150oqCz0w6FHNec5p_4Bof8q8RyVFu"
+    },
+    {
+      "id": "case-30",
+      "model": "아이폰 SE2",
+      "type": "배터리 교체",
+      "branch": "목동점",
+      "date": "2026-04-24",
+      "minutes": 30,
+      "before_img": "images/before-after/case-30/before.jpg",
+      "after_img": "images/before-after/case-30/after.jpg",
+      "before_text": "이전 배터리 성능치",
+      "after_text": "교체 후 배터리 성능치",
+      "case_id": "1g-4Xu6xPxzVNLKdML3qrOVJajSaR9EdU"
     }
   ]
 }
