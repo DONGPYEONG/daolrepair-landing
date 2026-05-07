@@ -347,7 +347,8 @@ def main():
     total = sum(by_branch.values())
 
     # ─── 4. 최근 활동 7개 (티커용) ───
-    recent_sorted = sorted(deduped, key=lambda x: x["createdTime"], reverse=True)[:7]
+    all_sorted = sorted(deduped, key=lambda x: x["createdTime"], reverse=True)
+    recent_sorted = all_sorted[:7]  # 티커용 (위쪽 7개)
     recent_cases = []
     for c in recent_sorted:
         created = datetime.fromisoformat(c["createdTime"].replace("Z", "+00:00")).astimezone(KST)
@@ -363,10 +364,21 @@ def main():
     # ✅ 4단계 개인정보 안전장치
     PRIORITY_TYPES = ["screen", "back", "back-glass", "screen+battery", "screen+back", "water"]
     # 🛡️ 안전 1: 절대 사용 금지 파일 패턴 (개인정보 노출 위험)
-    FORBIDDEN_PATTERNS = ["시리얼번호", "기기전면", "작동화면", "Apple ID", "apple id"]
-    # 🛡️ 안전 2: 슬라이더용 안전 파일 패턴 (오직 이것만 사용)
-    SAFE_BEFORE_PATTERNS = [("수리전", "파손부위"), ("수리전", "기기후면")]
-    SAFE_AFTER_PATTERNS  = [("수리후", "수리부위"), ("수리후", "기기후면")]
+    # 시리얼번호 화면은 Apple ID·시리얼이 보여서 금지. 그 외는 사용 가능.
+    FORBIDDEN_PATTERNS = ["시리얼번호", "Apple ID", "apple id"]
+    # 🛡️ 안전 2: BEFORE/AFTER 우선순위 (앞쪽일수록 우선 매칭)
+    # 파손부위/수리부위가 가장 임팩트 크고, 없으면 기기 사진(전면/후면)으로 폴백
+    SAFE_BEFORE_PATTERNS = [
+        ("수리전", "파손부위"),    # 1순위: 파손 클로즈업 (배터리는 성능치 화면)
+        ("수리전", "기기후면"),    # 2순위: 기기 후면 (외관)
+        ("수리전", "기기전면"),    # 3순위: 기기 전면 (잠금화면 가능성 — 직원이 화면 끄고 촬영 권장)
+    ]
+    SAFE_AFTER_PATTERNS  = [
+        ("수리후", "수리부위"),    # 1순위: 수리 부위 클로즈업
+        ("수리후", "기기후면"),    # 2순위: 기기 후면
+        ("수리후", "기기전면"),    # 3순위: 기기 전면 (켜진 화면)
+        ("수리후", "작동화면"),    # 4순위: 작동 확인 화면 (홈화면 가능성)
+    ]
 
     # 🛡️ 안전 3: 수동 차단 목록 — data/repair-blocklist.txt
     blocklist_file = ROOT / "data" / "repair-blocklist.txt"
@@ -391,12 +403,14 @@ def main():
     # 후보 풀 만들기 (블록리스트 제외 + 우선순위 정렬)
     # 슬라이더는 4개만, 포트폴리오는 최대 30개까지
     PORTFOLIO_MAX = 30
-    slider_pool = [c for c in recent_sorted
-                   if c["repair_type"] in PRIORITY_TYPES and not is_blocklisted(c)]
-    if len(slider_pool) < PORTFOLIO_MAX:
-        extras = [c for c in recent_sorted
-                  if c not in slider_pool and not is_blocklisted(c)]
-        slider_pool = (slider_pool + extras)[:PORTFOLIO_MAX + 5]
+    # 우선순위 종류(화면·후면·침수)부터, 그 외는 최신순으로 보충
+    # 티커용(recent_sorted=7) 말고 전체 정렬(all_sorted=62)을 사용해야 충분히 가져옴
+    priority_first = [c for c in all_sorted
+                      if c["repair_type"] in PRIORITY_TYPES and not is_blocklisted(c)]
+    extras = [c for c in all_sorted
+              if c not in priority_first and not is_blocklisted(c)]
+    # 우선순위 + 나머지 전체를 풀에 넣음 (최대 60개까지 시도)
+    slider_pool = (priority_first + extras)[:60]
 
     def download(file_id, dest):
         from googleapiclient.http import MediaIoBaseDownload
@@ -410,7 +424,8 @@ def main():
     portfolio_cases = []
     IMG_OUT_DIR.mkdir(parents=True, exist_ok=True)
     case_idx = 0
-    for c in slider_pool:
+    print(f"   🔍 후보 풀 {len(slider_pool)}개 처리 시작")
+    for idx_total, c in enumerate(slider_pool, 1):
         if case_idx >= PORTFOLIO_MAX: break
         # 케이스 폴더 안 파일 목록
         try:
@@ -421,7 +436,13 @@ def main():
                 supportsAllDrives=True, includeItemsFromAllDrives=True
             ).execute().get("files", [])
         except HttpError as e:
-            print(f"   ⚠️ 케이스 파일 조회 실패: {e}")
+            print(f"   ⚠️ [{idx_total}] 파일 조회 실패: {device_label(c['device'], c['model'])} {c['repair_type']} — {e}")
+            continue
+        except Exception as e:
+            print(f"   ⚠️ [{idx_total}] 알 수 없는 오류: {device_label(c['device'], c['model'])} {c['repair_type']} — {type(e).__name__}: {e}")
+            continue
+        if not inner:
+            print(f"   ⏭️  [{idx_total}] 빈 폴더: {device_label(c['device'], c['model'])} {c['repair_type']}")
             continue
 
         # 🛡️ 안전 4: 안전한 BEFORE/AFTER 짝 찾기 (FORBIDDEN 자동 배제)
