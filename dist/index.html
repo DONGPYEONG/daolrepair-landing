@@ -2018,10 +2018,22 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
 .ba-stain { position:absolute; inset:0; background:radial-gradient(ellipse at 40% 50%,rgba(180,150,80,0.18) 0%,transparent 35%),radial-gradient(ellipse at 65% 55%,rgba(120,90,60,0.15) 0%,transparent 30%); pointer-events:none; }
 .ba-handle { position:absolute; top:0; bottom:0; left:50%; width:3px; background:#fff; transform:translateX(-50%); pointer-events:none; box-shadow:0 0 14px rgba(0,0,0,0.4); z-index:3; }
 .ba-handle-circle { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:42px; height:42px; background:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,0.28); }
-.ba-caption { padding:18px 20px; }
-.ba-model { font-size:12px; color:rgba(255,255,255,0.5); font-weight:700; margin-bottom:4px; letter-spacing:0.3px; }
-.ba-issue { font-size:15px; font-weight:700; color:#fff; margin-bottom:10px; line-height:1.45; }
-.ba-meta { display:flex; gap:14px; font-size:12px; color:rgba(255,255,255,0.55); font-weight:600; }
+.ba-caption { padding:20px 20px 22px; text-align:center; }
+.ba-model { font-size:12px; color:rgba(255,255,255,0.5); font-weight:700; margin-bottom:6px; letter-spacing:0.5px; }
+.ba-issue { font-size:17px; font-weight:800; color:#fff; margin-bottom:14px; line-height:1.4; letter-spacing:-0.3px; }
+.ba-compare { display:flex; align-items:stretch; gap:8px; margin-bottom:14px; }
+.ba-compare-item { flex:1; padding:10px 12px; border-radius:10px; min-width:0; }
+.ba-compare-before { background:linear-gradient(135deg,rgba(255,69,58,0.18) 0%,rgba(255,69,58,0.08) 100%); border:1px solid rgba(255,69,58,0.35); }
+.ba-compare-after  { background:linear-gradient(135deg,rgba(52,199,89,0.18) 0%,rgba(52,199,89,0.08) 100%); border:1px solid rgba(52,199,89,0.35); }
+.ba-compare-label { font-size:9px; font-weight:900; letter-spacing:1.5px; margin-bottom:3px; }
+.ba-compare-before .ba-compare-label { color:#ff6b66; }
+.ba-compare-after  .ba-compare-label { color:#34c759; }
+.ba-compare-text { font-size:12px; font-weight:700; color:#fff; line-height:1.35; word-break:keep-all; }
+.ba-meta { display:flex; flex-wrap:wrap; justify-content:center; gap:6px; }
+.ba-meta-tag { display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:700; padding:5px 11px; border-radius:50px; }
+.ba-meta-time { background:rgba(255,107,53,0.15); color:#FF8E5A; border:1px solid rgba(255,107,53,0.3); }
+.ba-meta-branch { background:rgba(96,165,250,0.15); color:#8AB8FA; border:1px solid rgba(96,165,250,0.3); }
+.ba-meta-warranty { background:rgba(52,199,89,0.15); color:#34c759; border:1px solid rgba(52,199,89,0.3); }
 .ba-note { text-align:center; color:rgba(255,255,255,0.35); font-size:12px; margin-top:18px; }
 .ba-portfolio-cta { text-align:center; margin-top:36px; }
 .ba-portfolio-btn { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,#FF6B35 0%,#E8732A 100%); color:#fff; padding:14px 28px; border-radius:50px; font-size:15px; font-weight:800; text-decoration:none; letter-spacing:0.2px; transition:transform 0.2s, box-shadow 0.2s; box-shadow:0 6px 20px rgba(255,107,53,0.35); }
@@ -2105,7 +2117,7 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
       if(issueEl) issueEl.textContent = c.type;
       if(metaEl) metaEl.innerHTML = '<span>⏱ ' + c.minutes + '분</span><span>📍 ' + c.branch + '</span>';
       // 이미지 자동 적용 (있으면 교체, 없으면 기존 그라디언트 유지)
-      function trySetBg(el, url, descText){
+      function trySetBg(el, url){
         if(!el || !url) return;
         var img = new Image();
         img.onload = function(){
@@ -2118,23 +2130,17 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
           el.style.overflow = 'hidden';
           el.style.backgroundColor = '#0a0a0a';
           el.style.backgroundImage = 'url("' + url + '")';
-          el.style.backgroundSize = 'contain';   // 전체 사진 보이도록 (cropping X)
+          el.style.backgroundSize = 'contain';
           el.style.backgroundPosition = 'center';
           el.style.backgroundRepeat = 'no-repeat';
-          // 3) z-index 명시 (after는 1, before는 2 — 자식 라벨이 다른 형제 위로 못 새어나오도록 stacking context 격리)
           el.style.zIndex = isBefore ? 2 : 1;
-          // before 측은 clip-path 다시 적용
           if(isBefore){
             el.style.clipPath = 'inset(0 50% 0 0)';
             el.style.webkitClipPath = 'inset(0 50% 0 0)';
           }
-          // 4) 데모용 SVG 균열·얼룩·중앙 라벨 모두 제거
+          // 데모 효과·중앙 라벨 모두 제거 (사진 위에 텍스트 X — 캡션으로 이동)
           el.querySelectorAll('.ba-cracks, .ba-bulge, .ba-dirt, .ba-stain, .ba-tag-before, .ba-tag-after, .ba-img-text').forEach(function(n){ n.remove(); });
-          // 5) 가독성 오버레이 (위·아래 그라디언트)
-          var overlay = document.createElement('div');
-          overlay.style.cssText = 'position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 60%,rgba(0,0,0,0.55) 100%);pointer-events:none;';
-          el.appendChild(overlay);
-          // 6) 코너 BEFORE/AFTER 라벨 (좌상단/우상단)
+          // 코너 BEFORE/AFTER 라벨만 유지 (어느 쪽인지 식별용)
           var corner = document.createElement('div');
           corner.textContent = isBefore ? 'BEFORE' : 'AFTER';
           corner.style.cssText =
@@ -2146,27 +2152,37 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
             'pointer-events:none;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);' +
             'box-shadow:0 2px 8px rgba(0,0,0,0.3);';
           el.appendChild(corner);
-          // 7) 수리 설명 텍스트 (하단 중앙)
-          if(descText){
-            var desc = document.createElement('div');
-            desc.textContent = descText;
-            desc.style.cssText =
-              'position:absolute;left:0;right:0;bottom:14px;' +
-              'text-align:center;color:#fff;font-size:13px;font-weight:700;' +
-              'letter-spacing:0.2px;padding:0 16px;line-height:1.4;' +
-              'pointer-events:none;text-shadow:0 1px 6px rgba(0,0,0,0.7);';
-            el.appendChild(desc);
-          }
         };
         img.onerror = function(){};
         img.src = url;
       }
+      // 캡션 갱신: 비교 카드 + 메타 태그
+      var captionEl = card.querySelector('.ba-caption');
+      if(captionEl){
+        captionEl.innerHTML =
+          '<div class="ba-model">' + (c.branch || '') + ' · ' + (c.date || '') + '</div>' +
+          '<div class="ba-issue">' + (c.model || '') + '</div>' +
+          '<div class="ba-compare">' +
+            '<div class="ba-compare-item ba-compare-before">' +
+              '<div class="ba-compare-label">BEFORE</div>' +
+              '<div class="ba-compare-text">' + (c.before_text || '수리 전') + '</div>' +
+            '</div>' +
+            '<div class="ba-compare-item ba-compare-after">' +
+              '<div class="ba-compare-label">AFTER</div>' +
+              '<div class="ba-compare-text">' + (c.after_text || '수리 완료') + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="ba-meta">' +
+            '<span class="ba-meta-tag ba-meta-time">⏱ ' + (c.minutes || 30) + '분</span>' +
+            '<span class="ba-meta-tag ba-meta-branch">📍 ' + (c.branch || '') + '</span>' +
+            '<span class="ba-meta-tag ba-meta-warranty">✓ 90일 보증</span>' +
+          '</div>';
+      }
       var beforeEl = card.querySelector('.ba-before');
       var afterEl  = card.querySelector('.ba-after');
-      // 캐시 버스터: JSON 업데이트 시각을 이미지 URL에 붙여 브라우저 캐시 무효화
       var cacheBuster = '?v=' + encodeURIComponent(d.updated_at || Date.now());
-      trySetBg(beforeEl, c.before_img ? c.before_img + cacheBuster : '', c.before_text);
-      trySetBg(afterEl,  c.after_img  ? c.after_img  + cacheBuster : '', c.after_text);
+      trySetBg(beforeEl, c.before_img ? c.before_img + cacheBuster : '');
+      trySetBg(afterEl,  c.after_img  ? c.after_img  + cacheBuster : '');
     });
   }).catch(function(){ /* 데이터 없으면 기본 그라디언트 유지 */ });
 })();

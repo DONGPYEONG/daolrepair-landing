@@ -54,11 +54,22 @@
     .pf-handle-circle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 38px; height: 38px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.28); }
 
     /* Caption */
-    .pf-caption { padding: 16px 18px; }
-    .pf-caption-model { font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 700; letter-spacing: 0.3px; margin-bottom: 4px; }
-    .pf-caption-title { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.45; margin-bottom: 10px; }
-    .pf-caption-meta { display: flex; gap: 12px; font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 600; }
-    .pf-caption-meta span { display: inline-flex; align-items: center; gap: 4px; }
+    .pf-caption { padding: 18px 18px 20px; text-align: center; }
+    .pf-caption-model { font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 700; letter-spacing: 0.5px; margin-bottom: 5px; }
+    .pf-caption-title { font-size: 16px; font-weight: 800; color: #fff; line-height: 1.4; margin-bottom: 12px; letter-spacing: -0.3px; }
+    .pf-compare { display: flex; align-items: stretch; gap: 7px; margin-bottom: 12px; }
+    .pf-compare-item { flex: 1; padding: 8px 10px; border-radius: 9px; min-width: 0; }
+    .pf-compare-before { background: linear-gradient(135deg, rgba(255,69,58,0.18) 0%, rgba(255,69,58,0.08) 100%); border: 1px solid rgba(255,69,58,0.35); }
+    .pf-compare-after { background: linear-gradient(135deg, rgba(52,199,89,0.18) 0%, rgba(52,199,89,0.08) 100%); border: 1px solid rgba(52,199,89,0.35); }
+    .pf-compare-label { font-size: 9px; font-weight: 900; letter-spacing: 1.5px; margin-bottom: 2px; }
+    .pf-compare-before .pf-compare-label { color: #ff6b66; }
+    .pf-compare-after .pf-compare-label { color: #34c759; }
+    .pf-compare-text { font-size: 11px; font-weight: 700; color: #fff; line-height: 1.35; word-break: keep-all; }
+    .pf-caption-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
+    .pf-meta-tag { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 700; padding: 4px 9px; border-radius: 50px; }
+    .pf-meta-time { background: rgba(255,107,53,0.15); color: #FF8E5A; border: 1px solid rgba(255,107,53,0.3); }
+    .pf-meta-branch { background: rgba(96,165,250,0.15); color: #8AB8FA; border: 1px solid rgba(96,165,250,0.3); }
+    .pf-meta-warranty { background: rgba(52,199,89,0.15); color: #34c759; border: 1px solid rgba(52,199,89,0.3); }
 
     /* CTA strip */
     .pf-cta { margin-top: 60px; background: linear-gradient(135deg, rgba(232,115,42,0.15) 0%, rgba(232,115,42,0.05) 100%); border: 1px solid rgba(232,115,42,0.25); border-radius: 22px; padding: 36px 28px; text-align: center; }
@@ -137,7 +148,6 @@
             '<div class="pf-overlay"></div>',
             '<div class="pf-corner pf-corner-before">BEFORE</div>',
             '<div class="pf-corner pf-corner-after">AFTER</div>',
-            '<div class="pf-desc pf-desc-before">' + (c.before_text || '') + '</div>',
             '<div class="pf-handle"><div class="pf-handle-circle">',
               '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E8732A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"/><polyline points="11 17 6 12 11 7"/></svg>',
             '</div></div>',
@@ -145,7 +155,21 @@
           '<div class="pf-caption">',
             '<div class="pf-caption-model">' + (c.branch || '') + ' · ' + (c.date || '') + '</div>',
             '<div class="pf-caption-title">' + (c.model || '') + ' — ' + (c.type || '수리') + '</div>',
-            '<div class="pf-caption-meta"><span>⏱ ' + (c.minutes || 30) + '분</span><span>✓ 90일 보증</span></div>',
+            '<div class="pf-compare">',
+              '<div class="pf-compare-item pf-compare-before">',
+                '<div class="pf-compare-label">BEFORE</div>',
+                '<div class="pf-compare-text">' + (c.before_text || '수리 전') + '</div>',
+              '</div>',
+              '<div class="pf-compare-item pf-compare-after">',
+                '<div class="pf-compare-label">AFTER</div>',
+                '<div class="pf-compare-text">' + (c.after_text || '수리 완료') + '</div>',
+              '</div>',
+            '</div>',
+            '<div class="pf-caption-meta">',
+              '<span class="pf-meta-tag pf-meta-time">⏱ ' + (c.minutes || 30) + '분</span>',
+              '<span class="pf-meta-tag pf-meta-branch">📍 ' + (c.branch || '') + '</span>',
+              '<span class="pf-meta-tag pf-meta-warranty">✓ 90일 보증</span>',
+            '</div>',
           '</div>',
         '</div>'
       ].join('');
