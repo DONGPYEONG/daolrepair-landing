@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>다올리페어 네이버 파워링크 운영 전략 — 2026년 4월</title>
+<style>
+  @page { size: A4; margin: 18mm 14mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    color: #1a1a1a; line-height: 1.6; background: #fff; font-size: 13px;
+  }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 30px 24px 60px; }
+
+  /* Cover */
+  .cover { padding: 60px 0 40px; border-bottom: 4px solid #E8732A; margin-bottom: 40px; }
+  .cover-eyebrow { font-size: 12px; color: #E8732A; font-weight: 700; letter-spacing: 2px; margin-bottom: 14px; }
+  .cover h1 { font-size: 32px; font-weight: 900; color: #0A0A0A; line-height: 1.25; letter-spacing: -0.5px; margin-bottom: 14px; }
+  .cover h1 em { color: #E8732A; font-style: normal; }
+  .cover .meta { font-size: 13px; color: #666; }
+  .cover .meta strong { color: #1a1a1a; font-weight: 700; }
+
+  /* Section */
+  h2 {
+    font-size: 20px; font-weight: 900; color: #0A0A0A;
+    margin: 40px 0 14px; padding-top: 6px;
+    page-break-after: avoid;
+  }
+  h2::before { content: ''; display: block; width: 32px; height: 4px; background: #E8732A; border-radius: 2px; margin-bottom: 12px; }
+  h3 { font-size: 15px; font-weight: 800; color: #0A0A0A; margin: 24px 0 10px; }
+  p { margin-bottom: 12px; color: #333; }
+  strong { color: #0A0A0A; font-weight: 700; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 14px 0 18px; font-size: 12px; page-break-inside: avoid; }
+  th { background: #1a1a1a; color: #fff; padding: 10px 12px; text-align: left; font-weight: 700; font-size: 12px; }
+  th:first-child { border-radius: 6px 0 0 0; }
+  th:last-child { border-radius: 0 6px 0 0; }
+  td { padding: 9px 12px; border-bottom: 1px solid #e8e8e8; vertical-align: top; }
+  tr:nth-child(even) td { background: #fafafa; }
+  tr:last-child td { border-bottom: none; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  td.center { text-align: center; }
+
+  /* Boxes */
+  .box-tip { background: #f0f7ff; border-left: 4px solid #3b82f6; border-radius: 0 8px 8px 0; padding: 14px 16px; margin: 16px 0; font-size: 12px; }
+  .box-tip strong.label { color: #3b82f6; display: block; margin-bottom: 6px; font-size: 12px; }
+  .box-warn { background: #fff5f0; border-left: 4px solid #E8732A; border-radius: 0 8px 8px 0; padding: 14px 16px; margin: 16px 0; font-size: 12px; }
+  .box-warn strong.label { color: #E8732A; display: block; margin-bottom: 6px; }
+  .box-good { background: #f0fdf4; border-left: 4px solid #22c55e; border-radius: 0 8px 8px 0; padding: 14px 16px; margin: 16px 0; font-size: 12px; }
+  .box-good strong.label { color: #16a34a; display: block; margin-bottom: 6px; }
+
+  /* Cards */
+  .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 16px 0; }
+  .card { border: 1.5px solid #e8e8e8; border-radius: 10px; padding: 14px 16px; }
+  .card-label { font-size: 10px; font-weight: 700; color: #E8732A; letter-spacing: 1px; margin-bottom: 5px; text-transform: uppercase; }
+  .card-title { font-size: 14px; font-weight: 800; color: #0A0A0A; margin-bottom: 4px; }
+  .card-value { font-size: 22px; font-weight: 900; color: #E8732A; }
+  .card-desc { font-size: 11px; color: #666; margin-top: 6px; line-height: 1.5; }
+
+  /* Badges */
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; }
+  .badge-red { background: #fee2e2; color: #dc2626; }
+  .badge-yellow { background: #fef9c3; color: #ca8a04; }
+  .badge-green { background: #dcfce7; color: #16a34a; }
+  .badge-blue { background: #dbeafe; color: #1d4ed8; }
+  .badge-orange { background: rgba(232,115,42,0.12); color: #E8732A; }
+  .star { color: #E8732A; font-size: 11px; }
+
+  /* Copy block */
+  .copyset { border: 1.5px solid #e8e8e8; border-radius: 10px; padding: 16px 18px; margin: 14px 0; page-break-inside: avoid; }
+  .copyset-title { font-size: 13px; font-weight: 800; color: #E8732A; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px dashed #e8e8e8; }
+  .copyset-row { display: flex; gap: 10px; padding: 5px 0; font-size: 12px; }
+  .copyset-key { width: 80px; color: #666; flex-shrink: 0; }
+  .copyset-val { flex: 1; color: #0A0A0A; font-weight: 600; }
+  .copyset-val.url { color: #3b82f6; word-break: break-all; font-weight: 500; font-size: 11px; }
+
+  /* Steps */
+  .steps { display: flex; flex-direction: column; gap: 8px; margin: 14px 0; }
+  .step { display: flex; gap: 12px; align-items: flex-start; background: #fafafa; border: 1px solid #e8e8e8; border-radius: 8px; padding: 12px 14px; font-size: 12px; }
+  .step-num { width: 24px; height: 24px; border-radius: 50%; background: #0A0A0A; color: #fff; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-content { flex: 1; }
+  .step-content strong { display: block; margin-bottom: 3px; font-size: 12px; }
+  .step-content small { color: #666; line-height: 1.5; }
+
+  /* Print */
+  @media print {
+    body { font-size: 11pt; }
+    .wrap { padding: 0; }
+    h2 { page-break-before: auto; page-break-after: avoid; }
+    .copyset, .card, table, .box-tip, .box-warn, .box-good { page-break-inside: avoid; }
+    .pagebreak { page-break-before: always; }
+  }
+
+  .toc { background: #fafafa; border-radius: 10px; padding: 18px 22px; margin: 30px 0; }
+  .toc-title { font-size: 14px; font-weight: 800; color: #0A0A0A; margin-bottom: 10px; }
+  .toc ol { margin-left: 18px; font-size: 13px; color: #333; }
+  .toc li { padding: 3px 0; }
+
+  .footer-note { margin-top: 50px; padding: 18px 0; border-top: 1px solid #e8e8e8; font-size: 11px; color: #999; text-align: center; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ───────── 표지 ───────── -->
+<section class="cover">
+  <div class="cover-eyebrow">DAOLI REPAIR · NAVER POWERLINK STRATEGY</div>
+  <h1>네이버 <em>파워링크</em><br>운영 전략 가이드</h1>
+  <p class="meta">
+    작성: <strong>2026년 4월 23일</strong> · 다올리페어 · 금동평<br>
+    하루 예산 <strong>5만원</strong> 기준 · 4 캠페인 × 4 광고그룹 = 총 16개 광고그룹
+  </p>
+</section>
+
+<!-- ───────── 목차 ───────── -->
+<div class="toc">
+  <div class="toc-title">📑 목차</div>
+  <ol>
+    <li>광고 운영 핵심 원칙 3가지</li>
+    <li>전체 광고 구조 (4 캠페인 × 4 광고그룹)</li>
+    <li>일별 예산 분배 (1주차)</li>
+    <li>광고그룹별 키워드 + 추천 입찰가 + 카피</li>
+    <li>확장 소재 세팅 (모든 광고그룹 공통)</li>
+    <li>1주차 운영 일정</li>
+    <li>점검 KPI 3가지</li>
+    <li>2주차 이후 의사결정 가이드</li>
+    <li>네이버 광고 시스템 등록 순서</li>
+  </ol>
+</div>
+
+<!-- ───────── 1. 핵심 원칙 ───────── -->
+<h2>1. 광고 운영 핵심 원칙 3가지</h2>
+
+<div class="card-grid">
+  <div class="card">
+    <div class="card-label">원칙 1</div>
+    <div class="card-title">검색어 미러링</div>
+    <div class="card-desc">사용자가 검색한 단어를 광고 제목에 그대로. 클릭률(CTR)과 네이버 품질지수가 동시에 올라가 입찰가는 낮아집니다.</div>
+  </div>
+  <div class="card">
+    <div class="card-label">원칙 2</div>
+    <div class="card-title">숫자로 차별화</div>
+    <div class="card-desc">"빠른 수리"가 아니라 "당일 30분", "8만원", "3개월 무상 A/S". 추상적 표현보다 구체 수치가 압도적으로 강합니다.</div>
+  </div>
+  <div class="card">
+    <div class="card-label">원칙 3</div>
+    <div class="card-title">위험 제거 한 줄</div>
+    <div class="card-desc">"수리 실패 시 비용 0원"이 다올리페어만의 무기입니다. 모든 카피에 빠짐없이 들어가야 합니다.</div>
+  </div>
+  <div class="card">
+    <div class="card-label">보너스</div>
+    <div class="card-title">랜딩 일치도</div>
+    <div class="card-desc">검색어 = 광고 = 도착 페이지. 셋이 일치할수록 품질지수 상승 → 같은 입찰가로 더 위에 노출.</div>
+  </div>
+</div>
+
+<!-- ───────── 2. 광고 구조 ───────── -->
+<h2>2. 전체 광고 구조</h2>
+
+<p>4개 카테고리(아이폰·아이패드·애플워치·애플펜슬) × 4개 광고그룹(일반·가산·신림·목동) = <strong>총 16개 광고그룹</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:20%">캠페인</th>
+      <th>광고그룹</th>
+      <th style="width:18%">우선순위</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>① 아이폰 수리</strong></td>
+      <td>아이폰-일반 / 아이폰-가산 / 아이폰-신림 / 아이폰-목동</td>
+      <td><span class="star">★★★</span> 메인 매출</td>
+    </tr>
+    <tr>
+      <td><strong>② 아이패드 수리</strong></td>
+      <td>아이패드-일반 / 아이패드-가산 / 아이패드-신림 / 아이패드-목동</td>
+      <td><span class="star">★★</span> 보조 매출</td>
+    </tr>
+    <tr>
+      <td><strong>③ 애플워치 수리</strong></td>
+      <td>애플워치-일반 / 애플워치-가산 / 애플워치-신림 / 애플워치-목동</td>
+      <td><span class="star">★★</span> 보조 매출</td>
+    </tr>
+    <tr>
+      <td><strong>④ 애플펜슬 수리</strong></td>
+      <td>애플펜슬-일반 / 애플펜슬-가산 / 애플펜슬-신림 / 애플펜슬-목동</td>
+      <td><span class="star">★★★</span> 차별화 무기</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="box-tip">
+  <strong class="label">왜 16개로 나누나요?</strong>
+  광고그룹 단위로 카피·랜딩페이지·입찰가를 분리할 수 있기 때문입니다. "가산 아이폰 수리" 검색자에게 "당일 30분 + 가산점 5분 거리" 카피를 보여주는 게 일반 카피보다 클릭률이 2~3배 높아집니다.
+</div>
+
+<!-- ───────── 3. 일별 예산 분배 ───────── -->
+<h2>3. 일별 예산 분배 (1주차 — 5만원/일)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>캠페인</th>
+      <th class="num">일 예산</th>
+      <th>광고그룹별 분배</th>
+      <th class="num">월 환산</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>④ 애플펜슬</strong> <span class="star">★★★</span></td>
+      <td class="num">15,000원</td>
+      <td>일반 9,000 / 가산 2,000 / 신림 2,000 / 목동 2,000</td>
+      <td class="num">45만원</td>
+    </tr>
+    <tr>
+      <td><strong>① 아이폰</strong> <span class="star">★★★</span></td>
+      <td class="num">15,000원</td>
+      <td>모델별 9,000 / 가산 2,000 / 신림 2,000 / 목동 2,000</td>
+      <td class="num">45만원</td>
+    </tr>
+    <tr>
+      <td><strong>② 아이패드</strong> <span class="star">★★</span></td>
+      <td class="num">10,000원</td>
+      <td>모델별 4,000 / 가산 2,000 / 신림 2,000 / 목동 2,000</td>
+      <td class="num">30만원</td>
+    </tr>
+    <tr>
+      <td><strong>③ 애플워치</strong> <span class="star">★★</span></td>
+      <td class="num">10,000원</td>
+      <td>시리즈별 4,000 / 가산 2,000 / 신림 2,000 / 목동 2,000</td>
+      <td class="num">30만원</td>
+    </tr>
+    <tr style="background:#fff5f0;">
+      <td><strong>합계</strong></td>
+      <td class="num"><strong>50,000원</strong></td>
+      <td><strong>16개 광고그룹</strong></td>
+      <td class="num"><strong>150만원</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="box-good">
+  <strong class="label">왜 애플펜슬에 가장 많이?</strong>
+  공식 AS 16.9만원 → 다올리페어 8만원. 이 가격 차이가 압도적이라 클릭률·전환율 모두 가장 높을 것으로 예상됩니다. "다올리페어 = 펜슬도 잘함"이라는 브랜드 각인 효과까지 노립니다.
+</div>
+
+<div class="pagebreak"></div>
+
+<!-- ───────── 4. 광고그룹별 상세 ───────── -->
+<h2>4. 광고그룹별 키워드 + 추천 입찰가 + 카피</h2>
+
+<p style="font-size:12px;color:#666;">추천 입찰가는 시작 기준이며, 노출이 적으면 +20%씩 점진 인상하세요. 1주 데이터 후 재조정.</p>
+
+<!-- ① 아이폰 -->
+<h3>① 아이폰 수리 캠페인</h3>
+
+<h4 style="font-size:13px;font-weight:700;margin:18px 0 8px;color:#0A0A0A;">▶ 광고그룹 1-A: 아이폰 일반 (모델별 키워드)</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>키워드</th>
+      <th class="num" style="width:18%">추천 입찰가</th>
+      <th class="num" style="width:14%">우선순위</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>아이폰 17 수리</td><td class="num">1,200원</td><td class="num"><span class="badge badge-orange">최우선</span></td></tr>
+    <tr><td>아이폰 17 액정 수리</td><td class="num">1,500원</td><td class="num"><span class="badge badge-orange">최우선</span></td></tr>
+    <tr><td>아이폰 17 배터리 교체</td><td class="num">1,000원</td><td class="num"><span class="badge badge-orange">최우선</span></td></tr>
+    <tr><td>아이폰 16 수리</td><td class="num">1,000원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>아이폰 16 액정 수리</td><td class="num">1,200원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>아이폰 16 배터리 교체</td><td class="num">900원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>아이폰 15 액정 수리</td><td class="num">900원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>아이폰 15 배터리 교체</td><td class="num">800원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>아이폰 14 액정 수리</td><td class="num">700원</td><td class="num"><span class="badge badge-green">보조</span></td></tr>
+    <tr><td>아이폰 14 배터리 교체</td><td class="num">700원</td><td class="num"><span class="badge badge-green">보조</span></td></tr>
+    <tr><td>아이폰 13 액정 수리</td><td class="num">600원</td><td class="num"><span class="badge badge-green">보조</span></td></tr>
+    <tr><td>아이폰 13 배터리 교체</td><td class="num">600원</td><td class="num"><span class="badge badge-green">보조</span></td></tr>
+    <tr><td>아이폰 12 수리</td><td class="num">500원</td><td class="num"><span class="badge badge-green">보조</span></td></tr>
+    <tr><td>아이폰 11 수리</td><td class="num">500원</td><td class="num"><span class="badge badge-green">보조</span></td></tr>
+    <tr><td>아이폰 SE 수리</td><td class="num">500원</td><td class="num"><span class="badge badge-green">보조</span></td></tr>
+    <tr><td>아이폰 충전포트 수리</td><td class="num">800원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>아이폰 후면유리 교체</td><td class="num">700원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>아이폰 카메라 수리</td><td class="num">700원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>아이폰 침수 복구</td><td class="num">800원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>아이폰 화면 깨짐</td><td class="num">700원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+  </tbody>
+</table>
+
+<div class="copyset">
+  <div class="copyset-title">📝 카피 1-A (아이폰 일반)</div>
+  <div class="copyset-row"><span class="copyset-key">제목</span><span class="copyset-val">아이폰 수리 다올리페어</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명1</span><span class="copyset-val">당일 30분 완료ㆍ수리 실패 시 비용 0원</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명2</span><span class="copyset-val">가산ㆍ신림ㆍ목동 3지점ㆍ3개월 무상 A/S</span></div>
+  <div class="copyset-row"><span class="copyset-key">랜딩</span><span class="copyset-val url">https://xn--2j1bq2k97kxnah86c.com (메인)</span></div>
+</div>
+
+<h4 style="font-size:13px;font-weight:700;margin:24px 0 8px;color:#0A0A0A;">▶ 광고그룹 1-B: 아이폰 — 가산점</h4>
+
+<table>
+  <thead>
+    <tr><th>키워드</th><th class="num" style="width:18%">추천 입찰가</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>가산 아이폰 수리</td><td class="num">400원</td></tr>
+    <tr><td>가산 아이폰 액정</td><td class="num">400원</td></tr>
+    <tr><td>가산 아이폰 배터리</td><td class="num">350원</td></tr>
+    <tr><td>가산디지털단지 아이폰 수리</td><td class="num">450원</td></tr>
+    <tr><td>가산디지털단지 아이폰 액정</td><td class="num">400원</td></tr>
+    <tr><td>독산동 아이폰 수리</td><td class="num">300원</td></tr>
+    <tr><td>독산동 아이폰 액정</td><td class="num">300원</td></tr>
+    <tr><td>시흥동 아이폰 수리</td><td class="num">300원</td></tr>
+    <tr><td>금천구 아이폰 수리</td><td class="num">300원</td></tr>
+    <tr><td>가리봉동 아이폰 수리</td><td class="num">250원</td></tr>
+  </tbody>
+</table>
+
+<div class="copyset">
+  <div class="copyset-title">📝 카피 1-B (아이폰 — 가산)</div>
+  <div class="copyset-row"><span class="copyset-key">제목</span><span class="copyset-val">가산 아이폰 수리 즉시</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명1</span><span class="copyset-val">가산디지털단지 5분 거리ㆍ당일 30분 완료</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명2</span><span class="copyset-val">점심 맡기고 퇴근에 수령ㆍ수리 실패시 0원</span></div>
+  <div class="copyset-row"><span class="copyset-key">랜딩</span><span class="copyset-val url">articles/repair-gasan-iphone.html</span></div>
+</div>
+
+<h4 style="font-size:13px;font-weight:700;margin:24px 0 8px;color:#0A0A0A;">▶ 광고그룹 1-C: 아이폰 — 신림점</h4>
+
+<table>
+  <thead>
+    <tr><th>키워드</th><th class="num" style="width:18%">추천 입찰가</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>신림 아이폰 수리</td><td class="num">400원</td></tr>
+    <tr><td>신림 아이폰 액정</td><td class="num">400원</td></tr>
+    <tr><td>신림 아이폰 배터리</td><td class="num">350원</td></tr>
+    <tr><td>신림동 아이폰 수리</td><td class="num">350원</td></tr>
+    <tr><td>봉천동 아이폰 수리</td><td class="num">300원</td></tr>
+    <tr><td>봉천동 아이폰 액정</td><td class="num">300원</td></tr>
+    <tr><td>서울대입구 아이폰 수리</td><td class="num">350원</td></tr>
+    <tr><td>서울대입구 아이폰 액정</td><td class="num">350원</td></tr>
+    <tr><td>신대방 아이폰 수리</td><td class="num">300원</td></tr>
+    <tr><td>관악구 아이폰 수리</td><td class="num">300원</td></tr>
+    <tr><td>사당 아이폰 수리</td><td class="num">300원</td></tr>
+  </tbody>
+</table>
+
+<div class="copyset">
+  <div class="copyset-title">📝 카피 1-C (아이폰 — 신림)</div>
+  <div class="copyset-row"><span class="copyset-key">제목</span><span class="copyset-val">신림 아이폰 수리 당일</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명1</span><span class="copyset-val">신림역 도보 거리ㆍ액정·배터리 당일 교체</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명2</span><span class="copyset-val">관악구 거주자 다수 후기ㆍ수리 실패시 0원</span></div>
+  <div class="copyset-row"><span class="copyset-key">랜딩</span><span class="copyset-val url">https://xn--2j1bq2k97kxnah86c.com (신림 지점 안내)</span></div>
+</div>
+
+<h4 style="font-size:13px;font-weight:700;margin:24px 0 8px;color:#0A0A0A;">▶ 광고그룹 1-D: 아이폰 — 목동점</h4>
+
+<table>
+  <thead>
+    <tr><th>키워드</th><th class="num" style="width:18%">추천 입찰가</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>목동 아이폰 수리</td><td class="num">450원</td></tr>
+    <tr><td>목동 아이폰 액정</td><td class="num">450원</td></tr>
+    <tr><td>목동 아이폰 배터리</td><td class="num">400원</td></tr>
+    <tr><td>목동역 아이폰 수리</td><td class="num">400원</td></tr>
+    <tr><td>양천구 아이폰 수리</td><td class="num">400원</td></tr>
+    <tr><td>양천구 아이폰 액정</td><td class="num">400원</td></tr>
+    <tr><td>신정동 아이폰 수리</td><td class="num">300원</td></tr>
+    <tr><td>등촌동 아이폰 수리</td><td class="num">300원</td></tr>
+    <tr><td>화곡동 아이폰 수리</td><td class="num">350원</td></tr>
+    <tr><td>화곡동 아이폰 액정</td><td class="num">350원</td></tr>
+    <tr><td>신월동 아이폰 수리</td><td class="num">300원</td></tr>
+    <tr><td>영등포 아이폰 수리</td><td class="num">400원</td></tr>
+  </tbody>
+</table>
+
+<div class="copyset">
+  <div class="copyset-title">📝 카피 1-D (아이폰 — 목동)</div>
+  <div class="copyset-row"><span class="copyset-key">제목</span><span class="copyset-val">목동 아이폰 수리 당일</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명1</span><span class="copyset-val">목동역 도보 5분ㆍ당일 30분 완료</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명2</span><span class="copyset-val">양천구 후기 다수ㆍ3개월 A/Sㆍ수리 실패시 0원</span></div>
+  <div class="copyset-row"><span class="copyset-key">랜딩</span><span class="copyset-val url">https://xn--2j1bq2k97kxnah86c.com (목동 지점 안내)</span></div>
+</div>
+
+<div class="pagebreak"></div>
+
+<!-- ② 아이패드 -->
+<h3>② 아이패드 수리 캠페인</h3>
+
+<h4 style="font-size:13px;font-weight:700;margin:18px 0 8px;color:#0A0A0A;">▶ 광고그룹 2-A: 아이패드 일반 (모델별)</h4>
+
+<table>
+  <thead>
+    <tr><th>키워드</th><th class="num" style="width:18%">추천 입찰가</th><th class="num" style="width:14%">우선순위</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>아이패드 액정 수리</td><td class="num">1,200원</td><td class="num"><span class="badge badge-orange">최우선</span></td></tr>
+    <tr><td>아이패드 배터리 교체</td><td class="num">1,000원</td><td class="num"><span class="badge badge-orange">최우선</span></td></tr>
+    <tr><td>아이패드 화면 깨짐</td><td class="num">900원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>아이패드 충전 안됨</td><td class="num">800원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>아이패드 프로 액정 수리</td><td class="num">1,200원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>아이패드 프로 배터리</td><td class="num">1,000원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>아이패드 미니 수리</td><td class="num">800원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>아이패드 에어 수리</td><td class="num">800원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>아이패드 침수</td><td class="num">700원</td><td class="num"><span class="badge badge-green">보조</span></td></tr>
+    <tr><td>아이패드 카메라 수리</td><td class="num">600원</td><td class="num"><span class="badge badge-green">보조</span></td></tr>
+  </tbody>
+</table>
+
+<div class="copyset">
+  <div class="copyset-title">📝 카피 2-A (아이패드 일반)</div>
+  <div class="copyset-row"><span class="copyset-key">제목</span><span class="copyset-val">아이패드 액정 당일 수리</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명1</span><span class="copyset-val">액정·배터리·충전포트 30분 내 완료</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명2</span><span class="copyset-val">데이터 보존 100%ㆍ수리 실패시 0원ㆍ서울 3지점</span></div>
+  <div class="copyset-row"><span class="copyset-key">랜딩</span><span class="copyset-val url">https://xn--2j1bq2k97kxnah86c.com (아이패드 섹션)</span></div>
+</div>
+
+<h4 style="font-size:13px;font-weight:700;margin:24px 0 8px;color:#0A0A0A;">▶ 광고그룹 2-B/C/D: 아이패드 — 가산/신림/목동</h4>
+
+<table>
+  <thead>
+    <tr><th>지점</th><th>키워드</th><th class="num" style="width:18%">입찰가</th></tr>
+  </thead>
+  <tbody>
+    <tr><td rowspan="3"><strong>가산점</strong></td><td>가산 아이패드 수리</td><td class="num">400원</td></tr>
+    <tr><td>가산 아이패드 액정</td><td class="num">400원</td></tr>
+    <tr><td>독산동 아이패드 수리</td><td class="num">300원</td></tr>
+    <tr><td rowspan="3"><strong>신림점</strong></td><td>신림 아이패드 수리</td><td class="num">400원</td></tr>
+    <tr><td>봉천동 아이패드 수리</td><td class="num">300원</td></tr>
+    <tr><td>관악구 아이패드 수리</td><td class="num">300원</td></tr>
+    <tr><td rowspan="3"><strong>목동점</strong></td><td>목동 아이패드 수리</td><td class="num">450원</td></tr>
+    <tr><td>양천구 아이패드 수리</td><td class="num">400원</td></tr>
+    <tr><td>화곡동 아이패드 수리</td><td class="num">350원</td></tr>
+  </tbody>
+</table>
+
+<div class="copyset">
+  <div class="copyset-title">📝 카피 2-B/C/D (아이패드 — 지역. 지역명만 변경)</div>
+  <div class="copyset-row"><span class="copyset-key">제목</span><span class="copyset-val">[지점명] 아이패드 수리</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명1</span><span class="copyset-val">[지점명]역 도보 5분ㆍ액정·배터리 당일 교체</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명2</span><span class="copyset-val">데이터 보존ㆍ수리 실패시 0원ㆍ3개월 A/S</span></div>
+</div>
+
+<div class="pagebreak"></div>
+
+<!-- ③ 애플워치 -->
+<h3>③ 애플워치 수리 캠페인</h3>
+
+<h4 style="font-size:13px;font-weight:700;margin:18px 0 8px;color:#0A0A0A;">▶ 광고그룹 3-A: 애플워치 일반 (시리즈별)</h4>
+
+<table>
+  <thead>
+    <tr><th>키워드</th><th class="num" style="width:18%">추천 입찰가</th><th class="num" style="width:14%">우선순위</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>애플워치 수리</td><td class="num">1,200원</td><td class="num"><span class="badge badge-orange">최우선</span></td></tr>
+    <tr><td>애플워치 배터리 교체</td><td class="num">1,000원</td><td class="num"><span class="badge badge-orange">최우선</span></td></tr>
+    <tr><td>애플워치 액정 교체</td><td class="num">1,000원</td><td class="num"><span class="badge badge-orange">최우선</span></td></tr>
+    <tr><td>애플워치 후면유리</td><td class="num">800원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>애플워치 침수</td><td class="num">700원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>Apple Watch 수리</td><td class="num">1,000원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>애플워치 시리즈 10 수리</td><td class="num">1,200원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>애플워치 시리즈 9 수리</td><td class="num">900원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>애플워치 시리즈 8 수리</td><td class="num">700원</td><td class="num"><span class="badge badge-green">보조</span></td></tr>
+    <tr><td>애플워치 Ultra 수리</td><td class="num">900원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>애플워치 SE 수리</td><td class="num">700원</td><td class="num"><span class="badge badge-green">보조</span></td></tr>
+  </tbody>
+</table>
+
+<div class="copyset">
+  <div class="copyset-title">📝 카피 3-A (애플워치 일반)</div>
+  <div class="copyset-row"><span class="copyset-key">제목</span><span class="copyset-val">애플워치 배터리·액정</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명1</span><span class="copyset-val">Series 4부터 Ultra까지 모두 수리 가능</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명2</span><span class="copyset-val">당일 완료ㆍ서울 3지점ㆍ3개월 무상 A/S</span></div>
+  <div class="copyset-row"><span class="copyset-key">랜딩</span><span class="copyset-val url">articles/hub-watch.html</span></div>
+</div>
+
+<h4 style="font-size:13px;font-weight:700;margin:24px 0 8px;color:#0A0A0A;">▶ 광고그룹 3-B/C/D: 애플워치 — 가산/신림/목동</h4>
+
+<table>
+  <thead>
+    <tr><th>지점</th><th>키워드</th><th class="num" style="width:18%">입찰가</th></tr>
+  </thead>
+  <tbody>
+    <tr><td rowspan="3"><strong>가산점</strong></td><td>가산 애플워치 수리</td><td class="num">400원</td></tr>
+    <tr><td>가산 애플워치 배터리</td><td class="num">350원</td></tr>
+    <tr><td>가산디지털단지 애플워치</td><td class="num">350원</td></tr>
+    <tr><td rowspan="3"><strong>신림점</strong></td><td>신림 애플워치 수리</td><td class="num">400원</td></tr>
+    <tr><td>봉천동 애플워치 수리</td><td class="num">300원</td></tr>
+    <tr><td>관악구 애플워치 수리</td><td class="num">300원</td></tr>
+    <tr><td rowspan="3"><strong>목동점</strong></td><td>목동 애플워치 수리</td><td class="num">450원</td></tr>
+    <tr><td>목동 애플워치 배터리</td><td class="num">400원</td></tr>
+    <tr><td>양천구 애플워치 수리</td><td class="num">400원</td></tr>
+  </tbody>
+</table>
+
+<div class="copyset">
+  <div class="copyset-title">📝 카피 3-B/C/D (애플워치 — 지역)</div>
+  <div class="copyset-row"><span class="copyset-key">제목</span><span class="copyset-val">[지점명] 애플워치 수리</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명1</span><span class="copyset-val">[지점명] 도보 거리ㆍ배터리·액정 당일 교체</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명2</span><span class="copyset-val">Series 4부터 Ultraㆍ수리 실패시 0원ㆍ3개월 A/S</span></div>
+</div>
+
+<div class="pagebreak"></div>
+
+<!-- ④ 애플펜슬 -->
+<h3>④ 애플펜슬 수리 캠페인 <span class="star">★★★ 차별화 무기</span></h3>
+
+<h4 style="font-size:13px;font-weight:700;margin:18px 0 8px;color:#0A0A0A;">▶ 광고그룹 4-A: 애플펜슬 일반</h4>
+
+<table>
+  <thead>
+    <tr><th>키워드</th><th class="num" style="width:18%">추천 입찰가</th><th class="num" style="width:14%">우선순위</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>애플펜슬 수리</td><td class="num">800원</td><td class="num"><span class="badge badge-orange">최우선</span></td></tr>
+    <tr><td>애플펜슬 2세대 수리</td><td class="num">900원</td><td class="num"><span class="badge badge-orange">최우선</span></td></tr>
+    <tr><td>애플펜슬 배터리 교체</td><td class="num">700원</td><td class="num"><span class="badge badge-orange">최우선</span></td></tr>
+    <tr><td>애플펜슬 충전 안됨</td><td class="num">600원</td><td class="num"><span class="badge badge-orange">최우선</span></td></tr>
+    <tr><td>애플펜슬 인식 안됨</td><td class="num">500원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>애플펜슬 리퍼</td><td class="num">600원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>애플펜슬 교체 가격</td><td class="num">700원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>Apple Pencil 수리</td><td class="num">700원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>애플펜슬 고장</td><td class="num">500원</td><td class="num"><span class="badge badge-yellow">중간</span></td></tr>
+    <tr><td>애플펜슬 필기 안됨</td><td class="num">450원</td><td class="num"><span class="badge badge-green">보조</span></td></tr>
+  </tbody>
+</table>
+
+<div class="copyset">
+  <div class="copyset-title">📝 카피 4-A (애플펜슬 일반) — 메인 후킹</div>
+  <div class="copyset-row"><span class="copyset-key">제목</span><span class="copyset-val">애플펜슬 2세대 8만원 당일</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명1</span><span class="copyset-val">공식 AS 16.9만원→다올리페어 8만원 당일</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명2</span><span class="copyset-val">1:1 리퍼 교체ㆍ수리 불가시 0원ㆍ서울 3지점</span></div>
+  <div class="copyset-row"><span class="copyset-key">랜딩</span><span class="copyset-val url">articles/applepencil-gen2-repair-service.html</span></div>
+</div>
+
+<h4 style="font-size:13px;font-weight:700;margin:24px 0 8px;color:#0A0A0A;">▶ 광고그룹 4-B/C/D: 애플펜슬 — 가산/신림/목동</h4>
+
+<table>
+  <thead>
+    <tr><th>지점</th><th>키워드</th><th class="num" style="width:18%">입찰가</th></tr>
+  </thead>
+  <tbody>
+    <tr><td rowspan="2"><strong>가산점</strong></td><td>가산 애플펜슬 수리</td><td class="num">400원</td></tr>
+    <tr><td>가산디지털단지 애플펜슬</td><td class="num">400원</td></tr>
+    <tr><td rowspan="2"><strong>신림점</strong></td><td>신림 애플펜슬 수리</td><td class="num">400원</td></tr>
+    <tr><td>봉천동 애플펜슬</td><td class="num">300원</td></tr>
+    <tr><td rowspan="2"><strong>목동점</strong></td><td>목동 애플펜슬 수리</td><td class="num">450원</td></tr>
+    <tr><td>양천구 애플펜슬</td><td class="num">400원</td></tr>
+  </tbody>
+</table>
+
+<div class="copyset">
+  <div class="copyset-title">📝 카피 4-B/C/D (애플펜슬 — 지역)</div>
+  <div class="copyset-row"><span class="copyset-key">제목</span><span class="copyset-val">[지점명] 애플펜슬 8만원</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명1</span><span class="copyset-val">공식 16.9만→8만원ㆍ[지점명]에서 당일 교체</span></div>
+  <div class="copyset-row"><span class="copyset-key">설명2</span><span class="copyset-val">1:1 리퍼ㆍ수리 불가시 0원ㆍ3개월 A/S</span></div>
+</div>
+
+<div class="pagebreak"></div>
+
+<!-- ───────── 5. 확장 소재 ───────── -->
+<h2>5. 확장 소재 (모든 광고그룹 공통)</h2>
+
+<p>네이버 파워링크는 확장 소재가 풍부할수록 광고 영역이 커지고 클릭률이 평균 30% 이상 상승합니다. <strong>한 번만 세팅하면 모든 광고에 자동 적용</strong>됩니다.</p>
+
+<table>
+  <thead>
+    <tr><th style="width:25%">소재 종류</th><th>등록 내용</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>서브링크 4개</strong></td>
+      <td>① 아이폰 액정 수리 → 메인 / ② 배터리 교체 → 배터리 페이지 / ③ 애플워치 → hub-watch.html / ④ 애플펜슬 8만원 → applepencil-gen2-repair-service.html</td>
+    </tr>
+    <tr>
+      <td><strong>이미지 (썸네일)</strong></td>
+      <td>매장 외관 사진 또는 수리 작업 장면 1장 (밝고 깔끔, 텍스트 없는 사진 권장)</td>
+    </tr>
+    <tr>
+      <td><strong>전화번호</strong></td>
+      <td>010-9904-1535 (모바일 클릭 → 통화 즉시 연결)</td>
+    </tr>
+    <tr>
+      <td><strong>추가 설명문구</strong></td>
+      <td>대한민국 1호 디바이스 예방 마스터ㆍ당일 수리 전문점</td>
+    </tr>
+    <tr>
+      <td><strong>네이버 플레이스 연동</strong></td>
+      <td>가산점·신림점·목동점 3개 모두 연동 → 거리 기반 노출 ↑</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="box-warn">
+  <strong class="label">중요 — 네이버 플레이스 먼저 점검</strong>
+  광고 효과의 30%는 네이버 플레이스에서 결정됩니다. 가산·신림·목동 3지점이 모두 등록되어 있고 <strong>영업시간·전화·사진·후기</strong>가 채워져 있어야 합니다. 누락된 정보 있으면 광고 시작 전에 먼저 보완하세요.
+</div>
+
+<!-- ───────── 6. 운영 일정 ───────── -->
+<h2>6. 1주차 운영 일정</h2>
+
+<div class="steps">
+  <div class="step">
+    <div class="step-num">月</div>
+    <div class="step-content">
+      <strong>월요일 — 광고 ON, 종일 노출 (5분)</strong>
+      <small>모든 광고그룹을 동시에 시작. 아침에 한 번 켜고 저녁에 한 번 노출 잘 되는지 확인.</small>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">水</div>
+    <div class="step-content">
+      <strong>수요일 저녁 — 중간 점검 (10분)</strong>
+      <small>노출이 너무 적은 키워드는 입찰가 +20% 인상. 클릭률(CTR) 5% 미만 키워드는 카피 점검.</small>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">金</div>
+    <div class="step-content">
+      <strong>금요일 저녁 — 키워드별 성과 확인 (15분)</strong>
+      <small>클릭당 단가(CPC) · 전환률 확인. 비싸기만 하고 전환 없는 키워드 일시 중지.</small>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">日</div>
+    <div class="step-content">
+      <strong>일요일 저녁 — 1주 데이터 정리, 2주차 예산 재분배 (30분)</strong>
+      <small>잘 되는 광고그룹 예산 ↑, 안 되는 광고그룹 예산 ↓ 또는 정지. 카피 수정 필요한 곳 점검.</small>
+    </div>
+  </div>
+</div>
+
+<!-- ───────── 7. KPI ───────── -->
+<h2>7. 점검 KPI 3가지</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>지표</th>
+      <th>의미</th>
+      <th>좋은 기준</th>
+      <th>안 좋으면</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>CTR</strong><br><small>(클릭률)</small></td>
+      <td>광고 노출된 사람 중 몇 %가 클릭했나</td>
+      <td>5% 이상</td>
+      <td>카피 수정 필요</td>
+    </tr>
+    <tr>
+      <td><strong>CPC</strong><br><small>(클릭당 단가)</small></td>
+      <td>1번 클릭에 얼마 썼나</td>
+      <td>500~1,500원</td>
+      <td>입찰가 ↓ 또는 키워드 변경</td>
+    </tr>
+    <tr>
+      <td><strong>전환</strong><br><small>(견적 문의 발생)</small></td>
+      <td>클릭 후 실제 접수 문의로 이어졌나</td>
+      <td>20클릭당 1건 이상</td>
+      <td>랜딩 페이지·CTA 점검</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="pagebreak"></div>
+
+<!-- ───────── 8. 의사결정 ───────── -->
+<h2>8. 2주차 이후 의사결정 가이드</h2>
+
+<table>
+  <thead>
+    <tr><th style="width:30%">1주차 패턴</th><th>2주차 액션</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>패턴 A</strong><br>애플펜슬 압도적 전환</td>
+      <td>펜슬 예산 2.5만원으로 ↑, 다른 카테고리 ↓. 펜슬 단독 랜딩 추가 제작 검토.</td>
+    </tr>
+    <tr>
+      <td><strong>패턴 B</strong><br>특정 지역만 잘 됨</td>
+      <td>해당 지점 키워드 예산 늘리기. 안 되는 지점은 카피·랜딩 페이지 검토.</td>
+    </tr>
+    <tr>
+      <td><strong>패턴 C</strong><br>모델별 키워드만 성과</td>
+      <td>모델별 키워드 풀 확장. 일반 키워드("아이폰 수리") 끄고 절약.</td>
+    </tr>
+    <tr>
+      <td><strong>패턴 D</strong><br>전반적 클릭 적음</td>
+      <td>입찰가 ↑ 또는 카피·이미지 교체. 광역(서울) 키워드 추가 시도.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>시간대별 입찰 조정 (2주차부터)</h3>
+<table>
+  <thead>
+    <tr><th>지점</th><th>피크 시간대</th><th>입찰가 가중치</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>가산점</strong> (직장인)</td><td>평일 11~13시 (점심) + 18~20시 (퇴근)</td><td class="center">+20%</td></tr>
+    <tr><td><strong>목동점</strong> (주부)</td><td>평일 10~16시</td><td class="center">+20%</td></tr>
+    <tr><td><strong>신림점</strong> (학생/직장인)</td><td>평일 14~22시 + 주말 종일</td><td class="center">+20%</td></tr>
+    <tr><td colspan="3"><strong>모바일 입찰 가중치</strong> (전 지점 공통)<br><small>휴대폰 수리는 80% 이상이 모바일 검색 → +30%</small></td></tr>
+  </tbody>
+</table>
+
+<!-- ───────── 9. 등록 순서 ───────── -->
+<h2>9. 네이버 광고 시스템 등록 순서</h2>
+
+<div class="steps">
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>searchad.naver.com 로그인</strong>
+      <small>승인된 사업자 계정으로 로그인 → 광고 관리 진입.</small>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>새 캠페인 4개 생성</strong>
+      <small>① 아이폰 수리 / ② 아이패드 수리 / ③ 애플워치 수리 / ④ 애플펜슬 수리 — 각각 일 예산 위 표대로 설정.</small>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>각 캠페인에 광고그룹 4개씩 생성</strong>
+      <small>일반 / 가산 / 신림 / 목동. 광고그룹별로 일 예산 분배.</small>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <strong>키워드 등록 + 입찰가 설정</strong>
+      <small>위 광고그룹별 표를 보고 키워드와 입찰가 입력. 또는 같이 만든 Excel 파일을 CSV 변환 후 일괄 업로드.</small>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">5</div>
+    <div class="step-content">
+      <strong>각 광고그룹에 카피 작성</strong>
+      <small>제목 + 설명1 + 설명2 + 표시URL + 랜딩URL 입력. 광고그룹당 카피 2~3개 등록(A/B 테스트).</small>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">6</div>
+    <div class="step-content">
+      <strong>확장 소재 일괄 등록</strong>
+      <small>서브링크 4개 + 이미지 + 전화번호 + 추가설명 + 네이버 플레이스 연동.</small>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">7</div>
+    <div class="step-content">
+      <strong>심사 통과 후 ON</strong>
+      <small>네이버 심사 보통 1~3시간 내 완료. 통과되면 즉시 노출 시작.</small>
+    </div>
+  </div>
+</div>
+
+<!-- ───────── 푸터 ───────── -->
+<div class="footer-note">
+  © 2026 다올리페어 · 금동평 대표 · 대한민국 1호 디바이스 예방 마스터<br>
+  본 자료는 2026년 4월 23일 기준 추정 입찰가입니다. 실제 입찰가는 네이버 광고 시스템에서 매일 변동되며, 1주차 데이터 수집 후 재조정이 필요합니다.
+</div>
+
+</div>
+</body>
+</html>

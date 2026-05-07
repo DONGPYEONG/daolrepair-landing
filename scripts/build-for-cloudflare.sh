@@ -12,16 +12,17 @@ rsync -a \
   --exclude='.tmp' \
   --exclude='.env' \
   --exclude='.env/' \
+  --exclude='.claude' \
+  --exclude='.claude/' \
+  --exclude='.gitignore' \
+  --exclude='CLAUDE.md' \
   --exclude='scripts' \
   --exclude='dist' \
   --exclude='node_modules' \
   --exclude='wrangler.jsonc' \
   --exclude='wrangler.toml' \
   --exclude='*.bak' \
-  --exclude='_gen_*.py' \
-  --exclude='_fetch_*.py' \
-  --exclude='_submit_*.py' \
-  --exclude='_fix_*.py' \
+  --exclude='_*.py' \
   --exclude='daolrepair-b5baf3e19f5f.json' \
   --exclude='daolrepair-drive-sa.json' \
   --exclude='daolrepair-drive-*.json' \
@@ -32,6 +33,7 @@ rsync -a \
   --exclude='스크린샷*.png' \
   --exclude='캡쳐*.png' \
   --exclude='index.html.bak' \
+  --exclude='20260327160845.png' \
   ./ dist/
 
 COUNT=$(find dist -type f | wc -l | tr -d ' ')

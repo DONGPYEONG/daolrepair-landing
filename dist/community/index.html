@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>커뮤니티 — 애플 유저 모임 | 다올리페어</title>
+  <meta name="description" content="아이폰·맥북·애플워치·아이패드를 사랑하는 사람들의 공간. 수리 Q&A, 사용 팁, 구매 추천, 자유토론까지.">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --orange: #E8732A; --dark: #0A0A0A; --text: #1a1a1a; --muted: #666; --border: #e8e8e8; --font: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
+    body { font-family: var(--font); color: var(--text); background: #f5f5f7; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; }
+    .nav-logo span { font-size: 15px; font-weight: 800; color: var(--dark); }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .nav-user { font-size: 13px; color: var(--muted); }
+    .nav-btn { font-size: 13px; font-weight: 700; color: #fff; background: var(--orange); border: none; padding: 7px 16px; border-radius: 20px; cursor: pointer; text-decoration: none; font-family: var(--font); transition: background 0.2s; }
+    .nav-btn:hover { background: #d4621f; }
+    .nav-btn-ghost { font-size: 13px; font-weight: 700; color: var(--dark); background: transparent; border: 1.5px solid var(--border); padding: 6px 14px; border-radius: 20px; cursor: pointer; text-decoration: none; font-family: var(--font); transition: all 0.2s; }
+    .nav-btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+    /* Hero */
+    .hero { background: var(--dark); padding: 36px 20px 28px; text-align: center; }
+    .hero-badge { display: inline-block; background: rgba(232,115,42,0.2); color: var(--orange); font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; letter-spacing: 0.5px; }
+    .hero h1 { font-size: clamp(20px, 5vw, 28px); font-weight: 900; color: #fff; margin-bottom: 6px; }
+    .hero p { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+    .search-wrap { max-width: 480px; margin: 0 auto; position: relative; }
+    .search-input { width: 100%; padding: 12px 44px 12px 18px; border-radius: 50px; border: none; font-size: 14px; font-family: var(--font); outline: none; background: rgba(255,255,255,0.08); color: #fff; transition: background 0.2s; }
+    .search-input::placeholder { color: rgba(255,255,255,0.3); }
+    .search-input:focus { background: rgba(255,255,255,0.14); }
+    .search-icon { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.35); pointer-events: none; }
+    /* Main */
+    .main { max-width: 800px; margin: 0 auto; padding: 20px 16px 80px; }
+    /* Tabs */
+    .cat-tabs-wrap { margin-bottom: 18px; }
+    .cat-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+    .cat-tab { padding: 6px 13px; border-radius: 20px; font-size: 12.5px; font-weight: 700; border: 1.5px solid var(--border); background: #fff; color: var(--muted); cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+    .cat-tab.active { background: var(--dark); color: #fff; border-color: var(--dark); }
+    /* 인기글 */
+    .popular-section { margin-bottom: 20px; }
+    .section-label { font-size: 12px; font-weight: 800; color: var(--muted); margin-bottom: 10px; display: flex; align-items: center; gap: 5px; }
+    .popular-cards { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
+    .popular-cards::-webkit-scrollbar { display: none; }
+    .popular-card { flex-shrink: 0; width: 190px; background: #fff; border: 1.5px solid var(--border); border-radius: 14px; padding: 14px 15px; cursor: pointer; transition: all 0.15s; text-decoration: none; display: block; }
+    .popular-card:hover { border-color: var(--orange); box-shadow: 0 2px 12px rgba(232,115,42,0.1); }
+    .popular-rank { font-size: 20px; font-weight: 900; color: var(--orange); margin-bottom: 6px; }
+    .popular-card-title { font-size: 13px; font-weight: 700; color: var(--dark); line-height: 1.45; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .popular-card-meta { font-size: 11px; color: #aaa; display: flex; gap: 8px; }
+    /* Top row */
+    .top-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .post-count { font-size: 13px; color: var(--muted); }
+    .write-btn { background: var(--orange); color: #fff; border: none; padding: 9px 20px; border-radius: 20px; font-size: 14px; font-weight: 800; cursor: pointer; font-family: var(--font); transition: background 0.2s; text-decoration: none; display: inline-block; }
+    .write-btn:hover { background: #d4621f; }
+    /* Post list */
+    .post-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border-radius: 14px; overflow: hidden; }
+    .post-item { background: #fff; padding: 14px 18px; cursor: pointer; transition: background 0.12s; }
+    .post-item:hover { background: #fafafa; }
+    .post-item-top { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; flex-wrap: nowrap; overflow: hidden; }
+    /* Category badges */
+    .cat-badge { font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 8px; flex-shrink: 0; }
+    .cat-news { background: rgba(59,130,246,0.12); color: #2563eb; }
+    .cat-free { background: rgba(232,115,42,0.12); color: var(--orange); }
+    .cat-tip { background: rgba(34,197,94,0.12); color: #15803d; }
+    .cat-buy { background: rgba(168,85,247,0.12); color: #7c3aed; }
+    .cat-compare { background: rgba(6,182,212,0.12); color: #0891b2; }
+    .cat-repair { background: rgba(239,68,68,0.12); color: #dc2626; }
+    /* Post type badges */
+    .type-badge { font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 8px; flex-shrink: 0; }
+    .type-question { background: #fef9c3; color: #a16207; }
+    .type-discussion { background: rgba(99,102,241,0.1); color: #4f46e5; }
+    .type-tip { background: rgba(34,197,94,0.1); color: #15803d; }
+    .type-review { background: rgba(168,85,247,0.1); color: #7c3aed; }
+    /* Status badges */
+    .badge-unanswered { background: #fee2e2; color: #b91c1c; font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 8px; flex-shrink: 0; }
+    .badge-official { background: rgba(232,115,42,0.1); color: var(--orange); font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 8px; flex-shrink: 0; }
+    .post-title { font-size: 14px; font-weight: 700; color: var(--dark); flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .post-comment-badge { font-size: 12px; color: var(--orange); font-weight: 800; flex-shrink: 0; }
+    .post-meta { font-size: 12px; color: #bbb; display: flex; gap: 10px; align-items: center; }
+    .post-meta-author { color: #888; font-weight: 600; }
+    .delete-post-btn { background: #fee2e2; color: #b91c1c; border: none; font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 7px; cursor: pointer; font-family: var(--font); flex-shrink: 0; }
+    .delete-post-btn:hover { background: #fca5a5; }
+    /* Empty / Loading */
+    .empty { text-align: center; padding: 60px 20px; color: #aaa; background: #fff; }
+    .empty-icon { font-size: 40px; margin-bottom: 12px; }
+    .empty p { font-size: 14px; line-height: 1.8; }
+    .loading { text-align: center; padding: 40px; color: #aaa; font-size: 14px; background: #fff; }
+    /* Pagination */
+    .pagination { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+    .page-btn { width: 36px; height: 36px; border-radius: 8px; border: 1.5px solid var(--border); background: #fff; font-size: 13px; font-weight: 700; cursor: pointer; color: var(--muted); transition: all 0.15s; font-family: var(--font); }
+    .page-btn.active { background: var(--dark); color: #fff; border-color: var(--dark); }
+    .page-btn:hover:not(.active) { border-color: var(--orange); color: var(--orange); }
+    /* Footer */
+    .footer { text-align: center; padding: 32px 20px 100px; font-size: 13px; color: #bbb; border-top: 1px solid var(--border); margin-top: 40px; line-height: 1.8; background: #fff; }
+    .footer a { color: var(--orange); text-decoration: none; }
+    /* 홈 유도 배너 */
+    .home-banner { background: linear-gradient(135deg, #1a1a1a 0%, #2d1a0a 100%); border-radius: 16px; padding: 18px 20px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; text-decoration: none; transition: opacity 0.2s; }
+    .home-banner:hover { opacity: 0.92; }
+    .home-banner-left { display: flex; align-items: center; gap: 12px; }
+    .home-banner-logo { width: 40px; height: 40px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+    .home-banner-text { color: #fff; }
+    .home-banner-text strong { font-size: 14px; font-weight: 900; display: block; margin-bottom: 2px; }
+    .home-banner-text span { font-size: 12px; color: rgba(255,255,255,0.5); }
+    .home-banner-btn { background: var(--orange); color: #fff; font-size: 12px; font-weight: 800; padding: 8px 14px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
+    /* 하단 고정 바 */
+    .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: rgba(10,10,10,0.96); backdrop-filter: blur(12px); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .sticky-cta-text { color: #fff; font-size: 13px; font-weight: 700; }
+    .sticky-cta-text span { color: rgba(255,255,255,0.45); font-size: 11px; font-weight: 400; display: block; margin-top: 1px; }
+    .sticky-cta-btns { display: flex; gap: 8px; flex-shrink: 0; }
+    .sticky-cta-btn { font-size: 13px; font-weight: 800; padding: 9px 16px; border-radius: 20px; text-decoration: none; white-space: nowrap; transition: all 0.2s; }
+    .sticky-cta-btn-ghost { color: rgba(255,255,255,0.7); border: 1.5px solid rgba(255,255,255,0.2); background: transparent; }
+    .sticky-cta-btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+    .sticky-cta-btn-solid { background: var(--orange); color: #fff; border: none; cursor: pointer; font-family: var(--font); }
+    .sticky-cta-btn-solid:hover { background: #d4621f; }
+    @media (max-width: 480px) { .popular-card { width: 160px; } .post-item { padding: 12px 14px; } .sticky-cta-text span { display: none; } .sticky-cta-btn { font-size: 12px; padding: 8px 13px; } }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a href="https://xn--2j1bq2k97kxnah86c.com" class="nav-logo">
+    <img src="../로고신규1.jpg" alt="다올리페어">
+    <span>다올리페어</span>
+  </a>
+  <div class="nav-right">
+    <span class="nav-user" id="nav-user"></span>
+    <a href="login.html" class="nav-btn-ghost" id="nav-login-btn">로그인</a>
+    <button class="nav-btn" id="nav-logout-btn" style="display:none" onclick="logout()">로그아웃</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">🍎 Apple User Community</div>
+  <h1>다올리페어 커뮤니티</h1>
+  <p>애플을 사랑하는 사람들이 모이는 곳 — 팁, 토론, 질문, 후기 모두 환영합니다</p>
+  <div class="search-wrap">
+    <input class="search-input" type="text" id="search-input" placeholder="🔍  궁금한 것을 검색해보세요">
+    <span class="search-icon">↵</span>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- 홈 유도 배너 -->
+  <a href="https://xn--2j1bq2k97kxnah86c.com" class="home-banner">
+    <div class="home-banner-left">
+      <img src="../로고신규1.jpg" alt="다올리페어" class="home-banner-logo">
+      <div class="home-banner-text">
+        <strong>다올리페어 공식 홈페이지</strong>
+        <span>아이폰·맥북·애플워치·아이패드 수리 전문 · 가산·신림·목동</span>
+      </div>
+    </div>
+    <div class="home-banner-btn">홈페이지 →</div>
+  </a>
+
+  <div class="cat-tabs-wrap">
+    <div class="cat-tabs" id="cat-tabs">
+      <button class="cat-tab active" data-cat="전체">전체</button>
+      <button class="cat-tab" data-cat="애플 소식">📰 애플 소식</button>
+      <button class="cat-tab" data-cat="자유토론">💬 자유토론</button>
+      <button class="cat-tab" data-cat="사용 팁">💡 사용 팁</button>
+      <button class="cat-tab" data-cat="구매 추천">🛒 구매 추천</button>
+      <button class="cat-tab" data-cat="기기 비교">📊 기기 비교</button>
+      <button class="cat-tab" data-cat="수리 Q&A">🔧 수리 Q&A</button>
+    </div>
+  </div>
+
+  <div id="popular-section" class="popular-section" style="display:none"></div>
+
+  <div class="top-row">
+    <span class="post-count" id="post-count"></span>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button id="official-toggle" onclick="toggleOfficial()" style="font-size:14px;font-weight:800;padding:9px 20px;border-radius:20px;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;font-family:var(--font);transition:all 0.15s;white-space:nowrap;">✅ 공식답변</button>
+      <a href="write.html" class="write-btn">✏️ 글쓰기</a>
+    </div>
+  </div>
+
+  <div id="post-list" class="post-list">
+    <div class="loading">게시글을 불러오는 중...</div>
+  </div>
+  <div class="pagination" id="pagination"></div>
+</div>
+
+<footer class="footer">
+  <p><a href="https://xn--2j1bq2k97kxnah86c.com">다올리페어</a> · 가산점 · 신림점 · 목동점 · 전국 택배 수리</p>
+</footer>
+
+<!-- 하단 고정 바 -->
+<div class="sticky-cta">
+  <div class="sticky-cta-text">
+    다올리페어
+    <span>아이폰·맥북·애플워치 수리 전문점</span>
+  </div>
+  <div class="sticky-cta-btns">
+    <a href="https://xn--2j1bq2k97kxnah86c.com#estimate" class="sticky-cta-btn sticky-cta-btn-ghost">수리 견적</a>
+    <a href="https://xn--2j1bq2k97kxnah86c.com" class="sticky-cta-btn sticky-cta-btn-solid">홈페이지 바로가기</a>
+  </div>
+</div>
+
+<script>
+  const SUPABASE_URL = 'https://eybuyorlvbqxbvwyugcs.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_QqBHHM529mkONmJD_2kofA_1gCLrB0p';
+  const { createClient } = supabase;
+  const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  const PAGE_SIZE = 20;
+  let currentPage = 0, currentCat = '전체', currentSearch = '', totalCount = 0;
+  let isAdmin = false, searchTimer = null;
+
+  const catClassMap = { '애플 소식':'cat-news','자유토론':'cat-free','사용 팁':'cat-tip','구매 추천':'cat-buy','기기 비교':'cat-compare','수리 Q&A':'cat-repair' };
+  const typeClassMap = { '질문':'type-question','토론':'type-discussion','팁 공유':'type-tip','후기':'type-review' };
+
+  function catClass(cat) { return catClassMap[cat] || 'cat-free'; }
+  function typeClass(t) { return typeClassMap[t] || 'type-discussion'; }
+
+  function timeAgo(d) {
+    const s = (Date.now() - new Date(d)) / 1000;
+    if (s < 60) return '방금 전';
+    if (s < 3600) return Math.floor(s/60) + '분 전';
+    if (s < 86400) return Math.floor(s/3600) + '시간 전';
+    if (s < 2592000) return Math.floor(s/86400) + '일 전';
+    return new Date(d).toLocaleDateString('ko-KR');
+  }
+
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function postHtml(p) {
+    const cc = p.comments?.[0]?.count || 0;
+    const lc = p.likes?.[0]?.count || 0;
+    const unanswered = cc === 0 && p.category === '수리 Q&A';
+    return `<div class="post-item" onclick="location.href='post.html?id=${p.id}'">
+      <div class="post-item-top">
+        <span class="cat-badge ${catClass(p.category)}">${esc(p.category)}</span>
+        ${p.post_type ? `<span class="type-badge ${typeClass(p.post_type)}">${esc(p.post_type)}</span>` : ''}
+        ${unanswered ? '<span class="badge-unanswered">미답변</span>' : ''}
+        <span class="post-title">${esc(p.title)}</span>
+        ${cc > 0 ? `<span class="post-comment-badge">[${cc}]</span>` : ''}
+        ${isAdmin ? `<button class="delete-post-btn" onclick="event.stopPropagation();delPost('${p.id}')">삭제</button>` : ''}
+      </div>
+      <div class="post-meta">
+        <span class="post-meta-author">${esc(p.author_nickname)}</span>
+        <span>${timeAgo(p.created_at)}</span>
+        <span>👁 ${p.view_count||0}</span>
+        ${lc > 0 ? `<span>❤️ ${lc}</span>` : ''}
+      </div>
+    </div>`;
+  }
+
+  async function loadPopular() {
+    const el = document.getElementById('popular-section');
+    if (currentCat !== '전체' || currentSearch) { el.style.display = 'none'; return; }
+    const { data } = await sb.from('posts').select('*, likes(count)').order('view_count', { ascending: false }).limit(3);
+    if (!data || data.length === 0) { el.style.display = 'none'; return; }
+    el.style.display = 'block';
+    el.innerHTML = `<div class="section-label">🔥 인기글 TOP ${data.length}</div>
+      <div class="popular-cards">${data.map((p,i) => `
+        <a href="post.html?id=${p.id}" class="popular-card">
+          <div class="popular-rank">${i+1}</div>
+          <div class="popular-card-title">${esc(p.title)}</div>
+          <div class="popular-card-meta"><span>👁 ${p.view_count||0}</span>${(p.likes?.[0]?.count||0)>0?`<span>❤️ ${p.likes[0].count}</span>`:''}</div>
+        </a>`).join('')}
+      </div>`;
+  }
+
+  async function loadOfficialPosts() {
+    const listEl = document.getElementById('post-list');
+    listEl.innerHTML = '<div class="loading">불러오는 중...</div>';
+    const { data: oc } = await sb.from('comments').select('post_id').eq('author_nickname', '다올리페어').not('post_id', 'is', null);
+    if (!oc || oc.length === 0) {
+      listEl.innerHTML = '<div class="empty"><div class="empty-icon">💬</div><p>아직 공식 답변이 없습니다.</p></div>';
+      document.getElementById('post-count').textContent = '전체 0개';
+      document.getElementById('pagination').innerHTML = '';
+      return;
+    }
+    const ids = [...new Set(oc.map(c => c.post_id).filter(id => id))];
+    const { data } = await sb.from('posts').select('*, comments(count), likes(count)').in('id', ids).order('created_at', { ascending: false });
+    document.getElementById('post-count').textContent = `전체 ${data?.length||0}개`;
+    listEl.innerHTML = data && data.length > 0 ? data.map(p => postHtml(p)).join('') : '<div class="empty"><div class="empty-icon">💬</div><p>공식 답변 글이 없습니다.</p></div>';
+    document.getElementById('pagination').innerHTML = '';
+  }
+
+  async function loadPosts() {
+    if (currentCat === '공식답변') { await loadOfficialPosts(); return; }
+    const listEl = document.getElementById('post-list');
+    listEl.innerHTML = '<div class="loading">게시글을 불러오는 중...</div>';
+    let q = sb.from('posts').select('*, comments(count), likes(count)', { count: 'exact' });
+    if (currentCat !== '전체') q = q.eq('category', currentCat);
+    if (currentSearch) q = q.or(`title.ilike.%${currentSearch}%,body.ilike.%${currentSearch}%`);
+    q = q.order('created_at', { ascending: false }).range(currentPage * PAGE_SIZE, (currentPage+1)*PAGE_SIZE-1);
+    const { data, error, count } = await q;
+    if (error) { listEl.innerHTML = '<div class="loading">오류가 발생했습니다.</div>'; return; }
+    totalCount = count || 0;
+    document.getElementById('post-count').textContent = currentSearch ? `"${currentSearch}" 검색결과 ${totalCount}개` : `전체 ${totalCount}개`;
+    if (!data || data.length === 0) {
+      listEl.innerHTML = `<div class="empty"><div class="empty-icon">💬</div><p>${currentSearch ? '검색 결과가 없습니다.' : '아직 게시글이 없습니다.<br>첫 번째 글을 남겨보세요!'}</p></div>`;
+      document.getElementById('pagination').innerHTML = '';
+      return;
+    }
+    listEl.innerHTML = data.map(p => postHtml(p)).join('');
+    renderPagination();
+    loadPopular();
+  }
+
+  function renderPagination() {
+    const total = Math.ceil(totalCount / PAGE_SIZE);
+    if (total <= 1) { document.getElementById('pagination').innerHTML = ''; return; }
+    document.getElementById('pagination').innerHTML = Array.from({length: total}, (_,i) =>
+      `<button class="page-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i+1}</button>`).join('');
+  }
+
+  function goPage(n) { currentPage = n; loadPosts(); window.scrollTo(0,0); }
+
+  function toggleOfficial() {
+    const btn = document.getElementById('official-toggle');
+    if (currentCat === '공식답변') {
+      currentCat = '전체';
+      btn.style.background = '#fff';
+      btn.style.color = 'var(--muted)';
+      btn.style.borderColor = 'var(--border)';
+      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+      document.querySelector('[data-cat="전체"]').classList.add('active');
+    } else {
+      currentCat = '공식답변';
+      btn.style.background = 'rgba(232,115,42,0.1)';
+      btn.style.color = 'var(--orange)';
+      btn.style.borderColor = 'var(--orange)';
+      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+    }
+    currentPage = 0; currentSearch = '';
+    document.getElementById('search-input').value = '';
+    loadPosts();
+  }
+
+  document.getElementById('cat-tabs').addEventListener('click', e => {
+    const tab = e.target.closest('.cat-tab');
+    if (!tab) return;
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    currentCat = tab.dataset.cat;
+    currentPage = 0; currentSearch = '';
+    document.getElementById('search-input').value = '';
+    // 공식답변 토글 버튼 초기화
+    const offBtn = document.getElementById('official-toggle');
+    offBtn.style.background = '#fff';
+    offBtn.style.color = 'var(--muted)';
+    offBtn.style.borderColor = 'var(--border)';
+    loadPosts();
+  });
+
+  document.getElementById('search-input').addEventListener('input', e => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      currentSearch = e.target.value.trim();
+      currentPage = 0; currentCat = '전체';
+      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+      document.querySelector('[data-cat="전체"]').classList.add('active');
+      loadPosts();
+    }, 400);
+  });
+
+  async function delPost(id) {
+    if (!confirm('이 글을 삭제할까요?')) return;
+    const { error } = await sb.from('posts').delete().eq('id', id);
+    if (error) { alert('삭제 실패: ' + error.message); return; }
+    loadPosts();
+  }
+
+  async function logout() { await sb.auth.signOut(); location.reload(); }
+
+  async function init() {
+    const { data: { user } } = await sb.auth.getUser();
+    if (user) {
+      const nick = user.user_metadata?.nickname || user.email?.split('@')[0] || '사용자';
+      document.getElementById('nav-user').textContent = nick + '님';
+      document.getElementById('nav-login-btn').style.display = 'none';
+      document.getElementById('nav-logout-btn').style.display = 'inline-block';
+      isAdmin = nick === '다올리페어';
+    }
+    loadPosts();
+    loadPopular();
+  }
+
+  init();
+</script>
+</body>
+</html>
