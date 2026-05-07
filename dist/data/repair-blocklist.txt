@@ -20,3 +20,6 @@
 # 예시 (실제 추가하실 때는 # 떼세요):
 # 1bdNyoxif9BBqw8f53pwjRE3vZcNL4NsM
 # iphone-아이폰7-정수영-01023798646-screen
+
+# ─── 사장님 차단 목록 ───
+1FGs9Dzmny2RLu-dDd0GEeTl7UbLPpbma  # 목동점 2026-04-24 아이폰 17 화면 — 사진 깨짐

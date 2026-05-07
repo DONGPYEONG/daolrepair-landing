@@ -117,7 +117,7 @@ TIME_BY_TYPE = {
 # "성능치" 단어로 명확히 안내.
 BEFORE_AFTER_TEXTS = {
     "screen":         ("전면 액정 파손",         "전면 액정 교체 완료"),
-    "battery":        ("배터리 성능 노화",       "배터리 교체 완료"),
+    "battery":        ("이전 배터리 성능치",     "교체 후 배터리 성능치"),
     "back":           ("후면 유리 파손",         "후면 유리 교체 완료"),
     "back-glass":     ("후면 유리 파손",         "후면 유리 교체 완료"),
     "charge":         ("충전 단자 손상",         "충전 단자 정밀 수리"),
@@ -131,12 +131,12 @@ BEFORE_AFTER_TEXTS = {
     "screen+back":    ("화면 + 후면 파손",       "화면 + 후면 교체"),
     "back+battery":   ("후면 + 배터리 노화",     "후면 교체 + 배터리 성능치 정상"),
     "battery+back":   ("배터리 + 후면 손상",     "배터리 + 후면 교체"),
-    "battery+other":  ("배터리 성능 노화",       "배터리 교체 + 점검 완료"),
+    "battery+other":  ("이전 배터리 성능치",     "교체 후 배터리 성능치"),
     "charge+other":   ("충전·기타 이상",         "충전 + 정밀 점검"),
     "other":          ("기타 손상",              "정밀 수리 완료"),
     # 한국어 변형
     "화면교체":       ("전면 액정 파손",         "전면 액정 교체 완료"),
-    "배터리교체":     ("배터리 성능 노화",       "배터리 교체 완료"),
+    "배터리교체":     ("이전 배터리 성능치",     "교체 후 배터리 성능치"),
     "후면유리":       ("후면 유리 파손",         "후면 유리 교체 완료"),
 }
 
@@ -422,11 +422,10 @@ def main():
     DEFAULT_AFTER  = [("수리후", "수리부위"), ("수리후", "기기후면"), ("수리후", "기기전면"), ("수리후", "작동화면")]
     DEVICE_FIRST_BEFORE = [("수리전", "기기후면"), ("수리전", "기기전면"), ("수리전", "파손부위")]
     DEVICE_FIRST_AFTER  = [("수리후", "기기후면"), ("수리후", "기기전면"), ("수리후", "작동화면"), ("수리후", "수리부위")]
-    # 외관 변화 없어 파손부위 사진이 내부 분해/배터리/회로 사진일 가능성 높은 종류
+    # 외관 변화 없어 파손부위 사진이 내부 분해/회로 사진일 가능성 높은 종류
+    # 배터리·충전 단자는 파손부위가 보통 의미 있는 사진(성능치 화면·단자 클로즈업)이라 제외
     DEVICE_FIRST_TYPES = {
-        "battery", "charge", "sensor", "button", "speaker", "mainboard",
-        "battery+other", "charge+other", "other",
-        "배터리교체", "충전구", "충전단자",
+        "sensor", "button", "speaker", "mainboard", "other",
     }
 
     def get_patterns(repair_type):
@@ -439,8 +438,9 @@ def main():
     blocklist = set()
     if blocklist_file.exists():
         for line in blocklist_file.read_text(encoding="utf-8").splitlines():
-            line = line.strip()
-            if line and not line.startswith("#"):
+            # 인라인 주석(#) 제거 후 strip
+            line = line.split("#", 1)[0].strip()
+            if line:
                 blocklist.add(line)
         print(f"   🚫 차단 목록: {len(blocklist)}개 케이스")
 
