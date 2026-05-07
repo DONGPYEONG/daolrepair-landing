@@ -13,3 +13,7 @@ google-indexing-sa.json
 # 시스템 파일
 .DS_Store
 Thumbs.db
+
+# Cloudflare 빌드 출력
+dist/
+.wrangler/

@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "daolrepair-landing",
+  "compatibility_date": "2026-05-07",
+  "compatibility_flags": ["nodejs_compat"],
+  "build": {
+    "command": "bash scripts/build-for-cloudflare.sh"
+  },
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
