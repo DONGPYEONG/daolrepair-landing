@@ -61,6 +61,9 @@ jobs:
       - name: 📊 Drive 통계 갱신 (사진 다운로드 포함)
         run: python3 scripts/update_repair_stats.py
 
+      - name: 📋 신규 케이스 → 수리 일지 자동 생성
+        run: python3 scripts/gen_case_journals.py
+
       - name: 📦 Cloudflare 배포용 dist/ 빌드
         run: bash scripts/build-for-cloudflare.sh
 
@@ -68,7 +71,7 @@ jobs:
         run: |
           git config user.name  "daolrepair-bot"
           git config user.email "bot@daolrepair.local"
-          git add data/repair-stats.json images/before-after/ dist/ || true
+          git add data/repair-stats.json data/journal-index.json images/before-after/ articles/ sitemap.xml dist/ || true
           if git diff --cached --quiet; then
             echo "ℹ️  변경사항 없음 — 커밋 건너뜀"
           else

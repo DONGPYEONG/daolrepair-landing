@@ -429,7 +429,18 @@ def main():
         "sensor", "button", "speaker", "mainboard", "other",
     }
 
+    # 배터리 케이스는 작동화면(100% 성능치) 우선 — 수리부위가 내부 분해 사진일 가능성 높음
+    BATTERY_AFTER = [
+        ("수리후", "작동화면"),    # 1순위: 100% 성능치 화면 캡처
+        ("수리후", "수리부위"),    # 2순위
+        ("수리후", "기기후면"),
+        ("수리후", "기기전면"),
+    ]
+    BATTERY_TYPES = {"battery", "battery+other", "배터리교체"}
+
     def get_patterns(repair_type):
+        if repair_type in BATTERY_TYPES:
+            return DEFAULT_BEFORE, BATTERY_AFTER  # BEFORE는 파손부위(=성능치 화면) 우선
         if repair_type in DEVICE_FIRST_TYPES:
             return DEVICE_FIRST_BEFORE, DEVICE_FIRST_AFTER
         return DEFAULT_BEFORE, DEFAULT_AFTER

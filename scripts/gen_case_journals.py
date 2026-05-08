@@ -287,7 +287,78 @@ TYPE_BODY = {
 </div>
 """,
     "back-glass": "",  # 위 back과 동일 (코드에서 통합 처리)
-    "battery": """
+    "battery": """__IPHONE_BATTERY__""",
+    "battery_watch": """
+<h2>{model} 배터리 노화 — 흔히 검색하는 증상</h2>
+<ul>
+  <li>"애플워치 하루 못 가요" / "운동 중에 꺼짐"</li>
+  <li>"충전기에서 빼면 빨리 닳아요"</li>
+  <li>"충전 중 발열이 심해요"</li>
+  <li>"화면이 들떴어요" — 배터리 부풀음 위험 신호</li>
+</ul>
+<p>{model_weak} 애플워치는 본체 사이즈가 작아 배터리 부풀음 시 화면 들뜸으로 빠르게 진행됩니다. 즉시 사용 중지하시고 매장 방문을 권장드려요.</p>
+
+<h2>이번 케이스 자세히 보기</h2>
+<p>{date} 다올리페어 {branch} 방문 고객 사례:</p>
+<ul>
+  <li><strong>모델</strong>: {model} ({model_year}년 출시)</li>
+  <li><strong>증상</strong>: 배터리 노화 — 사용 시간 단축</li>
+  <li><strong>진단</strong>: 배터리 교체 필요</li>
+</ul>
+
+<h2>애플워치 배터리 — 다올리페어 옵션 2가지</h2>
+<p>애플워치는 셀 단위 교체가 어려운 구조라 배터리 자체를 교체합니다. 부품 종류로 두 옵션이 있어요:</p>
+<ul>
+  <li><strong>정품 추출 배터리</strong> — 다른 정품 기기에서 추출한 정품 부품. 품질 안정적, 약간 더 비쌈</li>
+  <li><strong>OEM 배터리</strong> — 검증된 OEM 배터리. 합리적 가격, 품질 검증 완료</li>
+</ul>
+<p>두 옵션 모두 90일 무상 A/S 보증되며, 매장에서 본인 예산·우선순위에 맞게 선택하시면 됩니다.</p>
+
+<h2>매장에서 진행한 수리 과정</h2>
+<ol>
+  <li><strong>진단</strong> — 배터리 부풀음·노화 정도 확인</li>
+  <li><strong>분해</strong> — 애플워치 화면 분리 (정밀 작업)</li>
+  <li><strong>배터리 교체</strong> — 정품 추출 또는 OEM 부품으로 교체</li>
+  <li><strong>조립 + 기능 테스트</strong> — 충전·표시·심박 센서 모두 확인</li>
+</ol>
+<p>총 작업 시간 <strong>당일 1~2시간</strong>. 데이터는 그대로 보존됩니다.</p>
+""",
+    "battery_ipad": """
+<h2>{model} 배터리 노화 — 흔히 검색하는 증상</h2>
+<ul>
+  <li>"아이패드 하루 못 가요"</li>
+  <li>"충전 효율이 떨어졌어요"</li>
+  <li>"중간에 갑자기 꺼져요"</li>
+  <li>"충전 중 발열이 심해요"</li>
+</ul>
+<p>{model_weak} 아이패드는 배터리 용량이 커서 노화 진행 시 사용 시간 차이가 크게 느껴집니다.</p>
+
+<h2>이번 케이스 자세히 보기</h2>
+<p>{date} 다올리페어 {branch} 방문 고객 사례:</p>
+<ul>
+  <li><strong>모델</strong>: {model} ({model_year}년 출시)</li>
+  <li><strong>증상</strong>: 배터리 노화 — 사용 시간 단축</li>
+  <li><strong>진단</strong>: 배터리 교체 필요</li>
+</ul>
+
+<h2>아이패드 배터리 — 다올리페어 옵션 2가지</h2>
+<p>아이패드는 셀 단위 교체가 어려운 구조라 배터리 자체를 교체합니다. 부품 종류로 두 옵션이 있어요:</p>
+<ul>
+  <li><strong>정품 추출 배터리</strong> — 다른 정품 기기에서 추출한 정품 부품. 품질 안정적, 약간 더 비쌈</li>
+  <li><strong>OEM 배터리</strong> — 검증된 OEM 배터리. 합리적 가격, 품질 검증 완료</li>
+</ul>
+<p>두 옵션 모두 90일 무상 A/S 보증되며, 매장에서 본인 예산·우선순위에 맞게 선택하시면 됩니다.</p>
+
+<h2>매장에서 진행한 수리 과정</h2>
+<ol>
+  <li><strong>진단</strong> — 배터리 노화 정도 + 충전 단자·메인보드 동반 진단</li>
+  <li><strong>분해 (1시간~)</strong> — 아이패드 화면 분리 (정밀 작업, 시간 더 걸림)</li>
+  <li><strong>배터리 교체</strong> — 정품 추출 또는 OEM 부품으로 교체</li>
+  <li><strong>조립 + 기능 테스트</strong> — 충전·표시 모두 확인</li>
+</ol>
+<p>총 작업 시간 <strong>당일 2~3시간</strong>. 데이터는 그대로 보존됩니다.</p>
+""",
+    "__IPHONE_BATTERY__": """
 <h2>{model} 배터리 노화 — 흔히 검색하는 증상</h2>
 <ul>
   <li>"30~50%인데 갑자기 꺼짐"</li>
@@ -306,7 +377,7 @@ TYPE_BODY = {
   <li><strong>진단</strong>: 배터리 셀 노화 — 교체 필요</li>
 </ul>
 
-<h2>다올리페어 배터리 교체 옵션 3가지</h2>
+<h2>다올리페어 아이폰 배터리 교체 옵션 3가지</h2>
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
   <thead>
     <tr style="background:#f5f5f7;">
@@ -321,11 +392,12 @@ TYPE_BODY = {
     <tr><td style="padding:10px;border:1px solid #eee;"><strong>일반 호환</strong></td><td style="padding:10px;border:1px solid #eee;">뜸 (사용 영향 X)</td><td style="padding:10px;border:1px solid #eee;">정상 표시</td></tr>
   </tbody>
 </table>
-<p>※ 3가지 옵션 모두 <strong>최대 용량(성능치)은 정상 표시</strong>됩니다. 일반 호환은 "비정품 배터리" 경고만 추가로 뜨고 성능치 측정에는 영향이 없어요. iOS 업데이트로 인식이 안 될 경우 최신 iOS로 업데이트하시면 정상 표시됩니다.</p>
+<p>※ 3가지 옵션 모두 <strong>최대 용량(성능치)은 정상 표시</strong>됩니다. 일반 호환은 "비정품 배터리" 경고만 추가로 뜨고 성능치 측정에는 영향이 없어요.</p>
 
 <h2>매장에서 진행한 수리 과정</h2>
 <ol>
   <li><strong>진단 (5분)</strong> — 배터리 성능치 + 메인보드·충전 단자 동반 진단</li>
+  <li><strong>옵션 안내</strong> — 셀 교체 / 정품 인증 / 일반 호환 중 선택</li>
   <li><strong>분해 (10~15분)</strong> — 화면 분리, 배터리 커넥터 정리</li>
   <li><strong>배터리 교체 (10~20분)</strong> — 새 배터리 부착·접착 처리</li>
   <li><strong>조립 + 테스트 (10~15분)</strong> — 충전 정상 인식, 성능치 정상 표시 확인</li>
@@ -362,6 +434,48 @@ TYPE_BODY = {
 <div style="background:#f0f7ff;border-left:4px solid #3b82f6;padding:14px 18px;border-radius:0 10px 10px 0;margin:20px 0;">
   <strong style="color:#3b82f6;display:block;margin-bottom:6px;">충전 단자 청소 가격 안내</strong>
   <p style="font-size:14px;color:#555;line-height:1.7;margin:0;">기본 <strong>3만원~</strong> 시작. 복잡하거나 시간이 오래 걸리는 경우 추가 비용 발생 가능. 최신 기종(15·16·17 시리즈)은 부품 정밀도가 높아 더 나올 수 있어요. 정확한 비용은 매장 진단 후 안내드립니다.</p>
+</div>
+""",
+    "screen+back": """
+<h2>{model} 액정+후면 동시 파손 — 흔한 상황</h2>
+<p>떨어뜨릴 때 한쪽만 깨지는 경우는 드물어요. 충격 각도에 따라 <strong>액정과 후면 유리가 동시에 깨지는 경우가 많습니다</strong>. 이런 경우 따로 수리하면 분해를 두 번 해야 해서 시간·비용이 늘어납니다.</p>
+<ul>
+  <li>"앞·뒤 다 깨졌는데 수리 가능한가요?" — 가능합니다, 동시 작업이 효율적이에요</li>
+  <li>"한쪽만 먼저 하고 나중에 할 수 있나?" — 가능하지만 비효율</li>
+  <li>"비용이 두 배인가요?" — 동시 작업 시 공임 절약됨</li>
+</ul>
+
+<h2>이번 케이스 자세히 보기</h2>
+<p>{date} 다올리페어 {branch}에 방문하신 {model} 사용자 사례:</p>
+<ul>
+  <li><strong>모델</strong>: {model} ({model_year}년 출시)</li>
+  <li><strong>증상</strong>: 액정 파손 + 후면 유리 파손 (동시)</li>
+  <li><strong>진단</strong>: 두 부위 동시 교체 필요 (메인보드·배터리는 정상)</li>
+  <li><strong>참고</strong>: {model_weak}</li>
+</ul>
+
+<h2>액정+후면 동시 작업의 장점</h2>
+<ol>
+  <li><strong>분해 한 번에</strong> — 따로 하면 분해 작업 두 번 (시간 +1~2시간)</li>
+  <li><strong>방수 패킹 한 번 작업</strong> — 따로 하면 두 번 손상 → 보장 더 어려움</li>
+  <li><strong>공임 절약</strong> — 부품비는 별도지만 인건비 부분 절약</li>
+  <li><strong>당일 한 번에 완료</strong> — 따로 하면 두 번 매장 방문 필요</li>
+</ol>
+
+<h2>매장 작업 과정 (당일 3~4시간)</h2>
+<ol>
+  <li><strong>진단 (10분)</strong> — 액정·후면 외 다른 부품 손상 확인</li>
+  <li><strong>액정 부품 옵션 안내</strong> — Apple 정품 vs 검증 OEM 선택</li>
+  <li><strong>전면 분해 (15분)</strong> — 액정 패널 분리</li>
+  <li><strong>후면 레이저 분리 (1시간)</strong> — 깨진 후면 유리 정밀 제거</li>
+  <li><strong>본체 정리 (30~40분)</strong> — 접착제 잔여물 제거</li>
+  <li><strong>새 액정 + 새 후면 부착 (1시간)</strong> — 동시 작업</li>
+  <li><strong>전체 기능 테스트 + 방수 패킹 재부착</strong></li>
+</ol>
+
+<div class="art-warn" style="background:#fff5f0;border-left:4px solid #E8732A;padding:14px 18px;border-radius:0 10px 10px 0;margin:20px 0;">
+  <strong style="color:#E8732A;display:block;margin-bottom:6px;">후면 유리 수리 솔직한 안내</strong>
+  <p style="font-size:14px;color:#555;line-height:1.7;margin:0;">후면만 단독 교체이기 때문에 처음 출고 시 새 제품 수준의 내구성은 어렵습니다. 다올리페어는 <strong>1년 안에 재파손 시 50% 할인된 가격으로 재수리</strong>해드립니다.</p>
 </div>
 """,
     "screen+battery": """
@@ -484,6 +598,54 @@ QA_BY_TYPE = {
         ("보증은 얼마나 되나요?",
          "화면·배터리 모두 90일 무상 A/S 보증입니다."),
     ],
+    "screen+back": [
+        ("앞·뒤 동시에 깨졌는데 한 번에 수리 가능한가요?",
+         "네, 동시 작업이 효율적입니다. 분해를 한 번에 끝내서 시간·공임이 절약돼요. 따로 하면 분해를 두 번 해야 해서 비용이 올라갑니다."),
+        ("동시 작업이 비용이 두 배인가요?",
+         "부품비는 별도 발생하지만 <strong>공임 부분 절약됩니다</strong>. 한 번 분해로 두 작업 처리 가능해서요."),
+        ("작업 시간은 얼마나 걸리나요?",
+         "당일 3~4시간 정도. 후면 유리 분리에 시간이 가장 많이 걸려요. 매장에 두고 가시거나 인근에서 시간 보내시면 됩니다."),
+        ("액정 부품은 정품인가요? OEM인가요?",
+         "두 옵션 모두 가능합니다. <strong>Apple 정품 액정</strong>(가격 더 높음, 출고 시 동급) 또는 <strong>검증 OEM 액정</strong>(합리적 가격, 트루톤 정상)에서 고객님이 직접 선택하실 수 있어요."),
+        ("후면 유리는 정품인가요?",
+         "애플은 후면 유리만 별도 부품으로 판매하지 않아 <strong>정품급 OEM 부품</strong>으로 교체합니다. 색상·두께·질감 모두 본체와 잘 맞는 것으로 골라드려요."),
+        ("수리 후 또 깨지면?",
+         "다올리페어는 <strong>1년 안에 재파손 시 50% 할인된 가격으로 재수리</strong>해드립니다. 수리 후 케이스·필름 사용을 권장드려요."),
+        ("데이터·방수는?",
+         "데이터는 그대로 보존. 방수는 패킹 표준 절차로 재부착되지만, 출고 시 수준의 등급은 보장 어려우니 침수에는 보수적으로 사용해주세요."),
+    ],
+    "battery_watch": [
+        ("애플워치 배터리도 셀 교체 옵션이 있나요?",
+         "애플워치는 본체 구조상 <strong>셀 단위 교체가 어려워서</strong> 배터리 자체를 교체합니다. 다올리페어는 정품 추출 또는 검증 OEM 배터리 두 옵션이 있어요."),
+        ("정품 추출과 OEM 차이가 뭔가요?",
+         "<strong>정품 추출</strong>은 다른 정품 애플워치에서 추출한 정품 부품으로, 안정적인 품질 + 약간 더 비쌈. <strong>OEM</strong>은 검증된 OEM 배터리로 합리적 가격."),
+        ("배터리 부풀어서 화면이 들떴어요. 위험한가요?",
+         "네, <strong>위험합니다</strong>. 배터리 부풀음은 내부 가스 발생으로 더 진행되면 폭발·발화 위험까지 있어요. 즉시 사용 중지하시고 매장 방문을 권장드립니다."),
+        ("작업 시간은 얼마나 걸리나요?",
+         "당일 1~2시간 정도. 애플워치는 분해가 정밀해서 아이폰 배터리보다 시간이 더 걸려요."),
+        ("데이터는 안전한가요?",
+         "네, 데이터는 그대로 보존됩니다. 페어링·헬스 데이터·앱 모두 그대로예요."),
+        ("심박·혈중산소 등 센서도 정상 작동하나요?",
+         "네, 배터리만 교체하기 때문에 모든 센서·기능 정상 작동합니다. 작업 후 기능 테스트로 확인해드려요."),
+        ("보증은 얼마나?",
+         "다올리페어 모든 수리는 90일 무상 A/S 보증입니다."),
+    ],
+    "battery_ipad": [
+        ("아이패드 배터리도 셀 교체 옵션이 있나요?",
+         "아이패드는 본체 구조상 <strong>셀 단위 교체가 어려워서</strong> 배터리 자체를 교체합니다. 다올리페어는 정품 추출 또는 검증 OEM 배터리 두 옵션이 있어요."),
+        ("정품 추출과 OEM 차이가 뭔가요?",
+         "<strong>정품 추출</strong>은 다른 정품 아이패드에서 추출한 정품 부품으로, 안정적인 품질 + 약간 더 비쌈. <strong>OEM</strong>은 검증된 OEM 배터리로 합리적 가격."),
+        ("작업 시간은 얼마나 걸리나요?",
+         "당일 2~3시간 정도. 아이패드는 분해가 정밀하고 화면이 커서 시간이 더 걸려요."),
+        ("데이터는 안전한가요?",
+         "네, 데이터는 그대로 보존됩니다. 사진·앱·문서 모두 그대로예요."),
+        ("배터리 부풀어서 화면이 들뜨거나 본체 휘었어요. 위험한가요?",
+         "네, <strong>위험합니다</strong>. 배터리 부풀음은 내부 가스 발생으로 더 진행되면 폭발·발화 위험까지 있어요. 즉시 사용 중지하시고 매장 방문을 권장드립니다."),
+        ("얼마나 자주 교체해야 하나요?",
+         "보통 3~4년에 한 번이지만, 사용 패턴에 따라 다릅니다. 충전 효율이 떨어지거나 사용 시간이 짧아지면 교체 시점이에요."),
+        ("보증은 얼마나?",
+         "다올리페어 모든 수리는 90일 무상 A/S 보증입니다."),
+    ],
 }
 
 
@@ -508,24 +670,36 @@ def make_title(c):
 
 
 def make_body(c):
-    """본문 생성"""
+    """본문 생성 — 디바이스별 분기 (애플워치·아이패드 배터리는 다른 옵션 구조)"""
     type_key = c.get("repair_type") or c.get("type", "")
     if "화면" in type_key or "액정" in type_key: type_key = "screen"
     elif "후면" in type_key: type_key = "back"
-    elif "배터리" in type_key: type_key = "battery"
+    elif "배터리" in type_key and "+" not in type_key: type_key = "battery"
     elif "충전" in type_key: type_key = "charge"
 
-    template = TYPE_BODY.get(type_key)
-    if not template:
-        # back-glass → back 으로 폴백
-        if type_key == "back-glass":
-            template = TYPE_BODY["back"]
-        else:
-            template = DEFAULT_BODY
+    model = c["model"]
+    is_watch = "애플워치" in model or "에르메스" in model
+    is_ipad = "아이패드" in model or "iPad" in model
 
-    info = model_intro(c["model"])
+    # 배터리 케이스 디바이스별 분기
+    if type_key == "battery":
+        if is_watch:
+            template = TYPE_BODY["battery_watch"]
+        elif is_ipad:
+            template = TYPE_BODY["battery_ipad"]
+        else:
+            template = TYPE_BODY["__IPHONE_BATTERY__"]
+    else:
+        template = TYPE_BODY.get(type_key)
+        if not template or template == "__IPHONE_BATTERY__":
+            if type_key == "back-glass":
+                template = TYPE_BODY["back"]
+            else:
+                template = DEFAULT_BODY
+
+    info = model_intro(model)
     return template.format(
-        model=c["model"],
+        model=model,
         branch=c["branch"],
         date=c.get("date", ""),
         type_kr=TYPE_KR.get(type_key, "수리"),
@@ -536,16 +710,30 @@ def make_body(c):
 
 
 def make_qa(c):
-    """Q&A 섹션"""
+    """Q&A 섹션 — 디바이스·종류별 분기"""
     type_key = c.get("repair_type") or c.get("type", "")
     if "화면" in type_key or "액정" in type_key: type_key = "screen"
-    elif "후면" in type_key: type_key = "back"
-    elif "배터리" in type_key: type_key = "battery"
+    elif "후면" in type_key and "+" not in type_key: type_key = "back"
+    elif "배터리" in type_key and "+" not in type_key: type_key = "battery"
     elif "충전" in type_key: type_key = "charge"
 
-    qa_list = QA_BY_TYPE.get(type_key) or QA_BY_TYPE.get("screen", [])
-    if not qa_list and type_key == "back-glass":
-        qa_list = QA_BY_TYPE.get("back", [])
+    model = c["model"]
+    is_watch = "애플워치" in model or "에르메스" in model
+    is_ipad = "아이패드" in model or "iPad" in model
+
+    # 배터리 디바이스별 Q&A 선택
+    if type_key == "battery":
+        if is_watch and "battery_watch" in QA_BY_TYPE:
+            qa_list = QA_BY_TYPE["battery_watch"]
+        elif is_ipad and "battery_ipad" in QA_BY_TYPE:
+            qa_list = QA_BY_TYPE["battery_ipad"]
+        else:
+            qa_list = QA_BY_TYPE.get("battery", [])
+    else:
+        qa_list = QA_BY_TYPE.get(type_key) or QA_BY_TYPE.get("screen", [])
+        if not qa_list and type_key == "back-glass":
+            qa_list = QA_BY_TYPE.get("back", [])
+
     items = "\n".join([
         f'    <div class="faq-item"><div class="faq-q">{q}</div><div class="faq-a">{a}</div></div>'
         for q, a in qa_list
