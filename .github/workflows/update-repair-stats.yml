@@ -45,7 +45,7 @@ jobs:
       - name: 📦 패키지 설치
         run: |
           python -m pip install --upgrade pip
-          pip install google-api-python-client google-auth
+          pip install google-api-python-client google-auth anthropic
 
       - name: 🔑 서비스 계정 키 복원
         env:
@@ -58,7 +58,9 @@ jobs:
             && echo "✅ SA 키 정상" \
             || (echo "❌ SA 키 JSON 파싱 실패 — GitHub Secret 다시 확인하세요" && exit 1)
 
-      - name: 📊 Drive 통계 갱신 (사진 다운로드 포함)
+      - name: 📊 Drive 통계 갱신 (사진 다운로드 + AI Vision 분석)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python3 scripts/update_repair_stats.py
 
       - name: 📋 신규 케이스 → 수리 일지 자동 생성

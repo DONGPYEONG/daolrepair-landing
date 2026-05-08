@@ -481,6 +481,86 @@ def main():
         """케이스 ID 또는 폴더명이 차단 목록에 있으면 제외"""
         return case["id"] in blocklist or case["title"] in blocklist
 
+    # ─── 🤖 Claude Vision API: 배터리 케이스 사진 자동 분류 ───
+    # API 키는 .env/anthropic-key.txt 파일에 보관 (env 변수 ANTHROPIC_API_KEY도 지원)
+    ANTHROPIC_KEY_FILE = ROOT / ".env" / "anthropic-key.txt"
+    PHOTO_ANALYSIS_CACHE = ROOT / "data" / "photo-analysis-cache.json"
+    anthropic_key = None
+    if ANTHROPIC_KEY_FILE.exists():
+        anthropic_key = ANTHROPIC_KEY_FILE.read_text(encoding="utf-8").strip()
+    elif os.environ.get("ANTHROPIC_API_KEY"):
+        anthropic_key = os.environ["ANTHROPIC_API_KEY"]
+
+    photo_cache = {}
+    if PHOTO_ANALYSIS_CACHE.exists():
+        try:
+            photo_cache = json.loads(PHOTO_ANALYSIS_CACHE.read_text(encoding="utf-8"))
+        except Exception:
+            photo_cache = {}
+
+    def is_battery_health_screen(file_id, file_name):
+        """Claude Vision으로 배터리 성능치 화면 여부 판단 (캐시 사용)"""
+        if file_id in photo_cache:
+            return photo_cache[file_id] == "battery_health"
+        if not anthropic_key:
+            return None  # API 키 없으면 판단 못 함
+        try:
+            import base64
+            from io import BytesIO
+            from googleapiclient.http import MediaIoBaseDownload
+            # 사진 데이터 메모리 다운로드
+            req = drive.files().get_media(fileId=file_id, supportsAllDrives=True)
+            buf = BytesIO()
+            downloader = MediaIoBaseDownload(buf, req)
+            done = False
+            while not done:
+                _, done = downloader.next_chunk()
+            img_b64 = base64.b64encode(buf.getvalue()).decode()
+            # Claude Vision API 호출
+            from anthropic import Anthropic
+            client = Anthropic(api_key=anthropic_key)
+            msg = client.messages.create(
+                model="claude-haiku-4-5-20251001",
+                max_tokens=20,
+                messages=[{
+                    "role": "user",
+                    "content": [
+                        {"type": "image", "source": {"type": "base64", "media_type": "image/jpeg", "data": img_b64}},
+                        {"type": "text", "text": "이 사진이 iPhone 설정 → 배터리 → 배터리 성능 상태 화면을 캡처한 것인가요? (예: '성능 최대치 100%' 또는 '80%' 같은 숫자가 보이는 설정 화면) yes 또는 no로만 답하세요."},
+                    ],
+                }],
+            )
+            answer = msg.content[0].text.strip().lower()
+            is_screen = answer.startswith("yes") or answer.startswith("네") or "yes" in answer
+            photo_cache[file_id] = "battery_health" if is_screen else "other"
+            PHOTO_ANALYSIS_CACHE.parent.mkdir(parents=True, exist_ok=True)
+            PHOTO_ANALYSIS_CACHE.write_text(json.dumps(photo_cache, ensure_ascii=False, indent=2), encoding="utf-8")
+            print(f"   🤖 Vision 분석: {file_name} → {'성능치 화면' if is_screen else '아닌 사진'}")
+            return is_screen
+        except Exception as e:
+            print(f"   ⚠️ Vision 분석 실패 ({file_name}): {type(e).__name__}: {e}")
+            return None
+
+    def find_battery_after_with_vision(inner):
+        """배터리 AFTER 후보 중 Vision으로 성능치 화면 찾기. 못 찾으면 기본 순서로."""
+        # 후보: 수리부위, 작동화면 (FORBIDDEN 통과 + 안전한 파일)
+        candidates = []
+        for keyword in ("수리부위", "작동화면"):
+            for f in inner:
+                if "수리후" in f["name"] and keyword in f["name"] and is_safe_file(f["name"]):
+                    candidates.append(f); break
+        if not candidates:
+            return None
+        # API 키 있으면 Vision으로 진짜 성능치 화면 찾기
+        if anthropic_key:
+            for c in candidates:
+                if is_battery_health_screen(c["id"], c["name"]) is True:
+                    return c
+            # 모든 후보가 성능치 화면 아니면 기본 (수리부위)
+            return candidates[0]
+        # API 키 없으면 기본 순서 사용
+        return candidates[0]
+
     # 후보 풀 만들기 (블록리스트 제외 + 우선순위 정렬)
     # 슬라이더는 4개만, 포트폴리오는 최대 30개까지
     PORTFOLIO_MAX = 30
@@ -537,12 +617,25 @@ def main():
                     and is_safe_file(f["name"])):
                     before_file = f; break
             if before_file: break
-        for stage, body_part in after_patterns:
-            for f in inner:
-                if (stage in f["name"] and body_part in f["name"]
-                    and is_safe_file(f["name"])):
-                    after_file = f; break
-            if after_file: break
+
+        # 배터리 케이스는 Vision API로 진짜 성능치 화면 자동 찾기 (있을 때)
+        if c["repair_type"] in BATTERY_TYPES:
+            after_file = find_battery_after_with_vision(inner)
+            # Vision으로 못 찾았거나 후보 없으면 패턴 폴백
+            if not after_file:
+                for stage, body_part in [("수리후", "기기후면"), ("수리후", "기기전면")]:
+                    for f in inner:
+                        if (stage in f["name"] and body_part in f["name"]
+                            and is_safe_file(f["name"])):
+                            after_file = f; break
+                    if after_file: break
+        else:
+            for stage, body_part in after_patterns:
+                for f in inner:
+                    if (stage in f["name"] and body_part in f["name"]
+                        and is_safe_file(f["name"])):
+                        after_file = f; break
+                if after_file: break
 
         # 안전한 짝이 안 만들어지면 케이스 스킵 (위험 사진 사용 X)
         if not before_file or not after_file:
