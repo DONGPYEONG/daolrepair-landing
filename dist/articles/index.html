@@ -94,6 +94,9 @@
     .quick-nav { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 28px; }
     .quick-nav-link { display: flex; align-items: center; gap: 8px; padding: 14px 16px; border: 1.5px solid var(--border); border-radius: 12px; text-decoration: none; color: var(--dark); font-size: 13px; font-weight: 700; transition: all 0.18s; background: #fff; }
     .quick-nav-link:hover { border-color: var(--orange); color: var(--orange); box-shadow: 0 2px 12px rgba(232,115,42,0.08); }
+    .quick-nav-link.active { border-color: var(--orange); background: rgba(232,115,42,0.08); color: var(--orange); box-shadow: 0 2px 14px rgba(232,115,42,0.18); }
+    .quick-nav-link.active .quick-nav-label, .quick-nav-link.active .quick-nav-sub { color: var(--orange); }
+    .quick-nav-link.active .quick-nav-sub { opacity: 0.75; }
     .quick-nav-icon { font-size: 16px; flex-shrink: 0; }
     .quick-nav-label { line-height: 1.3; }
     .quick-nav-sub { display: block; font-size: 11px; color: var(--muted); font-weight: 400; margin-top: 2px; }
@@ -468,13 +471,13 @@
       <span class="quick-nav-icon">📖</span>
       <span class="quick-nav-label">수리 상식<span class="quick-nav-sub">34편 모아보기</span></span>
     </a>
-    <a href="index.html#journal" class="quick-nav-link" style="border-color:var(--orange);background:rgba(232,115,42,0.06);">
+    <a href="index.html#journal" class="quick-nav-link" id="navJournal">
       <span class="quick-nav-icon">📋</span>
-      <span class="quick-nav-label" style="color:var(--orange);">실제 수리 일지<span class="quick-nav-sub" style="color:var(--orange);opacity:0.75;">매장 진행 케이스 모음</span></span>
+      <span class="quick-nav-label">실제 수리 일지<span class="quick-nav-sub">매장 진행 케이스 모음</span></span>
     </a>
-    <a href="faq.html" class="quick-nav-link" style="border-color:var(--orange);background:rgba(232,115,42,0.04);">
+    <a href="faq.html" class="quick-nav-link">
       <span class="quick-nav-icon">❓</span>
-      <span class="quick-nav-label" style="color:var(--orange);">FAQ 1,038개<span class="quick-nav-sub" style="color:var(--orange);opacity:0.7;">질문 검색하기</span></span>
+      <span class="quick-nav-label">FAQ 1,038개<span class="quick-nav-sub">질문 검색하기</span></span>
     </a>
   </div>
 
@@ -4064,19 +4067,30 @@ function filterTab(cat, btn) {
 }
 
 // 페이지 로드 시 URL 해시 처리:
-//  - #journal: 일지(data-journal=true)만 표시 (탭은 '전체')
+//  - #journal: 일지(data-journal=true)만 표시 (탭은 '전체') + 일지 카드에 active 표시 + 스크롤
 //  - #iphone, #watch 등: 해당 탭 클릭
+function applyJournalActive() {
+  document.querySelectorAll('.quick-nav-link').forEach(function(el){ el.classList.remove('active'); });
+  var navJ = document.getElementById('navJournal');
+  if (navJ) navJ.classList.add('active');
+}
 document.addEventListener('DOMContentLoaded', function() {
   var hash = window.location.hash.replace('#', '');
   if (!hash) return;
   if (hash === 'journal') {
     journalOnly = true;
     filterCards();
+    applyJournalActive();
     var countEl = document.getElementById('searchResultCount');
     if (countEl) {
       countEl.innerHTML = '📋 <strong>실제 수리 일지</strong> · 매장 진행 케이스 모음';
       countEl.classList.add('show');
     }
+    // 모바일에서 탭만 보이고 글이 안 보이는 문제 → 검색·탭 영역으로 자동 스크롤
+    setTimeout(function() {
+      var target = document.querySelector('.search-wrap') || document.querySelector('.tab-wrap');
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
     return;
   }
   var tabBtn = document.querySelector('.tab-btn[onclick*="filterTab(\'' + hash + '\'"]');
