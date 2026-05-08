@@ -590,7 +590,7 @@ QA_BY_TYPE = {
         ("보증은 얼마나 되나요?",
          "다올리페어 모든 수리는 <a href='daolrepair-90day-warranty-policy.html'>90일 무상 A/S 보증</a>입니다. 같은 부위 동일 증상 재발 시 무상 점검·재수리해드려요."),
         ("공식센터(Apple)와 차이점은?",
-         "가격·시간·편의 모두 다올리페어가 유리해요. <strong>가격</strong>은 공식센터의 50~85% 수준 (옵션별), <strong>시간</strong>은 당일 30~60분 vs 공식센터 예약 후 며칠~1주, <strong>위치</strong>는 가산·신림·목동 직영 3점 vs 공식센터 일부 도심만, <strong>부품 옵션</strong>은 <a href='iphone-screen-genuine-vs-dd-oem-comparison.html'>정품/DD(OEM) 직접 선택</a> vs 공식센터 정품 단일. 공식센터의 유일한 장점은 \"비정품 부품\" 메시지가 안 뜨는 거예요 (사용 영향은 없음). 자세한 비교는 <a href='apple-official-vs-private-repair.html'>공식센터 vs 사설 수리 비교</a> 참고."),
+         "가격·시간·편의 모두 다올리페어가 유리해요. <strong>가격</strong>은 공식센터의 50~85% 수준 (옵션별), <strong>시간</strong>은 당일 30~60분 vs 공식센터 예약 후 며칠~1주 대기, <strong>부품 옵션</strong>은 <a href='iphone-screen-genuine-vs-dd-oem-comparison.html'>정품/DD(OEM) 직접 선택</a> vs 공식센터 정품 단일. 공식센터의 유일한 장점은 \"비정품 부품\" 메시지가 안 뜨는 거예요 (사용 영향은 없음). 자세한 비교는 <a href='apple-official-vs-private-repair.html'>공식센터 vs 사설 수리 비교</a> 참고."),
         ("수리비가 얼마나 드나요?",
          "모델별로 다릅니다. 매장 방문 또는 사진 보내주시면 마스터가 직접 견적 안내드려요. <a href='/articles/iphone-screen-repair-cost-2026.html'>아이폰 화면 수리비 가이드</a>를 참고하세요."),
     ],
@@ -878,7 +878,7 @@ def make_qa(c):
 
 
 def make_apple_compare(c):
-    """다올리페어 vs 애플 공식센터 비교표 — 다올의 강점·애플의 불편함 강조"""
+    """다올리페어 vs 애플 공식센터 비교표 — 사실 기반 명확한 차이점만"""
     return '''
 <h2>다올리페어 vs 애플 공식센터 — 같은 수리, 다른 경험</h2>
 <p>같은 수리를 받더라도 시간·가격·편의가 크게 차이 납니다. 어디가 본인 상황에 맞는지 한눈에 비교해보세요.</p>
@@ -892,13 +892,10 @@ def make_apple_compare(c):
   </thead>
   <tbody>
     <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>가격</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 공식의 50~85% (옵션별)</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 기준가 (가장 비쌈)</td></tr>
-    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>작업 시간</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 당일 30~60분 — 차 한 잔 시간</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 예약 후 며칠~1주 이상 대기</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>작업 시간</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 당일 30~60분 — 차 한 잔 시간</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 예약 후 며칠~1주 이상 대기 잦음</td></tr>
     <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>예약·접수</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 카카오 채널 5분 견적 + 당일 방문</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 예약 시스템 — 슬롯 부족·날짜 잡기 어려움</td></tr>
-    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>매장 위치</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 가산·신림·목동 직영 + 전국 택배</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 강남·여의도 등 일부 도심만 운영</td></tr>
     <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>부품 옵션</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 정품 / DD(OEM) 직접 선택 가능</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 정품 단일 옵션 (선택권 없음)</td></tr>
-    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>부품 수급</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 대부분 모델 당일 보유</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 신모델·구형 부품 수급 지연 잦음</td></tr>
-    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>진단·견적</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 무료 + 수리 실패 시 비용 0원</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 진단 비용 발생 가능</td></tr>
-    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>보증</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 90일 무상 (너그러운 적용)</td><td style="padding:10px;border:1px solid #eee;">1년 (까다로운 약관, 침수·외부 손상 비적용)</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>당일 픽업</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 대부분 모델 당일 픽업 가능</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 본사 발송이 필요한 경우 며칠 소요</td></tr>
     <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>"비정품 부품" 메시지</strong></td><td style="padding:10px;border:1px solid #eee;">뜸 (사용 영향 X)</td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;">✅ 안 뜸</td></tr>
   </tbody>
 </table>
@@ -906,7 +903,7 @@ def make_apple_compare(c):
 <div style="background:#fff5f0;border-left:4px solid #E8732A;padding:14px 18px;border-radius:0 10px 10px 0;margin:20px 0;">
   <strong style="color:#E8732A;display:block;margin-bottom:6px;font-size:14px;">한 줄 요약</strong>
   <p style="font-size:14px;color:#555;line-height:1.7;margin:0;">
-    ① <strong>가격·시간·편의 우선</strong>이시면 → 다올리페어 (당일·합리·근처)<br>
+    ① <strong>가격·시간·편의 우선</strong>이시면 → 다올리페어 (당일·합리·옵션 선택 가능)<br>
     ② <strong>매각 계획 있거나 메시지 절대 거슬린다면</strong> → 공식센터 (시간·비용 감수)<br>
     대부분 일상 사용자 분들께는 다올리페어가 시간·비용·편의 면에서 훨씬 효율적입니다.
   </p>
