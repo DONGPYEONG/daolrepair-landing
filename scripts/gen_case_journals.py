@@ -27,62 +27,127 @@ SITE_BASE = "https://xn--2j1bq2k97kxnah86c.com"
 KST = timezone(timedelta(hours=9))
 
 
-# ─── 후킹 제목 템플릿 (수리종류별 5~6개씩) ───
+# ─── 후킹 제목 템플릿 (수리종류별 15~20개) ───
+# 다양한 후킹 패턴: 숫자·감정·궁금증·시간·반전·금액·상황·결과·솔직 톤
 TITLE_TEMPLATES = {
     "screen": [
-        "{model} 액정 파손돼서 폭풍 검색 후… 결국 다올리페어 {branch}에서 해결한 사례",
-        "{model} 화면 깨졌을 때 어디로 가야 하나요 — 직접 가본 다올리페어 {branch} 후기",
-        "갑자기 깨진 {model} 액정, 당일 수리 가능한 곳 찾다 결국 {branch}로",
-        "{model} 액정 수리 — 검색만 며칠 하다가 다올리페어 {branch}에서 30~60분 만에 끝낸 케이스",
-        "{model} 화면 깨짐 자가진단 후 수리 결정 — {branch} 실제 케이스 {date}",
-        "맘 졸이며 수리점 찾던 {model} 액정 파손 — 다올리페어 {branch}에서 진행한 실제 후기",
+        # 숫자·시간 강조
+        "{model} 액정 깨진 채로 며칠… 결국 30분 만에 끝난 다올리페어 {branch} 후기",
+        "출근길에 떨어뜨린 {model}, 점심시간에 액정 교체 끝낸 {branch} 실제 케이스",
+        "{model} 화면 깨진 지 일주일째 미루다 다올리페어 {branch}에서 당일 해결한 사연",
+        # 궁금증 유발 / 질문형
+        "{model} 액정 깨졌을 때 공식센터 vs 사설, 진짜 뭐가 다를까? — {branch} 실제 비교",
+        "{model} 액정 수리비 차이, 정말 공식센터의 절반? — 다올리페어 {branch} 견적 비교",
+        "정품 액정 vs DD 액정, {model} 직접 비교해본 사람의 솔직 후기 — {branch}",
+        # 감정·심리 / 상황 묘사
+        "택시에서 떨어뜨린 {model} 화면, 폐기 직전에 살린 {branch} 사례",
+        "{model} 액정 박살 난 날 — 공식센터 못 가서 다올리페어 {branch} 가본 후기",
+        "주머니에서 빠진 {model}, 화면 산산조각 났는데 30분 만에 멀쩡해진 사연 ({branch})",
+        # 부담감 해소
+        "{model} 액정 수리비 폭탄 걱정했는데… 생각보다 합리적이었던 다올리페어 {branch}",
+        "{model} 화면 깨졌다고 새 폰 사야 하나 고민? — {branch}에서 30분 만에 해결",
+        # 솔직 후기 톤
+        "솔직 후기 — {model} 액정 다올리페어 {branch}에서 교체해본 결과 ({date})",
+        "{model} 액정 사설 수리 망설인 분께 — 다올리페어 {branch} 실제 진행 과정",
+        # 결과 약속 / 시간
+        "{model} 액정 교체 — 차 한 잔 시간이면 끝나는 다올리페어 {branch} 당일 수리",
+        "{model} 화면 깨짐 → 같은 날 정상 사용까지 — {branch} 케이스",
+        # 비교/반전
+        "공식센터 예약 1주 기다리다 다올리페어 {branch} 갔더니 30분 만에 끝난 {model}",
+        "{model} 액정 수리, 정품으로 할까 OEM으로 할까 — 다올리페어 {branch}에서 직접 보고 결정",
     ],
     "back": [
-        "{model} 후면 유리 깨져 걱정했지만 다올리페어 {branch}에서 당일 해결",
-        "{model} 뒷면 유리 깨졌을 때 어떻게 해야 하나? — {branch} 수리 일지",
-        "검색해도 답 없던 {model} 후면 유리 교체 — 결국 다올리페어 {branch}로 결정",
-        "{model} 뒷면 박살 난 후 폭풍 검색 후기 + 다올리페어 {branch} 수리 과정",
-        "{model} 후면 유리 깨짐 — 직접 가본 다올리페어 {branch} 솔직한 사례 ({date})",
-        "{model} 뒷판 깨졌을 때 알아둘 것 — 가산·신림·목동 직영 다올리페어 실제 케이스",
+        # 숫자·시간 강조
+        "{model} 후면 박살 난 지 한 달 미루다 다올리페어 {branch}에서 3시간 만에 끝낸 사례",
+        "{model} 뒷판 떨어뜨려 깨진 다음 날, 다올리페어 {branch}에서 당일 픽업한 후기",
+        # 궁금증 유발 / 질문형
+        "{model} 후면 유리 깨졌는데 케이스로 가리고 써도 될까? — {branch} 실제 진단",
+        "후면 유리 수리 한 번 받으면 다시 깨질 확률은? — 다올리페어 {branch} 솔직한 답",
+        "공식센터 후면 수리는 왜 그렇게 비쌀까? — {branch}에서 진행한 실제 비교 ({date})",
+        # 감정·심리 / 상황 묘사
+        "맥세이프 충전기에서 미끄러진 {model}, 후면 산산조각 → 다올리페어 {branch} 진행기",
+        "{model} 뒷면 깨진 채로 출근하던 분의 다올리페어 {branch} 당일 해결 사례",
+        "차에서 떨어진 {model}, 후면 박살 → 같은 날 매장 정리한 {branch} 케이스",
+        # 부담감 해소
+        "{model} 후면 깨졌다고 새 폰 갈아탈 뻔 → {branch}에서 합리적으로 해결",
+        "후면 유리 수리비 무서워 미루다 다올리페어 {branch}에서 결심한 결과",
+        # 솔직 후기 톤
+        "솔직 후기 — {model} 후면 유리 교체한 후 {branch} 정말 괜찮았나",
+        "{model} 후면 수리 — 색상·두께·질감 차이 직접 본 후기 ({branch})",
+        # 결과 약속 / 보장
+        "{model} 후면 수리 + 1년 안에 또 깨지면 50% 할인까지 — 다올리페어 {branch}",
+        "당일 픽업 가능한 {model} 후면 유리 교체 — 다올리페어 {branch} 실제 진행",
+        # 비교/반전
+        "공식센터 후면 수리비 보고 포기했다가 다올리페어 {branch}에서 살린 {model}",
     ],
-    "back-glass": [
-        "{model} 후면 유리 깨져 걱정했지만 다올리페어 {branch}에서 당일 해결",
-        "{model} 뒷면 유리 깨졌을 때 어떻게 해야 하나? — {branch} 수리 일지",
-        "검색해도 답 없던 {model} 후면 유리 교체 — 결국 다올리페어 {branch}로 결정",
+    "back-glass": [  # back과 동일 풀 사용 (랜덤 변형)
+        "{model} 후면 박살 난 지 한 달 미루다 다올리페어 {branch}에서 3시간 만에 끝낸 사례",
+        "{model} 뒷판 떨어뜨려 깨진 다음 날, 다올리페어 {branch}에서 당일 픽업한 후기",
+        "맥세이프 충전기에서 미끄러진 {model}, 후면 산산조각 → 다올리페어 {branch} 진행기",
+        "{model} 후면 깨졌다고 새 폰 갈아탈 뻔 → {branch}에서 합리적으로 해결",
+        "솔직 후기 — {model} 후면 유리 교체한 후 {branch} 정말 괜찮았나",
+        "{model} 후면 수리 + 1년 안에 또 깨지면 50% 할인까지 — 다올리페어 {branch}",
     ],
     "battery": [
-        "{model} 배터리 너무 빨리 닳아서 검색하다 다올리페어 {branch} 방문 후기",
-        "{model} 배터리 80% 미만 — 교체 시점 진단 후 {branch}에서 당일 해결",
-        "{model} 배터리 부풀어서 폭풍 검색 후 다올리페어 {branch}로 결정",
-        "{model} 갑자기 꺼지길래 검색 + 점검 후 결국 {branch}에서 배터리 교체",
-        "{model} 배터리 교체 — 셀·정품 인증 차이 알아보고 {branch}에서 진행한 실제 케이스",
-        "{model} 배터리 노화로 고민하다 다올리페어 {branch}에서 30~50분 만에 끝낸 사례",
+        # 숫자·시간 강조
+        "{model} 배터리 70% 떨어진 지 반년 미루다 다올리페어 {branch}에서 30분 만에 교체",
+        "{model} 갑자기 50%에서 꺼져버린 다음 날 {branch} 가서 해결한 사례",
+        # 궁금증 유발 / 질문형
+        "{model} 배터리 셀 교체 vs 정품 인증 vs 일반 호환 — 다올리페어 {branch}에서 직접 비교",
+        "{model} 배터리 80% 미만, 지금 갈아야 하나 더 써도 되나? — {branch} 진단 후기",
+        "왜 사설 배터리는 메시지가 뜨고 다올리페어 셀 교체는 안 뜰까? — {branch} 실제 사례",
+        # 감정·심리 / 상황 묘사
+        "출근길에 갑자기 꺼진 {model}, 점심 때 배터리 교체 끝낸 {branch} 케이스",
+        "{model} 배터리 부풀어서 화면 들뜸 → 다올리페어 {branch} 응급 교체 사연",
+        "겨울철 50%인데 자꾸 꺼지던 {model} → {branch}에서 셀 교체로 해결",
+        # 부담감 해소
+        "{model} 배터리 교체비 부담돼서 미뤘는데 {branch}에서 셀 교체로 합리적 해결",
+        "{model} 새 폰 갈까 배터리 갈까 고민? — 다올리페어 {branch} 비용 비교 후기",
+        # 솔직 후기 톤
+        "솔직 후기 — {model} 배터리 셀 교체 후 한 달 사용해본 결과 ({branch})",
+        "{model} 배터리 교체 — 메시지 없이 100% 표시되는 옵션 선택한 {branch} 케이스",
+        # 결과 약속 / 시간
+        "{model} 배터리 교체 — 30~50분이면 새 배터리로 (다올리페어 {branch})",
+        "{model} 배터리 노화로 폰 느려진 분의 {branch} 셀 교체 후 변화 후기",
+        # 비교/반전
+        "공식센터 배터리 vs 다올리페어 셀 교체 — {model} 둘 다 메시지 안 뜨는 이유 ({branch})",
+        "{model} 배터리 사설 수리 무섭다고요? — 다올리페어 {branch} 셀 교체 실제 진행",
     ],
     "charge": [
-        "{model} 충전 안 됐을 때 단자 청소만으로 해결 — {branch} 실제 케이스",
-        "{model} 충전구 인식 오류 — 검색만 며칠 하다 {branch} 방문해서 30분 만에 해결",
-        "{model} 충전이 들어왔다 끊겼다 반복 — 다올리페어 {branch} 실제 진단 + 수리",
-        "{model} 충전 단자 손상 — 청소 vs 교체 진단 후 {branch}에서 당일 해결",
-        "{model} 충전 단자 수리 — 직접 가본 다올리페어 {branch} 후기 ({date})",
+        "{model} 충전 안 들어가서 케이블 3개 바꿔봤는데… 다올리페어 {branch}에서 단자 청소로 해결",
+        "{model} 충전구 보풀 한 번 빼고 정상 — 다올리페어 {branch} 단자 청소 사례",
+        "왜 {model} 충전이 들어왔다 끊겼다 할까? — {branch} 실제 진단 후기",
+        "{model} 충전 단자 청소 vs 교체 진단 — 다올리페어 {branch}에서 정확히 알려준 사례",
+        "{model} 충전 안 돼서 새 폰 갈 뻔했는데 {branch} 단자 청소로 살린 사연 ({date})",
+        "비정품 케이블 쓰다 {model} 충전 단자 손상 — 다올리페어 {branch} 진단·수리",
+        "솔직 후기 — {model} 충전 단자 청소 받은 후 정말 정상 작동하는지 ({branch})",
     ],
     "camera": [
-        "{model} 카메라 흔들림 — 떨어뜨림 후 다올리페어 {branch}에서 모듈 교체한 사례",
-        "{model} 사진 흔들리길래 검색 + 점검 후 결국 {branch}에서 카메라 교체",
-        "{model} 카메라 OIS 손상 의심 — 다올리페어 {branch} 실제 진단·수리",
+        "{model} 카메라 떨림 — 떨어뜨림 후 다올리페어 {branch}에서 OIS 모듈 교체한 사례",
+        "{model} 사진 흔들리던 이유 — {branch}에서 진단 후 카메라 모듈 교체",
+        "왜 {model} 카메라가 떨릴까? — 다올리페어 {branch} 실제 진단 후기",
+        "{model} 카메라 OIS 손상 — 누적 충격이 원인이었던 {branch} 케이스",
+        "{model} 사진 흐릿해서 검색하다 결국 {branch} 가서 카메라 교체한 사례",
     ],
     "screen+battery": [
-        "{model} 액정+배터리 동시 교체 — 폭풍 검색 후 다올리페어 {branch}에서 한 번에 해결",
-        "{model} 화면 깨지고 배터리도 노화 — 동시 수리로 비용 절약한 {branch} 케이스",
+        "{model} 액정+배터리 한 번에 — 분해 한 번으로 비용 절약한 다올리페어 {branch} 사례",
+        "{model} 화면 깨지고 배터리도 노화 — {branch}에서 동시 수리로 시간·비용 모두 절약",
+        "왜 {model} 액정+배터리 동시 수리가 합리적일까? — 다올리페어 {branch} 실제 비교",
+        "{model} 두 가지 한 번에 끝낸 다올리페어 {branch} — 따로 가는 것보다 효율적인 이유",
     ],
     "screen+back": [
-        "{model} 화면+후면 동시 파손 — 다올리페어 {branch}에서 한 번에 처리한 후기",
-        "{model} 앞·뒤 다 깨졌을 때 — 폭풍 검색 후 다올리페어 {branch}로 결정",
+        "{model} 앞뒤 다 깨졌는데 한 번에 — 다올리페어 {branch}에서 동시 수리한 사례",
+        "{model} 화면+후면 동시 파손 — 따로 vs 한 번에 비용 차이 비교한 {branch} 케이스",
+        "왜 {model} 앞뒤 동시 수리가 더 효율적일까? — {branch} 실제 진행 후기",
+        "{model} 두 군데 깨졌을 때 — 분해 한 번에 처리한 다올리페어 {branch} 사례",
     ],
 }
 DEFAULT_TITLE_TEMPLATES = [
-    "{model} {type_kr} 사례 — 다올리페어 {branch} 실제 수리 일지 ({date})",
-    "{model} {type_kr} — 검색만 하던 분들께 도움 되는 {branch} 실제 케이스",
-    "{model} {type_kr} 진행 후기 — 다올리페어 {branch}에서 진행한 사례",
+    "{model} {type_kr} — 다올리페어 {branch} 실제 진행 사례 ({date})",
+    "{model} {type_kr} — 검색만 하시던 분께 도움 되는 {branch} 실제 케이스",
+    "{model} {type_kr} 진행 후기 — 다올리페어 {branch} 사례",
+    "왜 {model} {type_kr}을 다올리페어에서? — {branch} 실제 진행기",
+    "{model} {type_kr} 망설였던 분의 {branch} 솔직 후기",
 ]
 
 
@@ -878,8 +943,21 @@ def make_qa(c):
 
 
 def make_apple_compare(c):
-    """다올리페어 vs 애플 공식센터 비교표 — 사실 기반 명확한 차이점만"""
-    return '''
+    """다올리페어 vs 애플 공식센터 비교표 — 사실 기반 명확한 차이점만.
+    repair_type별로 메시지 행 다르게 표기 (배터리는 옵션에 따라 다름)."""
+    rtype = c.get("repair_type") or c.get("type", "")
+    is_battery = "배터리" in rtype or rtype in {"battery", "battery+other"}
+
+    if is_battery:
+        msg_daol = '옵션에 따라 다름 (셀 교체·정품 인증은 안 뜸)'
+        msg_apple = '✅ 안 뜸'
+        msg_note = '※ 배터리는 다올리페어에서 <a href="iphone-battery-replacement-types-cost-2026.html">셀 교체·정품 인증·일반 호환 3옵션</a> 중 선택. 셀 교체와 정품 인증은 메시지가 안 뜹니다.'
+    else:
+        msg_daol = '뜸 (사용 영향 X)'
+        msg_apple = '✅ 안 뜸'
+        msg_note = '※ 액정·카메라는 정품/OEM 어느 쪽이든 뜨는 게 정상. 사용·터치·페이스 ID 모두 정상 작동. 자세한 내용은 <a href="iphone-non-genuine-parts-message-explained.html">"비정품 부품" 메시지 완전 해설</a> 참고.'
+
+    return f'''
 <h2>다올리페어 vs 애플 공식센터 — 같은 수리, 다른 경험</h2>
 <p>같은 수리를 받더라도 시간·가격·편의가 크게 차이 납니다. 어디가 본인 상황에 맞는지 한눈에 비교해보세요.</p>
 <table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;">
@@ -896,10 +974,10 @@ def make_apple_compare(c):
     <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>예약·접수</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 카카오 채널 5분 견적 + 당일 방문</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 예약 시스템 — 슬롯 부족·날짜 잡기 어려움</td></tr>
     <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>부품 옵션</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 정품 / DD(OEM) 직접 선택 가능</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 정품 단일 옵션 (선택권 없음)</td></tr>
     <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>당일 픽업</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 대부분 모델 당일 픽업 가능</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 본사 발송이 필요한 경우 며칠 소요</td></tr>
-    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>"비정품 부품" 메시지</strong></td><td style="padding:10px;border:1px solid #eee;">뜸 (사용 영향 X)</td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;">✅ 안 뜸</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>"비정품 부품" 메시지</strong></td><td style="padding:10px;border:1px solid #eee;">{msg_daol}</td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;">{msg_apple}</td></tr>
   </tbody>
 </table>
-<p style="font-size:13px;color:#666;margin-top:-4px;">※ 메시지가 뜨더라도 사용·터치·페이스 ID 모두 정상 작동. 자세한 내용은 <a href="iphone-non-genuine-parts-message-explained.html">"비정품 부품" 메시지 완전 해설</a> 참고.</p>
+<p style="font-size:13px;color:#666;margin-top:-4px;">{msg_note}</p>
 <div style="background:#fff5f0;border-left:4px solid #E8732A;padding:14px 18px;border-radius:0 10px 10px 0;margin:20px 0;">
   <strong style="color:#E8732A;display:block;margin-bottom:6px;font-size:14px;">한 줄 요약</strong>
   <p style="font-size:14px;color:#555;line-height:1.7;margin:0;">
