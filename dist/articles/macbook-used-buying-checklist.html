@@ -341,6 +341,31 @@
       document.querySelectorAll('a[href*="portfolio.html"]').forEach(function(el){ el.addEventListener('click', function(){ track('portfolio_view', {}); }); });
     });
   </script>
+
+  <!-- DAOL_GLOBAL_STYLE_v1 -->
+  <style>
+    /* 본문 링크 통일 — 주황 + 밑줄 (다올리페어 브랜드) */
+    .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
+      color: #E8732A !important;
+      text-decoration: underline !important;
+      text-underline-offset: 2px;
+      font-weight: 600;
+    }
+    .art-body a:hover, .article-content a:hover, article.art-body a:hover {
+      color: #C55E1A !important;
+    }
+    /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
+    .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
+    .article-content, .article-content p, .article-content li,
+    article.art-body p, article.art-body li {
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+    /* 표 셀도 동일 */
+    .art-body table td, .art-body table th {
+      word-break: keep-all;
+    }
+  </style>
 </head>
 <body>
 

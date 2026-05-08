@@ -765,6 +765,80 @@ def make_body(c):
     )
 
 
+def make_related_links(c):
+    """수리 종류별 관련 칼럼 자동 매칭 — 일지 하단에 카드 형태로"""
+    rtype = c.get("repair_type", "")
+    model = c.get("model", "")
+    is_iphone = not ("애플워치" in model or "아이패드" in model or "맥북" in model or "에어팟" in model)
+    is_watch = "애플워치" in model or "에르메스" in model
+    is_ipad = "아이패드" in model
+
+    links = []
+    # 종류별 핵심 칼럼
+    if "screen" in rtype or "화면" in rtype or "액정" in rtype:
+        links += [
+            ("아이폰 액정 수리비 2026 — 모델별·옵션별 정리", "iphone-screen-repair-cost-2026.html", "💰 가격 가이드"),
+            ("아이폰 화면에 줄·얼룩·변색 — LCD/OLED 손상 진단", "iphone-screen-line-discoloration.html", "🔍 자가진단"),
+            ("아이폰 터치가 안 돼요 — 원인별 해결법", "iphone-touch-not-working.html", "🔍 자가진단"),
+        ]
+    if "back" in rtype or "후면" in rtype:
+        links += [
+            ("아이폰 후면 유리 모델별 수리비 (2026)", "iphone-back-glass-cost-by-model-2026.html", "💰 가격 가이드"),
+            ("아이폰 후면 유리 정품급 OEM — 9가지 비교", "iphone-back-glass-genuine-vs-compatible.html", "🆚 부품 비교"),
+            ("아이폰 뒷면이 깨졌어요 — 자가진단 5단계 + 그냥 쓸까?", "iphone-rear-cracked-self-diagnosis.html", "🔍 자가진단"),
+        ]
+    if "battery" in rtype or "배터리" in rtype:
+        if is_iphone:
+            links += [
+                ("아이폰 배터리 교체 종류·비용 총정리 — 셀 교체 vs 정품 인증 vs 일반 호환", "iphone-battery-replacement-types-cost-2026.html", "💰 옵션 비교"),
+                ("아이폰 배터리 30%에 갑자기 꺼짐 — 수명 판단 기준", "iphone-battery-sudden-shutdown.html", "🔍 자가진단"),
+                ("정품 배터리 vs 호환 배터리 — 어떤 차이가 있나요?", "genuine-vs-compatible-battery.html", "🆚 부품 비교"),
+            ]
+        elif is_watch:
+            links += [
+                ("애플워치 배터리 교체 가이드", "applewatch-battery-replacement-guide.html", "🔧 수리 가이드"),
+                ("애플워치 배터리 부풀음 — 위험 신호와 대처", "applewatch-battery-swollen.html", "⚠️ 응급 안내"),
+            ]
+        elif is_ipad:
+            links += [
+                ("아이패드 메인보드 수리 가이드", "ipad-mainboard-repair-guide-2026.html", "🔧 수리 가이드"),
+            ]
+    if "charge" in rtype or "충전" in rtype:
+        links += [
+            ("아이폰 충전 단자 청소 vs 교체 결정 가이드", "iphone-charging-port-cleaning-vs-replacement.html", "🔍 자가진단"),
+            ("아이폰 충전 단자 모델별 수리비 (2026)", "iphone-charging-port-cost-by-model-2026.html", "💰 가격 가이드"),
+        ]
+    # 공통: 다올리페어 운영 안내·후기
+    links += [
+        ("다올리페어 누적 2,000+ 후기 — 평균 4.9점", "customer-reviews.html", "⭐ 매장 후기"),
+        ("수리 전 알아두면 좋은 가이드 PDF 모음", "downloads.html", "📄 다운로드"),
+    ]
+
+    # 중복 제거 + 최대 6개
+    seen = set()
+    unique = []
+    for title, slug, badge in links:
+        if slug not in seen:
+            seen.add(slug)
+            unique.append((title, slug, badge))
+    unique = unique[:6]
+
+    cards = "\n".join([
+        f'''  <a href="{slug}" style="display:block;padding:14px 16px;background:#fafafa;border:1px solid #eee;border-radius:12px;text-decoration:none;transition:all 0.15s;color:inherit;">
+    <div style="font-size:11px;font-weight:800;color:#E8732A;letter-spacing:0.3px;margin-bottom:6px;">{badge}</div>
+    <div style="font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.5;">{title}</div>
+  </a>'''
+        for title, slug, badge in unique
+    ])
+
+    return f'''
+<h2>관련 글 — 더 자세한 정보</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin:0 0 32px;">
+{cards}
+</div>
+'''
+
+
 def make_qa(c):
     """Q&A 섹션 — 디바이스·종류별 분기"""
     type_key = c.get("repair_type") or c.get("type", "")
@@ -846,6 +920,7 @@ def generate_article(case, journals):
     body = make_body(case)
     qa = make_qa(case)
     cta = make_cta(case)
+    related = make_related_links(case)
     info = model_intro(model)
     type_kr = TYPE_KR.get(rtype, "수리")
     desc = f"{model} {type_kr} 실제 수리 사례 — 다올리페어 {case['branch']}에서 진행. 같은 증상으로 고민 중이신 분께 도움 되는 진단·수리 과정 + Q&A · 90일 보증 · 실패 시 0원"
@@ -937,8 +1012,9 @@ body {{ font-family: var(--font); color: var(--text); background: #fff; line-hei
 .art-meta {{ display: flex; align-items: center; gap: 12px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 36px; font-size: 13px; }}
 .art-meta-author {{ font-weight: 700; color: var(--text); }}
 .art-meta-date {{ color: var(--muted); }}
-.art-body {{ font-size: 16px; line-height: 1.85; }}
-.art-body p {{ margin-bottom: 22px; color: #333; }}
+.art-body {{ font-size: 16px; line-height: 1.85; word-break: keep-all; overflow-wrap: break-word; }}
+.art-body p {{ margin-bottom: 22px; color: #333; word-break: keep-all; overflow-wrap: break-word; }}
+.art-body li {{ word-break: keep-all; overflow-wrap: break-word; }}
 .art-body strong {{ color: var(--text); font-weight: 700; }}
 .art-body h2 {{ font-size: 20px; font-weight: 900; margin: 52px 0 20px; line-height: 1.4; letter-spacing: -0.3px; padding-bottom: 10px; border-bottom: 2px solid var(--orange); display: inline-block; }}
 .art-body ul, .art-body ol {{ margin: 0 0 28px 22px; padding-left: 4px; }}
@@ -1016,6 +1092,7 @@ body {{ font-family: var(--font); color: var(--text); background: #fff; line-hei
 {body}
 {cta}
 {qa}
+{related}
 
   <div style="margin-top:50px;padding:24px;background:#f5f5f7;border-radius:14px;text-align:center;">
     <strong style="display:block;font-size:14px;color:var(--text);margin-bottom:8px;">📍 다올리페어 가산·신림·목동 직영점</strong>

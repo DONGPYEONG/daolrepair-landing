@@ -53,8 +53,9 @@ body { font-family: var(--font); color: var(--text); background: #fff; line-heig
 .art-meta { display: flex; align-items: center; gap: 12px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 36px; font-size: 13px; }
 .art-meta-author { font-weight: 700; color: var(--text); }
 .art-meta-date { color: var(--muted); }
-.art-body { font-size: 16px; line-height: 1.85; }
-.art-body p { margin-bottom: 22px; color: #333; }
+.art-body { font-size: 16px; line-height: 1.85; word-break: keep-all; overflow-wrap: break-word; }
+.art-body p { margin-bottom: 22px; color: #333; word-break: keep-all; overflow-wrap: break-word; }
+.art-body li { word-break: keep-all; overflow-wrap: break-word; }
 .art-body strong { color: var(--text); font-weight: 700; }
 .art-body h2 { font-size: 20px; font-weight: 900; margin: 52px 0 20px; line-height: 1.4; letter-spacing: -0.3px; padding-bottom: 10px; border-bottom: 2px solid var(--orange); display: inline-block; }
 .art-body ul, .art-body ol { margin: 0 0 28px 22px; padding-left: 4px; }
@@ -102,6 +103,31 @@ body { font-family: var(--font); color: var(--text); background: #fff; line-heig
     gtag('js', new Date());
     gtag('config', 'G-TF9YKW0FW2', {'page_title': document.title, 'page_location': window.location.href});
   </script>
+
+  <!-- DAOL_GLOBAL_STYLE_v1 -->
+  <style>
+    /* 본문 링크 통일 — 주황 + 밑줄 (다올리페어 브랜드) */
+    .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
+      color: #E8732A !important;
+      text-decoration: underline !important;
+      text-underline-offset: 2px;
+      font-weight: 600;
+    }
+    .art-body a:hover, .article-content a:hover, article.art-body a:hover {
+      color: #C55E1A !important;
+    }
+    /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
+    .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
+    .article-content, .article-content p, .article-content li,
+    article.art-body p, article.art-body li {
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+    /* 표 셀도 동일 */
+    .art-body table td, .art-body table th {
+      word-break: keep-all;
+    }
+  </style>
 </head>
 <body>
 
@@ -206,6 +232,27 @@ body { font-family: var(--font); color: var(--text); background: #fff; line-heig
     <div class="faq-item"><div class="faq-q">데이터는 안전한가요?</div><div class="faq-a">네, 데이터는 그대로 보존됩니다. 페어링·헬스 데이터·앱 모두 그대로예요.</div></div>
     <div class="faq-item"><div class="faq-q">심박·혈중산소 등 센서도 정상 작동하나요?</div><div class="faq-a">네, 배터리만 교체하기 때문에 모든 센서·기능 정상 작동합니다. 작업 후 기능 테스트로 확인해드려요.</div></div>
     <div class="faq-item"><div class="faq-q">보증은 얼마나?</div><div class="faq-a">다올리페어 모든 수리는 90일 무상 A/S 보증입니다.</div></div>
+</div>
+
+
+<h2>관련 글 — 더 자세한 정보</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin:0 0 32px;">
+  <a href="applewatch-battery-replacement-guide.html" style="display:block;padding:14px 16px;background:#fafafa;border:1px solid #eee;border-radius:12px;text-decoration:none;transition:all 0.15s;color:inherit;">
+    <div style="font-size:11px;font-weight:800;color:#E8732A;letter-spacing:0.3px;margin-bottom:6px;">🔧 수리 가이드</div>
+    <div style="font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.5;">애플워치 배터리 교체 가이드</div>
+  </a>
+  <a href="applewatch-battery-swollen.html" style="display:block;padding:14px 16px;background:#fafafa;border:1px solid #eee;border-radius:12px;text-decoration:none;transition:all 0.15s;color:inherit;">
+    <div style="font-size:11px;font-weight:800;color:#E8732A;letter-spacing:0.3px;margin-bottom:6px;">⚠️ 응급 안내</div>
+    <div style="font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.5;">애플워치 배터리 부풀음 — 위험 신호와 대처</div>
+  </a>
+  <a href="customer-reviews.html" style="display:block;padding:14px 16px;background:#fafafa;border:1px solid #eee;border-radius:12px;text-decoration:none;transition:all 0.15s;color:inherit;">
+    <div style="font-size:11px;font-weight:800;color:#E8732A;letter-spacing:0.3px;margin-bottom:6px;">⭐ 매장 후기</div>
+    <div style="font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.5;">다올리페어 누적 2,000+ 후기 — 평균 4.9점</div>
+  </a>
+  <a href="downloads.html" style="display:block;padding:14px 16px;background:#fafafa;border:1px solid #eee;border-radius:12px;text-decoration:none;transition:all 0.15s;color:inherit;">
+    <div style="font-size:11px;font-weight:800;color:#E8732A;letter-spacing:0.3px;margin-bottom:6px;">📄 다운로드</div>
+    <div style="font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.5;">수리 전 알아두면 좋은 가이드 PDF 모음</div>
+  </a>
 </div>
 
 

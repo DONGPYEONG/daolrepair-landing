@@ -53,8 +53,9 @@ body { font-family: var(--font); color: var(--text); background: #fff; line-heig
 .art-meta { display: flex; align-items: center; gap: 12px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 36px; font-size: 13px; }
 .art-meta-author { font-weight: 700; color: var(--text); }
 .art-meta-date { color: var(--muted); }
-.art-body { font-size: 16px; line-height: 1.85; }
-.art-body p { margin-bottom: 22px; color: #333; }
+.art-body { font-size: 16px; line-height: 1.85; word-break: keep-all; overflow-wrap: break-word; }
+.art-body p { margin-bottom: 22px; color: #333; word-break: keep-all; overflow-wrap: break-word; }
+.art-body li { word-break: keep-all; overflow-wrap: break-word; }
 .art-body strong { color: var(--text); font-weight: 700; }
 .art-body h2 { font-size: 20px; font-weight: 900; margin: 52px 0 20px; line-height: 1.4; letter-spacing: -0.3px; padding-bottom: 10px; border-bottom: 2px solid var(--orange); display: inline-block; }
 .art-body ul, .art-body ol { margin: 0 0 28px 22px; padding-left: 4px; }
@@ -102,6 +103,31 @@ body { font-family: var(--font); color: var(--text); background: #fff; line-heig
     gtag('js', new Date());
     gtag('config', 'G-TF9YKW0FW2', {'page_title': document.title, 'page_location': window.location.href});
   </script>
+
+  <!-- DAOL_GLOBAL_STYLE_v1 -->
+  <style>
+    /* 본문 링크 통일 — 주황 + 밑줄 (다올리페어 브랜드) */
+    .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
+      color: #E8732A !important;
+      text-decoration: underline !important;
+      text-underline-offset: 2px;
+      font-weight: 600;
+    }
+    .art-body a:hover, .article-content a:hover, article.art-body a:hover {
+      color: #C55E1A !important;
+    }
+    /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
+    .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
+    .article-content, .article-content p, .article-content li,
+    article.art-body p, article.art-body li {
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+    /* 표 셀도 동일 */
+    .art-body table td, .art-body table th {
+      word-break: keep-all;
+    }
+  </style>
 </head>
 <body>
 
@@ -217,6 +243,31 @@ body { font-family: var(--font); color: var(--text); background: #fff; line-heig
     <div class="faq-item"><div class="faq-q">당일 수리 가능한가요?</div><div class="faq-a">네, 30~50분 내 완료됩니다. 매장에서 잠시 기다리시거나 인근에서 시간 보내시면 됩니다.</div></div>
     <div class="faq-item"><div class="faq-q">배터리 부풀어서 화면이 들떴어요. 위험한가요?</div><div class="faq-a">네, 위험합니다. 배터리 부풀음은 내부 가스 발생으로 더 진행되면 폭발·발화 위험까지 있어요. 즉시 사용 중지하시고 매장 방문을 권장드립니다.</div></div>
     <div class="faq-item"><div class="faq-q">얼마나 자주 교체해야 하나요?</div><div class="faq-a">보통 <strong>2~3년에 한 번, 또는 최대 용량 80% 미만</strong>일 때 권장드려요. 사용 환경(고온 노출, 잦은 충방전)에 따라 더 빠를 수도 있습니다.</div></div>
+</div>
+
+
+<h2>관련 글 — 더 자세한 정보</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin:0 0 32px;">
+  <a href="iphone-battery-replacement-types-cost-2026.html" style="display:block;padding:14px 16px;background:#fafafa;border:1px solid #eee;border-radius:12px;text-decoration:none;transition:all 0.15s;color:inherit;">
+    <div style="font-size:11px;font-weight:800;color:#E8732A;letter-spacing:0.3px;margin-bottom:6px;">💰 옵션 비교</div>
+    <div style="font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.5;">아이폰 배터리 교체 종류·비용 총정리 — 셀 교체 vs 정품 인증 vs 일반 호환</div>
+  </a>
+  <a href="iphone-battery-sudden-shutdown.html" style="display:block;padding:14px 16px;background:#fafafa;border:1px solid #eee;border-radius:12px;text-decoration:none;transition:all 0.15s;color:inherit;">
+    <div style="font-size:11px;font-weight:800;color:#E8732A;letter-spacing:0.3px;margin-bottom:6px;">🔍 자가진단</div>
+    <div style="font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.5;">아이폰 배터리 30%에 갑자기 꺼짐 — 수명 판단 기준</div>
+  </a>
+  <a href="genuine-vs-compatible-battery.html" style="display:block;padding:14px 16px;background:#fafafa;border:1px solid #eee;border-radius:12px;text-decoration:none;transition:all 0.15s;color:inherit;">
+    <div style="font-size:11px;font-weight:800;color:#E8732A;letter-spacing:0.3px;margin-bottom:6px;">🆚 부품 비교</div>
+    <div style="font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.5;">정품 배터리 vs 호환 배터리 — 어떤 차이가 있나요?</div>
+  </a>
+  <a href="customer-reviews.html" style="display:block;padding:14px 16px;background:#fafafa;border:1px solid #eee;border-radius:12px;text-decoration:none;transition:all 0.15s;color:inherit;">
+    <div style="font-size:11px;font-weight:800;color:#E8732A;letter-spacing:0.3px;margin-bottom:6px;">⭐ 매장 후기</div>
+    <div style="font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.5;">다올리페어 누적 2,000+ 후기 — 평균 4.9점</div>
+  </a>
+  <a href="downloads.html" style="display:block;padding:14px 16px;background:#fafafa;border:1px solid #eee;border-radius:12px;text-decoration:none;transition:all 0.15s;color:inherit;">
+    <div style="font-size:11px;font-weight:800;color:#E8732A;letter-spacing:0.3px;margin-bottom:6px;">📄 다운로드</div>
+    <div style="font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.5;">수리 전 알아두면 좋은 가이드 PDF 모음</div>
+  </a>
 </div>
 
 
