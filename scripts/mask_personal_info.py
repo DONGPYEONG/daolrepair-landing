@@ -1,0 +1,177 @@
+#!/usr/bin/env python3
+"""수리 전·후 사진의 개인정보 자동 마스킹.
+
+OCR로 사진의 모든 텍스트 영역을 감지하고,
+시계·날짜처럼 신뢰감 주는 정보는 살리고
+일정·이름·전화번호·메시지 같은 개인정보는 블러 처리.
+
+규칙:
+- 시계 (9:41, 12:30 등) → 살림
+- 날짜 (5월 8일, 수요일, 5/8 등) → 살림
+- 그 외 모든 텍스트 → 블러 (일정·메시지·이름·번호 등 모두 보호)
+
+사용법:
+  from mask_personal_info import mask_image
+  mask_image("/path/to/after.jpg")
+"""
+import re
+import sys
+from pathlib import Path
+
+try:
+    from PIL import Image, ImageFilter, ImageOps
+except ImportError:
+    print("⚠️ Pillow 필요: pip install Pillow")
+    sys.exit(1)
+
+# ─── 살리는 패턴 (시계·날짜·날씨 — 신뢰감 주는 일반 정보) ───
+# 시계: "9:41", "12:30", "21:30" 등 (단, 일정 시간이 아닌 잠금화면 대형 시계)
+CLOCK_RE = re.compile(r'^\s*\d{1,2}\s*[:：]\s*\d{2}\s*$')
+# 날짜·요일: "5월 8일", "수요일", "(금)", "5/8", "2026.05.08"
+DATE_RE = re.compile(
+    r'^[\s()（）]*(월요일|화요일|수요일|목요일|금요일|토요일|일요일|월|화|수|목|금|토|일)[\s()（）]*$|'
+    r'\d+월\s*\d+일|\d+월\s*\d+|\d{1,2}/\d{1,2}|\d{4}[\.\-]\d{1,2}[\.\-]\d{1,2}'
+)
+# 영어 요일·달: "MON", "Mon", "Monday", "May 8" 등
+EN_DATE_RE = re.compile(
+    r'^\s*(Mon|Tue|Wed|Thu|Fri|Sat|Sun|MON|TUE|WED|THU|FRI|SAT|SUN|'
+    r'Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday|'
+    r'Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)',
+    re.IGNORECASE
+)
+# 날씨: "맑음", "흐림", "비", "눈", "구름", "안개", "20°", "20℃"
+WEATHER_RE = re.compile(
+    r'^[\s°℃℉]*(맑음|흐림|비|눈|구름|안개|미세먼지|황사|좋음|나쁨|보통|매우|소나기|뇌우|진눈깨비|'
+    r'Sunny|Cloudy|Rain|Snow|Clear|Fog|Mist|Storm)[\s°℃℉]*$|'
+    r'^\s*-?\d{1,2}\s*[°℃℉]\s*$'
+)
+# 배터리 % (잠금화면 우측 상단) — 100%, 85% 등
+BATTERY_RE = re.compile(r'^\s*\d{1,3}\s*%\s*$')
+
+_reader_cache = None
+
+
+def _get_reader():
+    """easyocr Reader 인스턴스 캐싱 (첫 호출 시 모델 로드 — 느림)"""
+    global _reader_cache
+    if _reader_cache is not None:
+        return _reader_cache
+    try:
+        import easyocr
+        # ko + en 모두 지원, GPU 없어도 작동
+        _reader_cache = easyocr.Reader(['ko', 'en'], gpu=False, verbose=False)
+        return _reader_cache
+    except ImportError:
+        return None
+    except Exception as e:
+        print(f"⚠️ easyocr 초기화 실패: {e}")
+        return None
+
+
+def _is_keep_text(text: str) -> bool:
+    """이 텍스트는 가리지 않음 (시계·날짜·날씨·배터리%)"""
+    text = (text or "").strip()
+    if not text:
+        return True  # 빈 텍스트는 스킵
+    if CLOCK_RE.match(text):
+        return True
+    if DATE_RE.search(text):
+        return True
+    if EN_DATE_RE.match(text):
+        return True
+    if WEATHER_RE.match(text):
+        return True
+    if BATTERY_RE.match(text):
+        return True
+    return False
+
+
+def mask_image(path, blur_radius: int = 22, conf_threshold: float = 0.3) -> bool:
+    """이미지의 텍스트 영역 자동 블러 (시계·날짜·날씨·배터리%는 살림).
+
+    EXIF 회전 자동 적용 (모바일 사진은 회전 메타데이터로 인해 OCR 실패 잦음).
+    회전된 정상 방향으로 저장 후 마스킹 진행.
+
+    Returns:
+        True: 마스킹 성공 (일부 영역 블러됨)
+        False: OCR 라이브러리 없음 / 텍스트 미발견 / 에러
+    """
+    path = Path(path)
+    if not path.exists():
+        return False
+
+    reader = _get_reader()
+    if reader is None:
+        return False
+
+    # EXIF 회전 자동 적용 (옆으로 누운 이미지 → 정상 방향)
+    img = Image.open(path)
+    img = ImageOps.exif_transpose(img).convert('RGB')
+    # 회전 적용된 이미지로 임시 저장 후 OCR (원본 EXIF는 제거됨)
+    img.save(path, 'JPEG', quality=92, optimize=True)
+    W, H = img.size
+
+    try:
+        results = reader.readtext(str(path))
+    except Exception as e:
+        print(f"  ⚠️ OCR 실패 ({path.name}): {e}")
+        return False
+
+    regions_to_blur = []
+    kept = []
+    for entry in results:
+        # easyocr returns (bbox, text, confidence)
+        bbox, text, conf = entry
+        if conf < conf_threshold:
+            continue
+        if _is_keep_text(text):
+            kept.append(text.strip())
+            continue
+        # bbox: [(x1,y1), (x2,y2), (x3,y3), (x4,y4)] (4 corners)
+        xs = [p[0] for p in bbox]
+        ys = [p[1] for p in bbox]
+        x_min = max(0, int(min(xs)) - 8)
+        y_min = max(0, int(min(ys)) - 8)
+        x_max = min(W, int(max(xs)) + 8)
+        y_max = min(H, int(max(ys)) + 8)
+        if x_max > x_min and y_max > y_min:
+            regions_to_blur.append((x_min, y_min, x_max, y_max, text.strip()))
+
+    if not regions_to_blur:
+        kept_preview = ", ".join(kept[:3])
+        if kept:
+            print(f"  🛡️ 마스킹: 블러할 텍스트 없음 / 살림 {len(kept)}개 [{kept_preview}]")
+        return False
+
+    # 각 영역에 강한 가우시안 블러 (모자이크 효과)
+    for (x1, y1, x2, y2, _txt) in regions_to_blur:
+        crop = img.crop((x1, y1, x2, y2))
+        blurred = crop.filter(ImageFilter.GaussianBlur(radius=blur_radius))
+        img.paste(blurred, (x1, y1, x2, y2))
+
+    img.save(path, 'JPEG', quality=88, optimize=True)
+    masked_preview = ", ".join([r[4][:15] for r in regions_to_blur[:5]])
+    kept_preview = ", ".join(kept[:5])
+    print(f"  🛡️ 마스킹: 블러 {len(regions_to_blur)}개 [{masked_preview}] / 살림 {len(kept)}개 [{kept_preview}]")
+    return True
+
+
+def main():
+    """CLI 사용: python mask_personal_info.py path/to/image.jpg [more.jpg ...]"""
+    if len(sys.argv) < 2:
+        print("사용법: python mask_personal_info.py <이미지 경로> [<더 많은 이미지>]")
+        sys.exit(1)
+    for arg in sys.argv[1:]:
+        p = Path(arg)
+        if p.is_dir():
+            # 디렉토리면 안의 모든 jpg 처리
+            for img in list(p.glob("**/after.jpg")) + list(p.glob("**/before.jpg")):
+                print(f"\n📷 {img.relative_to(p.parent)}")
+                mask_image(img)
+        else:
+            print(f"\n📷 {p.name}")
+            mask_image(p)
+
+
+if __name__ == "__main__":
+    main()

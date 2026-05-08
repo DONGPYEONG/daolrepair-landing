@@ -681,6 +681,15 @@ def main():
                 )
                 reason = "Vision 재선택" if cached_meta else "새로 다운로드"
                 print(f"   ✓ case-{case_idx} ({folder_id[:10]}...): {device_label(c['device'], c['model'])} ({c['repair_type']}) — {reason}")
+                # 🛡️ 개인정보 자동 마스킹 (시계·날짜는 살리고 나머지 텍스트 블러)
+                try:
+                    from mask_personal_info import mask_image
+                    mask_image(before_path)
+                    mask_image(after_path)
+                except ImportError:
+                    pass  # easyocr 없으면 그냥 스킵
+                except Exception as me:
+                    print(f"     ⚠️ 마스킹 실패 (사진은 정상 저장됨): {me}")
             except Exception as e:
                 print(f"   ⚠️ case-{case_idx} 다운로드 실패: {e}")
                 case_idx -= 1
