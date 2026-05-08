@@ -110,6 +110,15 @@ def _is_keep_text(text: str, in_top_region: bool = False) -> bool:
     return False
 
 
+def _pixelate(crop):
+    """모자이크 효과 — 가우시안 블러보다 훨씬 강력하게 텍스트 식별 차단."""
+    w, h = crop.size
+    # 블록 크기: 짧은 변의 1/8 (최소 8, 최대 40)
+    block = max(8, min(40, min(w, h) // 8))
+    small = crop.resize((max(1, w // block), max(1, h // block)), Image.NEAREST)
+    return small.resize((w, h), Image.NEAREST)
+
+
 def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool:
     """이미지의 텍스트 영역 자동 블러 (시계·날짜만 살림).
 
@@ -178,11 +187,13 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
             print(f"  🛡️ 마스킹: 블러할 텍스트 없음 / 살림 {len(kept)}개 [{kept_preview}]")
         return False
 
-    # 각 영역에 강한 가우시안 블러 (모자이크 효과)
+    # 각 영역에 모자이크(픽셀화) 적용 — 가우시안 블러보다 훨씬 강력
     for (x1, y1, x2, y2, _txt) in regions_to_blur:
         crop = img.crop((x1, y1, x2, y2))
-        blurred = crop.filter(ImageFilter.GaussianBlur(radius=blur_radius))
-        img.paste(blurred, (x1, y1, x2, y2))
+        pixelated = _pixelate(crop)
+        # 위에 약한 블러 한 번 더 — 픽셀 경계 자연스럽게
+        pixelated = pixelated.filter(ImageFilter.GaussianBlur(radius=4))
+        img.paste(pixelated, (x1, y1, x2, y2))
 
     img.save(path, 'JPEG', quality=88, optimize=True)
 
@@ -210,8 +221,9 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
     if extra_blur:
         for (x1, y1, x2, y2, _txt) in extra_blur:
             crop = img.crop((x1, y1, x2, y2))
-            blurred = crop.filter(ImageFilter.GaussianBlur(radius=blur_radius))
-            img.paste(blurred, (x1, y1, x2, y2))
+            pixelated = _pixelate(crop)
+            pixelated = pixelated.filter(ImageFilter.GaussianBlur(radius=4))
+            img.paste(pixelated, (x1, y1, x2, y2))
         img.save(path, 'JPEG', quality=88, optimize=True)
 
     total = len(regions_to_blur) + len(extra_blur)

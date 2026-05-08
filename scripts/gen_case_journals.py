@@ -91,28 +91,28 @@ TITLE_TEMPLATES = {
     ],
     "battery": [
         # 숫자·시간 강조
-        "{model} 배터리 70% 떨어진 지 반년 미루다 다올리페어 {branch}에서 25분 만에 정품 인증으로 교체",
-        "{model} 갑자기 50%에서 꺼져버린 다음 날 {branch} 가서 정품 인증 배터리로 해결한 사례",
+        "{model} 배터리 70% 떨어진 지 반년 미루다 다올리페어 {branch}에서 30분 만에 교체",
+        "{model} 갑자기 50%에서 꺼져버린 다음 날 {branch} 가서 해결한 사례",
         # 궁금증 유발 / 질문형
-        "{model} 배터리 옵션 비교 — 셀 교체·정품 인증·일반 호환 중 가장 만족도 높은 선택은? ({branch})",
-        "{model} 배터리 80% 미만, 지금 갈아야 하나 더 써도 되나? — {branch} 진단 + 정품 인증 교체 후기",
-        "왜 정품 인증 배터리가 만족도 1위일까? — 다올리페어 {branch}에서 직접 받아본 후기",
+        "{model} 배터리 옵션 비교 — 셀 교체 vs 정품 인증 vs 일반 호환, 어떤 게 본인에게 맞나? ({branch})",
+        "{model} 배터리 80% 미만, 지금 갈아야 하나 더 써도 되나? — {branch} 진단 후기",
+        "{model} 배터리 교체 — 옵션마다 결과·시간 어떻게 다른가? 다올리페어 {branch} 실제 비교",
         # 감정·심리 / 상황 묘사
-        "출근길에 갑자기 꺼진 {model}, 점심 때 정품 인증 배터리 교체 끝낸 {branch} 케이스",
-        "{model} 배터리 부풀어서 화면 들뜸 → 다올리페어 {branch} 응급 정품 인증 교체 사연",
-        "겨울철 50%인데 자꾸 꺼지던 {model} → {branch}에서 정품 인증으로 깔끔 해결",
+        "출근길에 갑자기 꺼진 {model}, 점심 때 배터리 교체 끝낸 {branch} 케이스",
+        "{model} 배터리 부풀어서 화면 들뜸 → 다올리페어 {branch} 응급 교체 사연",
+        "겨울철 50%인데 자꾸 꺼지던 {model} → {branch}에서 깔끔하게 해결",
         # 부담감 해소
-        "{model} 배터리 교체 — 정품 인증으로 1~3만원 더 쓰고 안심한 {branch} 케이스",
-        "{model} 새 폰 갈까 배터리 갈까 고민? — 다올리페어 {branch} 정품 인증 교체 후 만족 후기",
+        "{model} 배터리 교체비 부담돼서 미뤘는데 {branch}에서 합리적으로 해결",
+        "{model} 새 폰 갈까 배터리 갈까 고민? — 다올리페어 {branch} 비용 비교 후기",
         # 솔직 후기 톤
-        "솔직 후기 — {model} 정품 인증 배터리 교체 후 한 달 사용해본 결과 ({branch})",
-        "{model} 배터리 교체 — 메시지 없이 사이클까지 정상 표시되는 정품 인증 선택한 {branch} 케이스",
+        "솔직 후기 — {model} 배터리 교체 후 한 달 사용해본 결과 ({branch})",
+        "{model} 배터리 교체 — 메시지 없이 100% 표시되는 옵션 선택한 {branch} 케이스",
         # 결과 약속 / 시간
-        "{model} 배터리 교체 — 25~35분이면 정품 인증 새 배터리로 (다올리페어 {branch})",
-        "{model} 배터리 노화로 폰 느려진 분의 {branch} 정품 인증 교체 후 변화 후기",
+        "{model} 배터리 교체 — 30분이면 새 배터리로 (다올리페어 {branch})",
+        "{model} 배터리 노화로 폰 느려진 분의 {branch} 교체 후 변화 후기",
         # 비교/반전
-        "공식센터 배터리 vs 다올리페어 정품 인증 — {model} 둘 다 메시지 안 뜨는데 가격은 절반? ({branch})",
-        "{model} 배터리 사설 수리 무섭다고요? — 다올리페어 {branch} 정품 인증 배터리 실제 진행",
+        "공식센터 배터리 vs 다올리페어 — {model} 둘 다 메시지 안 뜨는 옵션 있는 이유 ({branch})",
+        "{model} 배터리 사설 수리 무섭다고요? — 다올리페어 {branch} 실제 진행 과정",
     ],
     "charge": [
         "{model} 충전 안 들어가서 케이블 3개 바꿔봤는데… 다올리페어 {branch}에서 단자 청소로 해결",
@@ -483,17 +483,17 @@ TYPE_BODY = {
     <tr style="background:#f5f5f7;">
       <th style="padding:10px;border:1px solid #eee;text-align:left;">옵션</th>
       <th style="padding:10px;border:1px solid #eee;text-align:left;">"비정품 배터리" 경고</th>
-      <th style="padding:10px;border:1px solid #eee;text-align:left;">사이클·성능치</th>
+      <th style="padding:10px;border:1px solid #eee;text-align:left;">사이클 추적</th>
       <th style="padding:10px;border:1px solid #eee;text-align:left;">작업 시간</th>
     </tr>
   </thead>
   <tbody>
-    <tr style="background:rgba(232,115,42,0.07);"><td style="padding:10px;border:1px solid #eee;"><strong style="color:#E8732A;">⭐ 정품 인증 (추천)</strong></td><td style="padding:10px;border:1px solid #eee;">안 뜸</td><td style="padding:10px;border:1px solid #eee;">정상 표시 + 사이클 정상 추적</td><td style="padding:10px;border:1px solid #eee;">25~35분</td></tr>
-    <tr><td style="padding:10px;border:1px solid #eee;"><strong>셀 교체</strong></td><td style="padding:10px;border:1px solid #eee;">안 뜸</td><td style="padding:10px;border:1px solid #eee;">정상 표시 + 기존 사이클 유지</td><td style="padding:10px;border:1px solid #eee;">35~50분 (정밀 작업)</td></tr>
-    <tr><td style="padding:10px;border:1px solid #eee;"><strong>일반 호환</strong></td><td style="padding:10px;border:1px solid #eee;">뜸 (사용 영향 X)</td><td style="padding:10px;border:1px solid #eee;">정상 표시 + 사이클 리셋</td><td style="padding:10px;border:1px solid #eee;">25~35분</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;"><strong>정품 인증</strong></td><td style="padding:10px;border:1px solid #eee;">안 뜸</td><td style="padding:10px;border:1px solid #eee;">정상 추적</td><td style="padding:10px;border:1px solid #eee;">25~35분</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;"><strong>셀 교체</strong></td><td style="padding:10px;border:1px solid #eee;">안 뜸</td><td style="padding:10px;border:1px solid #eee;">0으로 리셋</td><td style="padding:10px;border:1px solid #eee;">35~50분 (정밀 작업)</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;"><strong>일반 호환</strong></td><td style="padding:10px;border:1px solid #eee;">뜸 (사용 영향 X)</td><td style="padding:10px;border:1px solid #eee;">0으로 리셋</td><td style="padding:10px;border:1px solid #eee;">25~35분</td></tr>
   </tbody>
 </table>
-<p>※ 3가지 옵션 모두 <strong>최대 용량(성능치)은 정상 표시</strong>됩니다. <strong style="color:#E8732A;">정품 인증을 가장 많이 추천드려요</strong> — 메시지 X, 정품급 셀 품질, 사이클 정상 추적, 작업 시간 빠름까지 모두 갖춰서 고객 만족도가 가장 높습니다. 옵션별 자세한 비교는 <a href="iphone-battery-replacement-types-cost-2026.html">아이폰 배터리 교체 종류·비용 총정리 — 셀 교체 vs 정품 인증 vs 일반 호환</a>에서 확인하실 수 있어요.</p>
+<p>※ 3가지 옵션 모두 <strong>최대 용량(성능치)은 100%로 정상 표시</strong>됩니다. 사이클 수는 <strong>정품 인증만 정상 추적</strong>되고, 셀 교체·일반 호환은 새 셀이라 0부터 다시 카운트돼요. 본인 사용 패턴·예산에 맞춰 선택 가능하며, 옵션별 자세한 비교는 <a href="iphone-battery-replacement-types-cost-2026.html">아이폰 배터리 교체 종류·비용 총정리</a>를 참고하세요.</p>
 
 <h2>매장에서 진행한 수리 과정</h2>
 <ol>
@@ -682,9 +682,9 @@ QA_BY_TYPE = {
         ("최대 용량이 100%로 표시되나요?",
          "네, 새 배터리로 교체하면 최대 용량(성능치)이 정상 표시됩니다. 다만 <strong>'100% 회복'이라는 결과 약속은 못 드려요</strong> — 폰 전체 발열·앱 동작은 다른 변수의 영향을 받기 때문이에요. 안정적인 사용성은 회복됩니다."),
         ("'비정품 배터리' 경고 메시지가 뜨나요?",
-         "옵션에 따라 달라요. <a href='iphone-battery-replacement-types-cost-2026.html'>정품 인증·셀 교체는 안 뜨고, 일반 호환은 떠요</a> (단, 사용에는 영향 없음). 메시지 없이 깔끔하게 쓰고 싶으시면 <strong>정품 인증 배터리</strong>를 가장 많이 추천드립니다."),
-        ("어떤 배터리 옵션이 가장 만족도가 높나요?",
-         "<strong>정품 인증 배터리</strong>가 가장 만족도가 높아요. 이유: ① 메시지 안 뜸 ② 정품급 셀 품질로 안정적 사용 ③ 사이클 정상 추적 ④ 작업 시간 25~35분으로 빠름. 셀 교체보다 1~3만원 더 들지만 결과·시간·만족도 모두 우위라 다올리페어에서 가장 많이 진행합니다. 자세한 비교는 <a href='iphone-battery-replacement-types-cost-2026.html'>아이폰 배터리 종류·비용 총정리</a> 참고."),
+         "옵션에 따라 달라요. <a href='iphone-battery-replacement-types-cost-2026.html'>정품 인증·셀 교체는 안 뜨고, 일반 호환은 떠요</a> (단, 사용에는 영향 없음). 메시지가 신경 쓰이시면 정품 인증이나 셀 교체를 선택하시면 됩니다."),
+        ("셀 교체와 정품 인증 차이가 뭔가요?",
+         "<a href='iphone-battery-replacement-types-cost-2026.html'><strong>셀 교체</strong></a>는 기존 정품 케이스에 새 셀만 교체 (정밀 작업, 35~50분). <a href='iphone-battery-replacement-types-cost-2026.html'><strong>정품 인증</strong></a>은 시리얼 매칭 가능한 정품급 부품으로 통째 교체 (25~35분). 둘 다 메시지는 안 뜨지만, <strong>사이클 수는 정품 인증만 정상 추적</strong>되고 셀 교체·일반 호환은 0부터 다시 카운트돼요. 정품 인증이 1~3만원 더 비싼 편입니다. 자세한 비교는 <a href='iphone-battery-replacement-types-cost-2026.html'>아이폰 배터리 종류·비용 총정리</a> 참고."),
         ("배터리 교체 후 데이터는 안전한가요?",
          "네, 데이터는 그대로 보존됩니다. 배터리만 교체하기 때문에 본체 메모리·설정·앱·사진은 모두 그대로예요. 자세한 내용은 <a href='iphone-repair-data-safety-by-type.html'>수리 시 데이터 안전 가이드</a> 참고."),
         ("당일 수리 가능한가요?",
@@ -716,7 +716,7 @@ QA_BY_TYPE = {
         ("작업 시간은 얼마나 걸리나요?",
          "당일 1~2시간 작업입니다. 화면 분해 + 배터리 교체가 동시에 진행돼요."),
         ("어떤 옵션이 좋은가요?",
-         "<strong>정품 인증 배터리</strong>를 가장 많이 추천드려요 — 메시지 X + 사이클 정상 + 작업 빠름. 비용을 가장 우선하시면 일반 호환도 가능 (메시지만 뜸, 사용 영향 X)."),
+         "사용 패턴에 따라 다릅니다. 메시지 + 사이클 정보까지 정상 표시 원하시면 <strong>정품 인증</strong>, 메시지만 안 뜨면 충분하시면 셀 교체, 가격을 가장 우선하시면 일반 호환을 권장드려요."),
         ("데이터는 안전한가요?",
          "네, 데이터는 그대로 보존됩니다."),
         ("보증은 얼마나 되나요?",
