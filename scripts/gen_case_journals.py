@@ -13,6 +13,7 @@
 사용법:
   python3 scripts/gen_case_journals.py
 """
+import hashlib
 import json
 import random
 import re
@@ -772,7 +773,7 @@ QA_BY_TYPE = {
 
 
 def make_title(c):
-    """후킹 제목 생성"""
+    """후킹 제목 생성 — case_id 기반 deterministic 시드로 같은 케이스는 항상 같은 제목"""
     type_key = c.get("repair_type") or c.get("type", "")
     # 한국어 type일 경우 영어로 매핑
     if "화면" in type_key or "액정" in type_key: type_key = "screen"
@@ -782,7 +783,13 @@ def make_title(c):
     elif "카메라" in type_key: type_key = "camera"
 
     templates = TITLE_TEMPLATES.get(type_key, DEFAULT_TITLE_TEMPLATES)
-    template = random.choice(templates)
+
+    # 같은 케이스는 같은 제목 — case_id를 시드로 사용
+    case_id = c.get("case_id") or c.get("id") or (c.get("model","") + c.get("date","") + c.get("branch",""))
+    seed = int(hashlib.md5(case_id.encode("utf-8")).hexdigest(), 16) % (2**32)
+    rng = random.Random(seed)
+    template = rng.choice(templates)
+
     return template.format(
         model=c["model"],
         branch=c["branch"],

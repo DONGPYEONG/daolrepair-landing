@@ -25,18 +25,33 @@ except ImportError:
     sys.exit(1)
 
 # ─── 살리는 패턴 (시계·날짜·날씨 — 신뢰감 주는 일반 정보) ───
-# 시계: "9:41", "12:30", "21:30" 등 (단, 일정 시간이 아닌 잠금화면 대형 시계)
-CLOCK_RE = re.compile(r'^\s*\d{1,2}\s*[:：]\s*\d{2}\s*$')
-# 날짜·요일: "5월 8일", "수요일", "(금)", "5/8", "2026.05.08"
-DATE_RE = re.compile(
-    r'^[\s()（）]*(월요일|화요일|수요일|목요일|금요일|토요일|일요일|월|화|수|목|금|토|일)[\s()（）]*$|'
-    r'\d+월\s*\d+일|\d+월\s*\d+|\d{1,2}/\d{1,2}|\d{4}[\.\-]\d{1,2}[\.\-]\d{1,2}'
+# 시계: "9:41", "12:30", "21:30", "9 : 41" (OCR 띄어쓰기 변형 허용)
+# AM/PM: "AM 9:41", "PM 2:30", "오전 9:00", "오후 2:30"
+CLOCK_RE = re.compile(
+    r'^\s*(AM|PM|am|pm|오전|오후)?\s*\d{1,2}\s*[:：]\s*\d{2}\s*(AM|PM|am|pm)?\s*$'
 )
+# 시계의 일부만 OCR된 경우 (대형 시계는 "9", "41" 따로 나오기도)
+CLOCK_PART_RE = re.compile(r'^\s*\d{1,2}\s*$')
+
+# 날짜·요일: "5월 8일", "수요일", "(금)", "5/8", "2026.05.08", "5.8"
+# OCR 오인식 허용: 괄호 변형 ({, [, (, （), 점·중간점·물결·하이픈
+_BRACKETS = r'\s()（）{}\[\]·•~\-,\.\'\"`'
+DATE_RE = re.compile(
+    rf'^[{_BRACKETS}]*(월요일|화요일|수요일|목요일|금요일|토요일|일요일|월|화|수|목|금|토|일)[{_BRACKETS}]*$|'
+    r'\d+\s*월\s*\d+\s*일|'  # "5월 8일", "5 월 8 일"
+    r'\d+\s*월\s*\d+\s*$|'   # "5월 8"
+    r'^\s*\d{1,2}\s*월\s*$|' # "5월" 단독
+    r'^\s*\d{1,2}\s*일\s*$|' # "8일" 단독
+    r'\d{1,2}\s*[/\.\-]\s*\d{1,2}|'  # "5/8", "5.8", "5-8"
+    r'\d{4}\s*[\.\-/]\s*\d{1,2}\s*[\.\-/]\s*\d{1,2}'  # "2026.05.08"
+)
+# 짧은 텍스트(20자 이하)에 "X일"과 요일 글자 둘 다 있으면 날짜로 인정 (OCR 노이즈 동반 케이스)
+DATE_COMBINED_RE = re.compile(r'\d{1,2}\s*일.*[월화수목금토일]|[월화수목금토일].*\d{1,2}\s*일')
 # 영어 요일·달: "MON", "Mon", "Monday", "May 8" 등
 EN_DATE_RE = re.compile(
     r'^\s*(Mon|Tue|Wed|Thu|Fri|Sat|Sun|MON|TUE|WED|THU|FRI|SAT|SUN|'
     r'Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday|'
-    r'Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)',
+    r'Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\.?\s*\d*\s*$',
     re.IGNORECASE
 )
 # 날씨: "맑음", "흐림", "비", "눈", "구름", "안개", "20°", "20℃"
@@ -47,6 +62,10 @@ WEATHER_RE = re.compile(
 )
 # 배터리 % (잠금화면 우측 상단) — 100%, 85% 등
 BATTERY_RE = re.compile(r'^\s*\d{1,3}\s*%\s*$')
+
+# Position 휴리스틱 — 잠금화면 시계는 보통 사진 상단에 위치
+# 텍스트가 사진 상단 35% 안에 있고 크기가 적당하면 시계/날짜 가능성 ↑
+TOP_REGION_RATIO = 0.35  # 상단 35% 영역
 
 _reader_cache = None
 
@@ -68,8 +87,11 @@ def _get_reader():
         return None
 
 
-def _is_keep_text(text: str) -> bool:
-    """이 텍스트는 가리지 않음 (시계·날짜·날씨·배터리%)"""
+def _is_keep_text(text: str, in_top_region: bool = False) -> bool:
+    """이 텍스트는 가리지 않음 (시계·날짜·날씨·배터리%).
+
+    in_top_region=True면 상단 영역에 있는 짧은 숫자도 시계 부품으로 인정 (대형 시계는 OCR이 분리 인식하기도)
+    """
     text = (text or "").strip()
     if not text:
         return True  # 빈 텍스트는 스킵
@@ -79,9 +101,15 @@ def _is_keep_text(text: str) -> bool:
         return True
     if EN_DATE_RE.match(text):
         return True
+    # 짧은 텍스트(20자 이하)에 X일 + 요일이 같이 있으면 날짜
+    if len(text) <= 20 and DATE_COMBINED_RE.search(text):
+        return True
     if WEATHER_RE.match(text):
         return True
     if BATTERY_RE.match(text):
+        return True
+    # 상단 영역의 짧은 숫자(2자리 이하)는 시계 분할 인식일 가능성 — 살림
+    if in_top_region and CLOCK_PART_RE.match(text):
         return True
     return False
 
@@ -119,17 +147,20 @@ def mask_image(path, blur_radius: int = 22, conf_threshold: float = 0.3) -> bool
 
     regions_to_blur = []
     kept = []
+    top_threshold = H * TOP_REGION_RATIO
     for entry in results:
         # easyocr returns (bbox, text, confidence)
         bbox, text, conf = entry
         if conf < conf_threshold:
             continue
-        if _is_keep_text(text):
-            kept.append(text.strip())
-            continue
         # bbox: [(x1,y1), (x2,y2), (x3,y3), (x4,y4)] (4 corners)
         xs = [p[0] for p in bbox]
         ys = [p[1] for p in bbox]
+        # 상단 영역에 있는지 (잠금화면 시계는 보통 상단)
+        in_top = max(ys) < top_threshold
+        if _is_keep_text(text, in_top_region=in_top):
+            kept.append(text.strip())
+            continue
         x_min = max(0, int(min(xs)) - 8)
         y_min = max(0, int(min(ys)) - 8)
         x_max = min(W, int(max(xs)) + 8)
