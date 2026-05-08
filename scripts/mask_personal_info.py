@@ -235,12 +235,24 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
             print(f"  🛡️ 마스킹: 블러할 텍스트 없음 / 살림 {len(kept)}개 [{kept_preview}]")
         return False
 
+    # 살림 영역의 원본 픽셀 미리 저장 — 마스킹 후 다시 붙여 넣어 보호
+    kept_originals = []
+    for kb in kept_boxes:
+        kx1, ky1, kx2, ky2 = kb
+        if kx2 > kx1 and ky2 > ky1:
+            kept_originals.append((kb, img.crop((kx1, ky1, kx2, ky2)).copy()))
+
     # 각 영역에 모자이크(픽셀화) 적용 — 텍스트 식별 차단하면서 자연스러움 유지
     for (x1, y1, x2, y2, _txt) in regions_to_blur:
         crop = img.crop((x1, y1, x2, y2))
         pixelated = _pixelate(crop)
         pixelated = pixelated.filter(ImageFilter.GaussianBlur(radius=4))
         img.paste(pixelated, (x1, y1, x2, y2))
+
+    # 살림 영역 원본 다시 paste — 블러가 침범한 영역 복원
+    for kb, orig_crop in kept_originals:
+        kx1, ky1, kx2, ky2 = kb
+        img.paste(orig_crop, (kx1, ky1))
 
     img.save(path, 'JPEG', quality=88, optimize=True)
 
@@ -266,11 +278,21 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
         if x_max > x_min and y_max > y_min:
             extra_blur.append((x_min, y_min, x_max, y_max, text.strip()))
     if extra_blur:
+        # 2차 마스킹 전 살림 영역 원본도 다시 캡처
+        kept_originals_2 = []
+        for kb in kept_boxes:
+            kx1, ky1, kx2, ky2 = kb
+            if kx2 > kx1 and ky2 > ky1:
+                kept_originals_2.append((kb, img.crop((kx1, ky1, kx2, ky2)).copy()))
         for (x1, y1, x2, y2, _txt) in extra_blur:
             crop = img.crop((x1, y1, x2, y2))
             pixelated = _pixelate(crop)
             pixelated = pixelated.filter(ImageFilter.GaussianBlur(radius=4))
             img.paste(pixelated, (x1, y1, x2, y2))
+        # 살림 영역 복원
+        for kb, orig_crop in kept_originals_2:
+            kx1, ky1, kx2, ky2 = kb
+            img.paste(orig_crop, (kx1, ky1))
         img.save(path, 'JPEG', quality=88, optimize=True)
 
     total = len(regions_to_blur) + len(extra_blur)
