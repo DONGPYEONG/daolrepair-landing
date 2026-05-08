@@ -1,257 +1,257 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>회원가입 | 다올리페어 커뮤니티</title>
- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
- <style>
- *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- :root { --orange: #E8732A; --dark: #0A0A0A; --text: #1a1a1a; --muted: #666; --border: #e8e8e8; --font: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
- body { font-family: var(--font); color: var(--text); background: #f8f8f8; line-height: 1.7; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
- .nav { background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--border); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
- .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
- .nav-logo img { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; }
- .nav-logo span { font-size: 15px; font-weight: 800; color: var(--dark); }
- .main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 16px; }
- .card { background: #fff; border-radius: 20px; border: 1px solid var(--border); padding: 36px 28px; width: 100%; max-width: 420px; }
- .card-title { font-size: 22px; font-weight: 900; color: var(--dark); margin-bottom: 6px; }
- .card-sub { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
- .form-group { margin-bottom: 16px; }
- .form-label { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 6px; display: block; }
- .form-input { width: 100%; border: 1.5px solid var(--border); border-radius: 10px; padding: 12px 14px; font-size: 15px; font-family: var(--font); outline: none; transition: border-color 0.2s; }
- .form-input:focus { border-color: var(--orange); }
- .form-hint { font-size: 12px; color: #aaa; margin-top: 5px; }
- .error-msg { background: #fff5f5; border: 1px solid #fca5a5; border-radius: 10px; padding: 12px 14px; font-size: 13px; color: #b91c1c; margin-bottom: 16px; display: none; }
- .success-msg { background: #f0fdf4; border: 1px solid #86efac; border-radius: 10px; padding: 12px 14px; font-size: 13px; color: #15803d; margin-bottom: 16px; display: none; }
- .submit-btn { width: 100%; background: var(--orange); color: #fff; border: none; padding: 14px; border-radius: 12px; font-size: 15px; font-weight: 800; cursor: pointer; font-family: var(--font); transition: background 0.2s; margin-top: 8px; }
- .submit-btn:hover { background: #d4621f; }
- .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
- .divider { text-align: center; font-size: 13px; color: #aaa; margin: 20px 0; }
- .login-link { text-align: center; font-size: 14px; color: var(--muted); }
- .login-link a { color: var(--orange); font-weight: 700; text-decoration: none; }
- .login-link a:hover { text-decoration: underline; }
- </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 | 다올리페어 커뮤니티</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --orange: #E8732A; --dark: #0A0A0A; --text: #1a1a1a; --muted: #666; --border: #e8e8e8; --font: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
+    body { font-family: var(--font); color: var(--text); background: #f8f8f8; line-height: 1.7; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
+    .nav { background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--border); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; }
+    .nav-logo span { font-size: 15px; font-weight: 800; color: var(--dark); }
+    .main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 16px; }
+    .card { background: #fff; border-radius: 20px; border: 1px solid var(--border); padding: 36px 28px; width: 100%; max-width: 420px; }
+    .card-title { font-size: 22px; font-weight: 900; color: var(--dark); margin-bottom: 6px; }
+    .card-sub { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+    .form-group { margin-bottom: 16px; }
+    .form-label { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 6px; display: block; }
+    .form-input { width: 100%; border: 1.5px solid var(--border); border-radius: 10px; padding: 12px 14px; font-size: 15px; font-family: var(--font); outline: none; transition: border-color 0.2s; }
+    .form-input:focus { border-color: var(--orange); }
+    .form-hint { font-size: 12px; color: #aaa; margin-top: 5px; }
+    .error-msg { background: #fff5f5; border: 1px solid #fca5a5; border-radius: 10px; padding: 12px 14px; font-size: 13px; color: #b91c1c; margin-bottom: 16px; display: none; }
+    .success-msg { background: #f0fdf4; border: 1px solid #86efac; border-radius: 10px; padding: 12px 14px; font-size: 13px; color: #15803d; margin-bottom: 16px; display: none; }
+    .submit-btn { width: 100%; background: var(--orange); color: #fff; border: none; padding: 14px; border-radius: 12px; font-size: 15px; font-weight: 800; cursor: pointer; font-family: var(--font); transition: background 0.2s; margin-top: 8px; }
+    .submit-btn:hover { background: #d4621f; }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .divider { text-align: center; font-size: 13px; color: #aaa; margin: 20px 0; }
+    .login-link { text-align: center; font-size: 14px; color: var(--muted); }
+    .login-link a { color: var(--orange); font-weight: 700; text-decoration: none; }
+    .login-link a:hover { text-decoration: underline; }
+  </style>
 
- <!-- ─ Google Analytics 4 ─────────────────────────────── -->
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-TF9YKW0FW2"></script>
- <script>
- window.dataLayer = window.dataLayer || [];
- function gtag{dataLayer.push(arguments);}
- gtag('js', new Date);
- gtag('config', 'G-TF9YKW0FW2', {
- 'page_title': document.title,
- 'page_location': window.location.href
- });
- document.addEventListener('DOMContentLoaded', function{
- function track(n, p){ if(typeof gtag==='function') gtag('event', n, Object.assign({'page_path':window.location.pathname,'page_title':document.title}, p||{})); }
- document.querySelectorAll('a[href*="pf.kakao.com"]').forEach(function(el){ el.addEventListener('click', function{ track('kakao_click', {'destination': el.href}); }); });
- document.querySelectorAll('a[href*="naver.me"]').forEach(function(el){ el.addEventListener('click', function{
- var t = el.textContent.trim.substring(0, 30);
- var b = t.indexOf('가산')>=0?'가산점':t.indexOf('신림')>=0?'신림점':t.indexOf('목동')>=0?'목동점':'기타';
- track('naver_click', {'branch': b, 'label': t});
- }); });
- document.querySelectorAll('a[href^="tel:"]').forEach(function(el){ el.addEventListener('click', function{ track('phone_click', {'phone': el.href.replace('tel:','')}); }); });
- document.querySelectorAll('a[href*="portfolio.html"]').forEach(function(el){ el.addEventListener('click', function{ track('portfolio_view', {}); }); });
- });
- </script>
+  <!-- ─ Google Analytics 4 ─────────────────────────────── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TF9YKW0FW2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TF9YKW0FW2', {
+      'page_title': document.title,
+      'page_location': window.location.href
+    });
+    document.addEventListener('DOMContentLoaded', function(){
+      function track(n, p){ if(typeof gtag==='function') gtag('event', n, Object.assign({'page_path':window.location.pathname,'page_title':document.title}, p||{})); }
+      document.querySelectorAll('a[href*="pf.kakao.com"]').forEach(function(el){ el.addEventListener('click', function(){ track('kakao_click', {'destination': el.href}); }); });
+      document.querySelectorAll('a[href*="naver.me"]').forEach(function(el){ el.addEventListener('click', function(){
+        var t = el.textContent.trim().substring(0, 30);
+        var b = t.indexOf('가산')>=0?'가산점':t.indexOf('신림')>=0?'신림점':t.indexOf('목동')>=0?'목동점':'기타';
+        track('naver_click', {'branch': b, 'label': t});
+      }); });
+      document.querySelectorAll('a[href^="tel:"]').forEach(function(el){ el.addEventListener('click', function(){ track('phone_click', {'phone': el.href.replace('tel:','')}); }); });
+      document.querySelectorAll('a[href*="portfolio.html"]').forEach(function(el){ el.addEventListener('click', function(){ track('portfolio_view', {}); }); });
+    });
+  </script>
 
- <!-- DAOL_GLOBAL_STYLE_v1 -->
- <style>
- /* 본문 링크 통일 — 주황 + 밑줄 (다올리페어 브랜드) */
- .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
- color: #E8732A !important;
- text-decoration: underline !important;
- text-underline-offset: 2px;
- font-weight: 600;
- }
- .art-body a:hover, .article-content a:hover, article.art-body a:hover {
- color: #C55E1A !important;
- }
- /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
- .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
- .article-content, .article-content p, .article-content li,
- article.art-body p, article.art-body li {
- word-break: keep-all;
- overflow-wrap: break-word;
- }
- /* 표 셀도 동일 */
- .art-body table td, .art-body table th {
- word-break: keep-all;
- }
- </style>
+  <!-- DAOL_GLOBAL_STYLE_v1 -->
+  <style>
+    /* 본문 링크 통일 — 주황 + 밑줄 (다올리페어 브랜드) */
+    .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
+      color: #E8732A !important;
+      text-decoration: underline !important;
+      text-underline-offset: 2px;
+      font-weight: 600;
+    }
+    .art-body a:hover, .article-content a:hover, article.art-body a:hover {
+      color: #C55E1A !important;
+    }
+    /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
+    .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
+    .article-content, .article-content p, .article-content li,
+    article.art-body p, article.art-body li {
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+    /* 표 셀도 동일 */
+    .art-body table td, .art-body table th {
+      word-break: keep-all;
+    }
+  </style>
 
- <!-- DAOL_GLOBAL_STYLE_v2 -->
- <style>
- /* 본문 일반 링크 — 주황 + 밑줄 (다올리페어 브랜드) */
- .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
- color: #E8732A !important;
- text-decoration: underline !important;
- text-underline-offset: 2px;
- font-weight: 600;
- }
- .art-body a:hover, .article-content a:hover, article.art-body a:hover {
- color: #C55E1A !important;
- }
- /* 단, 버튼/CTA처럼 background·class 있는 링크는 자기 스타일 유지 */
- .art-body a[style*="background"],
- .art-body a[class*="btn"],
- .art-body a.art-cta-btn,
- .art-body a.art-cta-btn-ghost,
- .art-cta a,
- .art-good a[style*="background"],
- .art-warn a[style*="background"] {
- text-decoration: none !important;
- font-weight: inherit;
- }
- /* 버튼 내 글자색은 inline style의 color를 그대로 — 단, !important 충돌 회피 위해 별도 처리 X */
- .art-body a[style*="color:#fff"], .art-body a[style*="color: #fff"],
- .art-body a[style*="color:#FFF"], .art-body a[style*="color: #FFF"] {
- color: #fff !important;
- }
- .art-body a[style*="color:#000"], .art-body a[style*="color: #000"],
- .art-body a[style*="color:#1a1a1a"], .art-body a[style*="color: #1a1a1a"] {
- color: #1a1a1a !important;
- }
- /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
- .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
- .article-content, .article-content p, .article-content li,
- article.art-body p, article.art-body li {
- word-break: keep-all;
- overflow-wrap: break-word;
- }
- .art-body table td, .art-body table th {
- word-break: keep-all;
- }
- /* 제목·짧은 텍스트는 균형 잡힌 줄바꿈 (마지막 줄에 글자 1개만 남는 어색함 방지) */
- h1, h2, h3, .art-title, .art-body h2, .art-body h3,
- .ba-issue, .pf-caption-title, .live-rank-name, .live-title,
- .card-title, .quick-nav-label, .ba-portfolio-btn, .pf-cta-btn {
- text-wrap: balance;
- -webkit-text-wrap: balance;
- }
- /* 짧은 라벨·배지·메뉴는 절대 줄바꿈 X */
- .art-nav a, .art-cat, .art-category, .card-category,
- .ba-meta-tag, .pf-meta-tag, .live-rank-badge,
- .quick-nav-sub, .tab-btn {
- white-space: nowrap;
- }
- </style>
- <!-- DAOL_FAVICON_v1 -->
- <link rel="icon" type="image/x-icon" href="/favicon.ico">
- <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
- <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
- <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
- <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- DAOL_GLOBAL_STYLE_v2 -->
+  <style>
+    /* 본문 일반 링크 — 주황 + 밑줄 (다올리페어 브랜드) */
+    .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
+      color: #E8732A !important;
+      text-decoration: underline !important;
+      text-underline-offset: 2px;
+      font-weight: 600;
+    }
+    .art-body a:hover, .article-content a:hover, article.art-body a:hover {
+      color: #C55E1A !important;
+    }
+    /* 단, 버튼/CTA처럼 background·class 있는 링크는 자기 스타일 유지 */
+    .art-body a[style*="background"],
+    .art-body a[class*="btn"],
+    .art-body a.art-cta-btn,
+    .art-body a.art-cta-btn-ghost,
+    .art-cta a,
+    .art-good a[style*="background"],
+    .art-warn a[style*="background"] {
+      text-decoration: none !important;
+      font-weight: inherit;
+    }
+    /* 버튼 내 글자색은 inline style의 color를 그대로 — 단, !important 충돌 회피 위해 별도 처리 X */
+    .art-body a[style*="color:#fff"], .art-body a[style*="color: #fff"],
+    .art-body a[style*="color:#FFF"], .art-body a[style*="color: #FFF"] {
+      color: #fff !important;
+    }
+    .art-body a[style*="color:#000"], .art-body a[style*="color: #000"],
+    .art-body a[style*="color:#1a1a1a"], .art-body a[style*="color: #1a1a1a"] {
+      color: #1a1a1a !important;
+    }
+    /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
+    .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
+    .article-content, .article-content p, .article-content li,
+    article.art-body p, article.art-body li {
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+    .art-body table td, .art-body table th {
+      word-break: keep-all;
+    }
+    /* 제목·짧은 텍스트는 균형 잡힌 줄바꿈 (마지막 줄에 글자 1개만 남는 어색함 방지) */
+    h1, h2, h3, .art-title, .art-body h2, .art-body h3,
+    .ba-issue, .pf-caption-title, .live-rank-name, .live-title,
+    .card-title, .quick-nav-label, .ba-portfolio-btn, .pf-cta-btn {
+      text-wrap: balance;
+      -webkit-text-wrap: balance;
+    }
+    /* 짧은 라벨·배지·메뉴는 절대 줄바꿈 X */
+    .art-nav a, .art-cat, .art-category, .card-category,
+    .ba-meta-tag, .pf-meta-tag, .live-rank-badge,
+    .quick-nav-sub, .tab-btn {
+      white-space: nowrap;
+    }
+  </style>
+  <!-- DAOL_FAVICON_v1 -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
 <nav class="nav">
- <a href="https://xn--2j1bq2k97kxnah86c.com" class="nav-logo">
- <img src="../로고신규1.jpg" alt="다올리페어">
- <span>다올리페어</span>
- </a>
+  <a href="https://xn--2j1bq2k97kxnah86c.com" class="nav-logo">
+    <img src="../로고신규1.jpg" alt="다올리페어">
+    <span>다올리페어</span>
+  </a>
 </nav>
 
 <div class="main">
- <div class="card">
- <div class="card-title">회원가입</div>
- <div class="card-sub">가입 후 질문을 남기고 답변을 받을 수 있습니다</div>
+  <div class="card">
+    <div class="card-title">회원가입</div>
+    <div class="card-sub">가입 후 질문을 남기고 답변을 받을 수 있습니다</div>
 
- <div class="error-msg" id="error-msg"></div>
- <div class="success-msg" id="success-msg"></div>
+    <div class="error-msg" id="error-msg"></div>
+    <div class="success-msg" id="success-msg"></div>
 
- <div class="form-group">
- <label class="form-label" for="nickname">닉네임</label>
- <input class="form-input" type="text" id="nickname" placeholder="커뮤니티에서 사용할 이름" maxlength="20">
- <div class="form-hint">커뮤니티에 표시될 이름입니다 (2~20자)</div>
- </div>
- <div class="form-group">
- <label class="form-label" for="email">이메일</label>
- <input class="form-input" type="email" id="email" placeholder="example@email.com">
- </div>
- <div class="form-group">
- <label class="form-label" for="password">비밀번호</label>
- <input class="form-input" type="password" id="password" placeholder="8자 이상 입력">
- <div class="form-hint">영문, 숫자 조합 8자 이상</div>
- </div>
- <div class="form-group">
- <label class="form-label" for="password2">비밀번호 확인</label>
- <input class="form-input" type="password" id="password2" placeholder="비밀번호를 다시 입력">
- </div>
+    <div class="form-group">
+      <label class="form-label" for="nickname">닉네임</label>
+      <input class="form-input" type="text" id="nickname" placeholder="커뮤니티에서 사용할 이름" maxlength="20">
+      <div class="form-hint">커뮤니티에 표시될 이름입니다 (2~20자)</div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="email">이메일</label>
+      <input class="form-input" type="email" id="email" placeholder="example@email.com">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="password">비밀번호</label>
+      <input class="form-input" type="password" id="password" placeholder="8자 이상 입력">
+      <div class="form-hint">영문, 숫자 조합 8자 이상</div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="password2">비밀번호 확인</label>
+      <input class="form-input" type="password" id="password2" placeholder="비밀번호를 다시 입력">
+    </div>
 
- <button class="submit-btn" id="submit-btn" onclick="register">가입하기</button>
+    <button class="submit-btn" id="submit-btn" onclick="register()">가입하기</button>
 
- <div class="divider">이미 계정이 있으신가요?</div>
- <div class="login-link"><a href="login.html">로그인하기</a></div>
- </div>
+    <div class="divider">이미 계정이 있으신가요?</div>
+    <div class="login-link"><a href="login.html">로그인하기</a></div>
+  </div>
 </div>
 
 <script>
- const SUPABASE_URL = 'https://eybuyorlvbqxbvwyugcs.supabase.co';
- const SUPABASE_KEY = 'sb_publishable_QqBHHM529mkONmJD_2kofA_1gCLrB0p';
- const { createClient } = supabase;
- const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
+  const SUPABASE_URL = 'https://eybuyorlvbqxbvwyugcs.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_QqBHHM529mkONmJD_2kofA_1gCLrB0p';
+  const { createClient } = supabase;
+  const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
 
- function showError(msg) {
- const el = document.getElementById('error-msg');
- el.textContent = msg;
- el.style.display = 'block';
- document.getElementById('success-msg').style.display = 'none';
- }
+  function showError(msg) {
+    const el = document.getElementById('error-msg');
+    el.textContent = msg;
+    el.style.display = 'block';
+    document.getElementById('success-msg').style.display = 'none';
+  }
 
- function showSuccess(msg) {
- const el = document.getElementById('success-msg');
- el.textContent = msg;
- el.style.display = 'block';
- document.getElementById('error-msg').style.display = 'none';
- }
+  function showSuccess(msg) {
+    const el = document.getElementById('success-msg');
+    el.textContent = msg;
+    el.style.display = 'block';
+    document.getElementById('error-msg').style.display = 'none';
+  }
 
- // Enter key submit
- document.addEventListener('keydown', e => { if (e.key === 'Enter') register; });
+  // Enter key submit
+  document.addEventListener('keydown', e => { if (e.key === 'Enter') register(); });
 
- async function register {
- const nickname = document.getElementById('nickname').value.trim;
- const email = document.getElementById('email').value.trim;
- const password = document.getElementById('password').value;
- const password2 = document.getElementById('password2').value;
- const btn = document.getElementById('submit-btn');
+  async function register() {
+    const nickname = document.getElementById('nickname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const password2 = document.getElementById('password2').value;
+    const btn = document.getElementById('submit-btn');
 
- if (!nickname || nickname.length < 2) { showError('닉네임은 2자 이상 입력해주세요.'); return; }
- if (!email) { showError('이메일을 입력해주세요.'); return; }
- if (!password || password.length < 8) { showError('비밀번호는 8자 이상 입력해주세요.'); return; }
- if (password !== password2) { showError('비밀번호가 일치하지 않습니다.'); return; }
+    if (!nickname || nickname.length < 2) { showError('닉네임은 2자 이상 입력해주세요.'); return; }
+    if (!email) { showError('이메일을 입력해주세요.'); return; }
+    if (!password || password.length < 8) { showError('비밀번호는 8자 이상 입력해주세요.'); return; }
+    if (password !== password2) { showError('비밀번호가 일치하지 않습니다.'); return; }
 
- btn.disabled = true;
- btn.textContent = '가입 중...';
+    btn.disabled = true;
+    btn.textContent = '가입 중...';
 
- const { data, error } = await sb.auth.signUp({
- email,
- password,
- options: { data: { nickname } }
- });
+    const { data, error } = await sb.auth.signUp({
+      email,
+      password,
+      options: { data: { nickname } }
+    });
 
- if (error) {
- let msg = error.message;
- if (msg.includes('already registered')) msg = '이미 사용 중인 이메일입니다.';
- if (msg.includes('invalid email')) msg = '올바른 이메일 형식이 아닙니다.';
- if (msg.includes('weak password')) msg = '비밀번호가 너무 단순합니다.';
- showError(msg);
- btn.disabled = false;
- btn.textContent = '가입하기';
- return;
- }
+    if (error) {
+      let msg = error.message;
+      if (msg.includes('already registered')) msg = '이미 사용 중인 이메일입니다.';
+      if (msg.includes('invalid email')) msg = '올바른 이메일 형식이 아닙니다.';
+      if (msg.includes('weak password')) msg = '비밀번호가 너무 단순합니다.';
+      showError(msg);
+      btn.disabled = false;
+      btn.textContent = '가입하기';
+      return;
+    }
 
- // 이메일 인증이 꺼진 경우 바로 로그인됨
- if (data.user && data.session) {
- showSuccess('가입 완료! 커뮤니티로 이동합니다...');
- setTimeout( => { location.href = 'index.html'; }, 1200);
- } else {
- // 이메일 인증이 켜진 경우
- showSuccess('가입 완료! 이메일 인증 후 로그인해주세요. (이메일을 확인해주세요)');
- btn.textContent = '가입 완료';
- }
- }
+    // 이메일 인증이 꺼진 경우 바로 로그인됨
+    if (data.user && data.session) {
+      showSuccess('가입 완료! 커뮤니티로 이동합니다...');
+      setTimeout(() => { location.href = 'index.html'; }, 1200);
+    } else {
+      // 이메일 인증이 켜진 경우
+      showSuccess('가입 완료! 이메일 인증 후 로그인해주세요. (이메일을 확인해주세요)');
+      btn.textContent = '가입 완료';
+    }
+  }
 </script>
 </body>
 </html>

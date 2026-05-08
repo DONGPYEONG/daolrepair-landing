@@ -64,273 +64,273 @@ body{font-family:var(--font);color:var(--text);background:#f5f5f7;line-height:1.
 .bf-promise{font-size:12.5px;color:var(--orange-dark);font-weight:700;text-align:center;margin-bottom:12px;padding:6px}
 .bf-channels{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 18px;font-size:11.5px;color:var(--text);font-weight:600;padding-top:10px;border-top:1px dashed #f5c9a0}
 @media print{
- body{background:#fff}
- .nav,.no-print{display:none!important}
- .paper{margin:0;box-shadow:none;border-radius:0;padding:24px 28px;max-width:100%}
- /* CTA·footer 인쇄 시 강조 보존 */
- .cta-promo{background:#fff!important;border:2.5px solid #E8732A!important;color:#1a1a1a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
- .cta-promo-eyebrow,.cta-promo strong,.cta-promo .cta-promo-search strong{color:#C55E1A!important}
- .cta-promo p{color:#1a1a1a!important;opacity:1}
- .cta-promo-search{background:#fff8f0!important;border-color:#E8732A!important;color:#5a3a1a!important}
- .cta-promo-btn{background:#E8732A!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
- .branded-footer{background:#fff!important;border-color:#E8732A!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;page-break-inside:avoid}
- .bf-hours{background:#fff8f0!important}
- .cta-promo,.branded-footer{break-inside:avoid;page-break-inside:avoid}
- @page{margin:1cm}
+  body{background:#fff}
+  .nav,.no-print{display:none!important}
+  .paper{margin:0;box-shadow:none;border-radius:0;padding:24px 28px;max-width:100%}
+  /* CTA·footer 인쇄 시 강조 보존 */
+  .cta-promo{background:#fff!important;border:2.5px solid #E8732A!important;color:#1a1a1a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .cta-promo-eyebrow,.cta-promo strong,.cta-promo .cta-promo-search strong{color:#C55E1A!important}
+  .cta-promo p{color:#1a1a1a!important;opacity:1}
+  .cta-promo-search{background:#fff8f0!important;border-color:#E8732A!important;color:#5a3a1a!important}
+  .cta-promo-btn{background:#E8732A!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .branded-footer{background:#fff!important;border-color:#E8732A!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;page-break-inside:avoid}
+  .bf-hours{background:#fff8f0!important}
+  .cta-promo,.branded-footer{break-inside:avoid;page-break-inside:avoid}
+  @page{margin:1cm}
 }
 @media (max-width:600px){
- .paper{padding:28px 22px;margin:12px auto}
- .cta-promo{flex-direction:column;text-align:center}
- .cta-promo-qr{width:100%;max-width:160px}
- .footer-info{grid-template-columns:1fr;gap:8px}
- .bf-channels{flex-direction:column;gap:6px}
+  .paper{padding:28px 22px;margin:12px auto}
+  .cta-promo{flex-direction:column;text-align:center}
+  .cta-promo-qr{width:100%;max-width:160px}
+  .footer-info{grid-template-columns:1fr;gap:8px}
+  .bf-channels{flex-direction:column;gap:6px}
 }
 </style>
 
- <!-- ─ Google Analytics 4 ─────────────────────────────── -->
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-TF9YKW0FW2"></script>
- <script>
- window.dataLayer = window.dataLayer || [];
- function gtag{dataLayer.push(arguments);}
- gtag('js', new Date);
- gtag('config', 'G-TF9YKW0FW2', {
- 'page_title': document.title,
- 'page_location': window.location.href
- });
- document.addEventListener('DOMContentLoaded', function{
- function track(n, p){ if(typeof gtag==='function') gtag('event', n, Object.assign({'page_path':window.location.pathname,'page_title':document.title}, p||{})); }
- document.querySelectorAll('a[href*="pf.kakao.com"]').forEach(function(el){ el.addEventListener('click', function{ track('kakao_click', {'destination': el.href}); }); });
- document.querySelectorAll('a[href*="naver.me"]').forEach(function(el){ el.addEventListener('click', function{
- var t = el.textContent.trim.substring(0, 30);
- var b = t.indexOf('가산')>=0?'가산점':t.indexOf('신림')>=0?'신림점':t.indexOf('목동')>=0?'목동점':'기타';
- track('naver_click', {'branch': b, 'label': t});
- }); });
- document.querySelectorAll('a[href^="tel:"]').forEach(function(el){ el.addEventListener('click', function{ track('phone_click', {'phone': el.href.replace('tel:','')}); }); });
- document.querySelectorAll('a[href*="portfolio.html"]').forEach(function(el){ el.addEventListener('click', function{ track('portfolio_view', {}); }); });
- });
- </script>
+  <!-- ─ Google Analytics 4 ─────────────────────────────── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TF9YKW0FW2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TF9YKW0FW2', {
+      'page_title': document.title,
+      'page_location': window.location.href
+    });
+    document.addEventListener('DOMContentLoaded', function(){
+      function track(n, p){ if(typeof gtag==='function') gtag('event', n, Object.assign({'page_path':window.location.pathname,'page_title':document.title}, p||{})); }
+      document.querySelectorAll('a[href*="pf.kakao.com"]').forEach(function(el){ el.addEventListener('click', function(){ track('kakao_click', {'destination': el.href}); }); });
+      document.querySelectorAll('a[href*="naver.me"]').forEach(function(el){ el.addEventListener('click', function(){
+        var t = el.textContent.trim().substring(0, 30);
+        var b = t.indexOf('가산')>=0?'가산점':t.indexOf('신림')>=0?'신림점':t.indexOf('목동')>=0?'목동점':'기타';
+        track('naver_click', {'branch': b, 'label': t});
+      }); });
+      document.querySelectorAll('a[href^="tel:"]').forEach(function(el){ el.addEventListener('click', function(){ track('phone_click', {'phone': el.href.replace('tel:','')}); }); });
+      document.querySelectorAll('a[href*="portfolio.html"]').forEach(function(el){ el.addEventListener('click', function(){ track('portfolio_view', {}); }); });
+    });
+  </script>
 
- <!-- DAOL_GLOBAL_STYLE_v1 -->
- <style>
- /* 본문 링크 통일 — 주황 + 밑줄 (다올리페어 브랜드) */
- .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
- color: #E8732A !important;
- text-decoration: underline !important;
- text-underline-offset: 2px;
- font-weight: 600;
- }
- .art-body a:hover, .article-content a:hover, article.art-body a:hover {
- color: #C55E1A !important;
- }
- /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
- .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
- .article-content, .article-content p, .article-content li,
- article.art-body p, article.art-body li {
- word-break: keep-all;
- overflow-wrap: break-word;
- }
- /* 표 셀도 동일 */
- .art-body table td, .art-body table th {
- word-break: keep-all;
- }
- </style>
+  <!-- DAOL_GLOBAL_STYLE_v1 -->
+  <style>
+    /* 본문 링크 통일 — 주황 + 밑줄 (다올리페어 브랜드) */
+    .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
+      color: #E8732A !important;
+      text-decoration: underline !important;
+      text-underline-offset: 2px;
+      font-weight: 600;
+    }
+    .art-body a:hover, .article-content a:hover, article.art-body a:hover {
+      color: #C55E1A !important;
+    }
+    /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
+    .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
+    .article-content, .article-content p, .article-content li,
+    article.art-body p, article.art-body li {
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+    /* 표 셀도 동일 */
+    .art-body table td, .art-body table th {
+      word-break: keep-all;
+    }
+  </style>
 
- <!-- DAOL_GLOBAL_STYLE_v2 -->
- <style>
- /* 본문 일반 링크 — 주황 + 밑줄 (다올리페어 브랜드) */
- .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
- color: #E8732A !important;
- text-decoration: underline !important;
- text-underline-offset: 2px;
- font-weight: 600;
- }
- .art-body a:hover, .article-content a:hover, article.art-body a:hover {
- color: #C55E1A !important;
- }
- /* 단, 버튼/CTA처럼 background·class 있는 링크는 자기 스타일 유지 */
- .art-body a[style*="background"],
- .art-body a[class*="btn"],
- .art-body a.art-cta-btn,
- .art-body a.art-cta-btn-ghost,
- .art-cta a,
- .art-good a[style*="background"],
- .art-warn a[style*="background"] {
- text-decoration: none !important;
- font-weight: inherit;
- }
- /* 버튼 내 글자색은 inline style의 color를 그대로 — 단, !important 충돌 회피 위해 별도 처리 X */
- .art-body a[style*="color:#fff"], .art-body a[style*="color: #fff"],
- .art-body a[style*="color:#FFF"], .art-body a[style*="color: #FFF"] {
- color: #fff !important;
- }
- .art-body a[style*="color:#000"], .art-body a[style*="color: #000"],
- .art-body a[style*="color:#1a1a1a"], .art-body a[style*="color: #1a1a1a"] {
- color: #1a1a1a !important;
- }
- /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
- .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
- .article-content, .article-content p, .article-content li,
- article.art-body p, article.art-body li {
- word-break: keep-all;
- overflow-wrap: break-word;
- }
- .art-body table td, .art-body table th {
- word-break: keep-all;
- }
- /* 제목·짧은 텍스트는 균형 잡힌 줄바꿈 (마지막 줄에 글자 1개만 남는 어색함 방지) */
- h1, h2, h3, .art-title, .art-body h2, .art-body h3,
- .ba-issue, .pf-caption-title, .live-rank-name, .live-title,
- .card-title, .quick-nav-label, .ba-portfolio-btn, .pf-cta-btn {
- text-wrap: balance;
- -webkit-text-wrap: balance;
- }
- /* 짧은 라벨·배지·메뉴는 절대 줄바꿈 X */
- .art-nav a, .art-cat, .art-category, .card-category,
- .ba-meta-tag, .pf-meta-tag, .live-rank-badge,
- .quick-nav-sub, .tab-btn {
- white-space: nowrap;
- }
- </style>
- <!-- DAOL_FAVICON_v1 -->
- <link rel="icon" type="image/x-icon" href="/favicon.ico">
- <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
- <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
- <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
- <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- DAOL_GLOBAL_STYLE_v2 -->
+  <style>
+    /* 본문 일반 링크 — 주황 + 밑줄 (다올리페어 브랜드) */
+    .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
+      color: #E8732A !important;
+      text-decoration: underline !important;
+      text-underline-offset: 2px;
+      font-weight: 600;
+    }
+    .art-body a:hover, .article-content a:hover, article.art-body a:hover {
+      color: #C55E1A !important;
+    }
+    /* 단, 버튼/CTA처럼 background·class 있는 링크는 자기 스타일 유지 */
+    .art-body a[style*="background"],
+    .art-body a[class*="btn"],
+    .art-body a.art-cta-btn,
+    .art-body a.art-cta-btn-ghost,
+    .art-cta a,
+    .art-good a[style*="background"],
+    .art-warn a[style*="background"] {
+      text-decoration: none !important;
+      font-weight: inherit;
+    }
+    /* 버튼 내 글자색은 inline style의 color를 그대로 — 단, !important 충돌 회피 위해 별도 처리 X */
+    .art-body a[style*="color:#fff"], .art-body a[style*="color: #fff"],
+    .art-body a[style*="color:#FFF"], .art-body a[style*="color: #FFF"] {
+      color: #fff !important;
+    }
+    .art-body a[style*="color:#000"], .art-body a[style*="color: #000"],
+    .art-body a[style*="color:#1a1a1a"], .art-body a[style*="color: #1a1a1a"] {
+      color: #1a1a1a !important;
+    }
+    /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
+    .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
+    .article-content, .article-content p, .article-content li,
+    article.art-body p, article.art-body li {
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+    .art-body table td, .art-body table th {
+      word-break: keep-all;
+    }
+    /* 제목·짧은 텍스트는 균형 잡힌 줄바꿈 (마지막 줄에 글자 1개만 남는 어색함 방지) */
+    h1, h2, h3, .art-title, .art-body h2, .art-body h3,
+    .ba-issue, .pf-caption-title, .live-rank-name, .live-title,
+    .card-title, .quick-nav-label, .ba-portfolio-btn, .pf-cta-btn {
+      text-wrap: balance;
+      -webkit-text-wrap: balance;
+    }
+    /* 짧은 라벨·배지·메뉴는 절대 줄바꿈 X */
+    .art-nav a, .art-cat, .art-category, .card-category,
+    .ba-meta-tag, .pf-meta-tag, .live-rank-badge,
+    .quick-nav-sub, .tab-btn {
+      white-space: nowrap;
+    }
+  </style>
+  <!-- DAOL_FAVICON_v1 -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
 
 <nav class="nav no-print">
- <div class="nav-inner">
- <a class="nav-logo" href="https://xn--2j1bq2k97kxnah86c.com/">
- <img src="../로고신규1.jpg" alt="다올리페어"><span>다올리페어</span>
- </a>
- <div class="nav-actions">
- <a class="nav-btn nav-btn-ghost" href="downloads.html">← 다운로드</a>
- <button class="nav-btn nav-btn-ghost" onclick="daolShare" aria-label="공유하기">📤 공유</button>
- <button class="nav-btn" onclick="window.print">📄 PDF로 저장</button>
- </div>
- </div>
+  <div class="nav-inner">
+    <a class="nav-logo" href="https://xn--2j1bq2k97kxnah86c.com/">
+      <img src="../로고신규1.jpg" alt="다올리페어"><span>다올리페어</span>
+    </a>
+    <div class="nav-actions">
+      <a class="nav-btn nav-btn-ghost" href="downloads.html">← 다운로드</a>
+      <button class="nav-btn nav-btn-ghost" onclick="daolShare()" aria-label="공유하기">📤 공유</button>
+      <button class="nav-btn" onclick="window.print()">📄 PDF로 저장</button>
+    </div>
+  </div>
 </nav>
 
 <div class="paper">
- <div class="header">
- <div class="header-logo">DAOL REPAIR · 다올리페어</div>
- <h1>아이폰 수리 전 체크리스트</h1>
- <p>매장 가시기 전 5분이면 끝나는 준비 단계 · 인쇄 또는 저장해 보관하세요</p>
- </div>
+  <div class="header">
+    <div class="header-logo">DAOL REPAIR · 다올리페어</div>
+    <h1>아이폰 수리 전 체크리스트</h1>
+    <p>매장 가시기 전 5분이면 끝나는 준비 단계 · 인쇄 또는 저장해 보관하세요</p>
+  </div>
 
- <div class="section">
- <h2 class="section-title">① 데이터 백업 (가장 중요)</h2>
- <div class="check-item">
- <div class="check-box"></div>
- <div class="check-text"><strong>iCloud 백업 켜기</strong><p>설정 → [본인 이름] → iCloud → iCloud 백업 → "지금 백업". Wi-Fi 환경에서 30분~2시간 소요됩니다.</p></div>
- </div>
- <div class="check-item">
- <div class="check-box"></div>
- <div class="check-text"><strong>최근 백업 시각 확인</strong><p>같은 화면에서 "마지막 백업: ..." 메시지 확인. 24시간 이내면 안전합니다.</p></div>
- </div>
- <div class="check-item">
- <div class="check-box"></div>
- <div class="check-text"><strong>중요 사진·동영상 별도 보관</strong><p>iCloud 사진 동기화가 켜져 있으면 자동으로 보존됩니다. 그래도 중요한 파일은 PC나 외장 드라이브에 한 번 더 백업.</p></div>
- </div>
- </div>
- <div class="section">
- <h2 class="section-title">② 잠금·인증 해제</h2>
- <div class="check-item">
- <div class="check-box"></div>
- <div class="check-text"><strong>Find My iPhone 끄기</strong><p>설정 → [본인 이름] → 나의 찾기 → 나의 iPhone 찾기 OFF. (수리 후 다시 ON 가능)</p></div>
- </div>
- <div class="check-item">
- <div class="check-box"></div>
- <div class="check-text"><strong>잠금 비밀번호 메모</strong><p>수리 후 동작 점검 시 잠금 해제가 필요할 수 있습니다. 잘 잊는 분은 종이에 메모해서 가져오세요.</p></div>
- </div>
- <div class="check-item">
- <div class="check-box"></div>
- <div class="check-text"><strong>Apple ID 비밀번호 확인</strong><p>iCloud 잠금 해제·Apple ID 인증이 필요할 수 있습니다. 미리 확인해 두세요.</p></div>
- </div>
- </div>
- <div class="section">
- <h2 class="section-title">③ 외부 부속 제거</h2>
- <div class="check-item">
- <div class="check-box"></div>
- <div class="check-text"><strong>케이스 분리</strong><p>케이스 안쪽에 액세서리(거치 링·카드 지갑 등)가 있으면 함께 분리해서 보관.</p></div>
- </div>
- <div class="check-item">
- <div class="check-box"></div>
- <div class="check-text"><strong>강화유리 필름 분리</strong><p>액정 수리 시 새 필름이 필요하므로 미리 떼지 않으셔도 매장에서 분리해 드립니다.</p></div>
- </div>
- <div class="check-item">
- <div class="check-box"></div>
- <div class="check-text"><strong>SIM 카드 / eSIM 확인</strong><p>물리 SIM은 매장에서 분리·재장착해 드립니다. eSIM은 별도 처리 안내 가능.</p></div>
- </div>
- </div>
- <div class="section">
- <h2 class="section-title">④ 매장 방문 시 챙길 것</h2>
- <div class="check-item">
- <div class="check-box"></div>
- <div class="check-text"><strong>아이폰 본체</strong><p>케이스·필름 분리 상태로.</p></div>
- </div>
- <div class="check-item">
- <div class="check-box"></div>
- <div class="check-text"><strong>모델명·증상 메모</strong><p>설정 → 일반 → 정보에서 모델명 확인 (예: iPhone 14 Pro). 증상은 한 줄로: "어제 떨어뜨려 액정 깨짐".</p></div>
- </div>
- <div class="check-item">
- <div class="check-box"></div>
- <div class="check-text"><strong>견적 캡처 (있으면)</strong><p>카카오 채널·전화로 받은 견적 캡처. 매장 견적과 비교 시 도움이 됩니다.</p></div>
- </div>
- </div>
- <div class="urgent-box">
- <strong>🚨 침수 응급 상황이라면</strong><p>① 즉시 전원 강제 종료 (볼륨↑짧게+볼륨↓짧게+측면 길게) ② 충전기 절대 꽂지 마세요 ③ 케이스·SIM·카드 분리 ④ 헤어드라이어·쌀통 NO ⑤ 매장에 미리 전화 후 즉시 입고. 골든타임은 6~24시간입니다.</p>
- </div>
- <div class="cta-promo">
- <div class="cta-promo-text">
- <div class="cta-promo-eyebrow">💛 다올리페어 카카오톡 채널</div>
- <strong>친구 추가 시 5,000원 할인</strong>
- <p>사진 1장 + 모델명만 보내시면<br>5~15분 안에 정확한 견적 응답</p>
- <div class="cta-promo-search">카카오톡 검색 → <strong>"다올리페어"</strong></div>
- <a href="http://pf.kakao.com/_xfRNMX/friend" target="_blank" class="cta-promo-btn">카카오 채널 추가하기 →</a>
- </div>
- <div class="cta-promo-qr">
- <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=4&data=http://pf.kakao.com/_xfRNMX/friend" alt="다올리페어 카카오 채널 QR" loading="lazy">
- <small>📱 폰으로 QR 스캔</small>
- </div>
- </div>
- <div class="branded-footer">
- <div class="bf-headline">
- <span class="bf-logo">다올리페어</span>
- <span class="bf-tagline">애플 사설 수리 · 가산·신림·목동 3직영점</span>
- </div>
- <div class="footer-info">
- <div class="footer-info-block">
- <strong>가산점</strong>
- <span>가산디지털단지역 9번 출구 바로 앞</span>
- <small>1·7호선</small>
- </div>
- <div class="footer-info-block">
- <strong>신림점</strong>
- <span>2호선 신대방역 2번 출구 도보 2분</span>
- <small>2호선</small>
- </div>
- <div class="footer-info-block">
- <strong>목동점</strong>
- <span>2호선 양천구청역 도보 10분</span>
- <small>2호선</small>
- </div>
- </div>
- <div class="bf-hours">
- <strong>영업시간</strong> 평일 10:00~20:00 · 토요일 11:00~17:00
- </div>
- <div class="bf-promise">
- ✓ 수리 실패 시 비용 0원 &nbsp;·&nbsp; ✓ 90일 무상 보증 &nbsp;·&nbsp; ✓ 정직한 견적
- </div>
- <div class="bf-channels">
- <span>🌐 다올리페어.com</span>
- <span>💬 카카오톡 "다올리페어"</span>
- <span>📦 전국 택배 수리</span>
- </div>
- </div>
+  <div class="section">
+    <h2 class="section-title">① 데이터 백업 (가장 중요)</h2>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>iCloud 백업 켜기</strong><p>설정 → [본인 이름] → iCloud → iCloud 백업 → "지금 백업". Wi-Fi 환경에서 30분~2시간 소요됩니다.</p></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>최근 백업 시각 확인</strong><p>같은 화면에서 "마지막 백업: ..." 메시지 확인. 24시간 이내면 안전합니다.</p></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>중요 사진·동영상 별도 보관</strong><p>iCloud 사진 동기화가 켜져 있으면 자동으로 보존됩니다. 그래도 중요한 파일은 PC나 외장 드라이브에 한 번 더 백업.</p></div>
+    </div>
+  </div>
+  <div class="section">
+    <h2 class="section-title">② 잠금·인증 해제</h2>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Find My iPhone 끄기</strong><p>설정 → [본인 이름] → 나의 찾기 → 나의 iPhone 찾기 OFF. (수리 후 다시 ON 가능)</p></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>잠금 비밀번호 메모</strong><p>수리 후 동작 점검 시 잠금 해제가 필요할 수 있습니다. 잘 잊는 분은 종이에 메모해서 가져오세요.</p></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>Apple ID 비밀번호 확인</strong><p>iCloud 잠금 해제·Apple ID 인증이 필요할 수 있습니다. 미리 확인해 두세요.</p></div>
+    </div>
+  </div>
+  <div class="section">
+    <h2 class="section-title">③ 외부 부속 제거</h2>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>케이스 분리</strong><p>케이스 안쪽에 액세서리(거치 링·카드 지갑 등)가 있으면 함께 분리해서 보관.</p></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>강화유리 필름 분리</strong><p>액정 수리 시 새 필름이 필요하므로 미리 떼지 않으셔도 매장에서 분리해 드립니다.</p></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>SIM 카드 / eSIM 확인</strong><p>물리 SIM은 매장에서 분리·재장착해 드립니다. eSIM은 별도 처리 안내 가능.</p></div>
+    </div>
+  </div>
+  <div class="section">
+    <h2 class="section-title">④ 매장 방문 시 챙길 것</h2>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>아이폰 본체</strong><p>케이스·필름 분리 상태로.</p></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>모델명·증상 메모</strong><p>설정 → 일반 → 정보에서 모델명 확인 (예: iPhone 14 Pro). 증상은 한 줄로: "어제 떨어뜨려 액정 깨짐".</p></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text"><strong>견적 캡처 (있으면)</strong><p>카카오 채널·전화로 받은 견적 캡처. 매장 견적과 비교 시 도움이 됩니다.</p></div>
+    </div>
+  </div>
+  <div class="urgent-box">
+    <strong>🚨 침수 응급 상황이라면</strong><p>① 즉시 전원 강제 종료 (볼륨↑짧게+볼륨↓짧게+측면 길게) ② 충전기 절대 꽂지 마세요 ③ 케이스·SIM·카드 분리 ④ 헤어드라이어·쌀통 NO ⑤ 매장에 미리 전화 후 즉시 입고. 골든타임은 6~24시간입니다.</p>
+  </div>
+  <div class="cta-promo">
+    <div class="cta-promo-text">
+      <div class="cta-promo-eyebrow">💛 다올리페어 카카오톡 채널</div>
+      <strong>친구 추가 시 5,000원 할인</strong>
+      <p>사진 1장 + 모델명만 보내시면<br>5~15분 안에 정확한 견적 응답</p>
+      <div class="cta-promo-search">카카오톡 검색 → <strong>"다올리페어"</strong></div>
+      <a href="http://pf.kakao.com/_xfRNMX/friend" target="_blank" class="cta-promo-btn">카카오 채널 추가하기 →</a>
+    </div>
+    <div class="cta-promo-qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=4&data=http://pf.kakao.com/_xfRNMX/friend" alt="다올리페어 카카오 채널 QR" loading="lazy">
+      <small>📱 폰으로 QR 스캔</small>
+    </div>
+  </div>
+  <div class="branded-footer">
+    <div class="bf-headline">
+      <span class="bf-logo">다올리페어</span>
+      <span class="bf-tagline">애플 사설 수리 · 가산·신림·목동 3직영점</span>
+    </div>
+    <div class="footer-info">
+      <div class="footer-info-block">
+        <strong>가산점</strong>
+        <span>가산디지털단지역 9번 출구 바로 앞</span>
+        <small>1·7호선</small>
+      </div>
+      <div class="footer-info-block">
+        <strong>신림점</strong>
+        <span>2호선 신대방역 2번 출구 도보 2분</span>
+        <small>2호선</small>
+      </div>
+      <div class="footer-info-block">
+        <strong>목동점</strong>
+        <span>2호선 양천구청역 도보 10분</span>
+        <small>2호선</small>
+      </div>
+    </div>
+    <div class="bf-hours">
+      <strong>영업시간</strong> 평일 10:00~20:00 · 토요일 11:00~17:00
+    </div>
+    <div class="bf-promise">
+      ✓ 수리 실패 시 비용 0원 &nbsp;·&nbsp; ✓ 90일 무상 보증 &nbsp;·&nbsp; ✓ 정직한 견적
+    </div>
+    <div class="bf-channels">
+      <span>🌐 다올리페어.com</span>
+      <span>💬 카카오톡 "다올리페어"</span>
+      <span>📦 전국 택배 수리</span>
+    </div>
+  </div>
 </div>
 
 <div class="share-toast" id="daolToast">링크가 복사되었습니다 ✓</div>
@@ -341,28 +341,28 @@ body{font-family:var(--font);color:var(--text);background:#f5f5f7;line-height:1.
 </style>
 
 <script>
-window.daolShare = function{
- var title = document.title.replace(/ \| .*$/, '').trim;
- var url = location.href;
- var text = (document.querySelector('meta[name=description]')||{}).content || '다올리페어';
- if(navigator.share){
- navigator.share({title: title, text: text, url: url}).catch(function{});
- } else if(navigator.clipboard){
- navigator.clipboard.writeText(url).then(function{
- var t=document.getElementById('daolToast');
- if(t){t.classList.add('show');setTimeout(function{t.classList.remove('show');},2000);}
- });
- } else {
- prompt('아래 링크를 복사하세요:', url);
- }
+window.daolShare = function(){
+  var title = document.title.replace(/ \| .*$/, '').trim();
+  var url = location.href;
+  var text = (document.querySelector('meta[name=description]')||{}).content || '다올리페어';
+  if(navigator.share){
+    navigator.share({title: title, text: text, url: url}).catch(function(){});
+  } else if(navigator.clipboard){
+    navigator.clipboard.writeText(url).then(function(){
+      var t=document.getElementById('daolToast');
+      if(t){t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2000);}
+    });
+  } else {
+    prompt('아래 링크를 복사하세요:', url);
+  }
 };
 
 if(navigator.platform.includes('Mac')){
- var btn=document.querySelectorAll('.nav-btn:not(.nav-btn-ghost)');
- btn.forEach(function(b){ if(b.textContent.indexOf('PDF로 저장')!==-1) b.textContent='📄 PDF로 저장 (Cmd+P)'; });
+  var btn=document.querySelectorAll('.nav-btn:not(.nav-btn-ghost)');
+  btn.forEach(function(b){ if(b.textContent.indexOf('PDF로 저장')!==-1) b.textContent='📄 PDF로 저장 (Cmd+P)'; });
 }else{
- var btn=document.querySelectorAll('.nav-btn:not(.nav-btn-ghost)');
- btn.forEach(function(b){ if(b.textContent.indexOf('PDF로 저장')!==-1) b.textContent='📄 PDF로 저장 (Ctrl+P)'; });
+  var btn=document.querySelectorAll('.nav-btn:not(.nav-btn-ghost)');
+  btn.forEach(function(b){ if(b.textContent.indexOf('PDF로 저장')!==-1) b.textContent='📄 PDF로 저장 (Ctrl+P)'; });
 }
 </script>
 </body>
