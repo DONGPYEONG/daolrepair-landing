@@ -2060,7 +2060,7 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
   <div class="wrap">
     <span class="eyebrow reveal" style="color:#FF6B35;">수리 전후 비교</span>
     <h2 class="sec-title light reveal d1" style="color:#fff;">이렇게 살려냅니다</h2>
-    <p class="ba-sub reveal d2" style="color:rgba(255,255,255,0.55);">실제 수리 사례 · 손잡이를 좌우로 움직여보세요</p>
+    <p class="ba-sub reveal d2" style="color:rgba(255,255,255,0.55);">실제 수리 사례 · 가운데 <strong style="color:#FF8E5A;">주황색 동그라미</strong>를 좌우로 드래그</p>
 
     <div class="ba-grid" id="baGrid">
       <!-- Card 1: 아이폰 액정 -->
@@ -2081,11 +2081,15 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
             <div class="ba-img-text">전면 액정 파손</div>
           </div>
           <div class="ba-handle">
-            <div class="ba-handle-circle">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="13 17 18 12 13 7"/><polyline points="11 17 6 12 11 7"/>
+            <div class="ba-handle-circle" aria-label="좌우로 드래그">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9 18 4 12 9 6"/>
+                <polyline points="15 18 20 12 15 6"/>
+                <line x1="11" y1="9" x2="11" y2="15"/>
+                <line x1="13" y1="9" x2="13" y2="15"/>
               </svg>
             </div>
+            <div class="ba-handle-hint">← 드래그 →</div>
           </div>
         </div>
         <div class="ba-caption">
@@ -2108,11 +2112,15 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
             <div class="ba-img-text">배터리 부풀어 화면 들뜸</div>
           </div>
           <div class="ba-handle">
-            <div class="ba-handle-circle">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="13 17 18 12 13 7"/><polyline points="11 17 6 12 11 7"/>
+            <div class="ba-handle-circle" aria-label="좌우로 드래그">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9 18 4 12 9 6"/>
+                <polyline points="15 18 20 12 15 6"/>
+                <line x1="11" y1="9" x2="11" y2="15"/>
+                <line x1="13" y1="9" x2="13" y2="15"/>
               </svg>
             </div>
+            <div class="ba-handle-hint">← 드래그 →</div>
           </div>
         </div>
         <div class="ba-caption">
@@ -2135,11 +2143,15 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
             <div class="ba-img-text">메쉬 막힘 · 한쪽 소리 안 남</div>
           </div>
           <div class="ba-handle">
-            <div class="ba-handle-circle">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="13 17 18 12 13 7"/><polyline points="11 17 6 12 11 7"/>
+            <div class="ba-handle-circle" aria-label="좌우로 드래그">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9 18 4 12 9 6"/>
+                <polyline points="15 18 20 12 15 6"/>
+                <line x1="11" y1="9" x2="11" y2="15"/>
+                <line x1="13" y1="9" x2="13" y2="15"/>
               </svg>
             </div>
+            <div class="ba-handle-hint">← 드래그 →</div>
           </div>
         </div>
         <div class="ba-caption">
@@ -2162,11 +2174,15 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
             <div class="ba-img-text">키보드 끈적임 · 일부 입력 안 됨</div>
           </div>
           <div class="ba-handle">
-            <div class="ba-handle-circle">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="13 17 18 12 13 7"/><polyline points="11 17 6 12 11 7"/>
+            <div class="ba-handle-circle" aria-label="좌우로 드래그">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9 18 4 12 9 6"/>
+                <polyline points="15 18 20 12 15 6"/>
+                <line x1="11" y1="9" x2="11" y2="15"/>
+                <line x1="13" y1="9" x2="13" y2="15"/>
               </svg>
             </div>
+            <div class="ba-handle-hint">← 드래그 →</div>
           </div>
         </div>
         <div class="ba-caption">
@@ -2207,7 +2223,12 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
 .ba-dirt { position:absolute; inset:0; background:radial-gradient(circle at 30% 40%,rgba(255,255,255,0.08) 0%,transparent 18%),radial-gradient(circle at 70% 60%,rgba(255,255,255,0.06) 0%,transparent 15%),radial-gradient(circle at 50% 30%,rgba(120,90,60,0.15) 0%,transparent 22%); pointer-events:none; }
 .ba-stain { position:absolute; inset:0; background:radial-gradient(ellipse at 40% 50%,rgba(180,150,80,0.18) 0%,transparent 35%),radial-gradient(ellipse at 65% 55%,rgba(120,90,60,0.15) 0%,transparent 30%); pointer-events:none; }
 .ba-handle { position:absolute; top:0; bottom:0; left:50%; width:3px; background:#fff; transform:translateX(-50%); pointer-events:none; box-shadow:0 0 14px rgba(0,0,0,0.4); z-index:3; }
-.ba-handle-circle { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:42px; height:42px; background:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,0.28); }
+.ba-handle-circle { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:54px; height:54px; background:linear-gradient(135deg,#fff 0%,#f0f0f3 100%); border:3px solid #FF6B35; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 20px rgba(0,0,0,0.45),0 0 0 4px rgba(255,107,53,0.18); animation:ba-handle-pulse 2s ease-in-out infinite; }
+@keyframes ba-handle-pulse { 0%,100% { box-shadow:0 6px 20px rgba(0,0,0,0.45),0 0 0 4px rgba(255,107,53,0.18); } 50% { box-shadow:0 6px 24px rgba(0,0,0,0.5),0 0 0 10px rgba(255,107,53,0.05); } }
+.ba-slider.ba-touched .ba-handle-circle { animation:none; }
+.ba-handle-hint { position:absolute; top:calc(50% + 38px); left:50%; transform:translateX(-50%); font-size:10px; font-weight:800; color:#fff; background:rgba(0,0,0,0.7); padding:4px 10px; border-radius:50px; white-space:nowrap; pointer-events:none; z-index:3; letter-spacing:0.5px; box-shadow:0 2px 8px rgba(0,0,0,0.3); animation:ba-hint-bounce 2.5s ease-in-out infinite; }
+@keyframes ba-hint-bounce { 0%,100% { transform:translateX(-50%) translateY(0); } 50% { transform:translateX(-50%) translateY(3px); } }
+.ba-slider.ba-touched .ba-handle-hint { display:none; }
 .ba-caption { padding:20px 20px 22px; text-align:center; }
 .ba-model { font-size:12px; color:rgba(255,255,255,0.5); font-weight:700; margin-bottom:6px; letter-spacing:0.5px; }
 .ba-issue { font-size:17px; font-weight:800; color:#fff; margin-bottom:14px; line-height:1.4; letter-spacing:-0.3px; }
@@ -2258,7 +2279,9 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
       var rect = slider.getBoundingClientRect();
       return ((clientX - rect.left) / rect.width) * 100;
     }
-    slider.addEventListener('mousedown', function(e){ dragging = true; setPos(getPercent(e.clientX)); e.preventDefault(); });
+    function markTouched(){ slider.classList.add('ba-touched'); }
+
+    slider.addEventListener('mousedown', function(e){ dragging = true; markTouched(); setPos(getPercent(e.clientX)); e.preventDefault(); });
     document.addEventListener('mousemove', function(e){ if(dragging) setPos(getPercent(e.clientX)); });
     document.addEventListener('mouseup', function(){ dragging = false; });
 
@@ -2268,6 +2291,7 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
       dragging = true; axis = null;
       startX = e.touches[0].clientX;
       startY = e.touches[0].clientY;
+      markTouched();
     }, {passive:true});
     slider.addEventListener('touchmove', function(e){
       if(!dragging) return;
