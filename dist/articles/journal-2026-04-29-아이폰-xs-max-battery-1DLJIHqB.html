@@ -568,19 +568,6 @@ body { padding-top: 64px; }
             <option>택배 수리 (전국)</option>
           </select>
         </div>
-        <div style="margin-bottom:12px">
-          <label class="wiz-form-label">제품 잠금 해제 비밀번호 <span style="color:#FF6B66;">*</span></label>
-          <div style="display:flex;gap:8px;margin-bottom:8px;">
-            <button type="button" id="artPwdHave" onclick="artWizPwdChoose('have')" style="flex:1;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px;color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;">있음 (입력)</button>
-            <button type="button" id="artPwdNone" onclick="artWizPwdChoose('none')" style="flex:1;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px;color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;">없음 (초기화 후 발송)</button>
-          </div>
-          <input class="wiz-fi" type="text" id="artWPwd" placeholder="잠금 해제 비밀번호 (숫자 4~6자리)" style="display:none;" maxlength="20">
-          <p style="font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.65;margin-top:8px;">
-            ※ 기능 검수를 위해 제품 잠금 해제 비밀번호가 필요합니다.<br>
-            ※ 불편하신 경우, 초기화 후 비밀번호 없이 초기 화면 상태로 보내주셔도 됩니다.<br>
-            ※ <strong style="color:#FFB87A;">애플워치를 초기화하실 경우 — 초기화 후 반드시 페어링된 아이폰과 함께 보내주세요. 아니면 반송됩니다.</strong>
-          </p>
-        </div>
         <div style="margin-bottom:12px"><label class="wiz-form-label">추가 메모 (선택)</label>
           <textarea class="wiz-ft" id="artWMemo" placeholder="증상을 좀 더 자세히 설명해주시면 빠른 견적이 가능합니다."></textarea>
         </div>
@@ -742,39 +729,15 @@ window.artWizStep4 = function(){
   document.getElementById('artSumRepairs').textContent = artSel.repairs.join(' · ');
   artGoStep(4);
 };
-window.artWizPwdChoose = function(choice){
-  window._artPwdChoice = choice;
-  var have = document.getElementById('artPwdHave');
-  var none = document.getElementById('artPwdNone');
-  var input = document.getElementById('artWPwd');
-  function setActive(btn, on){
-    btn.style.background = on ? 'rgba(232,115,42,0.18)' : 'rgba(255,255,255,0.04)';
-    btn.style.borderColor = on ? '#E8732A' : 'rgba(255,255,255,0.15)';
-    btn.style.color = on ? '#E8732A' : '#fff';
-  }
-  setActive(have, choice==='have');
-  setActive(none, choice==='none');
-  if(choice==='have'){ input.style.display='block'; setTimeout(function(){input.focus();},100); }
-  else { input.style.display='none'; input.value=''; }
-};
-
 window.artWizSubmit = function(){
   var name = document.getElementById('artWName').value.trim();
   var phone = document.getElementById('artWPhone').value.trim();
   var method = document.getElementById('artWMethod').value;
   if(!name||!phone||!method){alert('이름, 연락처, 방문/접수 방법을 입력해주세요.');return;}
-  if(!window._artPwdChoice){alert('제품 잠금 해제 비밀번호 유무를 선택해주세요.');return;}
-  var pwd='';
-  if(window._artPwdChoice==='have'){
-    pwd=document.getElementById('artWPwd').value.trim();
-    if(!pwd){alert('잠금 해제 비밀번호를 입력해주세요. 없으시면 "없음 (초기화 후 발송)"을 선택해주세요.');return;}
-  }
   var memo = document.getElementById('artWMemo').value.trim();
-  var pwdLine = (window._artPwdChoice==='have') ? '🔑 잠금 해제 비밀번호: '+pwd : '🔓 비밀번호 없음 — 초기화 후 발송 예정';
-  memo = pwdLine + (memo ? '\n'+memo : '');
   if(artPhotos.length>0) memo = '📷 사진 '+artPhotos.length+'장 첨부됨\n'+memo;
   var d = ART_DEVICES.find(function(x){return x.key===artSel.device;});
-  try{fetch(APPS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({type:'estimate',device:d?d.label:artSel.device,model:artSel.model,repairs:artSel.repairs.join(', '),name:name,phone:phone,method:method,pwd_choice:window._artPwdChoice,pwd:pwd,memo:memo,photos:artPhotos})}).catch(function(){});}catch(e){}
+  try{fetch(APPS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({type:'estimate',device:d?d.label:artSel.device,model:artSel.model,repairs:artSel.repairs.join(', '),name:name,phone:phone,method:method,memo:memo,photos:artPhotos})}).catch(function(){});}catch(e){}
   document.getElementById('artWizProgress').style.display='none';
   document.querySelectorAll('#artWizModal .wiz-panel').forEach(function(p){p.classList.remove('active');});
   document.getElementById('artWizSuccess').classList.add('show');
@@ -787,10 +750,6 @@ window.artWizReset = function(){
   document.getElementById('artWPhone').value='';
   document.getElementById('artWMethod').value='';
   document.getElementById('artWMemo').value='';
-  document.getElementById('artWPwd').value='';
-  document.getElementById('artWPwd').style.display='none';
-  window._artPwdChoice=null;
-  ['artPwdHave','artPwdNone'].forEach(function(id){var b=document.getElementById(id);if(b){b.style.background='rgba(255,255,255,0.04)';b.style.borderColor='rgba(255,255,255,0.15)';b.style.color='#fff';}});
   document.getElementById('artWPhotoPreview').innerHTML='';
   document.getElementById('artWPhotoArea').querySelector('.fpa-text').innerHTML='<strong>사진 선택하기</strong><br>고장 부위를 찍어 올려주시면 더 빠르게 견적을 드릴 수 있어요';
   document.getElementById('artWPhotoInput').value='';
