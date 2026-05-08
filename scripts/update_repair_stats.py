@@ -652,14 +652,33 @@ def main():
         before_path = case_dir / "before.jpg"
         after_path  = case_dir / "after.jpg"
 
-        # 이미 다운로드된 파일이 있으면 재사용 (속도 최적화)
-        if before_path.exists() and after_path.exists():
+        # 메타 파일로 file_id 추적 — Vision이 다른 파일 선택했으면 재다운로드
+        meta_path = case_dir / "_meta.json"
+        cached_meta = {}
+        if meta_path.exists():
+            try:
+                cached_meta = json.loads(meta_path.read_text(encoding="utf-8"))
+            except Exception:
+                cached_meta = {}
+
+        same_files = (
+            before_path.exists() and after_path.exists()
+            and cached_meta.get("before_file_id") == before_file["id"]
+            and cached_meta.get("after_file_id") == after_file["id"]
+        )
+
+        if same_files:
             print(f"   ✓ case-{case_idx} ({folder_id[:10]}...): {device_label(c['device'], c['model'])} ({c['repair_type']}) — 캐시 사용")
         else:
             try:
                 download(before_file["id"], before_path)
                 download(after_file["id"], after_path)
-                print(f"   ✓ case-{case_idx} ({folder_id[:10]}...): {device_label(c['device'], c['model'])} ({c['repair_type']}) — 새로 다운로드")
+                meta_path.write_text(
+                    json.dumps({"before_file_id": before_file["id"], "after_file_id": after_file["id"], "before_name": before_file["name"], "after_name": after_file["name"]}, ensure_ascii=False),
+                    encoding="utf-8"
+                )
+                reason = "Vision 재선택" if cached_meta else "새로 다운로드"
+                print(f"   ✓ case-{case_idx} ({folder_id[:10]}...): {device_label(c['device'], c['model'])} ({c['repair_type']}) — {reason}")
             except Exception as e:
                 print(f"   ⚠️ case-{case_idx} 다운로드 실패: {e}")
                 case_idx -= 1
