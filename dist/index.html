@@ -2219,7 +2219,7 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
       <a href="portfolio.html" class="ba-portfolio-btn">
         🖼️ 최근 30건 수리 사진 보기 →
       </a>
-      <a href="articles/index.html#journal" class="ba-portfolio-btn ba-portfolio-btn-alt">
+      <a href="articles/journal.html" class="ba-portfolio-btn ba-portfolio-btn-alt">
         📋 실제 수리 사례 읽어보기 →
       </a>
     </div>
@@ -4984,8 +4984,20 @@ window.cartSubmit = function(){
     cwScrolled = false;
     cwReview = 'Y';
     /* 폼 초기화 */
-    ['cwName','cwPhone','cwZip','cwAddr1','cwAddr2','cwMemo'].forEach(function(id){
+    ['cwName','cwPhone','cwZip','cwAddr1','cwAddr2','cwMemo','cwPwd'].forEach(function(id){
       var el = document.getElementById(id); if(el) el.value = '';
+    });
+    /* 비밀번호 칩 초기화 */
+    window._cwPwdChoice = null;
+    var pwdInput = document.getElementById('cwPwd');
+    if (pwdInput) pwdInput.style.display = 'none';
+    ['cwPwdHave','cwPwdNone'].forEach(function(id){
+      var b = document.getElementById(id);
+      if (b) {
+        b.style.background = 'rgba(255,255,255,0.04)';
+        b.style.borderColor = 'rgba(255,255,255,0.15)';
+        b.style.color = '#fff';
+      }
     });
     document.getElementById('cwPhotoPreview').innerHTML = '';
     document.getElementById('cwPhotoArea').querySelector('.fpa-text').innerHTML = '<strong>사진 선택하기</strong><br>고장 부위를 찍어 올려주시면 더 빠르게 견적을 드릴 수 있어요';
@@ -5188,12 +5200,33 @@ window.cartSubmit = function(){
     }).embed(wrap);
   };
 
+  window.cwPwdChoose = function(choice){
+    window._cwPwdChoice = choice;
+    var have = document.getElementById('cwPwdHave');
+    var none = document.getElementById('cwPwdNone');
+    var input = document.getElementById('cwPwd');
+    function setActive(btn, on){
+      btn.style.background = on ? 'rgba(232,115,42,0.18)' : 'rgba(255,255,255,0.04)';
+      btn.style.borderColor = on ? '#E8732A' : 'rgba(255,255,255,0.15)';
+      btn.style.color = on ? '#E8732A' : '#fff';
+    }
+    setActive(have, choice==='have');
+    setActive(none, choice==='none');
+    if(choice==='have'){ input.style.display='block'; setTimeout(function(){input.focus();},100); }
+    else { input.style.display='none'; input.value=''; }
+  };
+
   window.cwToStep5 = function(){
     var name = document.getElementById('cwName').value.trim();
     var phone = document.getElementById('cwPhone').value.trim();
     var addr1 = document.getElementById('cwAddr1').value.trim();
     if(!name||!phone){ alert('이름과 연락처를 입력해주세요.'); return; }
     if(!addr1){ alert('반송 받으실 주소를 검색해주세요.'); return; }
+    if(!window._cwPwdChoice){ alert('제품 잠금 해제 비밀번호 유무를 선택해주세요.'); return; }
+    if(window._cwPwdChoice==='have'){
+      var pwd=document.getElementById('cwPwd').value.trim();
+      if(!pwd){ alert('잠금 해제 비밀번호를 입력해주세요. 없으시면 "없음 (초기화 후 발송)"을 선택해주세요.'); return; }
+    }
     var body = document.getElementById('cwConsentBody');
     body.scrollTop = 0;
     document.getElementById('cwScrollHint').classList.remove('hidden');
@@ -5253,6 +5286,12 @@ window.cartSubmit = function(){
     var addr = (document.getElementById('cwAddr1').value||'') + ' ' + (document.getElementById('cwAddr2').value||'');
     var memo = document.getElementById('cwMemo').value.trim();
     var insurance = document.getElementById('cwInsuranceCheck').checked ? '필요' : '불필요';
+    var pwdChoice = window._cwPwdChoice || 'none';
+    var pwd = pwdChoice === 'have' ? document.getElementById('cwPwd').value.trim() : '';
+    var pwdLine = (pwdChoice === 'have')
+      ? '🔑 잠금 해제 비밀번호: ' + pwd
+      : '🔓 비밀번호 없음 — 초기화 후 발송 예정';
+    memo = pwdLine + (memo ? '\n' + memo : '');
     var photoCount = (window._cwPhotos || []).length;
     if (photoCount > 0) memo = '📷 사진 ' + photoCount + '장 첨부됨\n' + memo;
     sendNotification({
@@ -5265,6 +5304,8 @@ window.cartSubmit = function(){
       address: addr.trim(),
       review: cwReview === 'Y' ? '참여' : '미참여',
       insurance: insurance,
+      pwd_choice: pwdChoice,
+      pwd: pwd,
       memo: memo,
       photos: window._cwPhotos || []
     });
@@ -6322,6 +6363,19 @@ var REVIEWS = [
               <input type="checkbox" id="cwInsuranceCheck" onclick="event.stopPropagation();cwToggleInsurance(false)" style="margin-top:2px;flex-shrink:0">
               <label for="cwInsuranceCheck">여행자 보험 청구용 수리확인서가 필요합니다</label>
             </div>
+          </div>
+          <div class="fg">
+            <label class="cw-label">제품 잠금 해제 비밀번호 <span style="color:#FF6B66;">*</span></label>
+            <div style="display:flex;gap:8px;margin-bottom:8px;">
+              <button type="button" id="cwPwdHave" onclick="cwPwdChoose('have')" style="flex:1;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px;color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;">있음 (입력)</button>
+              <button type="button" id="cwPwdNone" onclick="cwPwdChoose('none')" style="flex:1;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px;color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;">없음 (초기화 후 발송)</button>
+            </div>
+            <input class="fi-dark" type="text" id="cwPwd" placeholder="잠금 해제 비밀번호 (숫자 4~6자리)" style="display:none;" maxlength="20">
+            <p style="font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.65;margin-top:8px;">
+              ※ 기능 검수를 위해 제품 잠금 해제 비밀번호가 필요합니다.<br>
+              ※ 불편하신 경우, 초기화 후 비밀번호 없이 초기 화면 상태로 보내주셔도 됩니다.<br>
+              ※ <strong style="color:#FFB87A;">애플워치를 초기화하실 경우 — 초기화 후 반드시 페어링된 아이폰과 함께 보내주세요. 아니면 반송됩니다.</strong>
+            </p>
           </div>
           <div class="fg">
             <label class="cw-label">추가 메모 <span style="color:rgba(255,255,255,0.3);font-weight:400">(선택)</span></label>

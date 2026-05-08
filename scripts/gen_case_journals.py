@@ -1807,6 +1807,158 @@ def update_articles_index(journals_list):
     index_file.write_text(html, encoding="utf-8")
 
 
+def update_journal_page(journals_list):
+    """전용 수리 일지 페이지 articles/journal.html 생성 — hub 페이지와 동일 구조"""
+    out = ARTICLES_DIR / "journal.html"
+
+    # 디바이스별 분류
+    by_cat = {}
+    for j in sorted(journals_list, key=lambda x: x.get("date", ""), reverse=True):
+        cat = model_to_cat(j.get("model", ""))
+        by_cat.setdefault(cat, []).append(j)
+
+    cat_labels = {
+        "iphone": ("📱", "아이폰"),
+        "watch": ("⌚", "애플워치"),
+        "ipad": ("📋", "아이패드"),
+        "macbook": ("💻", "맥북"),
+        "airpods": ("🎧", "에어팟"),
+        "pencil": ("✏️", "애플펜슬"),
+    }
+
+    # 탭 카운트
+    total = len(journals_list)
+    tab_html = [f'<button class="hub-tab active" onclick="filterJournalTab(\'all\', this)">전체 <span style="opacity:.7;font-weight:600">{total}</span></button>']
+    for cat, (icon, label) in cat_labels.items():
+        if cat in by_cat:
+            tab_html.append(f'<button class="hub-tab" onclick="filterJournalTab(\'{cat}\', this)">{icon} {label} <span style="opacity:.7;font-weight:600">{len(by_cat[cat])}</span></button>')
+
+    # 카드 (전부 한 그리드에)
+    card_html = []
+    for cat, items in by_cat.items():
+        for j in items:
+            slug = j.get("slug", "")
+            title = j.get("title", "")
+            model = j.get("model", "")
+            branch = j.get("branch", "")
+            date = j.get("date", "")
+            type_kr = TYPE_KR.get(j.get("type", ""), "수리")
+            card_html.append(f'''    <a href="{slug}.html" class="hub-card" data-cat="{cat}">
+      <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 {branch} · {date}</div>
+      <div class="hub-card-title">{title}</div>
+      <div class="hub-card-desc">{model} {type_kr} 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
+    </a>''')
+
+    html = f'''<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실제 수리 일지 — 다올리페어 매장 진행 케이스 {total}편 | 다올리페어</title>
+  <meta name="description" content="다올리페어 가산·신림·목동 직영점에서 실제 진행한 수리 사례 {total}편. 모델별·증상별 Before/After 사진 + Q&A + 비교 칼럼 정리.">
+  <link rel="canonical" href="https://xn--2j1bq2k97kxnah86c.com/articles/journal.html">
+  <meta property="og:title" content="실제 수리 일지 — 다올리페어 매장 진행 케이스 {total}편">
+  <meta property="og:description" content="가산·신림·목동 직영점 실제 수리 사례. 모델별·증상별 Before/After + Q&A.">
+  <meta property="og:image" content="https://da-2gx.pages.dev/%EB%8B%A4%EC%98%AC%20%EB%A9%94%EC%9D%B8.jpg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <style>
+    *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
+    :root {{ --orange: #E8732A; --dark: #0A0A0A; --border: #e8e8e8; --muted: #666; --font: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }}
+    body {{ font-family: var(--font); background: #fff; color: var(--dark); -webkit-font-smoothing: antialiased; }}
+    .art-nav {{ position: sticky; top: 0; z-index: 1000; background: rgba(10,10,10,0.82); backdrop-filter: saturate(180%) blur(24px); border-bottom: 1px solid rgba(255,255,255,0.09); }}
+    .art-nav-inner {{ max-width: 1200px; margin: 0 auto; padding: 0 28px; height: 64px; display: flex; align-items: center; justify-content: space-between; }}
+    .art-nav-logo {{ display: flex; align-items: center; gap: 10px; text-decoration: none; }}
+    .art-nav-logo img {{ width: 38px; height: 38px; border-radius: 10px; object-fit: cover; }}
+    .art-nav-logo-text {{ display: flex; flex-direction: column; line-height: 1; }}
+    .art-nav-logo-ko {{ font-size: 15px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }}
+    .art-nav-logo-ko em {{ color: #E8732A; font-style: normal; }}
+    .art-nav-logo-en {{ font-size: 8px; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }}
+    .art-nav-home {{ background: none; border: none; color: rgba(255,255,255,0.75); cursor: pointer; padding: 6px; display: flex; align-items: center; text-decoration: none; }}
+    .art-nav-home:hover {{ color: #fff; }}
+
+    .list-wrap {{ max-width: 880px; margin: 0 auto; padding: 48px 20px 80px; }}
+    .list-eyebrow {{ font-size: 12px; color: var(--orange); font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase; }}
+    .list-title {{ font-size: clamp(24px, 5vw, 36px); font-weight: 900; line-height: 1.3; margin-bottom: 12px; word-break: keep-all; }}
+    .list-desc {{ font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 32px; word-break: keep-all; }}
+
+    .hub-tab-wrap {{ display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }}
+    .hub-tab {{ display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 50px; border: 1.5px solid var(--border); background: #fff; font-size: 13px; font-weight: 700; color: var(--muted); cursor: pointer; transition: all 0.18s; font-family: var(--font); white-space: nowrap; }}
+    .hub-tab:hover {{ border-color: var(--orange); color: var(--orange); }}
+    .hub-tab.active {{ background: var(--orange); border-color: var(--orange); color: #fff; box-shadow: 0 2px 12px rgba(232,115,42,0.28); }}
+
+    .hub-grid {{ display: grid; gap: 14px; grid-template-columns: 1fr; }}
+    @media (min-width: 600px) {{ .hub-grid {{ grid-template-columns: 1fr 1fr; }} }}
+    .hub-card {{ display: block; padding: 22px 20px; border: 1.5px solid var(--border); border-radius: 16px; text-decoration: none; color: inherit; transition: all 0.2s; background: #fff; }}
+    .hub-card:hover {{ border-color: var(--orange); box-shadow: 0 6px 22px rgba(232,115,42,0.12); transform: translateY(-2px); }}
+    .hub-card.cf-hidden {{ display: none; }}
+    .hub-card-title {{ display: block; font-size: 15px; font-weight: 800; line-height: 1.45; color: var(--dark); margin-bottom: 8px; word-break: keep-all; }}
+    .hub-card-desc {{ display: block; font-size: 13px; color: var(--muted); line-height: 1.65; word-break: keep-all; }}
+
+    .back-to-all {{ display: inline-flex; align-items: center; gap: 6px; margin-bottom: 28px; font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 600; }}
+    .back-to-all:hover {{ color: var(--orange); }}
+
+    .art-footer {{ text-align: center; padding: 36px 20px; font-size: 13px; color: #bbb; border-top: 1px solid var(--border); margin-top: 60px; }}
+    .art-footer a {{ color: var(--orange); text-decoration: none; }}
+  </style>
+</head>
+<body>
+
+<nav class="art-nav">
+  <div class="art-nav-inner">
+    <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-logo">
+      <img loading="lazy" src="../로고신규1.jpg" alt="다올리페어">
+      <div class="art-nav-logo-text">
+        <span class="art-nav-logo-ko">다올<em>리페어</em></span>
+        <span class="art-nav-logo-en">Device Repair Master</span>
+      </div>
+    </a>
+    <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-home" title="메인으로">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </a>
+  </div>
+</nav>
+
+<div class="list-wrap">
+  <a href="index.html" class="back-to-all">← 전체 칼럼 보기</a>
+  <div class="list-eyebrow">📋 실제 수리 일지</div>
+  <h1 class="list-title">매장에서 진행한 실제 수리 사례 {total}편</h1>
+  <p class="list-desc">다올리페어 가산·신림·목동 직영점에서 실제 진행한 수리 사례입니다. 모델별·증상별 Before/After 사진과 진단·수리 과정, Q&amp;A까지 정리했어요. 같은 증상으로 검색하시는 분께 도움 되는 자료입니다.</p>
+
+  <div class="hub-tab-wrap">
+{chr(10).join("    " + t for t in tab_html)}
+  </div>
+
+  <div class="hub-grid" id="journalGrid">
+{chr(10).join(card_html)}
+  </div>
+</div>
+
+<footer class="art-footer">
+  <p><a href="https://xn--2j1bq2k97kxnah86c.com">다올리페어</a> · 가산점 · 신림점 · 목동점 · 전국 택배 수리</p>
+</footer>
+
+<script>
+function filterJournalTab(cat, btn) {{
+  document.querySelectorAll('.hub-tab').forEach(function(b){{ b.classList.remove('active'); }});
+  btn.classList.add('active');
+  document.querySelectorAll('.hub-card').forEach(function(c){{
+    if (cat === 'all' || c.dataset.cat === cat) c.classList.remove('cf-hidden');
+    else c.classList.add('cf-hidden');
+  }});
+}}
+</script>
+
+</body>
+</html>'''
+
+    out.write_text(html, encoding="utf-8")
+    print(f"   📋 articles/journal.html — 일지 전용 페이지 ({total}편) 생성")
+
+
 def update_sitemap(journals_list):
     sitemap = ROOT / "sitemap.xml"
     if not sitemap.exists():
@@ -1879,6 +2031,9 @@ def main():
     all_journals = list(journals.values())
     update_articles_index(all_journals)
     print(f"   📑 articles/index.html — 수리 일지 탭 + {len(all_journals)}개 카드 자동 등록")
+
+    # articles/journal.html 자동 갱신 (전용 일지 페이지)
+    update_journal_page(all_journals)
 
     # sitemap.xml 자동 갱신
     if new_articles:
