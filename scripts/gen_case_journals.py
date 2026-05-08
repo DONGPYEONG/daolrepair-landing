@@ -63,15 +63,15 @@ TITLE_TEMPLATES = {
         "{model} 뒷판 떨어뜨려 깨진 다음 날, 다올리페어 {branch}에서 당일 픽업한 후기",
         # 궁금증 유발 / 질문형
         "{model} 후면 유리 깨졌는데 케이스로 가리고 써도 될까? — {branch} 실제 진단",
-        "후면 유리 수리 한 번 받으면 다시 깨질 확률은? — 다올리페어 {branch} 솔직한 답",
-        "공식센터 후면 수리는 왜 그렇게 비쌀까? — {branch}에서 진행한 실제 비교 ({date})",
+        "{model} 후면 유리 수리 한 번 받으면 다시 깨질 확률은? — 다올리페어 {branch} 솔직한 답",
+        "{model} 공식센터 후면 수리는 왜 그렇게 비쌀까? — {branch}에서 진행한 실제 비교",
         # 감정·심리 / 상황 묘사
         "맥세이프 충전기에서 미끄러진 {model}, 후면 산산조각 → 다올리페어 {branch} 진행기",
         "{model} 뒷면 깨진 채로 출근하던 분의 다올리페어 {branch} 당일 해결 사례",
         "차에서 떨어진 {model}, 후면 박살 → 같은 날 매장 정리한 {branch} 케이스",
         # 부담감 해소
         "{model} 후면 깨졌다고 새 폰 갈아탈 뻔 → {branch}에서 합리적으로 해결",
-        "후면 유리 수리비 무서워 미루다 다올리페어 {branch}에서 결심한 결과",
+        "{model} 후면 유리 수리비 무서워 미루다 다올리페어 {branch}에서 결심한 결과",
         # 솔직 후기 톤
         "솔직 후기 — {model} 후면 유리 교체한 후 {branch} 정말 괜찮았나",
         "{model} 후면 수리 — 색상·두께·질감 차이 직접 본 후기 ({branch})",
@@ -483,17 +483,17 @@ TYPE_BODY = {
     <tr style="background:#f5f5f7;">
       <th style="padding:10px;border:1px solid #eee;text-align:left;">옵션</th>
       <th style="padding:10px;border:1px solid #eee;text-align:left;">"비정품 배터리" 경고</th>
-      <th style="padding:10px;border:1px solid #eee;text-align:left;">사이클 추적</th>
       <th style="padding:10px;border:1px solid #eee;text-align:left;">작업 시간</th>
+      <th style="padding:10px;border:1px solid #eee;text-align:left;">가격대</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td style="padding:10px;border:1px solid #eee;"><strong>정품 인증</strong></td><td style="padding:10px;border:1px solid #eee;">안 뜸</td><td style="padding:10px;border:1px solid #eee;">정상 추적</td><td style="padding:10px;border:1px solid #eee;">25~35분</td></tr>
-    <tr><td style="padding:10px;border:1px solid #eee;"><strong>셀 교체</strong></td><td style="padding:10px;border:1px solid #eee;">안 뜸</td><td style="padding:10px;border:1px solid #eee;">0으로 리셋</td><td style="padding:10px;border:1px solid #eee;">35~50분 (정밀 작업)</td></tr>
-    <tr><td style="padding:10px;border:1px solid #eee;"><strong>일반 호환</strong></td><td style="padding:10px;border:1px solid #eee;">뜸 (사용 영향 X)</td><td style="padding:10px;border:1px solid #eee;">0으로 리셋</td><td style="padding:10px;border:1px solid #eee;">25~35분</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;"><strong>정품 인증</strong></td><td style="padding:10px;border:1px solid #eee;">안 뜸</td><td style="padding:10px;border:1px solid #eee;">25~35분</td><td style="padding:10px;border:1px solid #eee;">중간 (1~3만원 추가)</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;"><strong>셀 교체</strong></td><td style="padding:10px;border:1px solid #eee;">안 뜸</td><td style="padding:10px;border:1px solid #eee;">35~50분 (정밀 작업)</td><td style="padding:10px;border:1px solid #eee;">합리적</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;"><strong>일반 호환</strong></td><td style="padding:10px;border:1px solid #eee;">뜸 (사용 영향 X)</td><td style="padding:10px;border:1px solid #eee;">25~35분</td><td style="padding:10px;border:1px solid #eee;">가장 합리적</td></tr>
   </tbody>
 </table>
-<p>※ 3가지 옵션 모두 <strong>최대 용량(성능치)은 100%로 정상 표시</strong>됩니다. 사이클 수는 <strong>정품 인증만 정상 추적</strong>되고, 셀 교체·일반 호환은 새 셀이라 0부터 다시 카운트돼요. 본인 사용 패턴·예산에 맞춰 선택 가능하며, 옵션별 자세한 비교는 <a href="iphone-battery-replacement-types-cost-2026.html">아이폰 배터리 교체 종류·비용 총정리</a>를 참고하세요.</p>
+<p>※ 3가지 옵션 모두 <strong>최대 용량(성능치)은 100%로 정상 표시</strong>됩니다. 본인 사용 패턴·예산에 맞춰 선택 가능하며, 옵션별 자세한 비교는 <a href="iphone-battery-replacement-types-cost-2026.html">아이폰 배터리 교체 종류·비용 총정리</a>를 참고하세요.</p>
 
 <h2>매장에서 진행한 수리 과정</h2>
 <ol>
@@ -684,7 +684,7 @@ QA_BY_TYPE = {
         ("'비정품 배터리' 경고 메시지가 뜨나요?",
          "옵션에 따라 달라요. <a href='iphone-battery-replacement-types-cost-2026.html'>정품 인증·셀 교체는 안 뜨고, 일반 호환은 떠요</a> (단, 사용에는 영향 없음). 메시지가 신경 쓰이시면 정품 인증이나 셀 교체를 선택하시면 됩니다."),
         ("셀 교체와 정품 인증 차이가 뭔가요?",
-         "<a href='iphone-battery-replacement-types-cost-2026.html'><strong>셀 교체</strong></a>는 기존 정품 케이스에 새 셀만 교체 (정밀 작업, 35~50분). <a href='iphone-battery-replacement-types-cost-2026.html'><strong>정품 인증</strong></a>은 시리얼 매칭 가능한 정품급 부품으로 통째 교체 (25~35분). 둘 다 메시지는 안 뜨지만, <strong>사이클 수는 정품 인증만 정상 추적</strong>되고 셀 교체·일반 호환은 0부터 다시 카운트돼요. 정품 인증이 1~3만원 더 비싼 편입니다. 자세한 비교는 <a href='iphone-battery-replacement-types-cost-2026.html'>아이폰 배터리 종류·비용 총정리</a> 참고."),
+         "<a href='iphone-battery-replacement-types-cost-2026.html'><strong>셀 교체</strong></a>는 기존 정품 케이스에 새 셀만 교체 (정밀 작업, 35~50분). <a href='iphone-battery-replacement-types-cost-2026.html'><strong>정품 인증</strong></a>은 시리얼 매칭 가능한 정품급 부품으로 통째 교체 (25~35분). 둘 다 메시지는 안 뜨고 결과는 비슷합니다. 정품 인증이 1~3만원 더 비싸지만 작업 시간이 더 짧아요. 자세한 비교는 <a href='iphone-battery-replacement-types-cost-2026.html'>아이폰 배터리 종류·비용 총정리</a> 참고."),
         ("배터리 교체 후 데이터는 안전한가요?",
          "네, 데이터는 그대로 보존됩니다. 배터리만 교체하기 때문에 본체 메모리·설정·앱·사진은 모두 그대로예요. 자세한 내용은 <a href='iphone-repair-data-safety-by-type.html'>수리 시 데이터 안전 가이드</a> 참고."),
         ("당일 수리 가능한가요?",
@@ -773,8 +773,11 @@ QA_BY_TYPE = {
 }
 
 
-def make_title(c):
-    """후킹 제목 생성 — case_id 기반 deterministic 시드로 같은 케이스는 항상 같은 제목"""
+def make_title(c, used_titles=None):
+    """후킹 제목 생성 — case_id 기반 deterministic + 중복 방지
+
+    used_titles: set, 이미 사용된 제목들. 충돌 시 다음 템플릿으로 자동 이동.
+    """
     type_key = c.get("repair_type") or c.get("type", "")
     # 한국어 type일 경우 영어로 매핑
     if "화면" in type_key or "액정" in type_key: type_key = "screen"
@@ -784,19 +787,36 @@ def make_title(c):
     elif "카메라" in type_key: type_key = "camera"
 
     templates = TITLE_TEMPLATES.get(type_key, DEFAULT_TITLE_TEMPLATES)
+    used = used_titles if used_titles is not None else set()
 
     # 같은 케이스는 같은 제목 — case_id를 시드로 사용
     case_id = c.get("case_id") or c.get("id") or (c.get("model","") + c.get("date","") + c.get("branch",""))
     seed = int(hashlib.md5(case_id.encode("utf-8")).hexdigest(), 16) % (2**32)
-    rng = random.Random(seed)
-    template = rng.choice(templates)
+    start_idx = seed % len(templates)
 
-    return template.format(
+    fmt = lambda t: t.format(
         model=c["model"],
         branch=c["branch"],
         date=c.get("date", ""),
         type_kr=TYPE_KR.get(type_key, "수리"),
     )
+
+    # 시작 인덱스부터 순회하며 중복 안 되는 첫 템플릿 선택
+    for offset in range(len(templates)):
+        idx = (start_idx + offset) % len(templates)
+        title = fmt(templates[idx])
+        if title not in used:
+            if used_titles is not None:
+                used_titles.add(title)
+            return title
+
+    # 모든 템플릿이 사용됨 → 마지막에 모델·날짜 suffix 붙여 강제 유니크
+    base = fmt(templates[start_idx])
+    suffix = f" ({c.get('date', '')})"
+    title = base + suffix
+    if used_titles is not None:
+        used_titles.add(title)
+    return title
 
 
 def make_body(c):
@@ -1427,7 +1447,7 @@ window.artPhotoPreview = function(input){
 """
 
 
-def generate_article(case, journals):
+def generate_article(case, journals, used_titles=None):
     """1편 생성. 이미 (model+type+month) 조합 있으면 None 반환."""
     model = case["model"]
     rtype = case.get("repair_type", "")
@@ -1436,7 +1456,7 @@ def generate_article(case, journals):
     if key in journals:
         return None  # 중복
 
-    title = make_title(case)
+    title = make_title(case, used_titles=used_titles)
     body = make_body(case)
     qa = make_qa(case)
     apple_compare = make_apple_compare(case)
@@ -1956,6 +1976,9 @@ def main():
         except Exception:
             journals = {}
 
+    # 중복 제목 방지를 위한 사용된 제목 추적
+    used_titles = set(j.get("title", "") for j in journals.values())
+
     print(f"📂 케이스 {len(cases)}개 / 기존 일지 {len(journals)}편")
 
     new_articles = []
@@ -1972,7 +1995,7 @@ def main():
             elif "화면" in t and "후면" in t: c["repair_type"] = "screen+back"
             else: c["repair_type"] = "other"
 
-        result = generate_article(c, journals)
+        result = generate_article(c, journals, used_titles=used_titles)
         if result:
             new_articles.append(result)
             journals[result["key"]] = result

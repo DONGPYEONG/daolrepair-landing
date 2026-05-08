@@ -53,6 +53,93 @@
     .art-footer { text-align: center; padding: 36px 20px; font-size: 13px; color: #bbb; border-top: 1px solid var(--border); margin-top: 60px; }
     .art-footer a { color: var(--orange); text-decoration: none; }
   </style>
+
+  <!-- DAOL_GLOBAL_STYLE_v3 -->
+  <style>
+    /* 본문 일반 링크 — 주황 + 밑줄 (다올리페어 브랜드)
+       art-wrap 추가: .art-wrap 직속 컨테이너(p, ul, ol, li, div, td)에 있는 링크도 잡음
+       단, .art-wrap > .art-cta, .art-wrap > .related-grid 같은 영역은 별도 스타일 유지 */
+    .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a,
+    .art-wrap > p a, .art-wrap > ul a, .art-wrap > ol a, .art-wrap p a:not(.art-cta-btn):not(.art-cta-btn-ghost),
+    .art-wrap > .art-good a, .art-wrap > .art-tip a, .art-wrap > .art-warn a, .art-wrap > .daollipair-box a,
+    .art-wrap > h2 + p a, .art-wrap > table a, .art-wrap > .compare-table a, .art-wrap > .art-faq a,
+    .art-wrap > .diag-steps a, .art-wrap > .quick-steps a {
+      color: #E8732A !important;
+      text-decoration: underline !important;
+      text-underline-offset: 2px;
+      font-weight: 600;
+    }
+    .art-body a:hover, .article-content a:hover, article.art-body a:hover, .art-wrap p a:hover {
+      color: #C55E1A !important;
+    }
+    /* 단, 버튼/CTA처럼 background·class 있는 링크는 자기 스타일 유지 */
+    .art-body a[style*="background"],
+    .art-body a[class*="btn"],
+    .art-body a.art-cta-btn,
+    .art-body a.art-cta-btn-ghost,
+    .art-cta a, .art-cta-btns a,
+    .related-card, .related-card a,
+    .art-good a[style*="background"],
+    .art-warn a[style*="background"],
+    .art-wrap a.art-cta-btn, .art-wrap a.art-cta-btn-ghost {
+      text-decoration: none !important;
+      font-weight: inherit;
+    }
+    /* 버튼 내 글자색은 inline style의 color를 그대로 — 단, !important 충돌 회피 위해 별도 처리 X */
+    .art-body a[style*="color:#fff"], .art-body a[style*="color: #fff"],
+    .art-body a[style*="color:#FFF"], .art-body a[style*="color: #FFF"] {
+      color: #fff !important;
+    }
+    .art-body a[style*="color:#000"], .art-body a[style*="color: #000"],
+    .art-body a[style*="color:#1a1a1a"], .art-body a[style*="color: #1a1a1a"] {
+      color: #1a1a1a !important;
+    }
+    /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
+    .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
+    .article-content, .article-content p, .article-content li,
+    article.art-body p, article.art-body li {
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+    .art-body table td, .art-body table th {
+      word-break: keep-all;
+    }
+    /* 제목·짧은 텍스트는 균형 잡힌 줄바꿈 (마지막 줄에 글자 1개만 남는 어색함 방지) */
+    h1, h2, h3, .art-title, .art-body h2, .art-body h3,
+    .ba-issue, .pf-caption-title, .live-rank-name, .live-title,
+    .card-title, .quick-nav-label, .ba-portfolio-btn, .pf-cta-btn {
+      text-wrap: balance;
+      -webkit-text-wrap: balance;
+    }
+    /* 짧은 라벨·배지·메뉴는 절대 줄바꿈 X */
+    .art-nav a, .art-cat, .art-category, .card-category,
+    .ba-meta-tag, .pf-meta-tag, .live-rank-badge,
+    .quick-nav-sub, .tab-btn {
+      white-space: nowrap;
+    }
+    /* 모바일 — 하단 "같이 보면 좋은 글" 섹션 양옆 여백 확보 (카드가 화면 가장자리에 붙지 않게) */
+    @media (max-width: 720px) {
+      .art-related, .art-related[data-auto="related"] {
+        margin-left: 16px !important;
+        margin-right: 16px !important;
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+      }
+      .related-grid {
+        gap: 12px !important;
+      }
+      .related-card {
+        padding: 16px 18px !important;
+      }
+    }
+  </style>
+  <!-- DAOL_FAVICON_v1 -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
 
@@ -87,82 +174,82 @@
   <div class="hub-grid" id="journalGrid">
     <a href="journal-2026-05-08-아이폰-17프로-screen-1osELxQa.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 가산점 · 2026-05-08</div>
-      <div class="hub-card-title">아이폰 17프로 화면 깨짐 → 같은 날 정상 사용까지 — 가산점 케이스</div>
+      <div class="hub-card-title">출근길에 떨어뜨린 아이폰 17프로, 점심시간에 액정 교체 끝낸 가산점 실제 케이스</div>
       <div class="hub-card-desc">아이폰 17프로 액정 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-05-08-아이폰-13미니-battery-1im7V3yy.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 가산점 · 2026-05-08</div>
-      <div class="hub-card-title">아이폰 13미니 배터리 교체비 부담돼서 미뤘는데 가산점에서 합리적으로 해결</div>
+      <div class="hub-card-title">솔직 후기 — 아이폰 13미니 배터리 교체 후 한 달 사용해본 결과 (가산점)</div>
       <div class="hub-card-desc">아이폰 13미니 배터리 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-05-07-아이폰-15프로-screen-1OyrzlRP.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 가산점 · 2026-05-07</div>
-      <div class="hub-card-title">주머니에서 빠진 아이폰 15프로, 화면 산산조각 났는데 30분 만에 멀쩡해진 사연 (가산점)</div>
+      <div class="hub-card-title">아이폰 15프로 액정 교체 — 차 한 잔 시간이면 끝나는 다올리페어 가산점 당일 수리</div>
       <div class="hub-card-desc">아이폰 15프로 액정 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-05-06-아이폰-16-screen-14mAIBCv.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 신림점 · 2026-05-06</div>
-      <div class="hub-card-title">아이폰 16 액정 깨진 채로 며칠… 결국 30분 만에 끝난 다올리페어 신림점 후기</div>
+      <div class="hub-card-title">아이폰 16 액정 수리비 차이, 정말 공식센터의 절반? — 다올리페어 신림점 견적 비교</div>
       <div class="hub-card-desc">아이폰 16 액정 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-05-06-아이폰-14프로-back-1Cc9oGIu.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 신림점 · 2026-05-06</div>
-      <div class="hub-card-title">맥세이프 충전기에서 미끄러진 아이폰 14프로, 후면 산산조각 → 다올리페어 신림점 진행기</div>
+      <div class="hub-card-title">아이폰 14프로 후면 유리 수리비 무서워 미루다 다올리페어 신림점에서 결심한 결과</div>
       <div class="hub-card-desc">아이폰 14프로 후면 유리 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-05-05-아이폰6s-battery-1bdNyoxi.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 가산점 · 2026-05-05</div>
-      <div class="hub-card-title">아이폰6s 배터리 80% 미만, 지금 갈아야 하나 더 써도 되나? — 가산점 진단 후기</div>
+      <div class="hub-card-title">아이폰6s 배터리 교체 — 30분이면 새 배터리로 (다올리페어 가산점)</div>
       <div class="hub-card-desc">아이폰6s 배터리 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-05-04-아이폰-12프로-back-1Vv7RtlP.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 목동점 · 2026-05-04</div>
-      <div class="hub-card-title">후면 유리 수리비 무서워 미루다 다올리페어 목동점에서 결심한 결과</div>
+      <div class="hub-card-title">맥세이프 충전기에서 미끄러진 아이폰 12프로, 후면 산산조각 → 다올리페어 목동점 진행기</div>
       <div class="hub-card-desc">아이폰 12프로 후면 유리 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-05-04-아이폰-12미니-battery-1CU7VD5l.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 목동점 · 2026-05-04</div>
-      <div class="hub-card-title">공식센터 배터리 vs 다올리페어 — 아이폰 12미니 둘 다 메시지 안 뜨는 옵션 있는 이유 (목동점)</div>
+      <div class="hub-card-title">아이폰 12미니 배터리 70% 떨어진 지 반년 미루다 다올리페어 목동점에서 30분 만에 교체</div>
       <div class="hub-card-desc">아이폰 12미니 배터리 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-05-04-아이폰-15프로-battery-1P0o4qDL.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 목동점 · 2026-05-04</div>
-      <div class="hub-card-title">솔직 후기 — 아이폰 15프로 배터리 교체 후 한 달 사용해본 결과 (목동점)</div>
+      <div class="hub-card-title">출근길에 갑자기 꺼진 아이폰 15프로, 점심 때 배터리 교체 끝낸 목동점 케이스</div>
       <div class="hub-card-desc">아이폰 15프로 배터리 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-05-01-아이폰-15프로-back-1f2FXtA6.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 신림점 · 2026-05-01</div>
-      <div class="hub-card-title">아이폰 15프로 뒷면 깨진 채로 출근하던 분의 다올리페어 신림점 당일 해결 사례</div>
+      <div class="hub-card-title">아이폰 15프로 후면 깨졌다고 새 폰 갈아탈 뻔 → 신림점에서 합리적으로 해결</div>
       <div class="hub-card-desc">아이폰 15프로 후면 유리 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-04-30-아이폰-16프로-screen-1Qr6LX9H.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 목동점 · 2026-04-30</div>
-      <div class="hub-card-title">택시에서 떨어뜨린 아이폰 16프로 화면, 폐기 직전에 살린 목동점 사례</div>
+      <div class="hub-card-title">아이폰 16프로 액정 사설 수리 망설인 분께 — 다올리페어 목동점 실제 진행 과정</div>
       <div class="hub-card-desc">아이폰 16프로 액정 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-04-30-아이폰-15프로-battery-1HkvVe9s.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 목동점 · 2026-04-30</div>
-      <div class="hub-card-title">아이폰 15프로 갑자기 50%에서 꺼져버린 다음 날 목동점 가서 해결한 사례</div>
+      <div class="hub-card-title">아이폰 15프로 배터리 교체 — 30분이면 새 배터리로 (다올리페어 목동점)</div>
       <div class="hub-card-desc">아이폰 15프로 배터리 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-04-29-아이폰-12-back-1NVppdC5.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 신림점 · 2026-04-29</div>
-      <div class="hub-card-title">맥세이프 충전기에서 미끄러진 아이폰 12, 후면 산산조각 → 다올리페어 신림점 진행기</div>
+      <div class="hub-card-title">아이폰 12 뒷면 깨진 채로 출근하던 분의 다올리페어 신림점 당일 해결 사례</div>
       <div class="hub-card-desc">아이폰 12 후면 유리 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-04-29-아이폰-xs-max-battery-1DLJIHqB.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 목동점 · 2026-04-29</div>
-      <div class="hub-card-title">출근길에 갑자기 꺼진 아이폰 XS MAX, 점심 때 배터리 교체 끝낸 목동점 케이스</div>
+      <div class="hub-card-title">아이폰 XS MAX 배터리 부풀어서 화면 들뜸 → 다올리페어 목동점 응급 교체 사연</div>
       <div class="hub-card-desc">아이폰 XS MAX 배터리 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-04-27-아이폰-14프로-back-1vyc6Flj.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 신림점 · 2026-04-27</div>
-      <div class="hub-card-title">아이폰 14프로 후면 박살 난 지 한 달 미루다 다올리페어 신림점에서 3시간 만에 끝낸 사례</div>
+      <div class="hub-card-title">솔직 후기 — 아이폰 14프로 후면 유리 교체한 후 신림점 정말 괜찮았나</div>
       <div class="hub-card-desc">아이폰 14프로 후면 유리 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-04-25-아이폰-13미니-battery-17S150oq.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 목동점 · 2026-04-25</div>
-      <div class="hub-card-title">아이폰 13미니 새 폰 갈까 배터리 갈까 고민? — 다올리페어 목동점 비용 비교 후기</div>
+      <div class="hub-card-title">아이폰 13미니 배터리 80% 미만, 지금 갈아야 하나 더 써도 되나? — 목동점 진단 후기</div>
       <div class="hub-card-desc">아이폰 13미니 배터리 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-04-24-아이폰-11-screen-1lOmdLXI.html" class="hub-card" data-cat="iphone">
@@ -172,22 +259,22 @@
     </a>
     <a href="journal-2026-04-20-아이폰-15-back-1U3GDVjv.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 목동점 · 2026-04-20</div>
-      <div class="hub-card-title">후면 유리 수리 한 번 받으면 다시 깨질 확률은? — 다올리페어 목동점 솔직한 답</div>
+      <div class="hub-card-title">아이폰 15 뒷면 깨진 채로 출근하던 분의 다올리페어 목동점 당일 해결 사례</div>
       <div class="hub-card-desc">아이폰 15 후면 유리 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-04-18-아이폰-13미니-back-1fBI5NGp.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 목동점 · 2026-04-18</div>
-      <div class="hub-card-title">후면 유리 수리 한 번 받으면 다시 깨질 확률은? — 다올리페어 목동점 솔직한 답</div>
+      <div class="hub-card-title">아이폰 13미니 후면 깨졌다고 새 폰 갈아탈 뻔 → 목동점에서 합리적으로 해결</div>
       <div class="hub-card-desc">아이폰 13미니 후면 유리 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-04-18-아이폰-12프로맥스-screen-1YTvaa_L.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 목동점 · 2026-04-18</div>
-      <div class="hub-card-title">아이폰 12프로맥스 액정 수리비 차이, 정말 공식센터의 절반? — 다올리페어 목동점 견적 비교</div>
+      <div class="hub-card-title">아이폰 12프로맥스 화면 깨진 지 일주일째 미루다 다올리페어 목동점에서 당일 해결한 사연</div>
       <div class="hub-card-desc">아이폰 12프로맥스 액정 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-04-17-아이폰-15plus-back-1izFb94b.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 목동점 · 2026-04-17</div>
-      <div class="hub-card-title">후면 유리 수리비 무서워 미루다 다올리페어 목동점에서 결심한 결과</div>
+      <div class="hub-card-title">아이폰 15PLUS 후면 수리 — 색상·두께·질감 차이 직접 본 후기 (목동점)</div>
       <div class="hub-card-desc">아이폰 15PLUS 후면 유리 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-04-16-아이폰-6-screen-13Qv_rnP.html" class="hub-card" data-cat="iphone">
@@ -197,7 +284,7 @@
     </a>
     <a href="journal-2026-04-15-아이폰7-screen-1l_qsfwc.html" class="hub-card" data-cat="iphone">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 목동점 · 2026-04-15</div>
-      <div class="hub-card-title">공식센터 예약 1주 기다리다 다올리페어 목동점 갔더니 30분 만에 끝난 아이폰7</div>
+      <div class="hub-card-title">아이폰7 액정 수리비 폭탄 걱정했는데… 생각보다 합리적이었던 다올리페어 목동점</div>
       <div class="hub-card-desc">아이폰7 액정 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-05-06-아이패드-미니6-charge-1vFX-wUW.html" class="hub-card" data-cat="ipad">
@@ -207,12 +294,12 @@
     </a>
     <a href="journal-2026-04-30-애플워치-se2-40mm-battery-1jbdaG3N.html" class="hub-card" data-cat="watch">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 목동점 · 2026-04-30</div>
-      <div class="hub-card-title">애플워치 SE2 40mm 배터리 부풀어서 화면 들뜸 → 다올리페어 목동점 응급 교체 사연</div>
+      <div class="hub-card-title">애플워치 SE2 40mm 배터리 사설 수리 무섭다고요? — 다올리페어 목동점 실제 진행 과정</div>
       <div class="hub-card-desc">애플워치 SE2 40mm 배터리 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-04-29-애플워치-se-40mm-battery-1c74rh7i.html" class="hub-card" data-cat="watch">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 목동점 · 2026-04-29</div>
-      <div class="hub-card-title">출근길에 갑자기 꺼진 애플워치 SE 40mm, 점심 때 배터리 교체 끝낸 목동점 케이스</div>
+      <div class="hub-card-title">애플워치 SE 40mm 배터리 80% 미만, 지금 갈아야 하나 더 써도 되나? — 목동점 진단 후기</div>
       <div class="hub-card-desc">애플워치 SE 40mm 배터리 교체 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
     </a>
     <a href="journal-2026-04-17-에르메스-5세대-44mm-screen-1ybYHdi_.html" class="hub-card" data-cat="watch">

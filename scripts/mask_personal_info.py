@@ -111,10 +111,13 @@ def _is_keep_text(text: str, in_top_region: bool = False) -> bool:
 
 
 def _pixelate(crop):
-    """모자이크 효과 — 가우시안 블러보다 훨씬 강력하게 텍스트 식별 차단."""
+    """모자이크 효과 — 가우시안 블러보다 훨씬 강력하게 텍스트 식별 차단.
+
+    블록 크기를 키워서 사람 눈으로도 절대 못 읽게 함.
+    """
     w, h = crop.size
-    # 블록 크기: 짧은 변의 1/8 (최소 8, 최대 40)
-    block = max(8, min(40, min(w, h) // 8))
+    # 블록 크기: 짧은 변의 1/4 (최소 12, 최대 80) — 강한 모자이크
+    block = max(12, min(80, min(w, h) // 4))
     small = crop.resize((max(1, w // block), max(1, h // block)), Image.NEAREST)
     return small.resize((w, h), Image.NEAREST)
 
