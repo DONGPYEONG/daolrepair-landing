@@ -19,7 +19,7 @@ import sys
 from pathlib import Path
 
 try:
-    from PIL import Image, ImageFilter, ImageOps
+    from PIL import Image, ImageFilter, ImageOps, ImageDraw
 except ImportError:
     print("⚠️ Pillow 필요: pip install Pillow")
     sys.exit(1)
@@ -190,13 +190,10 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
             print(f"  🛡️ 마스킹: 블러할 텍스트 없음 / 살림 {len(kept)}개 [{kept_preview}]")
         return False
 
-    # 각 영역에 모자이크(픽셀화) 적용 — 가우시안 블러보다 훨씬 강력
+    # 각 영역을 검정 사각형으로 완전히 덮음 — 어떤 경우에도 100% 가려짐
+    draw = ImageDraw.Draw(img)
     for (x1, y1, x2, y2, _txt) in regions_to_blur:
-        crop = img.crop((x1, y1, x2, y2))
-        pixelated = _pixelate(crop)
-        # 위에 약한 블러 한 번 더 — 픽셀 경계 자연스럽게
-        pixelated = pixelated.filter(ImageFilter.GaussianBlur(radius=4))
-        img.paste(pixelated, (x1, y1, x2, y2))
+        draw.rectangle([x1, y1, x2, y2], fill=(0, 0, 0))
 
     img.save(path, 'JPEG', quality=88, optimize=True)
 
@@ -222,11 +219,9 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
         if x_max > x_min and y_max > y_min:
             extra_blur.append((x_min, y_min, x_max, y_max, text.strip()))
     if extra_blur:
+        draw2 = ImageDraw.Draw(img)
         for (x1, y1, x2, y2, _txt) in extra_blur:
-            crop = img.crop((x1, y1, x2, y2))
-            pixelated = _pixelate(crop)
-            pixelated = pixelated.filter(ImageFilter.GaussianBlur(radius=4))
-            img.paste(pixelated, (x1, y1, x2, y2))
+            draw2.rectangle([x1, y1, x2, y2], fill=(0, 0, 0))
         img.save(path, 'JPEG', quality=88, optimize=True)
 
     total = len(regions_to_blur) + len(extra_blur)
