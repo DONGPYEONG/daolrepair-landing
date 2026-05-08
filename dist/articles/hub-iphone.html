@@ -1,960 +1,967 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>아이폰 수리 완전 가이드 — 화면·배터리·충전·카메라 132개 칼럼 | 다올리페어</title>
-  <meta name="description" content="아이폰 수리에 대한 모든 것 — 화면, 배터리, 충전, 카메라, 후면유리, 침수까지 71개 전문가 칼럼을 주제별로 정리했습니다. 다올리페어">
-  <link rel="canonical" href="https://xn--2j1bq2k97kxnah86c.com/articles/hub-iphone.html">
-  <meta property="og:title" content="아이폰 수리 완전 가이드 | 다올리페어">
-  <meta property="og:description" content="아이폰 수리에 대한 모든 것 — 화면, 배터리, 충전, 카메라까지 132개 칼럼을 주제별로 정리했습니다.">
-  <meta property="og:image" content="https://da-2gx.pages.dev/%EB%8B%A4%EC%98%AC%20%EB%A9%94%EC%9D%B8.jpg">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --orange: #E8732A; --dark: #0A0A0A; --border: #e8e8e8; --muted: #666; --font: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
-    body { font-family: var(--font); background: #fff; color: var(--dark); -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
-    @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>아이폰 수리 완전 가이드 — 화면·배터리·충전·카메라 132개 칼럼 | 다올리페어</title>
+ <meta name="description" content="아이폰 수리에 대한 모든 것 — 화면, 배터리, 충전, 카메라, 후면유리, 침수까지 71개 전문가 칼럼을 주제별로 정리했습니다. 다올리페어">
+ <link rel="canonical" href="https://xn--2j1bq2k97kxnah86c.com/articles/hub-iphone.html">
+ <meta property="og:title" content="아이폰 수리 완전 가이드 | 다올리페어">
+ <meta property="og:description" content="아이폰 수리에 대한 모든 것 — 화면, 배터리, 충전, 카메라까지 132개 칼럼을 주제별로 정리했습니다.">
+ <meta property="og:image" content="https://da-2gx.pages.dev/%EB%8B%A4%EC%98%AC%20%EB%A9%94%EC%9D%B8.jpg">
+ <style>
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ :root { --orange: #E8732A; --dark: #0A0A0A; --border: #e8e8e8; --muted: #666; --font: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
+ body { font-family: var(--font); background: #fff; color: var(--dark); -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
+ @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
 
-    .art-nav { position: sticky; top: 0; z-index: 1000; background: rgba(10,10,10,0.82); backdrop-filter: saturate(180%) blur(24px); -webkit-backdrop-filter: saturate(180%) blur(24px); border-bottom: 1px solid rgba(255,255,255,0.09); transition: background 0.3s; }
-    .art-nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 28px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
-    .art-nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .art-nav-logo img { width: 38px; height: 38px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
-    .art-nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
-    .art-nav-logo-ko { font-size: 15px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
-    .art-nav-logo-ko em { color: #E8732A; font-style: normal; }
-    .art-nav-logo-en { font-size: 8px; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
-    .art-nav-links { display: flex; gap: 0; list-style: none; align-items: center; }
-    .art-nav-links li { display: flex; align-items: center; }
-    .art-nav-links li + li::before { content: ''; display: block; width: 1px; height: 12px; background: rgba(255,255,255,0.12); flex-shrink: 0; margin: 0 1px; }
-    .art-nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 12.5px; font-weight: 400; transition: color 0.2s; padding: 0 9px; }
-    .art-nav-links a:hover { color: #fff; }
-    .art-nav-home { position: relative; background: none; border: none; color: rgba(255,255,255,0.75); cursor: pointer; padding: 6px; display: flex; align-items: center; justify-content: center; margin-left: 4px; margin-right: 4px; text-decoration: none; transition: color 0.2s; flex-shrink: 0; }
-    .art-nav-home:hover { color: #fff !important; }
-    .art-nav-reserve { position: relative; }
-    .art-nav-reserve-btn { background: #E8732A; color: #fff; padding: 6px 13px; border-radius: 20px; font-size: 12.5px; font-weight: 700; border: none; cursor: pointer; transition: background 0.2s; white-space: nowrap; font-family: var(--font); }
-    .art-nav-reserve-btn:hover { background: #C55E1A; }
-    .art-nav-reserve-dropdown { display: none; position: absolute; top: calc(100% + 10px); right: 0; background: #1D1D1F; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
-    .art-nav-reserve.open .art-nav-reserve-dropdown { display: block; }
-    .art-nav-reserve-dropdown a { display: block; padding: 13px 18px; color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.07); transition: all 0.15s; }
-    .art-nav-reserve-dropdown a:last-child { border-bottom: none; }
-    .art-nav-reserve-dropdown a:hover { background: rgba(232,115,42,0.12); color: #E8732A; }
-    .art-nav-reserve-dropdown a span { font-size: 11px; color: rgba(255,255,255,0.35); display: block; margin-top: 2px; font-weight: 400; }
-    @media (max-width: 768px) { .art-nav-links { display: none; } .art-nav-inner { padding: 0 20px; } }
+ .art-nav { position: sticky; top: 0; z-index: 1000; background: rgba(10,10,10,0.82); backdrop-filter: saturate(180%) blur(24px); -webkit-backdrop-filter: saturate(180%) blur(24px); border-bottom: 1px solid rgba(255,255,255,0.09); transition: background 0.3s; }
+ .art-nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 28px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+ .art-nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+ .art-nav-logo img { width: 38px; height: 38px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+ .art-nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+ .art-nav-logo-ko { font-size: 15px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
+ .art-nav-logo-ko em { color: #E8732A; font-style: normal; }
+ .art-nav-logo-en { font-size: 8px; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
+ .art-nav-links { display: flex; gap: 0; list-style: none; align-items: center; }
+ .art-nav-links li { display: flex; align-items: center; }
+ .art-nav-links li + li::before { content: ''; display: block; width: 1px; height: 12px; background: rgba(255,255,255,0.12); flex-shrink: 0; margin: 0 1px; }
+ .art-nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 12.5px; font-weight: 400; transition: color 0.2s; padding: 0 9px; }
+ .art-nav-links a:hover { color: #fff; }
+ .art-nav-home { position: relative; background: none; border: none; color: rgba(255,255,255,0.75); cursor: pointer; padding: 6px; display: flex; align-items: center; justify-content: center; margin-left: 4px; margin-right: 4px; text-decoration: none; transition: color 0.2s; flex-shrink: 0; }
+ .art-nav-home:hover { color: #fff !important; }
+ .art-nav-reserve { position: relative; }
+ .art-nav-reserve-btn { background: #E8732A; color: #fff; padding: 6px 13px; border-radius: 20px; font-size: 12.5px; font-weight: 700; border: none; cursor: pointer; transition: background 0.2s; white-space: nowrap; font-family: var(--font); }
+ .art-nav-reserve-btn:hover { background: #C55E1A; }
+ .art-nav-reserve-dropdown { display: none; position: absolute; top: calc(100% + 10px); right: 0; background: #1D1D1F; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+ .art-nav-reserve.open .art-nav-reserve-dropdown { display: block; }
+ .art-nav-reserve-dropdown a { display: block; padding: 13px 18px; color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.07); transition: all 0.15s; }
+ .art-nav-reserve-dropdown a:last-child { border-bottom: none; }
+ .art-nav-reserve-dropdown a:hover { background: rgba(232,115,42,0.12); color: #E8732A; }
+ .art-nav-reserve-dropdown a span { font-size: 11px; color: rgba(255,255,255,0.35); display: block; margin-top: 2px; font-weight: 400; }
+ @media (max-width: 768px) { .art-nav-links { display: none; } .art-nav-inner { padding: 0 20px; } }
 
-    .list-wrap { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
-    .list-header { margin-bottom: 36px; }
-    .list-eyebrow { font-size: 12px; color: var(--orange); font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; }
-    .list-title { font-size: clamp(24px, 5vw, 36px); font-weight: 900; line-height: 1.3; margin-bottom: 12px; }
-    .list-desc { font-size: 15px; color: var(--muted); line-height: 1.7; }
+ .list-wrap { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
+ .list-header { margin-bottom: 36px; }
+ .list-eyebrow { font-size: 12px; color: var(--orange); font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; }
+ .list-title { font-size: clamp(24px, 5vw, 36px); font-weight: 900; line-height: 1.3; margin-bottom: 12px; }
+ .list-desc { font-size: 15px; color: var(--muted); line-height: 1.7; }
 
-    /* 허브 탭 네비게이션 */
-    .hub-tab-wrap { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
-    .hub-tab { display: inline-flex; align-items: center; padding: 8px 16px; border-radius: 50px; border: 1.5px solid var(--border); background: #fff; font-size: 13px; font-weight: 700; color: var(--muted); cursor: pointer; transition: all 0.18s; font-family: var(--font); white-space: nowrap; text-decoration: none; }
-    .hub-tab:hover { border-color: var(--orange); color: var(--orange); }
-    .hub-tab.active { background: var(--dark); border-color: var(--dark); color: #fff; }
+ /* 허브 탭 네비게이션 */
+ .hub-tab-wrap { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+ .hub-tab { display: inline-flex; align-items: center; padding: 8px 16px; border-radius: 50px; border: 1.5px solid var(--border); background: #fff; font-size: 13px; font-weight: 700; color: var(--muted); cursor: pointer; transition: all 0.18s; font-family: var(--font); white-space: nowrap; text-decoration: none; }
+ .hub-tab:hover { border-color: var(--orange); color: var(--orange); }
+ .hub-tab.active { background: var(--dark); border-color: var(--dark); color: #fff; }
 
-    /* 허브 섹션 */
-    .hub-section { margin-bottom: 48px; }
-    .hub-section-title { font-size: 20px; font-weight: 900; margin-bottom: 20px; padding-left: 14px; border-left: 4px solid var(--orange); line-height: 1.4; }
-    .hub-section-count { font-size: 13px; font-weight: 500; color: var(--muted); margin-left: 8px; }
-    .hub-grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
-    @media (min-width: 540px) { .hub-grid { grid-template-columns: 1fr 1fr; } }
-    .hub-card { display: block; padding: 20px; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s; background: #fff; }
-    .hub-card:hover { border-color: var(--orange); box-shadow: 0 4px 20px rgba(232,115,42,0.1); }
-    .hub-card-title { display: block; font-size: 15px; font-weight: 800; line-height: 1.45; color: var(--dark); margin-bottom: 6px; }
-    .hub-card-desc { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+ /* 허브 섹션 */
+ .hub-section { margin-bottom: 48px; }
+ .hub-section-title { font-size: 20px; font-weight: 900; margin-bottom: 20px; padding-left: 14px; border-left: 4px solid var(--orange); line-height: 1.4; }
+ .hub-section-count { font-size: 13px; font-weight: 500; color: var(--muted); margin-left: 8px; }
+ .hub-grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
+ @media (min-width: 540px) { .hub-grid { grid-template-columns: 1fr 1fr; } }
+ .hub-card { display: block; padding: 20px; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s; background: #fff; }
+ .hub-card:hover { border-color: var(--orange); box-shadow: 0 4px 20px rgba(232,115,42,0.1); }
+ .hub-card-title { display: block; font-size: 15px; font-weight: 800; line-height: 1.45; color: var(--dark); margin-bottom: 6px; }
+ .hub-card-desc { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.6; }
 
-    /* 전체 칼럼 목록 링크 */
-    .back-to-all { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 28px; font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 600; transition: color 0.2s; }
-    .back-to-all:hover { color: var(--orange); }
-    
-    .art-related { margin-top: 56px; padding-top: 40px; border-top: 2px solid var(--border); }
-    .art-related-heading { font-size: 18px; font-weight: 900; color: var(--dark); margin-bottom: 20px; }
-    .art-related-heading::before { content: ''; display: block; width: 28px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 12px; }
-    .related-grid { display: flex; flex-direction: column; gap: 10px; }
-    .related-card { display: block; padding: 16px 20px; border: 1.5px solid var(--border); border-radius: 14px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s; }
-    .related-card:hover { border-color: var(--orange); box-shadow: 0 4px 16px rgba(232,115,42,0.1); }
-    .related-badge { display: inline-block; background: rgba(232,115,42,0.1); color: var(--orange); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; }
-    .related-title { display: block; font-size: 14px; font-weight: 700; color: var(--dark); line-height: 1.5; }
+ /* 전체 칼럼 목록 링크 */
+ .back-to-all { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 28px; font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+ .back-to-all:hover { color: var(--orange); }
+ 
+ .art-related { margin-top: 56px; padding-top: 40px; border-top: 2px solid var(--border); }
+ .art-related-heading { font-size: 18px; font-weight: 900; color: var(--dark); margin-bottom: 20px; }
+ .art-related-heading::before { content: ''; display: block; width: 28px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 12px; }
+ .related-grid { display: flex; flex-direction: column; gap: 10px; }
+ .related-card { display: block; padding: 16px 20px; border: 1.5px solid var(--border); border-radius: 14px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s; }
+ .related-card:hover { border-color: var(--orange); box-shadow: 0 4px 16px rgba(232,115,42,0.1); }
+ .related-badge { display: inline-block; background: rgba(232,115,42,0.1); color: var(--orange); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; }
+ .related-title { display: block; font-size: 14px; font-weight: 700; color: var(--dark); line-height: 1.5; }
 
-    .art-footer { text-align: center; padding: 36px 20px; font-size: 13px; color: #bbb; border-top: 1px solid var(--border); margin-top: 60px; }
-    .art-footer a { color: var(--orange); text-decoration: none; }
-  </style>
+ .art-footer { text-align: center; padding: 36px 20px; font-size: 13px; color: #bbb; border-top: 1px solid var(--border); margin-top: 60px; }
+ .art-footer a { color: var(--orange); text-decoration: none; }
+ </style>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "다올리페어",
-    "description": "가산·신림·목동 3지점에서 아이폰·아이패드·맥북·애플워치·에어팟을 정직한 가격으로 수리하는 애플 사설 수리 매장",
-    "url": "https://xn--2j1bq2k97kxnah86c.com",
-    "image": "https://da-2gx.pages.dev/%EB%8B%A4%EC%98%AC%20%EB%A9%94%EC%9D%B8.jpg",
-    "telephone": "+82-2-000-0000",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "KR",
-      "addressRegion": "서울특별시",
-      "addressLocality": "금천구·관악구·양천구"
-    },
-    "areaServed": ["서울특별시", "금천구", "관악구", "양천구", "가산디지털단지", "신림", "목동"],
-    "openingHoursSpecification": [
-      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "10:00", "closes": "20:00"},
-      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "11:00", "closes": "20:00"}
-    ],
-    "department": [
-      {"@type": "LocalBusiness", "name": "다올리페어 가산점", "areaServed": "가산디지털단지·금천구·독산", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"},
-      {"@type": "LocalBusiness", "name": "다올리페어 신림점", "areaServed": "신림·관악구·서울대입구·봉천", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"},
-      {"@type": "LocalBusiness", "name": "다올리페어 목동점", "areaServed": "목동·양천구·신정·신월", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"}
-    ],
-    "priceRange": "₩₩"
-  }
-  </script>
-  <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "다올리페어는 어디에 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "가산점(가산디지털단지역 9번 출구), 신림점(신대방역 2번 출구 도보 2분), 목동점(양천구청역 도보 10분) 3개 직영점입니다. 전국 택배 수리도 가능합니다."}}, {"@type": "Question", "name": "영업시간은 어떻게 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "평일 10:00~20:00, 토요일 11:00~17:00, 일요일 휴무. 모든 매장 동일하게 운영됩니다."}}, {"@type": "Question", "name": "결제 방법은?", "acceptedAnswer": {"@type": "Answer", "text": "현금·카드 가능. 카카오페이·네이버페이는 미지원. 회사 비용 처리를 위한 영수증·세금계산서 발행 가능합니다."}}, {"@type": "Question", "name": "수리 보증은 얼마나 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "동일 부품 문제 시 90일 무상 재수리. 수리 실패 시 비용 0원 정책."}}, {"@type": "Question", "name": "택배 수리도 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "네, 전국 어디서나 택배 수리 가능합니다. 카카오 채널 \"다올리페어\"로 사전 상담 후 접수."}}]}
-  </script>
+ <script type="application/ld+json">
+ {
+ "@context": "https://schema.org",
+ "@type": "LocalBusiness",
+ "name": "다올리페어",
+ "description": "가산·신림·목동 3지점에서 아이폰·아이패드·맥북·애플워치·에어팟을 정직한 가격으로 수리하는 애플 사설 수리 매장",
+ "url": "https://xn--2j1bq2k97kxnah86c.com",
+ "image": "https://da-2gx.pages.dev/%EB%8B%A4%EC%98%AC%20%EB%A9%94%EC%9D%B8.jpg",
+ "telephone": "+82-2-000-0000",
+ "address": {
+ "@type": "PostalAddress",
+ "addressCountry": "KR",
+ "addressRegion": "서울특별시",
+ "addressLocality": "금천구·관악구·양천구"
+ },
+ "areaServed": ["서울특별시", "금천구", "관악구", "양천구", "가산디지털단지", "신림", "목동"],
+ "openingHoursSpecification": [
+ {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "10:00", "closes": "20:00"},
+ {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "11:00", "closes": "20:00"}
+ ],
+ "department": [
+ {"@type": "LocalBusiness", "name": "다올리페어 가산점", "areaServed": "가산디지털단지·금천구·독산", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"},
+ {"@type": "LocalBusiness", "name": "다올리페어 신림점", "areaServed": "신림·관악구·서울대입구·봉천", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"},
+ {"@type": "LocalBusiness", "name": "다올리페어 목동점", "areaServed": "목동·양천구·신정·신월", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"}
+ ],
+ "priceRange": "₩₩"
+ }
+ </script>
+ <script type="application/ld+json">
+ {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "다올리페어는 어디에 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "가산점(가산디지털단지역 9번 출구), 신림점(신대방역 2번 출구 도보 2분), 목동점(양천구청역 도보 10분) 3개 직영점입니다. 전국 택배 수리도 가능합니다."}}, {"@type": "Question", "name": "영업시간은 어떻게 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "평일 10:00~20:00, 토요일 11:00~17:00, 일요일 휴무. 모든 매장 동일하게 운영됩니다."}}, {"@type": "Question", "name": "결제 방법은?", "acceptedAnswer": {"@type": "Answer", "text": "현금·카드 가능. 카카오페이·네이버페이는 미지원. 회사 비용 처리를 위한 영수증·세금계산서 발행 가능합니다."}}, {"@type": "Question", "name": "수리 보증은 얼마나 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "동일 부품 문제 시 90일 무상 재수리. 수리 실패 시 비용 0원 정책."}}, {"@type": "Question", "name": "택배 수리도 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "네, 전국 어디서나 택배 수리 가능합니다. 카카오 채널 \"다올리페어\"로 사전 상담 후 접수."}}]}
+ </script>
 
-  <!-- ─ Google Analytics 4 ─────────────────────────────── -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TF9YKW0FW2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-TF9YKW0FW2', {
-      'page_title': document.title,
-      'page_location': window.location.href
-    });
-    document.addEventListener('DOMContentLoaded', function(){
-      function track(n, p){ if(typeof gtag==='function') gtag('event', n, Object.assign({'page_path':window.location.pathname,'page_title':document.title}, p||{})); }
-      document.querySelectorAll('a[href*="pf.kakao.com"]').forEach(function(el){ el.addEventListener('click', function(){ track('kakao_click', {'destination': el.href}); }); });
-      document.querySelectorAll('a[href*="naver.me"]').forEach(function(el){ el.addEventListener('click', function(){
-        var t = el.textContent.trim().substring(0, 30);
-        var b = t.indexOf('가산')>=0?'가산점':t.indexOf('신림')>=0?'신림점':t.indexOf('목동')>=0?'목동점':'기타';
-        track('naver_click', {'branch': b, 'label': t});
-      }); });
-      document.querySelectorAll('a[href^="tel:"]').forEach(function(el){ el.addEventListener('click', function(){ track('phone_click', {'phone': el.href.replace('tel:','')}); }); });
-      document.querySelectorAll('a[href*="portfolio.html"]').forEach(function(el){ el.addEventListener('click', function(){ track('portfolio_view', {}); }); });
-    });
-  </script>
+ <!-- ─ Google Analytics 4 ─────────────────────────────── -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-TF9YKW0FW2"></script>
+ <script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag{dataLayer.push(arguments);}
+ gtag('js', new Date);
+ gtag('config', 'G-TF9YKW0FW2', {
+ 'page_title': document.title,
+ 'page_location': window.location.href
+ });
+ document.addEventListener('DOMContentLoaded', function{
+ function track(n, p){ if(typeof gtag==='function') gtag('event', n, Object.assign({'page_path':window.location.pathname,'page_title':document.title}, p||{})); }
+ document.querySelectorAll('a[href*="pf.kakao.com"]').forEach(function(el){ el.addEventListener('click', function{ track('kakao_click', {'destination': el.href}); }); });
+ document.querySelectorAll('a[href*="naver.me"]').forEach(function(el){ el.addEventListener('click', function{
+ var t = el.textContent.trim.substring(0, 30);
+ var b = t.indexOf('가산')>=0?'가산점':t.indexOf('신림')>=0?'신림점':t.indexOf('목동')>=0?'목동점':'기타';
+ track('naver_click', {'branch': b, 'label': t});
+ }); });
+ document.querySelectorAll('a[href^="tel:"]').forEach(function(el){ el.addEventListener('click', function{ track('phone_click', {'phone': el.href.replace('tel:','')}); }); });
+ document.querySelectorAll('a[href*="portfolio.html"]').forEach(function(el){ el.addEventListener('click', function{ track('portfolio_view', {}); }); });
+ });
+ </script>
 
-  <!-- DAOL_GLOBAL_STYLE_v1 -->
-  <style>
-    /* 본문 링크 통일 — 주황 + 밑줄 (다올리페어 브랜드) */
-    .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
-      color: #E8732A !important;
-      text-decoration: underline !important;
-      text-underline-offset: 2px;
-      font-weight: 600;
-    }
-    .art-body a:hover, .article-content a:hover, article.art-body a:hover {
-      color: #C55E1A !important;
-    }
-    /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
-    .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
-    .article-content, .article-content p, .article-content li,
-    article.art-body p, article.art-body li {
-      word-break: keep-all;
-      overflow-wrap: break-word;
-    }
-    /* 표 셀도 동일 */
-    .art-body table td, .art-body table th {
-      word-break: keep-all;
-    }
-  </style>
+ <!-- DAOL_GLOBAL_STYLE_v1 -->
+ <style>
+ /* 본문 링크 통일 — 주황 + 밑줄 (다올리페어 브랜드) */
+ .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
+ color: #E8732A !important;
+ text-decoration: underline !important;
+ text-underline-offset: 2px;
+ font-weight: 600;
+ }
+ .art-body a:hover, .article-content a:hover, article.art-body a:hover {
+ color: #C55E1A !important;
+ }
+ /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
+ .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
+ .article-content, .article-content p, .article-content li,
+ article.art-body p, article.art-body li {
+ word-break: keep-all;
+ overflow-wrap: break-word;
+ }
+ /* 표 셀도 동일 */
+ .art-body table td, .art-body table th {
+ word-break: keep-all;
+ }
+ </style>
 
-  <!-- DAOL_GLOBAL_STYLE_v2 -->
-  <style>
-    /* 본문 일반 링크 — 주황 + 밑줄 (다올리페어 브랜드) */
-    .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
-      color: #E8732A !important;
-      text-decoration: underline !important;
-      text-underline-offset: 2px;
-      font-weight: 600;
-    }
-    .art-body a:hover, .article-content a:hover, article.art-body a:hover {
-      color: #C55E1A !important;
-    }
-    /* 단, 버튼/CTA처럼 background·class 있는 링크는 자기 스타일 유지 */
-    .art-body a[style*="background"],
-    .art-body a[class*="btn"],
-    .art-body a.art-cta-btn,
-    .art-body a.art-cta-btn-ghost,
-    .art-cta a,
-    .art-good a[style*="background"],
-    .art-warn a[style*="background"] {
-      text-decoration: none !important;
-      font-weight: inherit;
-    }
-    /* 버튼 내 글자색은 inline style의 color를 그대로 — 단, !important 충돌 회피 위해 별도 처리 X */
-    .art-body a[style*="color:#fff"], .art-body a[style*="color: #fff"],
-    .art-body a[style*="color:#FFF"], .art-body a[style*="color: #FFF"] {
-      color: #fff !important;
-    }
-    .art-body a[style*="color:#000"], .art-body a[style*="color: #000"],
-    .art-body a[style*="color:#1a1a1a"], .art-body a[style*="color: #1a1a1a"] {
-      color: #1a1a1a !important;
-    }
-    /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
-    .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
-    .article-content, .article-content p, .article-content li,
-    article.art-body p, article.art-body li {
-      word-break: keep-all;
-      overflow-wrap: break-word;
-    }
-    .art-body table td, .art-body table th {
-      word-break: keep-all;
-    }
-    /* 제목·짧은 텍스트는 균형 잡힌 줄바꿈 (마지막 줄에 글자 1개만 남는 어색함 방지) */
-    h1, h2, h3, .art-title, .art-body h2, .art-body h3,
-    .ba-issue, .pf-caption-title, .live-rank-name, .live-title,
-    .card-title, .quick-nav-label, .ba-portfolio-btn, .pf-cta-btn {
-      text-wrap: balance;
-      -webkit-text-wrap: balance;
-    }
-    /* 짧은 라벨·배지·메뉴는 절대 줄바꿈 X */
-    .art-nav a, .art-cat, .art-category, .card-category,
-    .ba-meta-tag, .pf-meta-tag, .live-rank-badge,
-    .quick-nav-sub, .tab-btn {
-      white-space: nowrap;
-    }
-  </style>
+ <!-- DAOL_GLOBAL_STYLE_v2 -->
+ <style>
+ /* 본문 일반 링크 — 주황 + 밑줄 (다올리페어 브랜드) */
+ .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
+ color: #E8732A !important;
+ text-decoration: underline !important;
+ text-underline-offset: 2px;
+ font-weight: 600;
+ }
+ .art-body a:hover, .article-content a:hover, article.art-body a:hover {
+ color: #C55E1A !important;
+ }
+ /* 단, 버튼/CTA처럼 background·class 있는 링크는 자기 스타일 유지 */
+ .art-body a[style*="background"],
+ .art-body a[class*="btn"],
+ .art-body a.art-cta-btn,
+ .art-body a.art-cta-btn-ghost,
+ .art-cta a,
+ .art-good a[style*="background"],
+ .art-warn a[style*="background"] {
+ text-decoration: none !important;
+ font-weight: inherit;
+ }
+ /* 버튼 내 글자색은 inline style의 color를 그대로 — 단, !important 충돌 회피 위해 별도 처리 X */
+ .art-body a[style*="color:#fff"], .art-body a[style*="color: #fff"],
+ .art-body a[style*="color:#FFF"], .art-body a[style*="color: #FFF"] {
+ color: #fff !important;
+ }
+ .art-body a[style*="color:#000"], .art-body a[style*="color: #000"],
+ .art-body a[style*="color:#1a1a1a"], .art-body a[style*="color: #1a1a1a"] {
+ color: #1a1a1a !important;
+ }
+ /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
+ .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
+ .article-content, .article-content p, .article-content li,
+ article.art-body p, article.art-body li {
+ word-break: keep-all;
+ overflow-wrap: break-word;
+ }
+ .art-body table td, .art-body table th {
+ word-break: keep-all;
+ }
+ /* 제목·짧은 텍스트는 균형 잡힌 줄바꿈 (마지막 줄에 글자 1개만 남는 어색함 방지) */
+ h1, h2, h3, .art-title, .art-body h2, .art-body h3,
+ .ba-issue, .pf-caption-title, .live-rank-name, .live-title,
+ .card-title, .quick-nav-label, .ba-portfolio-btn, .pf-cta-btn {
+ text-wrap: balance;
+ -webkit-text-wrap: balance;
+ }
+ /* 짧은 라벨·배지·메뉴는 절대 줄바꿈 X */
+ .art-nav a, .art-cat, .art-category, .card-category,
+ .ba-meta-tag, .pf-meta-tag, .live-rank-badge,
+ .quick-nav-sub, .tab-btn {
+ white-space: nowrap;
+ }
+ </style>
+ <!-- DAOL_FAVICON_v1 -->
+ <link rel="icon" type="image/x-icon" href="/favicon.ico">
+ <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+ <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
 
 <nav class="art-nav">
-  <div class="art-nav-inner">
-    <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-logo">
-      <img loading="lazy" src="../로고신규1.jpg" alt="다올리페어">
-      <div class="art-nav-logo-text">
-        <span class="art-nav-logo-ko">다올<em>리페어</em></span>
-        <span class="art-nav-logo-en">Device Repair Master</span>
-      </div>
-    </a>
-    <ul class="art-nav-links">
-      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#philosophy">철학</a></li>
-      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#services">서비스</a></li>
-      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#estimate">수리 견적</a></li>
-      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#courier">택배접수</a></li>
-      <li><a href="index.html" style="color:#E8732A;font-weight:700;">수리 칼럼</a></li>
-      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#reviews">후기</a></li>
-      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#locations">지점안내</a></li>
-      <li class="art-nav-reserve">
-        <button class="art-nav-reserve-btn" onclick="this.closest('.art-nav-reserve').classList.toggle('open')">수리 예약 ▾</button>
-        <div class="art-nav-reserve-dropdown">
-          <a href="https://naver.me/xyjKp1eq" target="_blank" rel="noopener">가산점 예약<span>네이버 예약으로 이동</span></a>
-          <a href="https://naver.me/Faf1J0yG" target="_blank" rel="noopener">신림점 예약<span>네이버 예약으로 이동</span></a>
-          <a href="https://naver.me/5nojklP7" target="_blank" rel="noopener">목동점 예약<span>네이버 예약으로 이동</span></a>
-        </div>
-      </li>
-    </ul>
-    <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-home" title="메인으로"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
-  </div>
+ <div class="art-nav-inner">
+ <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-logo">
+ <img loading="lazy" src="../로고신규1.jpg" alt="다올리페어">
+ <div class="art-nav-logo-text">
+ <span class="art-nav-logo-ko">다올<em>리페어</em></span>
+ <span class="art-nav-logo-en">Device Repair Master</span>
+ </div>
+ </a>
+ <ul class="art-nav-links">
+ <li><a href="https://xn--2j1bq2k97kxnah86c.com/#philosophy">철학</a></li>
+ <li><a href="https://xn--2j1bq2k97kxnah86c.com/#services">서비스</a></li>
+ <li><a href="https://xn--2j1bq2k97kxnah86c.com/#estimate">수리 견적</a></li>
+ <li><a href="https://xn--2j1bq2k97kxnah86c.com/#courier">택배접수</a></li>
+ <li><a href="index.html" style="color:#E8732A;font-weight:700;">수리 칼럼</a></li>
+ <li><a href="https://xn--2j1bq2k97kxnah86c.com/#reviews">후기</a></li>
+ <li><a href="https://xn--2j1bq2k97kxnah86c.com/#locations">지점안내</a></li>
+ <li class="art-nav-reserve">
+ <button class="art-nav-reserve-btn" onclick="this.closest('.art-nav-reserve').classList.toggle('open')">수리 예약 ▾</button>
+ <div class="art-nav-reserve-dropdown">
+ <a href="https://naver.me/xyjKp1eq" target="_blank" rel="noopener">가산점 예약<span>네이버 예약으로 이동</span></a>
+ <a href="https://naver.me/Faf1J0yG" target="_blank" rel="noopener">신림점 예약<span>네이버 예약으로 이동</span></a>
+ <a href="https://naver.me/5nojklP7" target="_blank" rel="noopener">목동점 예약<span>네이버 예약으로 이동</span></a>
+ </div>
+ </li>
+ </ul>
+ <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-home" title="메인으로"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
+ </div>
 </nav>
 <script>document.addEventListener('click',function(e){if(!e.target.closest('.art-nav-reserve')){document.querySelectorAll('.art-nav-reserve').forEach(el=>el.classList.remove('open'))}});</script>
 
 <div class="list-wrap">
-  <a href="index.html" class="back-to-all">&larr; 전체 칼럼 목록</a>
+ <a href="index.html" class="back-to-all">&larr; 전체 칼럼 목록</a>
 
-  <div class="list-header">
-    <div class="list-eyebrow">수리 가이드 허브</div>
-    <h1 class="list-title">아이폰 수리 완전 가이드</h1>
-    <p class="list-desc">아이폰 수리에 대한 모든 것 — 화면, 배터리, 충전, 카메라까지 132개 칼럼을 주제별로 정리했습니다.</p>
-  </div>
+ <div class="list-header">
+ <div class="list-eyebrow">수리 가이드 허브</div>
+ <h1 class="list-title">아이폰 수리 완전 가이드</h1>
+ <p class="list-desc">아이폰 수리에 대한 모든 것 — 화면, 배터리, 충전, 카메라까지 132개 칼럼을 주제별로 정리했습니다.</p>
+ </div>
 
-  <div class="hub-tab-wrap">
-    <a href="hub-iphone.html" class="hub-tab active">아이폰</a>
-    <a href="hub-ipad.html" class="hub-tab">아이패드</a>
-    <a href="hub-macbook.html" class="hub-tab">맥북</a>
-    <a href="hub-watch.html" class="hub-tab">애플워치</a>
-    <a href="hub-airpods.html" class="hub-tab">에어팟·펜슬</a>
-    <a href="hub-guide.html" class="hub-tab">수리 가이드</a>
-  </div>
+ <div class="hub-tab-wrap">
+ <a href="hub-iphone.html" class="hub-tab active">아이폰</a>
+ <a href="hub-ipad.html" class="hub-tab">아이패드</a>
+ <a href="hub-macbook.html" class="hub-tab">맥북</a>
+ <a href="hub-watch.html" class="hub-tab">애플워치</a>
+ <a href="hub-airpods.html" class="hub-tab">에어팟·펜슬</a>
+ <a href="hub-guide.html" class="hub-tab">수리 가이드</a>
+ </div>
 
-  <!-- 배터리 시기·교체 (모델별) -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">배터리 시기·교체 (모델별)<span class="hub-section-count">5편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-16-pro-max-battery-80-percent-replacement-time.html" class="hub-card"><span class="hub-card-title">iPhone 16 Pro Max 배터리 80% 미만 — 교체 시기와 비용</span><span class="hub-card-desc">최대 용량 80% 미만 시점의 교체 결정과 옵션별 가격.</span></a>
-      <a href="iphone-15-pro-battery-important-message-decision.html" class="hub-card"><span class="hub-card-title">iPhone 15 Pro \"중요한 메시지\" — 교체할까 더 쓸까</span><span class="hub-card-desc">iOS 자동 진단 알림의 의미와 교체 결정 가이드.</span></a>
-      <a href="iphone-14-battery-1-year-cycle-check.html" class="hub-card"><span class="hub-card-title">iPhone 14 1년 사용 후 — 사이클 점검과 교체 신호</span><span class="hub-card-desc">사이클 수와 최대 용량 함께 확인하는 정밀 점검.</span></a>
-      <a href="iphone-13-battery-2-year-replacement-signs.html" class="hub-card"><span class="hub-card-title">iPhone 13 배터리 2년 차 — 교체 시점 신호</span><span class="hub-card-desc">평균 사이클 600회 도달 시점의 사용감 차이.</span></a>
-      <a href="iphone-12-battery-under-80-cost-vs-new.html" class="hub-card"><span class="hub-card-title">iPhone 12 80% 미만 — 비용 vs 새 폰 결정</span><span class="hub-card-desc">4년 차 종합 판단 가이드. iOS 지원·부품 상태 함께.</span></a>
-    </div>
-  </div>
+ <!-- 배터리 시기·교체 (모델별) -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">배터리 시기·교체 (모델별)<span class="hub-section-count">5편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-16-pro-max-battery-80-percent-replacement-time.html" class="hub-card"><span class="hub-card-title">iPhone 16 Pro Max 배터리 80% 미만 — 교체 시기와 비용</span><span class="hub-card-desc">최대 용량 80% 미만 시점의 교체 결정과 옵션별 가격.</span></a>
+ <a href="iphone-15-pro-battery-important-message-decision.html" class="hub-card"><span class="hub-card-title">iPhone 15 Pro \"중요한 메시지\" — 교체할까 더 쓸까</span><span class="hub-card-desc">iOS 자동 진단 알림의 의미와 교체 결정 가이드.</span></a>
+ <a href="iphone-14-battery-1-year-cycle-check.html" class="hub-card"><span class="hub-card-title">iPhone 14 1년 사용 후 — 사이클 점검과 교체 신호</span><span class="hub-card-desc">사이클 수와 최대 용량 함께 확인하는 정밀 점검.</span></a>
+ <a href="iphone-13-battery-2-year-replacement-signs.html" class="hub-card"><span class="hub-card-title">iPhone 13 배터리 2년 차 — 교체 시점 신호</span><span class="hub-card-desc">평균 사이클 600회 도달 시점의 사용감 차이.</span></a>
+ <a href="iphone-12-battery-under-80-cost-vs-new.html" class="hub-card"><span class="hub-card-title">iPhone 12 80% 미만 — 비용 vs 새 폰 결정</span><span class="hub-card-desc">4년 차 종합 판단 가이드. iOS 지원·부품 상태 함께.</span></a>
+ </div>
+ </div>
 
-  <!-- 배터리 증상 진단 (모델별) -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">배터리 증상 진단 (모델별)<span class="hub-section-count">5편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-16-battery-sudden-shutdown-cell-vs-mainboard.html" class="hub-card"><span class="hub-card-title">iPhone 16 갑자기 꺼짐 — 셀 vs 메인보드</span><span class="hub-card-desc">최대 용량으로 어느 쪽 원인인지 1분 자가진단.</span></a>
-      <a href="iphone-15-overheating-charging-stop-diagnosis.html" class="hub-card"><span class="hub-card-title">iPhone 15 발열로 충전 멈춤 — 배터리 vs 메인보드</span><span class="hub-card-desc">환경·셀 노화·메인보드 4단계 진단.</span></a>
-      <a href="iphone-14-battery-fast-drain-cell-aging.html" class="hub-card"><span class="hub-card-title">iPhone 14 빠르게 닳음 — 셀 노화 측정</span><span class="hub-card-desc">앱·iOS·셀 노화 구분으로 정확한 원인 파악.</span></a>
-      <a href="iphone-13-full-charge-30-percent-5hours.html" class="hub-card"><span class="hub-card-title">iPhone 13 완충 후 5시간 30% — 셀 노화 신호</span><span class="hub-card-desc">셀 노화의 가장 명확한 패턴 진단.</span></a>
-      <a href="iphone-12-mini-winter-sudden-shutdown.html" class="hub-card"><span class="hub-card-title">iPhone 12 mini 겨울 갑자기 꺼짐 — 저온 셀</span><span class="hub-card-desc">작은 폼팩터 + 저온 환경에서 셀 노화 신호.</span></a>
-    </div>
-  </div>
+ <!-- 배터리 증상 진단 (모델별) -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">배터리 증상 진단 (모델별)<span class="hub-section-count">5편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-16-battery-sudden-shutdown-cell-vs-mainboard.html" class="hub-card"><span class="hub-card-title">iPhone 16 갑자기 꺼짐 — 셀 vs 메인보드</span><span class="hub-card-desc">최대 용량으로 어느 쪽 원인인지 1분 자가진단.</span></a>
+ <a href="iphone-15-overheating-charging-stop-diagnosis.html" class="hub-card"><span class="hub-card-title">iPhone 15 발열로 충전 멈춤 — 배터리 vs 메인보드</span><span class="hub-card-desc">환경·셀 노화·메인보드 4단계 진단.</span></a>
+ <a href="iphone-14-battery-fast-drain-cell-aging.html" class="hub-card"><span class="hub-card-title">iPhone 14 빠르게 닳음 — 셀 노화 측정</span><span class="hub-card-desc">앱·iOS·셀 노화 구분으로 정확한 원인 파악.</span></a>
+ <a href="iphone-13-full-charge-30-percent-5hours.html" class="hub-card"><span class="hub-card-title">iPhone 13 완충 후 5시간 30% — 셀 노화 신호</span><span class="hub-card-desc">셀 노화의 가장 명확한 패턴 진단.</span></a>
+ <a href="iphone-12-mini-winter-sudden-shutdown.html" class="hub-card"><span class="hub-card-title">iPhone 12 mini 겨울 갑자기 꺼짐 — 저온 셀</span><span class="hub-card-desc">작은 폼팩터 + 저온 환경에서 셀 노화 신호.</span></a>
+ </div>
+ </div>
 
-  <!-- 배터리 부풂 응급 (모델별) -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">배터리 부풂 응급 (모델별)<span class="hub-section-count">3편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-16-pro-battery-swelling-screen-popped.html" class="hub-card"><span class="hub-card-title">iPhone 16 Pro 부풀어 화면 뜸 — 즉시 사용 중지</span><span class="hub-card-desc">부풂 단계 즉시 매장 = 배터리만 교체로 끝.</span></a>
-      <a href="iphone-xr-battery-swelling-emergency.html" class="hub-card"><span class="hub-card-title">iPhone XR 스웰링 — 위험 신호와 응급 대응</span><span class="hub-card-desc">5~6년 사용 모델에 흔한 셀 노화 누적.</span></a>
-      <a href="iphone-11-pro-max-back-rising-battery.html" class="hub-card"><span class="hub-card-title">iPhone 11 Pro Max 후면 떠오름 — 응급</span><span class="hub-card-desc">큰 폰 + 5년 이상 사용 시 빈도 ↑.</span></a>
-    </div>
-  </div>
+ <!-- 배터리 부풂 응급 (모델별) -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">배터리 부풂 응급 (모델별)<span class="hub-section-count">3편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-16-pro-battery-swelling-screen-popped.html" class="hub-card"><span class="hub-card-title">iPhone 16 Pro 부풀어 화면 뜸 — 즉시 사용 중지</span><span class="hub-card-desc">부풂 단계 즉시 매장 = 배터리만 교체로 끝.</span></a>
+ <a href="iphone-xr-battery-swelling-emergency.html" class="hub-card"><span class="hub-card-title">iPhone XR 스웰링 — 위험 신호와 응급 대응</span><span class="hub-card-desc">5~6년 사용 모델에 흔한 셀 노화 누적.</span></a>
+ <a href="iphone-11-pro-max-back-rising-battery.html" class="hub-card"><span class="hub-card-title">iPhone 11 Pro Max 후면 떠오름 — 응급</span><span class="hub-card-desc">큰 폰 + 5년 이상 사용 시 빈도 ↑.</span></a>
+ </div>
+ </div>
 
-  <!-- 충전·배터리 진단 (모델별) -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">충전·배터리 진단 (모델별)<span class="hub-section-count">3편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-14-not-charging-battery-port-diagnosis.html" class="hub-card"><span class="hub-card-title">iPhone 14 충전 안 됨 — 배터리·단자 4단계 진단</span><span class="hub-card-desc">케이블·단자·배터리·메인보드 차례로 확인.</span></a>
-      <a href="iphone-15-pro-overheating-fast-drain-battery-vs-app.html" class="hub-card"><span class="hub-card-title">iPhone 15 Pro 발열·빠른 소모 — 배터리 vs 앱</span><span class="hub-card-desc">앱 백그라운드와 셀 노화 정확히 구분.</span></a>
-      <a href="iphone-16-not-fully-charging-100-percent-cell-aging.html" class="hub-card"><span class="hub-card-title">iPhone 16 100% 안 채워짐 — 셀 노화 신호</span><span class="hub-card-desc">80% 보호 모드 vs 셀 노화 구분.</span></a>
-    </div>
-  </div>
+ <!-- 충전·배터리 진단 (모델별) -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">충전·배터리 진단 (모델별)<span class="hub-section-count">3편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-14-not-charging-battery-port-diagnosis.html" class="hub-card"><span class="hub-card-title">iPhone 14 충전 안 됨 — 배터리·단자 4단계 진단</span><span class="hub-card-desc">케이블·단자·배터리·메인보드 차례로 확인.</span></a>
+ <a href="iphone-15-pro-overheating-fast-drain-battery-vs-app.html" class="hub-card"><span class="hub-card-title">iPhone 15 Pro 발열·빠른 소모 — 배터리 vs 앱</span><span class="hub-card-desc">앱 백그라운드와 셀 노화 정확히 구분.</span></a>
+ <a href="iphone-16-not-fully-charging-100-percent-cell-aging.html" class="hub-card"><span class="hub-card-title">iPhone 16 100% 안 채워짐 — 셀 노화 신호</span><span class="hub-card-desc">80% 보호 모드 vs 셀 노화 구분.</span></a>
+ </div>
+ </div>
 
-  <!-- 구형 모델 배터리 결정 -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">구형 모델 배터리 결정<span class="hub-section-count">3편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-x-battery-replacement-vs-new-6-year.html" class="hub-card"><span class="hub-card-title">iPhone X 6년차 — 배터리 교체 vs 새 폰</span><span class="hub-card-desc">iOS 지원·다른 부품 종합 판단 가이드.</span></a>
-      <a href="iphone-xs-max-battery-replacement-2-more-years.html" class="hub-card"><span class="hub-card-title">iPhone XS Max — 교체 후 1~2년 더 사용?</span><span class="hub-card-desc">7년 차 모델의 추가 수명 결정 기준.</span></a>
-      <a href="iphone-se-3-battery-cycle-difference-from-others.html" class="hub-card"><span class="hub-card-title">iPhone SE 3세대 — 일반 모델과 다른 점</span><span class="hub-card-desc">작은 셀의 노화 특성과 교체 시기.</span></a>
-    </div>
-  </div>
+ <!-- 구형 모델 배터리 결정 -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">구형 모델 배터리 결정<span class="hub-section-count">3편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-x-battery-replacement-vs-new-6-year.html" class="hub-card"><span class="hub-card-title">iPhone X 6년차 — 배터리 교체 vs 새 폰</span><span class="hub-card-desc">iOS 지원·다른 부품 종합 판단 가이드.</span></a>
+ <a href="iphone-xs-max-battery-replacement-2-more-years.html" class="hub-card"><span class="hub-card-title">iPhone XS Max — 교체 후 1~2년 더 사용?</span><span class="hub-card-desc">7년 차 모델의 추가 수명 결정 기준.</span></a>
+ <a href="iphone-se-3-battery-cycle-difference-from-others.html" class="hub-card"><span class="hub-card-title">iPhone SE 3세대 — 일반 모델과 다른 점</span><span class="hub-card-desc">작은 셀의 노화 특성과 교체 시기.</span></a>
+ </div>
+ </div>
 
-  <!-- 카메라·메인보드 진단·수리 (모델별) -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">카메라·메인보드 진단·수리 (모델별)<span class="hub-section-count">3편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-14-pro-camera-shake-ois-damage.html" class="hub-card">
-        <span class="hub-card-title">iPhone 14 Pro 카메라 흔들림(OIS) — 진동·낙하 누적</span>
-        <span class="hub-card-desc">OIS 손상 신호와 모듈 교체 가격, 렌즈만 교체 옵션.</span>
-      </a>
-      <a href="iphone-15-rear-camera-black-screen-module-vs-board.html" class="hub-card">
-        <span class="hub-card-title">iPhone 15 후면 카메라 검은 화면 — 모듈 vs 메인보드</span>
-        <span class="hub-card-desc">전면·후면 동시 검사로 어느 쪽 원인인지 1분 진단.</span>
-      </a>
-      <a href="iphone-14-pro-max-apple-logo-stuck-mainboard.html" class="hub-card">
-        <span class="hub-card-title">iPhone 14 Pro Max 사과 로고 멈춤 — 메인보드 진단</span>
-        <span class="hub-card-desc">전원 IC·NAND 손상 신호와 데이터 보존 절차.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 카메라·메인보드 진단·수리 (모델별) -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">카메라·메인보드 진단·수리 (모델별)<span class="hub-section-count">3편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-14-pro-camera-shake-ois-damage.html" class="hub-card">
+ <span class="hub-card-title">iPhone 14 Pro 카메라 흔들림(OIS) — 진동·낙하 누적</span>
+ <span class="hub-card-desc">OIS 손상 신호와 모듈 교체 가격, 렌즈만 교체 옵션.</span>
+ </a>
+ <a href="iphone-15-rear-camera-black-screen-module-vs-board.html" class="hub-card">
+ <span class="hub-card-title">iPhone 15 후면 카메라 검은 화면 — 모듈 vs 메인보드</span>
+ <span class="hub-card-desc">전면·후면 동시 검사로 어느 쪽 원인인지 1분 진단.</span>
+ </a>
+ <a href="iphone-14-pro-max-apple-logo-stuck-mainboard.html" class="hub-card">
+ <span class="hub-card-title">iPhone 14 Pro Max 사과 로고 멈춤 — 메인보드 진단</span>
+ <span class="hub-card-desc">전원 IC·NAND 손상 신호와 데이터 보존 절차.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 침수 응급 (모델별) -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">침수 응급 (모델별)<span class="hub-section-count">3편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-14-toilet-water-fall-emergency.html" class="hub-card">
-        <span class="hub-card-title">iPhone 14 변기·물에 빠짐 — 골든타임 24시간</span>
-        <span class="hub-card-desc">맑은 물 침수 시간대별 회복률 + 절대 하면 안 되는 3가지.</span>
-      </a>
-      <a href="iphone-16-coffee-drink-spill-6-hour-golden.html" class="hub-card">
-        <span class="hub-card-title">iPhone 16 커피·음료수 쏟음 — 6시간 골든타임</span>
-        <span class="hub-card-desc">당분 음료는 부식 5~10배 가속. 24시간이 아니라 6시간.</span>
-      </a>
-      <a href="iphone-15-rain-soaked-charging-port-corrosion.html" class="hub-card">
-        <span class="hub-card-title">iPhone 15 비 맞은 후 충전 안 됨 — USB-C 부식</span>
-        <span class="hub-card-desc">빗물 부식이 단자 핀 안쪽에서 진행. 24시간 안 입고.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 침수 응급 (모델별) -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">침수 응급 (모델별)<span class="hub-section-count">3편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-14-toilet-water-fall-emergency.html" class="hub-card">
+ <span class="hub-card-title">iPhone 14 변기·물에 빠짐 — 골든타임 24시간</span>
+ <span class="hub-card-desc">맑은 물 침수 시간대별 회복률 + 절대 하면 안 되는 3가지.</span>
+ </a>
+ <a href="iphone-16-coffee-drink-spill-6-hour-golden.html" class="hub-card">
+ <span class="hub-card-title">iPhone 16 커피·음료수 쏟음 — 6시간 골든타임</span>
+ <span class="hub-card-desc">당분 음료는 부식 5~10배 가속. 24시간이 아니라 6시간.</span>
+ </a>
+ <a href="iphone-15-rain-soaked-charging-port-corrosion.html" class="hub-card">
+ <span class="hub-card-title">iPhone 15 비 맞은 후 충전 안 됨 — USB-C 부식</span>
+ <span class="hub-card-desc">빗물 부식이 단자 핀 안쪽에서 진행. 24시간 안 입고.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- LCD 손상 진단·수리 (모델별) -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">LCD 손상 진단·수리 (모델별)<span class="hub-section-count">4편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-16-pro-black-spot-spreading-display-damage.html" class="hub-card">
-        <span class="hub-card-title">iPhone 16 Pro 화면 검은 멍 번짐 — 디스플레이 교체</span>
-        <span class="hub-card-desc">검은 멍은 LCD 셀이 죽고 있다는 신호. 1주일 안에 번짐.</span>
-      </a>
-      <a href="iphone-15-screen-line-appearing-lcd-damage.html" class="hub-card">
-        <span class="hub-card-title">iPhone 15 액정에 줄 생김 — 낙하 vs 노화 구분</span>
-        <span class="hub-card-desc">디지타이저·케이블 손상 신호. 모듈 교체로 해결.</span>
-      </a>
-      <a href="iphone-14-partial-touch-not-working-lcd-damage.html" class="hub-card">
-        <span class="hub-card-title">iPhone 14 화면 일부 터치 안 됨 — LCD 신호</span>
-        <span class="hub-card-desc">디지타이저 손상. LCD와 일체형이라 모듈 통째 교체.</span>
-      </a>
-      <a href="iphone-13-lcd-ink-bleeding-spreading.html" class="hub-card">
-        <span class="hub-card-title">iPhone 13 LCD 잉크 번짐 — 방치 시 위험</span>
-        <span class="hub-card-desc">보라·녹색·파랑 변색은 액정 액체 누출. 즉시 수리.</span>
-      </a>
-    </div>
-  </div>
+ <!-- LCD 손상 진단·수리 (모델별) -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">LCD 손상 진단·수리 (모델별)<span class="hub-section-count">4편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-16-pro-black-spot-spreading-display-damage.html" class="hub-card">
+ <span class="hub-card-title">iPhone 16 Pro 화면 검은 멍 번짐 — 디스플레이 교체</span>
+ <span class="hub-card-desc">검은 멍은 LCD 셀이 죽고 있다는 신호. 1주일 안에 번짐.</span>
+ </a>
+ <a href="iphone-15-screen-line-appearing-lcd-damage.html" class="hub-card">
+ <span class="hub-card-title">iPhone 15 액정에 줄 생김 — 낙하 vs 노화 구분</span>
+ <span class="hub-card-desc">디지타이저·케이블 손상 신호. 모듈 교체로 해결.</span>
+ </a>
+ <a href="iphone-14-partial-touch-not-working-lcd-damage.html" class="hub-card">
+ <span class="hub-card-title">iPhone 14 화면 일부 터치 안 됨 — LCD 신호</span>
+ <span class="hub-card-desc">디지타이저 손상. LCD와 일체형이라 모듈 통째 교체.</span>
+ </a>
+ <a href="iphone-13-lcd-ink-bleeding-spreading.html" class="hub-card">
+ <span class="hub-card-title">iPhone 13 LCD 잉크 번짐 — 방치 시 위험</span>
+ <span class="hub-card-desc">보라·녹색·파랑 변색은 액정 액체 누출. 즉시 수리.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 후면 유리 수리 (모델별) -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">후면 유리 수리 (모델별)<span class="hub-section-count">4편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-16-pro-max-back-glass-broken-cost-risk.html" class="hub-card">
-        <span class="hub-card-title">iPhone 16 Pro Max 후면 유리 깨짐 — 수리비·위험</span>
-        <span class="hub-card-desc">후면 깨짐 방치 시 균열 확산·침수·추가 손상 3가지 위험.</span>
-      </a>
-      <a href="iphone-15-back-glass-camera-area-cracked.html" class="hub-card">
-        <span class="hub-card-title">iPhone 15 카메라 부근 후면 균열 — 부분 vs 전체</span>
-        <span class="hub-card-desc">카메라 부근 균열 시 카메라 모듈 동시 점검 권장.</span>
-      </a>
-      <a href="iphone-14-back-glass-broken-can-i-keep-using.html" class="hub-card">
-        <span class="hub-card-title">iPhone 14 후면 깨졌는데 그냥 써도 되나</span>
-        <span class="hub-card-desc">후면 파손은 액정과 달리 미루기 쉽지만 침수 위험 더 큼.</span>
-      </a>
-      <a href="iphone-13-pro-max-back-glass-fully-broken.html" class="hub-card">
-        <span class="hub-card-title">iPhone 13 Pro Max 뒷판 통째 깨짐 — 케이스 X</span>
-        <span class="hub-card-desc">케이스로 가리는 건 임시. 비·땀이 안쪽에 고여 침수 유발.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 후면 유리 수리 (모델별) -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">후면 유리 수리 (모델별)<span class="hub-section-count">4편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-16-pro-max-back-glass-broken-cost-risk.html" class="hub-card">
+ <span class="hub-card-title">iPhone 16 Pro Max 후면 유리 깨짐 — 수리비·위험</span>
+ <span class="hub-card-desc">후면 깨짐 방치 시 균열 확산·침수·추가 손상 3가지 위험.</span>
+ </a>
+ <a href="iphone-15-back-glass-camera-area-cracked.html" class="hub-card">
+ <span class="hub-card-title">iPhone 15 카메라 부근 후면 균열 — 부분 vs 전체</span>
+ <span class="hub-card-desc">카메라 부근 균열 시 카메라 모듈 동시 점검 권장.</span>
+ </a>
+ <a href="iphone-14-back-glass-broken-can-i-keep-using.html" class="hub-card">
+ <span class="hub-card-title">iPhone 14 후면 깨졌는데 그냥 써도 되나</span>
+ <span class="hub-card-desc">후면 파손은 액정과 달리 미루기 쉽지만 침수 위험 더 큼.</span>
+ </a>
+ <a href="iphone-13-pro-max-back-glass-fully-broken.html" class="hub-card">
+ <span class="hub-card-title">iPhone 13 Pro Max 뒷판 통째 깨짐 — 케이스 X</span>
+ <span class="hub-card-desc">케이스로 가리는 건 임시. 비·땀이 안쪽에 고여 침수 유발.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 충전 단자 진단·수리 (모델별) -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">충전 단자 진단·수리 (모델별)<span class="hub-section-count">5편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-16-pro-usb-c-liquid-detection-replacement.html" class="hub-card">
-        <span class="hub-card-title">iPhone 16 Pro USB-C 액체 감지 알림 — 청소 vs 교체</span>
-        <span class="hub-card-desc">알림이 안 사라지거나 충전 안 될 때 정밀 청소 vs 단자 교체 결정.</span>
-      </a>
-      <a href="iphone-15-charging-port-loose-cleaning-vs-replacement.html" class="hub-card">
-        <span class="hub-card-title">iPhone 15 충전 단자 헐거움 — 청소 vs 단자 교체</span>
-        <span class="hub-card-desc">USB-C 헐거움의 80%는 단자 안 이물질. 청소만으로 해결.</span>
-      </a>
-      <a href="iphone-14-lightning-port-debris-cleaning-guide.html" class="hub-card">
-        <span class="hub-card-title">iPhone 14 라이트닝 단자 이물질 — 자가 청소 vs 매장</span>
-        <span class="hub-card-desc">먼지·실밥 누적이 충전 불량 70%의 원인. 자가 청소 한계.</span>
-      </a>
-      <a href="iphone-13-charging-overheating-diagnosis.html" class="hub-card">
-        <span class="hub-card-title">iPhone 13 충전 시 발열 — 단자·배터리·메인보드 진단</span>
-        <span class="hub-card-desc">발열 위치와 배터리 상태로 어느 쪽 원인인지 1분 진단.</span>
-      </a>
-      <a href="iphone-12-not-charging-port-cable-battery-diagnosis.html" class="hub-card">
-        <span class="hub-card-title">iPhone 12 충전 안 들어감 — 4단계 원인 진단</span>
-        <span class="hub-card-desc">케이블 → 단자 → 배터리 → 메인보드 순으로 차례 확인.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 충전 단자 진단·수리 (모델별) -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">충전 단자 진단·수리 (모델별)<span class="hub-section-count">5편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-16-pro-usb-c-liquid-detection-replacement.html" class="hub-card">
+ <span class="hub-card-title">iPhone 16 Pro USB-C 액체 감지 알림 — 청소 vs 교체</span>
+ <span class="hub-card-desc">알림이 안 사라지거나 충전 안 될 때 정밀 청소 vs 단자 교체 결정.</span>
+ </a>
+ <a href="iphone-15-charging-port-loose-cleaning-vs-replacement.html" class="hub-card">
+ <span class="hub-card-title">iPhone 15 충전 단자 헐거움 — 청소 vs 단자 교체</span>
+ <span class="hub-card-desc">USB-C 헐거움의 80%는 단자 안 이물질. 청소만으로 해결.</span>
+ </a>
+ <a href="iphone-14-lightning-port-debris-cleaning-guide.html" class="hub-card">
+ <span class="hub-card-title">iPhone 14 라이트닝 단자 이물질 — 자가 청소 vs 매장</span>
+ <span class="hub-card-desc">먼지·실밥 누적이 충전 불량 70%의 원인. 자가 청소 한계.</span>
+ </a>
+ <a href="iphone-13-charging-overheating-diagnosis.html" class="hub-card">
+ <span class="hub-card-title">iPhone 13 충전 시 발열 — 단자·배터리·메인보드 진단</span>
+ <span class="hub-card-desc">발열 위치와 배터리 상태로 어느 쪽 원인인지 1분 진단.</span>
+ </a>
+ <a href="iphone-12-not-charging-port-cable-battery-diagnosis.html" class="hub-card">
+ <span class="hub-card-title">iPhone 12 충전 안 들어감 — 4단계 원인 진단</span>
+ <span class="hub-card-desc">케이블 → 단자 → 배터리 → 메인보드 순으로 차례 확인.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 액정 단순 유리 파손 (모델별) -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">액정 단순 유리 파손 (모델별)<span class="hub-section-count">5편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-16-glass-only-broken-lcd-normal-half-price.html" class="hub-card">
-        <span class="hub-card-title">iPhone 16 액정 유리만 파손 — LCD 정상이면 절반 가격</span>
-        <span class="hub-card-desc">화면 표시·터치 정상이면 단순 유리 교체로 비용 절반.</span>
-      </a>
-      <a href="iphone-15-pro-glass-only-cracked-repair-cost.html" class="hub-card">
-        <span class="hub-card-title">iPhone 15 Pro 화면 표면 균열만 — 단순 유리 가격</span>
-        <span class="hub-card-desc">디스플레이 정상 + 균열만일 때 정확한 수리비와 시간.</span>
-      </a>
-      <a href="iphone-14-glass-cracked-but-display-normal.html" class="hub-card">
-        <span class="hub-card-title">iPhone 14 액정 깨짐인데 표시는 정상 — 그냥 써도?</span>
-        <span class="hub-card-desc">단순 유리 단계에서 빨리 수리하면 LCD 교체비를 절약.</span>
-      </a>
-      <a href="iphone-13-mini-glass-only-vs-lcd-self-diagnosis.html" class="hub-card">
-        <span class="hub-card-title">iPhone 13 mini 유리만 vs LCD까지 — 1분 자가진단</span>
-        <span class="hub-card-desc">검은 멍·잉크 번짐·줄·터치 둔화 4가지로 LCD 손상 판단.</span>
-      </a>
-      <a href="iphone-12-pro-max-glass-only-broken-cost.html" class="hub-card">
-        <span class="hub-card-title">iPhone 12 Pro Max 단순 유리 파손 — 수리비와 시간</span>
-        <span class="hub-card-desc">표면 균열만 있을 때 정품·DD 옵션별 정확한 가격.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 액정 단순 유리 파손 (모델별) -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">액정 단순 유리 파손 (모델별)<span class="hub-section-count">5편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-16-glass-only-broken-lcd-normal-half-price.html" class="hub-card">
+ <span class="hub-card-title">iPhone 16 액정 유리만 파손 — LCD 정상이면 절반 가격</span>
+ <span class="hub-card-desc">화면 표시·터치 정상이면 단순 유리 교체로 비용 절반.</span>
+ </a>
+ <a href="iphone-15-pro-glass-only-cracked-repair-cost.html" class="hub-card">
+ <span class="hub-card-title">iPhone 15 Pro 화면 표면 균열만 — 단순 유리 가격</span>
+ <span class="hub-card-desc">디스플레이 정상 + 균열만일 때 정확한 수리비와 시간.</span>
+ </a>
+ <a href="iphone-14-glass-cracked-but-display-normal.html" class="hub-card">
+ <span class="hub-card-title">iPhone 14 액정 깨짐인데 표시는 정상 — 그냥 써도?</span>
+ <span class="hub-card-desc">단순 유리 단계에서 빨리 수리하면 LCD 교체비를 절약.</span>
+ </a>
+ <a href="iphone-13-mini-glass-only-vs-lcd-self-diagnosis.html" class="hub-card">
+ <span class="hub-card-title">iPhone 13 mini 유리만 vs LCD까지 — 1분 자가진단</span>
+ <span class="hub-card-desc">검은 멍·잉크 번짐·줄·터치 둔화 4가지로 LCD 손상 판단.</span>
+ </a>
+ <a href="iphone-12-pro-max-glass-only-broken-cost.html" class="hub-card">
+ <span class="hub-card-title">iPhone 12 Pro Max 단순 유리 파손 — 수리비와 시간</span>
+ <span class="hub-card-desc">표면 균열만 있을 때 정품·DD 옵션별 정확한 가격.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 광고 전환 깔때기 (가격표·당일·가족 패키지) -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">가격표·당일 수리·가족 패키지<span class="hub-section-count">4편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-screen-repair-cost-2026.html" class="hub-card">
-        <span class="hub-card-title">아이폰 액정 수리비 2026 — 모델별 정품 vs DD 액정 가격표</span>
-        <span class="hub-card-desc">정품·DD × 단순 유리·LCD 4가지 옵션 모델별 정확한 가격.</span>
-      </a>
-      <a href="iphone-battery-replacement-types-cost-2026.html" class="hub-card">
-        <span class="hub-card-title">아이폰 배터리 교체 종류·비용 총정리 — 셀/인증/일반 3옵션</span>
-        <span class="hub-card-desc">3가지 옵션 모델별 가격 + 메시지 표시·사이클 정보 비교.</span>
-      </a>
-      <a href="iphone-same-day-repair-by-symptom.html" class="hub-card">
-        <span class="hub-card-title">오늘 맡기고 오늘 받는 아이폰 수리 — 증상별 당일 가능 여부 표</span>
-        <span class="hub-card-desc">화면·배터리·충전포트 평균 30~50분, 19시 전 입고 시 그날 픽업.</span>
-      </a>
-      <a href="may-family-phone-checkup-package.html" class="hub-card">
-        <span class="hub-card-title">5월 가족 폰 일괄 점검 — 부모님·자녀·본인 한 번에</span>
-        <span class="hub-card-desc">어버이날·어린이날 시즌. 가족 4명 폰을 매장 1회 방문으로 정비.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 광고 전환 깔때기 (가격표·당일·가족 패키지) -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">가격표·당일 수리·가족 패키지<span class="hub-section-count">4편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-screen-repair-cost-2026.html" class="hub-card">
+ <span class="hub-card-title">아이폰 액정 수리비 2026 — 모델별 정품 vs DD 액정 가격표</span>
+ <span class="hub-card-desc">정품·DD × 단순 유리·LCD 4가지 옵션 모델별 정확한 가격.</span>
+ </a>
+ <a href="iphone-battery-replacement-types-cost-2026.html" class="hub-card">
+ <span class="hub-card-title">아이폰 배터리 교체 종류·비용 총정리 — 셀/인증/일반 3옵션</span>
+ <span class="hub-card-desc">3가지 옵션 모델별 가격 + 메시지 표시·사이클 정보 비교.</span>
+ </a>
+ <a href="iphone-same-day-repair-by-symptom.html" class="hub-card">
+ <span class="hub-card-title">오늘 맡기고 오늘 받는 아이폰 수리 — 증상별 당일 가능 여부 표</span>
+ <span class="hub-card-desc">화면·배터리·충전포트 평균 30~50분, 19시 전 입고 시 그날 픽업.</span>
+ </a>
+ <a href="may-family-phone-checkup-package.html" class="hub-card">
+ <span class="hub-card-title">5월 가족 폰 일괄 점검 — 부모님·자녀·본인 한 번에</span>
+ <span class="hub-card-desc">어버이날·어린이날 시즌. 가족 4명 폰을 매장 1회 방문으로 정비.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 수리 결정·다중 파손·통화 (객단가↑) -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">수리 결정·다중 파손·통화 진단<span class="hub-section-count">4편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-mainboard-vs-new-phone-breakeven.html" class="hub-card">
-        <span class="hub-card-title">메인보드 수리 vs 새 폰 — 모델별 손익분기점 계산법</span>
-        <span class="hub-card-desc">중고 시세·잔여 수명·iOS 지원까지 4가지 기준으로 결정.</span>
-      </a>
-      <a href="iphone-water-damage-water-vs-drinks-comparison.html" class="hub-card">
-        <span class="hub-card-title">침수 골든타임 24시간 — 물 vs 음료수 vs 맥주 회복률 차이</span>
-        <span class="hub-card-desc">액체 종류별 부식 속도와 시간대별 회복률 표.</span>
-      </a>
-      <a href="iphone-multi-damage-bundle-vs-separate-repair.html" class="hub-card">
-        <span class="hub-card-title">액정+후면+카메라 동시 파손 — 한 번에 vs 따로 수리비 비교</span>
-        <span class="hub-card-desc">번들 수리 시 평균 15~20% 절감 + 방수 패킹 재부착.</span>
-      </a>
-      <a href="iphone-call-volume-low-vs-no-sound.html" class="hub-card">
-        <span class="hub-card-title">통화 상대방 목소리 작음 vs 안 들림 — 원인별 수리 방법</span>
-        <span class="hub-card-desc">"작음"은 청소로 80% 해결, "안 들림"은 부품 진단부터.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 수리 결정·다중 파손·통화 (객단가↑) -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">수리 결정·다중 파손·통화 진단<span class="hub-section-count">4편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-mainboard-vs-new-phone-breakeven.html" class="hub-card">
+ <span class="hub-card-title">메인보드 수리 vs 새 폰 — 모델별 손익분기점 계산법</span>
+ <span class="hub-card-desc">중고 시세·잔여 수명·iOS 지원까지 4가지 기준으로 결정.</span>
+ </a>
+ <a href="iphone-water-damage-water-vs-drinks-comparison.html" class="hub-card">
+ <span class="hub-card-title">침수 골든타임 24시간 — 물 vs 음료수 vs 맥주 회복률 차이</span>
+ <span class="hub-card-desc">액체 종류별 부식 속도와 시간대별 회복률 표.</span>
+ </a>
+ <a href="iphone-multi-damage-bundle-vs-separate-repair.html" class="hub-card">
+ <span class="hub-card-title">액정+후면+카메라 동시 파손 — 한 번에 vs 따로 수리비 비교</span>
+ <span class="hub-card-desc">번들 수리 시 평균 15~20% 절감 + 방수 패킹 재부착.</span>
+ </a>
+ <a href="iphone-call-volume-low-vs-no-sound.html" class="hub-card">
+ <span class="hub-card-title">통화 상대방 목소리 작음 vs 안 들림 — 원인별 수리 방법</span>
+ <span class="hub-card-desc">"작음"은 청소로 80% 해결, "안 들림"은 부품 진단부터.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 지점별 지역 가이드 (가산·신림·목동) -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">지점별 지역 가이드<span class="hub-section-count">10편</span></h2>
-    <div class="hub-grid">
-      <a href="gasandigital-lunch-30min-iphone-repair.html" class="hub-card">
-        <span class="hub-card-title">가산디지털단지 점심시간 30분 아이폰 수리 — G밸리 직장인용</span>
-        <span class="hub-card-desc">점심 1시간 안에 끝낼 수 있는 수리 항목과 시간대별 동선 가이드.</span>
-      </a>
-      <a href="gasan-line7-evening-screen-repair.html" class="hub-card">
-        <span class="hub-card-title">가산 퇴근길 액정 수리 — 1·7호선 라인에서 빠르게 끝내는 법</span>
-        <span class="hub-card-desc">가산·독산·가리봉·시흥에서 퇴근 시간대별 권장 입고 시각.</span>
-      </a>
-      <a href="doksan-gasan-iphone-battery-replacement.html" class="hub-card">
-        <span class="hub-card-title">독산·가산 아이폰 배터리 교체 — 모델별 가격과 당일 가능 여부</span>
-        <span class="hub-card-desc">금천구 거주자·직장인을 위한 모델별 배터리 교체 가격대.</span>
-      </a>
-      <a href="sillim-iphone-screen-student-budget.html" class="hub-card">
-        <span class="hub-card-title">신림 아이폰 액정 수리 — 학생·자취생 부담 없는 가격대 비교</span>
-        <span class="hub-card-desc">중고 시세 대비 수리비 비율로 결정하는 합리적 선택 기준.</span>
-      </a>
-      <a href="gwanak-self-quartering-iphone-water-emergency.html" class="hub-card">
-        <span class="hub-card-title">관악구 자취생 아이폰 침수 응급 — 골든타임 24시간 대응</span>
-        <span class="hub-card-desc">신림역 인근에서 24시간 안에 폰을 살리는 시간대별 행동 가이드.</span>
-      </a>
-      <a href="snu-nakseongdae-iphone-repair-walking-vs-bus.html" class="hub-card">
-        <span class="hub-card-title">서울대입구·낙성대에서 가까운 아이폰 수리 — 도보 vs 버스</span>
-        <span class="hub-card-desc">2호선·버스·도보 시간대별 가장 빠른 신림점 동선 비교.</span>
-      </a>
-      <a href="gosi-student-iphone-fast-repair-backup.html" class="hub-card">
-        <span class="hub-card-title">공시생 아이폰 고장 — 시험 전 빠른 수리 + 데이터 백업 가이드</span>
-        <span class="hub-card-desc">신림 고시촌 학습 데이터(굿노트·인강) 보존 + 임시 폰 전략.</span>
-      </a>
-      <a href="mokdong-children-iphone-screen-academy-schedule.html" class="hub-card">
-        <span class="hub-card-title">목동 자녀 아이폰 액정 깨짐 — 학원 끝나기 전 수리 시간표</span>
-        <span class="hub-card-desc">학원 시작 직후 입고 → 학원 종료 전 픽업 시간대별 가이드.</span>
-      </a>
-      <a href="sinjeong-sinwol-mom-iphone-faq.html" class="hub-card">
-        <span class="hub-card-title">신정·신월 어머님들이 자주 묻는 폰 수리 질문 10가지</span>
-        <span class="hub-card-desc">자녀 폰부터 본인·시부모님 폰까지 학부모용 FAQ.</span>
-      </a>
-      <a href="mokdong-parent-child-phone-lock-lost-guide.html" class="hub-card">
-        <span class="hub-card-title">목동 학부모용 — 자녀 폰 잠금/분실 시 대처 가이드</span>
-        <span class="hub-card-desc">잠금 해제, 분실 모드, iCloud 데이터 보호 단계별 절차.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 지점별 지역 가이드 (가산·신림·목동) -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">지점별 지역 가이드<span class="hub-section-count">10편</span></h2>
+ <div class="hub-grid">
+ <a href="gasandigital-lunch-30min-iphone-repair.html" class="hub-card">
+ <span class="hub-card-title">가산디지털단지 점심시간 30분 아이폰 수리 — G밸리 직장인용</span>
+ <span class="hub-card-desc">점심 1시간 안에 끝낼 수 있는 수리 항목과 시간대별 동선 가이드.</span>
+ </a>
+ <a href="gasan-line7-evening-screen-repair.html" class="hub-card">
+ <span class="hub-card-title">가산 퇴근길 액정 수리 — 1·7호선 라인에서 빠르게 끝내는 법</span>
+ <span class="hub-card-desc">가산·독산·가리봉·시흥에서 퇴근 시간대별 권장 입고 시각.</span>
+ </a>
+ <a href="doksan-gasan-iphone-battery-replacement.html" class="hub-card">
+ <span class="hub-card-title">독산·가산 아이폰 배터리 교체 — 모델별 가격과 당일 가능 여부</span>
+ <span class="hub-card-desc">금천구 거주자·직장인을 위한 모델별 배터리 교체 가격대.</span>
+ </a>
+ <a href="sillim-iphone-screen-student-budget.html" class="hub-card">
+ <span class="hub-card-title">신림 아이폰 액정 수리 — 학생·자취생 부담 없는 가격대 비교</span>
+ <span class="hub-card-desc">중고 시세 대비 수리비 비율로 결정하는 합리적 선택 기준.</span>
+ </a>
+ <a href="gwanak-self-quartering-iphone-water-emergency.html" class="hub-card">
+ <span class="hub-card-title">관악구 자취생 아이폰 침수 응급 — 골든타임 24시간 대응</span>
+ <span class="hub-card-desc">신림역 인근에서 24시간 안에 폰을 살리는 시간대별 행동 가이드.</span>
+ </a>
+ <a href="snu-nakseongdae-iphone-repair-walking-vs-bus.html" class="hub-card">
+ <span class="hub-card-title">서울대입구·낙성대에서 가까운 아이폰 수리 — 도보 vs 버스</span>
+ <span class="hub-card-desc">2호선·버스·도보 시간대별 가장 빠른 신림점 동선 비교.</span>
+ </a>
+ <a href="gosi-student-iphone-fast-repair-backup.html" class="hub-card">
+ <span class="hub-card-title">공시생 아이폰 고장 — 시험 전 빠른 수리 + 데이터 백업 가이드</span>
+ <span class="hub-card-desc">신림 고시촌 학습 데이터(굿노트·인강) 보존 + 임시 폰 전략.</span>
+ </a>
+ <a href="mokdong-children-iphone-screen-academy-schedule.html" class="hub-card">
+ <span class="hub-card-title">목동 자녀 아이폰 액정 깨짐 — 학원 끝나기 전 수리 시간표</span>
+ <span class="hub-card-desc">학원 시작 직후 입고 → 학원 종료 전 픽업 시간대별 가이드.</span>
+ </a>
+ <a href="sinjeong-sinwol-mom-iphone-faq.html" class="hub-card">
+ <span class="hub-card-title">신정·신월 어머님들이 자주 묻는 폰 수리 질문 10가지</span>
+ <span class="hub-card-desc">자녀 폰부터 본인·시부모님 폰까지 학부모용 FAQ.</span>
+ </a>
+ <a href="mokdong-parent-child-phone-lock-lost-guide.html" class="hub-card">
+ <span class="hub-card-title">목동 학부모용 — 자녀 폰 잠금/분실 시 대처 가이드</span>
+ <span class="hub-card-desc">잠금 해제, 분실 모드, iCloud 데이터 보호 단계별 절차.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 화면·액정 수리 -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">화면·액정 수리<span class="hub-section-count">18편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-drop-screen-damage.html" class="hub-card">
-        <span class="hub-card-title">아이폰 낙하 후 화면 이상 — 깨짐·멍·줄·먹통 원인별 판단법</span>
-        <span class="hub-card-desc">떨어뜨린 뒤 화면이 이상합니다. 유리 파손인지 내부 패널 손상인지 유형별 원인을 알려드립니다.</span>
-      </a>
-      <a href="iphone-screen-line-appeared.html" class="hub-card">
-        <span class="hub-card-title">아이폰 화면에 줄이 생겼어요 — 원인과 당장 해야 할 것</span>
-        <span class="hub-card-desc">낙하 충격인지, 자연 노화인지, 지금 계속 써도 되는지 — 원인별 해결법을 알려드립니다.</span>
-      </a>
-      <a href="iphone-screen-frozen.html" class="hub-card">
-        <span class="hub-card-title">아이폰 잠금화면 멈춤 — 원인별 해결 순서와 수리 판단 기준</span>
-        <span class="hub-card-desc">소프트웨어인지 하드웨어인지 원인별로 행동 순서와 수리 판단 기준을 알려드립니다.</span>
-      </a>
-      <a href="iphone-touch-not-working.html" class="hub-card">
-        <span class="hub-card-title">아이폰 터치가 안 돼요 — 원인별 해결법과 수리 판단 기준</span>
-        <span class="hub-card-desc">부분 불량인지 전체인지, 소프트웨어인지 하드웨어인지 — 원인별 해결법.</span>
-      </a>
-      <a href="iphone-lcd-black-spreading.html" class="hub-card">
-        <span class="hub-card-title">아이폰 화면 안쪽 검은 번짐 퍼지고 있음 — 빨리 고쳐야 하나</span>
-        <span class="hub-card-desc">검은 번짐은 LCD 내부 손상입니다. 방치할수록 확산됩니다.</span>
-      </a>
-      <a href="iphone-screen-protector-broken.html" class="hub-card">
-        <span class="hub-card-title">보호필름이 깨진 건지 액정이 깨진 건지 — 5단계로 확인하는 법</span>
-        <span class="hub-card-desc">터치 반응, 색상 번짐, 줄 유무 — 5가지만 확인하면 수리 필요 여부를 판단할 수 있습니다.</span>
-      </a>
-      <a href="iphone-oled-burn-in.html" class="hub-card">
-        <span class="hub-card-title">아이폰 OLED 화면 번인·잔상 — 생기는 이유, 예방법, 교체 시점</span>
-        <span class="hub-card-desc">번인과 잔상의 차이, 빨리 생기는 원인, 예방 방법, 교체 시점을 정리했습니다.</span>
-      </a>
-      <a href="iphone-touch-sensitivity-after-repair.html" class="hub-card">
-        <span class="hub-card-title">아이폰 액정 교체 후 터치 먹통·민감도 저하 — 원인과 해결 방법</span>
-        <span class="hub-card-desc">비정품 패널의 터치 성능 차이, 재수리가 필요한 경우를 정리했습니다.</span>
-      </a>
-      <a href="iphone-screen-color-issue.html" class="hub-card">
-        <span class="hub-card-title">아이폰 화면 색상 이상 — 노랗거나 파랗게 보일 때 원인과 해결법</span>
-        <span class="hub-card-desc">True Tone 오작동인지, 디스플레이 설정 문제인지, 패널 불량인지 구분합니다.</span>
-      </a>
-      <a href="iphone-screen-wont-turn-on.html" class="hub-card">
-        <span class="hub-card-title">아이폰 화면이 안 켜질 때 — 배터리·소프트웨어·화면 고장 구분법</span>
-        <span class="hub-card-desc">완전 방전인지, 강제 재시동으로 해결되는지, 화면 자체가 고장인지 단계별 확인.</span>
-      </a>
-      <a href="iphone-screen-color-after-repair.html" class="hub-card">
-        <span class="hub-card-title">아이폰 수리 후 화면 색감이 달라졌을 때 — 원인과 대처법</span>
-        <span class="hub-card-desc">정품 패널과 비정품 패널의 색재현율 차이, True Tone 재설정 방법.</span>
-      </a>
-      <a href="iphone-screen-types-guide.html" class="hub-card">
-        <span class="hub-card-title">아이폰 액정 종류 총정리 — 정품 재생·DD OLED·RJ·GX, 뭐가 다른가</span>
-        <span class="hub-card-desc">액정 종류별 특성과 차이, 어떤 액정을 선택해야 하는지 정리했습니다.</span>
-      </a>
-      <a href="iphone13-screen-line.html" class="hub-card">
-        <span class="hub-card-title">아이폰 13 액정에 줄이 생겼을 때 — 원인 3가지와 수리 필요 여부 판단법</span>
-        <span class="hub-card-desc">낙하 충격인지, OLED 번인인지, 내부 커넥터 문제인지 — 4단계 자가진단.</span>
-      </a>
-      <a href="iphone14-screen-repair.html" class="hub-card">
-        <span class="hub-card-title">아이폰 14 액정 수리비가 비싼 이유 — OLED 패널 교체, 이렇게 아낄 수 있습니다</span>
-        <span class="hub-card-desc">OLED 구조상 유리만 교체가 불가능한 이유, 비용을 줄이는 3가지 방법.</span>
-      </a>
-      <a href="iphone15-screen-repair-cost.html" class="hub-card">
-        <span class="hub-card-title">아이폰 15 액정 수리 비용 — 공식 센터 vs 사설, 실제 차이는 얼마나 날까</span>
-        <span class="hub-card-desc">기종별 공식·사설 수리비 비교표, 부품 등급 차이, 보증 조건까지.</span>
-      </a>
-      <a href="iphone15-screen-repair.html" class="hub-card">
-        <span class="hub-card-title">아이폰 15 액정 수리, 얼마가 적정 가격일까?</span>
-        <span class="hub-card-desc">공식 센터 vs 사설 수리점 비용 차이, 부품 품질, 데이터 보존까지.</span>
-      </a>
-      <a href="iphone12-self-repair-warning.html" class="hub-card">
-        <span class="hub-card-title">아이폰 12 액정 자가수리, 해보려다 더 망가지는 이유</span>
-        <span class="hub-card-desc">셀프 수리 시도 시 발생하는 문제와 위험성을 정리했습니다.</span>
-      </a>
-      <a href="iphone-screen-broken-before-travel.html" class="hub-card">
-        <span class="hub-card-title">내일 해외여행 가는데 오늘 아이폰 액정이 깨짐 — 지금 당장 해야 할 것</span>
-        <span class="hub-card-desc">출국 전날 파손. 지금 당장 해야 할 3가지와 해외 수리가 안 되는 이유.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 화면·액정 수리 -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">화면·액정 수리<span class="hub-section-count">18편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-drop-screen-damage.html" class="hub-card">
+ <span class="hub-card-title">아이폰 낙하 후 화면 이상 — 깨짐·멍·줄·먹통 원인별 판단법</span>
+ <span class="hub-card-desc">떨어뜨린 뒤 화면이 이상합니다. 유리 파손인지 내부 패널 손상인지 유형별 원인을 알려드립니다.</span>
+ </a>
+ <a href="iphone-screen-line-appeared.html" class="hub-card">
+ <span class="hub-card-title">아이폰 화면에 줄이 생겼어요 — 원인과 당장 해야 할 것</span>
+ <span class="hub-card-desc">낙하 충격인지, 자연 노화인지, 지금 계속 써도 되는지 — 원인별 해결법을 알려드립니다.</span>
+ </a>
+ <a href="iphone-screen-frozen.html" class="hub-card">
+ <span class="hub-card-title">아이폰 잠금화면 멈춤 — 원인별 해결 순서와 수리 판단 기준</span>
+ <span class="hub-card-desc">소프트웨어인지 하드웨어인지 원인별로 행동 순서와 수리 판단 기준을 알려드립니다.</span>
+ </a>
+ <a href="iphone-touch-not-working.html" class="hub-card">
+ <span class="hub-card-title">아이폰 터치가 안 돼요 — 원인별 해결법과 수리 판단 기준</span>
+ <span class="hub-card-desc">부분 불량인지 전체인지, 소프트웨어인지 하드웨어인지 — 원인별 해결법.</span>
+ </a>
+ <a href="iphone-lcd-black-spreading.html" class="hub-card">
+ <span class="hub-card-title">아이폰 화면 안쪽 검은 번짐 퍼지고 있음 — 빨리 고쳐야 하나</span>
+ <span class="hub-card-desc">검은 번짐은 LCD 내부 손상입니다. 방치할수록 확산됩니다.</span>
+ </a>
+ <a href="iphone-screen-protector-broken.html" class="hub-card">
+ <span class="hub-card-title">보호필름이 깨진 건지 액정이 깨진 건지 — 5단계로 확인하는 법</span>
+ <span class="hub-card-desc">터치 반응, 색상 번짐, 줄 유무 — 5가지만 확인하면 수리 필요 여부를 판단할 수 있습니다.</span>
+ </a>
+ <a href="iphone-oled-burn-in.html" class="hub-card">
+ <span class="hub-card-title">아이폰 OLED 화면 번인·잔상 — 생기는 이유, 예방법, 교체 시점</span>
+ <span class="hub-card-desc">번인과 잔상의 차이, 빨리 생기는 원인, 예방 방법, 교체 시점을 정리했습니다.</span>
+ </a>
+ <a href="iphone-touch-sensitivity-after-repair.html" class="hub-card">
+ <span class="hub-card-title">아이폰 액정 교체 후 터치 먹통·민감도 저하 — 원인과 해결 방법</span>
+ <span class="hub-card-desc">비정품 패널의 터치 성능 차이, 재수리가 필요한 경우를 정리했습니다.</span>
+ </a>
+ <a href="iphone-screen-color-issue.html" class="hub-card">
+ <span class="hub-card-title">아이폰 화면 색상 이상 — 노랗거나 파랗게 보일 때 원인과 해결법</span>
+ <span class="hub-card-desc">True Tone 오작동인지, 디스플레이 설정 문제인지, 패널 불량인지 구분합니다.</span>
+ </a>
+ <a href="iphone-screen-wont-turn-on.html" class="hub-card">
+ <span class="hub-card-title">아이폰 화면이 안 켜질 때 — 배터리·소프트웨어·화면 고장 구분법</span>
+ <span class="hub-card-desc">완전 방전인지, 강제 재시동으로 해결되는지, 화면 자체가 고장인지 단계별 확인.</span>
+ </a>
+ <a href="iphone-screen-color-after-repair.html" class="hub-card">
+ <span class="hub-card-title">아이폰 수리 후 화면 색감이 달라졌을 때 — 원인과 대처법</span>
+ <span class="hub-card-desc">정품 패널과 비정품 패널의 색재현율 차이, True Tone 재설정 방법.</span>
+ </a>
+ <a href="iphone-screen-types-guide.html" class="hub-card">
+ <span class="hub-card-title">아이폰 액정 종류 총정리 — 정품 재생·DD OLED·RJ·GX, 뭐가 다른가</span>
+ <span class="hub-card-desc">액정 종류별 특성과 차이, 어떤 액정을 선택해야 하는지 정리했습니다.</span>
+ </a>
+ <a href="iphone13-screen-line.html" class="hub-card">
+ <span class="hub-card-title">아이폰 13 액정에 줄이 생겼을 때 — 원인 3가지와 수리 필요 여부 판단법</span>
+ <span class="hub-card-desc">낙하 충격인지, OLED 번인인지, 내부 커넥터 문제인지 — 4단계 자가진단.</span>
+ </a>
+ <a href="iphone14-screen-repair.html" class="hub-card">
+ <span class="hub-card-title">아이폰 14 액정 수리비가 비싼 이유 — OLED 패널 교체, 이렇게 아낄 수 있습니다</span>
+ <span class="hub-card-desc">OLED 구조상 유리만 교체가 불가능한 이유, 비용을 줄이는 3가지 방법.</span>
+ </a>
+ <a href="iphone15-screen-repair-cost.html" class="hub-card">
+ <span class="hub-card-title">아이폰 15 액정 수리 비용 — 공식 센터 vs 사설, 실제 차이는 얼마나 날까</span>
+ <span class="hub-card-desc">기종별 공식·사설 수리비 비교표, 부품 등급 차이, 보증 조건까지.</span>
+ </a>
+ <a href="iphone15-screen-repair.html" class="hub-card">
+ <span class="hub-card-title">아이폰 15 액정 수리, 얼마가 적정 가격일까?</span>
+ <span class="hub-card-desc">공식 센터 vs 사설 수리점 비용 차이, 부품 품질, 데이터 보존까지.</span>
+ </a>
+ <a href="iphone12-self-repair-warning.html" class="hub-card">
+ <span class="hub-card-title">아이폰 12 액정 자가수리, 해보려다 더 망가지는 이유</span>
+ <span class="hub-card-desc">셀프 수리 시도 시 발생하는 문제와 위험성을 정리했습니다.</span>
+ </a>
+ <a href="iphone-screen-broken-before-travel.html" class="hub-card">
+ <span class="hub-card-title">내일 해외여행 가는데 오늘 아이폰 액정이 깨짐 — 지금 당장 해야 할 것</span>
+ <span class="hub-card-desc">출국 전날 파손. 지금 당장 해야 할 3가지와 해외 수리가 안 되는 이유.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 배터리 -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">배터리<span class="hub-section-count">9편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-battery-sudden-shutdown.html" class="hub-card">
-        <span class="hub-card-title">아이폰 배터리 30%인데 갑자기 꺼짐 — 배터리 수명 판단 기준</span>
-        <span class="hub-card-desc">방전이 아니라 배터리 수명 문제입니다. 교체 타이밍을 알려드립니다.</span>
-      </a>
-      <a href="iphone-battery-swollen.html" class="hub-card">
-        <span class="hub-card-title">아이폰 배터리 팽창 — 방치하면 안 되는 이유와 즉시 해야 할 것</span>
-        <span class="hub-card-desc">화면 들뜸이나 기기 두께 변화로 확인. 방치 시 위험성과 즉시 행동을 정리했습니다.</span>
-      </a>
-      <a href="iphone-battery-replacement-guide.html" class="hub-card">
-        <span class="hub-card-title">아이폰 배터리 교체, 언제 해야 할까요?</span>
-        <span class="hub-card-desc">갑자기 꺼짐, 발열, 하루도 안 가는 배터리 — 교체 시기 증상과 성능 수치 확인.</span>
-      </a>
-      <a href="iphone-battery-drains-fast-despite-high-percentage.html" class="hub-card">
-        <span class="hub-card-title">아이폰 배터리 잔량 80%인데 갑자기 꺼짐 — 원인과 해결법</span>
-        <span class="hub-card-desc">배터리 퍼센트는 높은데 갑자기 꺼지는 현상의 원인과 캘리브레이션 방법.</span>
-      </a>
-      <a href="iphone-battery-replacement-options.html" class="hub-card">
-        <span class="hub-card-title">아이폰 배터리 교체, 3가지 방식의 차이 — 셀 교체·일반·인증 배터리 비교</span>
-        <span class="hub-card-desc">경고 문구 여부, 배터리 이력, 데이터 초기화, 비용까지 정확히 비교합니다.</span>
-      </a>
-      <a href="iphone-battery-max-capacity-after-replacement.html" class="hub-card">
-        <span class="hub-card-title">아이폰 배터리 교체 후 최대 용량 80%대 — 정상인가 불량인가</span>
-        <span class="hub-card-desc">교체 직후 최대 용량이 낮게 표시되는 이유, 불량인 케이스를 구분하는 기준.</span>
-      </a>
-      <a href="iphone-battery-kc-certification-truth.html" class="hub-card">
-        <span class="hub-card-title">KC인증 배터리가 정품급이라는 말 — 믿으면 안 되는 이유</span>
-        <span class="hub-card-desc">KC인증 배터리의 실체와 정품과의 차이를 솔직하게 정리했습니다.</span>
-      </a>
-      <a href="iphone-overheating.html" class="hub-card">
-        <span class="hub-card-title">아이폰이 뜨거워질 때 — 정상 범위와 배터리 손상을 부르는 상황</span>
-        <span class="hub-card-desc">정상 발열과 비정상 발열 구분, 배터리와 기판에 미치는 영향.</span>
-      </a>
-      <a href="iphone-wont-turn-on-before-work.html" class="hub-card">
-        <span class="hub-card-title">출근 전에 아이폰이 안 켜짐 — 원인별 대처 순서</span>
-        <span class="hub-card-desc">5분 안에 해결되는 경우와 수리가 필요한 경우를 원인별로 구분합니다.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 배터리 -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">배터리<span class="hub-section-count">9편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-battery-sudden-shutdown.html" class="hub-card">
+ <span class="hub-card-title">아이폰 배터리 30%인데 갑자기 꺼짐 — 배터리 수명 판단 기준</span>
+ <span class="hub-card-desc">방전이 아니라 배터리 수명 문제입니다. 교체 타이밍을 알려드립니다.</span>
+ </a>
+ <a href="iphone-battery-swollen.html" class="hub-card">
+ <span class="hub-card-title">아이폰 배터리 팽창 — 방치하면 안 되는 이유와 즉시 해야 할 것</span>
+ <span class="hub-card-desc">화면 들뜸이나 기기 두께 변화로 확인. 방치 시 위험성과 즉시 행동을 정리했습니다.</span>
+ </a>
+ <a href="iphone-battery-replacement-guide.html" class="hub-card">
+ <span class="hub-card-title">아이폰 배터리 교체, 언제 해야 할까요?</span>
+ <span class="hub-card-desc">갑자기 꺼짐, 발열, 하루도 안 가는 배터리 — 교체 시기 증상과 성능 수치 확인.</span>
+ </a>
+ <a href="iphone-battery-drains-fast-despite-high-percentage.html" class="hub-card">
+ <span class="hub-card-title">아이폰 배터리 잔량 80%인데 갑자기 꺼짐 — 원인과 해결법</span>
+ <span class="hub-card-desc">배터리 퍼센트는 높은데 갑자기 꺼지는 현상의 원인과 캘리브레이션 방법.</span>
+ </a>
+ <a href="iphone-battery-replacement-options.html" class="hub-card">
+ <span class="hub-card-title">아이폰 배터리 교체, 3가지 방식의 차이 — 셀 교체·일반·인증 배터리 비교</span>
+ <span class="hub-card-desc">경고 문구 여부, 배터리 이력, 데이터 초기화, 비용까지 정확히 비교합니다.</span>
+ </a>
+ <a href="iphone-battery-max-capacity-after-replacement.html" class="hub-card">
+ <span class="hub-card-title">아이폰 배터리 교체 후 최대 용량 80%대 — 정상인가 불량인가</span>
+ <span class="hub-card-desc">교체 직후 최대 용량이 낮게 표시되는 이유, 불량인 케이스를 구분하는 기준.</span>
+ </a>
+ <a href="iphone-battery-kc-certification-truth.html" class="hub-card">
+ <span class="hub-card-title">KC인증 배터리가 정품급이라는 말 — 믿으면 안 되는 이유</span>
+ <span class="hub-card-desc">KC인증 배터리의 실체와 정품과의 차이를 솔직하게 정리했습니다.</span>
+ </a>
+ <a href="iphone-overheating.html" class="hub-card">
+ <span class="hub-card-title">아이폰이 뜨거워질 때 — 정상 범위와 배터리 손상을 부르는 상황</span>
+ <span class="hub-card-desc">정상 발열과 비정상 발열 구분, 배터리와 기판에 미치는 영향.</span>
+ </a>
+ <a href="iphone-wont-turn-on-before-work.html" class="hub-card">
+ <span class="hub-card-title">출근 전에 아이폰이 안 켜짐 — 원인별 대처 순서</span>
+ <span class="hub-card-desc">5분 안에 해결되는 경우와 수리가 필요한 경우를 원인별로 구분합니다.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 충전 -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">충전<span class="hub-section-count">6편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-charging-not-working.html" class="hub-card">
-        <span class="hub-card-title">아이폰 충전이 안 될 때 — 케이블 문제인지 단자 문제인지 3분 만에 구분하는 법</span>
-        <span class="hub-card-desc">충전 안 되는 원인을 빠르게 파악하는 방법을 정리했습니다.</span>
-      </a>
-      <a href="iphone-charging-port-cleaning.html" class="hub-card">
-        <span class="hub-card-title">아이폰 충전 단자 청소하는 법 — 먼지만 빼도 바로 충전됩니다</span>
-        <span class="hub-card-desc">충전 단자 이물질 제거만으로 해결되는 경우가 많습니다.</span>
-      </a>
-      <a href="iphone-charging-port-damage.html" class="hub-card">
-        <span class="hub-card-title">아이폰 충전 단자가 구부러지거나 핀이 망가졌다면 — 방치하면 안 되는 이유</span>
-        <span class="hub-card-desc">충전단자 파손 방치 시 발생하는 문제를 정리했습니다.</span>
-      </a>
-      <a href="iphone-charging-port-replacement-cost.html" class="hub-card">
-        <span class="hub-card-title">아이폰 충전 단자 교체 비용 — 기종별 비교 (라이트닝 vs USB-C)</span>
-        <span class="hub-card-desc">기종별 충전단자 교체 비용을 비교합니다.</span>
-      </a>
-      <a href="iphone-charging-slow.html" class="hub-card">
-        <span class="hub-card-title">아이폰 충전 속도가 갑자기 느려졌을 때 — 단자 문제인지 배터리 문제인지</span>
-        <span class="hub-card-desc">충전 느려짐의 원인을 빠르게 파악하는 방법.</span>
-      </a>
-      <a href="iphone-liquid-detected.html" class="hub-card">
-        <span class="hub-card-title">아이폰 액체 감지됨 경고 — 물에 빠뜨린 적 없는데 왜 뜰까?</span>
-        <span class="hub-card-desc">드라이기로 말리거나 강제로 충전기를 꽂으면 절대 안 됩니다.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 충전 -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">충전<span class="hub-section-count">6편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-charging-not-working.html" class="hub-card">
+ <span class="hub-card-title">아이폰 충전이 안 될 때 — 케이블 문제인지 단자 문제인지 3분 만에 구분하는 법</span>
+ <span class="hub-card-desc">충전 안 되는 원인을 빠르게 파악하는 방법을 정리했습니다.</span>
+ </a>
+ <a href="iphone-charging-port-cleaning.html" class="hub-card">
+ <span class="hub-card-title">아이폰 충전 단자 청소하는 법 — 먼지만 빼도 바로 충전됩니다</span>
+ <span class="hub-card-desc">충전 단자 이물질 제거만으로 해결되는 경우가 많습니다.</span>
+ </a>
+ <a href="iphone-charging-port-damage.html" class="hub-card">
+ <span class="hub-card-title">아이폰 충전 단자가 구부러지거나 핀이 망가졌다면 — 방치하면 안 되는 이유</span>
+ <span class="hub-card-desc">충전단자 파손 방치 시 발생하는 문제를 정리했습니다.</span>
+ </a>
+ <a href="iphone-charging-port-replacement-cost.html" class="hub-card">
+ <span class="hub-card-title">아이폰 충전 단자 교체 비용 — 기종별 비교 (라이트닝 vs USB-C)</span>
+ <span class="hub-card-desc">기종별 충전단자 교체 비용을 비교합니다.</span>
+ </a>
+ <a href="iphone-charging-slow.html" class="hub-card">
+ <span class="hub-card-title">아이폰 충전 속도가 갑자기 느려졌을 때 — 단자 문제인지 배터리 문제인지</span>
+ <span class="hub-card-desc">충전 느려짐의 원인을 빠르게 파악하는 방법.</span>
+ </a>
+ <a href="iphone-liquid-detected.html" class="hub-card">
+ <span class="hub-card-title">아이폰 액체 감지됨 경고 — 물에 빠뜨린 적 없는데 왜 뜰까?</span>
+ <span class="hub-card-desc">드라이기로 말리거나 강제로 충전기를 꽂으면 절대 안 됩니다.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 카메라 -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">카메라<span class="hub-section-count">3편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-camera-broken.html" class="hub-card">
-        <span class="hub-card-title">아이폰 카메라 고장 — 증상별 원인과 수리 방법</span>
-        <span class="hub-card-desc">카메라 안됨, 검은화면, 흔들림 — 증상별 원인과 수리 방법.</span>
-      </a>
-      <a href="iphone-camera-lens-broken.html" class="hub-card">
-        <span class="hub-card-title">아이폰 카메라 렌즈만 깨짐 — 유리만 교체 가능한 기종 vs 모듈 통째 교체</span>
-        <span class="hub-card-desc">렌즈만 교체 가능한 기종과 모듈 전체 교체가 필요한 기종을 구분합니다.</span>
-      </a>
-      <a href="iphone-camera-ois-malfunction.html" class="hub-card">
-        <span class="hub-card-title">아이폰 카메라 흔들림(OIS 고장) 수리 — 원인과 해결 방법</span>
-        <span class="hub-card-desc">OIS 고장으로 인한 카메라 떨림 원인과 해결법을 정리했습니다.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 카메라 -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">카메라<span class="hub-section-count">3편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-camera-broken.html" class="hub-card">
+ <span class="hub-card-title">아이폰 카메라 고장 — 증상별 원인과 수리 방법</span>
+ <span class="hub-card-desc">카메라 안됨, 검은화면, 흔들림 — 증상별 원인과 수리 방법.</span>
+ </a>
+ <a href="iphone-camera-lens-broken.html" class="hub-card">
+ <span class="hub-card-title">아이폰 카메라 렌즈만 깨짐 — 유리만 교체 가능한 기종 vs 모듈 통째 교체</span>
+ <span class="hub-card-desc">렌즈만 교체 가능한 기종과 모듈 전체 교체가 필요한 기종을 구분합니다.</span>
+ </a>
+ <a href="iphone-camera-ois-malfunction.html" class="hub-card">
+ <span class="hub-card-title">아이폰 카메라 흔들림(OIS 고장) 수리 — 원인과 해결 방법</span>
+ <span class="hub-card-desc">OIS 고장으로 인한 카메라 떨림 원인과 해결법을 정리했습니다.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 후면유리 -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">후면유리<span class="hub-section-count">8편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone16pro-back-glass-repair.html" class="hub-card">
-        <span class="hub-card-title">아이폰 16 프로 후면 유리 교체 — 뒷면 파손, 이렇게 수리하세요</span>
-        <span class="hub-card-desc">후면 유리만 교체하면 데이터도 살리고 비용도 아낄 수 있습니다.</span>
-      </a>
-      <a href="iphone14-back-glass-repair.html" class="hub-card">
-        <span class="hub-card-title">아이폰 14 후면유리 교체 — 이 기종부터 뒷면만 따로 분리됩니다</span>
-        <span class="hub-card-desc">14부터 달라진 구조와 기종별 수리 비용, 당일 수리 가능 여부.</span>
-      </a>
-      <a href="iphone-back-glass-broken-danger.html" class="hub-card">
-        <span class="hub-card-title">아이폰 뒷면 유리 깨진 채로 쓰면 안 되는 이유</span>
-        <span class="hub-card-desc">손 부상, 수분 침투, 열 방출, 균열 확대, 중고가 급락 — 5가지 문제.</span>
-      </a>
-      <a href="iphone-back-glass-durability-truth.html" class="hub-card">
-        <span class="hub-card-title">아이폰 후면유리 파손, 수리 했는데 또 깨질까봐 걱정된다면?</span>
-        <span class="hub-card-desc">후면유리 교체 후 내구성과 재파손 걱정에 대한 답변.</span>
-      </a>
-      <a href="iphone-back-glass-refurb-vs-repair.html" class="hub-card">
-        <span class="hub-card-title">공식 센터에서 후면 파손에 리퍼를 권유했다면 — 후면유리만 교체하면 됩니다</span>
-        <span class="hub-card-desc">리퍼 대신 후면유리만 교체하는 선택지를 안내합니다.</span>
-      </a>
-      <a href="iphone-back-glass-self-repair-risk.html" class="hub-card">
-        <span class="hub-card-title">아이폰 후면유리 자가수리 키트, 유튜브 보고 따라 해도 될까</span>
-        <span class="hub-card-desc">자가수리 시도의 위험성을 정리했습니다.</span>
-      </a>
-      <a href="iphone11-back-glass-repair.html" class="hub-card">
-        <span class="hub-card-title">아이폰 11 후면유리 수리 비용 — 지금도 고칠 가치가 있을까</span>
-        <span class="hub-card-desc">아이폰 11 후면유리 수리 비용과 가치 판단 기준.</span>
-      </a>
-      <a href="iphone13-12-back-glass-repair.html" class="hub-card">
-        <span class="hub-card-title">아이폰 12·13 후면유리 수리 — 전면을 먼저 열어야 하는 이유</span>
-        <span class="hub-card-desc">12·13 시리즈의 후면유리 수리 구조와 비용을 설명합니다.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 후면유리 -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">후면유리<span class="hub-section-count">8편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone16pro-back-glass-repair.html" class="hub-card">
+ <span class="hub-card-title">아이폰 16 프로 후면 유리 교체 — 뒷면 파손, 이렇게 수리하세요</span>
+ <span class="hub-card-desc">후면 유리만 교체하면 데이터도 살리고 비용도 아낄 수 있습니다.</span>
+ </a>
+ <a href="iphone14-back-glass-repair.html" class="hub-card">
+ <span class="hub-card-title">아이폰 14 후면유리 교체 — 이 기종부터 뒷면만 따로 분리됩니다</span>
+ <span class="hub-card-desc">14부터 달라진 구조와 기종별 수리 비용, 당일 수리 가능 여부.</span>
+ </a>
+ <a href="iphone-back-glass-broken-danger.html" class="hub-card">
+ <span class="hub-card-title">아이폰 뒷면 유리 깨진 채로 쓰면 안 되는 이유</span>
+ <span class="hub-card-desc">손 부상, 수분 침투, 열 방출, 균열 확대, 중고가 급락 — 5가지 문제.</span>
+ </a>
+ <a href="iphone-back-glass-durability-truth.html" class="hub-card">
+ <span class="hub-card-title">아이폰 후면유리 파손, 수리 했는데 또 깨질까봐 걱정된다면?</span>
+ <span class="hub-card-desc">후면유리 교체 후 내구성과 재파손 걱정에 대한 답변.</span>
+ </a>
+ <a href="iphone-back-glass-refurb-vs-repair.html" class="hub-card">
+ <span class="hub-card-title">공식 센터에서 후면 파손에 리퍼를 권유했다면 — 후면유리만 교체하면 됩니다</span>
+ <span class="hub-card-desc">리퍼 대신 후면유리만 교체하는 선택지를 안내합니다.</span>
+ </a>
+ <a href="iphone-back-glass-self-repair-risk.html" class="hub-card">
+ <span class="hub-card-title">아이폰 후면유리 자가수리 키트, 유튜브 보고 따라 해도 될까</span>
+ <span class="hub-card-desc">자가수리 시도의 위험성을 정리했습니다.</span>
+ </a>
+ <a href="iphone11-back-glass-repair.html" class="hub-card">
+ <span class="hub-card-title">아이폰 11 후면유리 수리 비용 — 지금도 고칠 가치가 있을까</span>
+ <span class="hub-card-desc">아이폰 11 후면유리 수리 비용과 가치 판단 기준.</span>
+ </a>
+ <a href="iphone13-12-back-glass-repair.html" class="hub-card">
+ <span class="hub-card-title">아이폰 12·13 후면유리 수리 — 전면을 먼저 열어야 하는 이유</span>
+ <span class="hub-card-desc">12·13 시리즈의 후면유리 수리 구조와 비용을 설명합니다.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 침수·방수 -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">침수·방수<span class="hub-section-count">3편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-water-damage-dos-donts.html" class="hub-card">
-        <span class="hub-card-title">아이폰 물에 빠졌다면 — 지금 당장 멈춰야 할 것들</span>
-        <span class="hub-card-desc">드라이기, 쌀에 넣기, 강제 충전 — 수리비를 두 배로 만드는 행동 6가지.</span>
-      </a>
-      <a href="iphone-water-speaker-muffled.html" class="hub-card">
-        <span class="hub-card-title">아이폰 물에 빠진 후 스피커 소리가 울릴 때 — 드라이기·쌀 금지, 이게 정답</span>
-        <span class="hub-card-desc">침수 후 스피커 먹먹함 원인과 올바른 대처법.</span>
-      </a>
-      <a href="iphone-waterproof-after-repair.html" class="hub-card">
-        <span class="hub-card-title">아이폰 수리 후 방수 성능, 유지될까?</span>
-        <span class="hub-card-desc">수리 후 방수 등급과 실제 방수 성능 변화를 정리했습니다.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 침수·방수 -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">침수·방수<span class="hub-section-count">3편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-water-damage-dos-donts.html" class="hub-card">
+ <span class="hub-card-title">아이폰 물에 빠졌다면 — 지금 당장 멈춰야 할 것들</span>
+ <span class="hub-card-desc">드라이기, 쌀에 넣기, 강제 충전 — 수리비를 두 배로 만드는 행동 6가지.</span>
+ </a>
+ <a href="iphone-water-speaker-muffled.html" class="hub-card">
+ <span class="hub-card-title">아이폰 물에 빠진 후 스피커 소리가 울릴 때 — 드라이기·쌀 금지, 이게 정답</span>
+ <span class="hub-card-desc">침수 후 스피커 먹먹함 원인과 올바른 대처법.</span>
+ </a>
+ <a href="iphone-waterproof-after-repair.html" class="hub-card">
+ <span class="hub-card-title">아이폰 수리 후 방수 성능, 유지될까?</span>
+ <span class="hub-card-desc">수리 후 방수 등급과 실제 방수 성능 변화를 정리했습니다.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 수리비·비교 -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">수리비·비교<span class="hub-section-count">10편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone16-repair-cost.html" class="hub-card">
-        <span class="hub-card-title">아이폰 16 수리 비용 총정리 — 2026년 기준</span>
-        <span class="hub-card-desc">아이폰 16 시리즈 모델별 화면·배터리·카메라·기판 수리 비용.</span>
-      </a>
-      <a href="iphone-16e-repair-cost.html" class="hub-card">
-        <span class="hub-card-title">아이폰 16e 수리 비용 — 공식 vs 사설 실제 가격 차이</span>
-        <span class="hub-card-desc">아이폰 16e 항목별 수리비 비교.</span>
-      </a>
-      <a href="iphone-se-repair-cost.html" class="hub-card">
-        <span class="hub-card-title">아이폰SE 3세대/4세대 수리비 총정리 — 항목별 비용 안내</span>
-        <span class="hub-card-desc">아이폰 SE 시리즈 수리비를 항목별로 정리했습니다.</span>
-      </a>
-      <a href="iphone-official-vs-private-repair.html" class="hub-card">
-        <span class="hub-card-title">공식 서비스센터 vs 사설 수리점 — 비용·속도·품질·보증 완전 비교</span>
-        <span class="hub-card-desc">공식 센터와 사설 수리점의 실제 차이를 4가지로 정리합니다.</span>
-      </a>
-      <a href="iphone-installment-screen-broken.html" class="hub-card">
-        <span class="hub-card-title">아이폰 할부 남았는데 액정 깨짐 — 지금 고치는 게 맞나</span>
-        <span class="hub-card-desc">할부 중인 기기, 수리 vs 교체 — 현실적 판단 기준을 정리합니다.</span>
-      </a>
-      <a href="iphone-two-repairs-at-once.html" class="hub-card">
-        <span class="hub-card-title">아이폰 두 군데 동시 고장 — 한 번에 고치면 비용이 달라지나</span>
-        <span class="hub-card-desc">수리 조합별 효율과 우선순위 판단 기준.</span>
-      </a>
-      <a href="iphone-insurance-vs-repair.html" class="hub-card">
-        <span class="hub-card-title">통신사 보험 vs 직접 수리 — 아이폰 어디서 수리하는 게 맞을까</span>
-        <span class="hub-card-desc">통신사 보험과 직접 수리의 비용·조건 비교.</span>
-      </a>
-      <a href="iphone-same-day-repair-possible.html" class="hub-card">
-        <span class="hub-card-title">아이폰 당일 수리 가능한 경우 vs 불가능한 경우</span>
-        <span class="hub-card-desc">고장 유형별 소요 시간과 당일 수리 여부를 정리했습니다.</span>
-      </a>
-      <a href="iphone-after-repair-check.html" class="hub-card">
-        <span class="hub-card-title">아이폰 수리 후 이상한데 — 정상인지 아닌지 구분하는 법</span>
-        <span class="hub-card-desc">수리 후 발생할 수 있는 증상의 정상 범위와 불량 기준.</span>
-      </a>
-      <a href="iphone-15pro-titanium-frame-damage.html" class="hub-card">
-        <span class="hub-card-title">아이폰 15 Pro 티타늄 테두리 긁힘 — 수리 불가 판정 나오는 이유</span>
-        <span class="hub-card-desc">티타늄 프레임 긁힘에 대한 수리 가능 여부와 이유.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 수리비·비교 -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">수리비·비교<span class="hub-section-count">10편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone16-repair-cost.html" class="hub-card">
+ <span class="hub-card-title">아이폰 16 수리 비용 총정리 — 2026년 기준</span>
+ <span class="hub-card-desc">아이폰 16 시리즈 모델별 화면·배터리·카메라·기판 수리 비용.</span>
+ </a>
+ <a href="iphone-16e-repair-cost.html" class="hub-card">
+ <span class="hub-card-title">아이폰 16e 수리 비용 — 공식 vs 사설 실제 가격 차이</span>
+ <span class="hub-card-desc">아이폰 16e 항목별 수리비 비교.</span>
+ </a>
+ <a href="iphone-se-repair-cost.html" class="hub-card">
+ <span class="hub-card-title">아이폰SE 3세대/4세대 수리비 총정리 — 항목별 비용 안내</span>
+ <span class="hub-card-desc">아이폰 SE 시리즈 수리비를 항목별로 정리했습니다.</span>
+ </a>
+ <a href="iphone-official-vs-private-repair.html" class="hub-card">
+ <span class="hub-card-title">공식 서비스센터 vs 사설 수리점 — 비용·속도·품질·보증 완전 비교</span>
+ <span class="hub-card-desc">공식 센터와 사설 수리점의 실제 차이를 4가지로 정리합니다.</span>
+ </a>
+ <a href="iphone-installment-screen-broken.html" class="hub-card">
+ <span class="hub-card-title">아이폰 할부 남았는데 액정 깨짐 — 지금 고치는 게 맞나</span>
+ <span class="hub-card-desc">할부 중인 기기, 수리 vs 교체 — 현실적 판단 기준을 정리합니다.</span>
+ </a>
+ <a href="iphone-two-repairs-at-once.html" class="hub-card">
+ <span class="hub-card-title">아이폰 두 군데 동시 고장 — 한 번에 고치면 비용이 달라지나</span>
+ <span class="hub-card-desc">수리 조합별 효율과 우선순위 판단 기준.</span>
+ </a>
+ <a href="iphone-insurance-vs-repair.html" class="hub-card">
+ <span class="hub-card-title">통신사 보험 vs 직접 수리 — 아이폰 어디서 수리하는 게 맞을까</span>
+ <span class="hub-card-desc">통신사 보험과 직접 수리의 비용·조건 비교.</span>
+ </a>
+ <a href="iphone-same-day-repair-possible.html" class="hub-card">
+ <span class="hub-card-title">아이폰 당일 수리 가능한 경우 vs 불가능한 경우</span>
+ <span class="hub-card-desc">고장 유형별 소요 시간과 당일 수리 여부를 정리했습니다.</span>
+ </a>
+ <a href="iphone-after-repair-check.html" class="hub-card">
+ <span class="hub-card-title">아이폰 수리 후 이상한데 — 정상인지 아닌지 구분하는 법</span>
+ <span class="hub-card-desc">수리 후 발생할 수 있는 증상의 정상 범위와 불량 기준.</span>
+ </a>
+ <a href="iphone-15pro-titanium-frame-damage.html" class="hub-card">
+ <span class="hub-card-title">아이폰 15 Pro 티타늄 테두리 긁힘 — 수리 불가 판정 나오는 이유</span>
+ <span class="hub-card-desc">티타늄 프레임 긁힘에 대한 수리 가능 여부와 이유.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 기타 증상 -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">기타 증상<span class="hub-section-count">14편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-broken-on-exam-day.html" class="hub-card">
-        <span class="hub-card-title">면접·시험 당일 아이폰 파손 — 최단 시간 해결 경로</span>
-        <span class="hub-card-desc">파손 상태별 즉시 행동 순서와 최단 수리 경로.</span>
-      </a>
-      <a href="iphone-face-id-not-working.html" class="hub-card">
-        <span class="hub-card-title">아이폰 Face ID 안될 때 — 원인 파악과 해결 방법</span>
-        <span class="hub-card-desc">얼굴인식 비활성화 원인과 해결법.</span>
-      </a>
-      <a href="iphone-button-broken.html" class="hub-card">
-        <span class="hub-card-title">아이폰 볼륨·전원 버튼 고장 — 수리 가능 여부와 비용</span>
-        <span class="hub-card-desc">버튼 고장 시 보조 터치로 임시 대응하는 법과 모델별 정리.</span>
-      </a>
-      <a href="iphone-speaker-not-working.html" class="hub-card">
-        <span class="hub-card-title">아이폰 스피커 소리 안날 때 — 막힘인지 고장인지 구별법</span>
-        <span class="hub-card-desc">이어스피커와 라우드스피커 고장 구분과 수리.</span>
-      </a>
-      <a href="iphone-earpiece-no-sound.html" class="hub-card">
-        <span class="hub-card-title">아이폰 통화 중 상대방 소리 안 들림 — 원인과 해결 방법</span>
-        <span class="hub-card-desc">이어피스 고장인지 소프트웨어 문제인지 구분합니다.</span>
-      </a>
-      <a href="iphone-microphone-broken.html" class="hub-card">
-        <span class="hub-card-title">아이폰 마이크 고장 — 어느 마이크가 문제인지 찾는 법</span>
-        <span class="hub-card-desc">통화 마이크, 녹음 마이크, 시리 마이크 — 위치별 진단.</span>
-      </a>
-      <a href="iphone-vibration-not-working.html" class="hub-card">
-        <span class="hub-card-title">아이폰 진동 안될 때 — 설정 문제인지 고장인지 확인하는 법</span>
-        <span class="hub-card-desc">무음 진동 없음, 햅틱 고장 원인을 구분합니다.</span>
-      </a>
-      <a href="iphone-bluetooth-wifi-not-working.html" class="hub-card">
-        <span class="hub-card-title">아이폰 블루투스·와이파이 연결 안 될 때 — 원인별 해결법</span>
-        <span class="hub-card-desc">소프트웨어 문제인지 무선 칩 불량인지 구별하는 법.</span>
-      </a>
-      <a href="iphone-gps-error.html" class="hub-card">
-        <span class="hub-card-title">아이폰 GPS 오류 — 위치가 틀리거나 튀는 이유와 해결법</span>
-        <span class="hub-card-desc">GPS 오류 원인과 해결법을 정리했습니다.</span>
-      </a>
-      <a href="iphone-nfc-not-working.html" class="hub-card">
-        <span class="hub-card-title">아이폰 NFC 안됨 — 애플페이 결제 불가 원인과 해결 방법</span>
-        <span class="hub-card-desc">NFC 고장인지 설정 문제인지 구분합니다.</span>
-      </a>
-      <a href="iphone-sim-not-recognized.html" class="hub-card">
-        <span class="hub-card-title">아이폰 유심 인식 안될 때 — 원인과 해결 순서</span>
-        <span class="hub-card-desc">SIM 오류 메시지 원인과 해결 순서.</span>
-      </a>
-      <a href="iphone-keeps-restarting.html" class="hub-card">
-        <span class="hub-card-title">아이폰 자꾸 꺼지고 재시동 반복될 때 — 원인과 해결법</span>
-        <span class="hub-card-desc">배터리 불량인지, 소프트웨어 충돌인지, 기판 문제인지.</span>
-      </a>
-      <a href="iphone-data-recovery.html" class="hub-card">
-        <span class="hub-card-title">아이폰 데이터 복구, 수리점에서 가능한가? — 복구 가능 범위와 비용</span>
-        <span class="hub-card-desc">데이터 복구 가능 범위와 비용을 정리했습니다.</span>
-      </a>
-      <a href="iphone-damage-wrong-actions.html" class="hub-card">
-        <span class="hub-card-title">아이폰 파손 직후 하면 안 되는 행동 5가지 — 수리비 더 키우는 실수</span>
-        <span class="hub-card-desc">파손 후 절대 하면 안 되는 행동을 정리했습니다.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 기타 증상 -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">기타 증상<span class="hub-section-count">14편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-broken-on-exam-day.html" class="hub-card">
+ <span class="hub-card-title">면접·시험 당일 아이폰 파손 — 최단 시간 해결 경로</span>
+ <span class="hub-card-desc">파손 상태별 즉시 행동 순서와 최단 수리 경로.</span>
+ </a>
+ <a href="iphone-face-id-not-working.html" class="hub-card">
+ <span class="hub-card-title">아이폰 Face ID 안될 때 — 원인 파악과 해결 방법</span>
+ <span class="hub-card-desc">얼굴인식 비활성화 원인과 해결법.</span>
+ </a>
+ <a href="iphone-button-broken.html" class="hub-card">
+ <span class="hub-card-title">아이폰 볼륨·전원 버튼 고장 — 수리 가능 여부와 비용</span>
+ <span class="hub-card-desc">버튼 고장 시 보조 터치로 임시 대응하는 법과 모델별 정리.</span>
+ </a>
+ <a href="iphone-speaker-not-working.html" class="hub-card">
+ <span class="hub-card-title">아이폰 스피커 소리 안날 때 — 막힘인지 고장인지 구별법</span>
+ <span class="hub-card-desc">이어스피커와 라우드스피커 고장 구분과 수리.</span>
+ </a>
+ <a href="iphone-earpiece-no-sound.html" class="hub-card">
+ <span class="hub-card-title">아이폰 통화 중 상대방 소리 안 들림 — 원인과 해결 방법</span>
+ <span class="hub-card-desc">이어피스 고장인지 소프트웨어 문제인지 구분합니다.</span>
+ </a>
+ <a href="iphone-microphone-broken.html" class="hub-card">
+ <span class="hub-card-title">아이폰 마이크 고장 — 어느 마이크가 문제인지 찾는 법</span>
+ <span class="hub-card-desc">통화 마이크, 녹음 마이크, 시리 마이크 — 위치별 진단.</span>
+ </a>
+ <a href="iphone-vibration-not-working.html" class="hub-card">
+ <span class="hub-card-title">아이폰 진동 안될 때 — 설정 문제인지 고장인지 확인하는 법</span>
+ <span class="hub-card-desc">무음 진동 없음, 햅틱 고장 원인을 구분합니다.</span>
+ </a>
+ <a href="iphone-bluetooth-wifi-not-working.html" class="hub-card">
+ <span class="hub-card-title">아이폰 블루투스·와이파이 연결 안 될 때 — 원인별 해결법</span>
+ <span class="hub-card-desc">소프트웨어 문제인지 무선 칩 불량인지 구별하는 법.</span>
+ </a>
+ <a href="iphone-gps-error.html" class="hub-card">
+ <span class="hub-card-title">아이폰 GPS 오류 — 위치가 틀리거나 튀는 이유와 해결법</span>
+ <span class="hub-card-desc">GPS 오류 원인과 해결법을 정리했습니다.</span>
+ </a>
+ <a href="iphone-nfc-not-working.html" class="hub-card">
+ <span class="hub-card-title">아이폰 NFC 안됨 — 애플페이 결제 불가 원인과 해결 방법</span>
+ <span class="hub-card-desc">NFC 고장인지 설정 문제인지 구분합니다.</span>
+ </a>
+ <a href="iphone-sim-not-recognized.html" class="hub-card">
+ <span class="hub-card-title">아이폰 유심 인식 안될 때 — 원인과 해결 순서</span>
+ <span class="hub-card-desc">SIM 오류 메시지 원인과 해결 순서.</span>
+ </a>
+ <a href="iphone-keeps-restarting.html" class="hub-card">
+ <span class="hub-card-title">아이폰 자꾸 꺼지고 재시동 반복될 때 — 원인과 해결법</span>
+ <span class="hub-card-desc">배터리 불량인지, 소프트웨어 충돌인지, 기판 문제인지.</span>
+ </a>
+ <a href="iphone-data-recovery.html" class="hub-card">
+ <span class="hub-card-title">아이폰 데이터 복구, 수리점에서 가능한가? — 복구 가능 범위와 비용</span>
+ <span class="hub-card-desc">데이터 복구 가능 범위와 비용을 정리했습니다.</span>
+ </a>
+ <a href="iphone-damage-wrong-actions.html" class="hub-card">
+ <span class="hub-card-title">아이폰 파손 직후 하면 안 되는 행동 5가지 — 수리비 더 키우는 실수</span>
+ <span class="hub-card-desc">파손 후 절대 하면 안 되는 행동을 정리했습니다.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- eSIM 관련 (수리 전후) -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">수리 전후 eSIM 처리<span class="hub-section-count">2편</span></h2>
-    <div class="hub-grid">
-      <a href="iphone-esim-before-repair.html" class="hub-card">
-        <span class="hub-card-title">아이폰 수리 맡기기 전 eSIM 처리법 — 번호 사라지는 상황 막는 법</span>
-        <span class="hub-card-desc">기기 교체 시 eSIM 번호가 사라지는 걸 막는 방법.</span>
-      </a>
-      <a href="iphone-esim-repair-caution.html" class="hub-card">
-        <span class="hub-card-title">아이폰 수리 후 eSIM 사라짐 — 통신사별 복구 방법과 소요 시간</span>
-        <span class="hub-card-desc">SKT·KT·LGU+ 통신사별 eSIM 재발급 방법.</span>
-      </a>
-    </div>
-  </div>
+ <!-- eSIM 관련 (수리 전후) -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">수리 전후 eSIM 처리<span class="hub-section-count">2편</span></h2>
+ <div class="hub-grid">
+ <a href="iphone-esim-before-repair.html" class="hub-card">
+ <span class="hub-card-title">아이폰 수리 맡기기 전 eSIM 처리법 — 번호 사라지는 상황 막는 법</span>
+ <span class="hub-card-desc">기기 교체 시 eSIM 번호가 사라지는 걸 막는 방법.</span>
+ </a>
+ <a href="iphone-esim-repair-caution.html" class="hub-card">
+ <span class="hub-card-title">아이폰 수리 후 eSIM 사라짐 — 통신사별 복구 방법과 소요 시간</span>
+ <span class="hub-card-desc">SKT·KT·LGU+ 통신사별 eSIM 재발급 방법.</span>
+ </a>
+ </div>
+ </div>
 
 </div>
 
 <footer class="art-footer">
-  <p><a href="https://xn--2j1bq2k97kxnah86c.com">다올리페어</a> · 가산점 · 신림점 · 목동점 · 전국 택배 수리</p>
-  <p style="margin-top:6px;">&copy; 2026 다올리페어. All rights reserved.</p>
+ <p><a href="https://xn--2j1bq2k97kxnah86c.com">다올리페어</a> · 가산점 · 신림점 · 목동점 · 전국 택배 수리</p>
+ <p style="margin-top:6px;">&copy; 2026 다올리페어. All rights reserved.</p>
 </footer>
 
 
 <section class="art-faq" style="margin-top:40px;padding:24px;background:#fafafa;border-radius:14px;">
-  <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin-bottom:16px;">자주 묻는 질문</h2>
-  <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
-    <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
-      <span>Q. 다올리페어는 어디에 있나요?</span>
-      <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
-    </summary>
-    <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 가산점(가산디지털단지역 9번 출구), 신림점(신대방역 2번 출구 도보 2분), 목동점(양천구청역 도보 10분) 3개 직영점입니다. 전국 택배 수리도 가능합니다.</div>
-  </details>
-  <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
-    <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
-      <span>Q. 영업시간은 어떻게 되나요?</span>
-      <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
-    </summary>
-    <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 평일 10:00~20:00, 토요일 11:00~17:00, 일요일 휴무. 모든 매장 동일하게 운영됩니다.</div>
-  </details>
-  <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
-    <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
-      <span>Q. 결제 방법은?</span>
-      <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
-    </summary>
-    <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 현금·카드 가능. 카카오페이·네이버페이는 미지원. 회사 비용 처리를 위한 영수증·세금계산서 발행 가능합니다.</div>
-  </details>
-  <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
-    <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
-      <span>Q. 수리 보증은 얼마나 되나요?</span>
-      <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
-    </summary>
-    <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 동일 부품 문제 시 90일 무상 재수리. 수리 실패 시 비용 0원 정책.</div>
-  </details>
-  <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
-    <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
-      <span>Q. 택배 수리도 되나요?</span>
-      <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
-    </summary>
-    <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 네, 전국 어디서나 택배 수리 가능합니다. 카카오 채널 "다올리페어"로 사전 상담 후 접수.</div>
-  </details>
-  <p style="margin-top:18px;font-size:13px;color:#888;">전체 1,000+ Q&A는 <a href="faq.html" style="color:#E8732A;font-weight:700;">FAQ 페이지</a>에서 확인하실 수 있습니다.</p>
+ <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin-bottom:16px;">자주 묻는 질문</h2>
+ <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
+ <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+ <span>Q. 다올리페어는 어디에 있나요?</span>
+ <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
+ </summary>
+ <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 가산점(가산디지털단지역 9번 출구), 신림점(신대방역 2번 출구 도보 2분), 목동점(양천구청역 도보 10분) 3개 직영점입니다. 전국 택배 수리도 가능합니다.</div>
+ </details>
+ <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
+ <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+ <span>Q. 영업시간은 어떻게 되나요?</span>
+ <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
+ </summary>
+ <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 평일 10:00~20:00, 토요일 11:00~17:00, 일요일 휴무. 모든 매장 동일하게 운영됩니다.</div>
+ </details>
+ <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
+ <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+ <span>Q. 결제 방법은?</span>
+ <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
+ </summary>
+ <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 현금·카드 가능. 카카오페이·네이버페이는 미지원. 회사 비용 처리를 위한 영수증·세금계산서 발행 가능합니다.</div>
+ </details>
+ <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
+ <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+ <span>Q. 수리 보증은 얼마나 되나요?</span>
+ <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
+ </summary>
+ <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 동일 부품 문제 시 90일 무상 재수리. 수리 실패 시 비용 0원 정책.</div>
+ </details>
+ <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
+ <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+ <span>Q. 택배 수리도 되나요?</span>
+ <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
+ </summary>
+ <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 네, 전국 어디서나 택배 수리 가능합니다. 카카오 채널 "다올리페어"로 사전 상담 후 접수.</div>
+ </details>
+ <p style="margin-top:18px;font-size:13px;color:#888;">전체 1,000+ Q&A는 <a href="faq.html" style="color:#E8732A;font-weight:700;">FAQ 페이지</a>에서 확인하실 수 있습니다.</p>
 </section>
 
 </body>

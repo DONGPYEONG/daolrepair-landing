@@ -240,7 +240,7 @@ TYPE_BODY = {
   <thead>
     <tr style="background:#f5f5f7;">
       <th style="padding:10px;border:1px solid #eee;text-align:left;">구분</th>
-      <th style="padding:10px;border:1px solid #eee;text-align:left;">정품 액정 (추출·재생)</th>
+      <th style="padding:10px;border:1px solid #eee;text-align:left;">정품 액정</th>
       <th style="padding:10px;border:1px solid #eee;text-align:left;">DD(OEM) 액정</th>
     </tr>
   </thead>
@@ -265,7 +265,7 @@ TYPE_BODY = {
   <li><strong>기능 테스트 (5~10분)</strong> — 터치 감도·색상·트루톤·자동 밝기 모두 확인</li>
   <li><strong>방수 패킹 재부착</strong> — 표준 절차로 재부착 (방수 등급 보장은 어려운 점 안내)</li>
 </ol>
-<p>데이터는 그대로 보존됩니다. 수리 중 잠시 기다리시거나 매장 근처에서 시간 보내시면 됩니다. 카드 무이자 할부(2~6개월)도 이용 가능해요.</p>
+<p>데이터는 그대로 보존됩니다. 수리 중 잠시 기다리시거나 매장 근처에서 시간 보내시면 됩니다.</p>
 """,
     "back": """
 <h2>{model} 후면 유리 깨졌을 때 — 자가진단 5단계</h2>
@@ -893,11 +893,6 @@ def make_cta(c):
   </div>
   <p style="font-size:12px;color:#999;margin-top:8px;">✓ 무료 진단 · 90일 보증 · 실패 시 비용 0원</p>
 </div>
-
-<div style="background:#f5f5f7;border-radius:14px;padding:18px 22px;margin:20px 0;">
-  <strong style="font-size:13px;color:#1a1a1a;">📍 매장 방문도 환영</strong><br>
-  <span style="font-size:13px;color:#555;">가산점 · 신림점 · 목동점 직영 운영 (평일 10~20시 · 주말 11~18시)</span>
-</div>
 '''
 
 
@@ -1364,6 +1359,13 @@ def generate_article(case, journals):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- DAOL_FAVICON_v1 -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <title>{title} | 다올리페어</title>
 <meta name="description" content="{desc}">
 <meta name="keywords" content="{keywords}">

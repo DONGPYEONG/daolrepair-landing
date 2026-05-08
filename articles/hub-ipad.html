@@ -1,479 +1,486 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>아이패드 수리 완전 가이드 — 화면·배터리·충전 29개 칼럼 | 다올리페어</title>
-  <meta name="description" content="아이패드 수리에 대한 모든 것 — 화면·터치, 배터리, 충전, 수리비 비교까지 28개 전문가 칼럼을 주제별로 정리했습니다. 다올리페어">
-  <link rel="canonical" href="https://xn--2j1bq2k97kxnah86c.com/articles/hub-ipad.html">
-  <meta property="og:title" content="아이패드 수리 완전 가이드 | 다올리페어">
-  <meta property="og:description" content="아이패드 수리에 대한 모든 것 — 화면, 배터리, 충전까지 29개 칼럼을 주제별로 정리했습니다.">
-  <meta property="og:image" content="https://da-2gx.pages.dev/%EB%8B%A4%EC%98%AC%20%EB%A9%94%EC%9D%B8.jpg">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --orange: #E8732A; --dark: #0A0A0A; --border: #e8e8e8; --muted: #666; --font: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
-    body { font-family: var(--font); background: #fff; color: var(--dark); -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
-    @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>아이패드 수리 완전 가이드 — 화면·배터리·충전 29개 칼럼 | 다올리페어</title>
+ <meta name="description" content="아이패드 수리에 대한 모든 것 — 화면·터치, 배터리, 충전, 수리비 비교까지 28개 전문가 칼럼을 주제별로 정리했습니다. 다올리페어">
+ <link rel="canonical" href="https://xn--2j1bq2k97kxnah86c.com/articles/hub-ipad.html">
+ <meta property="og:title" content="아이패드 수리 완전 가이드 | 다올리페어">
+ <meta property="og:description" content="아이패드 수리에 대한 모든 것 — 화면, 배터리, 충전까지 29개 칼럼을 주제별로 정리했습니다.">
+ <meta property="og:image" content="https://da-2gx.pages.dev/%EB%8B%A4%EC%98%AC%20%EB%A9%94%EC%9D%B8.jpg">
+ <style>
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ :root { --orange: #E8732A; --dark: #0A0A0A; --border: #e8e8e8; --muted: #666; --font: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
+ body { font-family: var(--font); background: #fff; color: var(--dark); -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
+ @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
 
-    .art-nav { position: sticky; top: 0; z-index: 1000; background: rgba(10,10,10,0.82); backdrop-filter: saturate(180%) blur(24px); -webkit-backdrop-filter: saturate(180%) blur(24px); border-bottom: 1px solid rgba(255,255,255,0.09); transition: background 0.3s; }
-    .art-nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 28px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
-    .art-nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .art-nav-logo img { width: 38px; height: 38px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
-    .art-nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
-    .art-nav-logo-ko { font-size: 15px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
-    .art-nav-logo-ko em { color: #E8732A; font-style: normal; }
-    .art-nav-logo-en { font-size: 8px; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
-    .art-nav-links { display: flex; gap: 0; list-style: none; align-items: center; }
-    .art-nav-links li { display: flex; align-items: center; }
-    .art-nav-links li + li::before { content: ''; display: block; width: 1px; height: 12px; background: rgba(255,255,255,0.12); flex-shrink: 0; margin: 0 1px; }
-    .art-nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 12.5px; font-weight: 400; transition: color 0.2s; padding: 0 9px; }
-    .art-nav-links a:hover { color: #fff; }
-    .art-nav-home { position: relative; background: none; border: none; color: rgba(255,255,255,0.75); cursor: pointer; padding: 6px; display: flex; align-items: center; justify-content: center; margin-left: 4px; margin-right: 4px; text-decoration: none; transition: color 0.2s; flex-shrink: 0; }
-    .art-nav-home:hover { color: #fff !important; }
-    .art-nav-reserve { position: relative; }
-    .art-nav-reserve-btn { background: #E8732A; color: #fff; padding: 6px 13px; border-radius: 20px; font-size: 12.5px; font-weight: 700; border: none; cursor: pointer; transition: background 0.2s; white-space: nowrap; font-family: var(--font); }
-    .art-nav-reserve-btn:hover { background: #C55E1A; }
-    .art-nav-reserve-dropdown { display: none; position: absolute; top: calc(100% + 10px); right: 0; background: #1D1D1F; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
-    .art-nav-reserve.open .art-nav-reserve-dropdown { display: block; }
-    .art-nav-reserve-dropdown a { display: block; padding: 13px 18px; color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.07); transition: all 0.15s; }
-    .art-nav-reserve-dropdown a:last-child { border-bottom: none; }
-    .art-nav-reserve-dropdown a:hover { background: rgba(232,115,42,0.12); color: #E8732A; }
-    .art-nav-reserve-dropdown a span { font-size: 11px; color: rgba(255,255,255,0.35); display: block; margin-top: 2px; font-weight: 400; }
-    @media (max-width: 768px) { .art-nav-links { display: none; } .art-nav-inner { padding: 0 20px; } }
+ .art-nav { position: sticky; top: 0; z-index: 1000; background: rgba(10,10,10,0.82); backdrop-filter: saturate(180%) blur(24px); -webkit-backdrop-filter: saturate(180%) blur(24px); border-bottom: 1px solid rgba(255,255,255,0.09); transition: background 0.3s; }
+ .art-nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 28px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+ .art-nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+ .art-nav-logo img { width: 38px; height: 38px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+ .art-nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+ .art-nav-logo-ko { font-size: 15px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
+ .art-nav-logo-ko em { color: #E8732A; font-style: normal; }
+ .art-nav-logo-en { font-size: 8px; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
+ .art-nav-links { display: flex; gap: 0; list-style: none; align-items: center; }
+ .art-nav-links li { display: flex; align-items: center; }
+ .art-nav-links li + li::before { content: ''; display: block; width: 1px; height: 12px; background: rgba(255,255,255,0.12); flex-shrink: 0; margin: 0 1px; }
+ .art-nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 12.5px; font-weight: 400; transition: color 0.2s; padding: 0 9px; }
+ .art-nav-links a:hover { color: #fff; }
+ .art-nav-home { position: relative; background: none; border: none; color: rgba(255,255,255,0.75); cursor: pointer; padding: 6px; display: flex; align-items: center; justify-content: center; margin-left: 4px; margin-right: 4px; text-decoration: none; transition: color 0.2s; flex-shrink: 0; }
+ .art-nav-home:hover { color: #fff !important; }
+ .art-nav-reserve { position: relative; }
+ .art-nav-reserve-btn { background: #E8732A; color: #fff; padding: 6px 13px; border-radius: 20px; font-size: 12.5px; font-weight: 700; border: none; cursor: pointer; transition: background 0.2s; white-space: nowrap; font-family: var(--font); }
+ .art-nav-reserve-btn:hover { background: #C55E1A; }
+ .art-nav-reserve-dropdown { display: none; position: absolute; top: calc(100% + 10px); right: 0; background: #1D1D1F; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; overflow: hidden; min-width: 160px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+ .art-nav-reserve.open .art-nav-reserve-dropdown { display: block; }
+ .art-nav-reserve-dropdown a { display: block; padding: 13px 18px; color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.07); transition: all 0.15s; }
+ .art-nav-reserve-dropdown a:last-child { border-bottom: none; }
+ .art-nav-reserve-dropdown a:hover { background: rgba(232,115,42,0.12); color: #E8732A; }
+ .art-nav-reserve-dropdown a span { font-size: 11px; color: rgba(255,255,255,0.35); display: block; margin-top: 2px; font-weight: 400; }
+ @media (max-width: 768px) { .art-nav-links { display: none; } .art-nav-inner { padding: 0 20px; } }
 
-    .list-wrap { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
-    .list-header { margin-bottom: 36px; }
-    .list-eyebrow { font-size: 12px; color: var(--orange); font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; }
-    .list-title { font-size: clamp(24px, 5vw, 36px); font-weight: 900; line-height: 1.3; margin-bottom: 12px; }
-    .list-desc { font-size: 15px; color: var(--muted); line-height: 1.7; }
+ .list-wrap { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
+ .list-header { margin-bottom: 36px; }
+ .list-eyebrow { font-size: 12px; color: var(--orange); font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; }
+ .list-title { font-size: clamp(24px, 5vw, 36px); font-weight: 900; line-height: 1.3; margin-bottom: 12px; }
+ .list-desc { font-size: 15px; color: var(--muted); line-height: 1.7; }
 
-    .hub-tab-wrap { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
-    .hub-tab { display: inline-flex; align-items: center; padding: 8px 16px; border-radius: 50px; border: 1.5px solid var(--border); background: #fff; font-size: 13px; font-weight: 700; color: var(--muted); cursor: pointer; transition: all 0.18s; font-family: var(--font); white-space: nowrap; text-decoration: none; }
-    .hub-tab:hover { border-color: var(--orange); color: var(--orange); }
-    .hub-tab.active { background: var(--dark); border-color: var(--dark); color: #fff; }
+ .hub-tab-wrap { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+ .hub-tab { display: inline-flex; align-items: center; padding: 8px 16px; border-radius: 50px; border: 1.5px solid var(--border); background: #fff; font-size: 13px; font-weight: 700; color: var(--muted); cursor: pointer; transition: all 0.18s; font-family: var(--font); white-space: nowrap; text-decoration: none; }
+ .hub-tab:hover { border-color: var(--orange); color: var(--orange); }
+ .hub-tab.active { background: var(--dark); border-color: var(--dark); color: #fff; }
 
-    .hub-section { margin-bottom: 48px; }
-    .hub-section-title { font-size: 20px; font-weight: 900; margin-bottom: 20px; padding-left: 14px; border-left: 4px solid var(--orange); line-height: 1.4; }
-    .hub-section-count { font-size: 13px; font-weight: 500; color: var(--muted); margin-left: 8px; }
-    .hub-grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
-    @media (min-width: 540px) { .hub-grid { grid-template-columns: 1fr 1fr; } }
-    .hub-card { display: block; padding: 20px; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s; background: #fff; }
-    .hub-card:hover { border-color: var(--orange); box-shadow: 0 4px 20px rgba(232,115,42,0.1); }
-    .hub-card-title { display: block; font-size: 15px; font-weight: 800; line-height: 1.45; color: var(--dark); margin-bottom: 6px; }
-    .hub-card-desc { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+ .hub-section { margin-bottom: 48px; }
+ .hub-section-title { font-size: 20px; font-weight: 900; margin-bottom: 20px; padding-left: 14px; border-left: 4px solid var(--orange); line-height: 1.4; }
+ .hub-section-count { font-size: 13px; font-weight: 500; color: var(--muted); margin-left: 8px; }
+ .hub-grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
+ @media (min-width: 540px) { .hub-grid { grid-template-columns: 1fr 1fr; } }
+ .hub-card { display: block; padding: 20px; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s; background: #fff; }
+ .hub-card:hover { border-color: var(--orange); box-shadow: 0 4px 20px rgba(232,115,42,0.1); }
+ .hub-card-title { display: block; font-size: 15px; font-weight: 800; line-height: 1.45; color: var(--dark); margin-bottom: 6px; }
+ .hub-card-desc { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.6; }
 
-    .back-to-all { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 28px; font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 600; transition: color 0.2s; }
-    .back-to-all:hover { color: var(--orange); }
-    
-    .art-related { margin-top: 56px; padding-top: 40px; border-top: 2px solid var(--border); }
-    .art-related-heading { font-size: 18px; font-weight: 900; color: var(--dark); margin-bottom: 20px; }
-    .art-related-heading::before { content: ''; display: block; width: 28px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 12px; }
-    .related-grid { display: flex; flex-direction: column; gap: 10px; }
-    .related-card { display: block; padding: 16px 20px; border: 1.5px solid var(--border); border-radius: 14px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s; }
-    .related-card:hover { border-color: var(--orange); box-shadow: 0 4px 16px rgba(232,115,42,0.1); }
-    .related-badge { display: inline-block; background: rgba(232,115,42,0.1); color: var(--orange); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; }
-    .related-title { display: block; font-size: 14px; font-weight: 700; color: var(--dark); line-height: 1.5; }
+ .back-to-all { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 28px; font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+ .back-to-all:hover { color: var(--orange); }
+ 
+ .art-related { margin-top: 56px; padding-top: 40px; border-top: 2px solid var(--border); }
+ .art-related-heading { font-size: 18px; font-weight: 900; color: var(--dark); margin-bottom: 20px; }
+ .art-related-heading::before { content: ''; display: block; width: 28px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 12px; }
+ .related-grid { display: flex; flex-direction: column; gap: 10px; }
+ .related-card { display: block; padding: 16px 20px; border: 1.5px solid var(--border); border-radius: 14px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s; }
+ .related-card:hover { border-color: var(--orange); box-shadow: 0 4px 16px rgba(232,115,42,0.1); }
+ .related-badge { display: inline-block; background: rgba(232,115,42,0.1); color: var(--orange); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; }
+ .related-title { display: block; font-size: 14px; font-weight: 700; color: var(--dark); line-height: 1.5; }
 
-    .art-footer { text-align: center; padding: 36px 20px; font-size: 13px; color: #bbb; border-top: 1px solid var(--border); margin-top: 60px; }
-    .art-footer a { color: var(--orange); text-decoration: none; }
-  </style>
+ .art-footer { text-align: center; padding: 36px 20px; font-size: 13px; color: #bbb; border-top: 1px solid var(--border); margin-top: 60px; }
+ .art-footer a { color: var(--orange); text-decoration: none; }
+ </style>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "다올리페어",
-    "description": "가산·신림·목동 3지점에서 아이폰·아이패드·맥북·애플워치·에어팟을 정직한 가격으로 수리하는 애플 사설 수리 매장",
-    "url": "https://xn--2j1bq2k97kxnah86c.com",
-    "image": "https://da-2gx.pages.dev/%EB%8B%A4%EC%98%AC%20%EB%A9%94%EC%9D%B8.jpg",
-    "telephone": "+82-2-000-0000",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "KR",
-      "addressRegion": "서울특별시",
-      "addressLocality": "금천구·관악구·양천구"
-    },
-    "areaServed": ["서울특별시", "금천구", "관악구", "양천구", "가산디지털단지", "신림", "목동"],
-    "openingHoursSpecification": [
-      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "10:00", "closes": "20:00"},
-      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "11:00", "closes": "20:00"}
-    ],
-    "department": [
-      {"@type": "LocalBusiness", "name": "다올리페어 가산점", "areaServed": "가산디지털단지·금천구·독산", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"},
-      {"@type": "LocalBusiness", "name": "다올리페어 신림점", "areaServed": "신림·관악구·서울대입구·봉천", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"},
-      {"@type": "LocalBusiness", "name": "다올리페어 목동점", "areaServed": "목동·양천구·신정·신월", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"}
-    ],
-    "priceRange": "₩₩"
-  }
-  </script>
-  <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "다올리페어는 어디에 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "가산점(가산디지털단지역 9번 출구), 신림점(신대방역 2번 출구 도보 2분), 목동점(양천구청역 도보 10분) 3개 직영점입니다. 전국 택배 수리도 가능합니다."}}, {"@type": "Question", "name": "영업시간은 어떻게 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "평일 10:00~20:00, 토요일 11:00~17:00, 일요일 휴무. 모든 매장 동일하게 운영됩니다."}}, {"@type": "Question", "name": "결제 방법은?", "acceptedAnswer": {"@type": "Answer", "text": "현금·카드 가능. 카카오페이·네이버페이는 미지원. 회사 비용 처리를 위한 영수증·세금계산서 발행 가능합니다."}}, {"@type": "Question", "name": "수리 보증은 얼마나 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "동일 부품 문제 시 90일 무상 재수리. 수리 실패 시 비용 0원 정책."}}, {"@type": "Question", "name": "택배 수리도 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "네, 전국 어디서나 택배 수리 가능합니다. 카카오 채널 \"다올리페어\"로 사전 상담 후 접수."}}]}
-  </script>
+ <script type="application/ld+json">
+ {
+ "@context": "https://schema.org",
+ "@type": "LocalBusiness",
+ "name": "다올리페어",
+ "description": "가산·신림·목동 3지점에서 아이폰·아이패드·맥북·애플워치·에어팟을 정직한 가격으로 수리하는 애플 사설 수리 매장",
+ "url": "https://xn--2j1bq2k97kxnah86c.com",
+ "image": "https://da-2gx.pages.dev/%EB%8B%A4%EC%98%AC%20%EB%A9%94%EC%9D%B8.jpg",
+ "telephone": "+82-2-000-0000",
+ "address": {
+ "@type": "PostalAddress",
+ "addressCountry": "KR",
+ "addressRegion": "서울특별시",
+ "addressLocality": "금천구·관악구·양천구"
+ },
+ "areaServed": ["서울특별시", "금천구", "관악구", "양천구", "가산디지털단지", "신림", "목동"],
+ "openingHoursSpecification": [
+ {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "10:00", "closes": "20:00"},
+ {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "11:00", "closes": "20:00"}
+ ],
+ "department": [
+ {"@type": "LocalBusiness", "name": "다올리페어 가산점", "areaServed": "가산디지털단지·금천구·독산", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"},
+ {"@type": "LocalBusiness", "name": "다올리페어 신림점", "areaServed": "신림·관악구·서울대입구·봉천", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"},
+ {"@type": "LocalBusiness", "name": "다올리페어 목동점", "areaServed": "목동·양천구·신정·신월", "openingHours": "Mo-Fr 10:00-20:00, Sa 11:00-17:00"}
+ ],
+ "priceRange": "₩₩"
+ }
+ </script>
+ <script type="application/ld+json">
+ {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "다올리페어는 어디에 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "가산점(가산디지털단지역 9번 출구), 신림점(신대방역 2번 출구 도보 2분), 목동점(양천구청역 도보 10분) 3개 직영점입니다. 전국 택배 수리도 가능합니다."}}, {"@type": "Question", "name": "영업시간은 어떻게 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "평일 10:00~20:00, 토요일 11:00~17:00, 일요일 휴무. 모든 매장 동일하게 운영됩니다."}}, {"@type": "Question", "name": "결제 방법은?", "acceptedAnswer": {"@type": "Answer", "text": "현금·카드 가능. 카카오페이·네이버페이는 미지원. 회사 비용 처리를 위한 영수증·세금계산서 발행 가능합니다."}}, {"@type": "Question", "name": "수리 보증은 얼마나 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "동일 부품 문제 시 90일 무상 재수리. 수리 실패 시 비용 0원 정책."}}, {"@type": "Question", "name": "택배 수리도 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "네, 전국 어디서나 택배 수리 가능합니다. 카카오 채널 \"다올리페어\"로 사전 상담 후 접수."}}]}
+ </script>
 
-  <!-- ─ Google Analytics 4 ─────────────────────────────── -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TF9YKW0FW2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-TF9YKW0FW2', {
-      'page_title': document.title,
-      'page_location': window.location.href
-    });
-    document.addEventListener('DOMContentLoaded', function(){
-      function track(n, p){ if(typeof gtag==='function') gtag('event', n, Object.assign({'page_path':window.location.pathname,'page_title':document.title}, p||{})); }
-      document.querySelectorAll('a[href*="pf.kakao.com"]').forEach(function(el){ el.addEventListener('click', function(){ track('kakao_click', {'destination': el.href}); }); });
-      document.querySelectorAll('a[href*="naver.me"]').forEach(function(el){ el.addEventListener('click', function(){
-        var t = el.textContent.trim().substring(0, 30);
-        var b = t.indexOf('가산')>=0?'가산점':t.indexOf('신림')>=0?'신림점':t.indexOf('목동')>=0?'목동점':'기타';
-        track('naver_click', {'branch': b, 'label': t});
-      }); });
-      document.querySelectorAll('a[href^="tel:"]').forEach(function(el){ el.addEventListener('click', function(){ track('phone_click', {'phone': el.href.replace('tel:','')}); }); });
-      document.querySelectorAll('a[href*="portfolio.html"]').forEach(function(el){ el.addEventListener('click', function(){ track('portfolio_view', {}); }); });
-    });
-  </script>
+ <!-- ─ Google Analytics 4 ─────────────────────────────── -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-TF9YKW0FW2"></script>
+ <script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag{dataLayer.push(arguments);}
+ gtag('js', new Date);
+ gtag('config', 'G-TF9YKW0FW2', {
+ 'page_title': document.title,
+ 'page_location': window.location.href
+ });
+ document.addEventListener('DOMContentLoaded', function{
+ function track(n, p){ if(typeof gtag==='function') gtag('event', n, Object.assign({'page_path':window.location.pathname,'page_title':document.title}, p||{})); }
+ document.querySelectorAll('a[href*="pf.kakao.com"]').forEach(function(el){ el.addEventListener('click', function{ track('kakao_click', {'destination': el.href}); }); });
+ document.querySelectorAll('a[href*="naver.me"]').forEach(function(el){ el.addEventListener('click', function{
+ var t = el.textContent.trim.substring(0, 30);
+ var b = t.indexOf('가산')>=0?'가산점':t.indexOf('신림')>=0?'신림점':t.indexOf('목동')>=0?'목동점':'기타';
+ track('naver_click', {'branch': b, 'label': t});
+ }); });
+ document.querySelectorAll('a[href^="tel:"]').forEach(function(el){ el.addEventListener('click', function{ track('phone_click', {'phone': el.href.replace('tel:','')}); }); });
+ document.querySelectorAll('a[href*="portfolio.html"]').forEach(function(el){ el.addEventListener('click', function{ track('portfolio_view', {}); }); });
+ });
+ </script>
 
-  <!-- DAOL_GLOBAL_STYLE_v1 -->
-  <style>
-    /* 본문 링크 통일 — 주황 + 밑줄 (다올리페어 브랜드) */
-    .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
-      color: #E8732A !important;
-      text-decoration: underline !important;
-      text-underline-offset: 2px;
-      font-weight: 600;
-    }
-    .art-body a:hover, .article-content a:hover, article.art-body a:hover {
-      color: #C55E1A !important;
-    }
-    /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
-    .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
-    .article-content, .article-content p, .article-content li,
-    article.art-body p, article.art-body li {
-      word-break: keep-all;
-      overflow-wrap: break-word;
-    }
-    /* 표 셀도 동일 */
-    .art-body table td, .art-body table th {
-      word-break: keep-all;
-    }
-  </style>
+ <!-- DAOL_GLOBAL_STYLE_v1 -->
+ <style>
+ /* 본문 링크 통일 — 주황 + 밑줄 (다올리페어 브랜드) */
+ .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
+ color: #E8732A !important;
+ text-decoration: underline !important;
+ text-underline-offset: 2px;
+ font-weight: 600;
+ }
+ .art-body a:hover, .article-content a:hover, article.art-body a:hover {
+ color: #C55E1A !important;
+ }
+ /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
+ .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
+ .article-content, .article-content p, .article-content li,
+ article.art-body p, article.art-body li {
+ word-break: keep-all;
+ overflow-wrap: break-word;
+ }
+ /* 표 셀도 동일 */
+ .art-body table td, .art-body table th {
+ word-break: keep-all;
+ }
+ </style>
 
-  <!-- DAOL_GLOBAL_STYLE_v2 -->
-  <style>
-    /* 본문 일반 링크 — 주황 + 밑줄 (다올리페어 브랜드) */
-    .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
-      color: #E8732A !important;
-      text-decoration: underline !important;
-      text-underline-offset: 2px;
-      font-weight: 600;
-    }
-    .art-body a:hover, .article-content a:hover, article.art-body a:hover {
-      color: #C55E1A !important;
-    }
-    /* 단, 버튼/CTA처럼 background·class 있는 링크는 자기 스타일 유지 */
-    .art-body a[style*="background"],
-    .art-body a[class*="btn"],
-    .art-body a.art-cta-btn,
-    .art-body a.art-cta-btn-ghost,
-    .art-cta a,
-    .art-good a[style*="background"],
-    .art-warn a[style*="background"] {
-      text-decoration: none !important;
-      font-weight: inherit;
-    }
-    /* 버튼 내 글자색은 inline style의 color를 그대로 — 단, !important 충돌 회피 위해 별도 처리 X */
-    .art-body a[style*="color:#fff"], .art-body a[style*="color: #fff"],
-    .art-body a[style*="color:#FFF"], .art-body a[style*="color: #FFF"] {
-      color: #fff !important;
-    }
-    .art-body a[style*="color:#000"], .art-body a[style*="color: #000"],
-    .art-body a[style*="color:#1a1a1a"], .art-body a[style*="color: #1a1a1a"] {
-      color: #1a1a1a !important;
-    }
-    /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
-    .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
-    .article-content, .article-content p, .article-content li,
-    article.art-body p, article.art-body li {
-      word-break: keep-all;
-      overflow-wrap: break-word;
-    }
-    .art-body table td, .art-body table th {
-      word-break: keep-all;
-    }
-    /* 제목·짧은 텍스트는 균형 잡힌 줄바꿈 (마지막 줄에 글자 1개만 남는 어색함 방지) */
-    h1, h2, h3, .art-title, .art-body h2, .art-body h3,
-    .ba-issue, .pf-caption-title, .live-rank-name, .live-title,
-    .card-title, .quick-nav-label, .ba-portfolio-btn, .pf-cta-btn {
-      text-wrap: balance;
-      -webkit-text-wrap: balance;
-    }
-    /* 짧은 라벨·배지·메뉴는 절대 줄바꿈 X */
-    .art-nav a, .art-cat, .art-category, .card-category,
-    .ba-meta-tag, .pf-meta-tag, .live-rank-badge,
-    .quick-nav-sub, .tab-btn {
-      white-space: nowrap;
-    }
-  </style>
+ <!-- DAOL_GLOBAL_STYLE_v2 -->
+ <style>
+ /* 본문 일반 링크 — 주황 + 밑줄 (다올리페어 브랜드) */
+ .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
+ color: #E8732A !important;
+ text-decoration: underline !important;
+ text-underline-offset: 2px;
+ font-weight: 600;
+ }
+ .art-body a:hover, .article-content a:hover, article.art-body a:hover {
+ color: #C55E1A !important;
+ }
+ /* 단, 버튼/CTA처럼 background·class 있는 링크는 자기 스타일 유지 */
+ .art-body a[style*="background"],
+ .art-body a[class*="btn"],
+ .art-body a.art-cta-btn,
+ .art-body a.art-cta-btn-ghost,
+ .art-cta a,
+ .art-good a[style*="background"],
+ .art-warn a[style*="background"] {
+ text-decoration: none !important;
+ font-weight: inherit;
+ }
+ /* 버튼 내 글자색은 inline style의 color를 그대로 — 단, !important 충돌 회피 위해 별도 처리 X */
+ .art-body a[style*="color:#fff"], .art-body a[style*="color: #fff"],
+ .art-body a[style*="color:#FFF"], .art-body a[style*="color: #FFF"] {
+ color: #fff !important;
+ }
+ .art-body a[style*="color:#000"], .art-body a[style*="color: #000"],
+ .art-body a[style*="color:#1a1a1a"], .art-body a[style*="color: #1a1a1a"] {
+ color: #1a1a1a !important;
+ }
+ /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
+ .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
+ .article-content, .article-content p, .article-content li,
+ article.art-body p, article.art-body li {
+ word-break: keep-all;
+ overflow-wrap: break-word;
+ }
+ .art-body table td, .art-body table th {
+ word-break: keep-all;
+ }
+ /* 제목·짧은 텍스트는 균형 잡힌 줄바꿈 (마지막 줄에 글자 1개만 남는 어색함 방지) */
+ h1, h2, h3, .art-title, .art-body h2, .art-body h3,
+ .ba-issue, .pf-caption-title, .live-rank-name, .live-title,
+ .card-title, .quick-nav-label, .ba-portfolio-btn, .pf-cta-btn {
+ text-wrap: balance;
+ -webkit-text-wrap: balance;
+ }
+ /* 짧은 라벨·배지·메뉴는 절대 줄바꿈 X */
+ .art-nav a, .art-cat, .art-category, .card-category,
+ .ba-meta-tag, .pf-meta-tag, .live-rank-badge,
+ .quick-nav-sub, .tab-btn {
+ white-space: nowrap;
+ }
+ </style>
+ <!-- DAOL_FAVICON_v1 -->
+ <link rel="icon" type="image/x-icon" href="/favicon.ico">
+ <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+ <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
 
 <nav class="art-nav">
-  <div class="art-nav-inner">
-    <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-logo">
-      <img loading="lazy" src="../로고신규1.jpg" alt="다올리페어">
-      <div class="art-nav-logo-text">
-        <span class="art-nav-logo-ko">다올<em>리페어</em></span>
-        <span class="art-nav-logo-en">Device Repair Master</span>
-      </div>
-    </a>
-    <ul class="art-nav-links">
-      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#philosophy">철학</a></li>
-      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#services">서비스</a></li>
-      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#estimate">수리 견적</a></li>
-      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#courier">택배접수</a></li>
-      <li><a href="index.html" style="color:#E8732A;font-weight:700;">수리 칼럼</a></li>
-      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#reviews">후기</a></li>
-      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#locations">지점안내</a></li>
-      <li class="art-nav-reserve">
-        <button class="art-nav-reserve-btn" onclick="this.closest('.art-nav-reserve').classList.toggle('open')">수리 예약 ▾</button>
-        <div class="art-nav-reserve-dropdown">
-          <a href="https://naver.me/xyjKp1eq" target="_blank" rel="noopener">가산점 예약<span>네이버 예약으로 이동</span></a>
-          <a href="https://naver.me/Faf1J0yG" target="_blank" rel="noopener">신림점 예약<span>네이버 예약으로 이동</span></a>
-          <a href="https://naver.me/5nojklP7" target="_blank" rel="noopener">목동점 예약<span>네이버 예약으로 이동</span></a>
-        </div>
-      </li>
-    </ul>
-    <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-home" title="메인으로"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
-  </div>
+ <div class="art-nav-inner">
+ <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-logo">
+ <img loading="lazy" src="../로고신규1.jpg" alt="다올리페어">
+ <div class="art-nav-logo-text">
+ <span class="art-nav-logo-ko">다올<em>리페어</em></span>
+ <span class="art-nav-logo-en">Device Repair Master</span>
+ </div>
+ </a>
+ <ul class="art-nav-links">
+ <li><a href="https://xn--2j1bq2k97kxnah86c.com/#philosophy">철학</a></li>
+ <li><a href="https://xn--2j1bq2k97kxnah86c.com/#services">서비스</a></li>
+ <li><a href="https://xn--2j1bq2k97kxnah86c.com/#estimate">수리 견적</a></li>
+ <li><a href="https://xn--2j1bq2k97kxnah86c.com/#courier">택배접수</a></li>
+ <li><a href="index.html" style="color:#E8732A;font-weight:700;">수리 칼럼</a></li>
+ <li><a href="https://xn--2j1bq2k97kxnah86c.com/#reviews">후기</a></li>
+ <li><a href="https://xn--2j1bq2k97kxnah86c.com/#locations">지점안내</a></li>
+ <li class="art-nav-reserve">
+ <button class="art-nav-reserve-btn" onclick="this.closest('.art-nav-reserve').classList.toggle('open')">수리 예약 ▾</button>
+ <div class="art-nav-reserve-dropdown">
+ <a href="https://naver.me/xyjKp1eq" target="_blank" rel="noopener">가산점 예약<span>네이버 예약으로 이동</span></a>
+ <a href="https://naver.me/Faf1J0yG" target="_blank" rel="noopener">신림점 예약<span>네이버 예약으로 이동</span></a>
+ <a href="https://naver.me/5nojklP7" target="_blank" rel="noopener">목동점 예약<span>네이버 예약으로 이동</span></a>
+ </div>
+ </li>
+ </ul>
+ <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-home" title="메인으로"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
+ </div>
 </nav>
 <script>document.addEventListener('click',function(e){if(!e.target.closest('.art-nav-reserve')){document.querySelectorAll('.art-nav-reserve').forEach(el=>el.classList.remove('open'))}});</script>
 
 <div class="list-wrap">
-  <a href="index.html" class="back-to-all">&larr; 전체 칼럼 목록</a>
+ <a href="index.html" class="back-to-all">&larr; 전체 칼럼 목록</a>
 
-  <div class="list-header">
-    <div class="list-eyebrow">수리 가이드 허브</div>
-    <h1 class="list-title">아이패드 수리 완전 가이드</h1>
-    <p class="list-desc">아이패드 수리에 대한 모든 것 — 화면·터치, 배터리, 충전, 수리비 비교까지 29개 칼럼을 주제별로 정리했습니다.</p>
-  </div>
+ <div class="list-header">
+ <div class="list-eyebrow">수리 가이드 허브</div>
+ <h1 class="list-title">아이패드 수리 완전 가이드</h1>
+ <p class="list-desc">아이패드 수리에 대한 모든 것 — 화면·터치, 배터리, 충전, 수리비 비교까지 29개 칼럼을 주제별로 정리했습니다.</p>
+ </div>
 
-  <div class="hub-tab-wrap">
-    <a href="hub-iphone.html" class="hub-tab">아이폰</a>
-    <a href="hub-ipad.html" class="hub-tab active">아이패드</a>
-    <a href="hub-macbook.html" class="hub-tab">맥북</a>
-    <a href="hub-watch.html" class="hub-tab">애플워치</a>
-    <a href="hub-airpods.html" class="hub-tab">에어팟·펜슬</a>
-    <a href="hub-guide.html" class="hub-tab">수리 가이드</a>
-  </div>
+ <div class="hub-tab-wrap">
+ <a href="hub-iphone.html" class="hub-tab">아이폰</a>
+ <a href="hub-ipad.html" class="hub-tab active">아이패드</a>
+ <a href="hub-macbook.html" class="hub-tab">맥북</a>
+ <a href="hub-watch.html" class="hub-tab">애플워치</a>
+ <a href="hub-airpods.html" class="hub-tab">에어팟·펜슬</a>
+ <a href="hub-guide.html" class="hub-tab">수리 가이드</a>
+ </div>
 
-  <!-- 지점별 지역 가이드 -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">지점별 지역 가이드<span class="hub-section-count">1편</span></h2>
-    <div class="hub-grid">
-      <a href="yangcheon-ipad-academy-same-day-repair.html" class="hub-card">
-        <span class="hub-card-title">양천구 아이패드 수리 — 학원·학습용 기기 당일 복구 가능 모델</span>
-        <span class="hub-card-desc">목동·신정·신월 학습용 아이패드 당일 복구 모델과 굿노트 데이터 보존 절차.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 지점별 지역 가이드 -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">지점별 지역 가이드<span class="hub-section-count">1편</span></h2>
+ <div class="hub-grid">
+ <a href="yangcheon-ipad-academy-same-day-repair.html" class="hub-card">
+ <span class="hub-card-title">양천구 아이패드 수리 — 학원·학습용 기기 당일 복구 가능 모델</span>
+ <span class="hub-card-desc">목동·신정·신월 학습용 아이패드 당일 복구 모델과 굿노트 데이터 보존 절차.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 화면·터치 수리 -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">화면·터치 수리<span class="hub-section-count">10편</span></h2>
-    <div class="hub-grid">
-      <a href="ipad-suddenly-frozen-during-class.html" class="hub-card">
-        <span class="hub-card-title">아이패드 수업·업무 중에 갑자기 먹통 — 지금 바로 할 수 있는 것</span>
-        <span class="hub-card-desc">기종별 강제 재시작 방법과 데이터 보호 여부, 수리가 필요한 경우.</span>
-      </a>
-      <a href="ipad-screen-flickering.html" class="hub-card">
-        <span class="hub-card-title">아이패드 화면이 깜빡이거나 줄이 생겼을 때 — 원인과 대처법</span>
-        <span class="hub-card-desc">화면 깜빡임, 세로줄, 가로줄, 번짐 — 디스플레이 이상 원인을 진단합니다.</span>
-      </a>
-      <a href="ipad-touch-partial-failure.html" class="hub-card">
-        <span class="hub-card-title">아이패드 화면 한쪽만 터치가 안 될 때 — 원인과 해결법</span>
-        <span class="hub-card-desc">부분 터치 불량인지, 디지타이저 고장인지 원인을 구분합니다.</span>
-      </a>
-      <a href="ipad-screen-jitter-after-replacement.html" class="hub-card">
-        <span class="hub-card-title">아이패드 액정 교체 후 지터링이 생겼다면 — 기종별 원인과 해결 기준</span>
-        <span class="hub-card-desc">액정 교체 후 필기 흔들림, 터치 떨림 원인과 해결 기준.</span>
-      </a>
-      <a href="ipad-drop-internal-damage.html" class="hub-card">
-        <span class="hub-card-title">아이패드 낙하 후 화면은 멀쩡한데 이상한 이유 — 내부 손상 판별법</span>
-        <span class="hub-card-desc">낙하 후 화면이 멀쩡해 보여도 내부 손상이 있을 수 있습니다.</span>
-      </a>
-      <a href="ipad-repair-or-buy-new.html" class="hub-card">
-        <span class="hub-card-title">아이패드 액정 깨졌을 때 — 고치는 게 나을까, 새로 사는 게 나을까</span>
-        <span class="hub-card-desc">수리 vs 교체 판단 기준을 정리합니다.</span>
-      </a>
-      <a href="ipad-screen-repair-vs-iphone.html" class="hub-card">
-        <span class="hub-card-title">아이패드 액정 수리, 아이폰보다 왜 두 배 더 비쌀까</span>
-        <span class="hub-card-desc">아이패드 수리비가 비싼 구조적 이유를 설명합니다.</span>
-      </a>
-      <a href="ipad-repair-applepencil-issue.html" class="hub-card">
-        <span class="hub-card-title">아이패드 수리 맡겼더니 애플펜슬이 안 됩니다 — 원인과 해결법</span>
-        <span class="hub-card-desc">액정 교체 후 펜슬 인식 불가 원인과 해결법.</span>
-      </a>
-      <a href="ipad-pro-screen-repair-cost.html" class="hub-card">
-        <span class="hub-card-title">아이패드 프로 액정 깼습니다. 수리비 보고 멘붕 온 이유</span>
-        <span class="hub-card-desc">아이패드 프로 액정 수리비가 비싼 이유와 대안.</span>
-      </a>
-      <a href="ipad-screen-lifting-battery-sign.html" class="hub-card">
-        <span class="hub-card-title">아이패드 액정 들뜸 — 배터리 부풀음 전조 증상과 응급 조치</span>
-        <span class="hub-card-desc">액정이 들뜬다면 배터리 팽창의 전조일 수 있습니다.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 화면·터치 수리 -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">화면·터치 수리<span class="hub-section-count">10편</span></h2>
+ <div class="hub-grid">
+ <a href="ipad-suddenly-frozen-during-class.html" class="hub-card">
+ <span class="hub-card-title">아이패드 수업·업무 중에 갑자기 먹통 — 지금 바로 할 수 있는 것</span>
+ <span class="hub-card-desc">기종별 강제 재시작 방법과 데이터 보호 여부, 수리가 필요한 경우.</span>
+ </a>
+ <a href="ipad-screen-flickering.html" class="hub-card">
+ <span class="hub-card-title">아이패드 화면이 깜빡이거나 줄이 생겼을 때 — 원인과 대처법</span>
+ <span class="hub-card-desc">화면 깜빡임, 세로줄, 가로줄, 번짐 — 디스플레이 이상 원인을 진단합니다.</span>
+ </a>
+ <a href="ipad-touch-partial-failure.html" class="hub-card">
+ <span class="hub-card-title">아이패드 화면 한쪽만 터치가 안 될 때 — 원인과 해결법</span>
+ <span class="hub-card-desc">부분 터치 불량인지, 디지타이저 고장인지 원인을 구분합니다.</span>
+ </a>
+ <a href="ipad-screen-jitter-after-replacement.html" class="hub-card">
+ <span class="hub-card-title">아이패드 액정 교체 후 지터링이 생겼다면 — 기종별 원인과 해결 기준</span>
+ <span class="hub-card-desc">액정 교체 후 필기 흔들림, 터치 떨림 원인과 해결 기준.</span>
+ </a>
+ <a href="ipad-drop-internal-damage.html" class="hub-card">
+ <span class="hub-card-title">아이패드 낙하 후 화면은 멀쩡한데 이상한 이유 — 내부 손상 판별법</span>
+ <span class="hub-card-desc">낙하 후 화면이 멀쩡해 보여도 내부 손상이 있을 수 있습니다.</span>
+ </a>
+ <a href="ipad-repair-or-buy-new.html" class="hub-card">
+ <span class="hub-card-title">아이패드 액정 깨졌을 때 — 고치는 게 나을까, 새로 사는 게 나을까</span>
+ <span class="hub-card-desc">수리 vs 교체 판단 기준을 정리합니다.</span>
+ </a>
+ <a href="ipad-screen-repair-vs-iphone.html" class="hub-card">
+ <span class="hub-card-title">아이패드 액정 수리, 아이폰보다 왜 두 배 더 비쌀까</span>
+ <span class="hub-card-desc">아이패드 수리비가 비싼 구조적 이유를 설명합니다.</span>
+ </a>
+ <a href="ipad-repair-applepencil-issue.html" class="hub-card">
+ <span class="hub-card-title">아이패드 수리 맡겼더니 애플펜슬이 안 됩니다 — 원인과 해결법</span>
+ <span class="hub-card-desc">액정 교체 후 펜슬 인식 불가 원인과 해결법.</span>
+ </a>
+ <a href="ipad-pro-screen-repair-cost.html" class="hub-card">
+ <span class="hub-card-title">아이패드 프로 액정 깼습니다. 수리비 보고 멘붕 온 이유</span>
+ <span class="hub-card-desc">아이패드 프로 액정 수리비가 비싼 이유와 대안.</span>
+ </a>
+ <a href="ipad-screen-lifting-battery-sign.html" class="hub-card">
+ <span class="hub-card-title">아이패드 액정 들뜸 — 배터리 부풀음 전조 증상과 응급 조치</span>
+ <span class="hub-card-desc">액정이 들뜬다면 배터리 팽창의 전조일 수 있습니다.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 배터리 -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">배터리<span class="hub-section-count">4편</span></h2>
-    <div class="hub-grid">
-      <a href="ipad-battery-replacement-guide.html" class="hub-card">
-        <span class="hub-card-title">아이패드 배터리 교체, 언제 해야 할까 — 교체 시기 완전 정리</span>
-        <span class="hub-card-desc">교체 시기, 배터리 수명, 부풀음, 충전 금방 닳는 증상 정리.</span>
-      </a>
-      <a href="ipad-battery-replacement-worth-it.html" class="hub-card">
-        <span class="hub-card-title">3년 된 아이패드, 배터리 교체하면 얼마나 더 쓸 수 있을까</span>
-        <span class="hub-card-desc">오래된 아이패드 배터리 교체의 가치를 판단합니다.</span>
-      </a>
-      <a href="ipad-overheating.html" class="hub-card">
-        <span class="hub-card-title">아이패드 과열 — 뜨거워지는 원인별 대처와 배터리 손상 연관성</span>
-        <span class="hub-card-desc">과열 원인별 대처법과 배터리 손상 관계.</span>
-      </a>
-      <a href="ipad-apple-unrepairable-warning.html" class="hub-card">
-        <span class="hub-card-title">"수리 불가입니다" — 애플에서 이 말 듣기 전에 확인할 것</span>
-        <span class="hub-card-desc">애플 수리 불가 판정 전 확인할 사항과 사설 수리 가능 여부.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 배터리 -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">배터리<span class="hub-section-count">4편</span></h2>
+ <div class="hub-grid">
+ <a href="ipad-battery-replacement-guide.html" class="hub-card">
+ <span class="hub-card-title">아이패드 배터리 교체, 언제 해야 할까 — 교체 시기 완전 정리</span>
+ <span class="hub-card-desc">교체 시기, 배터리 수명, 부풀음, 충전 금방 닳는 증상 정리.</span>
+ </a>
+ <a href="ipad-battery-replacement-worth-it.html" class="hub-card">
+ <span class="hub-card-title">3년 된 아이패드, 배터리 교체하면 얼마나 더 쓸 수 있을까</span>
+ <span class="hub-card-desc">오래된 아이패드 배터리 교체의 가치를 판단합니다.</span>
+ </a>
+ <a href="ipad-overheating.html" class="hub-card">
+ <span class="hub-card-title">아이패드 과열 — 뜨거워지는 원인별 대처와 배터리 손상 연관성</span>
+ <span class="hub-card-desc">과열 원인별 대처법과 배터리 손상 관계.</span>
+ </a>
+ <a href="ipad-apple-unrepairable-warning.html" class="hub-card">
+ <span class="hub-card-title">"수리 불가입니다" — 애플에서 이 말 듣기 전에 확인할 것</span>
+ <span class="hub-card-desc">애플 수리 불가 판정 전 확인할 사항과 사설 수리 가능 여부.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 충전 -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">충전<span class="hub-section-count">3편</span></h2>
-    <div class="hub-grid">
-      <a href="ipad-not-charging.html" class="hub-card">
-        <span class="hub-card-title">아이패드 충전이 안 될 때 — 케이블 문제인지 포트 문제인지 구분하는 법</span>
-        <span class="hub-card-desc">충전 안 되는 원인을 빠르게 파악하는 방법.</span>
-      </a>
-      <a href="ipad-charging-intermittent.html" class="hub-card">
-        <span class="hub-card-title">아이패드 충전이 됐다 안 됐다 반복될 때 — 원인과 해결법</span>
-        <span class="hub-card-desc">간헐적 충전 끊김 원인과 해결법.</span>
-      </a>
-      <a href="ipad-usbc-port-repair.html" class="hub-card">
-        <span class="hub-card-title">아이패드 충전단자(USB-C) 고장 수리 — 접촉불량 원인과 수리 시기 판단</span>
-        <span class="hub-card-desc">USB-C 포트 접촉불량 원인과 수리 시기.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 충전 -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">충전<span class="hub-section-count">3편</span></h2>
+ <div class="hub-grid">
+ <a href="ipad-not-charging.html" class="hub-card">
+ <span class="hub-card-title">아이패드 충전이 안 될 때 — 케이블 문제인지 포트 문제인지 구분하는 법</span>
+ <span class="hub-card-desc">충전 안 되는 원인을 빠르게 파악하는 방법.</span>
+ </a>
+ <a href="ipad-charging-intermittent.html" class="hub-card">
+ <span class="hub-card-title">아이패드 충전이 됐다 안 됐다 반복될 때 — 원인과 해결법</span>
+ <span class="hub-card-desc">간헐적 충전 끊김 원인과 해결법.</span>
+ </a>
+ <a href="ipad-usbc-port-repair.html" class="hub-card">
+ <span class="hub-card-title">아이패드 충전단자(USB-C) 고장 수리 — 접촉불량 원인과 수리 시기 판단</span>
+ <span class="hub-card-desc">USB-C 포트 접촉불량 원인과 수리 시기.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 수리비·비교 -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">수리비·비교<span class="hub-section-count">7편</span></h2>
-    <div class="hub-grid">
-      <a href="ipad-pro-m4-repair-cost.html" class="hub-card">
-        <span class="hub-card-title">아이패드 프로 M4 수리비 총정리 — 화면, 배터리, 충전단자 항목별 비교</span>
-        <span class="hub-card-desc">아이패드 프로 M4 항목별 수리비 비교.</span>
-      </a>
-      <a href="ipad-air-repair-cost.html" class="hub-card">
-        <span class="hub-card-title">아이패드 에어 수리 비용 총정리 — 에어 4·5세대·M2 2026년 기준</span>
-        <span class="hub-card-desc">아이패드 에어 세대별 수리 비용.</span>
-      </a>
-      <a href="ipad-mini-repair-cost.html" class="hub-card">
-        <span class="hub-card-title">아이패드 미니 수리 비용 총정리 — 미니 5·6세대 2026년 기준</span>
-        <span class="hub-card-desc">아이패드 미니 세대별 수리 비용.</span>
-      </a>
-      <a href="ipad-model-repair-comparison.html" class="hub-card">
-        <span class="hub-card-title">아이패드 Pro vs Air vs Mini — 모델별 수리 자주 나오는 부위와 비용 차이</span>
-        <span class="hub-card-desc">모델별 자주 수리되는 부위와 비용을 비교합니다.</span>
-      </a>
-      <a href="ipad-student-repair-vs-new.html" class="hub-card">
-        <span class="hub-card-title">학교 수업용 아이패드 고장 — 학기 중 수리 vs 방학 때 새로 사기 판단법</span>
-        <span class="hub-card-desc">학생용 아이패드 고장 시 수리 vs 교체 판단 기준.</span>
-      </a>
-      <a href="ipad-official-repair-data-backup.html" class="hub-card">
-        <span class="hub-card-title">아이패드 공식 수리 맡기면 왜 데이터 백업을 강제로 시키나</span>
-        <span class="hub-card-desc">공식 수리 시 데이터 초기화 이유와 대비 방법.</span>
-      </a>
-      <a href="kids-ipad-broken-parent-guide.html" class="hub-card">
-        <span class="hub-card-title">자녀 아이패드 고장, 부모가 알아야 할 것 — 수리 판단 기준과 보호 방법</span>
-        <span class="hub-card-desc">자녀 아이패드 수리 판단 기준과 보호 방법.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 수리비·비교 -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">수리비·비교<span class="hub-section-count">7편</span></h2>
+ <div class="hub-grid">
+ <a href="ipad-pro-m4-repair-cost.html" class="hub-card">
+ <span class="hub-card-title">아이패드 프로 M4 수리비 총정리 — 화면, 배터리, 충전단자 항목별 비교</span>
+ <span class="hub-card-desc">아이패드 프로 M4 항목별 수리비 비교.</span>
+ </a>
+ <a href="ipad-air-repair-cost.html" class="hub-card">
+ <span class="hub-card-title">아이패드 에어 수리 비용 총정리 — 에어 4·5세대·M2 2026년 기준</span>
+ <span class="hub-card-desc">아이패드 에어 세대별 수리 비용.</span>
+ </a>
+ <a href="ipad-mini-repair-cost.html" class="hub-card">
+ <span class="hub-card-title">아이패드 미니 수리 비용 총정리 — 미니 5·6세대 2026년 기준</span>
+ <span class="hub-card-desc">아이패드 미니 세대별 수리 비용.</span>
+ </a>
+ <a href="ipad-model-repair-comparison.html" class="hub-card">
+ <span class="hub-card-title">아이패드 Pro vs Air vs Mini — 모델별 수리 자주 나오는 부위와 비용 차이</span>
+ <span class="hub-card-desc">모델별 자주 수리되는 부위와 비용을 비교합니다.</span>
+ </a>
+ <a href="ipad-student-repair-vs-new.html" class="hub-card">
+ <span class="hub-card-title">학교 수업용 아이패드 고장 — 학기 중 수리 vs 방학 때 새로 사기 판단법</span>
+ <span class="hub-card-desc">학생용 아이패드 고장 시 수리 vs 교체 판단 기준.</span>
+ </a>
+ <a href="ipad-official-repair-data-backup.html" class="hub-card">
+ <span class="hub-card-title">아이패드 공식 수리 맡기면 왜 데이터 백업을 강제로 시키나</span>
+ <span class="hub-card-desc">공식 수리 시 데이터 초기화 이유와 대비 방법.</span>
+ </a>
+ <a href="kids-ipad-broken-parent-guide.html" class="hub-card">
+ <span class="hub-card-title">자녀 아이패드 고장, 부모가 알아야 할 것 — 수리 판단 기준과 보호 방법</span>
+ <span class="hub-card-desc">자녀 아이패드 수리 판단 기준과 보호 방법.</span>
+ </a>
+ </div>
+ </div>
 
-  <!-- 기타 증상 -->
-  <div class="hub-section">
-    <h2 class="hub-section-title">기타 증상<span class="hub-section-count">4편</span></h2>
-    <div class="hub-grid">
-      <a href="ipad-camera-broken.html" class="hub-card">
-        <span class="hub-card-title">아이패드 카메라 고장 — 화면이 검게 나오거나 앱이 멈출 때</span>
-        <span class="hub-card-desc">전면·후면 카메라 고장 원인과 수리 비용.</span>
-      </a>
-      <a href="ipad-speaker-not-working.html" class="hub-card">
-        <span class="hub-card-title">아이패드 스피커 소리 안 됨 — 유튜브·동영상 소리가 갑자기 끊길 때</span>
-        <span class="hub-card-desc">스피커 구조별 고장 원인과 청소로 해결되는 경우를 구분합니다.</span>
-      </a>
-      <a href="ipad-microphone-broken.html" class="hub-card">
-        <span class="hub-card-title">아이패드 마이크 안 됨 — 화상회의·녹음이 안 될 때</span>
-        <span class="hub-card-desc">상단·하단 마이크 진단법과 수리 필요 여부.</span>
-      </a>
-      <a href="ipad-home-button-broken.html" class="hub-card">
-        <span class="hub-card-title">아이패드 홈버튼 고장 — 눌러도 반응 없거나 Touch ID 안 될 때</span>
-        <span class="hub-card-desc">홈버튼 교체 시 Touch ID 기능 변화와 임시 대응법.</span>
-      </a>
-      <a href="ipad-used-buying-checklist.html" class="hub-card">
-        <span class="hub-card-title">아이패드 중고 구매 전 반드시 확인할 체크리스트 — 수리점 관점</span>
-        <span class="hub-card-desc">중고 아이패드 구매 시 반드시 확인해야 할 항목들.</span>
-      </a>
-    </div>
-  </div>
+ <!-- 기타 증상 -->
+ <div class="hub-section">
+ <h2 class="hub-section-title">기타 증상<span class="hub-section-count">4편</span></h2>
+ <div class="hub-grid">
+ <a href="ipad-camera-broken.html" class="hub-card">
+ <span class="hub-card-title">아이패드 카메라 고장 — 화면이 검게 나오거나 앱이 멈출 때</span>
+ <span class="hub-card-desc">전면·후면 카메라 고장 원인과 수리 비용.</span>
+ </a>
+ <a href="ipad-speaker-not-working.html" class="hub-card">
+ <span class="hub-card-title">아이패드 스피커 소리 안 됨 — 유튜브·동영상 소리가 갑자기 끊길 때</span>
+ <span class="hub-card-desc">스피커 구조별 고장 원인과 청소로 해결되는 경우를 구분합니다.</span>
+ </a>
+ <a href="ipad-microphone-broken.html" class="hub-card">
+ <span class="hub-card-title">아이패드 마이크 안 됨 — 화상회의·녹음이 안 될 때</span>
+ <span class="hub-card-desc">상단·하단 마이크 진단법과 수리 필요 여부.</span>
+ </a>
+ <a href="ipad-home-button-broken.html" class="hub-card">
+ <span class="hub-card-title">아이패드 홈버튼 고장 — 눌러도 반응 없거나 Touch ID 안 될 때</span>
+ <span class="hub-card-desc">홈버튼 교체 시 Touch ID 기능 변화와 임시 대응법.</span>
+ </a>
+ <a href="ipad-used-buying-checklist.html" class="hub-card">
+ <span class="hub-card-title">아이패드 중고 구매 전 반드시 확인할 체크리스트 — 수리점 관점</span>
+ <span class="hub-card-desc">중고 아이패드 구매 시 반드시 확인해야 할 항목들.</span>
+ </a>
+ </div>
+ </div>
 
 </div>
 
 <footer class="art-footer">
-  <p><a href="https://xn--2j1bq2k97kxnah86c.com">다올리페어</a> · 가산점 · 신림점 · 목동점 · 전국 택배 수리</p>
-  <p style="margin-top:6px;">&copy; 2026 다올리페어. All rights reserved.</p>
+ <p><a href="https://xn--2j1bq2k97kxnah86c.com">다올리페어</a> · 가산점 · 신림점 · 목동점 · 전국 택배 수리</p>
+ <p style="margin-top:6px;">&copy; 2026 다올리페어. All rights reserved.</p>
 </footer>
 
 
 <section class="art-faq" style="margin-top:40px;padding:24px;background:#fafafa;border-radius:14px;">
-  <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin-bottom:16px;">자주 묻는 질문</h2>
-  <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
-    <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
-      <span>Q. 다올리페어는 어디에 있나요?</span>
-      <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
-    </summary>
-    <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 가산점(가산디지털단지역 9번 출구), 신림점(신대방역 2번 출구 도보 2분), 목동점(양천구청역 도보 10분) 3개 직영점입니다. 전국 택배 수리도 가능합니다.</div>
-  </details>
-  <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
-    <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
-      <span>Q. 영업시간은 어떻게 되나요?</span>
-      <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
-    </summary>
-    <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 평일 10:00~20:00, 토요일 11:00~17:00, 일요일 휴무. 모든 매장 동일하게 운영됩니다.</div>
-  </details>
-  <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
-    <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
-      <span>Q. 결제 방법은?</span>
-      <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
-    </summary>
-    <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 현금·카드 가능. 카카오페이·네이버페이는 미지원. 회사 비용 처리를 위한 영수증·세금계산서 발행 가능합니다.</div>
-  </details>
-  <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
-    <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
-      <span>Q. 수리 보증은 얼마나 되나요?</span>
-      <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
-    </summary>
-    <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 동일 부품 문제 시 90일 무상 재수리. 수리 실패 시 비용 0원 정책.</div>
-  </details>
-  <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
-    <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
-      <span>Q. 택배 수리도 되나요?</span>
-      <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
-    </summary>
-    <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 네, 전국 어디서나 택배 수리 가능합니다. 카카오 채널 "다올리페어"로 사전 상담 후 접수.</div>
-  </details>
-  <p style="margin-top:18px;font-size:13px;color:#888;">전체 1,000+ Q&A는 <a href="faq.html" style="color:#E8732A;font-weight:700;">FAQ 페이지</a>에서 확인하실 수 있습니다.</p>
+ <h2 style="font-size:18px;font-weight:800;color:#1a1a1a;margin-bottom:16px;">자주 묻는 질문</h2>
+ <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
+ <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+ <span>Q. 다올리페어는 어디에 있나요?</span>
+ <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
+ </summary>
+ <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 가산점(가산디지털단지역 9번 출구), 신림점(신대방역 2번 출구 도보 2분), 목동점(양천구청역 도보 10분) 3개 직영점입니다. 전국 택배 수리도 가능합니다.</div>
+ </details>
+ <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
+ <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+ <span>Q. 영업시간은 어떻게 되나요?</span>
+ <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
+ </summary>
+ <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 평일 10:00~20:00, 토요일 11:00~17:00, 일요일 휴무. 모든 매장 동일하게 운영됩니다.</div>
+ </details>
+ <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
+ <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+ <span>Q. 결제 방법은?</span>
+ <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
+ </summary>
+ <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 현금·카드 가능. 카카오페이·네이버페이는 미지원. 회사 비용 처리를 위한 영수증·세금계산서 발행 가능합니다.</div>
+ </details>
+ <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
+ <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+ <span>Q. 수리 보증은 얼마나 되나요?</span>
+ <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
+ </summary>
+ <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 동일 부품 문제 시 90일 무상 재수리. 수리 실패 시 비용 0원 정책.</div>
+ </details>
+ <details class="art-faq-item" style="border-bottom:1px solid #f0f0f0;padding:14px 0;">
+ <summary style="cursor:pointer;font-size:15px;font-weight:700;color:#1a1a1a;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+ <span>Q. 택배 수리도 되나요?</span>
+ <span style="color:#E8732A;font-weight:900;font-size:18px;">+</span>
+ </summary>
+ <div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 네, 전국 어디서나 택배 수리 가능합니다. 카카오 채널 "다올리페어"로 사전 상담 후 접수.</div>
+ </details>
+ <p style="margin-top:18px;font-size:13px;color:#888;">전체 1,000+ Q&A는 <a href="faq.html" style="color:#E8732A;font-weight:700;">FAQ 페이지</a>에서 확인하실 수 있습니다.</p>
 </section>
 
 </body>
