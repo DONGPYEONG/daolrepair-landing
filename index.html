@@ -2096,9 +2096,12 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
 
     <div class="ba-portfolio-cta">
       <a href="portfolio.html" class="ba-portfolio-btn">
-        🖼️ 전체 수리 포트폴리오 보기 →
+        🖼️ 최근 30건 수리 사진 보기 →
       </a>
-      <p class="ba-portfolio-sub">최신 30개 케이스 BEFORE/AFTER를 모두 확인할 수 있습니다</p>
+      <a href="articles/index.html#journal" class="ba-portfolio-btn ba-portfolio-btn-alt">
+        📋 실제 수리 사례 읽어보기 →
+      </a>
+      <p class="ba-portfolio-sub">사진 비교는 포트폴리오, 자세한 진단·수리 과정은 일지에서 확인하세요</p>
     </div>
     <p class="ba-note">* 다올리페어 가산·신림·목동 직영점에서 진행된 실제 수리 사례입니다 (개인정보 자동 차단 처리)</p>
   </div>
@@ -2139,10 +2142,16 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
 .ba-meta-branch { background:rgba(96,165,250,0.15); color:#8AB8FA; border:1px solid rgba(96,165,250,0.3); }
 .ba-meta-warranty { background:rgba(52,199,89,0.15); color:#34c759; border:1px solid rgba(52,199,89,0.3); }
 .ba-note { text-align:center; color:rgba(255,255,255,0.35); font-size:12px; margin-top:18px; }
-.ba-portfolio-cta { text-align:center; margin-top:36px; }
-.ba-portfolio-btn { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,#FF6B35 0%,#E8732A 100%); color:#fff; padding:14px 28px; border-radius:50px; font-size:15px; font-weight:800; text-decoration:none; letter-spacing:0.2px; transition:transform 0.2s, box-shadow 0.2s; box-shadow:0 6px 20px rgba(255,107,53,0.35); }
+.ba-portfolio-cta { text-align:center; margin-top:36px; display:flex; flex-direction:column; align-items:center; gap:10px; }
+.ba-portfolio-cta > a + a { margin-top:0; }
+.ba-portfolio-btn { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,#FF6B35 0%,#E8732A 100%); color:#fff; padding:14px 28px; border-radius:50px; font-size:15px; font-weight:800; text-decoration:none; letter-spacing:0.2px; transition:transform 0.2s, box-shadow 0.2s; box-shadow:0 6px 20px rgba(255,107,53,0.35); min-width:280px; justify-content:center; }
 .ba-portfolio-btn:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(255,107,53,0.5); }
-.ba-portfolio-sub { font-size:12px; color:rgba(255,255,255,0.45); margin-top:10px; }
+.ba-portfolio-btn-alt { background:linear-gradient(135deg,rgba(255,255,255,0.12) 0%,rgba(255,255,255,0.06) 100%); border:1px solid rgba(255,255,255,0.2); box-shadow:none; }
+.ba-portfolio-btn-alt:hover { background:linear-gradient(135deg,rgba(255,255,255,0.18) 0%,rgba(255,255,255,0.1) 100%); border-color:rgba(255,255,255,0.35); box-shadow:none; }
+.ba-portfolio-sub { font-size:12px; color:rgba(255,255,255,0.45); margin-top:6px; }
+@media (min-width:721px){
+  .ba-portfolio-cta { flex-direction:row; flex-wrap:wrap; justify-content:center; }
+}
 @media (max-width:720px){
   .ba-grid { grid-template-columns:1fr; gap:18px; }
   #before-after { padding:60px 20px !important; }
