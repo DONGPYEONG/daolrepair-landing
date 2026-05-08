@@ -254,7 +254,7 @@ TYPE_BODY = {
 </table>
 <p style="font-size:13px;color:#666;margin-top:-8px;">※ <strong>정품 액정</strong>은 정품 기기에서 추출(Pulled)하거나 정품 부품을 재생(Refurbished)한 부품을 의미합니다. 두 가지 모두 정품급 품질입니다.</p>
 <p>※ <strong>"비정품 부품" 메시지는 정품 액정으로 수리해도 뜨는 게 정상</strong>입니다. 애플은 부품 시리얼을 본체와 매핑해 추적하는데, 이 매핑은 애플 공식센터에서만 갱신됩니다. 사설 매장은 권한이 없어 정품 부품을 사용해도 메시지가 떠요. 사용에는 영향이 없으며 무시하셔도 됩니다.</p>
-<p>모델별 정확한 가격은 <a href="iphone-screen-repair-cost-2026.html">아이폰 액정 수리비 2026 모델별 정리</a>를 참고하세요.</p>
+<p>모델별 정확한 가격은 <a href="iphone-screen-repair-cost-2026.html">아이폰 액정 수리비 2026 모델별 정리</a>를, 두 옵션 자세 비교는 <a href="iphone-screen-genuine-vs-dd-oem-comparison.html">정품 액정 vs DD(OEM) 액정 차이·가격·선택 가이드</a>를 참고하세요.</p>
 
 <h2>매장에서 진행한 수리 과정 (당일 30~60분)</h2>
 <ol>
@@ -426,12 +426,12 @@ TYPE_BODY = {
     <tr><td style="padding:10px;border:1px solid #eee;"><strong>일반 호환</strong></td><td style="padding:10px;border:1px solid #eee;">뜸 (사용 영향 X)</td><td style="padding:10px;border:1px solid #eee;">정상 표시</td></tr>
   </tbody>
 </table>
-<p>※ 3가지 옵션 모두 <strong>최대 용량(성능치)은 정상 표시</strong>됩니다. 일반 호환은 "비정품 배터리" 경고만 추가로 뜨고 성능치 측정에는 영향이 없어요.</p>
+<p>※ 3가지 옵션 모두 <strong>최대 용량(성능치)은 정상 표시</strong>됩니다. 일반 호환은 "비정품 배터리" 경고만 추가로 뜨고 성능치 측정에는 영향이 없어요. 옵션별 자세한 비교는 <a href="iphone-battery-replacement-types-cost-2026.html">아이폰 배터리 교체 종류·비용 총정리 — 셀 교체 vs 정품 인증 vs 일반 호환</a>에서 확인하실 수 있어요.</p>
 
 <h2>매장에서 진행한 수리 과정</h2>
 <ol>
   <li><strong>진단 (5분)</strong> — 배터리 성능치 + 메인보드·충전 단자 동반 진단</li>
-  <li><strong>옵션 안내</strong> — 셀 교체 / 정품 인증 / 일반 호환 중 선택</li>
+  <li><strong>옵션 안내</strong> — <a href="iphone-battery-replacement-types-cost-2026.html">셀 교체 / 정품 인증 / 일반 호환</a> 중 선택</li>
   <li><strong>분해 (10~15분)</strong> — 화면 분리, 배터리 커넥터 정리</li>
   <li><strong>배터리 교체 (10~20분)</strong> — 새 배터리 부착·접착 처리</li>
   <li><strong>조립 + 테스트 (10~15분)</strong> — 충전 정상 인식, 성능치 정상 표시 확인</li>
@@ -580,23 +580,23 @@ DEFAULT_BODY = """
 QA_BY_TYPE = {
     "screen": [
         ("수리 후 터치 감도가 정품 화면과 똑같나요?",
-         "정품 액정 옵션을 선택하시면 출고 시와 동일한 터치 감도예요. DD(OEM) 액정 옵션도 셀 단위 품질 검증을 거쳐 일상 사용에서 차이를 느끼시기 어렵습니다."),
+         "<a href='iphone-screen-genuine-vs-dd-oem-comparison.html'>정품 액정</a> 옵션을 선택하시면 출고 시와 동일한 터치 감도예요. <a href='iphone-screen-genuine-vs-dd-oem-comparison.html'>DD(OEM) 액정</a> 옵션도 셀 단위 품질 검증을 거쳐 일상 사용에서 차이를 느끼시기 어렵습니다."),
         ("화면 교체 후 데이터는 안전한가요?",
          "네, 데이터는 그대로 보존됩니다. 화면만 교체하기 때문에 본체 메모리·설정·앱·사진은 모두 그대로예요."),
         ("수리 후 트루톤·자동 밝기는 정상 작동하나요?",
-         "정품 액정·DD(OEM) 액정 모두 트루톤·자동 밝기 정상 작동합니다. 다올리페어는 두 옵션 모두 검증된 부품만 사용해요."),
+         "<a href='iphone-screen-genuine-vs-dd-oem-comparison.html'>정품 액정·DD(OEM) 액정 모두 트루톤·자동 밝기 정상 작동</a>합니다. 다올리페어는 두 옵션 모두 검증된 부품만 사용해요."),
         ("당일 수리 가능한가요?",
          "네, 모든 모델 화면 교체는 당일 30~60분 내 완료됩니다. 매장에서 잠시 기다리시거나 인근에서 시간 보내시면 됩니다."),
         ("보증은 얼마나 되나요?",
          "다올리페어 모든 수리는 90일 무상 A/S 보증입니다. 같은 부위 동일 증상 재발 시 무상 점검·재수리해드려요."),
         ("공식센터(Apple)와 차이점은?",
-         "공식센터는 정품 부품 단일 옵션이고 예약·대기 시간이 길어요. 다올리페어는 <strong>정품 액정 또는 DD(OEM) 액정</strong>을 고객님이 직접 선택하실 수 있고, 당일 수리·90일 보증으로 시간을 크게 아끼실 수 있어요."),
+         "공식센터는 정품 부품 단일 옵션이고 예약·대기 시간이 길어요. 다올리페어는 <a href='iphone-screen-genuine-vs-dd-oem-comparison.html'>정품 액정 또는 DD(OEM) 액정</a>을 고객님이 직접 선택하실 수 있고, 당일 수리·90일 보증으로 시간을 크게 아끼실 수 있어요."),
         ("수리비가 얼마나 드나요?",
          "모델별로 다릅니다. 매장 방문 또는 사진 보내주시면 마스터가 직접 견적 안내드려요. <a href='/articles/iphone-screen-repair-cost-2026.html'>아이폰 화면 수리비 가이드</a>를 참고하세요."),
     ],
     "back": [
         ("후면 유리는 정품인가요?",
-         "정확히 말씀드리면, <strong>애플은 후면 유리만 별도 부품으로 판매하지 않아요</strong>. 다올리페어는 검증된 호환 부품으로 교체합니다. 색상·두께·질감 모두 본체와 잘 맞게 골라드려요."),
+         "정확히 말씀드리면, <strong>애플은 후면 유리만 별도 부품으로 판매하지 않아요</strong>. 다올리페어는 검증된 호환 부품으로 교체합니다. 색상·두께·질감 모두 본체와 잘 맞게 골라드리며, 자세한 비교는 <a href='iphone-back-glass-genuine-vs-compatible.html'>아이폰 후면 유리 정품급 OEM 9가지 비교</a>에서 확인하실 수 있어요."),
         ("수리 후 방수 기능이 그대로 유지되나요?",
          "방수 패킹은 표준 절차로 재부착됩니다. 다만 <strong>이미 충격을 받은 본체는 방수 등급이 출고 시 수준으로 보장되지는 않아요</strong>. 사용 환경에 따라 결과가 달라지니 침수에는 보수적으로 사용을 권장드립니다."),
         ("수리 후 또 깨지면 어떡하나요?",
@@ -615,9 +615,9 @@ QA_BY_TYPE = {
         ("최대 용량이 100%로 표시되나요?",
          "네, 새 배터리로 교체하면 최대 용량(성능치)이 정상 표시됩니다. 다만 <strong>'100% 회복'이라는 결과 약속은 못 드려요</strong> — 폰 전체 발열·앱 동작은 다른 변수의 영향을 받기 때문이에요. 안정적인 사용성은 회복됩니다."),
         ("'비정품 배터리' 경고 메시지가 뜨나요?",
-         "옵션에 따라 달라요. <strong>셀 교체·정품 인증은 안 뜨고, 일반 호환은 떠요</strong> (단, 사용에는 영향 없음). 메시지 없이 쓰고 싶으시면 셀 교체 또는 정품 인증을 권장드립니다."),
+         "옵션에 따라 달라요. <a href='iphone-battery-replacement-types-cost-2026.html'>셀 교체·정품 인증은 안 뜨고, 일반 호환은 떠요</a> (단, 사용에는 영향 없음). 메시지 없이 쓰고 싶으시면 셀 교체 또는 정품 인증을 권장드립니다."),
         ("셀 교체 vs 정품 인증 차이가 뭔가요?",
-         "<strong>셀 교체</strong>는 기존 정품 배터리 케이스에 새 셀만 교체 (시리얼 유지 → 메시지 X, 사이클 유지). <strong>정품 인증</strong>은 애플 시리얼 매칭이 가능한 정품급 인증 부품으로 통째 교체 (메시지 X, 사이클 유지, 정품급 셀 품질). 둘 다 결과는 비슷하지만 작업 방식이 달라요. 정품 인증이 1~3만원 더 비싼 편입니다."),
+         "<a href='iphone-battery-replacement-types-cost-2026.html'><strong>셀 교체</strong></a>는 기존 정품 배터리 케이스에 새 셀만 교체 (시리얼 유지 → 메시지 X, 사이클 유지). <a href='iphone-battery-replacement-types-cost-2026.html'><strong>정품 인증</strong></a>은 애플 시리얼 매칭이 가능한 정품급 인증 부품으로 통째 교체 (메시지 X, 사이클 유지, 정품급 셀 품질). 둘 다 결과는 비슷하지만 작업 방식이 달라요. 정품 인증이 1~3만원 더 비싼 편입니다. 3가지 옵션 자세 비교는 <a href='iphone-battery-replacement-types-cost-2026.html'>아이폰 배터리 종류·비용 총정리</a> 글에서 확인하실 수 있어요."),
         ("배터리 교체 후 데이터는 안전한가요?",
          "네, 데이터는 그대로 보존됩니다. 배터리만 교체하기 때문에 본체 메모리·설정·앱·사진은 모두 그대로예요."),
         ("당일 수리 가능한가요?",
@@ -665,7 +665,7 @@ QA_BY_TYPE = {
         ("액정 부품은 정품인가요? OEM인가요?",
          "두 옵션 모두 가능합니다. <strong>정품 액정</strong>(가격 더 높음, 출고 시 동급) 또는 <strong>DD(OEM) 액정</strong>(합리적 가격, 트루톤 정상)에서 고객님이 직접 선택하실 수 있어요."),
         ("후면 유리는 정품인가요?",
-         "애플은 후면 유리만 별도 부품으로 판매하지 않아 <strong>정품급 OEM 부품</strong>으로 교체합니다. 색상·두께·질감 모두 본체와 잘 맞는 것으로 골라드려요."),
+         "애플은 후면 유리만 별도 부품으로 판매하지 않아 <strong>정품급 OEM 부품</strong>으로 교체합니다. 색상·두께·질감 모두 본체와 잘 맞는 것으로 골라드리며, 자세한 비교는 <a href='iphone-back-glass-genuine-vs-compatible.html'>아이폰 후면 유리 정품급 OEM 9가지 비교</a>를 참고하세요."),
         ("수리 후 또 깨지면?",
          "다올리페어는 <strong>1년 안에 재파손 시 50% 할인된 가격으로 재수리</strong>해드립니다. 수리 후 케이스·필름 사용을 권장드려요."),
         ("데이터·방수는?",
@@ -673,9 +673,9 @@ QA_BY_TYPE = {
     ],
     "battery_watch": [
         ("애플워치 배터리도 셀 교체 옵션이 있나요?",
-         "애플워치는 본체 구조상 <strong>셀 단위 교체가 어려워서</strong> 배터리 자체를 교체합니다. 다올리페어는 정품 추출 또는 검증 OEM 배터리 두 옵션이 있어요."),
+         "애플워치는 본체 구조상 <strong>셀 단위 교체가 어려워서</strong> 배터리 자체를 교체합니다. 다올리페어는 정품 추출 또는 검증 OEM 배터리 두 옵션이 있어요. 자세한 안내는 <a href='applewatch-battery-replacement-guide.html'>애플워치 배터리 교체 종합 가이드</a>를 참고하세요."),
         ("정품 추출과 OEM 차이가 뭔가요?",
-         "<strong>정품 추출</strong>은 다른 정품 애플워치에서 추출한 정품 부품으로, 안정적인 품질 + 약간 더 비쌈. <strong>OEM</strong>은 검증된 OEM 배터리로 합리적 가격."),
+         "<a href='applewatch-battery-replacement-guide.html'><strong>정품 추출</strong></a>은 다른 정품 애플워치에서 추출한 정품 부품으로, 안정적인 품질 + 약간 더 비쌈. <a href='applewatch-battery-replacement-guide.html'><strong>OEM</strong></a>은 검증된 OEM 배터리로 합리적 가격."),
         ("배터리 부풀어서 화면이 들떴어요. 위험한가요?",
          "네, <strong>위험합니다</strong>. 배터리 부풀음은 내부 가스 발생으로 더 진행되면 폭발·발화 위험까지 있어요. 즉시 사용 중지하시고 매장 방문을 권장드립니다."),
         ("작업 시간은 얼마나 걸리나요?",
@@ -689,9 +689,9 @@ QA_BY_TYPE = {
     ],
     "battery_ipad": [
         ("아이패드 배터리도 셀 교체 옵션이 있나요?",
-         "아이패드는 본체 구조상 <strong>셀 단위 교체가 어려워서</strong> 배터리 자체를 교체합니다. 다올리페어는 정품 추출 또는 검증 OEM 배터리 두 옵션이 있어요."),
+         "아이패드는 본체 구조상 <strong>셀 단위 교체가 어려워서</strong> 배터리 자체를 교체합니다. 다올리페어는 정품 추출 또는 검증 OEM 배터리 두 옵션이 있어요. 자세한 안내는 <a href='ipad-battery-replacement-guide.html'>아이패드 배터리 교체 종합 가이드</a>를 참고하세요."),
         ("정품 추출과 OEM 차이가 뭔가요?",
-         "<strong>정품 추출</strong>은 다른 정품 아이패드에서 추출한 정품 부품으로, 안정적인 품질 + 약간 더 비쌈. <strong>OEM</strong>은 검증된 OEM 배터리로 합리적 가격."),
+         "<a href='ipad-battery-replacement-guide.html'><strong>정품 추출</strong></a>은 다른 정품 아이패드에서 추출한 정품 부품으로, 안정적인 품질 + 약간 더 비쌈. <a href='ipad-battery-replacement-guide.html'><strong>OEM</strong></a>은 검증된 OEM 배터리로 합리적 가격."),
         ("작업 시간은 얼마나 걸리나요?",
          "당일 2~3시간 정도. 아이패드는 분해가 정밀하고 화면이 커서 시간이 더 걸려요."),
         ("데이터는 안전한가요?",
@@ -1394,7 +1394,7 @@ def generate_article(case, journals):
   "@type": "FAQPage",
   "mainEntity": [
     {", ".join([
-        '{"@type":"Question","name":"' + q.replace('"', "'") + '","acceptedAnswer":{"@type":"Answer","text":"' + a.replace('"', "'").replace('<a href=', '').replace('</a>', '').replace("'/articles/", "https://xn--2j1bq2k97kxnah86c.com/articles/")[:300] + '"}}'
+        '{"@type":"Question","name":"' + q.replace('"', "'") + '","acceptedAnswer":{"@type":"Answer","text":"' + re.sub(r'<[^>]+>', '', a).replace('"', "'")[:300] + '"}}'
         for q, a in (QA_BY_TYPE.get("screen" if "화면" in rtype or "액정" in rtype else "back" if "후면" in rtype else "battery" if "배터리" in rtype else "charge" if "충전" in rtype else "screen") or QA_BY_TYPE["screen"])[:5]
     ])}
   ]
