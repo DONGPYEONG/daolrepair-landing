@@ -972,14 +972,19 @@ def make_qa(c):
 
 def make_apple_compare(c):
     """다올리페어 vs 애플 공식센터 비교표 — 사실 기반 명확한 차이점만.
-    repair_type별로 메시지 행 다르게 표기 (배터리는 옵션에 따라 다름)."""
+    repair_type별로 메시지 행 다르게 표기."""
     rtype = c.get("repair_type") or c.get("type", "")
     is_battery = "배터리" in rtype or rtype in {"battery", "battery+other"}
+    is_back = "후면" in rtype or rtype in {"back", "back-glass"}
 
     if is_battery:
         msg_daol = '옵션에 따라 다름 (셀 교체·정품 인증은 안 뜸)'
         msg_apple = '✅ 안 뜸'
         msg_note = '※ 배터리는 다올리페어에서 <a href="iphone-battery-replacement-types-cost-2026.html">셀 교체·정품 인증·일반 호환 3옵션</a> 중 선택. 셀 교체와 정품 인증은 메시지가 안 뜹니다.'
+    elif is_back:
+        msg_daol = '안 뜸'
+        msg_apple = '안 뜸'
+        msg_note = '※ 후면 유리는 애플이 단독 부품으로 판매하지 않아 시리얼 매핑이 없음 → 정품/사설 어느 쪽이든 메시지가 뜨지 않습니다.'
     else:
         msg_daol = '뜸 (사용 영향 X)'
         msg_apple = '✅ 안 뜸'

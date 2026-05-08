@@ -159,30 +159,75 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
         print(f"  ⚠️ OCR 실패 ({path.name}): {e}")
         return False
 
-    regions_to_blur = []
+    # 시스템 설정 화면(배터리 성능치·iOS 설정 등) 감지 — 개인정보 X, 마스킹 스킵
+    # 검출된 텍스트 중 시스템 정보 키워드가 2개 이상 있으면 시스템 화면으로 판단
+    SYSTEM_KEYWORDS = [
+        '최대 용량', '성능 상태', '배터리 성능', '배터리 상태', '사이클', '충전 사이클',
+        '비정품 부품', '비정품 배터리', '정품 부품', '정품 Apple',
+        '소프트웨어 업데이트', 'iOS', '설정', '일반', '정보',
+        '저전력 모드', '배터리 잔량', '활동 기록',
+        'Battery Health', 'Maximum Capacity', 'Performance', 'Settings',
+    ]
+    detected_texts = [text for (_, text, conf) in results if conf >= 0.4]
+    sys_kw_count = sum(1 for t in detected_texts for kw in SYSTEM_KEYWORDS if kw in t)
+    if sys_kw_count >= 2:
+        print(f"  ℹ️ 시스템 설정 화면 감지 ({sys_kw_count}개 키워드) — 마스킹 스킵: {path.name}")
+        return False
+
+    # 1차 패스: 살림/블러 박스 분류
+    raw_blur = []
+    kept_boxes = []  # 살려야 할 영역 좌표 추적 (블러가 침범 못하게)
     kept = []
     top_threshold = H * TOP_REGION_RATIO
     for entry in results:
-        # easyocr returns (bbox, text, confidence)
         bbox, text, conf = entry
         if conf < conf_threshold:
             continue
-        # bbox: [(x1,y1), (x2,y2), (x3,y3), (x4,y4)] (4 corners)
         xs = [p[0] for p in bbox]
         ys = [p[1] for p in bbox]
-        # 상단 영역에 있는지 (잠금화면 시계는 보통 상단)
         in_top = max(ys) < top_threshold
+        x_min_raw = int(min(xs))
+        y_min_raw = int(min(ys))
+        x_max_raw = int(max(xs))
+        y_max_raw = int(max(ys))
         if _is_keep_text(text, in_top_region=in_top):
             kept.append(text.strip())
+            # 살릴 영역에 약간 마진 + 저장
+            kept_boxes.append((max(0, x_min_raw - 5), max(0, y_min_raw - 5),
+                               min(W, x_max_raw + 5), min(H, y_max_raw + 5)))
             continue
-        # 패딩 30px — OCR 박스가 살짝 어긋나도 잔존 안 보이게
-        pad = 30
-        x_min = max(0, int(min(xs)) - pad)
-        y_min = max(0, int(min(ys)) - pad)
-        x_max = min(W, int(max(xs)) + pad)
-        y_max = min(H, int(max(ys)) + pad)
-        if x_max > x_min and y_max > y_min:
-            regions_to_blur.append((x_min, y_min, x_max, y_max, text.strip()))
+        raw_blur.append((x_min_raw, y_min_raw, x_max_raw, y_max_raw, text.strip()))
+
+    def boxes_overlap(b1, b2):
+        return not (b1[2] < b2[0] or b1[0] > b2[2] or b1[3] < b2[1] or b1[1] > b2[3])
+
+    def shrink_around_kept(bx, kept_list):
+        """블러 박스가 살림 박스와 겹치면 겹치는 쪽 축소."""
+        x1, y1, x2, y2 = bx
+        for kb in kept_list:
+            if not boxes_overlap((x1, y1, x2, y2), kb):
+                continue
+            kx1, ky1, kx2, ky2 = kb
+            # 가로 겹침: 블러 박스를 살림 박스 반대 방향으로 줄임
+            # 블러가 살림 왼쪽이면 → 블러의 x2를 살림의 x1까지 줄임
+            if x2 > kx1 and x1 < kx1 and x2 <= kx2 + 50:
+                x2 = kx1 - 2
+            elif x1 < kx2 and x2 > kx2 and x1 >= kx1 - 50:
+                x1 = kx2 + 2
+        return (max(0, x1), max(0, y1), min(W, x2), min(H, y2))
+
+    regions_to_blur = []
+    pad = 10
+    for (xr1, yr1, xr2, yr2, txt) in raw_blur:
+        # 패딩 적용
+        x_min = max(0, xr1 - pad)
+        y_min = max(0, yr1 - pad)
+        x_max = min(W, xr2 + pad)
+        y_max = min(H, yr2 + pad)
+        # 살림 영역과 겹치지 않게 축소
+        x_min, y_min, x_max, y_max = shrink_around_kept((x_min, y_min, x_max, y_max), kept_boxes)
+        if x_max > x_min + 5 and y_max > y_min + 5:  # 의미 있는 크기일 때만
+            regions_to_blur.append((x_min, y_min, x_max, y_max, txt))
 
     if not regions_to_blur:
         kept_preview = ", ".join(kept[:3])
@@ -190,10 +235,12 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
             print(f"  🛡️ 마스킹: 블러할 텍스트 없음 / 살림 {len(kept)}개 [{kept_preview}]")
         return False
 
-    # 각 영역을 검정 사각형으로 완전히 덮음 — 어떤 경우에도 100% 가려짐
-    draw = ImageDraw.Draw(img)
+    # 각 영역에 모자이크(픽셀화) 적용 — 텍스트 식별 차단하면서 자연스러움 유지
     for (x1, y1, x2, y2, _txt) in regions_to_blur:
-        draw.rectangle([x1, y1, x2, y2], fill=(0, 0, 0))
+        crop = img.crop((x1, y1, x2, y2))
+        pixelated = _pixelate(crop)
+        pixelated = pixelated.filter(ImageFilter.GaussianBlur(radius=4))
+        img.paste(pixelated, (x1, y1, x2, y2))
 
     img.save(path, 'JPEG', quality=88, optimize=True)
 
@@ -212,16 +259,18 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
         if _is_keep_text(text, in_top_region=in_top):
             continue
         xs = [p[0] for p in bbox]
-        x_min = max(0, int(min(xs)) - 30)
-        y_min = max(0, int(min(ys)) - 30)
-        x_max = min(W, int(max(xs)) + 30)
-        y_max = min(H, int(max(ys)) + 30)
+        x_min = max(0, int(min(xs)) - 10)
+        y_min = max(0, int(min(ys)) - 10)
+        x_max = min(W, int(max(xs)) + 10)
+        y_max = min(H, int(max(ys)) + 10)
         if x_max > x_min and y_max > y_min:
             extra_blur.append((x_min, y_min, x_max, y_max, text.strip()))
     if extra_blur:
-        draw2 = ImageDraw.Draw(img)
         for (x1, y1, x2, y2, _txt) in extra_blur:
-            draw2.rectangle([x1, y1, x2, y2], fill=(0, 0, 0))
+            crop = img.crop((x1, y1, x2, y2))
+            pixelated = _pixelate(crop)
+            pixelated = pixelated.filter(ImageFilter.GaussianBlur(radius=4))
+            img.paste(pixelated, (x1, y1, x2, y2))
         img.save(path, 'JPEG', quality=88, optimize=True)
 
     total = len(regions_to_blur) + len(extra_blur)
