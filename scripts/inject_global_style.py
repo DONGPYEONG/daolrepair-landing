@@ -8,19 +8,26 @@
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
-MARKER = "<!-- DAOL_GLOBAL_STYLE_v2 -->"
+MARKER = "<!-- DAOL_GLOBAL_STYLE_v3 -->"
+OLD_MARKER_V2 = "<!-- DAOL_GLOBAL_STYLE_v2 -->"
 
 GLOBAL_STYLE = f"""
   {MARKER}
   <style>
-    /* 본문 일반 링크 — 주황 + 밑줄 (다올리페어 브랜드) */
-    .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {{
+    /* 본문 일반 링크 — 주황 + 밑줄 (다올리페어 브랜드)
+       art-wrap 추가: .art-wrap 직속 컨테이너(p, ul, ol, li, div, td)에 있는 링크도 잡음
+       단, .art-wrap > .art-cta, .art-wrap > .related-grid 같은 영역은 별도 스타일 유지 */
+    .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a,
+    .art-wrap > p a, .art-wrap > ul a, .art-wrap > ol a, .art-wrap p a:not(.art-cta-btn):not(.art-cta-btn-ghost),
+    .art-wrap > .art-good a, .art-wrap > .art-tip a, .art-wrap > .art-warn a, .art-wrap > .daollipair-box a,
+    .art-wrap > h2 + p a, .art-wrap > table a, .art-wrap > .compare-table a, .art-wrap > .art-faq a,
+    .art-wrap > .diag-steps a, .art-wrap > .quick-steps a {{
       color: #E8732A !important;
       text-decoration: underline !important;
       text-underline-offset: 2px;
       font-weight: 600;
     }}
-    .art-body a:hover, .article-content a:hover, article.art-body a:hover {{
+    .art-body a:hover, .article-content a:hover, article.art-body a:hover, .art-wrap p a:hover {{
       color: #C55E1A !important;
     }}
     /* 단, 버튼/CTA처럼 background·class 있는 링크는 자기 스타일 유지 */
@@ -28,9 +35,11 @@ GLOBAL_STYLE = f"""
     .art-body a[class*="btn"],
     .art-body a.art-cta-btn,
     .art-body a.art-cta-btn-ghost,
-    .art-cta a,
+    .art-cta a, .art-cta-btns a,
+    .related-card, .related-card a,
     .art-good a[style*="background"],
-    .art-warn a[style*="background"] {{
+    .art-warn a[style*="background"],
+    .art-wrap a.art-cta-btn, .art-wrap a.art-cta-btn-ghost {{
       text-decoration: none !important;
       font-weight: inherit;
     }}
@@ -66,11 +75,27 @@ GLOBAL_STYLE = f"""
     .quick-nav-sub, .tab-btn {{
       white-space: nowrap;
     }}
+    /* 모바일 — 하단 "같이 보면 좋은 글" 섹션 양옆 여백 확보 (카드가 화면 가장자리에 붙지 않게) */
+    @media (max-width: 720px) {{
+      .art-related, .art-related[data-auto="related"] {{
+        margin-left: 16px !important;
+        margin-right: 16px !important;
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+      }}
+      .related-grid {{
+        gap: 12px !important;
+      }}
+      .related-card {{
+        padding: 16px 18px !important;
+      }}
+    }}
   </style>
 """
 
 
 def inject(path: Path) -> tuple[bool, str]:
+    import re
     try:
         html = path.read_text(encoding="utf-8")
     except Exception as e:
@@ -79,6 +104,13 @@ def inject(path: Path) -> tuple[bool, str]:
         return False, "이미 주입됨"
     if "</head>" not in html:
         return False, "</head> 없음"
+    # 기존 v2 블록 제거 (v3로 교체)
+    if OLD_MARKER_V2 in html:
+        html = re.sub(
+            r'\s*<!-- DAOL_GLOBAL_STYLE_v2 -->\s*<style>[\s\S]*?</style>\s*',
+            '\n',
+            html, count=1
+        )
     new = html.replace("</head>", GLOBAL_STYLE + "</head>", 1)
     path.write_text(new, encoding="utf-8")
     return True, "주입 완료"

@@ -32,7 +32,7 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type": "Question", "name": "정품 액정과 DD(OEM) 액정 중에 어떤 게 좋은가요?", "acceptedAnswer": {"@type": "Answer", "text": "두 옵션 모두 트루톤·자동 밝기·터치 감도가 정상 작동합니다. 출고 시와 똑같은 색감과 밝기를 원하시면 정품 액정, 합리적 가격으로 일상 사용에 충분한 품질을 원하시면 DD(OEM) 액정이 적합합니다. 가격 차이는 모델별로 다르며 매장에서 두 옵션 모두 안내드립니다."}},
+      {"@type": "Question", "name": "정품 액정과 DD(OEM) 액정 중에 어떤 게 좋은가요?", "acceptedAnswer": {"@type": "Answer", "text": "두 옵션 모두 트루톤·자동 밝기·터치 감도가 정상 작동합니다. 색감을 가장 중요하게 보시면 정품 액정, 합리적 가격으로 일상 사용에 충분한 품질을 원하시면 DD(OEM) 액정이 적합합니다. 가격 차이는 모델별로 다르며 매장에서 두 옵션 모두 안내드립니다."}},
       {"@type": "Question", "name": "DD 액정은 정품과 뭐가 다른가요?", "acceptedAnswer": {"@type": "Answer", "text": "DD(OEM) 액정은 정품 부품 제조 공정과 동일한 라인에서 생산된 호환 부품입니다. 패널 구조·밝기·해상도·터치 IC 모두 정품 사양을 따르며, 트루톤·자동 밝기·페이스 ID 모두 정상 작동합니다. 정품 대비 약 60~80% 가격이라 합리적인 선택지입니다."}},
       {"@type": "Question", "name": "두 옵션 다 \"비정품 부품\" 메시지가 뜨나요?", "acceptedAnswer": {"@type": "Answer", "text": "네, 두 옵션 모두 \"비정품 부품\" 메시지가 뜹니다. 애플은 부품 시리얼을 본체와 매핑해 추적하는데, 이 매핑은 애플 공식센터에서만 갱신됩니다. 사설 매장은 권한이 없어 정품 부품을 사용해도 메시지가 떠요. 사용에는 영향이 없으며 무시하셔도 됩니다."}},
       {"@type": "Question", "name": "공식센터 액정 교체와 가격 차이가 큰가요?", "acceptedAnswer": {"@type": "Answer", "text": "다올리페어 정품 액정은 공식센터 가격의 약 70~85% 수준이고, DD(OEM) 액정은 약 50~65% 수준입니다. 공식센터는 정품 단일 옵션이고 예약·대기 시간이 길어 며칠 걸리는 반면, 다올리페어는 두 옵션 중 선택 + 당일 30~60분 완료입니다."}},
@@ -357,17 +357,30 @@
       word-break: keep-all;
     }
   </style>
+<!-- DAOL_FAVICON_v1 -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-  <!-- DAOL_GLOBAL_STYLE_v2 -->
+  <!-- DAOL_GLOBAL_STYLE_v3 -->
   <style>
-    /* 본문 일반 링크 — 주황 + 밑줄 (다올리페어 브랜드) */
-    .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a {
+    /* 본문 일반 링크 — 주황 + 밑줄 (다올리페어 브랜드)
+       art-wrap 추가: .art-wrap 직속 컨테이너(p, ul, ol, li, div, td)에 있는 링크도 잡음
+       단, .art-wrap > .art-cta, .art-wrap > .related-grid 같은 영역은 별도 스타일 유지 */
+    .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a,
+    .art-wrap > p a, .art-wrap > ul a, .art-wrap > ol a, .art-wrap p a:not(.art-cta-btn):not(.art-cta-btn-ghost),
+    .art-wrap > .art-good a, .art-wrap > .art-tip a, .art-wrap > .art-warn a, .art-wrap > .daollipair-box a,
+    .art-wrap > h2 + p a, .art-wrap > table a, .art-wrap > .compare-table a, .art-wrap > .art-faq a,
+    .art-wrap > .diag-steps a, .art-wrap > .quick-steps a {
       color: #E8732A !important;
       text-decoration: underline !important;
       text-underline-offset: 2px;
       font-weight: 600;
     }
-    .art-body a:hover, .article-content a:hover, article.art-body a:hover {
+    .art-body a:hover, .article-content a:hover, article.art-body a:hover, .art-wrap p a:hover {
       color: #C55E1A !important;
     }
     /* 단, 버튼/CTA처럼 background·class 있는 링크는 자기 스타일 유지 */
@@ -375,9 +388,11 @@
     .art-body a[class*="btn"],
     .art-body a.art-cta-btn,
     .art-body a.art-cta-btn-ghost,
-    .art-cta a,
+    .art-cta a, .art-cta-btns a,
+    .related-card, .related-card a,
     .art-good a[style*="background"],
-    .art-warn a[style*="background"] {
+    .art-warn a[style*="background"],
+    .art-wrap a.art-cta-btn, .art-wrap a.art-cta-btn-ghost {
       text-decoration: none !important;
       font-weight: inherit;
     }
@@ -413,14 +428,22 @@
     .quick-nav-sub, .tab-btn {
       white-space: nowrap;
     }
+    /* 모바일 — 하단 "같이 보면 좋은 글" 섹션 양옆 여백 확보 (카드가 화면 가장자리에 붙지 않게) */
+    @media (max-width: 720px) {
+      .art-related, .art-related[data-auto="related"] {
+        margin-left: 16px !important;
+        margin-right: 16px !important;
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+      }
+      .related-grid {
+        gap: 12px !important;
+      }
+      .related-card {
+        padding: 16px 18px !important;
+      }
+    }
   </style>
-  <!-- DAOL_FAVICON_v1 -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body data-cat="iphone">
 
@@ -479,7 +502,7 @@
 
   <div class="art-good">
     <div class="art-good-label">결론 먼저</div>
-    <p>아이폰 액정 교체는 <strong>① 정품 액정 ② DD(OEM) 액정</strong> 두 옵션이 있습니다. <strong>두 옵션 모두 트루톤·자동 밝기·터치 감도·페이스 ID 정상 작동</strong>합니다. 정품은 출고 시와 똑같은 색감·내구성, DD는 합리적 가격으로 일상 사용에 충분한 품질입니다.</p>
+    <p>아이폰 액정 교체는 <strong>① 정품 액정 ② DD(OEM) 액정</strong> 두 옵션이 있습니다. <strong>두 옵션 모두 트루톤·자동 밝기·터치 감도·페이스 ID 정상 작동</strong>합니다. 정품은 색감을 가장 중요하게 보시는 분께, DD는 합리적 가격으로 일상 사용에 충분한 품질을 원하시는 분께 적합합니다.</p>
   </div>
 
   <h2>2가지 옵션 한눈에 비교</h2>
@@ -491,12 +514,11 @@
       <tr><td><strong>가격대</strong></td><td>기준가</td><td>정품의 60~80%</td></tr>
       <tr><td><strong>부품 출처</strong></td><td>정품 기기 추출 또는 정품 재생</td><td>정품 제조 라인 동일 사양 OEM</td></tr>
       <tr><td><strong>트루톤·자동 밝기</strong></td><td>정상</td><td>정상</td></tr>
-      <tr><td><strong>터치 감도·반응속도</strong></td><td>출고 시와 동일</td><td>일상 사용에서 차이 거의 없음</td></tr>
-      <tr><td><strong>해상도·밝기</strong></td><td>출고 시와 동일</td><td>정품 사양 동일</td></tr>
+      <tr><td><strong>터치 감도·반응속도</strong></td><td>정상</td><td>일상 사용에서 차이 거의 없음</td></tr>
+      <tr><td><strong>해상도·밝기</strong></td><td>정상</td><td>정품 사양 동일</td></tr>
       <tr><td><strong>페이스 ID·트루뎁스</strong></td><td>정상 작동</td><td>정상 작동</td></tr>
       <tr><td><strong>"비정품 부품" 메시지</strong></td><td>뜸 (사설 모두 동일)</td><td>뜸 (사설 모두 동일)</td></tr>
-      <tr><td><strong>색감 정확도</strong></td><td>최상</td><td>상 (직사광선에서 미세 차이)</td></tr>
-      <tr><td><strong>장기 내구성</strong></td><td>출고 시와 동일</td><td>정품에 가까움</td></tr>
+      <tr><td><strong>색감</strong></td><td>정확도가 더 높음</td><td>일상 사용에 충분</td></tr>
       <tr><td><strong>보증 (다올리페어)</strong></td><td>90일 무상</td><td>90일 무상</td></tr>
     </tbody>
   </table>
@@ -504,12 +526,12 @@
 
   <h2>옵션별 자세히 — 어떤 분께 추천?</h2>
 
-  <h3>① 정품 액정 — "출고 시와 똑같은 화면"</h3>
-  <p>정품 기기에서 추출(Pulled)한 부품 또는 정품 부품을 재생(Refurbished)한 액정입니다. 패널·터치 IC·백라이트 모두 출고 시와 동일하며, 색감 정확도와 장기 내구성에서 가장 안정적입니다.</p>
+  <h3>① 정품 액정</h3>
+  <p>정품 기기에서 추출(Pulled)한 부품 또는 정품 부품을 재생(Refurbished)한 액정입니다. 패널·터치 IC·백라이트 모두 정품 사양으로 구성되어 색감 정확도가 높습니다.</p>
   <ul>
-    <li><strong>장점</strong> — 출고 시와 동일한 색감 + 최상의 터치 감도 + 가장 안정적인 장기 내구성</li>
+    <li><strong>장점</strong> — 색감 정확도가 더 높음 + 터치 감도 정상 + 정품 사양 부품</li>
     <li><strong>단점</strong> — DD(OEM)보다 가격이 높음 (모델에 따라 25~50% 추가)</li>
-    <li><strong>추천 대상</strong> — 색감에 민감하시거나, 장기 사용을 계획하시거나, 출고 시 품질 그대로를 원하시는 분</li>
+    <li><strong>추천 대상</strong> — 색감을 가장 중요하게 보시는 분, 부품을 정품으로 통일하고 싶으신 분</li>
   </ul>
 
   <h3>② DD(OEM) 액정 — "합리적 가격, 정품 사양 그대로"</h3>
@@ -598,7 +620,7 @@
     <h3>액정 교체 2가지 옵션 — 본인에게 맞는 선택</h3>
     <p>다올리페어는 정품 액정과 DD(OEM) 액정 두 옵션을 모두 안내드립니다. 매장에서 두 화면을 직접 보고 비교 후 결정 가능합니다.</p>
     <ul>
-      <li>정품 액정 — 출고 시와 동일한 색감·내구성</li>
+      <li>정품 액정 — 색감 정확도가 더 높음</li>
       <li>DD(OEM) 액정 — 정품 사양 동일, 합리적 가격</li>
       <li>두 옵션 모두 트루톤·페이스 ID 정상 작동</li>
       <li>당일 30~60분 작업 + 90일 무상 보증</li>
@@ -627,7 +649,7 @@
     <h2>자주 묻는 질문</h2>
     <div class="faq-item">
       <div class="faq-q">정품 액정과 DD(OEM) 액정 중에 어떤 게 좋은가요?</div>
-      <div class="faq-a">두 옵션 모두 트루톤·자동 밝기·터치 감도가 정상 작동합니다. 출고 시와 똑같은 색감과 밝기를 원하시면 정품 액정, 합리적 가격으로 일상 사용에 충분한 품질을 원하시면 DD(OEM) 액정이 적합합니다. 가격 차이는 모델별로 다르며 매장에서 두 옵션 모두 안내드립니다.</div>
+      <div class="faq-a">두 옵션 모두 트루톤·자동 밝기·터치 감도가 정상 작동합니다. 색감을 가장 중요하게 보시면 정품 액정, 합리적 가격으로 일상 사용에 충분한 품질을 원하시면 DD(OEM) 액정이 적합합니다. 가격 차이는 모델별로 다르며 매장에서 두 옵션 모두 안내드립니다.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">DD 액정은 정품과 뭐가 다른가요?</div>
