@@ -215,75 +215,108 @@ TYPE_KR = {
 # ─── 수리 종류별 본문 (충실한 본문 + 작업 과정) ───
 TYPE_BODY = {
     "screen": """
-<h2>{model} 액정이 깨졌다면 — 흔히 검색하는 증상</h2>
+<h2>{model} 액정 깨졌을 때 — 검색하는 분들의 5가지 증상</h2>
 <ul>
-  <li>"화면이 깨졌는데 터치는 됨" / "터치도 안 됨"</li>
-  <li>"화면 일부만 보임" / "검은 줄·세로 줄이 생김"</li>
-  <li>"누르지 않았는데 혼자 눌리는 유령 터치"</li>
-  <li>"화면이 안 켜지는데 진동·소리는 정상"</li>
+  <li><strong>"단순 유리만 깨졌나? LCD까지 손상됐나?"</strong> — 자가진단 가능: 표면 균열만 있고 화면 표시·터치 모두 정상이면 단순 유리. 검은 멍·잉크 번짐·줄·터치 둔화 중 하나라도 있으면 LCD까지 손상.</li>
+  <li>"화면 일부만 보임" / "검은 줄·세로 줄이 생김" — LCD 손상 신호</li>
+  <li>"누르지 않았는데 혼자 눌리는 유령 터치" — 터치 디지타이저 손상</li>
+  <li>"화면이 안 켜지는데 진동·소리는 정상" — 백라이트(LCD) 또는 픽셀(OLED) 손상</li>
+  <li>"트루톤이 꺼진 것 같아요" — 자동 밝기·색감 이상도 액정 손상 신호</li>
 </ul>
-<p>{model_screen} 패널은 위 증상이 보일 때 모두 화면 패널 교체로 해결됩니다. 떨어뜨림 후 24시간 이내 수리 받으시는 게 좋아요. 그대로 두면 줄·얼룩이 점점 번지고, 미세 균열로 수분 침투 위험까지 생깁니다.</p>
+<p>{model_screen} 패널은 위 증상이 보일 때 모두 화면 패널 교체로 해결됩니다. <strong>표면 유리만 깨진 단계에서 빨리 수리하면 LCD 교체비(약 2배)를 아낄 수 있어요</strong>. 그대로 두면 줄·얼룩이 점점 번지고 LCD까지 손상으로 진행됩니다.</p>
 
 <h2>이번 케이스 자세히 보기</h2>
-<p>{date} 다올리페어 {branch}에 방문하신 {model} 사용자의 실제 사례입니다. 외관 손상 정도와 진단 결과는 다음과 같았습니다:</p>
+<p>{date} 다올리페어 {branch}에 방문하신 {model} 사용자의 실제 사례입니다:</p>
 <ul>
-  <li><strong>모델</strong>: {model} ({model_year}년 출시)</li>
+  <li><strong>모델</strong>: {model} ({model_year}년 출시) · {model_screen}</li>
   <li><strong>증상</strong>: 액정 파손 — 패널 손상으로 정상 표시 불가</li>
   <li><strong>진단 결과</strong>: 화면 패널 교체 필요 (메인보드·배터리 정상)</li>
   <li><strong>주의 포인트</strong>: {model_weak}</li>
 </ul>
 
-<h2>다올리페어 액정 부품 — 정품 or OEM 선택 가능</h2>
-<p>다올리페어는 두 가지 옵션이 있어 고객님이 직접 선택하실 수 있습니다:</p>
-<ul>
-  <li><strong>Apple 정품 액정</strong> — 출고 시와 동일한 품질, 트루톤·자동 밝기 완벽 지원, 가격 더 높음</li>
-  <li><strong>검증 OEM 액정</strong> — 정품과 동급 품질의 OEM 부품, 트루톤·자동 밝기 정상 작동, 가격 합리적</li>
-</ul>
-<p>둘 다 90일 무상 A/S 보증되며, 매장에서 진단하시면서 본인 예산·우선순위에 맞게 결정하시면 됩니다.</p>
+<h2>다올리페어 액정 부품 — 정품 vs DD(OEM) 선택</h2>
+<p>다올리페어는 두 가지 옵션이 있어 고객님이 직접 선택하실 수 있습니다. 두 옵션 모두 <strong>동일한 90일 무상 A/S 보증</strong>이 적용돼요.</p>
+<table style="width:100%;border-collapse:collapse;margin:16px 0;">
+  <thead>
+    <tr style="background:#f5f5f7;">
+      <th style="padding:10px;border:1px solid #eee;text-align:left;">구분</th>
+      <th style="padding:10px;border:1px solid #eee;text-align:left;">Apple 정품 액정</th>
+      <th style="padding:10px;border:1px solid #eee;text-align:left;">DD(OEM) 액정</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:10px;border:1px solid #eee;">부품 출처</td><td style="padding:10px;border:1px solid #eee;">애플 공식</td><td style="padding:10px;border:1px solid #eee;">동일 사양 OEM</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;">가격</td><td style="padding:10px;border:1px solid #eee;">기준가</td><td style="padding:10px;border:1px solid #eee;">정품의 60~80%</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;">트루톤·자동 밝기</td><td style="padding:10px;border:1px solid #eee;">정상</td><td style="padding:10px;border:1px solid #eee;">정상</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;">"비정품 부품" 메시지</td><td style="padding:10px;border:1px solid #eee;">뜸 (사설 모두 동일)</td><td style="padding:10px;border:1px solid #eee;">뜸 (사설 모두 동일)</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;">90일 보증</td><td style="padding:10px;border:1px solid #eee;">동일</td><td style="padding:10px;border:1px solid #eee;">동일</td></tr>
+  </tbody>
+</table>
+<p>※ <strong>"비정품 부품" 메시지는 정품 액정으로 수리해도 뜨는 게 정상</strong>입니다. 애플은 부품 시리얼을 본체와 매핑해 추적하는데, 이 매핑은 애플 공식센터에서만 갱신됩니다. 사설 매장은 권한이 없어 정품 부품을 사용해도 메시지가 떠요. 사용에는 영향이 없으며 무시하셔도 됩니다.</p>
+<p>모델별 정확한 가격은 <a href="iphone-screen-repair-cost-2026.html">아이폰 액정 수리비 2026 모델별 정리</a>를 참고하세요.</p>
 
-<h2>매장에서 진행한 수리 과정</h2>
+<h2>매장에서 진행한 수리 과정 (당일 30~60분)</h2>
 <ol>
-  <li><strong>진단 (5~10분)</strong> — 화면 외 다른 부품 손상 여부 점검 (메인보드·배터리·터치 회로)</li>
-  <li><strong>부품 옵션 안내</strong> — 정품 vs OEM 가격·차이 설명, 고객 선택</li>
+  <li><strong>진단 (5~10분)</strong> — 화면 외 다른 부품 손상 여부 점검 (메인보드·배터리·터치 회로). 단순 유리 vs LCD 손상 정확히 구분</li>
+  <li><strong>부품 옵션 안내</strong> — 정품 vs DD 가격·차이 설명, 고객 선택</li>
   <li><strong>분해 (10~15분)</strong> — 화면 패널 분리, 케이블 보호하며 작업</li>
   <li><strong>새 화면 패널 부착 (10~20분)</strong> — 선택한 부품으로 교체, 케이블 재연결</li>
   <li><strong>기능 테스트 (5~10분)</strong> — 터치 감도·색상·트루톤·자동 밝기 모두 확인</li>
   <li><strong>방수 패킹 재부착</strong> — 표준 절차로 재부착 (방수 등급 보장은 어려운 점 안내)</li>
 </ol>
-<p>총 작업 시간 <strong>당일 30~60분</strong>으로 완료. 데이터는 그대로 보존됩니다. 수리 중 잠시 기다리시거나 매장 근처에서 시간 보내시면 됩니다.</p>
+<p>데이터는 그대로 보존됩니다. 수리 중 잠시 기다리시거나 매장 근처에서 시간 보내시면 됩니다. 카드 무이자 할부(2~6개월)도 이용 가능해요.</p>
 """,
     "back": """
-<h2>{model} 후면 유리 깨졌을 때 — 흔히 검색하는 고민</h2>
+<h2>{model} 후면 유리 깨졌을 때 — 자가진단 5단계</h2>
+<p>매장 가기 전에 본인이 먼저 확인할 수 있는 5가지:</p>
+<ol>
+  <li><strong>균열 범위 확인</strong> — 작은 거미줄 모양인지, 큰 조각으로 갈라졌는지. 큰 조각은 빠르게 진행</li>
+  <li><strong>카메라 렌즈 점검</strong> — 후면 카메라 부분 보호 글래스도 깨졌는지 (사진 흐려지거나 빛 번짐 발생 시 카메라 동시 진단 필요)</li>
+  <li><strong>카메라 작동 테스트</strong> — 사진·동영상 촬영해서 흔들림·번짐 확인</li>
+  <li><strong>프레임 변형 확인</strong> — 본체 모서리가 휘었거나 들떴는지 — 변형 있으면 방수 보장 불가</li>
+  <li><strong>방수 의심 점검</strong> — 비·땀에 노출된 적 있는지. 후면 유리 깨진 상태면 침투 위험 ↑</li>
+</ol>
+
+<h2>{model} 뒷면 그대로 두면 — 5가지 위험</h2>
 <ul>
-  <li>"후면 깨졌는데 그냥 써도 되나?" / "케이스로 가리고 쓰면 되지 않나?"</li>
-  <li>"수리비가 너무 비싸다는데 정말 그런가?"</li>
-  <li>"후면 유리 정품인가? 호환인가?" — 정답: <strong>정품 부품 자체가 없음</strong></li>
-  <li>"수리 후 또 깨지면 어떡하지?"</li>
+  <li>균열 점점 확대 → 결국 후면 전체 부서질 수 있음</li>
+  <li>주머니·가방 안에서 손·옷에 상처</li>
+  <li>방수 기능 약화 → 침수 시 메인보드까지 손상 (수리비 폭증)</li>
+  <li>카메라 렌즈 보호 글래스 미세 균열로 사진 화질 저하</li>
+  <li>중고 거래·기기 보상판매 시 가치 하락</li>
 </ul>
-<p>후면 유리 파손은 그대로 두면 미세 균열이 점점 커지고 내부 부품 보호 기능을 잃게 됩니다. 또한 주머니·가방 안에서 상처 입을 위험이 큽니다. 외관도 외관이지만 <strong>본체 보호 측면에서 빠른 수리</strong>를 권장드립니다.</p>
 
 <h2>이번 케이스 자세히 보기</h2>
 <p>{date} 다올리페어 {branch} 방문 고객 사례:</p>
 <ul>
   <li><strong>모델</strong>: {model} ({model_year}년 출시)</li>
-  <li><strong>증상</strong>: 후면 유리 파손 — 균열이 후면 전체로 번진 상태</li>
-  <li><strong>진단</strong>: 후면 유리 교체 필요, 카메라 보호 글래스 별도 점검</li>
+  <li><strong>증상</strong>: 후면 유리 파손</li>
+  <li><strong>진단</strong>: 후면 유리 교체 필요, 카메라 보호 글래스 동반 점검</li>
   <li><strong>참고</strong>: {model_weak}</li>
 </ul>
 
-<h2>매장에서 진행한 작업</h2>
+<h2>다올리페어 후면 유리 — "정품급 OEM" 사용 (정품 단독 부품 없음)</h2>
+<p>"후면 유리 정품인가요?"는 가장 많이 받는 질문이에요. 정확히 말씀드리면 — <strong>애플은 후면 유리만 별도 부품으로 판매하지 않습니다</strong>. 그래서 모든 사설 수리점은 <strong>정품급 OEM 부품</strong>을 사용해요.</p>
+<p>다올리페어는 색감·두께·질감이 본체와 가장 잘 맞는 OEM 부품으로 골라드립니다. 색감 비교 사례는 <a href="iphone-back-glass-genuine-vs-compatible.html">아이폰 후면 유리 정품급 OEM 9가지 비교</a>를 참고하세요.</p>
+
+<h2>매장에서 진행한 작업 (당일 3~4시간)</h2>
 <ol>
-  <li><strong>진단 (5~10분)</strong> — 후면 외 카메라·프레임 손상 여부 점검</li>
-  <li><strong>레이저 분리 (1시간)</strong> — 깨진 후면 유리 잔여물 정밀 제거</li>
-  <li><strong>본체 정리 (30~60분)</strong> — 접착제·잔여물 깨끗이 제거</li>
-  <li><strong>새 후면 유리 부착 (1시간)</strong> — 본체에 맞게 정밀 부착</li>
-  <li><strong>기능 테스트</strong> — 후면 카메라·플래시·무선 충전·NFC 모두 확인</li>
+  <li><strong>진단 (5~10분)</strong> — 후면 외 카메라·프레임·방수 패킹 손상 여부 점검</li>
+  <li><strong>레이저 분리 (1시간~)</strong> — 깨진 후면 유리 잔여물 정밀 제거. 본체 손상 방지</li>
+  <li><strong>본체 정리 (30~60분)</strong> — 접착제·유리 잔여물 깨끗이 제거</li>
+  <li><strong>새 후면 유리 부착 (1시간)</strong> — 본체에 맞게 정밀 부착, 굳힘 시간 포함</li>
+  <li><strong>기능 테스트</strong> — 후면 카메라·플래시·무선 충전·MagSafe·NFC 모두 확인</li>
 </ol>
-<p>총 작업 시간 <strong>당일 3~4시간</strong>으로 완료. 매장에 두고 가시거나 인근에서 시간 보내시면 됩니다.</p>
+<p>매장에 두고 가시거나 인근에서 시간 보내시면 됩니다. 모델별 정확한 가격은 <a href="iphone-back-glass-cost-by-model-2026.html">아이폰 후면 유리 모델별 수리비</a>를 참고하세요.</p>
 
 <div class="art-warn" style="background:#fff5f0;border-left:4px solid #E8732A;padding:14px 18px;border-radius:0 10px 10px 0;margin:20px 0;">
   <strong style="color:#E8732A;display:block;margin-bottom:6px;">후면 유리 수리에 대한 솔직한 안내</strong>
-  <p style="font-size:14px;color:#555;line-height:1.7;margin:0;">후면만 단독 교체이기 때문에 처음 출고 시 새 제품 수준의 내구성은 나오기 어렵습니다. 이미 충격을 받은 본체이고 프레임 미세 변형이 있을 수 있어, 같은 충격에도 새 폰보다 쉽게 손상될 수 있어요. 수리 후 케이스·필름 사용을 권장드리며, <strong>다올리페어는 1년 안에 재파손 시 50% 할인된 가격으로 재수리</strong>해드립니다.</p>
+  <p style="font-size:14px;color:#555;line-height:1.7;margin:0;">후면만 단독 교체이기 때문에 처음 출고 시 새 제품 수준의 내구성은 어렵습니다. 이미 충격을 받은 본체이고 프레임 미세 변형이 있을 수 있어, 같은 충격에도 새 폰보다 쉽게 손상될 수 있어요. 수리 후 케이스·필름 사용을 권장드리며, <strong>다올리페어는 1년 안에 재파손 시 50% 할인된 가격으로 재수리</strong>해드립니다.</p>
+</div>
+
+<div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:14px 18px;border-radius:0 10px 10px 0;margin:20px 0;">
+  <strong style="color:#16a34a;display:block;margin-bottom:6px;">방수 기능 솔직한 안내</strong>
+  <p style="font-size:14px;color:#555;line-height:1.7;margin:0;">후면 유리 교체 시 방수 패킹은 표준 절차로 재부착됩니다. 다만 이미 충격으로 프레임이 변형되거나 내부 데미지가 있는 폰은 수리 후 방수 등급이 출고 시 수준으로 보장되지 않습니다. 침수에는 보수적으로 사용을 권장드립니다.</p>
 </div>
 """,
     "back-glass": "",  # 위 back과 동일 (코드에서 통합 처리)
@@ -405,14 +438,15 @@ TYPE_BODY = {
 <p>총 작업 시간 <strong>당일 30~50분</strong>. 데이터는 그대로 보존됩니다.</p>
 """,
     "charge": """
-<h2>{model} 충전 단자 손상 — 흔히 검색하는 증상</h2>
-<ul>
-  <li>"충전기 꽂아도 인식 안 됨" / "각도 잘 맞춰야 충전됨"</li>
-  <li>"충전 중인데 갑자기 끊김" / "100%까지 안 차고 빠짐"</li>
-  <li>"꽂으면 진동만 나고 충전 안 됨"</li>
-  <li>"비정품 충전기에서만 인식"</li>
-</ul>
-<p>충전 단자 문제는 <strong>이물질·먼지 청소만으로 해결</strong>되는 경우가 많습니다. 단자 안쪽이 깊어 보풀·먼지가 잘 끼고, 그것 때문에 접촉 불량이 생깁니다. 청소로 해결 안 되면 단자 자체 교체가 필요합니다.</p>
+<h2>{model} 충전 안 될 때 — 자가진단 5단계 (매장 가기 전)</h2>
+<ol>
+  <li><strong>다른 케이블·어댑터로 시도</strong> — 케이블·어댑터 자체 문제일 수 있음. 정품 또는 MFi 인증 다른 케이블로 테스트</li>
+  <li><strong>라이트(LED)로 단자 안 들여다보기</strong> — 핀 사이에 보풀·먼지가 끼어있는지 확인. 회색·검은색 뭉치가 보이면 이물질</li>
+  <li><strong>케이블 살짝 흔들면서 확인</strong> — 한쪽으로 누르거나 들어 올렸을 때만 충전되면 단자 접촉 불량</li>
+  <li><strong>무선충전 시도</strong> — 무선은 되는데 유선이 안 된다면 단자 문제 (메인보드는 정상)</li>
+  <li><strong>침수·낙하 이력 확인</strong> — 떨어뜨리거나 물 닿은 적 있으면 단자 외 메인보드 동반 진단 필요</li>
+</ol>
+<p>충전 단자 문제는 <strong>약 70%가 이물질·먼지 청소만으로 해결</strong>됩니다. 단자 안쪽이 깊어 보풀·먼지가 잘 끼고, 그것 때문에 접촉 불량이 생깁니다. 청소로 해결 안 되면 단자 자체 교체가 필요해요.</p>
 
 <h2>이번 케이스 자세히 보기</h2>
 <p>{date} 다올리페어 {branch} 방문 고객 사례:</p>
@@ -422,18 +456,40 @@ TYPE_BODY = {
   <li><strong>참고</strong>: {model_weak}</li>
 </ul>
 
-<h2>매장에서 진행한 진단·수리</h2>
+<h2>청소 vs 교체 — 어느 쪽이 본인에게 맞나</h2>
+<table style="width:100%;border-collapse:collapse;margin:16px 0;">
+  <thead>
+    <tr style="background:#f5f5f7;">
+      <th style="padding:10px;border:1px solid #eee;text-align:left;">구분</th>
+      <th style="padding:10px;border:1px solid #eee;text-align:left;">정밀 청소</th>
+      <th style="padding:10px;border:1px solid #eee;text-align:left;">단자 교체</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:10px;border:1px solid #eee;">대상</td><td style="padding:10px;border:1px solid #eee;">이물질·먼지 끼인 케이스</td><td style="padding:10px;border:1px solid #eee;">단자 부품 손상 케이스</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;">소요 시간</td><td style="padding:10px;border:1px solid #eee;">30분 이내</td><td style="padding:10px;border:1px solid #eee;">1~2시간</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;">기본 비용</td><td style="padding:10px;border:1px solid #eee;">3만원~</td><td style="padding:10px;border:1px solid #eee;">모델별 별도 (매장 견적)</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;">교체 부품</td><td style="padding:10px;border:1px solid #eee;">없음 (청소만)</td><td style="padding:10px;border:1px solid #eee;">정품 추출 단자 부품</td></tr>
+  </tbody>
+</table>
+
+<h2>매장에서 진행한 진단·수리 (당일 30분~1시간)</h2>
 <ol>
-  <li><strong>1차 진단 (5분)</strong> — 라이트로 단자 안 확인, 이물질 여부 점검</li>
-  <li><strong>정밀 청소 (15~20분)</strong> — 전용 도구로 단자 안 보풀·먼지 제거</li>
-  <li><strong>충전 테스트</strong> — 정품 케이블·일반 케이블 모두 인식 확인</li>
-  <li><strong>(필요 시) 단자 교체</strong> — 청소로 해결 안 되면 단자 부품 교체</li>
+  <li><strong>1차 진단 (5분)</strong> — 라이트로 단자 안 확인, 이물질 여부·접촉 상태 점검</li>
+  <li><strong>정밀 청소 (15~20분)</strong> — 전용 도구로 단자 안 보풀·먼지 제거 (핀 손상 없이 안전하게)</li>
+  <li><strong>충전 테스트</strong> — 정품 케이블·일반 케이블 모두 인식 확인. 100% 충전 정상 진행 검증</li>
+  <li><strong>(필요 시) 단자 교체</strong> — 청소로 해결 안 되면 정품 추출 단자 부품으로 교체</li>
 </ol>
-<p>총 작업 시간 <strong>당일 30분~1시간</strong>. 청소만으로 해결되면 비용도 절약됩니다.</p>
+<p>청소만으로 해결되면 비용도 절약됩니다. 자세한 비교는 <a href="iphone-charging-port-cleaning-vs-replacement.html">충전 단자 청소 vs 교체 결정 가이드</a>를 참고하세요.</p>
 
 <div style="background:#f0f7ff;border-left:4px solid #3b82f6;padding:14px 18px;border-radius:0 10px 10px 0;margin:20px 0;">
   <strong style="color:#3b82f6;display:block;margin-bottom:6px;">충전 단자 청소 가격 안내</strong>
   <p style="font-size:14px;color:#555;line-height:1.7;margin:0;">기본 <strong>3만원~</strong> 시작. 복잡하거나 시간이 오래 걸리는 경우 추가 비용 발생 가능. 최신 기종(15·16·17 시리즈)은 부품 정밀도가 높아 더 나올 수 있어요. 정확한 비용은 매장 진단 후 안내드립니다.</p>
+</div>
+
+<div style="background:#fff5f0;border-left:4px solid #E8732A;padding:14px 18px;border-radius:0 10px 10px 0;margin:20px 0;">
+  <strong style="color:#E8732A;display:block;margin-bottom:6px;">⚠️ 본인이 직접 단자 청소하지 마세요</strong>
+  <p style="font-size:14px;color:#555;line-height:1.7;margin:0;">핀·이쑤시개 같은 도구로 직접 파시면 단자 안 핀이 휘거나 부러질 수 있어요. 그러면 청소가 아니라 단자 교체로 가야 해서 비용이 훨씬 늘어납니다. 매장에서 전용 도구로 안전하게 처리하시는 게 비용·시간 모두 절약돼요.</p>
 </div>
 """,
     "screen+back": """
