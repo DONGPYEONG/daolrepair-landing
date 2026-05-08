@@ -3610,6 +3610,19 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
             <option>택배 수리 (전국)</option>
           </select>
         </div>
+        <div class="fg" style="margin-bottom:14px" id="wPwdGroup">
+          <label class="form-label" style="color:rgba(255,255,255,0.7);">제품 잠금 해제 비밀번호 <span style="color:#FF6B66;">*</span></label>
+          <div style="display:flex;gap:8px;margin-bottom:8px;">
+            <button type="button" class="cf-chip" data-pwd-choice="have" onclick="wPwdChoose('have')" style="flex:1;">있음 (입력)</button>
+            <button type="button" class="cf-chip" data-pwd-choice="none" onclick="wPwdChoose('none')" style="flex:1;">없음 (초기화 후 발송)</button>
+          </div>
+          <input class="fi-dark" type="text" id="wPwd" placeholder="잠금 해제 비밀번호 (숫자 4~6자리)" style="display:none;" maxlength="20">
+          <p style="font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.65;margin-top:8px;">
+            ※ 기능 검수를 위해 제품 잠금 해제 비밀번호가 필요합니다.<br>
+            ※ 불편하신 경우, 초기화 후 비밀번호 없이 초기 화면 상태로 보내주셔도 됩니다.<br>
+            ※ <strong style="color:#FFB87A;">애플워치를 초기화하실 경우 — 초기화 후 반드시 페어링된 아이폰과 함께 보내주세요. 아니면 반송됩니다.</strong>
+          </p>
+        </div>
         <div class="fg" style="margin-bottom:14px">
           <label class="form-label" style="color:rgba(255,255,255,0.7)">추가 메모 (선택)</label>
           <textarea class="ft-dark" id="wMemo" placeholder="증상을 좀 더 자세히 설명해주시면 빠른 견적이 가능합니다."></textarea>
@@ -3831,12 +3844,38 @@ function sendNotification(data) {
   }).catch(function(){});
 }
 
+window.wPwdChoose = function(choice) {
+  window._wPwdChoice = choice;
+  document.querySelectorAll('[data-pwd-choice]').forEach(function(b){
+    b.classList.toggle('on', b.dataset.pwdChoice === choice);
+  });
+  var input = document.getElementById('wPwd');
+  if (choice === 'have') {
+    input.style.display = 'block';
+    setTimeout(function(){ input.focus(); }, 100);
+  } else {
+    input.style.display = 'none';
+    input.value = '';
+  }
+};
+
 function submitWiz() {
   const name  = document.getElementById('wName').value.trim();
   const phone = document.getElementById('wPhone').value.trim();
   const method= document.getElementById('wMethod').value;
   if (!name || !phone || !method) { alert('이름, 연락처, 방문/접수 방법을 입력해주세요.'); return; }
+  // 비밀번호 유무 선택 필수
+  if (!window._wPwdChoice) { alert('제품 잠금 해제 비밀번호 유무를 선택해주세요.'); return; }
+  var pwd = '';
+  if (window._wPwdChoice === 'have') {
+    pwd = document.getElementById('wPwd').value.trim();
+    if (!pwd) { alert('잠금 해제 비밀번호를 입력해주세요. 없으시면 "없음 (초기화 후 발송)"을 선택해주세요.'); return; }
+  }
   var memo = document.getElementById('wMemo').value.trim();
+  var pwdLine = (window._wPwdChoice === 'have')
+    ? '🔑 잠금 해제 비밀번호: ' + pwd
+    : '🔓 비밀번호 없음 — 초기화 후 발송 예정';
+  memo = pwdLine + (memo ? '\n' + memo : '');
   var photoCount = (window._wPhotos || []).length;
   if (photoCount > 0) memo = '📷 사진 ' + photoCount + '장 첨부됨\n' + memo;
   sendNotification({
@@ -3847,6 +3886,8 @@ function submitWiz() {
     name: name,
     phone: phone,
     method: method,
+    pwd_choice: window._wPwdChoice,
+    pwd: pwd,
     memo: memo,
     photos: window._wPhotos || []
   });
