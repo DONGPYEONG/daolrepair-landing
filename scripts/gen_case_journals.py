@@ -618,14 +618,17 @@ def generate_article(case, journals):
 
     photo_block = ""
     if before_img and after_img:
+        # 절대 URL 사용 (한글 폴더명·공백 인코딩 이슈 회피, 라이브 서버에서 정상 로드)
+        before_url = f"{SITE_BASE}/{before_img}"
+        after_url = f"{SITE_BASE}/{after_img}"
         photo_block = f'''
 <div class="ba-photos">
   <figure class="ba-photo">
-    <img loading="lazy" src="../{before_img}" alt="{model} 수리 전 사진">
+    <img loading="lazy" src="{before_url}" alt="{model} 수리 전 사진">
     <figcaption><span class="ba-tag ba-tag-before">BEFORE</span> 수리 전</figcaption>
   </figure>
   <figure class="ba-photo">
-    <img loading="lazy" src="../{after_img}" alt="{model} 수리 후 사진">
+    <img loading="lazy" src="{after_url}" alt="{model} 수리 후 사진">
     <figcaption><span class="ba-tag ba-tag-after">AFTER</span> 수리 완료</figcaption>
   </figure>
 </div>
