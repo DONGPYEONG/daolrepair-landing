@@ -1,0 +1,9 @@
+# 배터리 케이스 중 수리부위 사진이 내부 분해 사진이라
+# 작동화면(100% 성능치 화면)을 AFTER로 사용해야 하는 케이스
+# 케이스 ID 한 줄씩
+#
+# 사용법: 사이트 보다가 배터리 AFTER 사진이 잘못 나온 케이스의 case_id를 추가
+# (case_id는 data/repair-stats.json 의 portfolio_cases[].case_id 참고)
+
+# 5월5일 가산점 아이폰 6s 배터리 교체 (수리부위 = 내부 사진)
+1bdNyoxif9BBqw8f53pwjRE3vZcNL4NsM

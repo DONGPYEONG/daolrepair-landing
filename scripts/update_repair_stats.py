@@ -429,18 +429,33 @@ def main():
         "sensor", "button", "speaker", "mainboard", "other",
     }
 
-    # 배터리 케이스는 작동화면(100% 성능치) 우선 — 수리부위가 내부 분해 사진일 가능성 높음
-    BATTERY_AFTER = [
-        ("수리후", "작동화면"),    # 1순위: 100% 성능치 화면 캡처
-        ("수리후", "수리부위"),    # 2순위
+    # 배터리 케이스는 기본적으로 수리부위(=성능치 화면)가 맞음
+    # 일부 케이스만 수리부위가 내부 사진 → 그 케이스만 별도 override 파일로 작동화면 우선
+    # data/battery-use-action-screen.txt 에 case_id 한 줄씩 추가
+    OVERRIDE_FILE = ROOT / "data" / "battery-use-action-screen.txt"
+    battery_action_override = set()
+    if OVERRIDE_FILE.exists():
+        for line in OVERRIDE_FILE.read_text(encoding="utf-8").splitlines():
+            line = line.split("#", 1)[0].strip()
+            if line:
+                battery_action_override.add(line)
+
+    BATTERY_AFTER_DEFAULT = [
+        ("수리후", "수리부위"),    # 1순위: 보통 100% 성능치 화면
+        ("수리후", "작동화면"),    # 2순위
         ("수리후", "기기후면"),
-        ("수리후", "기기전면"),
+    ]
+    BATTERY_AFTER_OVERRIDE = [
+        ("수리후", "작동화면"),    # 1순위: override 케이스용
+        ("수리후", "기기후면"),
+        ("수리후", "수리부위"),
     ]
     BATTERY_TYPES = {"battery", "battery+other", "배터리교체"}
 
-    def get_patterns(repair_type):
+    def get_patterns(repair_type, case_id=None):
         if repair_type in BATTERY_TYPES:
-            return DEFAULT_BEFORE, BATTERY_AFTER  # BEFORE는 파손부위(=성능치 화면) 우선
+            after = BATTERY_AFTER_OVERRIDE if (case_id and case_id in battery_action_override) else BATTERY_AFTER_DEFAULT
+            return DEFAULT_BEFORE, after
         if repair_type in DEVICE_FIRST_TYPES:
             return DEVICE_FIRST_BEFORE, DEVICE_FIRST_AFTER
         return DEFAULT_BEFORE, DEFAULT_AFTER
@@ -514,7 +529,7 @@ def main():
             continue
 
         # 🛡️ 안전 4: 안전한 BEFORE/AFTER 짝 찾기 (수리 종류별 우선순위)
-        before_patterns, after_patterns = get_patterns(c["repair_type"])
+        before_patterns, after_patterns = get_patterns(c["repair_type"], c.get("id"))
         before_file = None; after_file = None
         for stage, body_part in before_patterns:
             for f in inner:
