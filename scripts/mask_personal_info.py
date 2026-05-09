@@ -160,18 +160,21 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
         return False
 
     # 시스템 설정 화면(배터리 성능치·iOS 설정 등) 감지 — 개인정보 X, 마스킹 스킵
-    # 검출된 텍스트 중 시스템 정보 키워드가 2개 이상 있으면 시스템 화면으로 판단
     SYSTEM_KEYWORDS = [
         '최대 용량', '성능 상태', '배터리 성능', '배터리 상태', '사이클', '충전 사이클',
+        '성능 최대치', '최대치', '신품', '신품이',
         '비정품 부품', '비정품 배터리', '정품 부품', '정품 Apple',
         '소프트웨어 업데이트', 'iOS', '설정', '일반', '정보',
         '저전력 모드', '배터리 잔량', '활동 기록',
         'Battery Health', 'Maximum Capacity', 'Performance', 'Settings',
     ]
-    detected_texts = [text for (_, text, conf) in results if conf >= 0.4]
+    detected_texts = [text for (_, text, conf) in results if conf >= 0.3]
     sys_kw_count = sum(1 for t in detected_texts for kw in SYSTEM_KEYWORDS if kw in t)
-    if sys_kw_count >= 2:
-        print(f"  ℹ️ 시스템 설정 화면 감지 ({sys_kw_count}개 키워드) — 마스킹 스킵: {path.name}")
+    # 추가: "배터리"와 "성능"/"용량" 같은 시스템 표현 동반 검출 시 시스템 화면으로 판단
+    has_battery = any('배터리' in t or '성능' in t or '성늘' in t or 'Battery' in t for t in detected_texts)
+    has_metric = any(re.search(r'(\d{1,3}\s*%|10\d{2}|성능|최대|상태|신품)', t) for t in detected_texts)
+    if sys_kw_count >= 2 or (has_battery and has_metric and sys_kw_count >= 1):
+        print(f"  ℹ️ 시스템 설정 화면 감지 (kw={sys_kw_count}, battery={has_battery}, metric={has_metric}) — 마스킹 스킵: {path.name}")
         return False
 
     # 1차 패스: 살림/블러 박스 분류
@@ -183,6 +186,16 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
         bbox, text, conf = entry
         if conf < conf_threshold:
             continue
+        # 노이즈 필터 — OCR 오인식이 자주 일어나는 패턴은 무시 (카메라 모듈·반사 등)
+        text_stripped = (text or "").strip()
+        # 1자짜리 텍스트는 항상 무시 — 의미 있는 개인정보가 1글자인 경우는 거의 없음
+        # 카메라 렌즈, 반사광, 픽셀 노이즈 등이 'N', '{', 'O' 같은 단일 문자로 오인식되어
+        # 부품 사진(카메라 모듈)이 가려지는 문제 방지
+        if len(text_stripped) <= 1:
+            continue
+        # 2자짜리 + confidence 낮으면 노이즈
+        if len(text_stripped) == 2 and conf < 0.85:
+            continue
         xs = [p[0] for p in bbox]
         ys = [p[1] for p in bbox]
         in_top = max(ys) < top_threshold
@@ -191,12 +204,11 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
         x_max_raw = int(max(xs))
         y_max_raw = int(max(ys))
         if _is_keep_text(text, in_top_region=in_top):
-            kept.append(text.strip())
-            # 살릴 영역에 약간 마진 + 저장
+            kept.append(text_stripped)
             kept_boxes.append((max(0, x_min_raw - 5), max(0, y_min_raw - 5),
                                min(W, x_max_raw + 5), min(H, y_max_raw + 5)))
             continue
-        raw_blur.append((x_min_raw, y_min_raw, x_max_raw, y_max_raw, text.strip()))
+        raw_blur.append((x_min_raw, y_min_raw, x_max_raw, y_max_raw, text_stripped))
 
     def boxes_overlap(b1, b2):
         return not (b1[2] < b2[0] or b1[0] > b2[2] or b1[3] < b2[1] or b1[1] > b2[3])
