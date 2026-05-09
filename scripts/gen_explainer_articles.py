@@ -45,6 +45,40 @@ DELAYED_SYMPTOMS_SECTION = {
 }
 
 
+# ─── 아이폰 침수 글 전용: 심한 침수 = "데이터 복구용" 솔직 안내 (워치 X) ───
+# 침수 수리는 교통사고 후유증과 비슷. 가벼운 침수는 회복되지만 심한 침수는
+# 수리 후 몇 달 지나며 후유증 발생 가능. "새것처럼 쓸 기대" 사절 — 정직 안내.
+SEVERE_WATER_DAMAGE_DISCLAIMER = {
+    "h2": "심한 침수 수리는 \"데이터 복구·임시 사용용\"으로만 권장 — 새것처럼 쓸 기대는 솔직히 어렵습니다",
+    "html": """
+<p>침수 수리는 <strong>교통사고 후 후유증</strong>과 비슷합니다. 가벼운 침수는 깔끔히 회복되지만, <strong>심한 침수(메인보드 부식 동반)는 수리 직후엔 잘 작동해도 몇 달 지나며 후유증이 나타날 수 있어요</strong>. 다올리페어가 솔직하게 안내드리는 이유입니다.</p>
+
+<h3>수리 후 시간 지나며 나타날 수 있는 후유증 (심한 침수만 해당)</h3>
+<ul>
+  <li><strong>갑자기 전원 꺼짐</strong> — 메인보드 깊숙한 곳 부식이 천천히 번짐</li>
+  <li><strong>카메라·스피커 등 일부 부품 점진적 성능 저하</strong></li>
+  <li><strong>배터리 효율 빠르게 떨어짐</strong></li>
+  <li><strong>Face ID·터치 인식이 가끔 안 됨</strong></li>
+  <li><strong>신호·통화 품질이 점점 나빠짐</strong></li>
+</ul>
+
+<h3>다올리페어의 침수 단계별 솔직한 권장</h3>
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>수리 후 사용</th><th>다올리페어 권장</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (단자·외관)</strong></td><td>정상 사용 OK</td><td>수리 후 계속 사용</td></tr>
+    <tr><td><strong>2단계 (부품 일부 손상)</strong></td><td>1~2년 사용 가능</td><td>수리 + 데이터 백업 강화</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>후유증 가능</td><td>"데이터 추출 + 새 폰 살 때까지 임시 사용" 권장</td></tr>
+  </tbody>
+</table>
+
+<p><strong>3단계 침수를 "수리해서 새것처럼 계속 쓰겠다"는 기대로 오시면 다올리페어가 정직하게 "그건 어렵습니다"라고 말씀드립니다.</strong> 데이터만 살리고 새 폰으로 가시는 게 장기적으로 합리적이에요. 매장에서 침수 정도 진단 후 <strong>수리 vs 데이터만 추출</strong> 어느 쪽이 적합한지 같이 안내드립니다.</p>
+""",
+}
+
+
 # ─── 7편 컨텐츠 정의 ─────────────────────────────────────────
 ARTS = [
     # 1
@@ -3901,6 +3935,11 @@ def gen_body_html(art):
     for sec in art["body_sections"]:
         parts.append(f'  <h2>{sec["h2"]}</h2>')
         parts.append(sec["html"])
+
+    # 아이폰 침수 글에만 "심한 침수 = 데이터 복구용" 솔직 안내 (워치 X)
+    if "water-damage" in art["slug"] and "watch" not in art["slug"]:
+        parts.append(f'  <h2>{SEVERE_WATER_DAMAGE_DISCLAIMER["h2"]}</h2>')
+        parts.append(SEVERE_WATER_DAMAGE_DISCLAIMER["html"])
 
     if "tip_box" in art:
         title, body = art["tip_box"]
