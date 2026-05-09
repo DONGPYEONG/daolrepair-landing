@@ -565,7 +565,7 @@ def main():
 
     # 후보 풀 만들기 (블록리스트 제외 + 우선순위 정렬)
     # 슬라이더는 4개만, 포트폴리오는 최대 30개까지
-    PORTFOLIO_MAX = 30
+    PORTFOLIO_MAX = 50  # 일지 글 보존 — 30개만 가져오면 오래된 케이스 누락 → 일지 글 사라짐
     # 우선순위 종류(화면·후면·침수)부터, 그 외는 최신순으로 보충
     # 티커용(recent_sorted=7) 말고 전체 정렬(all_sorted=62)을 사용해야 충분히 가져옴
     priority_first = [c for c in all_sorted
