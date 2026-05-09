@@ -1597,6 +1597,1218 @@ ARTS = [
             ("iphone-repair-data-safety-by-type.html", "데이터", "수리 시 데이터 안전 가이드"),
         ],
     },
+
+    # ─── 모델별 침수 시리즈 5편 (2026-05-09) ─────────────────
+    # 13. iPhone 13 Pro 침수
+    {
+        "slug": "iphone-13-pro-water-damage",
+        "cat": "iPhone 13 Pro · 침수 가이드",
+        "title": "아이폰 13 Pro 침수 — 4년차 폰 방수 약화·Lightning 단자 부식 정밀 가이드",
+        "desc": "2021년 출시 4년차 아이폰 13 Pro 침수 케이스. 4년 사용으로 약해진 방수 등급, Lightning 단자 침수 위험, 13 Pro 부품 가격, 침수 응급 처치까지 모델 특화 가이드.",
+        "keywords": "아이폰 13 Pro 침수, 13프로 침수 수리, 13 Pro 방수, Lightning 단자 침수, 13 Pro IP68",
+        "intro": [
+            "iPhone 13 Pro는 2021년 9월 출시로 약 4년이 경과한 시점입니다. 출시 시 IP68 등급(6m·30분)이지만 <strong>4년 사용으로 패킹·접착부가 크게 약해진 상태</strong>예요. 일반 비도 위험할 수 있고, 사우나·수영장은 더더욱 금지.",
+            "이 글은 13 Pro의 4년차 방수 약화 + Lightning 단자 침수 + 정확한 수리 비용 + 모델 특화 응급 처치를 정리한 가이드입니다.",
+        ],
+        "good": '<strong>4년 사용한 13 Pro의 방수 등급은 출고 시의 30~50% 수준</strong>입니다. 일반 비도 위험할 수 있어요. Lightning 단자 부식이 가장 흔한 침수 증상. 침수 즉시 <a href="iphone-water-damage-emergency-30min.html">30분 골든타임</a> 안에 매장 방문이 핵심.',
+        "body_sections": [
+            {
+                "h2": "4년차 13 Pro의 방수 약화 — 가장 심한 단계",
+                "html": """
+<p>13 Pro는 4년 사용 시 방수 성능이 출고 시의 30~50% 수준으로 떨어집니다. 다른 모델과 비교:</p>
+<table class="compare-table">
+  <thead>
+    <tr><th>모델</th><th>출시 후 경과</th><th>방수 약화 정도</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>16 Pro</td><td>1년</td><td>60~70% 유지</td></tr>
+    <tr><td>15 Pro</td><td>2년</td><td>50~60% 유지</td></tr>
+    <tr><td>14 Pro</td><td>3년</td><td>40~55% 유지</td></tr>
+    <tr><td><strong>13 Pro</strong></td><td><strong>4년</strong></td><td><strong>30~50% 유지</strong></td></tr>
+  </tbody>
+</table>
+<p>4년은 패킹 고무 탄성·접착부 강도 모두 본격 노화 단계. 가벼운 비도 위험할 수 있어 방수 케이스 사용 권장.</p>
+""",
+            },
+            {
+                "h2": "13 Pro 침수 취약 3대 부위",
+                "html": """
+<h3>1. Lightning 단자 (가장 흔함)</h3>
+<p>4년 사용으로 Lightning 단자 안쪽 부식이 이미 진행됐을 가능성. 침수 시 즉시 단자 부식 가속:</p>
+<ul>
+  <li>충전 안 들어가거나 들어왔다 끊겼다 반복</li>
+  <li>케이블 한쪽으로만 인식</li>
+  <li>이미 4년차라 단자 마모도 큼</li>
+</ul>
+
+<h3>2. ProMotion 디스플레이 (Pro 모델 특유)</h3>
+<p>13 Pro부터 도입된 120Hz ProMotion 디스플레이는 정밀한 컨트롤러 회로가 들어있어 침수 시:</p>
+<ul>
+  <li>화면 깜빡임·세로 줄</li>
+  <li>120Hz → 60Hz 자동 다운그레이드</li>
+  <li>일부 영역 터치 안 됨</li>
+</ul>
+
+<h3>3. 후면 망원 카메라 (3배 줌)</h3>
+<p>13 Pro의 3배 줌 OIS가 침수에 민감. 사진 흔들림·검은 점·줌 시 흐림 증상.</p>
+""",
+            },
+            {
+                "h2": "13 Pro 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>13 Pro 비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>단자 청소·점검·방수 재처리</td><td>6~12만원</td></tr>
+    <tr><td><strong>2단계 (Lightning 단자)</strong></td><td>단자 교체</td><td>10~16만원</td></tr>
+    <tr><td><strong>2단계 (카메라 모듈)</strong></td><td>3배 줌 모듈 교체</td><td>13~25만원</td></tr>
+    <tr><td><strong>2단계 (스피커·마이크)</strong></td><td>모듈 교체</td><td>8~13만원</td></tr>
+    <tr><td><strong>2단계 (배터리 동반 손상)</strong></td><td>배터리 교체</td><td>9~12만원</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>22~38만원</td></tr>
+  </tbody>
+</table>
+<p>최신 모델 대비 약 20~30% 저렴. 4년차 폰이라 배터리 노화도 함께 진행돼 침수 + 배터리 동시 교체 권장. <a href="iphone-battery-replacement-types-cost-2026.html">배터리 교체 종류·비용</a> 참고.</p>
+""",
+            },
+            {
+                "h2": "13 Pro 침수 응급 처치 — 4년차 폰 특별 주의",
+                "html": """
+<ol>
+  <li><strong>전원 즉시 끄기</strong> — 4년 사용 폰일수록 단락 위험 높음</li>
+  <li><strong>Lightning 단자 마른 천으로 닦기</strong> — 안쪽 면봉 X (섬유 끼면 더 위험)</li>
+  <li><strong>충전 시도 절대 X</strong></li>
+  <li><strong>케이스 분리 + 심카드 빼기</strong></li>
+  <li><strong>30분 안에 매장</strong> — 4년차 폰일수록 패킹 약해 침투 빠름</li>
+</ol>
+<p>자세한 응급 가이드는 <a href="iphone-water-damage-emergency-30min.html">침수 후 30분 골든타임</a> 참고.</p>
+""",
+            },
+            {
+                "h2": "13 Pro 침수 vs 새 폰 교체 — 손익 분기점",
+                "html": """
+<p>4년 사용한 13 Pro는 침수 수리비가 새 폰의 50% 넘어가면 새 폰 교체 고려해야 합니다:</p>
+<ul>
+  <li><strong>1~2단계 (10~25만원)</strong> → 수리 권장 (배터리 동시 교체 시 +9~12만원)</li>
+  <li><strong>2단계 메인보드 미손상</strong> → 수리 가능, 데이터 보존</li>
+  <li><strong>3단계 메인보드 (22~38만원)</strong> → 데이터 + 사용 기간 고려해 판단</li>
+  <li><strong>3단계 + 배터리 + 카메라 (40만원+)</strong> → 데이터만 추출 후 새 폰 권장</li>
+</ul>
+<p>다올리페어 진단 시 \"수리비 vs 새 폰\" 손익 분석 같이 안내드립니다.</p>
+""",
+            },
+        ],
+        "tip_box": ("13 Pro 4년차 = 침수 + 배터리 + 카메라 동시 점검 적기", "4년 사용한 13 Pro는 배터리·카메라·단자 모두 노화 진행 중. 침수 수리 시 종합 점검으로 동반 손상 발견하면 한 번에 처리하는 게 효율적."),
+        "daol_box": {
+            "title": "다올리페어 13 Pro 침수 수리 — 4년차 폰 종합 처치",
+            "p": "4년 사용한 13 Pro의 약해진 방수·노화된 부품까지 종합 진단 + 침수 처치.",
+            "ul": [
+                "Lightning 단자 부식 정밀 청소·교체",
+                "ProMotion 디스플레이 침수 처치",
+                "3배 줌 카메라 모듈 복구",
+                "배터리 + 침수 동시 처치 가능",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "iPhone 13 Pro WATER", "title": "13 Pro 침수<br>4년차 종합 처치", "desc": "4년 사용한 13 Pro 침수 + 노화 부품 동시 점검, 다올리페어 가산·신림·목동에서 가능."},
+        "faq": [
+            ("4년 사용한 13 Pro도 IP68 그대로인가요?",
+             "아니요, 4년 사용 시 출고 시의 30~50% 수준으로 떨어집니다. 가벼운 비도 위험. 사우나·수영장 절대 X. 방수 케이스 사용 권장."),
+            ("13 Pro Lightning 단자 부식이면 단자만 갈면 되나요?",
+             "단자 부식만 있으면 단자 교체로 해결 (10~16만원). 메인보드 영향 갔으면 회로 복구 추가 비용. 매장 진단 후 정확한 견적 안내."),
+            ("13 Pro 침수 수리 vs 새 폰 교체 어느 게 나아요?",
+             "수리비가 25만원 미만이면 수리, 40만원 넘으면 데이터 추출 후 새 폰 교체 고려. 매장에서 손익 분석 같이 안내드립니다."),
+            ("13 Pro ProMotion 화면 침수면 화면 통째로 갈아야 하나요?",
+             "네, ProMotion 컨트롤러는 화면과 일체형이라 화면 모듈 교체 (15~30만원). 다만 일부 케이스는 단순 청소로 회복."),
+            ("애플케어+ 만료된 13 Pro 침수는 어디서 수리해야 하나요?",
+             "다올리페어 사설 수리가 가장 합리적. 4년차 폰은 공식센터 가격이 새 폰 대비 너무 비싸 수리 의미 ↓. 비교는 <a href='applecare-vs-private-vs-insurance.html'>애플케어+ vs 사설</a> 참고."),
+            ("13 Pro 침수 후 데이터 살릴 수 있나요?",
+             "30분 안에 매장 가시면 90% 이상 보존. 4년 사용 폰은 NAND도 노화 중이라 시간 지나면 추출 어려움. <a href='iphone-repair-data-safety-by-type.html'>데이터 안전 가이드</a> 참고."),
+        ],
+        "related": [
+            ("iphone-14-pro-water-damage.html", "이전 모델", "iPhone 14 Pro 침수 가이드"),
+            ("iphone-15-pro-water-damage.html", "이전 모델", "iPhone 15 Pro 침수 가이드"),
+            ("iphone-water-damage-emergency-30min.html", "응급", "침수 후 30분 골든타임"),
+            ("iphone-water-damage-repair-cost-guide.html", "비용", "침수 수리 비용 단계별"),
+            ("iphone-battery-replacement-types-cost-2026.html", "배터리", "배터리 교체 종류·비용"),
+        ],
+    },
+
+    # 13b. iPhone 14 Pro 침수
+    {
+        "slug": "iphone-14-pro-water-damage",
+        "cat": "iPhone 14 Pro · 침수 가이드",
+        "title": "아이폰 14 Pro 침수 — 다이내믹 아일랜드·3년차 폰 방수 약화 정밀 가이드",
+        "desc": "2022년 출시 3년차 아이폰 14 Pro 침수 케이스. 다이내믹 아일랜드 모듈 침수 위험, 3년 사용으로 약해진 방수, Lightning 단자 부식, 정확한 수리 비용까지 모델 특화 정리.",
+        "keywords": "아이폰 14 Pro 침수, 14프로 침수 수리, 다이내믹 아일랜드 침수, 14 Pro 방수, Lightning 침수",
+        "intro": [
+            "iPhone 14 Pro는 2022년 9월 출시로 약 3년이 경과한 시점입니다. <strong>다이내믹 아일랜드</strong>가 처음 도입된 모델이라 트루뎁스 모듈이 침수에 민감하고, 3년 사용으로 방수 등급도 약해진 상태입니다.",
+            "이 글은 14 Pro의 다이내믹 아일랜드 침수 위험 + 3년차 방수 약화 + 정확한 수리 비용을 정리한 모델 특화 가이드입니다.",
+        ],
+        "good": '<strong>3년 사용한 14 Pro의 방수 등급은 출고 시의 40~55% 수준</strong>입니다. 다이내믹 아일랜드 모듈(트루뎁스 + 카메라)이 침수에 민감한 신규 부위. 침수 즉시 <a href="iphone-water-damage-emergency-30min.html">30분 골든타임</a> 핵심.',
+        "body_sections": [
+            {
+                "h2": "3년차 14 Pro의 방수 약화",
+                "html": """
+<p>14 Pro는 3년 사용 시 방수 성능이 출고 시의 40~55% 수준으로 떨어집니다. 가벼운 비는 OK지만 사우나·수영장은 절대 X.</p>
+<ul>
+  <li><strong>패킹 고무 본격 노화</strong> — 3년 = 탄성 60% 이상 저하</li>
+  <li><strong>접착부 약화</strong> — 일부 부분 박리 시작</li>
+  <li><strong>충격 누적</strong> — 떨어뜨림 이력 있으면 더 위험</li>
+</ul>
+""",
+            },
+            {
+                "h2": "14 Pro 침수 취약 3대 부위",
+                "html": """
+<h3>1. 다이내믹 아일랜드 모듈 (14 Pro 첫 도입)</h3>
+<p>14 Pro부터 노치 대신 도입된 알약 모양 다이내믹 아일랜드는 트루뎁스 + 카메라 + 센서가 모두 들어있는 정밀 모듈. 침수 시:</p>
+<ul>
+  <li>Face ID 인식 안 됨 또는 느려짐 (가장 흔함)</li>
+  <li>전면 카메라 흐림·검은 점</li>
+  <li>다이내믹 아일랜드 표시 영역 픽셀 이상</li>
+</ul>
+
+<h3>2. Lightning 단자</h3>
+<p>14 Pro는 Lightning 마지막 Pro 모델. 3년 사용으로 단자 마모 + 침수 부식 동반 발생.</p>
+
+<h3>3. ProMotion 디스플레이</h3>
+<p>120Hz ProMotion 컨트롤러 회로가 침수 영향. 화면 깜빡임·세로 줄·터치 안 됨 증상.</p>
+""",
+            },
+            {
+                "h2": "14 Pro 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>14 Pro 비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>단자 청소·점검·방수 재처리</td><td>7~13만원</td></tr>
+    <tr><td><strong>2단계 (Lightning 단자)</strong></td><td>단자 교체</td><td>11~17만원</td></tr>
+    <tr><td><strong>2단계 (다이내믹 아일랜드 모듈)</strong></td><td>트루뎁스 + 카메라 모듈 교체</td><td>20~32만원</td></tr>
+    <tr><td><strong>2단계 (3배 줌 카메라)</strong></td><td>카메라 모듈 교체</td><td>15~26만원</td></tr>
+    <tr><td><strong>2단계 (스피커·마이크)</strong></td><td>모듈 교체</td><td>9~14만원</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>25~40만원</td></tr>
+  </tbody>
+</table>
+<p>15 Pro 대비 약 5~10% 저렴. 다이내믹 아일랜드 모듈은 정밀 부품이라 비싼 편.</p>
+""",
+            },
+            {
+                "h2": "14 Pro 침수 응급 처치",
+                "html": """
+<ol>
+  <li><strong>전원 즉시 끄기</strong></li>
+  <li><strong>다이내믹 아일랜드 영역 마른 천으로 닦기</strong> — 트루뎁스 보호</li>
+  <li><strong>Lightning 단자 입구만 닦기</strong></li>
+  <li><strong>충전 시도 절대 X</strong></li>
+  <li><strong>30분 안에 매장</strong> — 다이내믹 아일랜드 모듈 가격 비싸 빠른 처치 핵심</li>
+</ol>
+""",
+            },
+            {
+                "h2": "14 Pro 침수 후 점검 — Face ID 우선",
+                "html": """
+<p>14 Pro 침수 후 가장 먼저 확인할 항목:</p>
+<ul>
+  <li><strong>Face ID 인식률</strong> — 다이내믹 아일랜드 침수 가장 흔한 증상</li>
+  <li><strong>전면 카메라 흐림</strong> — 트루뎁스 응결</li>
+  <li><strong>3배 줌 카메라 OIS</strong> — 사진 흔들림 확인</li>
+  <li><strong>ProMotion 120Hz 작동</strong> — 화면 부드러움 확인</li>
+  <li><strong>Lightning 충전 안정성</strong> — 케이블 꽂고 5분 사용</li>
+</ul>
+""",
+            },
+        ],
+        "tip_box": ("14 Pro = 다이내믹 아일랜드 첫 도입 모델", "Face ID·전면 카메라·트루뎁스가 한 모듈에 통합되어 있어 한 부품 침수가 여러 기능 영향. 침수 후 Face ID 안 되면 다이내믹 아일랜드 모듈 교체 필요할 수 있어요."),
+        "daol_box": {
+            "title": "다올리페어 14 Pro 침수 수리 — 다이내믹 아일랜드 전문",
+            "p": "14 Pro 다이내믹 아일랜드 모듈 + 3년차 폰 종합 진단 침수 처치.",
+            "ul": [
+                "다이내믹 아일랜드 모듈 정밀 교체",
+                "Lightning 단자 부식 처치",
+                "ProMotion 화면 침수 복구",
+                "3배 줌 카메라 모듈 교체",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "iPhone 14 Pro WATER", "title": "14 Pro 침수<br>다이내믹 아일랜드 처치", "desc": "다이내믹 아일랜드 첫 도입 모델 14 Pro의 정밀 침수 처치, 다올리페어에서 가능."},
+        "faq": [
+            ("14 Pro 침수 후 Face ID가 안 돼요. 수리 가능한가요?",
+             "네, 다이내믹 아일랜드 모듈 교체로 해결 (20~32만원). 침수 즉시 매장 가시면 청소만으로 회복되는 경우도 있어요."),
+            ("3년 사용한 14 Pro도 IP68 그대로인가요?",
+             "아니요, 출고 시의 40~55% 수준으로 떨어집니다. 사우나·수영장 절대 X."),
+            ("14 Pro 침수 수리 vs 새 폰 교체 어느 게 나아요?",
+             "수리비 25만원 미만이면 수리, 35만원 넘으면 손익 비교 권장. 매장에서 분석 안내드립니다."),
+            ("14 Pro Lightning이 침수에 약한가요?",
+             "USB-C와 큰 차이는 없지만 3년 사용으로 단자 마모도 큼. 침수 시 가장 흔한 증상."),
+            ("애플케어+ 만료된 14 Pro 어디서 수리해야 하나요?",
+             "다올리페어 사설 수리. 공식센터 대비 50~85% 비용. <a href='applecare-vs-private-vs-insurance.html'>비교 글</a> 참고."),
+            ("14 Pro 침수 후 ProMotion이 60Hz로 떨어졌어요. 회복되나요?",
+             "ProMotion 컨트롤러 침수 가능성. 화면 모듈 교체 시 회복 (15~30만원). 침수 즉시 매장 방문이 핵심."),
+        ],
+        "related": [
+            ("iphone-13-pro-water-damage.html", "이전 모델", "iPhone 13 Pro 침수 가이드"),
+            ("iphone-15-pro-water-damage.html", "다음 모델", "iPhone 15 Pro 침수 가이드"),
+            ("iphone-water-damage-emergency-30min.html", "응급", "침수 후 30분 골든타임"),
+            ("iphone-water-damage-repair-cost-guide.html", "비용", "침수 수리 비용 단계별"),
+            ("iphone-summer-water-damage-prevention.html", "예방", "여름철 침수 예방"),
+        ],
+    },
+
+    # 14. iPhone 16 Pro 침수
+    {
+        "slug": "iphone-16-pro-water-damage",
+        "cat": "iPhone 16 Pro · 침수 가이드",
+        "title": "아이폰 16 Pro 침수 — 1년차 폰 방수 약화·카메라 컨트롤 버튼 침수 정밀 가이드",
+        "desc": "출시 1년 경과한 아이폰 16 Pro 침수 케이스. 신품 IP68 등급보다 약해진 방수 성능, 카메라 컨트롤 버튼 침수 위험, 16 Pro 특유 부품 교체 비용, 침수 응급 처치까지 모델 특화 가이드.",
+        "keywords": "아이폰 16 Pro 침수, 16프로 침수 수리, 카메라 컨트롤 버튼 침수, 16 Pro 방수, 1년차 폰 방수",
+        "intro": [
+            "iPhone 16 Pro는 2024년 9월 출시 후 약 1년이 경과한 시점입니다. 출시 시 IP68 등급(6m·30분)이지만 <strong>1년 사용한 폰은 패킹·접착부가 약해져 등급이 낮아진 상태</strong>예요. 카메라 컨트롤 버튼이 새로 도입된 첫 모델이라 침수 취약 부위도 추가됐습니다.",
+            "이 글은 16 Pro의 1년차 방수 약화 + 카메라 컨트롤 버튼 침수 위험 + 정확한 수리 비용 + 모델 특화 응급 처치를 정리한 가이드입니다.",
+        ],
+        "good": '<strong>1년 사용한 16 Pro의 방수 등급은 출고 시보다 낮아진 상태</strong>입니다. 새로 도입된 카메라 컨트롤 버튼과 USB-C 단자가 침수 취약 부위. 침수 발생 시 <a href="iphone-water-damage-emergency-30min.html">30분 골든타임</a> 안에 매장 방문이 회복률 80% 이상의 핵심.',
+        "body_sections": [
+            {
+                "h2": "1년차 16 Pro의 방수 약화 — 진짜 이유",
+                "html": """
+<p>출고 시 IP68 등급(6m·30분)이어도 1년 사용한 16 Pro는 다음 이유로 등급이 낮아져 있어요:</p>
+<ul>
+  <li><strong>패킹 고무 노화</strong> — 1년간 온도 변화로 고무 탄성 저하</li>
+  <li><strong>접착부 약화</strong> — 미세 충격·발열로 접착 강도 감소</li>
+  <li><strong>충격 누적</strong> — 떨어뜨린 적 있으면 프레임 미세 변형</li>
+  <li><strong>화학 노출</strong> — 땀·자외선 차단제·세제 등 누적</li>
+</ul>
+<p>다올리페어 통계상 1년 사용한 16 Pro는 출시 시 등급의 약 60~70% 수준 방수 성능 보유. 사우나·수영장은 더더욱 위험합니다. 자세한 방수 한계는 <a href="iphone-water-resistance-after-repair.html">수리 후 방수 어디까지 보장되나</a> 참고.</p>
+""",
+            },
+            {
+                "h2": "16 Pro 침수 취약 3대 부위",
+                "html": """
+<h3>1. 카메라 컨트롤 버튼 (16에서 첫 도입)</h3>
+<p>16 Pro부터 새로 추가된 측면 버튼. 누름 + 터치 + 슬라이드 모두 인식하는 고감도 부품이라 침수 시:</p>
+<ul>
+  <li>버튼 인식 안 됨 (가장 흔함)</li>
+  <li>잘못된 입력 (살짝 눌러도 셔터)</li>
+  <li>카메라 앱 자동 실행 안 됨</li>
+</ul>
+
+<h3>2. USB-C 단자 (15부터 도입)</h3>
+<p>Lightning보다 단자 안쪽 공간이 약간 넓어 물·먼지 침투 가능성 높음. 침수 후 가장 흔한 증상.</p>
+
+<h3>3. 후면 카메라 모듈</h3>
+<p>16 Pro의 5배 줌 망원 렌즈는 정밀한 OIS 기구가 들어있어 침수 시 흔들림·검은 점 발생 가능.</p>
+""",
+            },
+            {
+                "h2": "16 Pro 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>16 Pro 비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>단자 청소·점검·방수 재처리</td><td>8~14만원</td></tr>
+    <tr><td><strong>2단계 (USB-C 단자)</strong></td><td>단자 교체</td><td>13~20만원</td></tr>
+    <tr><td><strong>2단계 (카메라 컨트롤 버튼)</strong></td><td>버튼 모듈 교체</td><td>10~16만원</td></tr>
+    <tr><td><strong>2단계 (카메라 모듈)</strong></td><td>렌즈·모듈 교체</td><td>18~32만원</td></tr>
+    <tr><td><strong>2단계 (스피커·마이크)</strong></td><td>모듈 교체</td><td>10~15만원</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>28~45만원</td></tr>
+  </tbody>
+</table>
+<p>17 Pro 대비 약 10~15% 저렴. 부품 수급 안정된 모델이라 가격 변동 적음.</p>
+""",
+            },
+            {
+                "h2": "16 Pro 침수 응급 처치 — 1년차 폰 특별 주의",
+                "html": """
+<ol>
+  <li><strong>전원 즉시 끄기</strong> — 1년 사용한 폰일수록 단락 위험 높음</li>
+  <li><strong>카메라 컨트롤 버튼·USB-C 단자 마른 천으로 닦기</strong></li>
+  <li><strong>충전 시도 절대 X</strong></li>
+  <li><strong>케이스 분리</strong> — 케이스 안에 물 고임</li>
+  <li><strong>30분 안에 매장</strong> — 1년차 폰일수록 패킹이 약해 침투 빠름</li>
+</ol>
+<p>자세한 응급 가이드는 <a href="iphone-water-damage-emergency-30min.html">침수 후 30분 골든타임</a> 참고.</p>
+""",
+            },
+            {
+                "h2": "16 Pro 침수 후 점검 — 추가 권장 항목",
+                "html": """
+<p>1년 사용한 16 Pro 침수 후 외관 정상이어도 다음 항목 점검 필수:</p>
+<ul>
+  <li><strong>배터리 성능치 변화</strong> — 침수가 배터리 노화 가속</li>
+  <li><strong>5배 줌 카메라 흔들림 (OIS)</strong> — 정밀 부품이라 가장 먼저 영향</li>
+  <li><strong>Wi-Fi·5G 연결 약해짐</strong> — 안테나 회로 부식</li>
+  <li><strong>Face ID 인식률 저하</strong> — 트루뎁스 모듈 영향</li>
+</ul>
+<p>자세한 점검 가이드는 <a href="iphone-water-damaged-still-works-checkup.html">침수 후 켜져도 점검 필수 이유</a> 참고.</p>
+""",
+            },
+        ],
+        "tip_box": ("1년차 16 Pro면 정기 점검 권장", "1년 사용한 16 Pro는 침수 사고 없어도 패킹·접착부가 약해져 있어요. 여름 시즌 전 다올리페어 무료 점검으로 방수 상태 확인 권장. 자세한 내용은 <a href='iphone-summer-water-damage-prevention.html'>여름철 침수 예방</a> 참고."),
+        "daol_box": {
+            "title": "다올리페어 16 Pro 침수 수리 — 1년차 폰 정밀 처치",
+            "p": "1년 사용한 16 Pro의 약해진 방수·노화된 패킹까지 고려한 정밀 침수 처치 진행.",
+            "ul": [
+                "USB-C 단자·카메라 컨트롤 버튼 교체",
+                "5배 줌 카메라 모듈 정밀 복구",
+                "메인보드 부식 회로 복구",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "iPhone 16 Pro WATER", "title": "16 Pro 침수<br>1년차 정밀 처치", "desc": "1년 사용한 16 Pro의 약해진 방수까지 고려한 침수 처치, 다올리페어 가산·신림·목동에서 가능."},
+        "faq": [
+            ("1년 사용한 16 Pro도 IP68 등급이 그대로인가요?",
+             "아니요, 1년 사용 시 패킹·접착부가 약해져 출고 시의 60~70% 수준으로 떨어집니다. 사우나·수영장은 특히 위험."),
+            ("카메라 컨트롤 버튼만 망가졌는데 수리 가능한가요?",
+             "네, 버튼 모듈 단독 교체 가능 (10~16만원). 다만 침수 원인이라면 메인보드 영향 점검 권장."),
+            ("16 Pro 침수 수리 시간은 얼마 걸리나요?",
+             "1단계 당일, 2단계 1~2일, 3단계 메인보드는 2~5일. 자세한 단계별 안내는 <a href='iphone-water-damage-repair-cost-guide.html'>침수 수리 비용 가이드</a> 참고."),
+            ("16 Pro 5배 줌 카메라 침수되면 수리 비용 비싼가요?",
+             "5배 줌은 정밀 OIS 기구라 모듈 가격이 높음 (18~32만원). 침수 즉시 매장 방문하면 청소만으로 해결되는 경우 있어 빠른 처치가 비용 절감의 핵심."),
+            ("애플케어+ 만료된 16 Pro는 어디서 수리해야 하나요?",
+             "다올리페어 사설 수리가 합리적. 공식센터 대비 50~85% 비용. 자세한 비교는 <a href='applecare-vs-private-vs-insurance.html'>애플케어+ vs 사설 비교</a> 참고."),
+            ("16 Pro 침수 후 데이터는 살릴 수 있나요?",
+             "30분 안에 매장 가시면 90% 이상 데이터 보존. 시간 지나면 NAND 메모리 부식으로 어려워짐. 자세한 데이터 안전 가이드는 <a href='iphone-repair-data-safety-by-type.html'>수리 시 데이터 안전</a> 참고."),
+        ],
+        "related": [
+            ("iphone-17-pro-water-damage.html", "신모델", "iPhone 17 Pro 침수 가이드"),
+            ("iphone-15-pro-water-damage.html", "이전 모델", "iPhone 15 Pro 침수 가이드"),
+            ("iphone-water-damage-emergency-30min.html", "응급", "침수 후 30분 골든타임"),
+            ("iphone-water-damage-repair-cost-guide.html", "비용", "침수 수리 비용 단계별"),
+            ("iphone-summer-water-damage-prevention.html", "예방", "여름철 침수 예방"),
+        ],
+    },
+
+    # 15. iPhone 15 Pro 침수
+    {
+        "slug": "iphone-15-pro-water-damage",
+        "cat": "iPhone 15 Pro · 침수 가이드",
+        "title": "아이폰 15 Pro 침수 — USB-C 첫 도입 모델·2년차 폰 방수 한계 정밀 가이드",
+        "desc": "USB-C 단자가 처음 도입된 아이폰 15 Pro. 2년 사용한 폰의 방수 등급 약화, USB-C 단자 침수 위험, 티타늄 프레임 침수 영향, 정확한 수리 비용까지 모델 특화 정리.",
+        "keywords": "아이폰 15 Pro 침수, 15프로 침수 수리, USB-C 침수, 15 Pro 방수, 티타늄 프레임 침수",
+        "intro": [
+            "iPhone 15 Pro는 2023년 9월 출시로 약 2년이 경과한 시점입니다. <strong>USB-C 단자가 처음 도입된 모델</strong>이라 단자 침수 패턴이 Lightning과 다르고, 2년 사용한 폰의 방수 약화도 더 심한 단계예요.",
+            "이 글은 15 Pro의 USB-C 단자 침수 위험 + 2년차 폰 방수 약화 + 티타늄 프레임 영향 + 정확한 수리 비용까지 모델 특화 가이드입니다.",
+        ],
+        "good": '<strong>2년 사용한 15 Pro의 방수 등급은 출고 시의 50~60% 수준</strong>입니다. USB-C 단자가 첫 도입된 모델이라 침수 경로가 새로움. 침수 발생 시 <a href="iphone-water-damage-emergency-30min.html">30분 골든타임</a> 핵심.',
+        "body_sections": [
+            {
+                "h2": "2년차 15 Pro의 방수 약화 — 더 심해진 상태",
+                "html": """
+<p>15 Pro는 2년 사용 시 방수 성능이 출고 시의 50~60% 수준으로 떨어집니다:</p>
+<ul>
+  <li><strong>패킹 고무 본격 노화</strong> — 2년 = 탄성 50% 이상 저하</li>
+  <li><strong>접착부 약화</strong> — 일부 부분 박리 시작</li>
+  <li><strong>티타늄 프레임 미세 변형</strong> — 충격 누적</li>
+  <li><strong>USB-C 단자 마모</strong> — 케이블 꽂고 빼기 반복으로 단자 헐거워짐</li>
+</ul>
+<p>1년차 16 Pro보다 방수 약화가 더 심한 단계로, 가벼운 비도 위험할 수 있어요.</p>
+""",
+            },
+            {
+                "h2": "USB-C 단자 — 첫 도입 모델 특유 침수 패턴",
+                "html": """
+<p>15 Pro부터 도입된 USB-C 단자는 Lightning과 다른 침수 패턴:</p>
+<h3>USB-C 침수 특징</h3>
+<ul>
+  <li><strong>단자 안쪽 공간 더 넓음</strong> — 물·먼지 침투 양 더 많음</li>
+  <li><strong>중앙 핀 노출 많음</strong> — 부식 시 데이터 인식·충전 모두 영향</li>
+  <li><strong>15 Pro는 USB 3.0 지원</strong> — 핀 더 많아 부식 영향 부위 ↑</li>
+</ul>
+
+<h3>침수 후 USB-C 자가 점검</h3>
+<ul>
+  <li>충전 안 들어가면 → 단자 안쪽 라이트로 확인 (회색·검은 부식 보이면 침수)</li>
+  <li>케이블 꽂으면 들어왔다 끊겼다 반복 → 단자 부식</li>
+  <li>데이터 전송 안 됨 (PC 인식 X) → 단자 핀 손상</li>
+</ul>
+""",
+            },
+            {
+                "h2": "15 Pro 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>15 Pro 비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>단자 청소·점검·방수 재처리</td><td>7~13만원</td></tr>
+    <tr><td><strong>2단계 (USB-C 단자)</strong></td><td>단자 교체</td><td>12~18만원</td></tr>
+    <tr><td><strong>2단계 (카메라 모듈)</strong></td><td>3배 줌 모듈 교체</td><td>15~28만원</td></tr>
+    <tr><td><strong>2단계 (스피커·마이크)</strong></td><td>모듈 교체</td><td>9~14만원</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>25~42만원</td></tr>
+    <tr><td><strong>3단계 (배터리 동반 손상)</strong></td><td>배터리 + 메인보드</td><td>30~50만원</td></tr>
+  </tbody>
+</table>
+<p>16/17 Pro 대비 약 10~15% 저렴. 2년차 폰이라 배터리 노화도 함께 진행돼 침수와 동시에 배터리 교체하시는 분 많아요. <a href="iphone-battery-replacement-types-cost-2026.html">배터리 교체 종류·비용</a> 참고.</p>
+""",
+            },
+            {
+                "h2": "15 Pro 침수 응급 처치 — USB-C 특별 주의",
+                "html": """
+<ol>
+  <li><strong>전원 즉시 끄기</strong></li>
+  <li><strong>USB-C 단자 입구만 마른 천으로</strong> — 안쪽까지 닦지 말 것 (면봉 X)</li>
+  <li><strong>충전 시도 절대 X</strong> — USB-C는 더 큰 단락 위험</li>
+  <li><strong>케이블 꽂힌 상태였다면 즉시 분리</strong></li>
+  <li><strong>30분 안에 매장</strong></li>
+</ol>
+<div class="art-warn">
+  <div class="art-warn-label">USB-C 침수의 흔한 실수</div>
+  <p>"단자가 안 보이게 막힌 것 같아서 면봉으로 파봤다" — 가장 위험한 실수입니다. 면봉 섬유가 안에 끼면 핀 사이를 단락시켜 메인보드 손상. 절대 안쪽 청소 시도 X.</p>
+</div>
+""",
+            },
+            {
+                "h2": "15 Pro 침수 후 점검 — 2년차 추가 항목",
+                "html": """
+<p>2년 사용한 15 Pro 침수 후 추가 점검 항목:</p>
+<ul>
+  <li><strong>배터리 성능치</strong> — 80% 미만이면 침수와 함께 교체 권장</li>
+  <li><strong>USB-C 데이터 전송</strong> — PC 연결해서 인식 확인</li>
+  <li><strong>3배 줌 카메라 OIS</strong> — 사진·동영상 흔들림 확인</li>
+  <li><strong>티타늄 프레임 변형</strong> — 충격 동반 침수면 프레임 정렬 점검</li>
+</ul>
+""",
+            },
+        ],
+        "tip_box": ("15 Pro 2년차 = 침수 + 배터리 동시 교체 적기", "2년 사용한 15 Pro는 배터리 성능치가 보통 85~90%로 떨어진 상태. 침수 수리하실 때 배터리도 함께 교체하면 분해 한 번에 끝나 공임 절약됩니다. 자세한 옵션은 <a href='iphone-battery-replacement-types-cost-2026.html'>배터리 교체 종류·비용</a> 참고."),
+        "daol_box": {
+            "title": "다올리페어 15 Pro 침수 수리 — USB-C 단자 전문",
+            "p": "USB-C 첫 도입 모델 15 Pro의 단자 부식 처치 + 2년차 폰 정밀 진단까지 한 번에.",
+            "ul": [
+                "USB-C 단자 부식 정밀 청소 + 교체",
+                "3배 줌 카메라 모듈 복구",
+                "메인보드 회로 복구",
+                "배터리 + 침수 동시 처치 가능",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "iPhone 15 Pro WATER", "title": "15 Pro 침수<br>USB-C 전문 처치", "desc": "USB-C 첫 도입 모델 15 Pro 침수 + 2년차 노화 동시 처치, 다올리페어에서 가능합니다."},
+        "faq": [
+            ("15 Pro USB-C 단자가 자꾸 막히는 느낌이에요. 침수인가요?",
+             "단자 안쪽에 보풀·먼지가 쌓였을 수 있어요. 침수가 아니어도 USB-C는 단자 청소가 필요한 경우 많음. 매장 무료 진단으로 정확한 원인 확인 가능."),
+            ("2년 사용한 15 Pro도 IP68 등급 그대로인가요?",
+             "아니요, 2년 사용 시 출고 시의 50~60% 수준으로 떨어집니다. 가벼운 비도 위험할 수 있어요. 사우나·수영장은 특히 금지."),
+            ("USB-C 단자 침수면 단자만 갈면 되나요?",
+             "단자 부식만 있으면 단자 교체로 해결 (12~18만원). 메인보드 영향 갔으면 회로 복구 추가. 매장 진단 후 정확한 견적 안내."),
+            ("15 Pro 티타늄 프레임이 침수에 더 약한가요?",
+             "프레임 자체는 영향 X지만, 알루미늄보다 충격 흡수가 적어 충격 동반 침수면 프레임 미세 변형으로 방수 더 약해질 수 있어요."),
+            ("15 Pro 침수 + 배터리 동시 교체가 더 비싼가요?",
+             "동시 진행하면 분해 한 번이라 공임 절약 가능. 따로 진행 대비 약 5~10만원 절약. 자세한 동시 수리 안내는 <a href='daolrepair-90day-warranty-policy.html'>다올리페어 보증 정책</a> 참고."),
+            ("15 Pro 침수 후 데이터는 안전한가요?",
+             "30분 안에 매장 가시면 90% 이상 보존. 시간 지나면 NAND 부식으로 어려워짐. <a href='iphone-repair-data-safety-by-type.html'>수리 시 데이터 안전</a> 참고."),
+        ],
+        "related": [
+            ("iphone-17-pro-water-damage.html", "신모델", "iPhone 17 Pro 침수 가이드"),
+            ("iphone-16-pro-water-damage.html", "1년차", "iPhone 16 Pro 침수 가이드"),
+            ("iphone-water-damage-emergency-30min.html", "응급", "침수 후 30분 골든타임"),
+            ("iphone-water-damage-repair-cost-guide.html", "비용", "침수 수리 비용 단계별"),
+            ("iphone-battery-replacement-types-cost-2026.html", "배터리", "배터리 교체 종류·비용"),
+        ],
+    },
+
+    # 16. Apple Watch 침수
+    {
+        "slug": "apple-watch-water-damage",
+        "cat": "Apple Watch · 침수 가이드",
+        "title": "애플워치 침수 — 수영용 인증 모델의 진짜 한계와 시리즈별 침수 수리 비용",
+        "desc": "애플워치는 \"수영해도 되는 시계\"로 알려져 있지만 실제로는 침수 사고가 많습니다. 시리즈별 방수 등급(WR50m·IP6X), 사우나·바다·온수 위험, 디지털 크라운·스피커 침수, 수리 비용까지 정리.",
+        "keywords": "애플워치 침수, 애플워치 방수, 애플워치 수영, 애플워치 사우나, 디지털 크라운 침수, Apple Watch 침수 수리",
+        "intro": [
+            "애플워치는 \"수영해도 되는 시계\"로 알려져 있어 사용자가 방수에 안심하기 쉬워요. 하지만 다올리페어 통계상 애플워치 침수 수리 건수가 매년 증가 중이고, 특히 <strong>여름철 사우나·바다·수영장 사용 후 디지털 크라운·스피커 침수가 가장 흔합니다</strong>.",
+            "이 글은 애플워치 시리즈별 방수 등급의 진짜 의미 + 사우나·바다·온수 위험 + 침수 응급 처치 + 수리 비용까지 정리한 모델 특화 가이드입니다.",
+        ],
+        "good": '<strong>WR50m 등급 = 수영 OK라는 뜻이 아님.</strong> 실제 안전 범위는 <strong>맑은 물·짧은 시간·실온 한정</strong>. 사우나·온천·바다·다이빙·고압 샤워는 모두 등급 초과로 침수 위험. 침수 즉시 매장 방문 (1~2시간 내 처치 권장).',
+        "body_sections": [
+            {
+                "h2": "애플워치 시리즈별 방수 등급",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>모델</th><th>방수 등급</th><th>수영 가능?</th><th>실제 안전 범위</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Series 10 / Ultra 2</strong></td><td>IP6X + WR100m</td><td>O</td><td>수영장·얕은 다이빙 OK / 사우나·온천 X</td></tr>
+    <tr><td><strong>Series 9 / Ultra</strong></td><td>IP6X + WR50m</td><td>O</td><td>수영장 OK / 사우나·다이빙 X</td></tr>
+    <tr><td><strong>Series 7 / 8 / SE2</strong></td><td>IP6X + WR50m</td><td>O</td><td>수영장 OK / 사우나·다이빙 X</td></tr>
+    <tr><td><strong>Series 6 / SE</strong></td><td>WR50m</td><td>O</td><td>수영장 OK / 사우나·다이빙 X</td></tr>
+    <tr><td><strong>Series 4 / 5</strong></td><td>WR50m</td><td>O</td><td>수영장 OK / 사우나·다이빙 X</td></tr>
+    <tr><td><strong>Series 2 / 3</strong></td><td>WR50m</td><td>O (수영 끝나고 즉시 닦기)</td><td>가벼운 수영만</td></tr>
+    <tr><td><strong>Series 1 / 1세대</strong></td><td>IPX7</td><td>X</td><td>비·튀김만 OK</td></tr>
+  </tbody>
+</table>
+<p>WR50m·100m는 ISO 22810 기준 \"수심 N미터에서 정적 압력 견딤\"이라는 의미일 뿐, <strong>다이빙·사우나·고온·온수에는 적용 안 됨</strong>.</p>
+""",
+            },
+            {
+                "h2": "애플워치 침수 가장 흔한 4가지 상황",
+                "html": """
+<h3>1. 사우나·찜질방 (가장 위험)</h3>
+<p>WR등급은 실온 기준. 사우나 70~90℃ 환경에서는 패킹이 팽창·수축 반복하며 침수. 다올리페어 통계상 애플워치 침수 케이스의 약 40%가 사우나 사용 직후.</p>
+
+<h3>2. 온수 샤워·욕조</h3>
+<p>40℃ 이상 온수에서는 등급 보장 X. 수증기까지 동시에 작용해 패킹 약화 가속.</p>
+
+<h3>3. 다이빙·수상 스포츠</h3>
+<p>수심 변화로 압력이 등급 초과. 워터파크 슬라이드는 시속 50km 압력으로 등급 한참 초과.</p>
+
+<h3>4. 바다·해수</h3>
+<p>염분이 패킹 부식·금속 부품 부식 가속. 회복률이 일반 수돗물 침수보다 낮음.</p>
+""",
+            },
+            {
+                "h2": "애플워치 침수 취약 3대 부위",
+                "html": """
+<h3>1. 디지털 크라운 (가장 흔함)</h3>
+<p>회전·누름 두 동작을 인식하는 정밀 부품. 침수 시:</p>
+<ul>
+  <li>회전 안 됨·뻑뻑함 (가장 흔함)</li>
+  <li>누름 인식 안 됨</li>
+  <li>가끔 자동 회전 (오인식)</li>
+</ul>
+
+<h3>2. 스피커·마이크 그릴</h3>
+<p>측면 그릴은 외부 노출이 커 침수에 취약. 음질 먹먹·통화 안 됨 증상.</p>
+
+<h3>3. 화면 모듈 (전·후)</h3>
+<p>침수 시 화면 안쪽 응결로 흐림·줄·검은 점 발생. 시리즈 4 이후는 OLED라 픽셀 손상도 발생 가능.</p>
+""",
+            },
+            {
+                "h2": "애플워치 침수 응급 처치",
+                "html": """
+<ol>
+  <li><strong>전원 즉시 끄기</strong> — 옆 버튼 + 디지털 크라운 길게 → 슬라이더로 종료</li>
+  <li><strong>"물 빼기" 모드 시도</strong> — Series 4 이후: 제어센터 → 물방울 아이콘 → 디지털 크라운 회전 (스피커로 물 배출)</li>
+  <li><strong>밴드 분리</strong> — 가죽 밴드면 즉시 분리 (가죽이 물 흡수)</li>
+  <li><strong>마른 천으로 디지털 크라운·스피커 그릴 닦기</strong></li>
+  <li><strong>충전 시도 절대 X</strong> — 자기 충전기 단자에 물 묻은 상태로 충전 = 단락</li>
+  <li><strong>1~2시간 안에 매장</strong> — 워치는 폰보다 회복 시간 짧음 (분해가 더 정밀해서)</li>
+</ol>
+""",
+            },
+            {
+                "h2": "애플워치 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>분해·세척·재조립</td><td>5~10만원</td></tr>
+    <tr><td><strong>2단계 (디지털 크라운)</strong></td><td>크라운 모듈 교체</td><td>10~18만원</td></tr>
+    <tr><td><strong>2단계 (스피커·마이크)</strong></td><td>모듈 교체</td><td>8~15만원</td></tr>
+    <tr><td><strong>2단계 (배터리 동반)</strong></td><td>배터리 교체</td><td>10~15만원 (시리즈별)</td></tr>
+    <tr><td><strong>2단계 (화면 모듈)</strong></td><td>화면 교체</td><td>15~30만원 (시리즈별)</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>20~40만원</td></tr>
+    <tr><td><strong>3단계 (전체 손상)</strong></td><td>데이터 추출만 (제한적)</td><td>10~15만원</td></tr>
+  </tbody>
+</table>
+<p>시리즈·크기(40·41·42·44·45·46·49mm)에 따라 ±20% 변동.</p>
+""",
+            },
+            {
+                "h2": "Ultra 시리즈는 다른가?",
+                "html": """
+<p>Apple Watch Ultra·Ultra 2는 WR100m + EN 13319 다이빙 인증으로 가장 강한 방수:</p>
+<ul>
+  <li>수심 100m·다이빙 OK (40m 깊이까지)</li>
+  <li>고온·저온 더 견딤 (-20℃ ~ 55℃)</li>
+  <li>티타늄 프레임으로 충격 강함</li>
+</ul>
+<p>다만 사우나·온천은 여전히 위험 (등급에 미포함). 1~2년 사용 후엔 일반 모델과 마찬가지로 등급 약화.</p>
+""",
+            },
+        ],
+        "tip_box": ("애플워치는 폰보다 회복 시간 짧아", "애플워치는 부피가 작고 부품이 정밀해 침수 부식이 폰보다 빨리 진행됩니다. 폰은 30분 골든타임이지만 워치는 <strong>1시간이 한계</strong>로 보세요. 즉시 매장 가시는 게 핵심."),
+        "daol_box": {
+            "title": "다올리페어 애플워치 침수 수리 전문",
+            "p": "다올리페어는 애플워치 시리즈 1~10·SE·Ultra 모두 침수 수리 가능. 디지털 크라운·스피커·메인보드까지 모두 처치.",
+            "ul": [
+                "디지털 크라운 정밀 분해·교체",
+                "스피커·마이크 그릴 부식 처치",
+                "메인보드 회로 복구",
+                "배터리 + 침수 동시 처치 가능",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "Apple Watch WATER", "title": "애플워치 침수<br>전문 처치", "desc": "디지털 크라운·스피커·메인보드까지 다올리페어 가산·신림·목동에서 정밀 처치."},
+        "faq": [
+            ("애플워치 끼고 수영해도 되나요?",
+             "Series 2 이후 모델은 가벼운 수영 OK. 다만 다이빙·워터파크 슬라이드·고압 샤워는 위험. Ultra 시리즈만 다이빙 인증 있음."),
+            ("애플워치 끼고 사우나 들어가도 되나요?",
+             "절대 안 됩니다. WR50m·100m 등급은 실온 기준이고 사우나 70~90℃는 등급 한참 초과. 다올리페어 침수 케이스의 40%가 사우나 직후 발생."),
+            ("디지털 크라운이 뻑뻑해졌어요. 침수인가요?",
+             "침수 가능성 높음. 수영·사우나 사용 후 증상이면 즉시 매장. 가벼운 단계면 분해·세척 5~10만원으로 해결, 심하면 크라운 교체 10~18만원."),
+            ("애플워치 \"물 빼기\" 모드는 정말 효과 있나요?",
+             "스피커 내부 물만 배출하는 기능. 메인보드 침수에는 효과 없음. \"물 빼기\" 후에도 이상 증상 있으면 매장 방문 권장."),
+            ("Ultra는 다이빙 가능하다고 했는데 침수 위험 없나요?",
+             "Ultra·Ultra 2는 EN 13319 다이빙 인증으로 40m 다이빙까지 OK. 다만 사우나·온수는 여전히 위험. 1~2년 사용 후엔 등급도 약화."),
+            ("애플워치 침수 수리 시간은 얼마 걸리나요?",
+             "1단계 당일, 2단계 1일, 3단계 메인보드는 2~3일. 폰보다 분해가 정밀해 시간이 약간 더 걸려요."),
+        ],
+        "related": [
+            ("iphone-water-damage-emergency-30min.html", "응급", "침수 후 30분 골든타임"),
+            ("iphone-summer-water-damage-prevention.html", "예방", "여름철 침수 예방"),
+            ("iphone-shower-sauna-steam-damage.html", "사우나", "샤워실·사우나 수증기 위험"),
+            ("iphone-water-damaged-still-works-checkup.html", "점검", "침수 후 점검 필수"),
+            ("applewatch-battery-replacement-guide.html", "배터리", "애플워치 배터리 교체 종합 가이드"),
+        ],
+    },
+
+    # 18. iPhone 13 (일반) 침수
+    {
+        "slug": "iphone-13-water-damage",
+        "cat": "iPhone 13 · 침수 가이드",
+        "title": "아이폰 13 침수 — 4년차 일반 모델 방수 약화·Lightning 단자 부식 가이드",
+        "desc": "2021년 출시 4년차 아이폰 13 일반 모델 침수 케이스. OLED·Lightning 단자·듀얼 카메라 침수 위험, 13 일반 부품 가격, 응급 처치까지 일반 모델 특화 가이드.",
+        "keywords": "아이폰 13 침수, 아이폰 13 일반 침수, 13 일반 방수, Lightning 단자 침수, 13 IP68",
+        "intro": [
+            "iPhone 13(일반)은 2021년 9월 출시로 약 4년이 경과한 모델입니다. 출시 시 IP68 등급(6m·30분)이지만 <strong>4년 사용으로 패킹·접착부가 본격 노화</strong>된 상태. 가벼운 비도 안심하기 어렵습니다.",
+            "이 글은 13 일반 모델의 4년차 방수 약화 + Lightning 단자 침수 + 듀얼 카메라 손상 + 정확한 수리 비용을 정리한 일반 모델 특화 가이드입니다.",
+        ],
+        "good": '<strong>4년 사용한 13 일반의 방수 등급은 출고 시의 30~50% 수준</strong>입니다. Lightning 단자 부식이 가장 흔한 증상. Pro 모델 대비 부품가가 저렴해 수리 가성비는 좋은 편이에요. 침수 즉시 <a href="iphone-water-damage-emergency-30min.html">30분 골든타임</a> 안에 매장 방문 핵심.',
+        "body_sections": [
+            {
+                "h2": "13 일반과 13 Pro의 침수 차이점",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>항목</th><th>13 일반</th><th>13 Pro</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>디스플레이</td><td>OLED 60Hz</td><td>OLED 120Hz ProMotion</td></tr>
+    <tr><td>후면 카메라</td><td>광각 + 초광각 (2개)</td><td>광각 + 초광각 + 망원 (3개)</td></tr>
+    <tr><td>단자</td><td>Lightning</td><td>Lightning</td></tr>
+    <tr><td>방수 등급</td><td>IP68 (6m·30분)</td><td>IP68 (6m·30분)</td></tr>
+    <tr><td>침수 수리비 (1단계)</td><td>5~10만원</td><td>6~12만원</td></tr>
+  </tbody>
+</table>
+<p>13 일반은 ProMotion·망원 카메라가 없어 침수 시 <strong>고장날 수 있는 정밀 부품 수가 적음</strong>. 결과적으로 수리비가 Pro 대비 15~25% 저렴.</p>
+""",
+            },
+            {
+                "h2": "13 일반 침수 취약 3대 부위",
+                "html": """
+<h3>1. Lightning 단자 (가장 흔함)</h3>
+<p>4년 사용 = Lightning 단자 안쪽 마모 + 부식 누적. 침수 시 즉시 가속:</p>
+<ul>
+  <li>충전 안 들어가거나 들어왔다 끊겼다</li>
+  <li>케이블 한쪽으로만 인식</li>
+  <li>이미 4년차라 단자 마모도 큼</li>
+</ul>
+
+<h3>2. OLED 디스플레이</h3>
+<p>13 일반은 OLED지만 60Hz라 컨트롤러 회로는 단순한 편. 침수 시:</p>
+<ul>
+  <li>화면 일부 픽셀 죽음·번짐</li>
+  <li>터치 안 되는 영역 발생</li>
+  <li>밝기 자동 조절 이상</li>
+</ul>
+
+<h3>3. 듀얼 카메라 모듈</h3>
+<p>광각 + 초광각 두 개의 카메라가 침수에 노출. 사진 흐림·검은 점·초광각 무반응 증상.</p>
+""",
+            },
+            {
+                "h2": "13 일반 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>13 일반 비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>단자 청소·점검·방수 재처리</td><td>5~10만원</td></tr>
+    <tr><td><strong>2단계 (Lightning 단자)</strong></td><td>단자 교체</td><td>9~14만원</td></tr>
+    <tr><td><strong>2단계 (듀얼 카메라)</strong></td><td>카메라 모듈 교체</td><td>10~18만원</td></tr>
+    <tr><td><strong>2단계 (OLED 디스플레이)</strong></td><td>화면 모듈 교체</td><td>14~28만원</td></tr>
+    <tr><td><strong>2단계 (스피커·마이크)</strong></td><td>모듈 교체</td><td>7~12만원</td></tr>
+    <tr><td><strong>2단계 (배터리 동반 손상)</strong></td><td>배터리 교체</td><td>8~11만원</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>20~33만원</td></tr>
+  </tbody>
+</table>
+<p>13 Pro 대비 약 15~25% 저렴. 4년차 폰이라 배터리 노화도 동반되니 침수 + 배터리 동시 점검 권장. <a href="iphone-battery-replacement-types-cost-2026.html">배터리 교체 종류·비용</a> 참고.</p>
+""",
+            },
+            {
+                "h2": "13 일반 침수 응급 처치",
+                "html": """
+<ol>
+  <li><strong>전원 즉시 끄기</strong> — 4년 사용 폰일수록 단락 위험 높음</li>
+  <li><strong>Lightning 단자 마른 천으로 닦기</strong> — 안쪽 면봉 X (섬유 끼면 더 위험)</li>
+  <li><strong>충전 시도 절대 X</strong></li>
+  <li><strong>케이스 분리 + 심카드 빼기</strong></li>
+  <li><strong>30분 안에 매장</strong> — 4년차라 패킹 약해 침투 빠름</li>
+</ol>
+<p>자세한 응급 가이드는 <a href="iphone-water-damage-emergency-30min.html">침수 후 30분 골든타임</a> 참고.</p>
+""",
+            },
+            {
+                "h2": "13 일반 침수 vs 새 폰 교체 — 손익 분기점",
+                "html": """
+<p>4년 사용한 13 일반은 수리비가 새 폰의 50% 넘어가면 교체 고려:</p>
+<ul>
+  <li><strong>1~2단계 (10~20만원)</strong> → 수리 권장 (배터리 동시 교체 시 +8~11만원)</li>
+  <li><strong>2단계 메인보드 미손상</strong> → 수리 가능, 데이터 보존</li>
+  <li><strong>3단계 메인보드 (20~33만원)</strong> → 데이터 + 사용 기간 고려해 판단</li>
+  <li><strong>3단계 + 배터리 + 카메라 (35만원+)</strong> → 데이터만 추출 후 새 폰 권장</li>
+</ul>
+<p>다올리페어 진단 시 \"수리비 vs 새 폰\" 손익 분석 같이 안내드립니다.</p>
+""",
+            },
+        ],
+        "tip_box": ("13 일반 4년차 = Pro 없는 만큼 수리 가성비 ↑", "13 일반은 ProMotion·망원 카메라가 없어 침수 시 고장 부위가 적고 수리비도 15~25% 저렴. 4년 사용했어도 1~2단계면 수리 가성비 좋은 편."),
+        "daol_box": {
+            "title": "다올리페어 13 일반 침수 수리 — 합리적 가격으로 4년차 폰 살리기",
+            "p": "13 일반의 약해진 방수·노화된 부품까지 종합 진단 + 침수 처치. Pro 대비 부품가 저렴.",
+            "ul": [
+                "Lightning 단자 부식 정밀 청소·교체",
+                "OLED 디스플레이 침수 처치",
+                "듀얼 카메라 모듈 복구",
+                "배터리 + 침수 동시 처치 가능",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "iPhone 13 WATER", "title": "13 일반 침수<br>합리적 가격 처치", "desc": "4년 사용한 13 일반 침수 + 노화 부품 동시 점검, 다올리페어 가산·신림·목동에서 가능."},
+        "faq": [
+            ("4년 사용한 13 일반도 IP68 그대로인가요?",
+             "아니요, 4년 사용 시 출고 시의 30~50% 수준으로 떨어집니다. 가벼운 비도 위험. 사우나·수영장 절대 X. 방수 케이스 사용 권장."),
+            ("13 일반과 13 Pro 침수 수리비 차이가 큰가요?",
+             "Pro가 15~25% 더 비쌉니다. ProMotion 디스플레이·망원 카메라 등 정밀 부품이 추가돼 있어서. 13 일반은 그만큼 수리 가성비가 좋아요."),
+            ("13 일반 Lightning 단자 부식이면 단자만 갈면 되나요?",
+             "단자 부식만 있으면 단자 교체로 해결 (9~14만원). 메인보드 영향 갔으면 회로 복구 추가 비용. 매장 진단 후 정확한 견적 안내."),
+            ("13 일반 침수 수리 vs 새 폰 교체 어느 게 나아요?",
+             "수리비가 20만원 미만이면 수리, 35만원 넘으면 데이터 추출 후 새 폰 교체 고려. 매장에서 손익 분석 같이 안내드립니다."),
+            ("13 일반 OLED 화면 침수면 화면 통째로 갈아야 하나요?",
+             "네, 화면 모듈 교체 (14~28만원). 다만 일부 케이스는 단순 청소로 회복하니 매장 진단 먼저."),
+            ("13 일반 침수 후 데이터 살릴 수 있나요?",
+             "30분 안에 매장 가시면 90% 이상 보존. 4년 사용 폰은 NAND도 노화 중이라 시간 지나면 추출 어려움. <a href='iphone-repair-data-safety-by-type.html'>데이터 안전 가이드</a> 참고."),
+        ],
+        "related": [
+            ("iphone-13-pro-water-damage.html", "Pro 비교", "iPhone 13 Pro 침수 가이드"),
+            ("iphone-14-water-damage.html", "다음 모델", "iPhone 14 침수 가이드"),
+            ("iphone-water-damage-emergency-30min.html", "응급", "침수 후 30분 골든타임"),
+            ("iphone-water-damage-repair-cost-guide.html", "비용", "침수 수리 비용 단계별"),
+            ("iphone-battery-replacement-types-cost-2026.html", "배터리", "배터리 교체 종류·비용"),
+        ],
+    },
+
+    # 19. iPhone 14 (일반) 침수
+    {
+        "slug": "iphone-14-water-damage",
+        "cat": "iPhone 14 · 침수 가이드",
+        "title": "아이폰 14 침수 — 3년차 일반 모델 방수 약화·Lightning 단자 부식 가이드",
+        "desc": "2022년 출시 3년차 아이폰 14 일반 모델 침수 케이스. 노치 디스플레이·Lightning 단자·듀얼 카메라 침수 위험, 14 일반 부품 가격, 응급 처치까지 일반 모델 특화 가이드.",
+        "keywords": "아이폰 14 침수, 아이폰 14 일반 침수, 14 일반 방수, Lightning 단자 침수, 14 IP68",
+        "intro": [
+            "iPhone 14(일반)은 2022년 9월 출시로 약 3년이 경과한 모델입니다. <strong>14 Pro에 도입된 다이내믹 아일랜드는 일반 모델에 들어가지 않아</strong> 노치 디자인 그대로. 그만큼 침수 위험 부위가 Pro보다 적습니다.",
+            "이 글은 14 일반 모델의 3년차 방수 약화 + Lightning 단자 침수 + 노치 트루뎁스 카메라 침수 위험 + 정확한 수리 비용을 정리한 일반 모델 특화 가이드입니다.",
+        ],
+        "good": '<strong>3년 사용한 14 일반의 방수 등급은 출고 시의 40~55% 수준</strong>입니다. 다이내믹 아일랜드 모듈이 없어 Pro 대비 침수 수리 부품이 단순한 편. 침수 즉시 <a href="iphone-water-damage-emergency-30min.html">30분 골든타임</a> 안에 매장 방문 핵심.',
+        "body_sections": [
+            {
+                "h2": "14 일반과 14 Pro의 침수 차이점",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>항목</th><th>14 일반</th><th>14 Pro</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>전면 디자인</td><td>노치 (트루뎁스)</td><td>다이내믹 아일랜드 (트루뎁스 + 카메라)</td></tr>
+    <tr><td>디스플레이</td><td>OLED 60Hz</td><td>OLED 120Hz ProMotion</td></tr>
+    <tr><td>후면 카메라</td><td>광각 + 초광각 (2개)</td><td>광각 + 초광각 + 망원 (3개)</td></tr>
+    <tr><td>단자</td><td>Lightning</td><td>Lightning</td></tr>
+    <tr><td>침수 수리비 (1단계)</td><td>6~11만원</td><td>7~13만원</td></tr>
+  </tbody>
+</table>
+<p>14 일반은 다이내믹 아일랜드·ProMotion·망원 카메라가 없어 <strong>Pro 대비 침수 수리비 15~20% 저렴</strong>. 정밀 모듈이 적어 수리 시간도 짧음.</p>
+""",
+            },
+            {
+                "h2": "14 일반 침수 취약 3대 부위",
+                "html": """
+<h3>1. Lightning 단자 (가장 흔함)</h3>
+<p>14 일반은 Lightning 마지막 일반 모델. 3년 사용 = 단자 마모 + 침수 부식 동반:</p>
+<ul>
+  <li>충전 안 들어가거나 들어왔다 끊겼다</li>
+  <li>케이블 한쪽으로만 인식</li>
+  <li>USB-C로 안 가는 모델이라 중고가 떨어진 상태</li>
+</ul>
+
+<h3>2. 노치 트루뎁스 카메라</h3>
+<p>14 일반은 노치 안에 트루뎁스(Face ID) + 전면 카메라가 들어있음. 침수 시:</p>
+<ul>
+  <li>Face ID 인식 안 됨 또는 느려짐</li>
+  <li>전면 카메라 흐림·검은 점</li>
+  <li>주의력 감지 비활성화</li>
+</ul>
+
+<h3>3. OLED 디스플레이 (60Hz)</h3>
+<p>14 일반은 OLED 60Hz. 침수 시 화면 일부 픽셀 죽음·터치 안 되는 영역·밝기 이상.</p>
+""",
+            },
+            {
+                "h2": "14 일반 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>14 일반 비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>단자 청소·점검·방수 재처리</td><td>6~11만원</td></tr>
+    <tr><td><strong>2단계 (Lightning 단자)</strong></td><td>단자 교체</td><td>10~15만원</td></tr>
+    <tr><td><strong>2단계 (트루뎁스 모듈)</strong></td><td>Face ID 모듈 교체</td><td>15~25만원</td></tr>
+    <tr><td><strong>2단계 (듀얼 카메라)</strong></td><td>카메라 모듈 교체</td><td>11~20만원</td></tr>
+    <tr><td><strong>2단계 (OLED 디스플레이)</strong></td><td>화면 모듈 교체</td><td>16~30만원</td></tr>
+    <tr><td><strong>2단계 (배터리 동반 손상)</strong></td><td>배터리 교체</td><td>8~12만원</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>22~36만원</td></tr>
+  </tbody>
+</table>
+<p>14 Pro 대비 약 15~20% 저렴. 다이내믹 아일랜드 통합 모듈이 없어 부품가 차이가 큼.</p>
+""",
+            },
+            {
+                "h2": "14 일반 침수 응급 처치",
+                "html": """
+<ol>
+  <li><strong>전원 즉시 끄기</strong></li>
+  <li><strong>Lightning 단자 마른 천으로 닦기</strong> — 안쪽 면봉 X</li>
+  <li><strong>충전 시도 절대 X</strong></li>
+  <li><strong>케이스 분리 + 심카드 빼기</strong></li>
+  <li><strong>30분 안에 매장</strong></li>
+</ol>
+<p>자세한 응급 가이드는 <a href="iphone-water-damage-emergency-30min.html">침수 후 30분 골든타임</a> 참고.</p>
+""",
+            },
+            {
+                "h2": "14 일반 침수 vs 새 폰 교체 — 손익 분기점",
+                "html": """
+<p>3년 사용한 14 일반은 수리비가 새 폰의 50% 넘어가면 교체 고려:</p>
+<ul>
+  <li><strong>1~2단계 (10~25만원)</strong> → 수리 권장 (배터리 동시 교체 시 +8~12만원)</li>
+  <li><strong>2단계 메인보드 미손상</strong> → 수리 가능, 데이터 보존</li>
+  <li><strong>3단계 메인보드 (22~36만원)</strong> → 데이터 + 사용 기간 고려해 판단</li>
+  <li><strong>3단계 + 배터리 + 카메라 (40만원+)</strong> → 데이터만 추출 후 새 폰 권장</li>
+</ul>
+""",
+            },
+        ],
+        "tip_box": ("14 일반 = Lightning 마지막 일반 모델, 단자 보호가 중요", "14 일반은 USB-C로 못 가는 마지막 일반 모델이라 침수로 단자 망가지면 더 곤란. Lightning 케이블 청결·건조 관리가 폰 수명에 직결됨."),
+        "daol_box": {
+            "title": "다올리페어 14 일반 침수 수리 — Pro보다 합리적인 가격",
+            "p": "14 일반의 노치 트루뎁스·Lightning 단자까지 종합 진단 + 침수 처치.",
+            "ul": [
+                "Lightning 단자 부식 정밀 청소·교체",
+                "노치 트루뎁스 모듈 침수 처치",
+                "듀얼 카메라 모듈 복구",
+                "배터리 + 침수 동시 처치 가능",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "iPhone 14 WATER", "title": "14 일반 침수<br>3년차 종합 처치", "desc": "3년 사용한 14 일반 침수 + 노화 부품 동시 점검, 다올리페어 가산·신림·목동에서 가능."},
+        "faq": [
+            ("3년 사용한 14 일반도 IP68 그대로인가요?",
+             "아니요, 3년 사용 시 출고 시의 40~55% 수준으로 떨어집니다. 가벼운 비는 OK지만 사우나·수영장 절대 X."),
+            ("14 일반과 14 Pro 침수 수리비 차이가 큰가요?",
+             "Pro가 15~20% 더 비쌉니다. 다이내믹 아일랜드 통합 모듈·ProMotion·망원 카메라 정밀 부품이 추가돼 있어서."),
+            ("14 일반 Face ID 안 되면 침수 때문인가요?",
+             "노치 안 트루뎁스 모듈 침수 가능성 높음. 다만 단순 펌웨어 이슈일 수도 있어 매장 진단 권장. 모듈 교체 시 15~25만원."),
+            ("14 일반 Lightning 단자 부식이면 단자만 갈면 되나요?",
+             "단자 부식만 있으면 단자 교체로 해결 (10~15만원). 메인보드 영향 갔으면 회로 복구 추가 비용."),
+            ("14 일반 침수 후 데이터 살릴 수 있나요?",
+             "30분 안에 매장 가시면 90% 이상 보존. <a href='iphone-repair-data-safety-by-type.html'>데이터 안전 가이드</a> 참고."),
+            ("14 일반 vs 14 Pro 침수 위험 어디가 더 높나요?",
+             "위험은 비슷. 다만 수리비는 Pro가 비싸고, 14 일반은 단순 구조라 1~2단계 침수 회복률이 약간 더 높음."),
+        ],
+        "related": [
+            ("iphone-14-pro-water-damage.html", "Pro 비교", "iPhone 14 Pro 침수 가이드"),
+            ("iphone-13-water-damage.html", "이전 모델", "iPhone 13 일반 침수 가이드"),
+            ("iphone-15-water-damage.html", "다음 모델", "iPhone 15 일반 침수 가이드"),
+            ("iphone-water-damage-emergency-30min.html", "응급", "침수 후 30분 골든타임"),
+            ("iphone-battery-replacement-types-cost-2026.html", "배터리", "배터리 교체 종류·비용"),
+        ],
+    },
+
+    # 20. iPhone 15 (일반) 침수
+    {
+        "slug": "iphone-15-water-damage",
+        "cat": "iPhone 15 · 침수 가이드",
+        "title": "아이폰 15 침수 — USB-C 첫 도입·다이내믹 아일랜드 일반 모델 침수 가이드",
+        "desc": "2023년 출시 2년차 아이폰 15 일반 모델 침수 케이스. USB-C 단자 침수 위험, 다이내믹 아일랜드 일반 도입 모듈, 듀얼 카메라까지 일반 모델 특화 가이드.",
+        "keywords": "아이폰 15 침수, 아이폰 15 일반 침수, USB-C 단자 침수, 다이내믹 아일랜드 침수, 15 IP68",
+        "intro": [
+            "iPhone 15(일반)은 2023년 9월 출시로 약 2년이 경과한 모델입니다. <strong>USB-C 첫 도입</strong>(Lightning → USB-C 전환) + <strong>다이내믹 아일랜드 일반 모델 도입</strong>이라는 큰 변화가 있어 침수 패턴도 이전과 달라졌습니다.",
+            "이 글은 15 일반 모델의 USB-C 단자 침수 + 다이내믹 아일랜드 모듈 침수 + 정확한 수리 비용을 정리한 일반 모델 특화 가이드입니다.",
+        ],
+        "good": '<strong>2년 사용한 15 일반의 방수 등급은 출고 시의 50~60% 수준</strong>입니다. USB-C 단자가 Lightning보다 구조가 단순해 부식에는 약간 유리. 다만 다이내믹 아일랜드 모듈은 침수에 민감. <a href="iphone-water-damage-emergency-30min.html">30분 골든타임</a> 핵심.',
+        "body_sections": [
+            {
+                "h2": "15 일반의 큰 변화 — USB-C와 다이내믹 아일랜드",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>항목</th><th>14 일반</th><th>15 일반</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>단자</td><td>Lightning</td><td><strong>USB-C (첫 도입)</strong></td></tr>
+    <tr><td>전면 디자인</td><td>노치</td><td><strong>다이내믹 아일랜드 (일반 첫 도입)</strong></td></tr>
+    <tr><td>디스플레이</td><td>OLED 60Hz</td><td>OLED 60Hz</td></tr>
+    <tr><td>카메라</td><td>듀얼 12MP</td><td>듀얼 48MP (메인 4800만)</td></tr>
+    <tr><td>침수 수리비 (1단계)</td><td>6~11만원</td><td>7~12만원</td></tr>
+  </tbody>
+</table>
+<p>15 일반부터는 일반 모델도 다이내믹 아일랜드가 도입되어 <strong>트루뎁스 + 카메라 통합 모듈</strong>이 침수 위험 부위로 추가됨. USB-C는 구조상 Lightning보다 부식에 약간 유리.</p>
+""",
+            },
+            {
+                "h2": "15 일반 침수 취약 3대 부위",
+                "html": """
+<h3>1. USB-C 단자 (15 일반 첫 도입)</h3>
+<p>USB-C는 Lightning 대비 핀이 더 많고 양면 대칭 구조. 침수 시:</p>
+<ul>
+  <li>충전 속도 저하 (PD 협상 실패)</li>
+  <li>외부 디스플레이 출력 안 됨</li>
+  <li>일부 핀만 부식돼도 케이블 인식 불안정</li>
+  <li>다행히 Lightning보다 안쪽 부식 진행은 느린 편</li>
+</ul>
+
+<h3>2. 다이내믹 아일랜드 모듈 (일반 첫 도입)</h3>
+<p>15 일반부터 트루뎁스 + 전면 카메라 통합 모듈이 들어감. 침수 시:</p>
+<ul>
+  <li>Face ID 인식 안 됨 또는 느려짐</li>
+  <li>전면 카메라 흐림</li>
+  <li>다이내믹 아일랜드 표시 영역 픽셀 이상</li>
+</ul>
+
+<h3>3. 4800만 화소 메인 카메라</h3>
+<p>15 일반부터 메인 카메라가 48MP로 업그레이드. 정밀해진 만큼 침수에 민감.</p>
+""",
+            },
+            {
+                "h2": "15 일반 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>15 일반 비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>단자 청소·점검·방수 재처리</td><td>7~12만원</td></tr>
+    <tr><td><strong>2단계 (USB-C 단자)</strong></td><td>단자 교체</td><td>11~17만원</td></tr>
+    <tr><td><strong>2단계 (다이내믹 아일랜드 모듈)</strong></td><td>트루뎁스 + 카메라 모듈 교체</td><td>18~28만원</td></tr>
+    <tr><td><strong>2단계 (48MP 메인 카메라)</strong></td><td>카메라 모듈 교체</td><td>13~22만원</td></tr>
+    <tr><td><strong>2단계 (OLED 디스플레이)</strong></td><td>화면 모듈 교체</td><td>18~32만원</td></tr>
+    <tr><td><strong>2단계 (배터리 동반 손상)</strong></td><td>배터리 교체</td><td>9~13만원</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>25~38만원</td></tr>
+  </tbody>
+</table>
+<p>15 Pro 대비 약 10~15% 저렴. 다이내믹 아일랜드는 일반 도입돼도 정밀 모듈이라 수리비가 비교적 높음.</p>
+""",
+            },
+            {
+                "h2": "15 일반 침수 응급 처치 — USB-C 첫 모델 주의",
+                "html": """
+<ol>
+  <li><strong>전원 즉시 끄기</strong></li>
+  <li><strong>USB-C 단자 마른 천으로 닦기</strong> — 핀이 많아 면봉 X</li>
+  <li><strong>충전 시도 절대 X</strong> — PD 충전기는 단락 시 더 위험</li>
+  <li><strong>케이스 분리 + 심카드 빼기</strong></li>
+  <li><strong>30분 안에 매장</strong></li>
+</ol>
+<p>USB-C는 양면 대칭이라 거꾸로 꽂아도 들어가지만, 침수 후엔 핀 일부만 부식돼도 인식 불안정. 강제로 케이블 꽂지 말고 매장에서 청소.</p>
+""",
+            },
+            {
+                "h2": "15 일반 침수 vs 새 폰 교체 — 손익 분기점",
+                "html": """
+<p>2년 사용한 15 일반은 아직 중고가가 비교적 살아있어 수리 권장 구간이 넓음:</p>
+<ul>
+  <li><strong>1~2단계 (10~30만원)</strong> → 수리 강력 권장</li>
+  <li><strong>2단계 메인보드 미손상</strong> → 수리 가능, 데이터 보존</li>
+  <li><strong>3단계 메인보드 (25~38만원)</strong> → 2년차라 수리 가성비 있음</li>
+  <li><strong>3단계 + 배터리 + 카메라 (45만원+)</strong> → 데이터 추출 후 새 폰 고려</li>
+</ul>
+""",
+            },
+        ],
+        "tip_box": ("15 일반 = USB-C 적응기, 단자 청결 관리 중요", "USB-C 첫 도입이라 사용자도 새 케이블 적응 중. 침수 + 부식이 겹치면 충전 트러블이 빨리 옴. USB-C 케이블 단자 부분 자주 청소 권장."),
+        "daol_box": {
+            "title": "다올리페어 15 일반 침수 수리 — USB-C·다이내믹 아일랜드 정밀 처치",
+            "p": "USB-C 단자 + 다이내믹 아일랜드 모듈 + 48MP 카메라까지 종합 진단 + 침수 처치.",
+            "ul": [
+                "USB-C 단자 부식 정밀 청소·교체",
+                "다이내믹 아일랜드 트루뎁스 모듈 처치",
+                "48MP 메인 카메라 모듈 복구",
+                "배터리 + 침수 동시 처치 가능",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "iPhone 15 WATER", "title": "15 일반 침수<br>USB-C·DI 처치", "desc": "USB-C·다이내믹 아일랜드 도입된 15 일반 침수, 다올리페어 가산·신림·목동에서 정밀 처치."},
+        "faq": [
+            ("USB-C가 Lightning보다 침수에 강한가요?",
+             "구조상 USB-C가 안쪽 부식 진행은 약간 느린 편. 다만 핀이 많아 일부만 부식돼도 인식 불안정해질 수 있어 청소·관리는 더 중요."),
+            ("15 일반 다이내믹 아일랜드 침수면 수리 가능한가요?",
+             "네, 트루뎁스 + 전면 카메라 모듈 교체 (18~28만원). 다만 정밀 부품이라 정품 부품 사용 권장."),
+            ("15 일반 침수 후 충전 안 되면 단자만 문제인가요?",
+             "USB-C 단자 부식이 가장 흔하지만, 충전 IC(메인보드 부품) 손상 가능성도 있음. 매장 진단 후 정확한 견적."),
+            ("15 일반 Face ID 안 되면 침수 때문인가요?",
+             "다이내믹 아일랜드 트루뎁스 모듈 침수 가능성 높음. 매장 진단 권장."),
+            ("15 일반 침수 수리 시간 얼마나 걸리나요?",
+             "1단계 당일, 2단계 1~2일, 3단계 메인보드 2~3일. 다이내믹 아일랜드 모듈 교체는 정밀 작업이라 1일 추가."),
+            ("15 Pro랑 비교해서 수리 가성비는?",
+             "15 일반이 10~15% 저렴. ProMotion·망원 카메라 없어 부품가 차이. 일반 사용자에겐 15 일반 침수 수리 가성비가 더 좋은 편."),
+        ],
+        "related": [
+            ("iphone-15-pro-water-damage.html", "Pro 비교", "iPhone 15 Pro 침수 가이드"),
+            ("iphone-14-water-damage.html", "이전 모델", "iPhone 14 일반 침수 가이드"),
+            ("iphone-16-water-damage.html", "다음 모델", "iPhone 16 일반 침수 가이드"),
+            ("iphone-water-damage-emergency-30min.html", "응급", "침수 후 30분 골든타임"),
+            ("iphone-battery-replacement-types-cost-2026.html", "배터리", "배터리 교체 종류·비용"),
+        ],
+    },
+
+    # 21. iPhone 16 (일반) 침수
+    {
+        "slug": "iphone-16-water-damage",
+        "cat": "iPhone 16 · 침수 가이드",
+        "title": "아이폰 16 침수 — 1년차 일반 모델·USB-C·액션 버튼 침수 정밀 가이드",
+        "desc": "2024년 출시 1년차 아이폰 16 일반 모델 침수 케이스. USB-C 단자 침수 위험, 액션 버튼 일반 도입, 카메라 컨트롤 버튼까지 일반 모델 특화 가이드.",
+        "keywords": "아이폰 16 침수, 아이폰 16 일반 침수, USB-C 단자 침수, 액션 버튼 침수, 카메라 컨트롤 침수, 16 IP68",
+        "intro": [
+            "iPhone 16(일반)은 2024년 9월 출시로 약 1년이 경과한 모델입니다. <strong>액션 버튼이 일반 모델에도 도입</strong>됐고 <strong>카메라 컨트롤 버튼이 신규 추가</strong>되어 침수 위험 부위가 늘어났습니다. 1년차라 방수는 비교적 양호.",
+            "이 글은 16 일반 모델의 액션 버튼·카메라 컨트롤 침수 위험 + USB-C 단자 침수 + 정확한 수리 비용을 정리한 일반 모델 특화 가이드입니다.",
+        ],
+        "good": '<strong>1년 사용한 16 일반의 방수 등급은 출고 시의 60~75% 수준</strong>으로 비교적 양호합니다. 다만 새로 추가된 액션 버튼·카메라 컨트롤 두 개의 물리 버튼이 침수 취약 신규 부위. <a href="iphone-water-damage-emergency-30min.html">30분 골든타임</a> 안에 매장 방문 핵심.',
+        "body_sections": [
+            {
+                "h2": "16 일반의 신규 변화 — 액션 버튼·카메라 컨트롤",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>항목</th><th>15 일반</th><th>16 일반</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>음소거 스위치/액션 버튼</td><td>음소거 스위치</td><td><strong>액션 버튼 (일반 첫 도입)</strong></td></tr>
+    <tr><td>카메라 컨트롤 버튼</td><td>없음</td><td><strong>신규 도입</strong></td></tr>
+    <tr><td>칩</td><td>A16 Bionic</td><td>A18</td></tr>
+    <tr><td>단자</td><td>USB-C</td><td>USB-C</td></tr>
+    <tr><td>침수 수리비 (1단계)</td><td>7~12만원</td><td>8~14만원</td></tr>
+  </tbody>
+</table>
+<p>16 일반은 <strong>물리 버튼이 2개나 추가</strong>(액션·카메라 컨트롤)되어 침수 취약 부위 증가. 다만 1년차라 방수 패킹은 아직 건강한 편.</p>
+""",
+            },
+            {
+                "h2": "16 일반 침수 취약 4대 부위",
+                "html": """
+<h3>1. 카메라 컨트롤 버튼 (16 첫 도입, 가장 위험)</h3>
+<p>오른쪽 측면에 새로 추가된 카메라 컨트롤 버튼은 정밀 햅틱 + 압력 센서 내장. 침수 시:</p>
+<ul>
+  <li>버튼 반응 없음·오작동</li>
+  <li>가벼운 터치 인식 안 됨</li>
+  <li>카메라 앱 자동 실행 실패</li>
+  <li>접점부 부식이 가장 빠름</li>
+</ul>
+
+<h3>2. 액션 버튼 (16 일반 첫 도입)</h3>
+<p>15 Pro에서 일반 모델로 확대된 액션 버튼. 침수 시 잠금 안 풀리거나 의도하지 않은 동작 발생.</p>
+
+<h3>3. USB-C 단자</h3>
+<p>1년차라 단자 마모는 적지만 침수 시 PD 충전 협상 실패·외부 출력 안 됨 발생.</p>
+
+<h3>4. 다이내믹 아일랜드 모듈</h3>
+<p>트루뎁스 + 전면 카메라 통합. Face ID·다이내믹 아일랜드 표시 영역 침수 영향.</p>
+""",
+            },
+            {
+                "h2": "16 일반 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>16 일반 비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>단자·버튼 청소·점검·방수 재처리</td><td>8~14만원</td></tr>
+    <tr><td><strong>2단계 (카메라 컨트롤 버튼)</strong></td><td>버튼 모듈 교체</td><td>12~20만원</td></tr>
+    <tr><td><strong>2단계 (액션 버튼)</strong></td><td>액션 버튼 모듈 교체</td><td>10~16만원</td></tr>
+    <tr><td><strong>2단계 (USB-C 단자)</strong></td><td>단자 교체</td><td>12~18만원</td></tr>
+    <tr><td><strong>2단계 (다이내믹 아일랜드 모듈)</strong></td><td>트루뎁스 + 카메라 모듈 교체</td><td>20~32만원</td></tr>
+    <tr><td><strong>2단계 (48MP 메인 카메라)</strong></td><td>카메라 모듈 교체</td><td>15~25만원</td></tr>
+    <tr><td><strong>2단계 (OLED 디스플레이)</strong></td><td>화면 모듈 교체</td><td>22~38만원</td></tr>
+    <tr><td><strong>2단계 (배터리 동반 손상)</strong></td><td>배터리 교체</td><td>10~14만원</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>28~42만원</td></tr>
+  </tbody>
+</table>
+<p>16 Pro 대비 약 10~15% 저렴. 카메라 컨트롤 버튼은 신규 부품이라 부품 단가 변동 가능.</p>
+""",
+            },
+            {
+                "h2": "16 일반 침수 응급 처치 — 신규 버튼 주의",
+                "html": """
+<ol>
+  <li><strong>전원 즉시 끄기</strong></li>
+  <li><strong>액션 버튼·카메라 컨트롤 버튼 마른 천으로 닦기</strong> — 면봉으로 누르지 말 것</li>
+  <li><strong>USB-C 단자 마른 천으로 닦기</strong></li>
+  <li><strong>충전 시도 절대 X</strong></li>
+  <li><strong>케이스 분리 + 심카드 빼기</strong></li>
+  <li><strong>30분 안에 매장</strong></li>
+</ol>
+<p>카메라 컨트롤 버튼은 햅틱 모듈이 들어있어 손으로 강하게 누르면 더 손상. 그냥 닦기만 하고 매장 방문.</p>
+""",
+            },
+            {
+                "h2": "16 일반 침수 vs 새 폰 교체 — 손익 분기점",
+                "html": """
+<p>1년 사용한 16 일반은 아직 중고가가 높아 수리 권장 구간이 가장 넓음:</p>
+<ul>
+  <li><strong>1~2단계 (10~35만원)</strong> → 수리 강력 권장</li>
+  <li><strong>2단계 메인보드 미손상</strong> → 수리 가능, 데이터 보존</li>
+  <li><strong>3단계 메인보드 (28~42만원)</strong> → 1년차라 수리 권장</li>
+  <li><strong>3단계 + 배터리 + 카메라 (50만원+)</strong> → 데이터 추출 후 새 폰 고려</li>
+</ul>
+<p>1년차 폰이라 애플케어+ 가입자라면 공식 처치도 검토 가치. <a href="applecare-vs-private-vs-insurance.html">애플케어+ vs 사설 비교</a> 참고.</p>
+""",
+            },
+        ],
+        "tip_box": ("16 일반 = 물리 버튼 2개 추가, 케이스 사용 권장", "카메라 컨트롤·액션 버튼 두 개의 신규 물리 버튼이 침수 취약 부위. 케이스로 측면 보호하면 침수·낙하 모두 대비 가능."),
+        "daol_box": {
+            "title": "다올리페어 16 일반 침수 수리 — 신규 버튼·USB-C 정밀 처치",
+            "p": "16 일반의 카메라 컨트롤·액션 버튼·USB-C·다이내믹 아일랜드까지 종합 진단 + 침수 처치.",
+            "ul": [
+                "카메라 컨트롤 버튼 침수 정밀 처치",
+                "액션 버튼 모듈 침수 처치",
+                "USB-C 단자 부식 청소·교체",
+                "다이내믹 아일랜드 트루뎁스 모듈 처치",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "iPhone 16 WATER", "title": "16 일반 침수<br>신규 버튼 처치", "desc": "카메라 컨트롤·액션 버튼·USB-C까지 16 일반 침수, 다올리페어 가산·신림·목동에서 정밀 처치."},
+        "faq": [
+            ("1년 사용한 16 일반도 IP68 그대로인가요?",
+             "1년 사용 시 출고 시의 60~75% 수준으로 비교적 양호. 다만 사우나·수영장은 절대 X."),
+            ("카메라 컨트롤 버튼이 침수로 안 되면 수리 가능?",
+             "네, 버튼 모듈 교체 (12~20만원). 햅틱 + 압력 센서 정밀 부품이라 정품 부품 권장."),
+            ("16 일반 침수 후 액션 버튼이 오작동해요",
+             "버튼 안쪽 접점 부식 가능성. 청소로 해결되면 5~10만원, 모듈 교체 필요하면 10~16만원."),
+            ("16 일반과 16 Pro 침수 수리비 차이가 큰가요?",
+             "Pro가 10~15% 더 비쌉니다. ProMotion·망원 카메라·티타늄 프레임 차이. 일반 사용자에겐 16 일반 가성비 좋음."),
+            ("16 일반 애플케어+ 침수 vs 사설 어디가 나아요?",
+             "애플케어+ 자기부담금 12.9만원이라 2단계 이상 침수면 공식이 유리할 수도. 1단계는 사설이 더 저렴. <a href='applecare-vs-private-vs-insurance.html'>비교 가이드</a> 참고."),
+            ("16 일반 침수 후 데이터 살릴 수 있나요?",
+             "30분 안에 매장 가시면 95% 이상 보존. 1년차 폰이라 NAND 건강해 추출률 가장 높은 편."),
+        ],
+        "related": [
+            ("iphone-16-pro-water-damage.html", "Pro 비교", "iPhone 16 Pro 침수 가이드"),
+            ("iphone-15-water-damage.html", "이전 모델", "iPhone 15 일반 침수 가이드"),
+            ("iphone-water-damage-emergency-30min.html", "응급", "침수 후 30분 골든타임"),
+            ("iphone-water-damage-repair-cost-guide.html", "비용", "침수 수리 비용 단계별"),
+            ("applecare-vs-private-vs-insurance.html", "선택", "애플케어+ vs 사설 비교"),
+        ],
+    },
 ]
 
 
