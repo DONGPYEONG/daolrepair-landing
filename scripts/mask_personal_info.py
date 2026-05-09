@@ -39,29 +39,27 @@ except ImportError:
 
 def _detect_faces(img_pil):
     """OpenCV로 얼굴 영역 검출 — (x, y, w, h) 리스트 반환.
-    화면 반사·작은 얼굴까지 잡도록 정면 + 측면 모두 시도.
-    개인정보 보호 우선: 검출 실패보다 과검출(false positive)이 안전.
-    scaleFactor=1.05 (촘촘 스캔), minNeighbors=3 (덜 엄격), minSize=30px (작은 얼굴까지)
+    보수적 설정: false positive 줄여서 자연스러운 사진 보존.
+    scaleFactor=1.1 (덜 촘촘), minNeighbors=5 (엄격), minSize=60px (큰 얼굴만)
     """
     if cv2 is None or _FACE_CASCADE is None:
         return []
     img_np = np.array(img_pil.convert('RGB'))
     gray = cv2.cvtColor(img_np, cv2.COLOR_RGB2GRAY)
     boxes = []
-    # 정면 얼굴
-    faces = _FACE_CASCADE.detectMultiScale(gray, scaleFactor=1.05, minNeighbors=3, minSize=(30, 30))
+    # 정면 얼굴 (보수적)
+    faces = _FACE_CASCADE.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(60, 60))
     boxes.extend([tuple(map(int, f)) for f in faces])
-    # 측면 얼굴 (좌측)
-    if _PROFILE_CASCADE is not None:
-        profiles = _PROFILE_CASCADE.detectMultiScale(gray, scaleFactor=1.05, minNeighbors=3, minSize=(30, 30))
-        boxes.extend([tuple(map(int, f)) for f in profiles])
-        # 측면 얼굴 (우측 — 이미지 좌우 반전 후 다시)
-        flipped = cv2.flip(gray, 1)
-        profiles_r = _PROFILE_CASCADE.detectMultiScale(flipped, scaleFactor=1.05, minNeighbors=3, minSize=(30, 30))
-        H, W = gray.shape
-        for (x, y, w, h) in profiles_r:
-            boxes.append((W - x - w, int(y), int(w), int(h)))
     return boxes
+
+
+def _shrink_to_face_only(box):
+    """검출 박스의 상단 60%만 = 실제 얼굴 영역 (어깨·몸통 제외).
+    가로 양옆 10% 마진 (얼굴 80% 폭)
+    """
+    x, y, w, h = box
+    margin_x = int(w * 0.10)
+    return (x + margin_x, y, w - margin_x * 2, int(h * 0.6))
 
 # ─── 살리는 패턴 (시계·날짜·날씨 — 신뢰감 주는 일반 정보) ───
 # 시계: "9:41", "12:30", "21:30", "9 : 41" (OCR 띄어쓰기 변형 허용)
@@ -218,25 +216,25 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2, model: 
         print(f"  ⌚ 워치 사진 ({path.name}) — 마스킹 스킵 (정책: 워치는 개인정보 X)")
         return False
 
-    # 🔥 0차: 얼굴 자동 인식 후 무조건 블러 (개인정보 보호 최우선)
-    # 화면 반사·뒤에 비친 얼굴까지 모두 잡기 위해 정면 + 측면 모두 검출
+    # 🔥 0차: 얼굴 자동 인식 후 자연스럽게 블러 (얼굴만 못 알아보게)
+    # 보수적 검출 + 박스 상단 60%만 = 어깨·몸통 보존
     face_count = 0
     if cv2 is not None:
         faces = _detect_faces(img)
         if faces:
             face_count = len(faces)
-            for (fx, fy, fw, fh) in faces:
-                # 패딩 30% 확대 (얼굴 경계 + 머리카락까지 확실히 가림)
-                pad = max(fw, fh) * 3 // 10
-                x1 = max(0, fx - pad)
-                y1 = max(0, fy - pad)
-                x2 = min(W, fx + fw + pad)
-                y2 = min(H, fy + fh + pad)
+            for face in faces:
+                # 검출 박스에서 실제 얼굴 영역만 (상단 60%, 가로 80%)
+                fx, fy, fw, fh = _shrink_to_face_only(face)
+                x1 = max(0, fx)
+                y1 = max(0, fy)
+                x2 = min(W, fx + fw)
+                y2 = min(H, fy + fh)
                 if x2 > x1 and y2 > y1:
+                    # 자연스러운 가우시안 블러만 (모자이크 X)
                     crop = img.crop((x1, y1, x2, y2))
-                    pixelated = _pixelate(crop)
-                    pixelated = pixelated.filter(ImageFilter.GaussianBlur(radius=12))
-                    img.paste(pixelated, (x1, y1, x2, y2))
+                    blurred = crop.filter(ImageFilter.GaussianBlur(radius=15))
+                    img.paste(blurred, (x1, y1, x2, y2))
             img.save(path, 'JPEG', quality=92, optimize=True)
 
     try:
