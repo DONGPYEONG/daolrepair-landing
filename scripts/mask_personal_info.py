@@ -24,6 +24,43 @@ except ImportError:
     print("⚠️ Pillow 필요: pip install Pillow")
     sys.exit(1)
 
+# OpenCV 얼굴 인식용 (선택 — 없으면 얼굴 마스킹 스킵)
+try:
+    import cv2
+    import numpy as np
+    _FACE_CASCADE = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+    _PROFILE_CASCADE = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_profileface.xml')
+except ImportError:
+    cv2 = None
+    np = None
+    _FACE_CASCADE = None
+    _PROFILE_CASCADE = None
+
+
+def _detect_faces(img_pil):
+    """OpenCV로 얼굴 영역 검출 — (x, y, w, h) 리스트 반환.
+    화면 반사·작은 얼굴까지 잡도록 정면 + 측면 모두 시도.
+    """
+    if cv2 is None or _FACE_CASCADE is None:
+        return []
+    img_np = np.array(img_pil.convert('RGB'))
+    gray = cv2.cvtColor(img_np, cv2.COLOR_RGB2GRAY)
+    boxes = []
+    # 정면 얼굴
+    faces = _FACE_CASCADE.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=4, minSize=(40, 40))
+    boxes.extend([tuple(map(int, f)) for f in faces])
+    # 측면 얼굴 (좌측)
+    if _PROFILE_CASCADE is not None:
+        profiles = _PROFILE_CASCADE.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=4, minSize=(40, 40))
+        boxes.extend([tuple(map(int, f)) for f in profiles])
+        # 측면 얼굴 (우측 — 이미지 좌우 반전 후 다시)
+        flipped = cv2.flip(gray, 1)
+        profiles_r = _PROFILE_CASCADE.detectMultiScale(flipped, scaleFactor=1.1, minNeighbors=4, minSize=(40, 40))
+        H, W = gray.shape
+        for (x, y, w, h) in profiles_r:
+            boxes.append((W - x - w, int(y), int(w), int(h)))
+    return boxes
+
 # ─── 살리는 패턴 (시계·날짜·날씨 — 신뢰감 주는 일반 정보) ───
 # 시계: "9:41", "12:30", "21:30", "9 : 41" (OCR 띄어쓰기 변형 허용)
 # AM/PM: "AM 9:41", "PM 2:30", "오전 9:00", "오후 2:30"
@@ -171,6 +208,27 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
     # 회전 적용된 이미지로 임시 저장 후 OCR (원본 EXIF는 제거됨)
     img.save(path, 'JPEG', quality=92, optimize=True)
     W, H = img.size
+
+    # 🔥 0차: 얼굴 자동 인식 후 무조건 블러 (개인정보 보호 최우선)
+    # 화면 반사·뒤에 비친 얼굴까지 모두 잡기 위해 정면 + 측면 모두 검출
+    face_count = 0
+    if cv2 is not None:
+        faces = _detect_faces(img)
+        if faces:
+            face_count = len(faces)
+            for (fx, fy, fw, fh) in faces:
+                # 패딩 20% 확대 (얼굴 경계 살짝 넘치도록)
+                pad = max(fw, fh) // 5
+                x1 = max(0, fx - pad)
+                y1 = max(0, fy - pad)
+                x2 = min(W, fx + fw + pad)
+                y2 = min(H, fy + fh + pad)
+                if x2 > x1 and y2 > y1:
+                    crop = img.crop((x1, y1, x2, y2))
+                    pixelated = _pixelate(crop)
+                    pixelated = pixelated.filter(ImageFilter.GaussianBlur(radius=8))
+                    img.paste(pixelated, (x1, y1, x2, y2))
+            img.save(path, 'JPEG', quality=92, optimize=True)
 
     try:
         results = reader.readtext(str(path), text_threshold=0.4, low_text=0.3)
@@ -349,7 +407,8 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
     extra_preview = ", ".join([r[4][:15] for r in extra_blur[:3]])
     kept_preview = ", ".join(kept[:5])
     extra_msg = f" (+ 2차 {len(extra_blur)}개 [{extra_preview}])" if extra_blur else ""
-    print(f"  🛡️ 마스킹: 1차 블러 {len(regions_to_blur)}개 [{masked_preview}]{extra_msg} / 살림 {len(kept)}개 [{kept_preview}]")
+    face_msg = f" 👤얼굴 {face_count}개" if face_count else ""
+    print(f"  🛡️ 마스킹:{face_msg} 1차 블러 {len(regions_to_blur)}개 [{masked_preview}]{extra_msg} / 살림 {len(kept)}개 [{kept_preview}]")
     return True
 
 
