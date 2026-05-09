@@ -171,9 +171,16 @@ def _split_options(options: str) -> list:
     return [o.strip() for o in options.split('+') if o.strip()]
 
 
+def _strip_redundant_replace(s: str) -> str:
+    """'배터리교체' → '배터리' (제목 템플릿이 자체 '교체' 추가하므로 중복 방지)"""
+    return s.replace("교체", "").strip()
+
+
 def _format_options_natural(options: str) -> str:
     """'DD액정+셀배터리' → 'DD(OEM) 액정과 셀 교체 배터리'"""
     parts = _split_options(options)
+    # "교체" 접미사 제거 — 제목 템플릿이 자체 "교체" 추가하므로 중복 방지
+    parts = [_strip_redundant_replace(p) for p in parts]
     natural_parts = []
     for p in parts:
         # DD/OEM 액정

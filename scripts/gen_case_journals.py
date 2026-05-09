@@ -601,17 +601,18 @@ TYPE_BODY = {
   <li><strong>무선충전 시도</strong> — 무선은 되는데 유선이 안 된다면 단자 문제 (메인보드는 정상)</li>
   <li><strong>침수·낙하 이력 확인</strong> — 떨어뜨리거나 물 닿은 적 있으면 단자 외 메인보드 동반 진단 필요</li>
 </ol>
-<p>충전 단자 문제는 <strong>약 70%가 이물질·먼지 청소만으로 해결</strong>됩니다. 단자 안쪽이 깊어 보풀·먼지가 잘 끼고, 그것 때문에 접촉 불량이 생깁니다. 청소로 해결 안 되면 단자 자체 교체가 필요해요.</p>
+<p>충전 단자 문제는 매장 진단 후 <strong>청소로 해결 가능한지, 단자 교체가 필요한지</strong> 정확히 확인합니다. 단자 핀이 휘거나 부식이 진행됐으면 청소로는 안 되고 단자 부품 자체 교체가 필요해요.</p>
 
 <h2>이번 케이스 자세히 보기</h2>
-<p>{date} 다올리페어 {branch} 방문 고객 사례:</p>
+<p>{date} 다올리페어 {branch} 방문 고객 사례 — <strong>충전 단자 교체 진행</strong>:</p>
 <ul>
   <li><strong>모델</strong>: {model} ({model_year}년 출시)</li>
-  <li><strong>증상</strong>: 충전 단자 인식 불량 — 청소·교체 진단 필요</li>
+  <li><strong>증상</strong>: 충전 단자 손상 — 단자 부품 교체 필요 진단</li>
+  <li><strong>처치</strong>: 정품 추출 단자 부품으로 교체</li>
   <li><strong>참고</strong>: {model_weak}</li>
 </ul>
 
-<h2>청소 vs 교체 — 어느 쪽이 본인에게 맞나</h2>
+<h2>청소 vs 교체 — 매장 진단 기준</h2>
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
   <thead>
     <tr style="background:#f5f5f7;">
@@ -621,25 +622,25 @@ TYPE_BODY = {
     </tr>
   </thead>
   <tbody>
-    <tr><td style="padding:10px;border:1px solid #eee;">대상</td><td style="padding:10px;border:1px solid #eee;">이물질·먼지 끼인 케이스</td><td style="padding:10px;border:1px solid #eee;">단자 부품 손상 케이스</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;">대상</td><td style="padding:10px;border:1px solid #eee;">이물질·먼지만 낀 가벼운 케이스</td><td style="padding:10px;border:1px solid #eee;">핀 휨·부식·접촉 불량 진행 케이스</td></tr>
     <tr><td style="padding:10px;border:1px solid #eee;">소요 시간</td><td style="padding:10px;border:1px solid #eee;">30분 이내</td><td style="padding:10px;border:1px solid #eee;">1~2시간</td></tr>
     <tr><td style="padding:10px;border:1px solid #eee;">기본 비용</td><td style="padding:10px;border:1px solid #eee;">3만원~</td><td style="padding:10px;border:1px solid #eee;">모델별 별도 (매장 견적)</td></tr>
     <tr><td style="padding:10px;border:1px solid #eee;">교체 부품</td><td style="padding:10px;border:1px solid #eee;">없음 (청소만)</td><td style="padding:10px;border:1px solid #eee;">정품 추출 단자 부품</td></tr>
   </tbody>
 </table>
 
-<h2>매장에서 진행한 진단·수리 (당일 30분~1시간)</h2>
+<h2>매장에서 진행한 진단·수리 (이번 케이스: 단자 교체)</h2>
 <ol>
-  <li><strong>1차 진단 (5분)</strong> — 라이트로 단자 안 확인, 이물질 여부·접촉 상태 점검</li>
-  <li><strong>정밀 청소 (15~20분)</strong> — 전용 도구로 단자 안 보풀·먼지 제거 (핀 손상 없이 안전하게)</li>
-  <li><strong>충전 테스트</strong> — 정품 케이블·일반 케이블 모두 인식 확인. 100% 충전 정상 진행 검증</li>
-  <li><strong>(필요 시) 단자 교체</strong> — 청소로 해결 안 되면 정품 추출 단자 부품으로 교체</li>
+  <li><strong>1차 진단 (5분)</strong> — 라이트로 단자 안 확인, 핀 상태·접촉·부식 여부 점검</li>
+  <li><strong>분해 (10~15분)</strong> — 단자 모듈 접근 위해 후면 또는 베젤 분해</li>
+  <li><strong>단자 교체 (30~40분)</strong> — 정품 추출 단자 부품으로 교체, 케이블 재연결</li>
+  <li><strong>조립 + 충전 테스트</strong> — 정품·일반 케이블 모두 인식 확인, 100% 충전 정상 진행 검증</li>
 </ol>
-<p>청소만으로 해결되면 비용도 절약됩니다. 자세한 비교는 <a href="iphone-charging-port-cleaning-vs-replacement.html">충전 단자 청소 vs 교체 결정 가이드</a>를 참고하세요.</p>
+<p>자세한 비교는 <a href="iphone-charging-port-cleaning-vs-replacement.html">충전 단자 청소 vs 교체 결정 가이드</a>를 참고하세요.</p>
 
 <div style="background:#f0f7ff;border-left:4px solid #3b82f6;padding:14px 18px;border-radius:0 10px 10px 0;margin:20px 0;">
-  <strong style="color:#3b82f6;display:block;margin-bottom:6px;">충전 단자 청소 가격 안내</strong>
-  <p style="font-size:14px;color:#555;line-height:1.7;margin:0;">기본 <strong>3만원~</strong> 시작. 복잡하거나 시간이 오래 걸리는 경우 추가 비용 발생 가능. 최신 기종(15·16·17 시리즈)은 부품 정밀도가 높아 더 나올 수 있어요. 정확한 비용은 매장 진단 후 안내드립니다.</p>
+  <strong style="color:#3b82f6;display:block;margin-bottom:6px;">충전 단자 수리 가격 안내</strong>
+  <p style="font-size:14px;color:#555;line-height:1.7;margin:0;">청소는 기본 <strong>3만원~</strong>, 단자 교체는 모델·부품에 따라 매장 견적 안내. 최신 기종(15·16·17 시리즈)은 부품 정밀도가 높아 더 나올 수 있어요. 매장 진단 후 정확한 비용 안내드립니다.</p>
 </div>
 
 <div style="background:#fff5f0;border-left:4px solid #E8732A;padding:14px 18px;border-radius:0 10px 10px 0;margin:20px 0;">
@@ -860,6 +861,21 @@ QA_BY_TYPE = {
 }
 
 
+def _has_jongseong(text):
+    """한글 마지막 글자에 받침이 있는지 — '로/으로', '이/가' 같은 조사 선택용"""
+    if not text:
+        return False
+    last = text.strip()[-1]
+    if not ('가' <= last <= '힣'):
+        return False
+    return (ord(last) - ord('가')) % 28 != 0
+
+
+def _ro_postposition(text):
+    """받침 있으면 '으로', 없으면 '로'"""
+    return "으로" if _has_jongseong(text) else "로"
+
+
 def _make_meta_title(c, type_key, meta):
     """파일명 메타정보 있을 때 자연스러운 제목 생성.
     deterministic — 같은 케이스·메타면 같은 제목.
@@ -871,6 +887,7 @@ def _make_meta_title(c, type_key, meta):
     cause = meta.get("cause", "")
     period = meta.get("time_period", "")
     options_natural = meta.get("options_natural", "")
+    cause_ro = _ro_postposition(cause) if cause else ""
 
     # case_id 기반 시드로 여러 변형 중 1개 deterministic 선택
     case_id = c.get("case_id") or c.get("id") or (model + c.get("date","") + branch)
@@ -883,15 +900,15 @@ def _make_meta_title(c, type_key, meta):
     # 풀세트: 연령 + 원인 + 시간대 + 옵션
     if age_gender and cause and period and options_natural:
         variants += [
-            f"{age_gender} 손님 {model} {cause}으로 {options_natural} 교체 — {branch} {period} 케이스",
+            f"{age_gender} 손님 {model} {cause}{cause_ro} {options_natural} 교체 — {branch} {period} 케이스",
             f"{period}에 가져오신 {age_gender} 손님 {model} — {cause} → {options_natural} 교체 ({branch})",
-            f"{model} {cause}으로 망가진 {age_gender} 손님 — {branch}에서 {options_natural} 교체",
+            f"{model} {cause}{cause_ro} 망가진 {age_gender} 손님 — {branch}에서 {options_natural} 교체",
         ]
     # 연령 + 원인
     if age_gender and cause:
         variants += [
             f"{age_gender} 손님 {model} {cause} — {branch}에서 {type_kr}한 케이스",
-            f"{model} {cause}으로 {branch} 방문하신 {age_gender} 손님 사례",
+            f"{model} {cause}{cause_ro} {branch} 방문하신 {age_gender} 손님 사례",
         ]
     # 연령 + 옵션
     if age_gender and options_natural:
@@ -902,13 +919,13 @@ def _make_meta_title(c, type_key, meta):
     # 원인 + 시간대
     if cause and period:
         variants += [
-            f"{model} {cause}으로 {period}에 가져온 케이스 — {branch}에서 {type_kr} 진행",
+            f"{model} {cause}{cause_ro} {period}에 가져온 케이스 — {branch}에서 {type_kr} 진행",
             f"{period}에 {model} {cause} → {branch}에서 당일 해결한 사례",
         ]
     # 원인만
     if cause and not (age_gender or options_natural):
         variants += [
-            f"{model} {cause}으로 가져온 케이스 — {branch}에서 {type_kr} 진행",
+            f"{model} {cause}{cause_ro} 가져온 케이스 — {branch}에서 {type_kr} 진행",
         ]
     # 시간대만
     if period and not (age_gender or cause):
@@ -1064,6 +1081,8 @@ def _make_meta_intro_paragraph(c, type_key, meta):
     period = meta.get("time_period", "")
     time_natural = meta.get("time_natural", "")
     options_natural = meta.get("options_natural", "")
+    cause_ro = _ro_postposition(cause) if cause else ""
+    options_ro = _ro_postposition(options_natural) if options_natural else ""
 
     # case_id 기반 deterministic 변형 선택
     case_id = c.get("case_id") or c.get("id") or (model + c.get("date","") + branch)
@@ -1099,11 +1118,11 @@ def _make_meta_intro_paragraph(c, type_key, meta):
     elif cause == "충격":
         cause_phrase = "충격으로 손상된"
     elif cause:
-        cause_phrase = f"{cause}으로 손상된"
+        cause_phrase = f"{cause}{cause_ro} 손상된"
 
     option_phrase = ""
     if options_natural:
-        option_phrase = f"{options_natural}으로 교체 진행"
+        option_phrase = f"{options_natural}{options_ro} 교체 진행"
 
     # 변형 — 정보 풍부도에 따라 다양한 서술 톤
     variants = []
@@ -2267,17 +2286,17 @@ def update_journal_page(journals_list):
         if cat in by_cat:
             tab_html.append(f'<button class="hub-tab" onclick="filterJournalTab(\'{cat}\', this)">{icon} {label} <span style="opacity:.7;font-weight:600">{len(by_cat[cat])}</span></button>')
 
-    # 카드 (전부 한 그리드에)
+    # 카드 (전체 시간순 정렬 — 카테고리별 그룹화 X, 최신 업로드 순서대로)
     card_html = []
-    for cat, items in by_cat.items():
-        for j in items:
-            slug = j.get("slug", "")
-            title = j.get("title", "")
-            model = j.get("model", "")
-            branch = j.get("branch", "")
-            date = j.get("date", "")
-            type_kr = TYPE_KR.get(j.get("type", ""), "수리")
-            card_html.append(f'''    <a href="{slug}.html" class="hub-card" data-cat="{cat}">
+    for j in sorted(journals_list, key=lambda x: (x.get("uploaded_at") or x.get("date") or ""), reverse=True):
+        cat = model_to_cat(j.get("model", ""))
+        slug = j.get("slug", "")
+        title = j.get("title", "")
+        model = j.get("model", "")
+        branch = j.get("branch", "")
+        date = j.get("date", "")
+        type_kr = TYPE_KR.get(j.get("type", ""), "수리")
+        card_html.append(f'''    <a href="{slug}.html" class="hub-card" data-cat="{cat}">
       <div style="font-size:11px;color:#E8732A;font-weight:800;letter-spacing:0.5px;margin-bottom:8px;">📋 {branch} · {date}</div>
       <div class="hub-card-title">{title}</div>
       <div class="hub-card-desc">{model} {type_kr} 실제 사례 — 같은 증상 검색하시는 분께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
