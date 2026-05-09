@@ -411,11 +411,81 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2, model: 
             img.paste(orig_crop, (kx1, ky1))
         img.save(path, 'JPEG', quality=88, optimize=True)
 
+    # 🔥 3차 OCR — 잠금화면 위젯 영역 (상단 35%) 업스케일 후 작은 텍스트 검출
+    # 토끼 위 "1682일", 캘린더 위젯 등 OCR이 일반 설정으로 못 잡는 작은 텍스트 대응
+    # 위젯 영역만 크롭 → 3x 업스케일 → 매우 낮은 threshold → 검출된 텍스트 모두 블러
+    widget_blur = []
+    upper_h = int(H * 0.4)  # 상단 40% 영역
+    if upper_h > 100:
+        upper_crop = img.crop((0, 0, W, upper_h))
+        upscale = 3
+        upper_3x = upper_crop.resize((W * upscale, upper_h * upscale), Image.LANCZOS)
+        widget_temp = path.parent / f"_widget_temp_{path.stem}.jpg"
+        try:
+            upper_3x.save(widget_temp, 'JPEG', quality=88)
+            results3 = reader.readtext(str(widget_temp), text_threshold=0.15, low_text=0.1)
+        except Exception:
+            results3 = []
+        finally:
+            try:
+                widget_temp.unlink()
+            except Exception:
+                pass
+
+        for entry in results3:
+            bbox, text, conf = entry
+            if conf < 0.15:
+                continue
+            text_stripped = (text or "").strip()
+            # 1자짜리 노이즈 + 시계/날짜 패턴은 스킵
+            if len(text_stripped) <= 1:
+                continue
+            if len(text_stripped) == 2 and conf < 0.85:
+                continue
+            # bbox는 3x 좌표 → 원본 좌표로 변환 (÷3)
+            ys = [pt[1] / upscale for pt in bbox]
+            xs = [pt[0] / upscale for pt in bbox]
+            h_box = max(ys) - min(ys)
+            # 큰 UI 요소(시계 등) 보호
+            if h_box > 150:
+                continue
+            # 이미 살림 영역이면 스킵 (시계·날짜)
+            if _is_keep_text(text, in_top_region=True):
+                continue
+            x_min = max(0, int(min(xs)) - 8)
+            y_min = max(0, int(min(ys)) - 8)
+            x_max = min(W, int(max(xs)) + 8)
+            y_max = min(H, int(max(ys)) + 8)
+            if x_max > x_min + 5 and y_max > y_min + 5:
+                # 살림 영역 침범 방지
+                x_min, y_min, x_max, y_max = shrink_around_kept((x_min, y_min, x_max, y_max), kept_boxes)
+                if x_max > x_min + 5 and y_max > y_min + 5:
+                    widget_blur.append((x_min, y_min, x_max, y_max, text_stripped))
+
+    if widget_blur:
+        # 살림 영역 다시 캡처 (3차 마스킹 전)
+        kept_originals_3 = []
+        for kb in kept_boxes:
+            kx1, ky1, kx2, ky2 = kb
+            if kx2 > kx1 and ky2 > ky1:
+                kept_originals_3.append((kb, img.crop((kx1, ky1, kx2, ky2)).copy()))
+        for (x1, y1, x2, y2, _txt) in widget_blur:
+            crop = img.crop((x1, y1, x2, y2))
+            pixelated = _pixelate(crop)
+            pixelated = pixelated.filter(ImageFilter.GaussianBlur(radius=5))
+            img.paste(pixelated, (x1, y1, x2, y2))
+        for kb, orig_crop in kept_originals_3:
+            kx1, ky1, kx2, ky2 = kb
+            img.paste(orig_crop, (kx1, ky1))
+        img.save(path, 'JPEG', quality=88, optimize=True)
+
     total = len(regions_to_blur) + len(extra_blur)
     masked_preview = ", ".join([r[4][:15] for r in regions_to_blur[:5]])
     extra_preview = ", ".join([r[4][:15] for r in extra_blur[:3]])
     kept_preview = ", ".join(kept[:5])
     extra_msg = f" (+ 2차 {len(extra_blur)}개 [{extra_preview}])" if extra_blur else ""
+    widget_preview = ", ".join([r[4][:15] for r in widget_blur[:3]])
+    widget_msg = f" (+ 3차 위젯 {len(widget_blur)}개 [{widget_preview}])" if widget_blur else ""
     face_msg = f" 👤얼굴 {face_count}개" if face_count else ""
     print(f"  🛡️ 마스킹:{face_msg} 1차 블러 {len(regions_to_blur)}개 [{masked_preview}]{extra_msg} / 살림 {len(kept)}개 [{kept_preview}]")
     return True

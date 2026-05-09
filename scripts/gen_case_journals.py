@@ -154,90 +154,177 @@ DEFAULT_TITLE_TEMPLATES = [
 
 # ─── 모델별 인트로 정보 ───
 MODEL_INFO = {
-    "아이폰 17": {
-        "year": 2024,
-        "screen": "최신 OLED 패널 (6.1인치)",
-        "weak_point": "최신 모델이라 부품 단가가 높음",
+    # ─── iPhone 17 시리즈 (2025년 출시 신모델) ───
+    "아이폰 17 프로": {
+        "year": 2025, "screen": "Super Retina XDR OLED ProMotion + Dynamic Island", "weak_point": "출시 1년차 신모델 — 부품 단가 가장 높고 정품 수급 제한적",
+        "signature": "Camera Control 정전식 버튼 + 알루미늄 유니바디 후면 + USB-C", "common_issue": "Camera Control 버튼 침수·압력 오작동, 후면 카메라 모듈 두꺼워 떨어뜨림 시 보호 글래스 파손", "vibe": "최신 모델·고가 사용자 — 빠른 수리·정품 부품 선호 경향",
     },
+    "아이폰 17": {
+        "year": 2025, "screen": "Super Retina XDR OLED 60Hz (6.1인치)", "weak_point": "ProMotion 미적용이지만 OLED라 액정 자체 가격은 비슷",
+        "signature": "기본형이지만 Action Button + USB-C 탑재", "common_issue": "Action Button 침수, 떨어뜨림 시 측면 프레임 변형 잦음", "vibe": "최신 합리 사용자 — 가성비 + 정품 옵션 선호",
+    },
+    # ─── iPhone 16 시리즈 ───
     "아이폰 16 프로": {
-        "year": 2024,
-        "screen": "Super Retina XDR OLED",
-        "weak_point": "후면 카메라 부분이 두꺼워 떨어뜨림 시 카메라 보호 글래스도 함께 파손",
+        "year": 2024, "screen": "Super Retina XDR OLED ProMotion + Dynamic Island", "weak_point": "Camera Control 신규 버튼 추가 — 침수·먼지 취약 지점 증가",
+        "signature": "Apple Intelligence 첫 도입 + Camera Control 신규 버튼", "common_issue": "Camera Control 버튼 작동 이상, 다이내믹 아일랜드 영역 액정 손상 시 Face ID 영향", "vibe": "AI·사진 기능 적극 사용자 — 카메라·디스플레이 품질 민감",
     },
     "아이폰 16": {
-        "year": 2024,
-        "screen": "Super Retina XDR OLED (6.1인치)",
-        "weak_point": "최신 모델이지만 떨어뜨리면 액정 손상 가능성",
+        "year": 2024, "screen": "Super Retina XDR OLED 60Hz (6.1인치)", "weak_point": "Action Button + Camera Control 신규 버튼 도입으로 측면 손상 포인트 증가",
+        "signature": "기본형에도 Action Button + Camera Control 적용", "common_issue": "Camera Control 버튼 오작동, USB-C 단자 흔들림", "vibe": "최신 모델 합리적 가격 사용자 — 빠른 수리 우선",
     },
+    "아이폰 16 플러스": {
+        "year": 2024, "screen": "Super Retina XDR OLED (6.7인치)", "weak_point": "큰 화면이라 액정 교체 단가 높고 떨어뜨림 충격면 넓음",
+        "signature": "큰 디스플레이 + 긴 배터리", "common_issue": "큰 화면으로 떨어뜨림 시 코너 충격 잦음", "vibe": "큰 화면·미디어 소비 사용자 — 디스플레이 품질 민감",
+    },
+    # ─── iPhone 15 시리즈 ───
     "아이폰 15 프로": {
-        "year": 2023,
-        "screen": "Super Retina XDR OLED",
-        "weak_point": "티타늄 프레임이라 외관은 견고하지만 액정은 깨짐",
+        "year": 2023, "screen": "Super Retina XDR OLED ProMotion + Dynamic Island", "weak_point": "티타늄 프레임은 견고하지만 코너 충격 시 액정·메인보드 손상 가능",
+        "signature": "티타늄 프레임 + USB-C 첫 도입 + A17 Pro 칩", "common_issue": "USB-C 단자 흔들림·접촉 불량, 발열 이슈로 배터리 조기 노화", "vibe": "프로페셔널 사용자 — 안정성·USB-C 호환성 중시",
     },
+    "아이폰 15 프로 맥스": {
+        "year": 2023, "screen": "Super Retina XDR OLED ProMotion (6.7인치)", "weak_point": "큰 액정 + 5x 망원 카메라로 무거워 한 손 떨어뜨림 빈도 ↑",
+        "signature": "5배 광학 줌 + 티타늄 + USB-C", "common_issue": "5x 망원 카메라 OIS 손상, 큰 액정 교체 단가 높음", "vibe": "사진·영상 전문 사용자 — 카메라 품질 최우선",
+    },
+    "아이폰 15": {
+        "year": 2023, "screen": "Super Retina XDR OLED + Dynamic Island", "weak_point": "기본형 첫 Dynamic Island 도입 — 노치 시절보다 부품가 ↑",
+        "signature": "기본형에도 Dynamic Island + USB-C 도입", "common_issue": "USB-C 단자 사용 잦아 흔들림 발생", "vibe": "USB-C 전환 사용자 — 케이블 호환성 중시",
+    },
+    # ─── iPhone 14 시리즈 ───
     "아이폰 14 프로": {
-        "year": 2022,
-        "screen": "Super Retina XDR OLED + Dynamic Island",
-        "weak_point": "Dynamic Island 부분 액정 손상 시 기능에 영향",
+        "year": 2022, "screen": "Super Retina XDR OLED ProMotion + Dynamic Island (첫 도입)", "weak_point": "Dynamic Island 부분 액정 손상 시 Face ID·트루뎁스 카메라 동시 영향",
+        "signature": "Dynamic Island 첫 도입 + Always-On Display + 4800만 화소", "common_issue": "다이내믹 아일랜드 영역 픽셀 죽음·검은 점", "vibe": "디자인·UI 신선함 추구 사용자",
+    },
+    "아이폰 14 프로 맥스": {
+        "year": 2022, "screen": "Super Retina XDR OLED ProMotion (6.7인치)", "weak_point": "큰 액정 + 무게로 떨어뜨림 시 충격 큼",
+        "signature": "Dynamic Island + 큰 화면 + 항상 켜짐", "common_issue": "측면 충격으로 액정 일부 누락 잦음", "vibe": "프리미엄 미디어 사용자",
+    },
+    "아이폰 14": {
+        "year": 2022, "screen": "Super Retina XDR OLED 60Hz", "weak_point": "Lightning 마지막 일반 모델 — 단자 마모 + 침수 동반 흔함",
+        "signature": "Lightning 단자 마지막 일반 모델 + 충돌 감지", "common_issue": "Lightning 단자 흔들림·충전 끊김", "vibe": "Lightning 호환 사용자 — 케이블 자산 활용",
+    },
+    # ─── iPhone 13 시리즈 ───
+    "아이폰 13 프로": {
+        "year": 2021, "screen": "Super Retina XDR OLED ProMotion (첫 도입)", "weak_point": "120Hz ProMotion 컨트롤러 정밀 회로 — 침수 시 화면 깜빡임 이슈",
+        "signature": "ProMotion 120Hz 첫 도입 + 3배 망원 카메라", "common_issue": "ProMotion 컨트롤러 침수 시 60Hz 자동 강등", "vibe": "고성능 디스플레이 추구 사용자",
+    },
+    "아이폰 13 프로 맥스": {
+        "year": 2021, "screen": "Super Retina XDR OLED ProMotion (6.7인치)", "weak_point": "큰 액정 교체 단가 + 망원 카메라 손상 동반 잦음",
+        "signature": "큰 화면 + ProMotion + 3배 줌", "common_issue": "측면 떨어뜨림으로 카메라 모듈 동시 손상", "vibe": "프로 사진·영상 사용자",
+    },
+    "아이폰 13": {
+        "year": 2021, "screen": "Super Retina XDR OLED 60Hz (6.1인치)", "weak_point": "4년차 모델 — 배터리 노화 + Lightning 단자 마모 동반 진단 권장",
+        "signature": "OLED + Lightning 단자 + 듀얼 카메라", "common_issue": "배터리 80% 미만 진입, Lightning 단자 부식", "vibe": "장기 사용자 — 배터리 + 액정 통합 점검 선호",
     },
     "아이폰 13 미니": {
-        "year": 2021,
-        "screen": "Super Retina XDR OLED (5.4인치)",
-        "weak_point": "작은 모델이라 한 손 사용 중 떨어뜨림 빈도 높음",
+        "year": 2021, "screen": "Super Retina XDR OLED (5.4인치)", "weak_point": "작은 모델 — 한 손 사용 중 떨어뜨림 빈도 가장 높음",
+        "signature": "5.4인치 작은 모델 (마지막 mini)", "common_issue": "측면 손상·액정 코너 깨짐", "vibe": "작은 폰 선호 사용자 — 부품가 비교적 합리적",
     },
+    # ─── iPhone 12 시리즈 ───
     "아이폰 12 프로 맥스": {
-        "year": 2020,
-        "screen": "Super Retina XDR OLED (6.7인치)",
-        "weak_point": "큰 화면이라 액정 교체 비용도 비싼 편",
+        "year": 2020, "screen": "Super Retina XDR OLED (6.7인치)", "weak_point": "큰 화면 + 5년차 — 배터리·액정 + 카메라 OIS 동반 노후화",
+        "signature": "5G 첫 도입 + LiDAR 스캐너", "common_issue": "5년차 배터리 80% 미만, 후면 글래스 균열 잦음", "vibe": "5G·고화질 사용자 — 점검+배터리+액정 통합 의뢰",
+    },
+    "아이폰 12 프로": {
+        "year": 2020, "screen": "Super Retina XDR OLED + LiDAR", "weak_point": "측면 직각 디자인 — 떨어뜨림 시 충격 흡수 적음",
+        "signature": "직각 측면 디자인 + LiDAR + 5G", "common_issue": "측면 직각 부분 충격 흡수 X, 후면 글래스 균열", "vibe": "디자인 + 카메라 사용자",
     },
     "아이폰 12 미니": {
-        "year": 2020,
-        "screen": "Super Retina XDR OLED (5.4인치)",
-        "weak_point": "구형이지만 배터리 노화 빠른 모델",
+        "year": 2020, "screen": "Super Retina XDR OLED (5.4인치)", "weak_point": "5년차 + 작은 배터리 — 노화 가장 빠른 모델",
+        "signature": "5.4인치 작은 모델 + 5G", "common_issue": "배터리 노화 가장 빠름, 작은 화면이라 액정 코너 손상", "vibe": "작은 폰 + 가성비 중시 사용자",
+    },
+    "아이폰 12": {
+        "year": 2020, "screen": "Super Retina XDR OLED 60Hz", "weak_point": "5년차 — 배터리·후면 글래스·Lightning 단자 종합 노후화",
+        "signature": "5G + 직각 디자인 + 듀얼 카메라", "common_issue": "후면 글래스 균열, 배터리 80% 미만", "vibe": "장기 사용 + 종합 점검 선호",
+    },
+    # ─── iPhone 11 시리즈 ───
+    "아이폰 11 프로 맥스": {
+        "year": 2019, "screen": "Super Retina XDR OLED (6.5인치)", "weak_point": "6년차 + 큰 화면 — 액정 + 후면 글래스 + 배터리 동반 노후화",
+        "signature": "트리플 카메라 첫 도입 + 큰 OLED", "common_issue": "후면 글래스 균열 잦음, 배터리 노화 진행", "vibe": "장기 프리미엄 사용자",
+    },
+    "아이폰 11 프로": {
+        "year": 2019, "screen": "Super Retina XDR OLED (5.8인치)", "weak_point": "6년차 + OLED — 액정 가격은 비싸지만 OLED 품질은 유지",
+        "signature": "트리플 카메라 + OLED + 야간 모드", "common_issue": "배터리 80% 미만, 후면 글래스 균열", "vibe": "프로 사진 + 장기 사용",
     },
     "아이폰 11": {
-        "year": 2019,
-        "screen": "Liquid Retina HD LCD (6.1인치)",
-        "weak_point": "LCD 모델이라 화면 줄·얼룩 발생 시 빠른 교체 필요",
+        "year": 2019, "screen": "Liquid Retina HD LCD (6.1인치)", "weak_point": "LCD 모델 — 화면 줄·얼룩·잉크 번짐 발생 시 즉시 교체 권장 (그대로 두면 진행)",
+        "signature": "LCD + 듀얼 카메라 + 인기 보급형 모델", "common_issue": "LCD 화면 줄·얼룩 진행, 6년차 배터리 노화", "vibe": "LCD 모델 합리적 사용자 — 부품가 저렴해 수리 선호",
+    },
+    "아이폰 11 미니": {
+        "year": 2020, "screen": "OLED Retina (별칭)", "weak_point": "구형 마이너 모델",
+        "signature": "구형 모델", "common_issue": "구형 부품 수급 제한", "vibe": "구형 사용자",
+    },
+    # ─── iPhone XS / XR 시리즈 ───
+    "아이폰 XS 맥스": {
+        "year": 2018, "screen": "Super Retina HD OLED (6.5인치)", "weak_point": "7년차 — 배터리·OLED 번인·후면 글래스 노후화 종합",
+        "signature": "OLED 큰 화면 + Face ID 1세대", "common_issue": "OLED 번인, 배터리 노화", "vibe": "장기 OLED 사용자",
+    },
+    "아이폰 XS": {
+        "year": 2018, "screen": "Super Retina HD OLED (5.8인치)", "weak_point": "7년차 OLED — 번인·잔상 시작",
+        "signature": "OLED + Face ID + 듀얼 카메라", "common_issue": "OLED 잔상, 배터리 노화", "vibe": "OLED 프리미엄 장기 사용",
+    },
+    "아이폰 XR": {
+        "year": 2018, "screen": "Liquid Retina LCD (6.1인치)", "weak_point": "7년차 LCD — 화면 줄·얼룩 진행 빈도 높음",
+        "signature": "LCD + Face ID + 다양한 컬러", "common_issue": "LCD 화면 줄·얼룩, 배터리 노화", "vibe": "합리적 LCD 사용자",
+    },
+    "아이폰 X": {
+        "year": 2017, "screen": "Super Retina HD OLED (5.8인치)", "weak_point": "8년차 — 부품 수급 어려워지는 단계, 배터리 노화 거의 한계",
+        "signature": "Face ID 첫 도입 + 노치 첫 도입", "common_issue": "OLED 번인 진행, 배터리 거의 한계", "vibe": "역사적 모델 장기 사용",
+    },
+    # ─── iPhone SE 시리즈 ───
+    "아이폰 SE3": {
+        "year": 2022, "screen": "Retina HD LCD (4.7인치)", "weak_point": "Touch ID + 홈 버튼 누적 마모 흔함",
+        "signature": "Touch ID + 홈 버튼 + 작은 LCD", "common_issue": "홈 버튼 마모, LCD 줄·얼룩", "vibe": "Touch ID + 작은 폰 선호",
     },
     "아이폰 SE2": {
-        "year": 2020,
-        "screen": "Retina HD LCD (4.7인치)",
-        "weak_point": "구형 디자인이라 부품 호환성 주의",
+        "year": 2020, "screen": "Retina HD LCD (4.7인치)", "weak_point": "5년차 LCD + 홈 버튼 — 화면 줄·홈 버튼 마모 동반",
+        "signature": "Touch ID + 홈 버튼 + LCD", "common_issue": "LCD 줄·얼룩, 홈 버튼 마모, 배터리 노화", "vibe": "Touch ID 호환 사용자",
+    },
+    "아이폰 SE 1세대": {
+        "year": 2016, "screen": "Retina HD LCD (4인치)", "weak_point": "9년차 — 부품 수급 매우 제한적, 배터리·LCD 모두 한계",
+        "signature": "4인치 작은 모델 + Touch ID", "common_issue": "거의 모든 부품 한계 도달", "vibe": "특수 용도 또는 백업 폰",
+    },
+    # ─── iPhone 8 / 7 / 6 시리즈 ───
+    "아이폰 8 플러스": {
+        "year": 2017, "screen": "Retina HD LCD (5.5인치)", "weak_point": "8년차 + 큰 LCD — 부품가 합리적이나 수급 제한",
+        "signature": "Touch ID + 듀얼 카메라 + 큰 LCD", "common_issue": "LCD 줄·얼룩, 배터리 거의 한계", "vibe": "장기 사용 + 합리적 수리",
+    },
+    "아이폰 8": {
+        "year": 2017, "screen": "Retina HD LCD (4.7인치)", "weak_point": "8년차 — 배터리·LCD·홈 버튼 종합 노후화",
+        "signature": "Touch ID + 무선 충전 첫 도입", "common_issue": "배터리 한계, LCD 줄", "vibe": "구형 합리적 사용",
     },
     "아이폰7": {
-        "year": 2016,
-        "screen": "Retina HD (4.7인치)",
-        "weak_point": "구형 모델이라 부품 수급에 따라 가격 변동",
+        "year": 2016, "screen": "Retina HD LCD (4.7인치)", "weak_point": "9년차 — 부품 수급 매우 제한, 정품 부품 거의 없음",
+        "signature": "방수 첫 도입 + 홈 버튼 햅틱", "common_issue": "홈 버튼 햅틱 모터 고장, 배터리 한계", "vibe": "장기 사용 + 부품 호환성 주의",
     },
-    "아이폰 6": {
-        "year": 2014,
-        "screen": "Retina HD (4.7인치)",
-        "weak_point": "최구형 모델, 부품 재고 한정",
+    "아이폰7 플러스": {
+        "year": 2016, "screen": "Retina HD LCD (5.5인치)", "weak_point": "9년차 + 듀얼 카메라 — 카메라 OIS 손상 잦음",
+        "signature": "듀얼 카메라 첫 도입", "common_issue": "카메라 OIS 손상, 배터리 한계", "vibe": "구형 사진 사용자",
     },
     "아이폰6s": {
-        "year": 2015,
-        "screen": "Retina HD (4.7인치)",
-        "weak_point": "배터리 노화가 가장 흔한 증상",
+        "year": 2015, "screen": "Retina HD LCD (4.7인치)", "weak_point": "10년차 — 배터리 노화가 가장 흔한 증상, 부품 수급 매우 제한",
+        "signature": "3D Touch + 6배 슬림 디자인", "common_issue": "배터리 노화 가장 흔함, 홈 버튼 고장", "vibe": "10년차 장수 사용자",
     },
+    "아이폰 6": {
+        "year": 2014, "screen": "Retina HD (4.7인치)", "weak_point": "11년차 — 정품 부품 단종, 호환 부품으로만 수리 가능",
+        "signature": "첫 큰 화면 모델", "common_issue": "거의 모든 부품 한계", "vibe": "추억의 모델 — 기능 유지 목적",
+    },
+    # ─── iPad ───
     "아이패드 미니6": {
-        "year": 2021,
-        "screen": "Liquid Retina (8.3인치)",
-        "weak_point": "USB-C 단자 사용 빈번해 손상 빈도 높음",
+        "year": 2021, "screen": "Liquid Retina (8.3인치)", "weak_point": "USB-C 단자 사용 빈번 → 단자 흔들림·접촉 불량 증가",
+        "signature": "USB-C + 8.3인치 + 올스크린", "common_issue": "USB-C 단자 흔들림", "vibe": "휴대성 + 메모 사용자",
     },
+    # ─── Apple Watch ───
     "에르메스 5세대 44mm": {
-        "year": 2021,
-        "screen": "Always-On Retina OLED",
-        "weak_point": "고가 모델이라 액정 깨짐 시 큰 부담",
+        "year": 2019, "screen": "Always-On Retina OLED (44mm)", "weak_point": "고가 모델 — 액정 깨짐 시 정품 수급 제한 + 단가 부담",
+        "signature": "에르메스 가죽 스트랩 + Always-On 첫 도입", "common_issue": "충격 시 액정 깨짐, 본드 굳는 시간 1일 필요", "vibe": "프리미엄 사용자 — 정품 우선 + 작업 품질 중시",
     },
     "애플워치 SE2 40mm": {
-        "year": 2022,
-        "screen": "OLED Retina",
-        "weak_point": "운동 중 부딪힘으로 액정·터치 손상 빈번",
+        "year": 2022, "screen": "Retina OLED (40mm)", "weak_point": "운동 중 부딪힘으로 액정·터치 손상 빈번",
+        "signature": "보급형 + 충돌 감지 (S8 칩)", "common_issue": "운동 중 충격 액정 손상", "vibe": "운동·일상 사용자 — 합리적 가격",
     },
     "애플워치 SE 40mm": {
-        "year": 2020,
-        "screen": "OLED Retina",
-        "weak_point": "배터리 노화 + 운동 충격 누적",
+        "year": 2020, "screen": "Retina OLED (40mm)", "weak_point": "5년차 — 배터리 노화 + 운동 충격 누적",
+        "signature": "보급형 1세대 + LTPO OLED", "common_issue": "배터리 노화 + 액정 충격", "vibe": "보급형 장기 사용자",
     },
 }
 
@@ -921,6 +1008,20 @@ def make_body(c):
                 template = DEFAULT_BODY
 
     info = model_intro(model)
+    # 모델 특화 필드 (없으면 기본값) — 본문 차별화용
+    model_signature = info.get("signature", info.get("screen", ""))
+    model_common_issue = info.get("common_issue", info.get("weak_point", ""))
+    model_vibe = info.get("vibe", "")
+    # 모델 특화 인트로 박스 (signature·common_issue·vibe 모두 있으면 표시)
+    model_specific_box = ""
+    if info.get("signature") and info.get("common_issue"):
+        model_specific_box = f"""
+<div style="background:linear-gradient(135deg,#f8f9fa 0%,#fff5f0 100%);border-left:4px solid #E8732A;padding:14px 18px;border-radius:0 10px 10px 0;margin:18px 0;">
+  <strong style="color:#E8732A;display:block;margin-bottom:6px;font-size:13px;">📱 {model} 이 모델만의 포인트</strong>
+  <p style="font-size:14px;color:#333;line-height:1.7;margin:0 0 6px 0;"><strong>특징:</strong> {model_signature}</p>
+  <p style="font-size:14px;color:#555;line-height:1.7;margin:0;"><strong>이 모델 흔한 이슈:</strong> {model_common_issue}</p>
+</div>
+"""
     body_html = template.format(
         model=model,
         branch=c["branch"],
@@ -929,7 +1030,13 @@ def make_body(c):
         model_year=info["year"],
         model_screen=info["screen"],
         model_weak=info["weak_point"],
+        model_signature=model_signature,
+        model_common_issue=model_common_issue,
+        model_vibe=model_vibe,
     )
+    # 모델 특화 박스를 본문 맨 앞에 삽입
+    if model_specific_box:
+        body_html = model_specific_box + body_html
 
     # 🆕 메타 정보 있으면 본문 맨 앞에 "이번 케이스 요약" 박스 + 자연 서술 단락 삽입
     meta = c.get("meta") or {}
