@@ -931,14 +931,112 @@ def make_body(c):
         model_weak=info["weak_point"],
     )
 
-    # 🆕 메타 정보 있으면 본문 맨 앞에 "이번 케이스 요약" 박스 삽입
+    # 🆕 메타 정보 있으면 본문 맨 앞에 "이번 케이스 요약" 박스 + 자연 서술 단락 삽입
     meta = c.get("meta") or {}
     if meta:
         meta_box = _make_meta_intro_box(c, meta)
+        meta_para = _make_meta_intro_paragraph(c, type_key, meta)
+        prefix = ""
         if meta_box:
-            body_html = meta_box + body_html
+            prefix += meta_box
+        if meta_para:
+            prefix += meta_para
+        if prefix:
+            body_html = prefix + body_html
 
     return body_html
+
+
+def _make_meta_intro_paragraph(c, type_key, meta):
+    """메타 기반 자연스러운 서두 단락 — 케이스를 짧은 이야기로 풀어냄"""
+    model = c.get("model", "")
+    branch = c.get("branch", "")
+    type_kr = TYPE_KR.get(type_key, "수리")
+    age_gender = meta.get("age_gender", "")
+    cause = meta.get("cause", "")
+    period = meta.get("time_period", "")
+    time_natural = meta.get("time_natural", "")
+    options_natural = meta.get("options_natural", "")
+
+    # case_id 기반 deterministic 변형 선택
+    case_id = c.get("case_id") or c.get("id") or (model + c.get("date","") + branch)
+    seed = int(hashlib.md5((case_id + "_para").encode("utf-8")).hexdigest(), 16) % (2**32)
+    rng = random.Random(seed)
+
+    # 문장 빌딩 블록
+    visitor = ""
+    if age_gender:
+        visitor = f"{age_gender} 손님"
+    elif period:
+        visitor = "손님"
+    else:
+        visitor = "고객님"
+
+    when = ""
+    if time_natural:
+        when = f"{time_natural}쯤"
+    elif period:
+        when = period
+
+    cause_phrase = ""
+    if cause == "떨어뜨림":
+        cause_phrase = "떨어뜨려 망가진"
+    elif cause == "자연 노화":
+        cause_phrase = "자연 노화로 성능이 저하된"
+    elif cause == "침수":
+        cause_phrase = "물에 노출되어 손상된"
+    elif cause == "눌림":
+        cause_phrase = "눌림으로 손상된"
+    elif cause == "휨":
+        cause_phrase = "휘어 손상된"
+    elif cause == "충격":
+        cause_phrase = "충격으로 손상된"
+    elif cause:
+        cause_phrase = f"{cause}으로 손상된"
+
+    option_phrase = ""
+    if options_natural:
+        option_phrase = f"{options_natural}으로 교체 진행"
+
+    # 변형 — 정보 풍부도에 따라 다양한 서술 톤
+    variants = []
+
+    # 풀세트 (방문자 + 시간 + 원인 + 옵션)
+    if visitor and when and cause_phrase and option_phrase:
+        variants += [
+            f"<p>이번 케이스는 {when} {branch}을 방문하신 <strong>{visitor}</strong>의 {model}입니다. {cause_phrase} 상태로 가져오셨고, 매장에서 진단 후 <strong>{option_phrase}</strong>했습니다. 작업 과정과 옵션 비교를 아래에 정리했어요.</p>",
+            f"<p>{when} 매장에 들르신 <strong>{visitor}</strong>의 {model} 케이스입니다. {cause_phrase} 상태였고, 손님과 옵션 안내 후 <strong>{option_phrase}</strong>로 진행했습니다. 같은 증상으로 검색하시는 분들께 도움 되도록 진행 과정을 정리합니다.</p>",
+            f"<p>{when} {branch}에 오신 <strong>{visitor}</strong>이 가져오신 {model} — {cause_phrase} 상태로 매장 도착 후 진단했고, <strong>{option_phrase}</strong>를 선택하셨습니다. 같은 케이스 검색하시는 분께 참고가 되길 바랍니다.</p>",
+        ]
+
+    # 방문자 + 원인 + 옵션 (시간 없음)
+    if visitor and cause_phrase and option_phrase and not when:
+        variants += [
+            f"<p>이번 케이스는 <strong>{visitor}</strong>의 {model}입니다. {cause_phrase} 상태로 매장에 가져오셨고, <strong>{option_phrase}</strong>로 진행했습니다.</p>",
+        ]
+
+    # 방문자 + 원인 (옵션 없음)
+    if visitor and cause_phrase and not option_phrase:
+        variants += [
+            f"<p><strong>{visitor}</strong>이 가져오신 {model} 케이스입니다. {cause_phrase} 상태로 매장에 도착하셨고, 진단 후 {type_kr} 진행했습니다.</p>",
+        ]
+
+    # 시간 + 원인만 (방문자/옵션 없음)
+    if when and cause_phrase and not (visitor != "고객님" or option_phrase):
+        variants += [
+            f"<p>{when} {branch}에 가져오신 {model} — {cause_phrase} 상태였고, 진단 후 {type_kr} 진행했습니다.</p>",
+        ]
+
+    # 옵션만 (그 외 정보 없음)
+    if option_phrase and not (visitor != "고객님" or cause_phrase or when):
+        variants += [
+            f"<p>이번 케이스는 {model} {type_kr}입니다. 손님 옵션 선택에 따라 <strong>{option_phrase}</strong>했습니다.</p>",
+        ]
+
+    if not variants:
+        return ""
+
+    return rng.choice(variants) + "\n"
 
 
 def _make_meta_intro_box(c, meta):
@@ -1067,9 +1165,14 @@ def make_qa(c):
         if not qa_list and type_key == "back-glass":
             qa_list = QA_BY_TYPE.get("back", [])
 
+    # 🆕 메타 기반 케이스별 Q&A 추가 (앞쪽에 삽입)
+    meta = c.get("meta") or {}
+    meta_qa = _make_meta_qa(c, type_key, meta) if meta else []
+    full_qa = meta_qa + list(qa_list)
+
     items = "\n".join([
         f'    <div class="faq-item"><div class="faq-q">{q}</div><div class="faq-a">{a}</div></div>'
-        for q, a in qa_list
+        for q, a in full_qa
     ])
     return f'''
 <h2>자주 묻는 질문</h2>
@@ -1077,6 +1180,78 @@ def make_qa(c):
 {items}
 </div>
 '''
+
+
+def _make_meta_qa(c, type_key, meta):
+    """메타 기반 케이스별 Q&A 생성 — 원인·옵션에 맞는 자연 질문/답변"""
+    model = c.get("model", "")
+    cause = meta.get("cause", "")
+    options = meta.get("options_natural", "")
+    options_list = meta.get("options_list", [])
+    age_gender = meta.get("age_gender", "")
+
+    qa = []
+
+    # 원인별 Q&A (떨어뜨림·노화·침수)
+    if cause == "떨어뜨림":
+        qa.append((
+            f"떨어뜨려 망가졌는데 다른 부위도 손상됐을까요?",
+            f"낙하 충격은 외관에 보이는 부위(액정·후면) 외에도 내부 부품(배터리·메인보드·카메라)에 영향이 갈 수 있어요. "
+            f"다올리페어는 이번 {model} 케이스도 진단 단계에서 동반 손상을 함께 점검했고, 추가 손상 발견 시 미리 안내드립니다. "
+            f"수리 후에도 케이스·필름 사용을 권장드려요."
+        ))
+    elif cause == "자연 노화":
+        qa.append((
+            f"자연 노화는 어느 정도면 교체해야 하나요?",
+            f"배터리 최대 용량 80% 미만이거나, 완충 후 빠르게 닳거나, 갑자기 꺼지는 증상이 시작되면 교체 시점입니다. "
+            f"방치하면 배터리 부풀음으로 화면이 들뜨는 등 추가 손상이 생길 수 있어요."
+        ))
+    elif cause == "침수":
+        qa.append((
+            f"침수된 폰은 데이터를 살릴 수 있나요?",
+            f"침수 후 30분 안에 매장 방문하시면 데이터 추출 가능성이 높아집니다. 전원을 끄시고 충전은 절대 시도하지 마세요. "
+            f"다올리페어는 침수 처리 시 데이터 추출도 함께 진행합니다."
+        ))
+
+    # 옵션 선택 이유 Q&A
+    if options:
+        if "DD" in options or "OEM" in options.upper():
+            qa.append((
+                f"왜 정품이 아닌 DD(OEM) 옵션을 선택하셨나요?",
+                f"DD(OEM)는 정품 제조 라인 동일 사양 부품으로, 정품 대비 50~80% 가격에 트루톤·자동 밝기·페이스 ID 모두 정상 작동합니다. "
+                f"가격을 우선하시거나 일상 사용 위주이신 분들이 많이 선택하세요. "
+                f"자세한 비교는 <a href='iphone-screen-genuine-vs-dd-oem-comparison.html'>정품 액정 vs DD(OEM) 액정</a> 글 참고."
+            ))
+        elif "정품 인증" in options:
+            qa.append((
+                f"정품 인증 배터리는 일반 셀 교체와 어떻게 다른가요?",
+                f"정품 인증은 시리얼 매칭이 가능한 정품급 부품으로 통째 교체 (25~35분), 셀 교체는 기존 케이스에 셀만 교체 (35~50분). "
+                f"둘 다 메시지는 안 뜨고 결과는 비슷합니다. 정품 인증이 1~3만원 더 비싸지만 작업 시간이 짧아요. "
+                f"자세한 비교는 <a href='iphone-battery-replacement-types-cost-2026.html'>아이폰 배터리 종류·비용 총정리</a> 참고."
+            ))
+        elif "정품" in options and "액정" in options:
+            qa.append((
+                f"정품 액정과 DD(OEM) 액정 중 정품을 선택하면 뭐가 다른가요?",
+                f"정품 액정은 출고 시와 동일한 패널·터치 IC로 색감 정확도가 가장 높습니다. "
+                f"DD(OEM)와 가격 차이는 모델별 25~50% 정도. 색감에 민감하시거나 부품을 정품으로 통일하고 싶으신 분께 추천드립니다."
+            ))
+        elif "셀" in options:
+            qa.append((
+                f"셀 교체와 정품 인증 차이가 뭔가요?",
+                f"셀 교체는 기존 정품 배터리 케이스에 새 셀만 교체 (35~50분, 정밀 작업). 정품 인증은 시리얼 매칭 가능한 정품급 부품으로 통째 교체 (25~35분). "
+                f"둘 다 메시지 안 뜨지만, 셀 교체가 가격 합리적이고 정품 인증이 작업 시간 짧음. "
+                f"자세한 비교는 <a href='iphone-battery-replacement-types-cost-2026.html'>아이폰 배터리 종류·비용 총정리</a> 참고."
+            ))
+        elif "일반 호환" in options:
+            qa.append((
+                f"일반 호환 배터리 선택하면 사용에 문제가 있나요?",
+                f"전혀 없습니다. \"정품 배터리 아님\" 경고만 추가로 뜨고 사용·충전·앱·성능치 측정 모두 정상이에요. "
+                f"가장 합리적인 가격이 장점입니다. 메시지가 거슬리지 않으시면 좋은 선택이에요."
+            ))
+
+    # 연령·성별별 Q&A는 너무 개인적이라 추가 X (개인정보 노출 우려)
+
+    return qa[:2]  # 최대 2개까지 (Q&A가 너무 길어지지 않게)
 
 
 def make_apple_compare(c):
