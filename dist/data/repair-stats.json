@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-09T19:33:35.334029+09:00",
+  "updated_at": "2026-05-09T20:54:06.717103+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11155,
@@ -32,43 +32,43 @@
       "model": "아이폰 iPhone X",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 201
+      "minutes_ago": 281
     },
     {
       "model": "아이폰 iPhone 14 Pro",
       "type": "후면 + 배터리 교체",
       "branch": "신림점",
-      "minutes_ago": 269
+      "minutes_ago": 350
     },
     {
       "model": "아이폰 iPhone 11",
       "type": "화면 교체",
       "branch": "신림점",
-      "minutes_ago": 401
+      "minutes_ago": 482
     },
     {
       "model": "아이폰 13",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 416
+      "minutes_ago": 496
     },
     {
       "model": "애플워치 Apple Watch SE (2세대)",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 438
+      "minutes_ago": 518
     },
     {
       "model": "아이폰 iPhone 13 Pro Max",
       "type": "후면 + 배터리 교체",
       "branch": "신림점",
-      "minutes_ago": 497
+      "minutes_ago": 578
     },
     {
       "model": "애플워치 Se2",
       "type": "배터리 교체",
       "branch": "신림점",
-      "minutes_ago": 1571
+      "minutes_ago": 1651
     }
   ],
   "top_repair_types": [
