@@ -2809,6 +2809,1055 @@ ARTS = [
             ("applecare-vs-private-vs-insurance.html", "선택", "애플케어+ vs 사설 비교"),
         ],
     },
+
+    # 22. Apple Watch SE (1세대) 침수
+    {
+        "slug": "applewatch-se-1-water-damage",
+        "cat": "Apple Watch SE 1 · 침수 가이드",
+        "title": "애플워치 SE 1세대 침수 — 6년차 보급형 워치 방수 약화·디지털 크라운 부식 가이드",
+        "desc": "2020년 출시 6년차 애플워치 SE 1세대 침수 케이스. WR50m 등급 약화, 항상 켜짐 디스플레이 없는 보급형 특성, 디지털 크라운·스피커 침수 위험과 정확한 수리 비용까지.",
+        "keywords": "애플워치 SE 1세대 침수, SE 1세대 방수, 애플워치 SE 침수 수리, WR50m 한계, SE 1세대 디지털 크라운",
+        "intro": [
+            "Apple Watch SE 1세대는 2020년 9월 출시로 약 6년이 경과한 모델입니다. <strong>혈중산소·ECG·항상 켜짐 디스플레이가 빠진 보급형</strong>이지만 방수 등급은 WR50m로 일반 워치와 동일. 6년 사용으로 패킹 노화가 본격 진행된 상태입니다.",
+            "이 글은 SE 1세대의 6년차 방수 약화 + 디지털 크라운 부식 + 보급형 특화 수리 비용을 정리한 모델 특화 가이드입니다.",
+        ],
+        "good": '<strong>6년 사용한 SE 1세대의 방수 등급은 출고 시의 30~45% 수준</strong>입니다. 사우나·수영장은 절대 X, 손 씻기·가벼운 비도 위험할 수 있어요. 디지털 크라운 부식이 가장 흔한 침수 증상. <a href="apple-watch-water-damage.html">애플워치 침수 가이드</a> 함께 참고.',
+        "body_sections": [
+            {
+                "h2": "6년차 SE 1세대의 방수 약화 — 가장 심한 단계",
+                "html": """
+<p>SE 1세대는 6년 사용 시 방수 성능이 출고 시의 30~45% 수준으로 떨어집니다. 다른 워치와 비교:</p>
+<table class="compare-table">
+  <thead>
+    <tr><th>모델</th><th>출시 후 경과</th><th>방수 약화 정도</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>SE 3세대</td><td>1년</td><td>65~75% 유지</td></tr>
+    <tr><td>SE 2세대</td><td>4년</td><td>45~60% 유지</td></tr>
+    <tr><td><strong>SE 1세대</strong></td><td><strong>6년</strong></td><td><strong>30~45% 유지</strong></td></tr>
+    <tr><td>Series 4</td><td>8년</td><td>25~35% 유지</td></tr>
+  </tbody>
+</table>
+<p>6년은 패킹 고무·접착제 모두 본격 노화 단계. 손 씻기·세수 정도라도 매번 물기 닦기 권장.</p>
+""",
+            },
+            {
+                "h2": "SE 1세대 침수 취약 3대 부위",
+                "html": """
+<h3>1. 디지털 크라운 (가장 흔함)</h3>
+<p>SE 1세대 디지털 크라운은 햅틱 피드백 없는 단순 회전식. 6년 사용으로 안쪽 접점 부식이 이미 진행됐을 가능성:</p>
+<ul>
+  <li>회전이 뻑뻑해짐</li>
+  <li>스크롤 안 됨 또는 반대 방향 인식</li>
+  <li>침수 시 즉시 부식 가속</li>
+</ul>
+
+<h3>2. 스피커·마이크 그릴</h3>
+<p>침수 시 그릴 안쪽 멤브레인 손상. 통화 음질 저하·시리 인식 안 됨 증상.</p>
+
+<h3>3. 후면 심박 센서 글래스</h3>
+<p>6년 사용으로 글래스 접착부 노화. 침수 시 센서 내부 침투 가능.</p>
+""",
+            },
+            {
+                "h2": "SE 1세대 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>SE 1세대 비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>분해·세척·방수 재처리</td><td>5~9만원</td></tr>
+    <tr><td><strong>2단계 (디지털 크라운)</strong></td><td>크라운 모듈 교체</td><td>9~15만원</td></tr>
+    <tr><td><strong>2단계 (스피커·마이크)</strong></td><td>모듈 교체</td><td>7~11만원</td></tr>
+    <tr><td><strong>2단계 (배터리 동반 손상)</strong></td><td>배터리 교체</td><td>7~10만원</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>15~25만원</td></tr>
+  </tbody>
+</table>
+<p>일반 Series 모델 대비 약 15~20% 저렴. 6년차 워치라 배터리 노화도 함께 진행돼 침수 + 배터리 동시 점검 권장. <a href="applewatch-battery-replacement-guide.html">애플워치 배터리 교체 가이드</a> 참고.</p>
+""",
+            },
+            {
+                "h2": "SE 1세대 침수 vs 새 워치 교체 — 손익 분기점",
+                "html": """
+<p>6년 사용한 SE 1세대는 수리비가 새 SE 3세대(약 35만원)의 50% 넘어가면 교체 고려:</p>
+<ul>
+  <li><strong>1~2단계 (10~15만원)</strong> → 수리 권장</li>
+  <li><strong>2단계 메인보드 미손상</strong> → 수리 가능</li>
+  <li><strong>3단계 메인보드 (15~25만원)</strong> → 새 SE 3세대 비교 후 결정</li>
+  <li><strong>3단계 + 배터리 + 크라운 (30만원+)</strong> → 새 SE 3세대 권장</li>
+</ul>
+""",
+            },
+        ],
+        "tip_box": ("SE 1세대 6년차 = 수리 vs 교체 손익 가까워진 시점", "SE 1세대는 6년 사용으로 방수·배터리·크라운 모두 노화. 수리비가 15만원 넘어가면 새 SE 3세대(약 35만원)와 비교 권장."),
+        "daol_box": {
+            "title": "다올리페어 SE 1세대 침수 수리 — 6년차 보급형 워치 종합 처치",
+            "p": "SE 1세대의 약해진 방수·노화된 부품까지 종합 진단 + 침수 처치.",
+            "ul": [
+                "디지털 크라운 부식 정밀 청소·교체",
+                "스피커·마이크 그릴 침수 처치",
+                "배터리 + 침수 동시 처치 가능",
+                "메인보드 회로 복구",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "Apple Watch SE 1 WATER", "title": "SE 1세대 침수<br>6년차 종합 처치", "desc": "6년 사용한 SE 1세대 침수 + 노화 부품 동시 점검, 다올리페어 가산·신림·목동에서 가능."},
+        "faq": [
+            ("6년 사용한 SE 1세대도 WR50m 그대로인가요?",
+             "아니요, 6년 사용 시 출고 시의 30~45% 수준. 손 씻기·가벼운 비도 위험. 사우나·수영 절대 X."),
+            ("SE 1세대 디지털 크라운이 침수로 안 돌아가요",
+             "크라운 부식 가능성 높음. 1단계면 분해·세척으로 해결 (5~9만원), 심하면 크라운 교체 9~15만원."),
+            ("SE 1세대 침수 수리 vs 새 SE 3세대 어느 게 나아요?",
+             "수리비가 15만원 미만이면 수리, 25만원 넘으면 새 SE 3세대 권장. 매장에서 손익 분석 안내드립니다."),
+            ("SE 1세대 ECG·혈중산소 없어서 침수 부위가 적나요?",
+             "맞습니다. ECG·SpO2 센서 회로가 없어 침수 시 고장 부위가 적고 수리비도 저렴."),
+            ("애플케어+ 만료된 SE 1세대 침수는 어디서 수리?",
+             "다올리페어 사설 수리가 가성비 좋음. 6년차라 공식 처치는 새 워치 가격과 거의 비슷해 효율 X."),
+            ("SE 1세대 침수 후 데이터 살릴 수 있나요?",
+             "워치 데이터는 페어링된 아이폰에 자동 백업되어 있어 새 워치로 마이그레이션 가능."),
+        ],
+        "related": [
+            ("apple-watch-water-damage.html", "통합", "애플워치 침수 종합 가이드"),
+            ("applewatch-se-2-water-damage.html", "후속 모델", "SE 2세대 침수 가이드"),
+            ("applewatch-battery-replacement-guide.html", "배터리", "애플워치 배터리 교체 가이드"),
+            ("iphone-water-damage-emergency-30min.html", "응급", "침수 후 30분 골든타임"),
+            ("applewatch-shower-water-resistance.html", "방수", "애플워치 샤워·방수 한계"),
+        ],
+    },
+
+    # 23. Apple Watch SE (2세대) 침수
+    {
+        "slug": "applewatch-se-2-water-damage",
+        "cat": "Apple Watch SE 2 · 침수 가이드",
+        "title": "애플워치 SE 2세대 침수 — 4년차 보급형 워치·충돌 감지 모델 침수 가이드",
+        "desc": "2022년 출시 4년차 애플워치 SE 2세대 침수 케이스. WR50m 등급 약화, 충돌 감지 신규 도입 모델, 디지털 크라운·스피커 침수 위험과 정확한 수리 비용까지.",
+        "keywords": "애플워치 SE 2세대 침수, SE 2세대 방수, 애플워치 SE 2 침수 수리, 충돌 감지 SE, SE 2 디지털 크라운",
+        "intro": [
+            "Apple Watch SE 2세대는 2022년 9월 출시로 약 4년이 경과한 모델입니다. SE 라인업 최초로 <strong>충돌 감지 기능</strong>이 추가됐고 S8 칩이 들어갔지만 항상 켜짐 디스플레이·ECG·혈중산소는 여전히 빠진 보급형.",
+            "이 글은 SE 2세대의 4년차 방수 약화 + 충돌 감지 센서 침수 + 보급형 특화 수리 비용을 정리한 모델 특화 가이드입니다.",
+        ],
+        "good": '<strong>4년 사용한 SE 2세대의 방수 등급은 출고 시의 45~60% 수준</strong>입니다. 가벼운 손 씻기는 OK지만 사우나·수영장은 X. 디지털 크라운·충돌 감지 자이로 모두 침수 위험. <a href="apple-watch-water-damage.html">애플워치 침수 가이드</a> 함께 참고.',
+        "body_sections": [
+            {
+                "h2": "SE 2세대와 SE 1세대 침수 차이점",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>항목</th><th>SE 1세대</th><th>SE 2세대</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>충돌 감지</td><td>X</td><td><strong>O (신규 도입)</strong></td></tr>
+    <tr><td>칩</td><td>S5</td><td>S8</td></tr>
+    <tr><td>방수 등급</td><td>WR50m</td><td>WR50m</td></tr>
+    <tr><td>침수 수리비 (1단계)</td><td>5~9만원</td><td>6~10만원</td></tr>
+  </tbody>
+</table>
+<p>SE 2세대는 충돌 감지를 위한 고정밀 자이로·가속도 센서가 추가돼 <strong>침수 시 오작동 가능 부위가 늘어남</strong>. 단 ECG·SpO2는 여전히 없어 Series 모델보다는 단순.</p>
+""",
+            },
+            {
+                "h2": "SE 2세대 침수 취약 3대 부위",
+                "html": """
+<h3>1. 디지털 크라운</h3>
+<p>SE 2세대도 햅틱 없는 단순 회전식 크라운. 4년 사용으로 접점 마모 + 침수 부식 동반 발생.</p>
+
+<h3>2. 충돌 감지 센서 모듈 (SE 2 신규)</h3>
+<p>SE 2세대부터 도입된 충돌 감지를 위한 고정밀 자이로·가속도 센서. 침수 시:</p>
+<ul>
+  <li>충돌 감지 오작동 (없는 사고 알림)</li>
+  <li>피트니스 측정 부정확</li>
+  <li>화면 자동 켜짐 비정상</li>
+</ul>
+
+<h3>3. 후면 심박 센서</h3>
+<p>4년 사용으로 글래스 접착부 약화. 침수 시 센서 내부 침투 가능.</p>
+""",
+            },
+            {
+                "h2": "SE 2세대 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>SE 2세대 비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>분해·세척·방수 재처리</td><td>6~10만원</td></tr>
+    <tr><td><strong>2단계 (디지털 크라운)</strong></td><td>크라운 모듈 교체</td><td>10~16만원</td></tr>
+    <tr><td><strong>2단계 (스피커·마이크)</strong></td><td>모듈 교체</td><td>8~12만원</td></tr>
+    <tr><td><strong>2단계 (배터리 동반 손상)</strong></td><td>배터리 교체</td><td>8~11만원</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>17~28만원</td></tr>
+  </tbody>
+</table>
+<p>SE 1세대 대비 약 5~10% 비쌈. Series 모델 대비 약 10~15% 저렴.</p>
+""",
+            },
+            {
+                "h2": "SE 2세대 침수 vs 새 워치 교체 — 손익 분기점",
+                "html": """
+<p>4년 사용한 SE 2세대는 아직 사용 가치가 있어 수리 권장 구간이 SE 1보다 넓음:</p>
+<ul>
+  <li><strong>1~2단계 (10~20만원)</strong> → 수리 강력 권장</li>
+  <li><strong>2단계 메인보드 미손상</strong> → 수리 가능</li>
+  <li><strong>3단계 메인보드 (17~28만원)</strong> → 새 SE 3세대(35만원)와 비교</li>
+  <li><strong>3단계 + 배터리 + 크라운 (35만원+)</strong> → 새 SE 3세대 권장</li>
+</ul>
+""",
+            },
+        ],
+        "tip_box": ("SE 2세대 = 충돌 감지 첫 도입, 자이로 정밀 센서 주의", "충돌 감지를 위한 자이로 센서가 침수 시 오작동(없는 사고 알림) 발생 가능. 1단계 침수도 가볍게 보지 말 것."),
+        "daol_box": {
+            "title": "다올리페어 SE 2세대 침수 수리 — 충돌 감지 센서까지 정밀 처치",
+            "p": "SE 2세대의 충돌 감지·디지털 크라운까지 종합 진단 + 침수 처치.",
+            "ul": [
+                "디지털 크라운 부식 정밀 청소·교체",
+                "충돌 감지 센서 모듈 처치",
+                "스피커·마이크 그릴 침수 처치",
+                "배터리 + 침수 동시 처치 가능",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "Apple Watch SE 2 WATER", "title": "SE 2세대 침수<br>4년차 종합 처치", "desc": "4년 사용한 SE 2세대 침수 + 충돌 감지·노화 부품 동시 점검, 다올리페어 가산·신림·목동에서 가능."},
+        "faq": [
+            ("4년 사용한 SE 2세대도 WR50m 그대로인가요?",
+             "출고 시의 45~60% 수준. 가벼운 손 씻기는 OK지만 사우나·수영 절대 X."),
+            ("SE 2세대 침수 후 충돌 감지가 자꾸 잘못 울려요",
+             "충돌 감지 자이로 센서 침수 가능성. 매장 진단 후 모듈 교체 또는 회로 복구 (15~25만원)."),
+            ("SE 2세대 vs SE 3세대 침수 위험 어디가 더 높나요?",
+             "SE 3세대는 출시 1년차라 방수 양호. SE 2세대는 4년차라 패킹 약해진 상태."),
+            ("SE 2세대 침수 수리 vs 새 SE 3세대 어느 게 나아요?",
+             "수리비가 20만원 미만이면 수리, 30만원 넘으면 새 SE 3세대 권장."),
+            ("SE 2세대 디지털 크라운 회전이 뻑뻑해요. 침수 때문?",
+             "침수 + 4년 마모 동시 가능성. 크라운 교체 10~16만원 또는 분해 세척 6~10만원."),
+            ("SE 2세대 침수 후 데이터 살릴 수 있나요?",
+             "페어링된 아이폰 백업으로 새 워치 마이그레이션 가능. 워치 자체 데이터 추출은 제한적."),
+        ],
+        "related": [
+            ("apple-watch-water-damage.html", "통합", "애플워치 침수 종합 가이드"),
+            ("applewatch-se-1-water-damage.html", "이전", "SE 1세대 침수 가이드"),
+            ("applewatch-se-3-water-damage.html", "다음", "SE 3세대 침수 가이드"),
+            ("applewatch-battery-replacement-guide.html", "배터리", "애플워치 배터리 교체 가이드"),
+            ("applewatch-shower-water-resistance.html", "방수", "애플워치 샤워·방수 한계"),
+        ],
+    },
+
+    # 24. Apple Watch SE (3세대) 침수
+    {
+        "slug": "applewatch-se-3-water-damage",
+        "cat": "Apple Watch SE 3 · 침수 가이드",
+        "title": "애플워치 SE 3세대 침수 — 1년차 신모델·항상 켜짐 첫 도입 SE 침수 가이드",
+        "desc": "2025년 출시 1년차 애플워치 SE 3세대 침수 케이스. SE 라인업 첫 항상 켜짐 OLED·Double Tap·5G 셀룰러 신규 부위 침수 위험과 정확한 수리 비용까지.",
+        "keywords": "애플워치 SE 3세대 침수, SE 3 방수, SE 3 항상 켜짐 침수, SE 3 Double Tap, S10 칩 침수",
+        "intro": [
+            "Apple Watch SE 3세대는 2025년 9월 출시로 약 1년이 경과한 신모델입니다. <strong>SE 라인업 최초로 항상 켜짐 OLED·Double Tap·5G 셀룰러</strong>가 도입돼 침수 위험 부위는 늘었지만 1년차라 방수는 양호.",
+            "이 글은 SE 3세대의 신규 기능 침수 위험 + 1년차 방수 + 정확한 수리 비용을 정리한 모델 특화 가이드입니다.",
+        ],
+        "good": '<strong>1년 사용한 SE 3세대의 방수 등급은 출고 시의 65~75% 수준</strong>으로 양호. 다만 항상 켜짐 OLED·UWB·5G 모듈 등 신규 부품이 침수에 민감. <a href="apple-watch-water-damage.html">애플워치 침수 가이드</a> 함께 참고.',
+        "body_sections": [
+            {
+                "h2": "SE 3세대와 SE 2세대의 큰 차이점",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>항목</th><th>SE 2세대</th><th>SE 3세대</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>디스플레이</td><td>OLED Retina (꺼짐)</td><td><strong>OLED 항상 켜짐 (SE 첫 도입)</strong></td></tr>
+    <tr><td>제스처</td><td>X</td><td><strong>Double Tap·손목 플릭 (SE 첫)</strong></td></tr>
+    <tr><td>셀룰러</td><td>LTE</td><td><strong>5G (SE 첫 도입)</strong></td></tr>
+    <tr><td>칩</td><td>S8</td><td>S10</td></tr>
+    <tr><td>건강</td><td>심박</td><td>손목 온도·수면 무호흡 알림</td></tr>
+    <tr><td>침수 수리비 (1단계)</td><td>6~10만원</td><td>8~13만원</td></tr>
+  </tbody>
+</table>
+<p>SE 3세대는 SE 라인업의 큰 업그레이드. <strong>항상 켜짐 디스플레이 컨트롤러·UWB·5G 모뎀</strong>이 신규 침수 취약 부품.</p>
+""",
+            },
+            {
+                "h2": "SE 3세대 침수 취약 4대 부위",
+                "html": """
+<h3>1. 항상 켜짐 OLED 디스플레이 (SE 첫 도입)</h3>
+<p>SE 3세대 첫 항상 켜짐 OLED는 정밀 컨트롤러 회로 내장. 침수 시:</p>
+<ul>
+  <li>화면 깜빡임·세로 줄</li>
+  <li>밝기 자동 조절 비정상</li>
+  <li>일부 픽셀 죽음</li>
+</ul>
+
+<h3>2. Double Tap·손목 플릭 센서</h3>
+<p>S10 칩의 신경망 엔진 + 가속도·자이로 센서가 침수 시 오작동.</p>
+
+<h3>3. 5G 모뎀·UWB 모듈</h3>
+<p>5G·정밀 검색용 UWB 모듈 침수 시 통신·찾기 기능 이상.</p>
+
+<h3>4. 손목 온도 센서</h3>
+<p>후면 신규 도입된 손목 온도 센서가 침수에 민감.</p>
+""",
+            },
+            {
+                "h2": "SE 3세대 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>SE 3세대 비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>분해·세척·방수 재처리</td><td>8~13만원</td></tr>
+    <tr><td><strong>2단계 (디지털 크라운)</strong></td><td>크라운 모듈 교체</td><td>13~20만원</td></tr>
+    <tr><td><strong>2단계 (항상 켜짐 디스플레이)</strong></td><td>화면 모듈 교체</td><td>18~30만원</td></tr>
+    <tr><td><strong>2단계 (스피커·마이크)</strong></td><td>모듈 교체</td><td>10~14만원</td></tr>
+    <tr><td><strong>2단계 (배터리 동반 손상)</strong></td><td>배터리 교체</td><td>10~13만원</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>22~35만원</td></tr>
+  </tbody>
+</table>
+<p>SE 2세대 대비 약 25~30% 비쌈. 신규 부품(항상 켜짐·UWB·5G)으로 부품가 상승.</p>
+""",
+            },
+            {
+                "h2": "SE 3세대 침수 vs 새 워치 교체 — 손익 분기점",
+                "html": """
+<p>1년 사용한 SE 3세대는 아직 중고가가 살아있어 수리 권장 구간 가장 넓음:</p>
+<ul>
+  <li><strong>1~2단계 (10~25만원)</strong> → 수리 강력 권장</li>
+  <li><strong>2단계 메인보드 미손상</strong> → 수리 가능</li>
+  <li><strong>3단계 메인보드 (22~35만원)</strong> → 1년차라 수리 권장</li>
+  <li><strong>3단계 + 배터리 + 크라운 (45만원+)</strong> → 새 워치 고려</li>
+</ul>
+<p>1년차라 애플케어+ 가입자라면 공식 처치도 검토. <a href="applecare-vs-private-vs-insurance.html">애플케어+ vs 사설</a> 참고.</p>
+""",
+            },
+        ],
+        "tip_box": ("SE 3세대 = 항상 켜짐 OLED 첫 도입 SE, 디스플레이 보호 중요", "항상 켜짐 디스플레이는 침수 시 컨트롤러 회로 손상 가능. 사우나·수영 후엔 즉시 물기 닦고 충전 안 하기."),
+        "daol_box": {
+            "title": "다올리페어 SE 3세대 침수 수리 — 신규 부품 정밀 처치",
+            "p": "SE 3세대의 항상 켜짐 OLED·UWB·5G 모뎀까지 종합 진단 + 침수 처치.",
+            "ul": [
+                "항상 켜짐 OLED 디스플레이 처치",
+                "디지털 크라운 부식 청소·교체",
+                "Double Tap 센서 처치",
+                "배터리 + 침수 동시 처치 가능",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "Apple Watch SE 3 WATER", "title": "SE 3세대 침수<br>1년차 신규 부품 처치", "desc": "항상 켜짐·Double Tap·5G까지 SE 3세대 침수, 다올리페어 가산·신림·목동에서 정밀 처치."},
+        "faq": [
+            ("1년 사용한 SE 3세대도 WR50m 그대로인가요?",
+             "1년 사용 시 출고 시의 65~75% 수준으로 양호. 다만 사우나·고압 샤워는 절대 X."),
+            ("SE 3세대 항상 켜짐 화면이 침수 후 깜빡여요",
+             "OLED 컨트롤러 침수 가능성. 화면 모듈 교체 18~30만원. 1단계면 분해 세척으로 회복 가능."),
+            ("SE 3세대 Double Tap이 침수 후 안 돼요",
+             "신경망 엔진 또는 자이로 센서 침수. 매장 진단 후 회로 복구."),
+            ("SE 3세대 vs Series 11/Ultra 3 침수 위험 비교?",
+             "SE 3세대는 같은 WR50m. Ultra 3만 다이빙 인증 별도. SE 3·Series 11 모두 사우나·수영장 위험."),
+            ("SE 3세대 애플케어+ 침수 vs 사설 어디가 나아요?",
+             "1단계는 사설(8~13만원)이 저렴. 2단계 이상이면 애플케어+ 자기부담금 비교 권장."),
+            ("SE 3세대 침수 후 데이터 살릴 수 있나요?",
+             "페어링된 아이폰 백업으로 새 워치 마이그레이션 가능."),
+        ],
+        "related": [
+            ("apple-watch-water-damage.html", "통합", "애플워치 침수 종합 가이드"),
+            ("applewatch-se-2-water-damage.html", "이전", "SE 2세대 침수 가이드"),
+            ("applewatch-series9-water-damage.html", "비슷한 시기", "Series 9 침수 가이드"),
+            ("applewatch-battery-replacement-guide.html", "배터리", "애플워치 배터리 교체 가이드"),
+            ("applewatch-shower-water-resistance.html", "방수", "애플워치 샤워·방수 한계"),
+        ],
+    },
+
+    # 25. Apple Watch Series 4 침수
+    {
+        "slug": "applewatch-series4-water-damage",
+        "cat": "Apple Watch Series 4 · 침수 가이드",
+        "title": "애플워치 Series 4 침수 — 8년차 폰·첫 ECG 도입 모델 방수 약화 정밀 가이드",
+        "desc": "2018년 출시 8년차 애플워치 Series 4 침수 케이스. WR50m 등급 거의 소실, 첫 ECG 센서 침수 위험, 디지털 크라운·메인보드 손상과 정확한 수리 비용까지.",
+        "keywords": "애플워치 Series 4 침수, 시리즈 4 방수, ECG 침수, Series 4 디지털 크라운, 8년차 워치 방수",
+        "intro": [
+            "Apple Watch Series 4는 2018년 9월 출시로 약 8년이 경과한 모델입니다. <strong>Apple Watch 라인업 최초로 ECG가 도입</strong>된 의미 있는 모델이지만 8년 사용으로 방수 패킹은 거의 소실 상태.",
+            "이 글은 Series 4의 8년차 방수 약화 + 첫 ECG 센서 침수 + 정확한 수리 비용을 정리한 모델 특화 가이드입니다.",
+        ],
+        "good": '<strong>8년 사용한 Series 4의 방수 등급은 출고 시의 25~35% 수준</strong>으로 거의 소실. 손 씻기·세수만으로도 침투 가능. ECG 센서·디지털 크라운 부식이 가장 흔한 침수 증상.',
+        "body_sections": [
+            {
+                "h2": "8년차 Series 4의 방수 약화 — 거의 소실 단계",
+                "html": """
+<p>Series 4는 8년 사용 시 방수 성능이 출고 시의 25~35% 수준으로 떨어집니다. 거의 방수 기능 없는 상태:</p>
+<ul>
+  <li>패킹 고무 탄성 거의 소실</li>
+  <li>접착부 박리 진행</li>
+  <li>충격 누적으로 미세 균열 가능성</li>
+  <li>손 씻기·세수도 위험</li>
+</ul>
+<p>Series 4 사용 중이면 <strong>물 닿는 모든 상황에서 워치 분리 권장</strong>.</p>
+""",
+            },
+            {
+                "h2": "Series 4 침수 취약 3대 부위",
+                "html": """
+<h3>1. ECG 센서 (Apple Watch 최초 도입)</h3>
+<p>Series 4부터 도입된 디지털 크라운 ECG + 후면 광학 센서. 8년 사용 + 침수로:</p>
+<ul>
+  <li>ECG 측정 안 됨 (가장 흔함)</li>
+  <li>심박 측정 부정확</li>
+  <li>크라운 ECG 접점 부식</li>
+</ul>
+
+<h3>2. 디지털 크라운</h3>
+<p>Series 4 크라운은 햅틱 피드백 첫 도입. 8년 사용 = 햅틱 모듈 마모 + 침수 부식.</p>
+
+<h3>3. 메인보드</h3>
+<p>8년차는 메인보드 자체 노화. 침수 시 회로 부식이 단순 청소로 회복 어려운 단계.</p>
+""",
+            },
+            {
+                "h2": "Series 4 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>Series 4 비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>분해·세척·방수 재처리</td><td>5~9만원</td></tr>
+    <tr><td><strong>2단계 (디지털 크라운)</strong></td><td>크라운 모듈 교체</td><td>9~14만원</td></tr>
+    <tr><td><strong>2단계 (스피커·마이크)</strong></td><td>모듈 교체</td><td>7~11만원</td></tr>
+    <tr><td><strong>2단계 (배터리 동반 손상)</strong></td><td>배터리 교체</td><td>7~10만원</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>15~24만원</td></tr>
+  </tbody>
+</table>
+<p>8년차라 부품 수급 점점 어려워짐. 메인보드 손상이면 수리 의미가 적은 단계.</p>
+""",
+            },
+            {
+                "h2": "Series 4 침수 vs 새 워치 교체 — 손익 분기점",
+                "html": """
+<p>8년 사용한 Series 4는 침수 시 대부분 새 워치 권장 구간:</p>
+<ul>
+  <li><strong>1단계 (5~9만원)</strong> → 수리 권장 (가성비 최고)</li>
+  <li><strong>2단계 (10~15만원)</strong> → 사용 기간 + 애착 고려해 결정</li>
+  <li><strong>3단계 메인보드 (15만원+)</strong> → 새 SE 3세대(35만원) 권장</li>
+</ul>
+<p>8년 = 충분히 잘 쓴 워치. 침수 계기로 SE 3세대 또는 Series 11로 교체 추천.</p>
+""",
+            },
+        ],
+        "tip_box": ("Series 4 8년차 = 물 닿는 모든 상황 회피", "방수 거의 소실 상태. 샤워·세수·설거지 시 분리 필수. 침수 시 메인보드 손상이면 새 워치 추천."),
+        "daol_box": {
+            "title": "다올리페어 Series 4 침수 수리 — 8년차 워치 회복 지원",
+            "p": "Series 4의 첫 ECG 센서·디지털 크라운까지 종합 진단 + 침수 처치.",
+            "ul": [
+                "디지털 크라운 햅틱 모듈 처치",
+                "ECG 센서 침수 처치",
+                "스피커·마이크 그릴 침수 처치",
+                "배터리 + 침수 동시 처치 가능",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "Apple Watch Series 4 WATER", "title": "Series 4 침수<br>8년차 회복 지원", "desc": "8년 사용한 Series 4 침수 진단, 다올리페어 가산·신림·목동에서 가능."},
+        "faq": [
+            ("8년 사용한 Series 4도 WR50m 의미 있나요?",
+             "거의 없습니다. 출고 시의 25~35% 수준. 손 씻기·세수도 위험. 물 닿는 모든 상황 회피 권장."),
+            ("Series 4 ECG가 침수 후 안 돼요",
+             "디지털 크라운 ECG 접점 부식 가능성 높음. 크라운 교체 9~14만원 또는 분해 세척."),
+            ("Series 4 침수 수리 vs 새 워치 어느 게 나아요?",
+             "1단계만 수리 권장. 2단계 이상이면 새 SE 3세대(35만원) 또는 Series 11이 더 합리적."),
+            ("Series 4 부품 수급 가능한가요?",
+             "다올리페어는 정품 추출 부품으로 처치 가능. 단 일부 부품은 수급 어려운 단계."),
+            ("Series 4 침수 후 데이터 살릴 수 있나요?",
+             "페어링된 아이폰 백업으로 새 워치 마이그레이션 가능."),
+            ("Series 4 vs Series 5 침수 위험 어디가 더 높나요?",
+             "Series 4가 더 오래돼 방수 약화 심함. Series 5는 항상 켜짐 디스플레이 추가로 침수 취약 부위는 더 많음."),
+        ],
+        "related": [
+            ("apple-watch-water-damage.html", "통합", "애플워치 침수 종합 가이드"),
+            ("applewatch-series5-water-damage.html", "다음", "Series 5 침수 가이드"),
+            ("applewatch-battery-replacement-guide.html", "배터리", "애플워치 배터리 교체 가이드"),
+            ("applewatch-shower-water-resistance.html", "방수", "애플워치 샤워·방수 한계"),
+            ("applewatch-series4-crown-repair.html", "크라운", "Series 4 크라운 수리"),
+        ],
+    },
+
+    # 26. Apple Watch Series 5 침수
+    {
+        "slug": "applewatch-series5-water-damage",
+        "cat": "Apple Watch Series 5 · 침수 가이드",
+        "title": "애플워치 Series 5 침수 — 7년차 폰·첫 항상 켜짐 디스플레이 모델 침수 가이드",
+        "desc": "2019년 출시 7년차 애플워치 Series 5 침수 케이스. WR50m 등급 약화, 첫 항상 켜짐 OLED 컨트롤러 침수 위험, ECG·나침반 모듈과 정확한 수리 비용까지.",
+        "keywords": "애플워치 Series 5 침수, 시리즈 5 방수, 항상 켜짐 첫 도입 침수, Series 5 ECG, 7년차 워치 방수",
+        "intro": [
+            "Apple Watch Series 5는 2019년 9월 출시로 약 7년이 경과한 모델입니다. <strong>Apple Watch 라인업 최초로 항상 켜짐 디스플레이가 도입</strong>됐고 나침반도 추가됐습니다. 7년 사용으로 방수 패킹은 본격 노화 단계.",
+            "이 글은 Series 5의 7년차 방수 약화 + 첫 항상 켜짐 디스플레이 침수 + 정확한 수리 비용을 정리한 모델 특화 가이드입니다.",
+        ],
+        "good": '<strong>7년 사용한 Series 5의 방수 등급은 출고 시의 30~40% 수준</strong>입니다. 첫 항상 켜짐 OLED 컨트롤러 + 나침반 모듈이 침수 취약 부품. 손 씻기도 위험할 수 있는 단계.',
+        "body_sections": [
+            {
+                "h2": "Series 5와 Series 4의 큰 차이점",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>항목</th><th>Series 4</th><th>Series 5</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>항상 켜짐 디스플레이</td><td>X</td><td><strong>O (Apple Watch 첫 도입)</strong></td></tr>
+    <tr><td>나침반</td><td>X</td><td><strong>O</strong></td></tr>
+    <tr><td>티타늄/세라믹 옵션</td><td>X</td><td><strong>O</strong></td></tr>
+    <tr><td>칩</td><td>S4</td><td>S5</td></tr>
+  </tbody>
+</table>
+<p>Series 5는 항상 켜짐 OLED 컨트롤러·나침반 IC 등 신규 침수 취약 부품 추가.</p>
+""",
+            },
+            {
+                "h2": "Series 5 침수 취약 4대 부위",
+                "html": """
+<h3>1. 항상 켜짐 OLED 디스플레이 (Apple Watch 첫 도입)</h3>
+<p>Series 5 첫 항상 켜짐 OLED 컨트롤러는 침수 시:</p>
+<ul>
+  <li>화면 깜빡임·세로 줄</li>
+  <li>밝기 자동 조절 비정상</li>
+  <li>항상 켜짐 자동 비활성화</li>
+</ul>
+
+<h3>2. 나침반 IC (Series 5 신규)</h3>
+<p>나침반·고도계 침수 시 방향 표시 비정상.</p>
+
+<h3>3. 디지털 크라운 ECG</h3>
+<p>Series 4부터 이어진 ECG 크라운. 7년 사용 = 부식 + 마모 동반.</p>
+
+<h3>4. 메인보드</h3>
+<p>7년차 = 메인보드 노화. 침수 시 회로 복구 어려운 케이스 증가.</p>
+""",
+            },
+            {
+                "h2": "Series 5 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>Series 5 비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>분해·세척·방수 재처리</td><td>5~10만원</td></tr>
+    <tr><td><strong>2단계 (디지털 크라운)</strong></td><td>크라운 모듈 교체</td><td>10~16만원</td></tr>
+    <tr><td><strong>2단계 (항상 켜짐 디스플레이)</strong></td><td>화면 모듈 교체</td><td>15~25만원</td></tr>
+    <tr><td><strong>2단계 (스피커·마이크)</strong></td><td>모듈 교체</td><td>7~11만원</td></tr>
+    <tr><td><strong>2단계 (배터리 동반 손상)</strong></td><td>배터리 교체</td><td>8~11만원</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>17~26만원</td></tr>
+  </tbody>
+</table>
+<p>Series 4 대비 5~10% 비쌈. 항상 켜짐 디스플레이 부품가 추가.</p>
+""",
+            },
+            {
+                "h2": "Series 5 침수 vs 새 워치 교체 — 손익 분기점",
+                "html": """
+<ul>
+  <li><strong>1단계 (5~10만원)</strong> → 수리 권장</li>
+  <li><strong>2단계 (10~25만원)</strong> → 사용 기간 + 부품 종류 고려</li>
+  <li><strong>3단계 메인보드 (17만원+)</strong> → 새 SE 3세대(35만원) 권장</li>
+</ul>
+""",
+            },
+        ],
+        "tip_box": ("Series 5 7년차 = 항상 켜짐이 침수 취약점", "Series 5의 항상 켜짐 OLED는 침수 시 컨트롤러 손상 가능. 침수 후엔 항상 켜짐 비활성화 후 매장 방문."),
+        "daol_box": {
+            "title": "다올리페어 Series 5 침수 수리 — 첫 항상 켜짐 디스플레이 정밀 처치",
+            "p": "Series 5의 항상 켜짐 OLED·나침반·ECG까지 종합 진단 + 침수 처치.",
+            "ul": [
+                "항상 켜짐 OLED 디스플레이 처치",
+                "디지털 크라운 ECG 접점 처치",
+                "나침반 IC 침수 처치",
+                "배터리 + 침수 동시 처치 가능",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "Apple Watch Series 5 WATER", "title": "Series 5 침수<br>7년차 종합 처치", "desc": "7년 사용한 Series 5 침수 + 항상 켜짐 디스플레이 정밀 진단, 다올리페어에서 가능."},
+        "faq": [
+            ("7년 사용한 Series 5도 WR50m 의미 있나요?",
+             "출고 시의 30~40% 수준. 손 씻기도 매번 물기 닦기 권장. 사우나·수영 절대 X."),
+            ("Series 5 항상 켜짐이 침수 후 깜빡여요",
+             "OLED 컨트롤러 침수 가능성. 화면 모듈 교체 15~25만원."),
+            ("Series 5 나침반이 침수 후 안 됨",
+             "나침반 IC 침수 가능성. 매장 진단 후 회로 복구 또는 메인보드 점검."),
+            ("Series 5 침수 수리 vs 새 워치 어느 게 나아요?",
+             "1~2단계 일부면 수리, 3단계 메인보드면 새 SE 3세대 권장."),
+            ("Series 5 티타늄 모델은 방수 더 강한가요?",
+             "외장 강도는 강하지만 방수 패킹은 동일. 7년차라 패킹 노화는 같은 수준."),
+            ("Series 5 침수 후 데이터 살릴 수 있나요?",
+             "페어링된 아이폰 백업으로 새 워치 마이그레이션 가능."),
+        ],
+        "related": [
+            ("apple-watch-water-damage.html", "통합", "애플워치 침수 종합 가이드"),
+            ("applewatch-series4-water-damage.html", "이전", "Series 4 침수 가이드"),
+            ("applewatch-series6-water-damage.html", "다음", "Series 6 침수 가이드"),
+            ("applewatch-battery-replacement-guide.html", "배터리", "애플워치 배터리 교체 가이드"),
+            ("applewatch-shower-water-resistance.html", "방수", "애플워치 샤워·방수 한계"),
+        ],
+    },
+
+    # 27. Apple Watch Series 6 침수
+    {
+        "slug": "applewatch-series6-water-damage",
+        "cat": "Apple Watch Series 6 · 침수 가이드",
+        "title": "애플워치 Series 6 침수 — 6년차 폰·첫 혈중산소 측정 모델 침수 가이드",
+        "desc": "2020년 출시 6년차 애플워치 Series 6 침수 케이스. WR50m 등급 약화, 첫 혈중산소(SpO2) 센서 침수 위험, ECG·항상 켜짐 디스플레이와 정확한 수리 비용까지.",
+        "keywords": "애플워치 Series 6 침수, 시리즈 6 방수, 혈중산소 침수, SpO2 센서, Series 6 디지털 크라운",
+        "intro": [
+            "Apple Watch Series 6는 2020년 9월 출시로 약 6년이 경과한 모델입니다. <strong>Apple Watch 라인업 최초로 혈중산소(SpO2) 측정이 도입</strong>됐고 더 밝아진 항상 켜짐 디스플레이가 특징. 6년 사용으로 방수 약화 본격 단계.",
+            "이 글은 Series 6의 6년차 방수 약화 + 첫 혈중산소 센서 침수 + 정확한 수리 비용을 정리한 모델 특화 가이드입니다.",
+        ],
+        "good": '<strong>6년 사용한 Series 6의 방수 등급은 출고 시의 35~50% 수준</strong>입니다. 첫 혈중산소 센서 + 더 밝은 항상 켜짐 디스플레이가 침수 취약 부품. 손 씻기 시 매번 물기 닦기 권장.',
+        "body_sections": [
+            {
+                "h2": "Series 6와 Series 5의 큰 차이점",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>항목</th><th>Series 5</th><th>Series 6</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>혈중산소(SpO2)</td><td>X</td><td><strong>O (Apple Watch 첫 도입)</strong></td></tr>
+    <tr><td>항상 켜짐 밝기</td><td>1000nit</td><td>1000nit (실내 2.5배 밝아짐)</td></tr>
+    <tr><td>U1 칩 (정밀 검색)</td><td>X</td><td><strong>O</strong></td></tr>
+    <tr><td>칩</td><td>S5</td><td>S6</td></tr>
+  </tbody>
+</table>
+<p>Series 6는 후면 혈중산소 센서 + U1 칩이 신규 침수 취약 부품.</p>
+""",
+            },
+            {
+                "h2": "Series 6 침수 취약 4대 부위",
+                "html": """
+<h3>1. 후면 혈중산소(SpO2) 센서 (Apple Watch 첫 도입)</h3>
+<p>Series 6 첫 도입된 혈중산소 측정용 적색·적외선 LED + 광검출기. 침수 시:</p>
+<ul>
+  <li>혈중산소 측정 안 됨 (가장 흔함)</li>
+  <li>심박 측정 부정확</li>
+  <li>후면 글래스 내부 침투</li>
+</ul>
+
+<h3>2. 디지털 크라운 ECG</h3>
+<p>Series 4부터 이어진 ECG 크라운. 6년 사용 = 부식 + 마모.</p>
+
+<h3>3. 항상 켜짐 OLED 디스플레이</h3>
+<p>더 밝아진 디스플레이 컨트롤러 침수 시 화면 깜빡임·세로 줄.</p>
+
+<h3>4. U1 정밀 검색 칩</h3>
+<p>U1 칩 침수 시 아이폰 정밀 검색 기능 비정상.</p>
+""",
+            },
+            {
+                "h2": "Series 6 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>Series 6 비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>분해·세척·방수 재처리</td><td>6~11만원</td></tr>
+    <tr><td><strong>2단계 (디지털 크라운)</strong></td><td>크라운 모듈 교체</td><td>10~17만원</td></tr>
+    <tr><td><strong>2단계 (후면 센서)</strong></td><td>심박+SpO2 센서 모듈 교체</td><td>13~22만원</td></tr>
+    <tr><td><strong>2단계 (항상 켜짐 디스플레이)</strong></td><td>화면 모듈 교체</td><td>16~28만원</td></tr>
+    <tr><td><strong>2단계 (배터리 동반 손상)</strong></td><td>배터리 교체</td><td>8~12만원</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>18~28만원</td></tr>
+  </tbody>
+</table>
+<p>Series 5 대비 5~10% 비쌈. 혈중산소 센서 부품가 추가.</p>
+""",
+            },
+            {
+                "h2": "Series 6 침수 vs 새 워치 교체 — 손익 분기점",
+                "html": """
+<ul>
+  <li><strong>1단계 (6~11만원)</strong> → 수리 강력 권장</li>
+  <li><strong>2단계 (10~25만원)</strong> → 부품 종류·사용 기간 고려</li>
+  <li><strong>3단계 메인보드 (18만원+)</strong> → 새 SE 3세대(35만원)와 비교</li>
+</ul>
+""",
+            },
+        ],
+        "tip_box": ("Series 6 6년차 = 후면 혈중산소 센서가 침수 취약", "Series 6 후면 글래스 패킹 노화로 혈중산소 센서 침수 흔함. 후면 글래스 균열·들뜸 보이면 즉시 매장."),
+        "daol_box": {
+            "title": "다올리페어 Series 6 침수 수리 — 첫 혈중산소 센서 정밀 처치",
+            "p": "Series 6의 혈중산소·ECG·항상 켜짐 OLED까지 종합 진단 + 침수 처치.",
+            "ul": [
+                "후면 혈중산소·심박 센서 정밀 처치",
+                "디지털 크라운 ECG 접점 처치",
+                "항상 켜짐 OLED 디스플레이 처치",
+                "배터리 + 침수 동시 처치 가능",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "Apple Watch Series 6 WATER", "title": "Series 6 침수<br>6년차 종합 처치", "desc": "6년 사용한 Series 6 침수 + 혈중산소 센서 정밀 진단, 다올리페어에서 가능."},
+        "faq": [
+            ("6년 사용한 Series 6도 WR50m 의미 있나요?",
+             "출고 시의 35~50% 수준. 가벼운 손 씻기는 OK지만 사우나·수영 절대 X."),
+            ("Series 6 혈중산소 측정이 침수 후 안 돼요",
+             "후면 SpO2 센서 침수 가능성. 센서 모듈 교체 13~22만원 또는 분해 세척."),
+            ("Series 6 침수 수리 vs 새 워치 어느 게 나아요?",
+             "1~2단계 일부 수리 권장, 3단계 메인보드면 새 SE 3세대 권장."),
+            ("Series 6 후면 글래스가 들떴어요",
+             "패킹 노화 + 침수 위험 동시 신호. 즉시 매장 방문 후 후면 글래스 재접착 필요."),
+            ("Series 6 데이터 살릴 수 있나요?",
+             "페어링된 아이폰 백업으로 새 워치 마이그레이션 가능."),
+            ("Series 6 vs Series 7 침수 위험 어디가 더 높나요?",
+             "Series 6가 더 오래돼 방수 약화 심함. Series 7부터 IP6X 방진 추가됐지만 방수 등급은 동일."),
+        ],
+        "related": [
+            ("apple-watch-water-damage.html", "통합", "애플워치 침수 종합 가이드"),
+            ("applewatch-series5-water-damage.html", "이전", "Series 5 침수 가이드"),
+            ("applewatch-series7-water-damage.html", "다음", "Series 7 침수 가이드"),
+            ("applewatch-battery-replacement-guide.html", "배터리", "애플워치 배터리 교체 가이드"),
+            ("applewatch-shower-water-resistance.html", "방수", "애플워치 샤워·방수 한계"),
+        ],
+    },
+
+    # 28. Apple Watch Series 7 침수
+    {
+        "slug": "applewatch-series7-water-damage",
+        "cat": "Apple Watch Series 7 · 침수 가이드",
+        "title": "애플워치 Series 7 침수 — 5년차 폰·IP6X 방진 첫 도입 모델 침수 가이드",
+        "desc": "2021년 출시 5년차 애플워치 Series 7 침수 케이스. WR50m + IP6X 방진 첫 도입 모델, 더 큰 디스플레이·빠른 충전 코일 침수 위험과 정확한 수리 비용까지.",
+        "keywords": "애플워치 Series 7 침수, 시리즈 7 방수, IP6X 방진, Series 7 빠른 충전, Series 7 디스플레이",
+        "intro": [
+            "Apple Watch Series 7은 2021년 10월 출시로 약 5년이 경과한 모델입니다. <strong>Apple Watch 라인업 최초로 IP6X 방진 등급</strong>이 추가됐고 더 큰 41/45mm 디스플레이·빠른 충전이 특징.",
+            "이 글은 Series 7의 5년차 방수 약화 + IP6X 방진 + 빠른 충전 코일 침수 + 정확한 수리 비용을 정리한 모델 특화 가이드입니다.",
+        ],
+        "good": '<strong>5년 사용한 Series 7의 방수 등급은 출고 시의 40~55% 수준</strong>입니다. IP6X 방진 추가로 먼지·미세 입자 침투는 잘 막지만 물 등급은 WR50m 동일. 가벼운 비는 OK지만 사우나·수영 절대 X.',
+        "body_sections": [
+            {
+                "h2": "Series 7와 Series 6의 큰 차이점",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>항목</th><th>Series 6</th><th>Series 7</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>방진 등급</td><td>없음</td><td><strong>IP6X (Apple Watch 첫 도입)</strong></td></tr>
+    <tr><td>디스플레이 크기</td><td>40/44mm</td><td>41/45mm (20% 더 큼)</td></tr>
+    <tr><td>충전 속도</td><td>일반</td><td><strong>빠른 충전 (USB-C 어댑터)</strong></td></tr>
+    <tr><td>칩</td><td>S6</td><td>S7</td></tr>
+  </tbody>
+</table>
+<p>Series 7부터 IP6X 추가로 먼지·모래 침투는 잘 막지만 <strong>방수 등급(WR50m)은 동일</strong>. 사우나·수영 위험성은 똑같음.</p>
+""",
+            },
+            {
+                "h2": "Series 7 침수 취약 4대 부위",
+                "html": """
+<h3>1. 더 큰 OLED 디스플레이 (Series 7 신규)</h3>
+<p>20% 더 큰 41/45mm 디스플레이는 침수 시:</p>
+<ul>
+  <li>화면 깜빡임·세로 줄</li>
+  <li>터치 안 되는 영역 발생</li>
+  <li>가장자리 굽은 부분 침투 위험 증가</li>
+</ul>
+
+<h3>2. 빠른 충전 코일</h3>
+<p>Series 7 빠른 충전 코일은 정밀 회로. 침수 시 충전 속도 저하 또는 안 됨.</p>
+
+<h3>3. 디지털 크라운 ECG</h3>
+<p>5년 사용 = 부식 + 마모 동반.</p>
+
+<h3>4. 후면 혈중산소·심박 센서</h3>
+<p>5년차로 후면 글래스 패킹 약화. 침수 시 센서 측정 부정확.</p>
+""",
+            },
+            {
+                "h2": "Series 7 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>Series 7 비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>분해·세척·방수 재처리</td><td>7~12만원</td></tr>
+    <tr><td><strong>2단계 (디지털 크라운)</strong></td><td>크라운 모듈 교체</td><td>11~18만원</td></tr>
+    <tr><td><strong>2단계 (후면 센서)</strong></td><td>심박+SpO2 센서 모듈 교체</td><td>14~23만원</td></tr>
+    <tr><td><strong>2단계 (디스플레이)</strong></td><td>화면 모듈 교체</td><td>18~32만원</td></tr>
+    <tr><td><strong>2단계 (배터리 동반 손상)</strong></td><td>배터리 교체</td><td>9~13만원</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>20~32만원</td></tr>
+  </tbody>
+</table>
+<p>Series 6 대비 5~10% 비쌈. 더 큰 디스플레이 부품가 차이.</p>
+""",
+            },
+            {
+                "h2": "Series 7 침수 vs 새 워치 교체 — 손익 분기점",
+                "html": """
+<ul>
+  <li><strong>1~2단계 (10~25만원)</strong> → 수리 권장</li>
+  <li><strong>2단계 메인보드 미손상</strong> → 수리 가능</li>
+  <li><strong>3단계 메인보드 (20만원+)</strong> → 새 SE 3세대(35만원)와 비교</li>
+</ul>
+""",
+            },
+        ],
+        "tip_box": ("Series 7 IP6X 추가됐어도 물 등급은 WR50m 동일", "방진 추가로 먼지 침투는 잘 막지만 방수는 똑같음. 사우나·수영장 위험성 변하지 않음."),
+        "daol_box": {
+            "title": "다올리페어 Series 7 침수 수리 — IP6X 모델 정밀 처치",
+            "p": "Series 7의 더 큰 디스플레이·빠른 충전 코일까지 종합 진단 + 침수 처치.",
+            "ul": [
+                "디지털 크라운 ECG 접점 처치",
+                "후면 혈중산소·심박 센서 처치",
+                "더 큰 OLED 디스플레이 처치",
+                "배터리 + 침수 동시 처치 가능",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "Apple Watch Series 7 WATER", "title": "Series 7 침수<br>5년차 종합 처치", "desc": "5년 사용한 Series 7 침수 + IP6X 모델 정밀 진단, 다올리페어에서 가능."},
+        "faq": [
+            ("5년 사용한 Series 7도 WR50m 그대로인가요?",
+             "출고 시의 40~55% 수준. 가벼운 비는 OK지만 사우나·수영 절대 X."),
+            ("Series 7 IP6X 방진이면 침수에도 강한가요?",
+             "방진과 방수는 다릅니다. IP6X는 먼지 침투 차단, 방수 등급은 WR50m 동일."),
+            ("Series 7 빠른 충전이 침수 후 느려졌어요",
+             "충전 코일 침수 가능성. 단순 청소로 회복되는 경우도 있고 코일 교체 필요한 경우도 있음. 매장 진단."),
+            ("Series 7 침수 수리 vs 새 워치 어느 게 나아요?",
+             "1~2단계 수리 권장, 3단계 메인보드면 새 SE 3세대 권장."),
+            ("Series 7 화면이 더 커서 침수 위험도 더 높나요?",
+             "약간 높음. 디스플레이 가장자리 굽은 부분이 침수 진입 경로가 될 수 있어 5년차일수록 주의."),
+            ("Series 7 데이터 살릴 수 있나요?",
+             "페어링된 아이폰 백업으로 새 워치 마이그레이션 가능."),
+        ],
+        "related": [
+            ("apple-watch-water-damage.html", "통합", "애플워치 침수 종합 가이드"),
+            ("applewatch-series6-water-damage.html", "이전", "Series 6 침수 가이드"),
+            ("applewatch-series8-water-damage.html", "다음", "Series 8 침수 가이드"),
+            ("applewatch-battery-replacement-guide.html", "배터리", "애플워치 배터리 교체 가이드"),
+            ("applewatch-shower-water-resistance.html", "방수", "애플워치 샤워·방수 한계"),
+        ],
+    },
+
+    # 29. Apple Watch Series 8 침수
+    {
+        "slug": "applewatch-series8-water-damage",
+        "cat": "Apple Watch Series 8 · 침수 가이드",
+        "title": "애플워치 Series 8 침수 — 4년차 폰·첫 손목 온도 센서·충돌 감지 모델 침수 가이드",
+        "desc": "2022년 출시 4년차 애플워치 Series 8 침수 케이스. WR50m + IP6X, 첫 손목 온도 센서·충돌 감지 도입, 침수 위험 부위와 정확한 수리 비용까지.",
+        "keywords": "애플워치 Series 8 침수, 시리즈 8 방수, 손목 온도 센서 침수, 충돌 감지 Series, Series 8 디지털 크라운",
+        "intro": [
+            "Apple Watch Series 8은 2022년 9월 출시로 약 4년이 경과한 모델입니다. <strong>Apple Watch 라인업 최초로 손목 온도 센서·충돌 감지 도입</strong>으로 신규 침수 취약 부위가 늘었습니다.",
+            "이 글은 Series 8의 4년차 방수 약화 + 손목 온도 센서 침수 + 충돌 감지 자이로 + 정확한 수리 비용을 정리한 모델 특화 가이드입니다.",
+        ],
+        "good": '<strong>4년 사용한 Series 8의 방수 등급은 출고 시의 50~65% 수준</strong>입니다. 손목 온도 센서·충돌 감지 자이로가 신규 침수 취약 부품. 가벼운 손 씻기는 OK, 사우나·수영 X.',
+        "body_sections": [
+            {
+                "h2": "Series 8와 Series 7의 큰 차이점",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>항목</th><th>Series 7</th><th>Series 8</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>손목 온도 센서</td><td>X</td><td><strong>O (Apple Watch 첫 도입)</strong></td></tr>
+    <tr><td>충돌 감지</td><td>X</td><td><strong>O (Apple Watch 첫 도입)</strong></td></tr>
+    <tr><td>배란 추정</td><td>X</td><td><strong>O</strong></td></tr>
+    <tr><td>칩</td><td>S7</td><td>S8</td></tr>
+  </tbody>
+</table>
+<p>Series 8은 후면 손목 온도 센서 + 고정밀 자이로(충돌 감지)가 신규 침수 취약 부품 추가.</p>
+""",
+            },
+            {
+                "h2": "Series 8 침수 취약 4대 부위",
+                "html": """
+<h3>1. 손목 온도 센서 (Apple Watch 첫 도입)</h3>
+<p>Series 8 첫 도입된 후면 + 디스플레이 옆 듀얼 온도 센서. 침수 시:</p>
+<ul>
+  <li>온도 측정 안 됨 또는 부정확</li>
+  <li>배란 추정 비활성화</li>
+  <li>수면 추적 부정확</li>
+</ul>
+
+<h3>2. 충돌 감지 자이로 센서 (Apple Watch 첫 도입)</h3>
+<p>고정밀 자이로·가속도 센서. 침수 시 없는 사고 알림 오작동 가능.</p>
+
+<h3>3. 디지털 크라운 ECG</h3>
+<p>4년 사용 = 부식 + 마모.</p>
+
+<h3>4. 후면 혈중산소·심박 센서</h3>
+<p>4년차 후면 글래스 패킹 약화 시작.</p>
+""",
+            },
+            {
+                "h2": "Series 8 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>Series 8 비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>분해·세척·방수 재처리</td><td>7~13만원</td></tr>
+    <tr><td><strong>2단계 (디지털 크라운)</strong></td><td>크라운 모듈 교체</td><td>12~19만원</td></tr>
+    <tr><td><strong>2단계 (후면 센서·온도)</strong></td><td>센서 모듈 교체</td><td>15~25만원</td></tr>
+    <tr><td><strong>2단계 (디스플레이)</strong></td><td>화면 모듈 교체</td><td>19~33만원</td></tr>
+    <tr><td><strong>2단계 (배터리 동반 손상)</strong></td><td>배터리 교체</td><td>9~13만원</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>22~34만원</td></tr>
+  </tbody>
+</table>
+<p>Series 7 대비 5~10% 비쌈. 손목 온도 센서·충돌 감지 신규 부품 영향.</p>
+""",
+            },
+            {
+                "h2": "Series 8 침수 vs 새 워치 교체 — 손익 분기점",
+                "html": """
+<ul>
+  <li><strong>1~2단계 (10~25만원)</strong> → 수리 강력 권장</li>
+  <li><strong>2단계 메인보드 미손상</strong> → 수리 가능</li>
+  <li><strong>3단계 메인보드 (22만원+)</strong> → 새 SE 3세대(35만원)와 비교</li>
+</ul>
+""",
+            },
+        ],
+        "tip_box": ("Series 8 = 손목 온도·충돌 감지 첫 도입, 신규 센서 침수 주의", "신규 듀얼 온도 센서·고정밀 자이로가 침수 시 오작동(없는 사고 알림) 가능. 1단계 침수도 가볍게 보지 말 것."),
+        "daol_box": {
+            "title": "다올리페어 Series 8 침수 수리 — 손목 온도·충돌 감지 정밀 처치",
+            "p": "Series 8의 신규 손목 온도·충돌 감지 자이로까지 종합 진단 + 침수 처치.",
+            "ul": [
+                "손목 온도 센서 침수 처치",
+                "충돌 감지 자이로 처치",
+                "디지털 크라운 ECG 접점 처치",
+                "배터리 + 침수 동시 처치 가능",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "Apple Watch Series 8 WATER", "title": "Series 8 침수<br>4년차 신규 센서 처치", "desc": "4년 사용한 Series 8 침수 + 손목 온도·충돌 감지 정밀 진단, 다올리페어에서 가능."},
+        "faq": [
+            ("4년 사용한 Series 8도 WR50m 그대로인가요?",
+             "출고 시의 50~65% 수준. 가벼운 손 씻기 OK, 사우나·수영 X."),
+            ("Series 8 손목 온도 측정이 침수 후 안 돼요",
+             "후면 온도 센서 침수 가능성. 센서 모듈 교체 15~25만원."),
+            ("Series 8 충돌 감지가 자꾸 잘못 울려요",
+             "자이로 센서 침수로 오작동 가능. 매장 진단 후 회로 복구."),
+            ("Series 8 침수 수리 vs 새 워치 어느 게 나아요?",
+             "1~2단계 수리 강력 권장, 3단계 메인보드면 새 SE 3세대 권장."),
+            ("Series 8 ECG·혈중산소 모두 침수면 어떻게?",
+             "센서 모듈 통합 교체 (15~25만원). 일부 케이스는 단순 청소로 회복."),
+            ("Series 8 데이터 살릴 수 있나요?",
+             "페어링된 아이폰 백업으로 새 워치 마이그레이션 가능."),
+        ],
+        "related": [
+            ("apple-watch-water-damage.html", "통합", "애플워치 침수 종합 가이드"),
+            ("applewatch-series7-water-damage.html", "이전", "Series 7 침수 가이드"),
+            ("applewatch-series9-water-damage.html", "다음", "Series 9 침수 가이드"),
+            ("applewatch-battery-replacement-guide.html", "배터리", "애플워치 배터리 교체 가이드"),
+            ("applewatch-shower-water-resistance.html", "방수", "애플워치 샤워·방수 한계"),
+        ],
+    },
+
+    # 30. Apple Watch Series 9 침수
+    {
+        "slug": "applewatch-series9-water-damage",
+        "cat": "Apple Watch Series 9 · 침수 가이드",
+        "title": "애플워치 Series 9 침수 — 3년차 폰·Double Tap 첫 도입 모델 침수 가이드",
+        "desc": "2023년 출시 3년차 애플워치 Series 9 침수 케이스. WR50m + IP6X, 첫 Double Tap 제스처·2000nit 디스플레이 신규 부위 침수 위험과 정확한 수리 비용까지.",
+        "keywords": "애플워치 Series 9 침수, 시리즈 9 방수, Double Tap 침수, S9 칩, Series 9 디스플레이",
+        "intro": [
+            "Apple Watch Series 9은 2023년 9월 출시로 약 3년이 경과한 모델입니다. <strong>S9 칩의 신경망 엔진으로 Double Tap 제스처 첫 도입</strong>됐고 2000nit 디스플레이로 야외 가시성이 크게 향상.",
+            "이 글은 Series 9의 3년차 방수 약화 + Double Tap 신경망 + 2000nit 디스플레이 + 정확한 수리 비용을 정리한 모델 특화 가이드입니다.",
+        ],
+        "good": '<strong>3년 사용한 Series 9의 방수 등급은 출고 시의 55~70% 수준</strong>입니다. Double Tap 신경망·2000nit 더 밝은 디스플레이가 신규 침수 취약 부품. 가벼운 손 씻기는 OK, 사우나·수영 X.',
+        "body_sections": [
+            {
+                "h2": "Series 9와 Series 8의 큰 차이점",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>항목</th><th>Series 8</th><th>Series 9</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>제스처</td><td>X</td><td><strong>Double Tap (Apple Watch 첫)</strong></td></tr>
+    <tr><td>디스플레이 밝기</td><td>1000nit</td><td><strong>2000nit (2배)</strong></td></tr>
+    <tr><td>UWB 칩</td><td>U1</td><td><strong>2세대 UWB</strong></td></tr>
+    <tr><td>칩</td><td>S8</td><td>S9 (4코어 신경망)</td></tr>
+  </tbody>
+</table>
+<p>Series 9은 S9 칩의 신경망 엔진 + 2000nit 디스플레이 컨트롤러가 신규 침수 취약 부품 추가.</p>
+""",
+            },
+            {
+                "h2": "Series 9 침수 취약 4대 부위",
+                "html": """
+<h3>1. Double Tap 신경망 (Apple Watch 첫 도입)</h3>
+<p>Series 9 첫 도입된 Double Tap은 S9 신경망 + 가속도·자이로·심박 센서 통합 처리. 침수 시:</p>
+<ul>
+  <li>Double Tap 인식 안 됨</li>
+  <li>의도하지 않은 제스처 동작</li>
+  <li>심박 측정과 연동 오작동</li>
+</ul>
+
+<h3>2. 2000nit 디스플레이 컨트롤러</h3>
+<p>2배 밝아진 디스플레이의 정밀 컨트롤러 회로 침수 시 화면 깜빡임·밝기 자동 조절 비정상.</p>
+
+<h3>3. 디지털 크라운 ECG</h3>
+<p>3년 사용 = 부식 시작 단계.</p>
+
+<h3>4. 2세대 UWB 칩</h3>
+<p>Series 9 신규 2세대 UWB 칩 침수 시 정밀 검색 기능 비정상.</p>
+""",
+            },
+            {
+                "h2": "Series 9 침수 수리 — 다올리페어 정확한 비용",
+                "html": """
+<table class="compare-table">
+  <thead>
+    <tr><th>침수 단계</th><th>처치</th><th>Series 9 비용</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>1단계 (가벼운)</strong></td><td>분해·세척·방수 재처리</td><td>8~14만원</td></tr>
+    <tr><td><strong>2단계 (디지털 크라운)</strong></td><td>크라운 모듈 교체</td><td>13~20만원</td></tr>
+    <tr><td><strong>2단계 (후면 센서)</strong></td><td>센서 모듈 교체</td><td>16~26만원</td></tr>
+    <tr><td><strong>2단계 (디스플레이)</strong></td><td>2000nit 화면 모듈 교체</td><td>22~38만원</td></tr>
+    <tr><td><strong>2단계 (배터리 동반 손상)</strong></td><td>배터리 교체</td><td>10~14만원</td></tr>
+    <tr><td><strong>3단계 (메인보드 부식)</strong></td><td>회로 복구</td><td>25~38만원</td></tr>
+  </tbody>
+</table>
+<p>Series 8 대비 10~15% 비쌈. 2000nit 디스플레이·S9 칩 부품가 상승.</p>
+""",
+            },
+            {
+                "h2": "Series 9 침수 vs 새 워치 교체 — 손익 분기점",
+                "html": """
+<ul>
+  <li><strong>1~2단계 (10~30만원)</strong> → 수리 강력 권장 (3년차라 가성비 좋음)</li>
+  <li><strong>2단계 메인보드 미손상</strong> → 수리 가능</li>
+  <li><strong>3단계 메인보드 (25만원+)</strong> → 새 SE 3세대(35만원)와 비교</li>
+</ul>
+""",
+            },
+        ],
+        "tip_box": ("Series 9 = Double Tap 첫 도입, 신경망 처리부 침수 주의", "Double Tap은 신경망 + 다중 센서 통합 처리라 침수 시 인식 부정확. 1단계 침수도 가볍게 보지 말 것."),
+        "daol_box": {
+            "title": "다올리페어 Series 9 침수 수리 — Double Tap·2000nit 디스플레이 처치",
+            "p": "Series 9의 신경망·2000nit 디스플레이까지 종합 진단 + 침수 처치.",
+            "ul": [
+                "Double Tap 신경망 회로 처치",
+                "2000nit 디스플레이 컨트롤러 처치",
+                "디지털 크라운 ECG 접점 처치",
+                "배터리 + 침수 동시 처치 가능",
+                "수리 실패 시 비용 0원",
+            ],
+        },
+        "cta": {"eyebrow": "Apple Watch Series 9 WATER", "title": "Series 9 침수<br>3년차 신규 부품 처치", "desc": "3년 사용한 Series 9 침수 + Double Tap·2000nit 정밀 진단, 다올리페어에서 가능."},
+        "faq": [
+            ("3년 사용한 Series 9도 WR50m 그대로인가요?",
+             "출고 시의 55~70% 수준. 가벼운 손 씻기 OK, 사우나·수영 X."),
+            ("Series 9 Double Tap이 침수 후 안 돼요",
+             "S9 신경망 또는 가속도·자이로 센서 침수 가능. 매장 진단 후 회로 복구."),
+            ("Series 9 화면이 침수 후 어두워졌어요",
+             "2000nit 디스플레이 컨트롤러 침수 가능성. 화면 모듈 교체 22~38만원."),
+            ("Series 9 침수 수리 vs 새 워치 어느 게 나아요?",
+             "1~2단계 수리 강력 권장, 3단계 메인보드면 새 SE 3세대 또는 Series 11 비교."),
+            ("Series 9 vs SE 3세대 침수 수리비 비교?",
+             "Series 9가 20~30% 비쌈. 더 정밀한 부품(2000nit·신경망) 영향."),
+            ("Series 9 데이터 살릴 수 있나요?",
+             "페어링된 아이폰 백업으로 새 워치 마이그레이션 가능."),
+        ],
+        "related": [
+            ("apple-watch-water-damage.html", "통합", "애플워치 침수 종합 가이드"),
+            ("applewatch-series8-water-damage.html", "이전", "Series 8 침수 가이드"),
+            ("applewatch-se-3-water-damage.html", "비슷한 시기", "SE 3세대 침수 가이드"),
+            ("applewatch-battery-replacement-guide.html", "배터리", "애플워치 배터리 교체 가이드"),
+            ("applewatch-shower-water-resistance.html", "방수", "애플워치 샤워·방수 한계"),
+        ],
+    },
 ]
 
 
