@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-09T09:27:00.430525+09:00",
+  "updated_at": "2026-05-09T09:49:07.674440+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11125,
@@ -32,43 +32,43 @@
       "model": "애플워치 Se2",
       "type": "배터리 교체",
       "branch": "신림점",
-      "minutes_ago": 964
+      "minutes_ago": 986
     },
     {
       "model": "아이폰 17프로",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 995
+      "minutes_ago": 1017
     },
     {
       "model": "아이폰 13미니",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 1075
+      "minutes_ago": 1097
     },
     {
       "model": "아이폰 15프로",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 2540
+      "minutes_ago": 2562
     },
     {
       "model": "아이폰 16",
       "type": "화면 교체",
       "branch": "신림점",
-      "minutes_ago": 3800
+      "minutes_ago": 3822
     },
     {
       "model": "아이폰 14프로",
       "type": "후면 유리 교체",
       "branch": "신림점",
-      "minutes_ago": 4207
+      "minutes_ago": 4229
     },
     {
       "model": "아이패드 미니6",
       "type": "충전 단자 수리",
       "branch": "신림점",
-      "minutes_ago": 4256
+      "minutes_ago": 4278
     }
   ],
   "top_repair_types": [
@@ -100,7 +100,8 @@
       "after_img": "images/before-after/1osELxQatz3FfFiTdXoLFlfU/after.jpg",
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
-      "case_id": "1osELxQatz3FfFiTdXoLFlfUojzzQm4mh"
+      "case_id": "1osELxQatz3FfFiTdXoLFlfUojzzQm4mh",
+      "meta": {}
     },
     {
       "id": "case-2",
@@ -113,7 +114,8 @@
       "after_img": "images/before-after/1OyrzlRPy-yl6H-qjV7DRjaD/after.jpg",
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
-      "case_id": "1OyrzlRPy-yl6H-qjV7DRjaDB1StVbHWi"
+      "case_id": "1OyrzlRPy-yl6H-qjV7DRjaDB1StVbHWi",
+      "meta": {}
     },
     {
       "id": "case-3",
@@ -126,7 +128,8 @@
       "after_img": "images/before-after/14mAIBCvXmew2SGH1oIeIVtL/after.jpg",
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
-      "case_id": "14mAIBCvXmew2SGH1oIeIVtLDPw_7UqxM"
+      "case_id": "14mAIBCvXmew2SGH1oIeIVtLDPw_7UqxM",
+      "meta": {}
     },
     {
       "id": "case-4",
@@ -139,7 +142,8 @@
       "after_img": "images/before-after/1Cc9oGIuweCMbTyVNn7kTbbe/after.jpg",
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
-      "case_id": "1Cc9oGIuweCMbTyVNn7kTbbeW9jbIwi-g"
+      "case_id": "1Cc9oGIuweCMbTyVNn7kTbbeW9jbIwi-g",
+      "meta": {}
     }
   ],
   "portfolio_cases": [
@@ -154,7 +158,8 @@
       "after_img": "images/before-after/1osELxQatz3FfFiTdXoLFlfU/after.jpg",
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
-      "case_id": "1osELxQatz3FfFiTdXoLFlfUojzzQm4mh"
+      "case_id": "1osELxQatz3FfFiTdXoLFlfUojzzQm4mh",
+      "meta": {}
     },
     {
       "id": "case-2",
@@ -167,7 +172,8 @@
       "after_img": "images/before-after/1OyrzlRPy-yl6H-qjV7DRjaD/after.jpg",
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
-      "case_id": "1OyrzlRPy-yl6H-qjV7DRjaDB1StVbHWi"
+      "case_id": "1OyrzlRPy-yl6H-qjV7DRjaDB1StVbHWi",
+      "meta": {}
     },
     {
       "id": "case-3",
@@ -180,7 +186,8 @@
       "after_img": "images/before-after/14mAIBCvXmew2SGH1oIeIVtL/after.jpg",
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
-      "case_id": "14mAIBCvXmew2SGH1oIeIVtLDPw_7UqxM"
+      "case_id": "14mAIBCvXmew2SGH1oIeIVtLDPw_7UqxM",
+      "meta": {}
     },
     {
       "id": "case-4",
@@ -193,7 +200,8 @@
       "after_img": "images/before-after/1Cc9oGIuweCMbTyVNn7kTbbe/after.jpg",
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
-      "case_id": "1Cc9oGIuweCMbTyVNn7kTbbeW9jbIwi-g"
+      "case_id": "1Cc9oGIuweCMbTyVNn7kTbbeW9jbIwi-g",
+      "meta": {}
     },
     {
       "id": "case-5",
@@ -206,7 +214,8 @@
       "after_img": "images/before-after/1Vv7RtlP0nfSvWfJplYYUP6z/after.jpg",
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
-      "case_id": "1Vv7RtlP0nfSvWfJplYYUP6zz2HdAdfvO"
+      "case_id": "1Vv7RtlP0nfSvWfJplYYUP6zz2HdAdfvO",
+      "meta": {}
     },
     {
       "id": "case-6",
@@ -219,7 +228,8 @@
       "after_img": "images/before-after/1f2FXtA6qBWEQSqzw9DUQ96A/after.jpg",
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
-      "case_id": "1f2FXtA6qBWEQSqzw9DUQ96A7-emle3kA"
+      "case_id": "1f2FXtA6qBWEQSqzw9DUQ96A7-emle3kA",
+      "meta": {}
     },
     {
       "id": "case-7",
@@ -232,7 +242,8 @@
       "after_img": "images/before-after/1Qr6LX9HuVj5phOJdPaqQRJv/after.jpg",
       "before_text": "화면 + 후면 파손",
       "after_text": "화면 + 후면 교체",
-      "case_id": "1Qr6LX9HuVj5phOJdPaqQRJv8l8nfrxa8"
+      "case_id": "1Qr6LX9HuVj5phOJdPaqQRJv8l8nfrxa8",
+      "meta": {}
     },
     {
       "id": "case-8",
@@ -245,7 +256,8 @@
       "after_img": "images/before-after/1NVppdC5tP7cAyFGlk9aGGwC/after.jpg",
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
-      "case_id": "1NVppdC5tP7cAyFGlk9aGGwCkHBZ1DsB_"
+      "case_id": "1NVppdC5tP7cAyFGlk9aGGwCkHBZ1DsB_",
+      "meta": {}
     },
     {
       "id": "case-9",
@@ -258,7 +270,8 @@
       "after_img": "images/before-after/11Ceo0pEjUBL9ey5-DiSnVk7/after.jpg",
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
-      "case_id": "11Ceo0pEjUBL9ey5-DiSnVk7as7f4yvIF"
+      "case_id": "11Ceo0pEjUBL9ey5-DiSnVk7as7f4yvIF",
+      "meta": {}
     },
     {
       "id": "case-10",
@@ -271,7 +284,8 @@
       "after_img": "images/before-after/1vyc6FljazH5ZsdoTiNwjGls/after.jpg",
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
-      "case_id": "1vyc6FljazH5ZsdoTiNwjGlsv74Xaep4Y"
+      "case_id": "1vyc6FljazH5ZsdoTiNwjGlsv74Xaep4Y",
+      "meta": {}
     },
     {
       "id": "case-11",
@@ -284,7 +298,8 @@
       "after_img": "images/before-after/1lOmdLXI-z0zJHqfxjVJCNUT/after.jpg",
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
-      "case_id": "1lOmdLXI-z0zJHqfxjVJCNUTg9S5bVdWw"
+      "case_id": "1lOmdLXI-z0zJHqfxjVJCNUTg9S5bVdWw",
+      "meta": {}
     },
     {
       "id": "case-12",
@@ -297,7 +312,8 @@
       "after_img": "images/before-after/1U3GDVjv89Ual7PluLlNfMlV/after.jpg",
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
-      "case_id": "1U3GDVjv89Ual7PluLlNfMlV5REzBMf_s"
+      "case_id": "1U3GDVjv89Ual7PluLlNfMlV5REzBMf_s",
+      "meta": {}
     },
     {
       "id": "case-13",
@@ -310,7 +326,8 @@
       "after_img": "images/before-after/1fBI5NGpXK22yh8cnFTxzzsa/after.jpg",
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
-      "case_id": "1fBI5NGpXK22yh8cnFTxzzsaMqhY5Kn7Z"
+      "case_id": "1fBI5NGpXK22yh8cnFTxzzsaMqhY5Kn7Z",
+      "meta": {}
     },
     {
       "id": "case-14",
@@ -323,7 +340,8 @@
       "after_img": "images/before-after/1YTvaa_LzyizCxIr0smGdZop/after.jpg",
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
-      "case_id": "1YTvaa_LzyizCxIr0smGdZoplWLdxAs_M"
+      "case_id": "1YTvaa_LzyizCxIr0smGdZoplWLdxAs_M",
+      "meta": {}
     },
     {
       "id": "case-15",
@@ -336,7 +354,8 @@
       "after_img": "images/before-after/1ybYHdi_ueiCzvFCZuxCWWss/after.jpg",
       "before_text": "화면 + 배터리 노화",
       "after_text": "화면 교체 + 배터리 성능치 정상",
-      "case_id": "1ybYHdi_ueiCzvFCZuxCWWssr0BfpVQbA"
+      "case_id": "1ybYHdi_ueiCzvFCZuxCWWssr0BfpVQbA",
+      "meta": {}
     },
     {
       "id": "case-16",
@@ -349,7 +368,8 @@
       "after_img": "images/before-after/1izFb94bU42HNKMaSGjIodRm/after.jpg",
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
-      "case_id": "1izFb94bU42HNKMaSGjIodRmdFo08qC9E"
+      "case_id": "1izFb94bU42HNKMaSGjIodRmdFo08qC9E",
+      "meta": {}
     },
     {
       "id": "case-17",
@@ -362,7 +382,8 @@
       "after_img": "images/before-after/13Qv_rnPH0t9ciY5sfeYKCQE/after.jpg",
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
-      "case_id": "13Qv_rnPH0t9ciY5sfeYKCQE3L9dd5yr_"
+      "case_id": "13Qv_rnPH0t9ciY5sfeYKCQE3L9dd5yr_",
+      "meta": {}
     },
     {
       "id": "case-18",
@@ -375,7 +396,8 @@
       "after_img": "images/before-after/1l_qsfwchJ8yBU11A6pV0fcb/after.jpg",
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
-      "case_id": "1l_qsfwchJ8yBU11A6pV0fcbp4XZkCGxc"
+      "case_id": "1l_qsfwchJ8yBU11A6pV0fcbp4XZkCGxc",
+      "meta": {}
     },
     {
       "id": "case-19",
@@ -388,7 +410,8 @@
       "after_img": "images/before-after/1im7V3yy-voaAfwyskTDqXQ3/after.jpg",
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
-      "case_id": "1im7V3yy-voaAfwyskTDqXQ31tVA9Ayjn"
+      "case_id": "1im7V3yy-voaAfwyskTDqXQ31tVA9Ayjn",
+      "meta": {}
     },
     {
       "id": "case-20",
@@ -401,7 +424,8 @@
       "after_img": "images/before-after/1vFX-wUWX_mgHb8Kr-inDvfY/after.jpg",
       "before_text": "충전 단자 손상",
       "after_text": "충전 단자 정밀 수리",
-      "case_id": "1vFX-wUWX_mgHb8Kr-inDvfYvzrxufFo_"
+      "case_id": "1vFX-wUWX_mgHb8Kr-inDvfYvzrxufFo_",
+      "meta": {}
     },
     {
       "id": "case-21",
@@ -414,7 +438,8 @@
       "after_img": "images/before-after/1bdNyoxif9BBqw8f53pwjRE3/after.jpg",
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
-      "case_id": "1bdNyoxif9BBqw8f53pwjRE3vZcNL4NsM"
+      "case_id": "1bdNyoxif9BBqw8f53pwjRE3vZcNL4NsM",
+      "meta": {}
     },
     {
       "id": "case-22",
@@ -427,7 +452,8 @@
       "after_img": "images/before-after/1CU7VD5ld1RpZ2lOBDhtYwmR/after.jpg",
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
-      "case_id": "1CU7VD5ld1RpZ2lOBDhtYwmRjaLsxaZ0C"
+      "case_id": "1CU7VD5ld1RpZ2lOBDhtYwmRjaLsxaZ0C",
+      "meta": {}
     },
     {
       "id": "case-23",
@@ -440,7 +466,8 @@
       "after_img": "images/before-after/1P0o4qDL9IsS1eaG35f8wvkw/after.jpg",
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
-      "case_id": "1P0o4qDL9IsS1eaG35f8wvkw_g_ZrM38E"
+      "case_id": "1P0o4qDL9IsS1eaG35f8wvkw_g_ZrM38E",
+      "meta": {}
     },
     {
       "id": "case-24",
@@ -453,7 +480,8 @@
       "after_img": "images/before-after/1jbdaG3NLgXd_kSgNcx077LD/after.jpg",
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
-      "case_id": "1jbdaG3NLgXd_kSgNcx077LDNcZupGYm4"
+      "case_id": "1jbdaG3NLgXd_kSgNcx077LDNcZupGYm4",
+      "meta": {}
     },
     {
       "id": "case-25",
@@ -466,7 +494,8 @@
       "after_img": "images/before-after/1HkvVe9sIlLXVxru308MTFGY/after.jpg",
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
-      "case_id": "1HkvVe9sIlLXVxru308MTFGYPpJgh4ua3"
+      "case_id": "1HkvVe9sIlLXVxru308MTFGYPpJgh4ua3",
+      "meta": {}
     },
     {
       "id": "case-26",
@@ -479,7 +508,8 @@
       "after_img": "images/before-after/1c74rh7iWYb3hexAzNbGcsJG/after.jpg",
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
-      "case_id": "1c74rh7iWYb3hexAzNbGcsJGGy_nYLqIA"
+      "case_id": "1c74rh7iWYb3hexAzNbGcsJGGy_nYLqIA",
+      "meta": {}
     },
     {
       "id": "case-27",
@@ -492,7 +522,8 @@
       "after_img": "images/before-after/1DLJIHqBBJReHkfyuGyt8QRU/after.jpg",
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
-      "case_id": "1DLJIHqBBJReHkfyuGyt8QRUrXlWIpKqk"
+      "case_id": "1DLJIHqBBJReHkfyuGyt8QRUrXlWIpKqk",
+      "meta": {}
     },
     {
       "id": "case-28",
@@ -505,7 +536,8 @@
       "after_img": "images/before-after/1FOnkpJ-X5f-XkBm8A9IrCPb/after.jpg",
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
-      "case_id": "1FOnkpJ-X5f-XkBm8A9IrCPbu1QodwTm9"
+      "case_id": "1FOnkpJ-X5f-XkBm8A9IrCPbu1QodwTm9",
+      "meta": {}
     },
     {
       "id": "case-29",
@@ -518,7 +550,8 @@
       "after_img": "images/before-after/1txy7HZ2zAbkVMdkqHjP6pu6/after.jpg",
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
-      "case_id": "1txy7HZ2zAbkVMdkqHjP6pu6u055DsT58"
+      "case_id": "1txy7HZ2zAbkVMdkqHjP6pu6u055DsT58",
+      "meta": {}
     },
     {
       "id": "case-30",
@@ -531,7 +564,8 @@
       "after_img": "images/before-after/17S150oqCz0w6FHNec5p_4Bo/after.jpg",
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
-      "case_id": "17S150oqCz0w6FHNec5p_4Bof8q8RyVFu"
+      "case_id": "17S150oqCz0w6FHNec5p_4Bof8q8RyVFu",
+      "meta": {}
     }
   ]
 }
