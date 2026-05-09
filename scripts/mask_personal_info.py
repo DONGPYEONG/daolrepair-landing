@@ -40,6 +40,8 @@ except ImportError:
 def _detect_faces(img_pil):
     """OpenCV로 얼굴 영역 검출 — (x, y, w, h) 리스트 반환.
     화면 반사·작은 얼굴까지 잡도록 정면 + 측면 모두 시도.
+    개인정보 보호 우선: 검출 실패보다 과검출(false positive)이 안전.
+    scaleFactor=1.05 (촘촘 스캔), minNeighbors=3 (덜 엄격), minSize=30px (작은 얼굴까지)
     """
     if cv2 is None or _FACE_CASCADE is None:
         return []
@@ -47,15 +49,15 @@ def _detect_faces(img_pil):
     gray = cv2.cvtColor(img_np, cv2.COLOR_RGB2GRAY)
     boxes = []
     # 정면 얼굴
-    faces = _FACE_CASCADE.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=4, minSize=(40, 40))
+    faces = _FACE_CASCADE.detectMultiScale(gray, scaleFactor=1.05, minNeighbors=3, minSize=(30, 30))
     boxes.extend([tuple(map(int, f)) for f in faces])
     # 측면 얼굴 (좌측)
     if _PROFILE_CASCADE is not None:
-        profiles = _PROFILE_CASCADE.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=4, minSize=(40, 40))
+        profiles = _PROFILE_CASCADE.detectMultiScale(gray, scaleFactor=1.05, minNeighbors=3, minSize=(30, 30))
         boxes.extend([tuple(map(int, f)) for f in profiles])
         # 측면 얼굴 (우측 — 이미지 좌우 반전 후 다시)
         flipped = cv2.flip(gray, 1)
-        profiles_r = _PROFILE_CASCADE.detectMultiScale(flipped, scaleFactor=1.1, minNeighbors=4, minSize=(40, 40))
+        profiles_r = _PROFILE_CASCADE.detectMultiScale(flipped, scaleFactor=1.05, minNeighbors=3, minSize=(30, 30))
         H, W = gray.shape
         for (x, y, w, h) in profiles_r:
             boxes.append((W - x - w, int(y), int(w), int(h)))
@@ -178,7 +180,7 @@ def _pixelate(crop):
     return small.resize((w, h), Image.NEAREST)
 
 
-def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool:
+def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2, model: str = "") -> bool:
     """이미지의 텍스트 영역 자동 블러 (시계·날짜만 살림).
 
     EXIF 회전 자동 적용 (모바일 사진은 회전 메타데이터로 인해 OCR 실패 잦음).
@@ -209,6 +211,13 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
     img.save(path, 'JPEG', quality=92, optimize=True)
     W, H = img.size
 
+    # 워치 사진은 마스킹 자체를 건너뜀 — 사장님 정책:
+    # 워치 화면은 개인정보 텍스트 거의 없고, 블러하면 수리 결과가 안 좋아 보임
+    is_watch = "워치" in (model or "") or "watch" in (model or "").lower()
+    if is_watch:
+        print(f"  ⌚ 워치 사진 ({path.name}) — 마스킹 스킵 (정책: 워치는 개인정보 X)")
+        return False
+
     # 🔥 0차: 얼굴 자동 인식 후 무조건 블러 (개인정보 보호 최우선)
     # 화면 반사·뒤에 비친 얼굴까지 모두 잡기 위해 정면 + 측면 모두 검출
     face_count = 0
@@ -217,8 +226,8 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
         if faces:
             face_count = len(faces)
             for (fx, fy, fw, fh) in faces:
-                # 패딩 20% 확대 (얼굴 경계 살짝 넘치도록)
-                pad = max(fw, fh) // 5
+                # 패딩 30% 확대 (얼굴 경계 + 머리카락까지 확실히 가림)
+                pad = max(fw, fh) * 3 // 10
                 x1 = max(0, fx - pad)
                 y1 = max(0, fy - pad)
                 x2 = min(W, fx + fw + pad)
@@ -226,7 +235,7 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
                 if x2 > x1 and y2 > y1:
                     crop = img.crop((x1, y1, x2, y2))
                     pixelated = _pixelate(crop)
-                    pixelated = pixelated.filter(ImageFilter.GaussianBlur(radius=8))
+                    pixelated = pixelated.filter(ImageFilter.GaussianBlur(radius=12))
                     img.paste(pixelated, (x1, y1, x2, y2))
             img.save(path, 'JPEG', quality=92, optimize=True)
 

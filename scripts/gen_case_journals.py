@@ -2047,6 +2047,8 @@ body {{ padding-top: 64px; }}
         "type": rtype,
         "branch": case["branch"],
         "date": case.get("date", ""),
+        # 사진 업로드 시각 (Drive createdTime) — 일지 정렬 기준
+        "uploaded_at": case.get("createdTime", "") or case.get("date", ""),
         "url": f"{SITE_BASE}/articles/{slug}.html",
         "created_at": today,
     }
@@ -2080,7 +2082,7 @@ def update_articles_index(journals_list):
     # 2) 일지 카드 영역 — 디바이스별 data-cat 부여
     cards_html_lines = []
     journal_cat_count = {}  # 디바이스별 일지 갯수
-    for j in sorted(journals_list, key=lambda x: x.get("date", ""), reverse=True):
+    for j in sorted(journals_list, key=lambda x: (x.get("uploaded_at") or x.get("date") or ""), reverse=True):
         cat = model_to_cat(j.get("model", ""))
         journal_cat_count[cat] = journal_cat_count.get(cat, 0) + 1
         cards_html_lines.append(f'''    <a href="{j['slug']}.html" class="article-card" data-cat="{cat}" data-journal="true">
@@ -2136,7 +2138,7 @@ def update_journal_page(journals_list):
 
     # 디바이스별 분류
     by_cat = {}
-    for j in sorted(journals_list, key=lambda x: x.get("date", ""), reverse=True):
+    for j in sorted(journals_list, key=lambda x: (x.get("uploaded_at") or x.get("date") or ""), reverse=True):
         cat = model_to_cat(j.get("model", ""))
         by_cat.setdefault(cat, []).append(j)
 

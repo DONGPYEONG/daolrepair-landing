@@ -682,10 +682,12 @@ def main():
                 reason = "Vision 재선택" if cached_meta else "새로 다운로드"
                 print(f"   ✓ case-{case_idx} ({folder_id[:10]}...): {device_label(c['device'], c['model'])} ({c['repair_type']}) — {reason}")
                 # 🛡️ 개인정보 자동 마스킹 (시계·날짜는 살리고 나머지 텍스트 블러)
+                # 워치 모델은 OCR 마스킹 스킵 (얼굴 인식만 적용)
                 try:
                     from mask_personal_info import mask_image
-                    mask_image(before_path)
-                    mask_image(after_path)
+                    model_for_mask = f"{c.get('device','')} {c.get('model','')}"
+                    mask_image(before_path, model=model_for_mask)
+                    mask_image(after_path, model=model_for_mask)
                 except ImportError:
                     pass  # easyocr 없으면 그냥 스킵
                 except Exception as me:
