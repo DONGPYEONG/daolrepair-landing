@@ -217,6 +217,12 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
             continue
         xs = [p[0] for p in bbox]
         ys = [p[1] for p in bbox]
+        h_box = max(ys) - min(ys)
+        # 🔥 핵심 보호: bbox 높이 > 150px = 잠금화면 시계·UI 헤더일 가능성 매우 높음
+        # 일반 개인정보 텍스트(이름·번호·일정)는 h < 130. 큰 시계 OCR이 garbage(예: "4:49"→">8459")로
+        # 읽혀도 블러 안 함. CLOCK_RE 같은 패턴 매칭이 OCR 오인식 때문에 작동 안 하는 케이스 대비
+        if h_box > 150:
+            continue
         in_top = max(ys) < top_threshold
         x_min_raw = int(min(xs))
         y_min_raw = int(min(ys))
@@ -297,17 +303,29 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2) -> bool
         bbox, text, conf = entry
         if conf < conf_threshold:
             continue
+        # 1차와 동일한 노이즈 필터 적용 — iPhone 큰 잠금화면 시계가
+        # ', [, !, * 등 1글자로 오인식되는 케이스 보호 (예: "4:49" → "[", "'")
+        text_stripped = (text or "").strip()
+        if len(text_stripped) <= 1:
+            continue
+        if len(text_stripped) == 2 and conf < 0.85:
+            continue
         ys = [p[1] for p in bbox]
+        xs = [p[0] for p in bbox]
+        h_box = max(ys) - min(ys)
         in_top = max(ys) < top_threshold
+        # 🔥 핵심 보호: bbox 높이 > 150px = 잠금화면 시계·UI 헤더일 가능성 매우 높음
+        # 1차 패스와 동일한 임계값 — 일반 개인정보 텍스트(h<130)는 보호되지 않음
+        if h_box > 150:
+            continue
         if _is_keep_text(text, in_top_region=in_top):
             continue
-        xs = [p[0] for p in bbox]
         x_min = max(0, int(min(xs)) - 10)
         y_min = max(0, int(min(ys)) - 10)
         x_max = min(W, int(max(xs)) + 10)
         y_max = min(H, int(max(ys)) + 10)
         if x_max > x_min and y_max > y_min:
-            extra_blur.append((x_min, y_min, x_max, y_max, text.strip()))
+            extra_blur.append((x_min, y_min, x_max, y_max, text_stripped))
     if extra_blur:
         # 2차 마스킹 전 살림 영역 원본도 다시 캡처
         kept_originals_2 = []
