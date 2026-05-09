@@ -39,6 +39,12 @@ CLOCK_PART_RE = re.compile(r'^\s*\d{1,2}\s*$')
 # 상단 영역(잠금화면 시계 위치)에서만 적용 — 일반 4자리 숫자 보호
 LARGE_CLOCK_NO_COLON_RE = re.compile(r'^\s*([01]?\d|2[0-3])([0-5]\d)\s*$')
 
+# 시계 점(.) 구분자 — OCR이 큰 잠금화면 시계의 콜론(:)을 점(.)으로 오인식하는 케이스
+# 21.30, 9.41 같은 패턴을 시간으로 인정 (유효 범위만)
+# 가격·소수점 숫자(예: 5.30 = 5.30달러, 21.30 = 21.30%)와 혼동 위험 있어
+# 상단 영역(잠금화면 시계 위치)에서만 적용
+CLOCK_PERIOD_RE = re.compile(r'^\s*([01]?\d|2[0-3])\s*\.\s*([0-5]\d)\s*$')
+
 # 날짜·요일: "5월 8일", "수요일", "(금)", "2026.05.08"
 # 주의: "5/8", "5.8" 같은 슬래시·점 패턴은 일정 시간(20:40 → OCR이 20.40으로 오인)과 헷갈리므로 제외
 # OCR 오인식 허용: 괄호 변형 ({, [, (, （)
@@ -70,8 +76,8 @@ BATTERY_RE = re.compile(r'^\s*\d{1,3}\s*%\s*$')
 
 # Position 휴리스틱 — 잠금화면 시계는 보통 사진 상단~중앙 부근에 위치
 # 사진 프레이밍에 따라 잠금화면 시계가 사진 중앙 가까이 갈 수 있음
-# 0.35 → 0.55로 확장 (폰을 작업대 가운데 두고 찍는 매장 사진 대응)
-TOP_REGION_RATIO = 0.55  # 상단 55% 영역
+# 0.55 → 0.7로 확장 (폰이 작업대 위쪽에 있고 카메라가 위에서 찍어 시계가 60%대에 오는 케이스 대응)
+TOP_REGION_RATIO = 0.7  # 상단 70% 영역
 
 _reader_cache = None
 
@@ -116,6 +122,9 @@ def _is_keep_text(text: str, in_top_region: bool = False) -> bool:
         return True
     # 상단 영역의 콜론 없는 시계 패턴 (941, 1230, 0941 등) — OCR이 큰 시계 콜론 놓친 경우
     if in_top_region and LARGE_CLOCK_NO_COLON_RE.match(text):
+        return True
+    # 상단 영역의 점(.) 구분자 시계 (21.30, 9.41) — OCR이 콜론(:)을 점으로 오인식한 경우
+    if in_top_region and CLOCK_PERIOD_RE.match(text):
         return True
     return False
 
