@@ -723,6 +723,8 @@ def main():
             "type": TYPE_LABELS.get(c["repair_type"], "수리"),
             "branch": c["branch"],
             "date": display_date,
+            # Drive 업로드 시각 (full ISO timestamp) — 일지 정렬 기준 (같은 날짜도 시간순 구분)
+            "createdTime": c.get("createdTime", ""),
             "repair_time": TIME_BY_TYPE.get(c["repair_type"], "진단 후 안내"),
             "before_img": f"images/before-after/{folder_id}/before.jpg",
             "after_img":  f"images/before-after/{folder_id}/after.jpg",
