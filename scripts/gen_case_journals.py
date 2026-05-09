@@ -1898,11 +1898,13 @@ window.artPhotoPreview = function(input){
 
 
 def generate_article(case, journals, used_titles=None):
-    """1편 생성. 이미 (model+type+month) 조합 있으면 None 반환."""
+    """1편 생성. 케이스별 고유 (case_id 기반) — 같은 모델·수리도 다른 케이스면 별도 일지."""
     model = case["model"]
     rtype = case.get("repair_type", "")
     month = case.get("date", "")[:7] if case.get("date") else ""
-    key = f"{model}|{rtype}|{month}"
+    case_id = case.get("case_id", "") or case.get("id", "")
+    # 케이스 단위로 unique key (이전엔 model|type|month로 묶여 중복 케이스 누락됨)
+    key = f"{model}|{rtype}|{month}|{case_id[:8]}"
     if key in journals:
         return None  # 중복
 
