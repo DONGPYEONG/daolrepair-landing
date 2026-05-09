@@ -234,86 +234,6 @@ body { padding-top: 64px; }
     gtag('js', new Date());
     gtag('config', 'G-TF9YKW0FW2', {'page_title': document.title, 'page_location': window.location.href});
   </script>
-
-  <!-- DAOL_GLOBAL_STYLE_v3 -->
-  <style>
-    /* 본문 일반 링크 — 주황 + 밑줄 (다올리페어 브랜드)
-       art-wrap 추가: .art-wrap 직속 컨테이너(p, ul, ol, li, div, td)에 있는 링크도 잡음
-       단, .art-wrap > .art-cta, .art-wrap > .related-grid 같은 영역은 별도 스타일 유지 */
-    .art-body a, .article-content a, article.art-body a, .art-section a, .col-body a,
-    .art-wrap > p a, .art-wrap > ul a, .art-wrap > ol a, .art-wrap p a:not(.art-cta-btn):not(.art-cta-btn-ghost),
-    .art-wrap > .art-good a, .art-wrap > .art-tip a, .art-wrap > .art-warn a, .art-wrap > .daollipair-box a,
-    .art-wrap > h2 + p a, .art-wrap > table a, .art-wrap > .compare-table a, .art-wrap > .art-faq a,
-    .art-wrap > .diag-steps a, .art-wrap > .quick-steps a {
-      color: #E8732A !important;
-      text-decoration: underline !important;
-      text-underline-offset: 2px;
-      font-weight: 600;
-    }
-    .art-body a:hover, .article-content a:hover, article.art-body a:hover, .art-wrap p a:hover {
-      color: #C55E1A !important;
-    }
-    /* 단, 버튼/CTA처럼 background·class 있는 링크는 자기 스타일 유지 */
-    .art-body a[style*="background"],
-    .art-body a[class*="btn"],
-    .art-body a.art-cta-btn,
-    .art-body a.art-cta-btn-ghost,
-    .art-cta a, .art-cta-btns a,
-    .related-card, .related-card a,
-    .art-good a[style*="background"],
-    .art-warn a[style*="background"],
-    .art-wrap a.art-cta-btn, .art-wrap a.art-cta-btn-ghost {
-      text-decoration: none !important;
-      font-weight: inherit;
-    }
-    /* 버튼 내 글자색은 inline style의 color를 그대로 — 단, !important 충돌 회피 위해 별도 처리 X */
-    .art-body a[style*="color:#fff"], .art-body a[style*="color: #fff"],
-    .art-body a[style*="color:#FFF"], .art-body a[style*="color: #FFF"] {
-      color: #fff !important;
-    }
-    .art-body a[style*="color:#000"], .art-body a[style*="color: #000"],
-    .art-body a[style*="color:#1a1a1a"], .art-body a[style*="color: #1a1a1a"] {
-      color: #1a1a1a !important;
-    }
-    /* 한국어 줄바꿈 — 단어 중간 끊지 않음 */
-    .art-body, .art-body p, .art-body li, .art-body td, .art-body div,
-    .article-content, .article-content p, .article-content li,
-    article.art-body p, article.art-body li {
-      word-break: keep-all;
-      overflow-wrap: break-word;
-    }
-    .art-body table td, .art-body table th {
-      word-break: keep-all;
-    }
-    /* 제목·짧은 텍스트는 균형 잡힌 줄바꿈 (마지막 줄에 글자 1개만 남는 어색함 방지) */
-    h1, h2, h3, .art-title, .art-body h2, .art-body h3,
-    .ba-issue, .pf-caption-title, .live-rank-name, .live-title,
-    .card-title, .quick-nav-label, .ba-portfolio-btn, .pf-cta-btn {
-      text-wrap: balance;
-      -webkit-text-wrap: balance;
-    }
-    /* 짧은 라벨·배지·메뉴는 절대 줄바꿈 X */
-    .art-nav a, .art-cat, .art-category, .card-category,
-    .ba-meta-tag, .pf-meta-tag, .live-rank-badge,
-    .quick-nav-sub, .tab-btn {
-      white-space: nowrap;
-    }
-    /* 모바일 — 하단 "같이 보면 좋은 글" 섹션 양옆 여백 확보 (카드가 화면 가장자리에 붙지 않게) */
-    @media (max-width: 720px) {
-      .art-related, .art-related[data-auto="related"] {
-        margin-left: 16px !important;
-        margin-right: 16px !important;
-        padding-left: 4px !important;
-        padding-right: 4px !important;
-      }
-      .related-grid {
-        gap: 12px !important;
-      }
-      .related-card {
-        padding: 16px 18px !important;
-      }
-    }
-  </style>
 </head>
 <body>
 
@@ -433,19 +353,19 @@ body { padding-top: 64px; }
     <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>가격</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 공식의 50~85% (옵션별)</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 기준가 (가장 비쌈)</td></tr>
     <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>작업 시간</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 당일 30~60분 — 차 한 잔 시간</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 예약 후 며칠~1주 이상 대기 잦음</td></tr>
     <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>예약·접수</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 카카오 채널 5분 견적 + 당일 방문</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 예약 시스템 — 슬롯 부족·날짜 잡기 어려움</td></tr>
-    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>부품 옵션</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 정품 / DD(OEM) 직접 선택 가능</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 정품 단일 옵션 (선택권 없음)</td></tr>
-    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>당일 픽업</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 대부분 모델 당일 픽업 가능</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 본사 발송이 필요한 경우 며칠 소요</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>부품 옵션</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 정품 / 정품 인증 / 셀 교체 / 일반 호환 — 4옵션 직접 선택</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 정품 단일 옵션 (선택권 없음)</td></tr>
     <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>"비정품 부품" 메시지</strong></td><td style="padding:10px;border:1px solid #eee;">옵션에 따라 다름 (셀 교체·정품 인증은 안 뜸)</td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;">✅ 안 뜸</td></tr>
   </tbody>
 </table>
 <p style="font-size:13px;color:#666;margin-top:-4px;">※ 배터리는 다올리페어에서 <a href="iphone-battery-replacement-types-cost-2026.html">셀 교체·정품 인증·일반 호환 3옵션</a> 중 선택. 셀 교체와 정품 인증은 메시지가 안 뜹니다.</p>
+
 <div style="background:#fff5f0;border-left:4px solid #E8732A;padding:14px 18px;border-radius:0 10px 10px 0;margin:20px 0;">
   <strong style="color:#E8732A;display:block;margin-bottom:6px;font-size:14px;">한 줄 요약</strong>
   <p style="font-size:14px;color:#555;line-height:1.7;margin:0;">
     ① <strong>가격·시간·편의 우선</strong>이시면 → 다올리페어 (당일·합리·옵션 선택 가능)<br>
-    ② <strong>매각 계획 있거나 메시지 절대 거슬린다면</strong> → 공식센터 (시간·비용 감수)<br>
+    ② <strong>공식 보증서 필수</strong>이시면 → 공식센터 (시간·비용 감수)<br>
     대부분 일상 사용자 분들께는 다올리페어가 시간·비용·편의 면에서 훨씬 효율적입니다.
-  </p>
+</p>
 </div>
 
 

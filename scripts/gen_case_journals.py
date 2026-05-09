@@ -1256,12 +1256,22 @@ def _make_meta_qa(c, type_key, meta):
 
 def make_apple_compare(c):
     """다올리페어 vs 애플 공식센터 비교표 — 사실 기반 명확한 차이점만.
-    repair_type별로 메시지 행 다르게 표기."""
+    기종(아이폰/워치/아이패드)별 + repair_type별로 메시지·옵션·시간 다르게 표기."""
     rtype = c.get("repair_type") or c.get("type", "")
+    model = c.get("model", "")
     is_battery = "배터리" in rtype or rtype in {"battery", "battery+other"}
     is_back = "후면" in rtype or rtype in {"back", "back-glass"}
+    is_watch = "워치" in model or "Watch" in model.lower() or "watch" in model.lower()
+    is_ipad = "아이패드" in model or "iPad" in model
 
-    if is_battery:
+    # ── "비정품 부품" 메시지 행 (기종별 차이) ──
+    # 워치·아이패드는 사설 수리해도 메시지 자체가 안 뜸 (Apple 정책)
+    if is_watch or is_ipad:
+        msg_daol = '✅ 안 뜸 (해당 없음)'
+        msg_apple = '✅ 안 뜸'
+        device_label = "워치" if is_watch else "아이패드"
+        msg_note = f'※ {device_label}는 사설 수리해도 \"비정품 부품\" 메시지가 뜨지 않습니다. 아이폰과 다르게 부품 시리얼 매핑이 없어요.'
+    elif is_battery:
         msg_daol = '옵션에 따라 다름 (셀 교체·정품 인증은 안 뜸)'
         msg_apple = '✅ 안 뜸'
         msg_note = '※ 배터리는 다올리페어에서 <a href="iphone-battery-replacement-types-cost-2026.html">셀 교체·정품 인증·일반 호환 3옵션</a> 중 선택. 셀 교체와 정품 인증은 메시지가 안 뜹니다.'
@@ -1273,6 +1283,54 @@ def make_apple_compare(c):
         msg_daol = '뜸 (사용 영향 X)'
         msg_apple = '✅ 안 뜸'
         msg_note = '※ 액정·카메라는 정품/OEM 어느 쪽이든 뜨는 게 정상. 사용·터치·페이스 ID 모두 정상 작동. 자세한 내용은 <a href="iphone-non-genuine-parts-message-explained.html">"비정품 부품" 메시지 완전 해설</a> 참고.'
+
+    # ── 부품 옵션 행 (기종별 차이) ──
+    # 워치·아이패드는 정품/OEM 선택 옵션 없음 (정품 우선, 미수급 시 OEM 동급 성능)
+    if is_watch or is_ipad:
+        parts_daol = '✅ 정품 우선 사용 (미수급 시 OEM 동급 성능)'
+        parts_apple = '⚠️ 정품 단일'
+    elif is_battery:
+        parts_daol = '✅ 정품 / 정품 인증 / 셀 교체 / 일반 호환 — 4옵션 직접 선택'
+        parts_apple = '⚠️ 정품 단일 옵션 (선택권 없음)'
+    else:
+        parts_daol = '✅ 정품 / DD(OEM) 직접 선택 가능'
+        parts_apple = '⚠️ 정품 단일 옵션 (선택권 없음)'
+
+    # ── 작업 시간 행 (워치는 본드 굳는 시간 추가) ──
+    if is_watch:
+        time_daol = '✅ 작업 30분 + 본드 굳는 시간으로 약 1일 보유'
+        time_apple = '⚠️ 예약 후 며칠~1주 이상 대기 잦음'
+        time_note = '※ 워치는 액정·전후면 교체 시 본드 굳는 시간이 필요해 약 1일 정도 매장에 보유됩니다 (작업 자체는 30분 내).'
+    elif is_ipad:
+        time_daol = '✅ 당일 1~2시간 + 일부 본드 작업 시 1일 보유'
+        time_apple = '⚠️ 예약 후 며칠~1주 이상 대기 잦음'
+        time_note = ''
+    else:
+        time_daol = '✅ 당일 30~60분 — 차 한 잔 시간'
+        time_apple = '⚠️ 예약 후 며칠~1주 이상 대기 잦음'
+        time_note = ''
+
+    # ── 한 줄 요약 (매각 계획 언급 제거 — 비즈니스 부정적 영향) ──
+    if is_watch:
+        summary_html = '''
+    ① <strong>합리적 가격 + 매장 보유 1일 OK</strong>이시면 → 다올리페어<br>
+    ② <strong>공식 보증서 필수</strong>이시면 → 공식센터 (시간·비용 감수)<br>
+    워치 수리는 본드 굳는 시간(약 1일)이 필요해 매장에 두고 가셔야 합니다. 다올리페어는 합리적 가격·정품 우선 사용으로 진행해요.
+'''
+    elif is_ipad:
+        summary_html = '''
+    ① <strong>가격·시간·편의 우선</strong>이시면 → 다올리페어 (당일·합리)<br>
+    ② <strong>공식 보증서 필수</strong>이시면 → 공식센터 (시간·비용 감수)<br>
+    아이패드는 사설 수리해도 \"비정품 부품\" 메시지 안 뜨고 정품 우선 사용으로 진행됩니다.
+'''
+    else:
+        summary_html = '''
+    ① <strong>가격·시간·편의 우선</strong>이시면 → 다올리페어 (당일·합리·옵션 선택 가능)<br>
+    ② <strong>공식 보증서 필수</strong>이시면 → 공식센터 (시간·비용 감수)<br>
+    대부분 일상 사용자 분들께는 다올리페어가 시간·비용·편의 면에서 훨씬 효율적입니다.
+'''
+
+    time_note_html = f'<p style="font-size:13px;color:#666;margin-top:-4px;">{time_note}</p>' if time_note else ''
 
     return f'''
 <h2>다올리페어 vs 애플 공식센터 — 같은 수리, 다른 경험</h2>
@@ -1287,21 +1345,17 @@ def make_apple_compare(c):
   </thead>
   <tbody>
     <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>가격</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 공식의 50~85% (옵션별)</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 기준가 (가장 비쌈)</td></tr>
-    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>작업 시간</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 당일 30~60분 — 차 한 잔 시간</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 예약 후 며칠~1주 이상 대기 잦음</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>작업 시간</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">{time_daol}</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">{time_apple}</td></tr>
     <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>예약·접수</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 카카오 채널 5분 견적 + 당일 방문</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 예약 시스템 — 슬롯 부족·날짜 잡기 어려움</td></tr>
-    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>부품 옵션</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 정품 / DD(OEM) 직접 선택 가능</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 정품 단일 옵션 (선택권 없음)</td></tr>
-    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>당일 픽업</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 대부분 모델 당일 픽업 가능</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 본사 발송이 필요한 경우 며칠 소요</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>부품 옵션</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">{parts_daol}</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">{parts_apple}</td></tr>
     <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>"비정품 부품" 메시지</strong></td><td style="padding:10px;border:1px solid #eee;">{msg_daol}</td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;">{msg_apple}</td></tr>
   </tbody>
 </table>
 <p style="font-size:13px;color:#666;margin-top:-4px;">{msg_note}</p>
+{time_note_html}
 <div style="background:#fff5f0;border-left:4px solid #E8732A;padding:14px 18px;border-radius:0 10px 10px 0;margin:20px 0;">
   <strong style="color:#E8732A;display:block;margin-bottom:6px;font-size:14px;">한 줄 요약</strong>
-  <p style="font-size:14px;color:#555;line-height:1.7;margin:0;">
-    ① <strong>가격·시간·편의 우선</strong>이시면 → 다올리페어 (당일·합리·옵션 선택 가능)<br>
-    ② <strong>매각 계획 있거나 메시지 절대 거슬린다면</strong> → 공식센터 (시간·비용 감수)<br>
-    대부분 일상 사용자 분들께는 다올리페어가 시간·비용·편의 면에서 훨씬 효율적입니다.
-  </p>
+  <p style="font-size:14px;color:#555;line-height:1.7;margin:0;">{summary_html}</p>
 </div>
 '''
 
