@@ -1603,7 +1603,7 @@ ARTS = [
     {
         "slug": "iphone-13-pro-water-damage",
         "cat": "iPhone 13 Pro · 침수 가이드",
-        "title": "아이폰 13 Pro 침수 — 4년차 폰 방수 약화·Lightning 단자 부식 정밀 가이드",
+        "title": "4년 쓴 아이폰 13 Pro 침수 — 25만원에 살릴까 vs 새 폰으로 갈까",
         "desc": "2021년 출시 4년차 아이폰 13 Pro 침수 케이스. 4년 사용으로 약해진 방수 등급, Lightning 단자 침수 위험, 13 Pro 부품 가격, 침수 응급 처치까지 모델 특화 가이드.",
         "keywords": "아이폰 13 Pro 침수, 13프로 침수 수리, 13 Pro 방수, Lightning 단자 침수, 13 Pro IP68",
         "intro": [
@@ -1739,7 +1739,7 @@ ARTS = [
     {
         "slug": "iphone-14-pro-water-damage",
         "cat": "iPhone 14 Pro · 침수 가이드",
-        "title": "아이폰 14 Pro 침수 — 다이내믹 아일랜드·3년차 폰 방수 약화 정밀 가이드",
+        "title": "아이폰 14 Pro 침수 — 다이내믹 아일랜드 안 뜨면 지금 해야 할 5가지",
         "desc": "2022년 출시 3년차 아이폰 14 Pro 침수 케이스. 다이내믹 아일랜드 모듈 침수 위험, 3년 사용으로 약해진 방수, Lightning 단자 부식, 정확한 수리 비용까지 모델 특화 정리.",
         "keywords": "아이폰 14 Pro 침수, 14프로 침수 수리, 다이내믹 아일랜드 침수, 14 Pro 방수, Lightning 침수",
         "intro": [
@@ -1862,7 +1862,7 @@ ARTS = [
     {
         "slug": "iphone-16-pro-water-damage",
         "cat": "iPhone 16 Pro · 침수 가이드",
-        "title": "아이폰 16 Pro 침수 — 1년차 폰 방수 약화·카메라 컨트롤 버튼 침수 정밀 가이드",
+        "title": "산 지 1년 된 아이폰 16 Pro 침수 — 카메라 컨트롤 버튼 안 눌리면 침수 신호",
         "desc": "출시 1년 경과한 아이폰 16 Pro 침수 케이스. 신품 IP68 등급보다 약해진 방수 성능, 카메라 컨트롤 버튼 침수 위험, 16 Pro 특유 부품 교체 비용, 침수 응급 처치까지 모델 특화 가이드.",
         "keywords": "아이폰 16 Pro 침수, 16프로 침수 수리, 카메라 컨트롤 버튼 침수, 16 Pro 방수, 1년차 폰 방수",
         "intro": [
@@ -1987,7 +1987,7 @@ ARTS = [
     {
         "slug": "iphone-15-pro-water-damage",
         "cat": "iPhone 15 Pro · 침수 가이드",
-        "title": "아이폰 15 Pro 침수 — USB-C 첫 도입 모델·2년차 폰 방수 한계 정밀 가이드",
+        "title": "아이폰 15 Pro 침수 — USB-C에 물 들어갔는데 충전기 꽂으면 큰일납니다",
         "desc": "USB-C 단자가 처음 도입된 아이폰 15 Pro. 2년 사용한 폰의 방수 등급 약화, USB-C 단자 침수 위험, 티타늄 프레임 침수 영향, 정확한 수리 비용까지 모델 특화 정리.",
         "keywords": "아이폰 15 Pro 침수, 15프로 침수 수리, USB-C 침수, 15 Pro 방수, 티타늄 프레임 침수",
         "intro": [
@@ -2265,7 +2265,7 @@ ARTS = [
     {
         "slug": "iphone-13-water-damage",
         "cat": "iPhone 13 · 침수 가이드",
-        "title": "아이폰 13 침수 — 4년차 일반 모델 방수 약화·Lightning 단자 부식 가이드",
+        "title": "4년 쓴 아이폰 13 침수 — 수리비 폭탄 피하는 단계별 비용표",
         "desc": "2021년 출시 4년차 아이폰 13 일반 모델 침수 케이스. OLED·Lightning 단자·듀얼 카메라 침수 위험, 13 일반 부품 가격, 응급 처치까지 일반 모델 특화 가이드.",
         "keywords": "아이폰 13 침수, 아이폰 13 일반 침수, 13 일반 방수, Lightning 단자 침수, 13 IP68",
         "intro": [
@@ -2402,7 +2402,7 @@ ARTS = [
     {
         "slug": "iphone-14-water-damage",
         "cat": "iPhone 14 · 침수 가이드",
-        "title": "아이폰 14 침수 — 3년차 일반 모델 방수 약화·Lightning 단자 부식 가이드",
+        "title": "아이폰 14 침수 — Lightning 케이블이 안 들어가는 진짜 이유",
         "desc": "2022년 출시 3년차 아이폰 14 일반 모델 침수 케이스. 노치 디스플레이·Lightning 단자·듀얼 카메라 침수 위험, 14 일반 부품 가격, 응급 처치까지 일반 모델 특화 가이드.",
         "keywords": "아이폰 14 침수, 아이폰 14 일반 침수, 14 일반 방수, Lightning 단자 침수, 14 IP68",
         "intro": [
@@ -2538,7 +2538,7 @@ ARTS = [
     {
         "slug": "iphone-15-water-damage",
         "cat": "iPhone 15 · 침수 가이드",
-        "title": "아이폰 15 침수 — USB-C 첫 도입·다이내믹 아일랜드 일반 모델 침수 가이드",
+        "title": "아이폰 15 침수 — USB-C로 바뀌고 침수 대처법이 완전히 달라졌습니다",
         "desc": "2023년 출시 2년차 아이폰 15 일반 모델 침수 케이스. USB-C 단자 침수 위험, 다이내믹 아일랜드 일반 도입 모듈, 듀얼 카메라까지 일반 모델 특화 가이드.",
         "keywords": "아이폰 15 침수, 아이폰 15 일반 침수, USB-C 단자 침수, 다이내믹 아일랜드 침수, 15 IP68",
         "intro": [
@@ -2675,7 +2675,7 @@ ARTS = [
     {
         "slug": "iphone-16-water-damage",
         "cat": "iPhone 16 · 침수 가이드",
-        "title": "아이폰 16 침수 — 1년차 일반 모델·USB-C·액션 버튼 침수 정밀 가이드",
+        "title": "산 지 1년 된 아이폰 16 침수 — 새 버튼 2개(액션·카메라 컨트롤)가 약점",
         "desc": "2024년 출시 1년차 아이폰 16 일반 모델 침수 케이스. USB-C 단자 침수 위험, 액션 버튼 일반 도입, 카메라 컨트롤 버튼까지 일반 모델 특화 가이드.",
         "keywords": "아이폰 16 침수, 아이폰 16 일반 침수, USB-C 단자 침수, 액션 버튼 침수, 카메라 컨트롤 침수, 16 IP68",
         "intro": [
@@ -2814,7 +2814,7 @@ ARTS = [
     {
         "slug": "applewatch-se-1-water-damage",
         "cat": "Apple Watch SE 1 · 침수 가이드",
-        "title": "애플워치 SE 1세대 침수 — 6년차 보급형 워치 방수 약화·디지털 크라운 부식 가이드",
+        "title": "6년 쓴 애플워치 SE 1세대 침수 — 수리비가 새 워치 가격에 거의 닿았습니다",
         "desc": "2020년 출시 6년차 애플워치 SE 1세대 침수 케이스. WR50m 등급 약화, 항상 켜짐 디스플레이 없는 보급형 특성, 디지털 크라운·스피커 침수 위험과 정확한 수리 비용까지.",
         "keywords": "애플워치 SE 1세대 침수, SE 1세대 방수, 애플워치 SE 침수 수리, WR50m 한계, SE 1세대 디지털 크라운",
         "intro": [
@@ -2930,7 +2930,7 @@ ARTS = [
     {
         "slug": "applewatch-se-2-water-damage",
         "cat": "Apple Watch SE 2 · 침수 가이드",
-        "title": "애플워치 SE 2세대 침수 — 4년차 보급형 워치·충돌 감지 모델 침수 가이드",
+        "title": "애플워치 SE 2세대 침수 후 충돌 감지가 자꾸 잘못 울려요",
         "desc": "2022년 출시 4년차 애플워치 SE 2세대 침수 케이스. WR50m 등급 약화, 충돌 감지 신규 도입 모델, 디지털 크라운·스피커 침수 위험과 정확한 수리 비용까지.",
         "keywords": "애플워치 SE 2세대 침수, SE 2세대 방수, 애플워치 SE 2 침수 수리, 충돌 감지 SE, SE 2 디지털 크라운",
         "intro": [
@@ -3045,7 +3045,7 @@ ARTS = [
     {
         "slug": "applewatch-se-3-water-damage",
         "cat": "Apple Watch SE 3 · 침수 가이드",
-        "title": "애플워치 SE 3세대 침수 — 1년차 신모델·항상 켜짐 첫 도입 SE 침수 가이드",
+        "title": "갓 산 애플워치 SE 3세대 침수 — 1년차 신제품, 수리 가성비 가장 좋은 시점",
         "desc": "2025년 출시 1년차 애플워치 SE 3세대 침수 케이스. SE 라인업 첫 항상 켜짐 OLED·Double Tap·5G 셀룰러 신규 부위 침수 위험과 정확한 수리 비용까지.",
         "keywords": "애플워치 SE 3세대 침수, SE 3 방수, SE 3 항상 켜짐 침수, SE 3 Double Tap, S10 칩 침수",
         "intro": [
@@ -3167,7 +3167,7 @@ ARTS = [
     {
         "slug": "applewatch-series4-water-damage",
         "cat": "Apple Watch Series 4 · 침수 가이드",
-        "title": "애플워치 Series 4 침수 — 8년차 폰·첫 ECG 도입 모델 방수 약화 정밀 가이드",
+        "title": "8년 쓴 애플워치 Series 4 침수 — 이제는 진짜 보내줘야 할 시점일까",
         "desc": "2018년 출시 8년차 애플워치 Series 4 침수 케이스. WR50m 등급 거의 소실, 첫 ECG 센서 침수 위험, 디지털 크라운·메인보드 손상과 정확한 수리 비용까지.",
         "keywords": "애플워치 Series 4 침수, 시리즈 4 방수, ECG 침수, Series 4 디지털 크라운, 8년차 워치 방수",
         "intro": [
@@ -3278,7 +3278,7 @@ ARTS = [
     {
         "slug": "applewatch-series5-water-damage",
         "cat": "Apple Watch Series 5 · 침수 가이드",
-        "title": "애플워치 Series 5 침수 — 7년차 폰·첫 항상 켜짐 디스플레이 모델 침수 가이드",
+        "title": "애플워치 Series 5 항상 켜짐 화면이 침수 후 깜빡거려요",
         "desc": "2019년 출시 7년차 애플워치 Series 5 침수 케이스. WR50m 등급 약화, 첫 항상 켜짐 OLED 컨트롤러 침수 위험, ECG·나침반 모듈과 정확한 수리 비용까지.",
         "keywords": "애플워치 Series 5 침수, 시리즈 5 방수, 항상 켜짐 첫 도입 침수, Series 5 ECG, 7년차 워치 방수",
         "intro": [
@@ -3395,7 +3395,7 @@ ARTS = [
     {
         "slug": "applewatch-series6-water-damage",
         "cat": "Apple Watch Series 6 · 침수 가이드",
-        "title": "애플워치 Series 6 침수 — 6년차 폰·첫 혈중산소 측정 모델 침수 가이드",
+        "title": "애플워치 Series 6 혈중산소 측정 갑자기 안 됨 — 침수 신호일 수 있습니다",
         "desc": "2020년 출시 6년차 애플워치 Series 6 침수 케이스. WR50m 등급 약화, 첫 혈중산소(SpO2) 센서 침수 위험, ECG·항상 켜짐 디스플레이와 정확한 수리 비용까지.",
         "keywords": "애플워치 Series 6 침수, 시리즈 6 방수, 혈중산소 침수, SpO2 센서, Series 6 디지털 크라운",
         "intro": [
@@ -3512,7 +3512,7 @@ ARTS = [
     {
         "slug": "applewatch-series7-water-damage",
         "cat": "Apple Watch Series 7 · 침수 가이드",
-        "title": "애플워치 Series 7 침수 — 5년차 폰·IP6X 방진 첫 도입 모델 침수 가이드",
+        "title": "애플워치 Series 7 빠른 충전이 갑자기 느려졌다면 — 침수 의심 신호",
         "desc": "2021년 출시 5년차 애플워치 Series 7 침수 케이스. WR50m + IP6X 방진 첫 도입 모델, 더 큰 디스플레이·빠른 충전 코일 침수 위험과 정확한 수리 비용까지.",
         "keywords": "애플워치 Series 7 침수, 시리즈 7 방수, IP6X 방진, Series 7 빠른 충전, Series 7 디스플레이",
         "intro": [
@@ -3629,7 +3629,7 @@ ARTS = [
     {
         "slug": "applewatch-series8-water-damage",
         "cat": "Apple Watch Series 8 · 침수 가이드",
-        "title": "애플워치 Series 8 침수 — 4년차 폰·첫 손목 온도 센서·충돌 감지 모델 침수 가이드",
+        "title": "애플워치 Series 8 손목 온도 측정 안 됨 + 충돌 감지 오작동 — 침수입니다",
         "desc": "2022년 출시 4년차 애플워치 Series 8 침수 케이스. WR50m + IP6X, 첫 손목 온도 센서·충돌 감지 도입, 침수 위험 부위와 정확한 수리 비용까지.",
         "keywords": "애플워치 Series 8 침수, 시리즈 8 방수, 손목 온도 센서 침수, 충돌 감지 Series, Series 8 디지털 크라운",
         "intro": [
@@ -3746,7 +3746,7 @@ ARTS = [
     {
         "slug": "applewatch-series9-water-damage",
         "cat": "Apple Watch Series 9 · 침수 가이드",
-        "title": "애플워치 Series 9 침수 — 3년차 폰·Double Tap 첫 도입 모델 침수 가이드",
+        "title": "애플워치 Series 9 Double Tap이 갑자기 안 돼요 — 침수 가능성 점검",
         "desc": "2023년 출시 3년차 애플워치 Series 9 침수 케이스. WR50m + IP6X, 첫 Double Tap 제스처·2000nit 디스플레이 신규 부위 침수 위험과 정확한 수리 비용까지.",
         "keywords": "애플워치 Series 9 침수, 시리즈 9 방수, Double Tap 침수, S9 칩, Series 9 디스플레이",
         "intro": [
