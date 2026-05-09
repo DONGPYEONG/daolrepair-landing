@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-09T11:00:49.981445+09:00",
+  "updated_at": "2026-05-09T11:10:16.472149+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11125,
@@ -32,43 +32,43 @@
       "model": "애플워치 Se2",
       "type": "배터리 교체",
       "branch": "신림점",
-      "minutes_ago": 1058
+      "minutes_ago": 1067
     },
     {
       "model": "아이폰 17프로",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 1089
+      "minutes_ago": 1098
     },
     {
       "model": "아이폰 13미니",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 1169
+      "minutes_ago": 1178
     },
     {
       "model": "아이폰 15프로",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 2634
+      "minutes_ago": 2643
     },
     {
       "model": "아이폰 16",
       "type": "화면 교체",
       "branch": "신림점",
-      "minutes_ago": 3894
+      "minutes_ago": 3903
     },
     {
       "model": "아이폰 14프로",
       "type": "후면 유리 교체",
       "branch": "신림점",
-      "minutes_ago": 4301
+      "minutes_ago": 4310
     },
     {
       "model": "아이패드 미니6",
       "type": "충전 단자 수리",
       "branch": "신림점",
-      "minutes_ago": 4349
+      "minutes_ago": 4359
     }
   ],
   "top_repair_types": [
