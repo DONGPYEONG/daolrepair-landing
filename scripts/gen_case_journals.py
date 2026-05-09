@@ -773,8 +773,70 @@ QA_BY_TYPE = {
 }
 
 
+def _make_meta_title(c, type_key, meta):
+    """파일명 메타정보 있을 때 자연스러운 제목 생성.
+    deterministic — 같은 케이스·메타면 같은 제목.
+    """
+    model = c.get("model", "")
+    branch = c.get("branch", "")
+    type_kr = TYPE_KR.get(type_key, "수리")
+    age_gender = meta.get("age_gender", "")
+    cause = meta.get("cause", "")
+    period = meta.get("time_period", "")
+    options_natural = meta.get("options_natural", "")
+
+    # case_id 기반 시드로 여러 변형 중 1개 deterministic 선택
+    case_id = c.get("case_id") or c.get("id") or (model + c.get("date","") + branch)
+    seed = int(hashlib.md5((case_id + "_meta").encode("utf-8")).hexdigest(), 16) % (2**32)
+    rng = random.Random(seed)
+
+    # 메타 항목 조합별 변형 — 정보 많을수록 더 구체적
+    variants = []
+
+    # 풀세트: 연령 + 원인 + 시간대 + 옵션
+    if age_gender and cause and period and options_natural:
+        variants += [
+            f"{age_gender} 손님 {model} {cause}으로 {options_natural} 교체 — {branch} {period} 케이스",
+            f"{period}에 가져오신 {age_gender} 손님 {model} — {cause} → {options_natural} 교체 ({branch})",
+            f"{model} {cause}으로 망가진 {age_gender} 손님 — {branch}에서 {options_natural} 교체",
+        ]
+    # 연령 + 원인
+    if age_gender and cause:
+        variants += [
+            f"{age_gender} 손님 {model} {cause} — {branch}에서 {type_kr}한 케이스",
+            f"{model} {cause}으로 {branch} 방문하신 {age_gender} 손님 사례",
+        ]
+    # 연령 + 옵션
+    if age_gender and options_natural:
+        variants += [
+            f"{age_gender} 손님 {model} — {options_natural} 선택해 {branch}에서 {type_kr}",
+            f"{model} {options_natural} 교체 — {age_gender} 손님이 {branch} 방문한 사례",
+        ]
+    # 원인 + 시간대
+    if cause and period:
+        variants += [
+            f"{model} {cause}으로 {period}에 가져온 케이스 — {branch}에서 {type_kr} 진행",
+            f"{period}에 {model} {cause} → {branch}에서 당일 해결한 사례",
+        ]
+    # 원인만
+    if cause and not (age_gender or options_natural):
+        variants += [
+            f"{model} {cause}으로 가져온 케이스 — {branch}에서 {type_kr} 진행",
+        ]
+    # 시간대만
+    if period and not (age_gender or cause):
+        variants += [
+            f"{period}에 가져오신 {model} — {branch}에서 {type_kr} 끝낸 사례",
+        ]
+
+    if not variants:
+        return None
+
+    return rng.choice(variants)
+
+
 def make_title(c, used_titles=None):
-    """후킹 제목 생성 — case_id 기반 deterministic + 중복 방지
+    """후킹 제목 생성 — case_id 기반 deterministic + 중복 방지 + 메타 활용
 
     used_titles: set, 이미 사용된 제목들. 충돌 시 다음 템플릿으로 자동 이동.
     """
@@ -785,6 +847,17 @@ def make_title(c, used_titles=None):
     elif "배터리" in type_key: type_key = "battery"
     elif "충전" in type_key: type_key = "charge"
     elif "카메라" in type_key: type_key = "camera"
+
+    meta = c.get("meta") or {}
+    # 메타 있으면 메타 기반 제목 우선 사용
+    if meta:
+        meta_title = _make_meta_title(c, type_key, meta)
+        if meta_title:
+            used = used_titles if used_titles is not None else set()
+            if meta_title not in used:
+                if used_titles is not None:
+                    used_titles.add(meta_title)
+                return meta_title
 
     templates = TITLE_TEMPLATES.get(type_key, DEFAULT_TITLE_TEMPLATES)
     used = used_titles if used_titles is not None else set()
@@ -848,7 +921,7 @@ def make_body(c):
                 template = DEFAULT_BODY
 
     info = model_intro(model)
-    return template.format(
+    body_html = template.format(
         model=model,
         branch=c["branch"],
         date=c.get("date", ""),
@@ -857,6 +930,42 @@ def make_body(c):
         model_screen=info["screen"],
         model_weak=info["weak_point"],
     )
+
+    # 🆕 메타 정보 있으면 본문 맨 앞에 "이번 케이스 요약" 박스 삽입
+    meta = c.get("meta") or {}
+    if meta:
+        meta_box = _make_meta_intro_box(c, meta)
+        if meta_box:
+            body_html = meta_box + body_html
+
+    return body_html
+
+
+def _make_meta_intro_box(c, meta):
+    """파일명 메타 기반 '이번 케이스 요약' 박스 생성"""
+    rows = []
+    if meta.get("age_gender"):
+        rows.append(("손님", meta["age_gender"]))
+    if meta.get("time_natural"):
+        rows.append(("방문 시간", meta["time_natural"]))
+    if meta.get("cause"):
+        rows.append(("고장 원인", meta["cause"]))
+    if meta.get("options_natural"):
+        rows.append(("선택 옵션", meta["options_natural"]))
+    if not rows:
+        return ""
+    inner = "\n".join(
+        f'<div style="display:flex;gap:12px;padding:7px 0;border-bottom:1px solid rgba(232,115,42,0.15);">'
+        f'<span style="font-size:13px;color:#888;min-width:80px;font-weight:500;">{k}</span>'
+        f'<span style="font-size:14px;color:#1a1a1a;font-weight:700;">{v}</span></div>'
+        for k, v in rows
+    )
+    return f'''
+<div style="background:rgba(232,115,42,0.05);border:1px solid rgba(232,115,42,0.2);border-radius:14px;padding:18px 22px;margin:16px 0 28px;">
+  <div style="font-size:11px;font-weight:800;color:#E8732A;letter-spacing:1px;margin-bottom:10px;">📋 이번 케이스 요약</div>
+{inner}
+</div>
+'''
 
 
 def make_related_links(c):

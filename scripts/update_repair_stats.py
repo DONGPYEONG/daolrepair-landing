@@ -702,6 +702,19 @@ def main():
             display_date = d_iso.strftime("%Y-%m-%d")
         except Exception:
             display_date = c.get("date", "")
+
+        # 🆕 사진 파일명에서 케이스 메타정보 추출 (시간·연령·옵션·원인)
+        try:
+            from parse_filename_meta import parse_case_files
+            file_names = [
+                before_file.get("name", "") if before_file else "",
+                after_file.get("name", "") if after_file else "",
+            ]
+            case_meta = parse_case_files(file_names)
+        except Exception as me:
+            case_meta = {}
+            print(f"     ⚠️ 메타 파싱 실패: {me}")
+
         portfolio_cases.append({
             "id": f"case-{case_idx}",
             "model": device_label(c["device"], c["model"]),
@@ -714,6 +727,7 @@ def main():
             "before_text": before_text,
             "after_text": after_text,
             "case_id": c["id"],
+            "meta": case_meta,  # 🆕 일지 생성 시 사용
         })
 
     # ─── 5b. 사용하지 않는 폴더 prune (이전 run에서 생긴 잔여물) ───
