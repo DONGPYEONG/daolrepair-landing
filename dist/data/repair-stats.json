@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-10T13:46:23.845566+09:00",
+  "updated_at": "2026-05-10T14:16:09.171791+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11155,
@@ -32,43 +32,43 @@
       "model": "아이폰 iPhone X",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 1294
+      "minutes_ago": 1323
     },
     {
       "model": "아이폰 iPhone 14 Pro",
       "type": "후면 + 배터리 교체",
       "branch": "신림점",
-      "minutes_ago": 1362
+      "minutes_ago": 1392
     },
     {
       "model": "아이폰 iPhone 11",
       "type": "화면 교체",
       "branch": "신림점",
-      "minutes_ago": 1494
+      "minutes_ago": 1524
     },
     {
       "model": "아이폰 13",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 1509
+      "minutes_ago": 1538
     },
     {
       "model": "애플워치 Apple Watch SE (2세대)",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 1530
+      "minutes_ago": 1560
     },
     {
       "model": "아이폰 iPhone 13 Pro Max",
       "type": "후면 + 배터리 교체",
       "branch": "신림점",
-      "minutes_ago": 1590
+      "minutes_ago": 1620
     },
     {
       "model": "애플워치 Se2",
       "type": "배터리 교체",
       "branch": "신림점",
-      "minutes_ago": 2663
+      "minutes_ago": 2693
     }
   ],
   "top_repair_types": [
@@ -99,6 +99,16 @@
       "repair_time": "당일 · 30~60분",
       "before_img": "images/before-after/1z7zT5JRCwBur4B2nkUE75nI/before.jpg",
       "after_img": "images/before-after/1z7zT5JRCwBur4B2nkUE75nI/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1z7zT5JRCwBur4B2nkUE75nI/progress1.jpg",
+        "images/before-after/1z7zT5JRCwBur4B2nkUE75nI/progress2.jpg",
+        "images/before-after/1z7zT5JRCwBur4B2nkUE75nI/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
       "case_id": "1z7zT5JRCwBur4B2nkUE75nIZ0CkDVv5s",
@@ -126,6 +136,16 @@
       "repair_time": "당일 · 30~60분",
       "before_img": "images/before-after/1SF2kXMSdt6pIbCNQH0tiIp3/before.jpg",
       "after_img": "images/before-after/1SF2kXMSdt6pIbCNQH0tiIp3/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1SF2kXMSdt6pIbCNQH0tiIp3/progress1.jpg",
+        "images/before-after/1SF2kXMSdt6pIbCNQH0tiIp3/progress2.jpg",
+        "images/before-after/1SF2kXMSdt6pIbCNQH0tiIp3/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
       "case_id": "1SF2kXMSdt6pIbCNQH0tiIp3ONaL3b4It",
@@ -141,6 +161,16 @@
       "repair_time": "당일 · 30~60분",
       "before_img": "images/before-after/1osELxQatz3FfFiTdXoLFlfU/before.jpg",
       "after_img": "images/before-after/1osELxQatz3FfFiTdXoLFlfU/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1osELxQatz3FfFiTdXoLFlfU/progress1.jpg",
+        "images/before-after/1osELxQatz3FfFiTdXoLFlfU/progress2.jpg",
+        "images/before-after/1osELxQatz3FfFiTdXoLFlfU/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
       "case_id": "1osELxQatz3FfFiTdXoLFlfUojzzQm4mh",
@@ -156,6 +186,16 @@
       "repair_time": "당일 · 30~60분",
       "before_img": "images/before-after/1OyrzlRPy-yl6H-qjV7DRjaD/before.jpg",
       "after_img": "images/before-after/1OyrzlRPy-yl6H-qjV7DRjaD/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1OyrzlRPy-yl6H-qjV7DRjaD/progress1.jpg",
+        "images/before-after/1OyrzlRPy-yl6H-qjV7DRjaD/progress2.jpg",
+        "images/before-after/1OyrzlRPy-yl6H-qjV7DRjaD/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
       "case_id": "1OyrzlRPy-yl6H-qjV7DRjaDB1StVbHWi",
@@ -173,6 +213,16 @@
       "repair_time": "당일 · 30~60분",
       "before_img": "images/before-after/1z7zT5JRCwBur4B2nkUE75nI/before.jpg",
       "after_img": "images/before-after/1z7zT5JRCwBur4B2nkUE75nI/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1z7zT5JRCwBur4B2nkUE75nI/progress1.jpg",
+        "images/before-after/1z7zT5JRCwBur4B2nkUE75nI/progress2.jpg",
+        "images/before-after/1z7zT5JRCwBur4B2nkUE75nI/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
       "case_id": "1z7zT5JRCwBur4B2nkUE75nIZ0CkDVv5s",
@@ -200,6 +250,16 @@
       "repair_time": "당일 · 30~60분",
       "before_img": "images/before-after/1SF2kXMSdt6pIbCNQH0tiIp3/before.jpg",
       "after_img": "images/before-after/1SF2kXMSdt6pIbCNQH0tiIp3/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1SF2kXMSdt6pIbCNQH0tiIp3/progress1.jpg",
+        "images/before-after/1SF2kXMSdt6pIbCNQH0tiIp3/progress2.jpg",
+        "images/before-after/1SF2kXMSdt6pIbCNQH0tiIp3/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
       "case_id": "1SF2kXMSdt6pIbCNQH0tiIp3ONaL3b4It",
@@ -215,6 +275,16 @@
       "repair_time": "당일 · 30~60분",
       "before_img": "images/before-after/1osELxQatz3FfFiTdXoLFlfU/before.jpg",
       "after_img": "images/before-after/1osELxQatz3FfFiTdXoLFlfU/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1osELxQatz3FfFiTdXoLFlfU/progress1.jpg",
+        "images/before-after/1osELxQatz3FfFiTdXoLFlfU/progress2.jpg",
+        "images/before-after/1osELxQatz3FfFiTdXoLFlfU/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
       "case_id": "1osELxQatz3FfFiTdXoLFlfUojzzQm4mh",
@@ -230,6 +300,16 @@
       "repair_time": "당일 · 30~60분",
       "before_img": "images/before-after/1OyrzlRPy-yl6H-qjV7DRjaD/before.jpg",
       "after_img": "images/before-after/1OyrzlRPy-yl6H-qjV7DRjaD/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1OyrzlRPy-yl6H-qjV7DRjaD/progress1.jpg",
+        "images/before-after/1OyrzlRPy-yl6H-qjV7DRjaD/progress2.jpg",
+        "images/before-after/1OyrzlRPy-yl6H-qjV7DRjaD/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
       "case_id": "1OyrzlRPy-yl6H-qjV7DRjaDB1StVbHWi",
@@ -245,6 +325,16 @@
       "repair_time": "당일 · 30~60분",
       "before_img": "images/before-after/14mAIBCvXmew2SGH1oIeIVtL/before.jpg",
       "after_img": "images/before-after/14mAIBCvXmew2SGH1oIeIVtL/after.jpg",
+      "progress_imgs": [
+        "images/before-after/14mAIBCvXmew2SGH1oIeIVtL/progress1.jpg",
+        "images/before-after/14mAIBCvXmew2SGH1oIeIVtL/progress2.jpg",
+        "images/before-after/14mAIBCvXmew2SGH1oIeIVtL/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
       "case_id": "14mAIBCvXmew2SGH1oIeIVtLDPw_7UqxM",
@@ -260,6 +350,16 @@
       "repair_time": "당일 · 3~4시간",
       "before_img": "images/before-after/1Cc9oGIuweCMbTyVNn7kTbbe/before.jpg",
       "after_img": "images/before-after/1Cc9oGIuweCMbTyVNn7kTbbe/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1Cc9oGIuweCMbTyVNn7kTbbe/progress1.jpg",
+        "images/before-after/1Cc9oGIuweCMbTyVNn7kTbbe/progress2.jpg",
+        "images/before-after/1Cc9oGIuweCMbTyVNn7kTbbe/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
       "case_id": "1Cc9oGIuweCMbTyVNn7kTbbeW9jbIwi-g",
@@ -275,6 +375,16 @@
       "repair_time": "당일 · 3~4시간",
       "before_img": "images/before-after/1Vv7RtlP0nfSvWfJplYYUP6z/before.jpg",
       "after_img": "images/before-after/1Vv7RtlP0nfSvWfJplYYUP6z/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1Vv7RtlP0nfSvWfJplYYUP6z/progress1.jpg",
+        "images/before-after/1Vv7RtlP0nfSvWfJplYYUP6z/progress2.jpg",
+        "images/before-after/1Vv7RtlP0nfSvWfJplYYUP6z/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
       "case_id": "1Vv7RtlP0nfSvWfJplYYUP6zz2HdAdfvO",
@@ -290,6 +400,16 @@
       "repair_time": "당일 · 3~4시간",
       "before_img": "images/before-after/1f2FXtA6qBWEQSqzw9DUQ96A/before.jpg",
       "after_img": "images/before-after/1f2FXtA6qBWEQSqzw9DUQ96A/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1f2FXtA6qBWEQSqzw9DUQ96A/progress1.jpg",
+        "images/before-after/1f2FXtA6qBWEQSqzw9DUQ96A/progress2.jpg",
+        "images/before-after/1f2FXtA6qBWEQSqzw9DUQ96A/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
       "case_id": "1f2FXtA6qBWEQSqzw9DUQ96A7-emle3kA",
@@ -305,6 +425,16 @@
       "repair_time": "당일 · 3~4시간",
       "before_img": "images/before-after/1Qr6LX9HuVj5phOJdPaqQRJv/before.jpg",
       "after_img": "images/before-after/1Qr6LX9HuVj5phOJdPaqQRJv/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1Qr6LX9HuVj5phOJdPaqQRJv/progress1.jpg",
+        "images/before-after/1Qr6LX9HuVj5phOJdPaqQRJv/progress2.jpg",
+        "images/before-after/1Qr6LX9HuVj5phOJdPaqQRJv/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "화면 + 후면 파손",
       "after_text": "화면 + 후면 교체",
       "case_id": "1Qr6LX9HuVj5phOJdPaqQRJv8l8nfrxa8",
@@ -320,6 +450,16 @@
       "repair_time": "당일 · 3~4시간",
       "before_img": "images/before-after/1NVppdC5tP7cAyFGlk9aGGwC/before.jpg",
       "after_img": "images/before-after/1NVppdC5tP7cAyFGlk9aGGwC/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1NVppdC5tP7cAyFGlk9aGGwC/progress1.jpg",
+        "images/before-after/1NVppdC5tP7cAyFGlk9aGGwC/progress2.jpg",
+        "images/before-after/1NVppdC5tP7cAyFGlk9aGGwC/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
       "case_id": "1NVppdC5tP7cAyFGlk9aGGwCkHBZ1DsB_",
@@ -335,6 +475,16 @@
       "repair_time": "당일 · 30~60분",
       "before_img": "images/before-after/11Ceo0pEjUBL9ey5-DiSnVk7/before.jpg",
       "after_img": "images/before-after/11Ceo0pEjUBL9ey5-DiSnVk7/after.jpg",
+      "progress_imgs": [
+        "images/before-after/11Ceo0pEjUBL9ey5-DiSnVk7/progress1.jpg",
+        "images/before-after/11Ceo0pEjUBL9ey5-DiSnVk7/progress2.jpg",
+        "images/before-after/11Ceo0pEjUBL9ey5-DiSnVk7/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
       "case_id": "11Ceo0pEjUBL9ey5-DiSnVk7as7f4yvIF",
@@ -350,6 +500,16 @@
       "repair_time": "당일 · 3~4시간",
       "before_img": "images/before-after/1vyc6FljazH5ZsdoTiNwjGls/before.jpg",
       "after_img": "images/before-after/1vyc6FljazH5ZsdoTiNwjGls/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1vyc6FljazH5ZsdoTiNwjGls/progress1.jpg",
+        "images/before-after/1vyc6FljazH5ZsdoTiNwjGls/progress2.jpg",
+        "images/before-after/1vyc6FljazH5ZsdoTiNwjGls/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
       "case_id": "1vyc6FljazH5ZsdoTiNwjGlsv74Xaep4Y",
@@ -365,6 +525,16 @@
       "repair_time": "당일 · 30~60분",
       "before_img": "images/before-after/1lOmdLXI-z0zJHqfxjVJCNUT/before.jpg",
       "after_img": "images/before-after/1lOmdLXI-z0zJHqfxjVJCNUT/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1lOmdLXI-z0zJHqfxjVJCNUT/progress1.jpg",
+        "images/before-after/1lOmdLXI-z0zJHqfxjVJCNUT/progress2.jpg",
+        "images/before-after/1lOmdLXI-z0zJHqfxjVJCNUT/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
       "case_id": "1lOmdLXI-z0zJHqfxjVJCNUTg9S5bVdWw",
@@ -380,6 +550,16 @@
       "repair_time": "당일 · 3~4시간",
       "before_img": "images/before-after/1U3GDVjv89Ual7PluLlNfMlV/before.jpg",
       "after_img": "images/before-after/1U3GDVjv89Ual7PluLlNfMlV/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1U3GDVjv89Ual7PluLlNfMlV/progress1.jpg",
+        "images/before-after/1U3GDVjv89Ual7PluLlNfMlV/progress2.jpg",
+        "images/before-after/1U3GDVjv89Ual7PluLlNfMlV/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
       "case_id": "1U3GDVjv89Ual7PluLlNfMlV5REzBMf_s",
@@ -395,6 +575,16 @@
       "repair_time": "당일 · 3~4시간",
       "before_img": "images/before-after/1fBI5NGpXK22yh8cnFTxzzsa/before.jpg",
       "after_img": "images/before-after/1fBI5NGpXK22yh8cnFTxzzsa/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1fBI5NGpXK22yh8cnFTxzzsa/progress1.jpg",
+        "images/before-after/1fBI5NGpXK22yh8cnFTxzzsa/progress2.jpg",
+        "images/before-after/1fBI5NGpXK22yh8cnFTxzzsa/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
       "case_id": "1fBI5NGpXK22yh8cnFTxzzsaMqhY5Kn7Z",
@@ -410,6 +600,16 @@
       "repair_time": "당일 · 30~60분",
       "before_img": "images/before-after/1YTvaa_LzyizCxIr0smGdZop/before.jpg",
       "after_img": "images/before-after/1YTvaa_LzyizCxIr0smGdZop/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1YTvaa_LzyizCxIr0smGdZop/progress1.jpg",
+        "images/before-after/1YTvaa_LzyizCxIr0smGdZop/progress2.jpg",
+        "images/before-after/1YTvaa_LzyizCxIr0smGdZop/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
       "case_id": "1YTvaa_LzyizCxIr0smGdZoplWLdxAs_M",
@@ -425,6 +625,16 @@
       "repair_time": "당일 · 1~2시간",
       "before_img": "images/before-after/1ybYHdi_ueiCzvFCZuxCWWss/before.jpg",
       "after_img": "images/before-after/1ybYHdi_ueiCzvFCZuxCWWss/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1ybYHdi_ueiCzvFCZuxCWWss/progress1.jpg",
+        "images/before-after/1ybYHdi_ueiCzvFCZuxCWWss/progress2.jpg",
+        "images/before-after/1ybYHdi_ueiCzvFCZuxCWWss/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "화면 + 배터리 노화",
       "after_text": "화면 교체 + 배터리 성능치 정상",
       "case_id": "1ybYHdi_ueiCzvFCZuxCWWssr0BfpVQbA",
@@ -440,6 +650,16 @@
       "repair_time": "당일 · 3~4시간",
       "before_img": "images/before-after/1izFb94bU42HNKMaSGjIodRm/before.jpg",
       "after_img": "images/before-after/1izFb94bU42HNKMaSGjIodRm/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1izFb94bU42HNKMaSGjIodRm/progress1.jpg",
+        "images/before-after/1izFb94bU42HNKMaSGjIodRm/progress2.jpg",
+        "images/before-after/1izFb94bU42HNKMaSGjIodRm/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
       "case_id": "1izFb94bU42HNKMaSGjIodRmdFo08qC9E",
@@ -455,6 +675,16 @@
       "repair_time": "당일 · 30~60분",
       "before_img": "images/before-after/13Qv_rnPH0t9ciY5sfeYKCQE/before.jpg",
       "after_img": "images/before-after/13Qv_rnPH0t9ciY5sfeYKCQE/after.jpg",
+      "progress_imgs": [
+        "images/before-after/13Qv_rnPH0t9ciY5sfeYKCQE/progress1.jpg",
+        "images/before-after/13Qv_rnPH0t9ciY5sfeYKCQE/progress2.jpg",
+        "images/before-after/13Qv_rnPH0t9ciY5sfeYKCQE/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
       "case_id": "13Qv_rnPH0t9ciY5sfeYKCQE3L9dd5yr_",
@@ -470,6 +700,16 @@
       "repair_time": "당일 · 30~60분",
       "before_img": "images/before-after/1l_qsfwchJ8yBU11A6pV0fcb/before.jpg",
       "after_img": "images/before-after/1l_qsfwchJ8yBU11A6pV0fcb/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1l_qsfwchJ8yBU11A6pV0fcb/progress1.jpg",
+        "images/before-after/1l_qsfwchJ8yBU11A6pV0fcb/progress2.jpg",
+        "images/before-after/1l_qsfwchJ8yBU11A6pV0fcb/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
       "case_id": "1l_qsfwchJ8yBU11A6pV0fcbp4XZkCGxc",
@@ -485,6 +725,16 @@
       "repair_time": "당일 · 30~50분",
       "before_img": "images/before-after/1DBkRFtCFMN8FMBJ-J3tX5st/before.jpg",
       "after_img": "images/before-after/1DBkRFtCFMN8FMBJ-J3tX5st/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1DBkRFtCFMN8FMBJ-J3tX5st/progress1.jpg",
+        "images/before-after/1DBkRFtCFMN8FMBJ-J3tX5st/progress2.jpg",
+        "images/before-after/1DBkRFtCFMN8FMBJ-J3tX5st/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "1DBkRFtCFMN8FMBJ-J3tX5stz5l0Z76gj",
@@ -513,6 +763,16 @@
       "repair_time": "당일 · 3~4시간",
       "before_img": "images/before-after/13U0ly-iPhPGV5fxymDUWzP5/before.jpg",
       "after_img": "images/before-after/13U0ly-iPhPGV5fxymDUWzP5/after.jpg",
+      "progress_imgs": [
+        "images/before-after/13U0ly-iPhPGV5fxymDUWzP5/progress1.jpg",
+        "images/before-after/13U0ly-iPhPGV5fxymDUWzP5/progress2.jpg",
+        "images/before-after/13U0ly-iPhPGV5fxymDUWzP5/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "후면 + 배터리 노화",
       "after_text": "후면 교체 + 배터리 성능치 정상",
       "case_id": "13U0ly-iPhPGV5fxymDUWzP57BvavDvwr",
@@ -542,6 +802,16 @@
       "repair_time": "당일 · 30~50분",
       "before_img": "images/before-after/1eGfabMe--t8v0pyWoJXwMEn/before.jpg",
       "after_img": "images/before-after/1eGfabMe--t8v0pyWoJXwMEn/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1eGfabMe--t8v0pyWoJXwMEn/progress1.jpg",
+        "images/before-after/1eGfabMe--t8v0pyWoJXwMEn/progress2.jpg",
+        "images/before-after/1eGfabMe--t8v0pyWoJXwMEn/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "1eGfabMe--t8v0pyWoJXwMEnwBbeF0Xa7",
@@ -570,6 +840,16 @@
       "repair_time": "당일 · 3~4시간",
       "before_img": "images/before-after/1iXABiV6sTO4RH24Wm1tYrzL/before.jpg",
       "after_img": "images/before-after/1iXABiV6sTO4RH24Wm1tYrzL/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1iXABiV6sTO4RH24Wm1tYrzL/progress1.jpg",
+        "images/before-after/1iXABiV6sTO4RH24Wm1tYrzL/progress2.jpg",
+        "images/before-after/1iXABiV6sTO4RH24Wm1tYrzL/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "후면 + 배터리 노화",
       "after_text": "후면 교체 + 배터리 성능치 정상",
       "case_id": "1iXABiV6sTO4RH24Wm1tYrzLM8d6T8WMA",
@@ -599,6 +879,16 @@
       "repair_time": "당일 · 30~50분",
       "before_img": "images/before-after/1im7V3yy-voaAfwyskTDqXQ3/before.jpg",
       "after_img": "images/before-after/1im7V3yy-voaAfwyskTDqXQ3/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1im7V3yy-voaAfwyskTDqXQ3/progress1.jpg",
+        "images/before-after/1im7V3yy-voaAfwyskTDqXQ3/progress2.jpg",
+        "images/before-after/1im7V3yy-voaAfwyskTDqXQ3/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "1im7V3yy-voaAfwyskTDqXQ31tVA9Ayjn",
@@ -614,6 +904,16 @@
       "repair_time": "당일 · 30분~1시간",
       "before_img": "images/before-after/1vFX-wUWX_mgHb8Kr-inDvfY/before.jpg",
       "after_img": "images/before-after/1vFX-wUWX_mgHb8Kr-inDvfY/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1vFX-wUWX_mgHb8Kr-inDvfY/progress1.jpg",
+        "images/before-after/1vFX-wUWX_mgHb8Kr-inDvfY/progress2.jpg",
+        "images/before-after/1vFX-wUWX_mgHb8Kr-inDvfY/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "충전 단자 손상",
       "after_text": "충전 단자 정밀 수리",
       "case_id": "1vFX-wUWX_mgHb8Kr-inDvfYvzrxufFo_",
@@ -629,6 +929,16 @@
       "repair_time": "당일 · 30~50분",
       "before_img": "images/before-after/1bdNyoxif9BBqw8f53pwjRE3/before.jpg",
       "after_img": "images/before-after/1bdNyoxif9BBqw8f53pwjRE3/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1bdNyoxif9BBqw8f53pwjRE3/progress1.jpg",
+        "images/before-after/1bdNyoxif9BBqw8f53pwjRE3/progress2.jpg",
+        "images/before-after/1bdNyoxif9BBqw8f53pwjRE3/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "1bdNyoxif9BBqw8f53pwjRE3vZcNL4NsM",
@@ -644,6 +954,16 @@
       "repair_time": "당일 · 30~50분",
       "before_img": "images/before-after/1CU7VD5ld1RpZ2lOBDhtYwmR/before.jpg",
       "after_img": "images/before-after/1CU7VD5ld1RpZ2lOBDhtYwmR/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1CU7VD5ld1RpZ2lOBDhtYwmR/progress1.jpg",
+        "images/before-after/1CU7VD5ld1RpZ2lOBDhtYwmR/progress2.jpg",
+        "images/before-after/1CU7VD5ld1RpZ2lOBDhtYwmR/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "1CU7VD5ld1RpZ2lOBDhtYwmRjaLsxaZ0C",
@@ -659,6 +979,16 @@
       "repair_time": "당일 · 30~50분",
       "before_img": "images/before-after/1P0o4qDL9IsS1eaG35f8wvkw/before.jpg",
       "after_img": "images/before-after/1P0o4qDL9IsS1eaG35f8wvkw/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1P0o4qDL9IsS1eaG35f8wvkw/progress1.jpg",
+        "images/before-after/1P0o4qDL9IsS1eaG35f8wvkw/progress2.jpg",
+        "images/before-after/1P0o4qDL9IsS1eaG35f8wvkw/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "1P0o4qDL9IsS1eaG35f8wvkw_g_ZrM38E",
@@ -674,6 +1004,16 @@
       "repair_time": "당일 · 30~50분",
       "before_img": "images/before-after/1jbdaG3NLgXd_kSgNcx077LD/before.jpg",
       "after_img": "images/before-after/1jbdaG3NLgXd_kSgNcx077LD/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1jbdaG3NLgXd_kSgNcx077LD/progress1.jpg",
+        "images/before-after/1jbdaG3NLgXd_kSgNcx077LD/progress2.jpg",
+        "images/before-after/1jbdaG3NLgXd_kSgNcx077LD/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "1jbdaG3NLgXd_kSgNcx077LDNcZupGYm4",
@@ -689,6 +1029,16 @@
       "repair_time": "당일 · 30~50분",
       "before_img": "images/before-after/1HkvVe9sIlLXVxru308MTFGY/before.jpg",
       "after_img": "images/before-after/1HkvVe9sIlLXVxru308MTFGY/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1HkvVe9sIlLXVxru308MTFGY/progress1.jpg",
+        "images/before-after/1HkvVe9sIlLXVxru308MTFGY/progress2.jpg",
+        "images/before-after/1HkvVe9sIlLXVxru308MTFGY/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "1HkvVe9sIlLXVxru308MTFGYPpJgh4ua3",
@@ -704,6 +1054,16 @@
       "repair_time": "당일 · 30~50분",
       "before_img": "images/before-after/1c74rh7iWYb3hexAzNbGcsJG/before.jpg",
       "after_img": "images/before-after/1c74rh7iWYb3hexAzNbGcsJG/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1c74rh7iWYb3hexAzNbGcsJG/progress1.jpg",
+        "images/before-after/1c74rh7iWYb3hexAzNbGcsJG/progress2.jpg",
+        "images/before-after/1c74rh7iWYb3hexAzNbGcsJG/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "1c74rh7iWYb3hexAzNbGcsJGGy_nYLqIA",
@@ -719,6 +1079,16 @@
       "repair_time": "당일 · 30~50분",
       "before_img": "images/before-after/1DLJIHqBBJReHkfyuGyt8QRU/before.jpg",
       "after_img": "images/before-after/1DLJIHqBBJReHkfyuGyt8QRU/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1DLJIHqBBJReHkfyuGyt8QRU/progress1.jpg",
+        "images/before-after/1DLJIHqBBJReHkfyuGyt8QRU/progress2.jpg",
+        "images/before-after/1DLJIHqBBJReHkfyuGyt8QRU/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "1DLJIHqBBJReHkfyuGyt8QRUrXlWIpKqk",
@@ -734,6 +1104,16 @@
       "repair_time": "당일 · 30~50분",
       "before_img": "images/before-after/1FOnkpJ-X5f-XkBm8A9IrCPb/before.jpg",
       "after_img": "images/before-after/1FOnkpJ-X5f-XkBm8A9IrCPb/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1FOnkpJ-X5f-XkBm8A9IrCPb/progress1.jpg",
+        "images/before-after/1FOnkpJ-X5f-XkBm8A9IrCPb/progress2.jpg",
+        "images/before-after/1FOnkpJ-X5f-XkBm8A9IrCPb/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "1FOnkpJ-X5f-XkBm8A9IrCPbu1QodwTm9",
@@ -749,6 +1129,16 @@
       "repair_time": "당일 · 30~50분",
       "before_img": "images/before-after/1txy7HZ2zAbkVMdkqHjP6pu6/before.jpg",
       "after_img": "images/before-after/1txy7HZ2zAbkVMdkqHjP6pu6/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1txy7HZ2zAbkVMdkqHjP6pu6/progress1.jpg",
+        "images/before-after/1txy7HZ2zAbkVMdkqHjP6pu6/progress2.jpg",
+        "images/before-after/1txy7HZ2zAbkVMdkqHjP6pu6/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "1txy7HZ2zAbkVMdkqHjP6pu6u055DsT58",
@@ -764,6 +1154,16 @@
       "repair_time": "당일 · 30~50분",
       "before_img": "images/before-after/17S150oqCz0w6FHNec5p_4Bo/before.jpg",
       "after_img": "images/before-after/17S150oqCz0w6FHNec5p_4Bo/after.jpg",
+      "progress_imgs": [
+        "images/before-after/17S150oqCz0w6FHNec5p_4Bo/progress1.jpg",
+        "images/before-after/17S150oqCz0w6FHNec5p_4Bo/progress2.jpg",
+        "images/before-after/17S150oqCz0w6FHNec5p_4Bo/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "17S150oqCz0w6FHNec5p_4Bof8q8RyVFu",
@@ -779,6 +1179,16 @@
       "repair_time": "당일 · 30~50분",
       "before_img": "images/before-after/1g-4Xu6xPxzVNLKdML3qrOVJ/before.jpg",
       "after_img": "images/before-after/1g-4Xu6xPxzVNLKdML3qrOVJ/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1g-4Xu6xPxzVNLKdML3qrOVJ/progress1.jpg",
+        "images/before-after/1g-4Xu6xPxzVNLKdML3qrOVJ/progress2.jpg",
+        "images/before-after/1g-4Xu6xPxzVNLKdML3qrOVJ/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "1g-4Xu6xPxzVNLKdML3qrOVJajSaR9EdU",
@@ -794,6 +1204,16 @@
       "repair_time": "당일 · 30~50분",
       "before_img": "images/before-after/19Ek3Abh0X77oY0WWJtBjDuO/before.jpg",
       "after_img": "images/before-after/19Ek3Abh0X77oY0WWJtBjDuO/after.jpg",
+      "progress_imgs": [
+        "images/before-after/19Ek3Abh0X77oY0WWJtBjDuO/progress1.jpg",
+        "images/before-after/19Ek3Abh0X77oY0WWJtBjDuO/progress2.jpg",
+        "images/before-after/19Ek3Abh0X77oY0WWJtBjDuO/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "19Ek3Abh0X77oY0WWJtBjDuODJxDNAObu",
@@ -809,6 +1229,16 @@
       "repair_time": "당일 · 30~50분",
       "before_img": "images/before-after/1aqhzjZvq11tKT8tViDPr2he/before.jpg",
       "after_img": "images/before-after/1aqhzjZvq11tKT8tViDPr2he/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1aqhzjZvq11tKT8tViDPr2he/progress1.jpg",
+        "images/before-after/1aqhzjZvq11tKT8tViDPr2he/progress2.jpg",
+        "images/before-after/1aqhzjZvq11tKT8tViDPr2he/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
       "case_id": "1aqhzjZvq11tKT8tViDPr2heE91eLvsj2",
