@@ -727,8 +727,10 @@ def main():
                     model_for_mask = f"{c.get('device','')} {c.get('model','')}"
                     mask_image(before_path, model=model_for_mask)
                     mask_image(after_path, model=model_for_mask)
-                    for p_path in progress_paths:
-                        mask_image(p_path, model=model_for_mask)
+                    for p_path, p_label in zip(progress_paths, progress_labels):
+                        # 교체부품 사진은 부품 공급사 라벨(PartsPick 등) 자동 블러 강화
+                        ptype = "parts" if p_label == "교체부품" else ""
+                        mask_image(p_path, model=model_for_mask, photo_type=ptype)
                 except ImportError:
                     pass  # easyocr 없으면 그냥 스킵
                 except Exception as me:

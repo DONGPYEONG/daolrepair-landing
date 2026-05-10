@@ -178,7 +178,7 @@ def _pixelate(crop):
     return small.resize((w, h), Image.NEAREST)
 
 
-def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2, model: str = "") -> bool:
+def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2, model: str = "", photo_type: str = "") -> bool:
     """이미지의 텍스트 영역 자동 블러 (시계·날짜만 살림).
 
     EXIF 회전 자동 적용 (모바일 사진은 회전 메타데이터로 인해 OCR 실패 잦음).
@@ -237,11 +237,20 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2, model: 
                     img.paste(blurred, (x1, y1, x2, y2))
             img.save(path, 'JPEG', quality=92, optimize=True)
 
-    try:
-        results = reader.readtext(str(path), text_threshold=0.4, low_text=0.3)
-    except Exception as e:
-        print(f"  ⚠️ OCR 실패 ({path.name}): {e}")
-        return False
+    # 교체 부품(parts) 사진은 더 적극적 OCR — 부품 공급사 라벨(PartsPick 등) 영문/한글 모두 잡기
+    is_parts_photo = (photo_type == "parts")
+    if is_parts_photo:
+        try:
+            results = reader.readtext(str(path), text_threshold=0.2, low_text=0.15, contrast_ths=0.05)
+        except Exception as e:
+            print(f"  ⚠️ OCR 실패 ({path.name}): {e}")
+            return False
+    else:
+        try:
+            results = reader.readtext(str(path), text_threshold=0.4, low_text=0.3)
+        except Exception as e:
+            print(f"  ⚠️ OCR 실패 ({path.name}): {e}")
+            return False
 
     # 시스템 설정 화면(배터리 성능치·iOS 설정 등) 감지 — 개인정보 X, 마스킹 스킵
     SYSTEM_KEYWORDS = [

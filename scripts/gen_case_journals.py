@@ -1945,8 +1945,10 @@ def generate_article(case, journals, used_titles=None):
     desc = f"{model} {type_kr} 실제 수리 사례 — 다올리페어 {case['branch']}에서 진행. 같은 증상으로 고민 중이신 분께 도움 되는 진단·수리 과정 + Q&A · 90일 보증 · 실패 시 0원"
     keywords = f"{model} {type_kr}, {model} 수리, {model} {type_kr} 비용, 다올리페어 {case['branch']}, {model} 수리 후기, 아이폰 수리, 가산 아이폰 수리, 신림 아이폰 수리, 목동 아이폰 수리"
     today = datetime.now(KST).strftime("%Y-%m-%d")
+    # 일지에 표시할 날짜 = 실제 수리 날짜 (오늘 날짜가 아님)
+    display_date = case.get("date", today)
     case_id_short = case.get("case_id", "")[:8] or "x"
-    slug_base = f"journal-{case.get('date', today)}-{slugify(model)}-{rtype}-{case_id_short}"
+    slug_base = f"journal-{display_date}-{slugify(model)}-{rtype}-{case_id_short}"
     slug = re.sub(r"-+", "-", slug_base).strip("-")
     filepath = ARTICLES_DIR / f"{slug}.html"
 
@@ -1978,9 +1980,9 @@ def generate_article(case, journals, used_titles=None):
     # 🆕 수리중 사진 블록 — 본문 중간에 삽입 (분해·교체부품·작업 과정)
     # 다른 매장은 절대 안 보여주는 내부 사진 → 신뢰감 강화
     LABEL_KR = {
-        "내부분해": "내부 분해 — 사장님이 직접 정밀 분해",
-        "교체부품": "교체 부품 — 정품/검수 부품 직접 확인",
-        "수리작업중": "수리 작업 중 — 마스터 직접 작업 모습",
+        "내부분해": "내부 분해 — 정밀 작업 단계",
+        "교체부품": "교체 부품 — 매장 검수 완료 부품",
+        "수리작업중": "수리 작업 중 — 다올리페어 직영점 진행",
     }
     progress_block = ""
     if progress_imgs:
@@ -1994,12 +1996,12 @@ def generate_article(case, journals, used_titles=None):
     <figcaption><span class="ba-tag ba-tag-progress">PROCESS</span> {cap}</figcaption>
   </figure>'''
         progress_block = f'''
-<div style="background:#fafafa;border:1px solid #e5e5e7;border-radius:14px;padding:20px 18px;margin:24px 0;">
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-    <span style="background:#1C1C1E;color:#fff;font-size:11px;font-weight:800;letter-spacing:1.2px;padding:4px 10px;border-radius:50px;">📸 수리 과정 공개</span>
-    <span style="font-size:13px;color:#666;font-weight:600;">다른 매장에서는 보여주지 않는 내부 작업 사진</span>
+<div class="progress-block">
+  <div class="progress-header">
+    <span class="progress-badge">📸 수리 과정 공개</span>
+    <span class="progress-subtitle">다른 매장에서는 보여주지 않는 내부 작업 사진</span>
   </div>
-  <p style="font-size:14px;color:#555;line-height:1.7;margin:0 0 14px;">다올리페어는 수리의 모든 단계를 공개합니다. 분해부터 부품 검수, 작업 과정까지 — 사장님이 직접 손으로 진행한 실제 사진입니다.</p>
+  <p class="progress-desc">다올리페어는 수리의 모든 단계를 공개합니다. 분해부터 부품 검수, 작업 과정까지 — 매장에서 직접 진행한 실제 사진입니다.</p>
   <div class="ba-photos">{figures_html}
   </div>
 </div>
@@ -2024,7 +2026,7 @@ def generate_article(case, journals, used_titles=None):
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="{today}">
+<meta property="article:published_time" content="{display_date}">
 <meta property="article:author" content="금동평">
 
 <script type="application/ld+json">
@@ -2035,7 +2037,7 @@ def generate_article(case, journals, used_titles=None):
   "description": "{desc}",
   "author": {{"@type": "Person", "name": "금동평", "jobTitle": "다올리페어 대표 · 디바이스 예방 마스터"}},
   "publisher": {{"@type": "Organization", "name": "다올리페어"}},
-  "datePublished": "{today}"
+  "datePublished": "{display_date}"
 }}
 </script>
 
@@ -2135,6 +2137,16 @@ body {{ padding-top: 64px; }}
   font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4);
   text-shadow: 0 1px 2px rgba(0,0,0,0.6); z-index: 3; pointer-events: none;
 }}
+/* 수리 과정 공개 블록 — 모바일에서 줄바꿈 자연스럽게 */
+.progress-block {{ background: #fafafa; border: 1px solid #e5e5e7; border-radius: 14px; padding: 20px 18px; margin: 24px 0; }}
+.progress-header {{ display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 14px; }}
+.progress-badge {{ background: #1C1C1E; color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 1.2px; padding: 5px 11px; border-radius: 50px; white-space: nowrap; flex-shrink: 0; }}
+.progress-subtitle {{ font-size: 13px; color: #666; font-weight: 600; line-height: 1.5; }}
+.progress-desc {{ font-size: 14px; color: #555; line-height: 1.7; margin: 0 0 14px; }}
+@media (max-width: 480px) {{
+  .progress-header {{ flex-direction: column; align-items: flex-start; gap: 8px; }}
+  .progress-subtitle {{ font-size: 12.5px; }}
+}}
 @media (max-width: 720px) {{
   .art-wrap {{ padding: 30px 18px 80px; }}
   .art-body {{ font-size: 15.5px; line-height: 1.95; }}
@@ -2202,7 +2214,7 @@ body {{ padding-top: 64px; }}
   <p class="art-desc">{desc}</p>
   <div class="art-meta">
     <span class="art-meta-author">금동평 · 다올리페어 대표</span>
-    <span class="art-meta-date">{today} · {case["branch"]} 진행</span>
+    <span class="art-meta-date">{display_date} · {case["branch"]} 진행</span>
   </div>
 
   <article class="art-body">
