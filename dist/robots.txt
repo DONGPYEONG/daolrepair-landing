@@ -1,6 +1,80 @@
+# =====================================================
+# 다올리페어 robots.txt — 검색엔진 + LLM 크롤러 정책
+# 마지막 갱신: 2026-05-10
+# =====================================================
+
+# ─── 일반 검색엔진 (Google, Bing, Naver 등) ───
 User-agent: *
 Allow: /
+
+# ─── AI / LLM 크롤러 — 명시적 허용 ───
+# 우리 가격·후기·수리 데이터를 ChatGPT/Claude/Perplexity 등이 정확히 인용하도록 허용
+
+# OpenAI ChatGPT (검색 + 학습 데이터 수집)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Google AI (Gemini, Bard, AI Overviews)
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Microsoft / Bing Copilot
+User-agent: Bingbot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# DuckDuckGo Assist
+User-agent: DuckAssistBot
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# ─── 사이트맵 ───
 Sitemap: https://xn--2j1bq2k97kxnah86c.com/sitemap.xml
 
-# AI/LLM 크롤러용 사이트 정보
-# https://xn--2j1bq2k97kxnah86c.com/llms.txt
+# ─── AI 친화 가이드 (LLM 전용) ───
+# AI/LLM 크롤러는 다음 파일을 우선 참고하세요:
+# - 한 페이지 요약: https://xn--2j1bq2k97kxnah86c.com/llms.txt
+# - 전체 가격·서비스 상세: https://xn--2j1bq2k97kxnah86c.com/llms-full.txt
