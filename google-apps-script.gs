@@ -162,7 +162,14 @@ function _generateTicketKey() {
 //  사진 → 구글 드라이브 저장 후 링크 반환
 // ══════════════════════════════════════════════════
 function savePhotosToDrive(photos, label) {
-  if (!photos || !photos.length) return '';
+  // 호환 유지: 텍스트 링크 반환 (기존 호출처용)
+  var result = savePhotosToDriveDetailed(photos, label);
+  return result.links.join('\n');
+}
+
+
+function savePhotosToDriveDetailed(photos, label) {
+  if (!photos || !photos.length) return { links: [], fileIds: [] };
 
   // 최상위 폴더 가져오거나 생성
   var folderName = '다올리페어 접수 사진';
@@ -174,6 +181,7 @@ function savePhotosToDrive(photos, label) {
   var sub = parent.createFolder(label + '_' + stamp);
 
   var links = [];
+  var fileIds = [];
   for (var i = 0; i < photos.length; i++) {
     try {
       var dataUrl = photos[i];
@@ -186,13 +194,56 @@ function savePhotosToDrive(photos, label) {
       var file = sub.createFile(blob);
       file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
 
-      links.push('https://drive.google.com/file/d/' + file.getId() + '/view');
+      var fileId = file.getId();
+      fileIds.push(fileId);
+      links.push('https://drive.google.com/file/d/' + fileId + '/view');
     } catch (e) {
       Logger.log('사진 ' + (i + 1) + '번 저장 오류: ' + e.toString());
     }
   }
 
-  return links.join('\n');
+  return { links: links, fileIds: fileIds };
+}
+
+
+// 사진 셀에 IMAGE 수식 + HYPERLINK 자동 적용 (시트에서 썸네일 직접 노출)
+// 클릭 시 원본 보기, 한 셀에 여러 사진 첫 번째만 표시 (나머지는 별도 셀로 자동 추가)
+function _setPhotoCellImages(sheet, rowIdx, photoColIdx, fileIds) {
+  if (!fileIds || !fileIds.length) return;
+  var THUMB_SIZE = 180;  // 픽셀 — 시트 행 높이도 함께 조정
+
+  // 행 높이 사진 크기 + 여백 맞춰 조정
+  sheet.setRowHeight(rowIdx, THUMB_SIZE + 10);
+
+  // 첫 번째 사진은 원본 사진링크 셀에 IMAGE + HYPERLINK 수식
+  for (var i = 0; i < fileIds.length; i++) {
+    var fid = fileIds[i];
+    var thumbUrl = 'https://drive.google.com/thumbnail?id=' + fid + '&sz=w' + THUMB_SIZE;
+    var viewUrl  = 'https://drive.google.com/file/d/' + fid + '/view';
+    var formula  = '=HYPERLINK("' + viewUrl + '", IMAGE("' + thumbUrl + '", 4, ' + THUMB_SIZE + ', ' + THUMB_SIZE + '))';
+
+    var col;
+    if (i === 0) {
+      col = photoColIdx;  // 기존 사진링크 셀
+    } else {
+      // 추가 사진은 사진2, 사진3 ... 컬럼 (없으면 자동 생성)
+      var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+      var extraHeader = '사진' + (i + 1);
+      var extraCol = headers.indexOf(extraHeader) + 1;
+      if (extraCol === 0) {
+        // 컬럼 추가 (마지막 컬럼 끝에)
+        sheet.insertColumnAfter(sheet.getLastColumn());
+        extraCol = sheet.getLastColumn();
+        sheet.getRange(1, extraCol).setValue(extraHeader)
+          .setBackground('#1C1C1E').setFontColor('#fff').setFontWeight('bold');
+        sheet.setColumnWidth(extraCol, THUMB_SIZE + 20);
+      }
+      col = extraCol;
+    }
+    sheet.getRange(rowIdx, col).setFormula(formula);
+  }
+  // 사진링크 컬럼 너비도 사진에 맞춤
+  sheet.setColumnWidth(photoColIdx, THUMB_SIZE + 20);
 }
 
 
@@ -233,15 +284,16 @@ function logToSheet(data) {
     });
     sheet.appendRow(row);
 
-    // ★ 시트 저장 후에 사진을 드라이브에 저장하고 링크 업데이트
+    // ★ 시트 저장 후에 사진을 드라이브에 저장하고 시트에 썸네일 직접 표시
     if (hasPendingPhotos) {
       try {
-        var photoLinks = savePhotosToDrive(data.photos, data.name || '견적');
-        if (photoLinks) {
+        var photoResult = savePhotosToDriveDetailed(data.photos, data.name || '견적');
+        if (photoResult.fileIds.length) {
           var lastRow = sheet.getLastRow();
           var photoColIdx = headers.indexOf('사진링크') + 1;
           if (photoColIdx > 0) {
-            sheet.getRange(lastRow, photoColIdx).setValue(photoLinks);
+            // IMAGE + HYPERLINK 수식으로 썸네일 직접 노출 (클릭 시 원본)
+            _setPhotoCellImages(sheet, lastRow, photoColIdx, photoResult.fileIds);
           }
         }
       } catch (photoErr) {
@@ -281,15 +333,15 @@ function logToSheet(data) {
     });
     sheet.appendRow(row);
 
-    // ★ 시트 저장 후에 사진 처리
+    // ★ 시트 저장 후에 사진 처리 (썸네일 직접 노출)
     if (hasPendingPhotos) {
       try {
-        var photoLinks = savePhotosToDrive(data.photos, data.name || '택배');
-        if (photoLinks) {
+        var photoResult = savePhotosToDriveDetailed(data.photos, data.name || '택배');
+        if (photoResult.fileIds.length) {
           var lastRow = sheet.getLastRow();
           var photoColIdx = headers.indexOf('사진링크') + 1;
           if (photoColIdx > 0) {
-            sheet.getRange(lastRow, photoColIdx).setValue(photoLinks);
+            _setPhotoCellImages(sheet, lastRow, photoColIdx, photoResult.fileIds);
           }
         }
       } catch (photoErr) {
@@ -348,14 +400,16 @@ function logToSheet(data) {
       }
     }
 
-    // 사진 처리
+    // 사진 처리 (후기도 썸네일 직접 노출)
     if (hasPendingPhotos) {
       try {
-        var photoLinks = savePhotosToDrive(data.photos, '후기_' + (data.name || ''));
-        if (photoLinks) {
+        var photoResult = savePhotosToDriveDetailed(data.photos, '후기_' + (data.name || ''));
+        if (photoResult.fileIds.length) {
           var lastRow = sheet.getLastRow();
           var photoCol = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0].indexOf('사진링크') + 1;
-          if (photoCol > 0) sheet.getRange(lastRow, photoCol).setValue(photoLinks);
+          if (photoCol > 0) {
+            _setPhotoCellImages(sheet, lastRow, photoCol, photoResult.fileIds);
+          }
         }
       } catch (photoErr) {
         Logger.log('후기 사진 저장 실패: ' + photoErr.toString());
@@ -876,6 +930,7 @@ function _processQuoteRows(sheet, type) {
   var colQuoteAmount   = headers.indexOf('견적금액') + 1;
   var colEstimatedTime = headers.indexOf('소요시간') + 1;
   var colQuoteSent     = headers.indexOf('견적발송') + 1;
+  var colStatus        = headers.indexOf('처리상태') + 1;  // 자동 처리완료 갱신용
 
   // 필요한 컬럼이 없으면 스킵 (예: 택배 시트에 견적 컬럼 없을 때)
   if (colQuoteAmount < 1 || colEstimatedTime < 1 || colQuoteSent < 1) return;
@@ -908,6 +963,11 @@ function _processQuoteRows(sheet, type) {
         estimatedTime: estimatedTime
       }, type);
       sheet.getRange(row, colQuoteSent).setValue(ok ? 'Y' : '실패');
+      // ✨ 견적 발송 성공 시 처리상태 자동으로 "처리완료" 변경
+      if (ok && colStatus > 0) {
+        sheet.getRange(row, colStatus).setValue('처리완료');
+        sheet.getRange(row, colStatus).setBackground('#d4edda').setFontColor('#155724');
+      }
     } catch (err) {
       sheet.getRange(row, colQuoteSent).setValue('실패');
       Logger.log('견적 발송 실패 (row ' + row + '): ' + err.toString());
