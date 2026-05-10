@@ -17,7 +17,7 @@
 <meta property="og:title" content="아이폰 13미니 배터리 80% 미만, 지금 갈아야 하나 더 써도 되나? — 목동점 진단 후기">
 <meta property="og:description" content="아이폰 13미니 배터리 교체 실제 수리 사례 — 다올리페어 목동점에서 진행. 같은 증상으로 고민 중이신 분께 도움 되는 진단·수리 과정 + Q&A · 90일 보증 · 실패 시 0원">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2026-05-09">
+<meta property="article:published_time" content="2026-05-10">
 <meta property="article:author" content="금동평">
 
 <script type="application/ld+json">
@@ -28,7 +28,7 @@
   "description": "아이폰 13미니 배터리 교체 실제 수리 사례 — 다올리페어 목동점에서 진행. 같은 증상으로 고민 중이신 분께 도움 되는 진단·수리 과정 + Q&A · 90일 보증 · 실패 시 0원",
   "author": {"@type": "Person", "name": "금동평", "jobTitle": "다올리페어 대표 · 디바이스 예방 마스터"},
   "publisher": {"@type": "Organization", "name": "다올리페어"},
-  "datePublished": "2026-05-09"
+  "datePublished": "2026-05-10"
 }
 </script>
 
@@ -97,13 +97,34 @@ body { padding-top: 64px; }
 .faq-a { color: #555; line-height: 1.85; font-size: 14px; }
 .faq-a a { color: var(--orange); }
 .ba-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 28px 0 8px; }
-.ba-photo { margin: 0; background: #0a0a0a; border-radius: 14px; overflow: hidden; }
-.ba-photo img { display: block; width: 100%; height: auto; }
-.ba-photo figcaption { padding: 10px 12px; font-size: 12px; color: #fff; background: rgba(0,0,0,0.9); display: flex; align-items: center; gap: 8px; }
+.ba-photo { margin: 0; background: #0a0a0a; border-radius: 14px; overflow: hidden; position: relative; }
+.ba-photo img {
+  display: block; width: 100%; height: auto;
+  /* 🔒 이미지 도용 방지 — 우클릭/드래그/저장 차단 */
+  -webkit-user-drag: none; -khtml-user-drag: none; -moz-user-drag: none; -o-user-drag: none; user-drag: none;
+  -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
+/* 우클릭 방지를 위한 투명 오버레이 (이미지 위에 덮음) */
+.ba-photo::before {
+  content: ""; position: absolute; inset: 0; z-index: 2;
+  background: transparent; pointer-events: auto;
+}
+.ba-photo figcaption { padding: 10px 12px; font-size: 12px; color: #fff; background: rgba(0,0,0,0.9); display: flex; align-items: center; gap: 8px; position: relative; z-index: 3; pointer-events: none; }
 .ba-tag { font-size: 10px; font-weight: 800; letter-spacing: 1.5px; padding: 3px 8px; border-radius: 50px; }
 .ba-tag-before { background: rgba(255,69,58,0.95); color: #fff; }
 .ba-tag-after { background: rgba(52,199,89,0.95); color: #fff; }
+.ba-tag-progress { background: rgba(232,115,42,0.95); color: #fff; }
+.ba-photo-progress { background: #1a1a1a; }
+.ba-photos:has(.ba-photo-progress) { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 .ba-caption-text { text-align: center; color: #888; font-size: 12px; margin: 0 0 32px; }
+/* 워터마크 (옅은 텍스트 — 도용 시 출처 추적 가능) */
+.ba-photo::after {
+  content: "© 다올리페어"; position: absolute; bottom: 38px; right: 8px;
+  font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6); z-index: 3; pointer-events: none;
+}
 @media (max-width: 720px) {
   .art-wrap { padding: 30px 18px 80px; }
   .art-body { font-size: 15.5px; line-height: 1.95; }
@@ -274,7 +295,7 @@ body { padding-top: 64px; }
   <p class="art-desc">아이폰 13미니 배터리 교체 실제 수리 사례 — 다올리페어 목동점에서 진행. 같은 증상으로 고민 중이신 분께 도움 되는 진단·수리 과정 + Q&A · 90일 보증 · 실패 시 0원</p>
   <div class="art-meta">
     <span class="art-meta-author">금동평 · 다올리페어 대표</span>
-    <span class="art-meta-date">2026-05-09 · 목동점 진행</span>
+    <span class="art-meta-date">2026-05-10 · 목동점 진행</span>
   </div>
 
   <article class="art-body">
@@ -343,6 +364,29 @@ body { padding-top: 64px; }
   <li><strong>조립 + 테스트 (10~15분)</strong> — 충전 정상 인식, 성능치 정상 표시 확인</li>
 </ol>
 <p>총 작업 시간 <strong>당일 30~50분</strong>. 데이터는 그대로 보존됩니다.</p>
+
+
+<div style="background:#fafafa;border:1px solid #e5e5e7;border-radius:14px;padding:20px 18px;margin:24px 0;">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+    <span style="background:#1C1C1E;color:#fff;font-size:11px;font-weight:800;letter-spacing:1.2px;padding:4px 10px;border-radius:50px;">📸 수리 과정 공개</span>
+    <span style="font-size:13px;color:#666;font-weight:600;">다른 매장에서는 보여주지 않는 내부 작업 사진</span>
+  </div>
+  <p style="font-size:14px;color:#555;line-height:1.7;margin:0 0 14px;">다올리페어는 수리의 모든 단계를 공개합니다. 분해부터 부품 검수, 작업 과정까지 — 사장님이 직접 손으로 진행한 실제 사진입니다.</p>
+  <div class="ba-photos">
+  <figure class="ba-photo ba-photo-progress">
+    <img loading="lazy" src="https://xn--2j1bq2k97kxnah86c.com/images/before-after/17S150oqCz0w6FHNec5p_4Bo/progress1.jpg" alt="아이폰 13미니 내부 분해 — 사장님이 직접 정밀 분해">
+    <figcaption><span class="ba-tag ba-tag-progress">PROCESS</span> 내부 분해 — 사장님이 직접 정밀 분해</figcaption>
+  </figure>
+  <figure class="ba-photo ba-photo-progress">
+    <img loading="lazy" src="https://xn--2j1bq2k97kxnah86c.com/images/before-after/17S150oqCz0w6FHNec5p_4Bo/progress2.jpg" alt="아이폰 13미니 교체 부품 — 정품/검수 부품 직접 확인">
+    <figcaption><span class="ba-tag ba-tag-progress">PROCESS</span> 교체 부품 — 정품/검수 부품 직접 확인</figcaption>
+  </figure>
+  <figure class="ba-photo ba-photo-progress">
+    <img loading="lazy" src="https://xn--2j1bq2k97kxnah86c.com/images/before-after/17S150oqCz0w6FHNec5p_4Bo/progress3.jpg" alt="아이폰 13미니 수리 작업 중 — 마스터 직접 작업 모습">
+    <figcaption><span class="ba-tag ba-tag-progress">PROCESS</span> 수리 작업 중 — 마스터 직접 작업 모습</figcaption>
+  </figure>
+  </div>
+</div>
 
 
 <h2>다올리페어 vs 애플 공식센터 — 같은 수리, 다른 경험</h2>
@@ -729,5 +773,35 @@ window.artPhotoPreview = function(input){
 })();
 </script>
 
+
+<!-- 🔒 일지 사진 도용 방지 — 우클릭/드래그/Ctrl+S 차단 -->
+<script>
+(function() {
+  // 일지 사진 영역 우클릭 차단
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.closest('.ba-photo, .ba-photos')) {
+      e.preventDefault();
+      return false;
+    }
+  });
+  // 드래그 차단
+  document.addEventListener('dragstart', function(e) {
+    if (e.target.closest('.ba-photo')) {
+      e.preventDefault();
+      return false;
+    }
+  });
+  // Ctrl+S, Ctrl+Shift+S 차단 (페이지 저장)
+  document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && (e.key === 's' || e.key === 'S')) {
+      e.preventDefault();
+      return false;
+    }
+    // F12 / Ctrl+Shift+I (개발자 도구) — 일반인 진입 장벽 (전문가는 우회 가능)
+    if (e.key === 'F12') { e.preventDefault(); return false; }
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')) { e.preventDefault(); return false; }
+  });
+})();
+</script>
 </body>
 </html>

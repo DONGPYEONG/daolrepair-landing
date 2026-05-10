@@ -654,6 +654,19 @@ def main():
         before_path = case_dir / "before.jpg"
         after_path  = case_dir / "after.jpg"
 
+        # 🆕 "수리중" 사진 후보 — 일지 본문 중간에 삽입 (신뢰감 강화)
+        # 우선순위: 내부분해 → 교체부품 → 수리작업중 (최대 3장)
+        PROGRESS_PATTERNS = [("수리중", "내부분해"), ("수리중", "교체부품"), ("수리중", "수리작업중")]
+        progress_files = []  # [{file, label, path}]
+        for stage, body_part in PROGRESS_PATTERNS:
+            for f in inner:
+                if (stage in f["name"] and body_part in f["name"]
+                    and is_safe_file(f["name"])):
+                    progress_files.append({"file": f, "label": body_part})
+                    break
+            if len(progress_files) >= 3:
+                break
+
         # 메타 파일로 file_id 추적 — Vision이 다른 파일 선택했으면 재다운로드
         meta_path = case_dir / "_meta.json"
         cached_meta = {}
@@ -663,10 +676,14 @@ def main():
             except Exception:
                 cached_meta = {}
 
+        progress_ids = [pf["file"]["id"] for pf in progress_files]
+        cached_progress_ids = cached_meta.get("progress_file_ids", [])
+
         same_files = (
             before_path.exists() and after_path.exists()
             and cached_meta.get("before_file_id") == before_file["id"]
             and cached_meta.get("after_file_id") == after_file["id"]
+            and cached_progress_ids == progress_ids  # 수리중 사진 변경 시도 재다운로드
         )
 
         if same_files:
@@ -675,12 +692,34 @@ def main():
             try:
                 download(before_file["id"], before_path)
                 download(after_file["id"], after_path)
+                # 수리중 사진 다운로드 (progress1.jpg, progress2.jpg, ...)
+                progress_paths = []
+                progress_labels = []
+                for i, pf in enumerate(progress_files, 1):
+                    p_path = case_dir / f"progress{i}.jpg"
+                    download(pf["file"]["id"], p_path)
+                    progress_paths.append(p_path)
+                    progress_labels.append(pf["label"])
+                # 사용 안 하는 progress 파일 정리
+                for old_p in case_dir.glob("progress*.jpg"):
+                    if old_p not in progress_paths:
+                        try: old_p.unlink()
+                        except Exception: pass
+
                 meta_path.write_text(
-                    json.dumps({"before_file_id": before_file["id"], "after_file_id": after_file["id"], "before_name": before_file["name"], "after_name": after_file["name"]}, ensure_ascii=False),
+                    json.dumps({
+                        "before_file_id": before_file["id"],
+                        "after_file_id": after_file["id"],
+                        "before_name": before_file["name"],
+                        "after_name": after_file["name"],
+                        "progress_file_ids": progress_ids,
+                        "progress_labels": progress_labels,  # 본문 캡션용
+                    }, ensure_ascii=False),
                     encoding="utf-8"
                 )
                 reason = "Vision 재선택" if cached_meta else "새로 다운로드"
-                print(f"   ✓ case-{case_idx} ({folder_id[:10]}...): {device_label(c['device'], c['model'])} ({c['repair_type']}) — {reason}")
+                progress_msg = f" + 수리중 {len(progress_files)}장" if progress_files else ""
+                print(f"   ✓ case-{case_idx} ({folder_id[:10]}...): {device_label(c['device'], c['model'])} ({c['repair_type']}) — {reason}{progress_msg}")
                 # 🛡️ 개인정보 자동 마스킹 (시계·날짜는 살리고 나머지 텍스트 블러)
                 # 워치 모델은 OCR 마스킹 스킵 (얼굴 인식만 적용)
                 try:
@@ -688,6 +727,8 @@ def main():
                     model_for_mask = f"{c.get('device','')} {c.get('model','')}"
                     mask_image(before_path, model=model_for_mask)
                     mask_image(after_path, model=model_for_mask)
+                    for p_path in progress_paths:
+                        mask_image(p_path, model=model_for_mask)
                 except ImportError:
                     pass  # easyocr 없으면 그냥 스킵
                 except Exception as me:
@@ -717,6 +758,19 @@ def main():
             case_meta = {}
             print(f"     ⚠️ 메타 파싱 실패: {me}")
 
+        # 🆕 progress 이미지 경로 + 라벨 (cached or fresh)
+        if same_files:
+            progress_imgs = []
+            progress_labels_for_case = cached_meta.get("progress_labels", [])
+            for i in range(1, len(progress_labels_for_case) + 1):
+                p_rel = f"images/before-after/{folder_id}/progress{i}.jpg"
+                if (case_dir / f"progress{i}.jpg").exists():
+                    progress_imgs.append(p_rel)
+        else:
+            progress_imgs = [f"images/before-after/{folder_id}/progress{i}.jpg"
+                             for i in range(1, len(progress_files) + 1)]
+            progress_labels_for_case = [pf["label"] for pf in progress_files]
+
         portfolio_cases.append({
             "id": f"case-{case_idx}",
             "model": device_label(c["device"], c["model"]),
@@ -728,6 +782,8 @@ def main():
             "repair_time": TIME_BY_TYPE.get(c["repair_type"], "진단 후 안내"),
             "before_img": f"images/before-after/{folder_id}/before.jpg",
             "after_img":  f"images/before-after/{folder_id}/after.jpg",
+            "progress_imgs": progress_imgs,    # 🆕 수리중 사진 경로 리스트
+            "progress_labels": progress_labels_for_case,  # 🆕 캡션 라벨
             "before_text": before_text,
             "after_text": after_text,
             "case_id": c["id"],
