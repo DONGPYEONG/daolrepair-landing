@@ -810,7 +810,23 @@ def main():
 
     # ─── 6. JSON 저장 ───
     # 슬라이더는 최신 4개 (메인 페이지), 포트폴리오는 전체 (별도 페이지)
-    slider_cases = portfolio_cases[:4]
+    # 🚫 슬라이더 노출 제한 — 아이폰은 13시리즈 이상만 (옛 모델은 일지에만)
+    def _slider_eligible(c):
+        m = c.get("model", "")
+        if "아이폰" not in m and "iPhone" not in m and "iphone" not in m.lower():
+            # 아이폰 외(워치/패드/맥북/에어팟 등)는 모두 노출
+            return True
+        # 아이폰만 13시리즈 이상 필터
+        OLD = ["6", "7", "8", "se", "SE", "x", "X", "xr", "XR", "xs", "XS", "9", "10", "11", "12"]
+        m_lower = m.lower()
+        # 13/14/15/16/17 + Pro/Plus/Mini/Max 변형 모두 허용
+        for ok in ["13", "14", "15", "16", "17", "18", "19"]:
+            if ok in m:
+                return True
+        return False
+
+    slider_cases = [c for c in portfolio_cases if _slider_eligible(c)][:4]
+    print(f"   🎬 슬라이더 필터링: 아이폰 13시리즈 이상만 (옛 모델 제외)")
 
     # 🆕 각 케이스에 일지 글 URL 매칭 (case_id로 journal-index 매칭)
     journal_index_path = ROOT / "data" / "journal-index.json"
