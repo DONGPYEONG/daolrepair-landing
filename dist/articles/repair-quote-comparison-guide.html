@@ -93,9 +93,9 @@
     .art-nav-links { display: flex; gap: 0; list-style: none; align-items: center; }
     .art-nav-links li { display: flex; align-items: center; }
     .art-nav-links li + li::before { content: ''; display: block; width: 1px; height: 12px; background: rgba(255,255,255,0.12); flex-shrink: 0; margin: 0 1px; }
-    .art-nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 12.5px; font-weight: 400; transition: color 0.2s; padding: 0 9px; }
+    .art-nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 12.5px; font-weight: 400; transition: color 0.2s; white-space: nowrap; padding: 0 9px; }
     .art-nav-links a:hover { color: #fff; }
-    .art-nav-home { position: relative; background: none; border: none; color: rgba(255,255,255,0.75); cursor: pointer; padding: 6px; display: flex; align-items: center; justify-content: center; margin-left: 4px; margin-right: 4px; text-decoration: none; transition: color 0.2s; flex-shrink: 0; }
+    .art-nav-home { position: relative; background: none; border: none; color: rgba(255,255,255,0.75); cursor: pointer; padding: 6px; display: flex; align-items: center; justify-content: center;  text-decoration: none; transition: color 0.2s; flex-shrink: 0; }
     .art-nav-home:hover { color: #fff !important; }
     .art-nav-reserve { position: relative; }
     .art-nav-reserve-btn { background: #E8732A; color: #fff; padding: 6px 13px; border-radius: 20px; font-size: 12.5px; font-weight: 700; border: none; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
@@ -1109,7 +1109,7 @@ window.artPhotoPreview = function(input){
 <style>
 .share-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:#1D1D1F;color:#fff;padding:12px 22px;border-radius:50px;font-size:14px;font-weight:600;box-shadow:0 4px 20px rgba(0,0,0,0.2);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:9999}
 .share-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.art-nav-share{position:relative;background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);cursor:pointer;padding:6px 12px;border-radius:50px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:4px;margin-right:6px;font-family:inherit;transition:background 0.15s}
+.art-nav-share{position:relative;background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);cursor:pointer;padding:6px 12px;border-radius:50px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:4px;font-family:inherit;transition:background 0.15s}
 .art-nav-share:hover{background:rgba(255,255,255,0.18);color:#fff}
 @media print{.share-toast,.art-nav-share{display:none!important}}
 </style>

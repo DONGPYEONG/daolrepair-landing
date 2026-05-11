@@ -2455,8 +2455,14 @@ def update_journal_page(journals_list):
     .art-nav-logo-ko {{ font-size: 15px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }}
     .art-nav-logo-ko em {{ color: #E8732A; font-style: normal; }}
     .art-nav-logo-en {{ font-size: 8px; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }}
+    .art-nav-links {{ display: flex; gap: 0; list-style: none; align-items: center; padding: 0; margin: 0; }}
+    .art-nav-links li {{ display: flex; align-items: center; }}
+    .art-nav-links li + li::before {{ content: ''; display: block; width: 1px; height: 12px; background: rgba(255,255,255,0.12); flex-shrink: 0; margin: 0 1px; }}
+    .art-nav-links a {{ color: rgba(255,255,255,0.75); text-decoration: none; font-size: 12.5px; font-weight: 400; transition: color 0.2s; padding: 0 9px; white-space: nowrap; }}
+    .art-nav-links a:hover {{ color: #fff; }}
     .art-nav-home {{ background: none; border: none; color: rgba(255,255,255,0.75); cursor: pointer; padding: 6px; display: flex; align-items: center; text-decoration: none; }}
     .art-nav-home:hover {{ color: #fff; }}
+    @media (max-width: 768px) {{ .art-nav-links {{ display: none; }} .art-nav-inner {{ padding: 0 20px; }} }}
 
     .list-wrap {{ max-width: 880px; margin: 0 auto; padding: 48px 20px 80px; }}
     .list-eyebrow {{ font-size: 12px; color: var(--orange); font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase; }}
@@ -2494,9 +2500,20 @@ def update_journal_page(journals_list):
         <span class="art-nav-logo-en">Device Repair Master</span>
       </div>
     </a>
-    <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-home" title="메인으로">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    </a>
+    <ul class="art-nav-links">
+      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#philosophy">철학</a></li>
+      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#services">서비스</a></li>
+      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#estimate">수리 견적</a></li>
+      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#courier">택배접수</a></li>
+      <li><a href="index.html" style="color:#E8732A;font-weight:700;">수리 칼럼</a></li>
+      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#reviews">후기</a></li>
+      <li><a href="https://xn--2j1bq2k97kxnah86c.com/#locations">지점안내</a></li>
+    </ul>
+    <div class="art-nav-actions">
+      <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-home" title="메인으로">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </a>
+    </div>
   </div>
 </nav>
 
