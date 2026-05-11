@@ -2307,8 +2307,24 @@ function daolShare() {{
 .daol-dock-btn.primary:hover {{ background: #C55E1A; transform: translateY(-1px); }}
 .daol-dock-btn.kakao {{ background: #FEE500; color: #181600; }}
 .daol-dock-btn.kakao:hover {{ background: #FFD500; color: #181600; }}
+.daol-dock.is-hidden {{ opacity: 0; transform: translateX(-50%) translateY(20px); pointer-events: none; }}
 @media (max-width: 380px) {{ .daol-dock-btn {{ min-width: 54px; padding: 8px 9px; font-size: 10.5px; }} }}
 </style>
+<script>
+(function(){{
+  var d = document.querySelector('.daol-dock'); if (!d) return;
+  var timer = null;
+  function atBottom() {{ return window.scrollY + window.innerHeight >= document.body.scrollHeight - 10; }}
+  function show() {{ if (atBottom()) return; if (window.scrollY < 120) return; d.classList.remove('is-hidden'); }}
+  function hide() {{ d.classList.add('is-hidden'); }}
+  d.classList.add('is-hidden');
+  window.addEventListener('scroll', function(){{
+    hide(); clearTimeout(timer);
+    if (!atBottom() && window.scrollY >= 120) {{ timer = setTimeout(show, 1000); }}
+  }}, {{passive: true}});
+  setTimeout(show, 1500);
+}})();
+</script>
 
 <!-- 🔒 일지 사진 도용 방지 — 우클릭/드래그/Ctrl+S 차단 -->
 <script>
