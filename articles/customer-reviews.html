@@ -64,7 +64,32 @@
     .cta-btn{display:inline-block;background:var(--orange);color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-size:15px;font-weight:800}
     .cta-btn:hover{background:#d4621f}
 
+    /* 네이버 플레이스 바로가기 (전체 후기) */
+    .naver-cta-wrap{margin:32px auto 8px;max-width:780px;padding:24px 20px;background:linear-gradient(135deg,#03C75A 0%,#02a84d 100%);border-radius:20px;color:#fff;text-align:center;box-shadow:0 4px 20px rgba(3,199,90,.18)}
+    .naver-cta-title{font-size:17px;font-weight:900;margin-bottom:6px;letter-spacing:-0.3px}
+    .naver-cta-desc{font-size:13px;opacity:.92;margin-bottom:18px;line-height:1.5}
+    .naver-cta-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .naver-cta-btn{display:flex;align-items:center;gap:10px;padding:13px 14px;background:#fff;color:#03C75A;border-radius:12px;text-decoration:none;font-size:13px;font-weight:700;transition:transform .15s,box-shadow .15s;text-align:left}
+    .naver-cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.15)}
+    .naver-cta-icon{width:32px;height:32px;flex-shrink:0;background:#03C75A;color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;font-family:Arial,sans-serif}
+    .naver-cta-text{display:flex;flex-direction:column;line-height:1.3;flex:1;min-width:0}
+    .naver-cta-text strong{font-size:14px;color:var(--dark);font-weight:800}
+    .naver-cta-text small{font-size:11px;color:#888;font-weight:500;margin-top:2px}
+    @media(max-width:640px){
+      .naver-cta-btns{grid-template-columns:1fr}
+      .naver-cta-wrap{margin:24px 16px 8px;padding:20px 16px}
+      .naver-cta-title{font-size:15px}
+    }
+
     .footer{background:#0A0A0A;color:rgba(255,255,255,.5);text-align:center;padding:40px 20px;font-size:13px;margin-top:60px}
+  
+    /* PC 본문 가독성 — 박스·표·CTA·관련글 양끝 퍼짐 방지 (2026-05-11 추가) */
+    .art-body > div, .art-body > .art-cta, .art-body > .art-tip, .art-body > table { max-width: 100%; box-sizing: border-box; }
+    .art-body table { table-layout: auto; }
+    @media (min-width: 1024px) {
+      .art-body div[style*="border-left"], .art-body .progress-block { max-width: 92%; margin-left: auto; margin-right: auto; }
+      .art-body table { max-width: 95%; margin-left: auto; margin-right: auto; }
+    }
   </style>
 
   <!-- ─ Google Analytics 4 ─────────────────────────────── -->
@@ -221,7 +246,36 @@
     <div class="hero-stat"><strong>4.9</strong><span>평균 별점</span></div>
     <div class="hero-stat"><strong>90일</strong><span>무상 보증</span></div>
   </div>
-  <p style="font-size:13px;color:#888;margin-top:18px;max-width:560px;margin-left:auto;margin-right:auto;">아래는 네이버 플레이스에 남겨주신 2,000개+ 후기 중 사진·내용이 풍부한 베스트 145건입니다. 전체 후기는 네이버 플레이스(가산·신림·목동 각 매장 페이지)에서 확인하실 수 있습니다.</p>
+  <p style="font-size:13px;color:#888;margin-top:18px;max-width:560px;margin-left:auto;margin-right:auto;">아래는 네이버 플레이스에 남겨주신 2,000개+ 후기 중 사진·내용이 풍부한 베스트 145건입니다.</p>
+
+  <!-- 네이버 플레이스 바로가기 (전체 2000개 후기) -->
+  <div class="naver-cta-wrap">
+    <div class="naver-cta-title">전체 2,000개+ 후기는 네이버 플레이스에서</div>
+    <div class="naver-cta-desc">사진·평점·답변까지 — 가시고 싶은 매장 골라 바로 확인하세요</div>
+    <div class="naver-cta-btns">
+      <a href="https://naver.me/xyjKp1eq" target="_blank" rel="noopener" class="naver-cta-btn">
+        <span class="naver-cta-icon">N</span>
+        <span class="naver-cta-text">
+          <strong>가산점 후기 보기</strong>
+          <small>네이버 플레이스로 이동 →</small>
+        </span>
+      </a>
+      <a href="https://naver.me/Faf1J0yG" target="_blank" rel="noopener" class="naver-cta-btn">
+        <span class="naver-cta-icon">N</span>
+        <span class="naver-cta-text">
+          <strong>신림점 후기 보기</strong>
+          <small>네이버 플레이스로 이동 →</small>
+        </span>
+      </a>
+      <a href="https://naver.me/5nojklP7" target="_blank" rel="noopener" class="naver-cta-btn">
+        <span class="naver-cta-icon">N</span>
+        <span class="naver-cta-text">
+          <strong>목동점 후기 보기</strong>
+          <small>네이버 플레이스로 이동 →</small>
+        </span>
+      </a>
+    </div>
+  </div>
 </header>
 
 <div class="wrap">
@@ -784,6 +838,26 @@
 &amp;#49688;&amp;#47532;&amp;#48708;&amp;#50857;&amp;#51060; &amp;#48708;&amp;#49912;&amp;#49436; 2&amp;#51452; &amp;#44032;&amp;#44620;&amp;#51060; &amp;#47581;&amp;#49444;&amp;#51060;&amp;#45796; &</p>
       </div>
     </article>
+  </div>
+
+  <!-- 하단 네이버 플레이스 바로가기 (스크롤 끝까지 본 사람용) -->
+  <div class="naver-cta-wrap" style="margin-top:50px">
+    <div class="naver-cta-title">전체 2,000개+ 후기는 네이버 플레이스에서</div>
+    <div class="naver-cta-desc">베스트 145건 다 보셨다면, 네이버에서 더 많은 실제 후기 + 사진 + 평점 확인하세요</div>
+    <div class="naver-cta-btns">
+      <a href="https://naver.me/xyjKp1eq" target="_blank" rel="noopener" class="naver-cta-btn">
+        <span class="naver-cta-icon">N</span>
+        <span class="naver-cta-text"><strong>가산점 후기 보기</strong><small>네이버 플레이스로 이동 →</small></span>
+      </a>
+      <a href="https://naver.me/Faf1J0yG" target="_blank" rel="noopener" class="naver-cta-btn">
+        <span class="naver-cta-icon">N</span>
+        <span class="naver-cta-text"><strong>신림점 후기 보기</strong><small>네이버 플레이스로 이동 →</small></span>
+      </a>
+      <a href="https://naver.me/5nojklP7" target="_blank" rel="noopener" class="naver-cta-btn">
+        <span class="naver-cta-icon">N</span>
+        <span class="naver-cta-text"><strong>목동점 후기 보기</strong><small>네이버 플레이스로 이동 →</small></span>
+      </a>
+    </div>
   </div>
 
   <div class="cta-box">

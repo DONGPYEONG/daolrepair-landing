@@ -187,6 +187,14 @@
     .danger-box { background: #fff0f0; border: 2px solid #dc2626; border-radius: 14px; padding: 22px 24px; margin: 28px 0; }
     .danger-box-title { font-size: 14px; font-weight: 900; color: #dc2626; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
     .danger-box ul { margin: 0; padding-left: 20px; font-size: 14px; color: #333; line-height: 2; }
+  
+    /* PC 본문 가독성 — 박스·표·CTA·관련글 양끝 퍼짐 방지 (2026-05-11 추가) */
+    .art-body > div, .art-body > .art-cta, .art-body > .art-tip, .art-body > table { max-width: 100%; box-sizing: border-box; }
+    .art-body table { table-layout: auto; }
+    @media (min-width: 1024px) {
+      .art-body div[style*="border-left"], .art-body .progress-block { max-width: 92%; margin-left: auto; margin-right: auto; }
+      .art-body table { max-width: 95%; margin-left: auto; margin-right: auto; }
+    }
   </style>
 
 <!-- ── WIZARD MODAL CSS ── -->

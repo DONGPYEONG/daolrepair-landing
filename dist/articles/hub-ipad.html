@@ -76,6 +76,14 @@
 
     .art-footer { text-align: center; padding: 36px 20px; font-size: 13px; color: #bbb; border-top: 1px solid var(--border); margin-top: 60px; }
     .art-footer a { color: var(--orange); text-decoration: none; }
+  
+    /* PC 본문 가독성 — 박스·표·CTA·관련글 양끝 퍼짐 방지 (2026-05-11 추가) */
+    .art-body > div, .art-body > .art-cta, .art-body > .art-tip, .art-body > table { max-width: 100%; box-sizing: border-box; }
+    .art-body table { table-layout: auto; }
+    @media (min-width: 1024px) {
+      .art-body div[style*="border-left"], .art-body .progress-block { max-width: 92%; margin-left: auto; margin-right: auto; }
+      .art-body table { max-width: 95%; margin-left: auto; margin-right: auto; }
+    }
   </style>
 
   <script type="application/ld+json">

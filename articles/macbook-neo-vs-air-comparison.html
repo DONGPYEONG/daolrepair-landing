@@ -169,6 +169,14 @@
     .compare-table tr:nth-child(even) td { background: #fafafa; }
     .compare-table .label-col { font-weight: 700; color: var(--dark); white-space: nowrap; width: 25%; }
     @media (max-width: 480px) { .compare-table { font-size: 12px; } .compare-table th, .compare-table td { padding: 10px 8px; } }
+  
+    /* PC 본문 가독성 — 박스·표·CTA·관련글 양끝 퍼짐 방지 (2026-05-11 추가) */
+    .art-body > div, .art-body > .art-cta, .art-body > .art-tip, .art-body > table { max-width: 100%; box-sizing: border-box; }
+    .art-body table { table-layout: auto; }
+    @media (min-width: 1024px) {
+      .art-body div[style*="border-left"], .art-body .progress-block { max-width: 92%; margin-left: auto; margin-right: auto; }
+      .art-body table { max-width: 95%; margin-left: auto; margin-right: auto; }
+    }
   </style>
 
 <!-- ── WIZARD MODAL CSS ── -->

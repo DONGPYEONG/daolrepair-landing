@@ -2089,6 +2089,14 @@ body {{ font-family: var(--font); color: var(--text); background: #fff; line-hei
 @media (max-width: 768px) {{ .art-nav-links {{ display: none; }} .art-nav-inner {{ padding: 0 20px; }} }}
 body {{ padding-top: 64px; }}
 .art-wrap {{ max-width: 720px; margin: 0 auto; padding: 50px 20px 100px; }}
+/* PC 본문 가독성 — 박스·표·CTA·관련글 양끝 퍼짐 방지 */
+.art-body > div, .art-body > .art-cta, .art-body > .art-tip, .art-body > table {{ max-width: 100%; box-sizing: border-box; }}
+.art-body table {{ table-layout: auto; }}
+@media (min-width: 1024px) {{
+  /* PC에서 본문 박스 최대 폭 약간 좁혀서 가독성 강화 */
+  .art-body div[style*="border-left"], .art-body .progress-block {{ max-width: 92%; margin-left: auto; margin-right: auto; }}
+  .art-body table {{ max-width: 95%; margin-left: auto; margin-right: auto; }}
+}}
 .art-cat {{ display: inline-block; background: rgba(232,115,42,0.12); color: var(--orange); font-size: 12px; font-weight: 800; padding: 5px 13px; border-radius: 50px; margin-bottom: 16px; letter-spacing: 0.3px; }}
 .art-title {{ font-size: clamp(22px, 5vw, 30px); font-weight: 900; line-height: 1.35; letter-spacing: -0.5px; margin-bottom: 16px; }}
 .art-desc {{ font-size: 16px; color: var(--muted); margin-bottom: 24px; line-height: 1.7; }}
