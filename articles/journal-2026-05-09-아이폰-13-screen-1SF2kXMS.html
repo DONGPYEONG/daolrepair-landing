@@ -128,10 +128,12 @@ body { padding-top: 64px; }
 .ba-tag-after { background: rgba(52,199,89,0.95); color: #fff; }
 .ba-tag-progress { background: rgba(232,115,42,0.95); color: #fff; }
 .ba-photo-progress { background: #1a1a1a; }
-/* 수리중 사진은 PC에서 3-column 고정 (사진 3장 일렬), 모바일은 2-column */
+/* 수리중 사진: PC 3-column 일렬, 모바일은 1-column 큰 사진 (한 장씩 보기 좋게) */
 .ba-photos:has(.ba-photo-progress) { grid-template-columns: repeat(3, 1fr); gap: 8px; }
 @media (max-width: 600px) {
-  .ba-photos:has(.ba-photo-progress) { grid-template-columns: repeat(2, 1fr); }
+  .ba-photos:has(.ba-photo-progress) { grid-template-columns: 1fr; gap: 14px; }
+  /* before/after 사진도 모바일에서 1-column으로 크게 보이게 */
+  .ba-photos:not(:has(.ba-photo-progress)) { grid-template-columns: 1fr; gap: 14px; }
 }
 .ba-caption-text { text-align: center; color: #888; font-size: 12px; margin: 0 0 32px; }
 /* 워터마크 (옅은 텍스트 — 도용 시 출처 추적 가능) */
