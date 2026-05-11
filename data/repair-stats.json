@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-11T18:08:45.461587+09:00",
+  "updated_at": "2026-05-11T18:13:46.972426+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11180,
@@ -33,43 +33,43 @@
       "model": "아이폰 iPhone 13 Pro",
       "type": "수리",
       "branch": "목동점",
-      "minutes_ago": 65
+      "minutes_ago": 70
     },
     {
       "model": "애플워치 5 44mm",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 165
+      "minutes_ago": 170
     },
     {
       "model": "아이패드 iPad Pro 11인치 (2세대)",
       "type": "화면 교체",
       "branch": "목동점",
-      "minutes_ago": 313
+      "minutes_ago": 318
     },
     {
       "model": "아이폰 iPhone 15 Pro",
       "type": "화면 교체",
       "branch": "목동점",
-      "minutes_ago": 330
+      "minutes_ago": 335
     },
     {
       "model": "아이폰 17프로",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 400
+      "minutes_ago": 405
     },
     {
       "model": "아이폰 iPhone X",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 2996
+      "minutes_ago": 3001
     },
     {
       "model": "아이폰 iPhone 14 Pro",
       "type": "후면 + 배터리 교체",
       "branch": "신림점",
-      "minutes_ago": 3065
+      "minutes_ago": 3070
     }
   ],
   "top_repair_types": [
@@ -530,7 +530,7 @@
       "after_text": "화면 + 후면 교체",
       "case_id": "1Qr6LX9HuVj5phOJdPaqQRJv8l8nfrxa8",
       "meta": {},
-      "journal_url": "articles/journal-2026-04-30-아이폰-16프로-screen-1Qr6LX9H.html"
+      "journal_url": "articles/journal-2026-04-30-아이폰-16프로-screen+back-1Qr6LX9H.html"
     },
     {
       "id": "case-12",
@@ -738,7 +738,7 @@
       "after_text": "화면 교체 + 배터리 성능치 정상",
       "case_id": "1ybYHdi_ueiCzvFCZuxCWWssr0BfpVQbA",
       "meta": {},
-      "journal_url": "articles/journal-2026-04-17-에르메스-5세대-44mm-screen-1ybYHdi_.html"
+      "journal_url": "articles/journal-2026-04-17-에르메스-5세대-44mm-screen+battery-1ybYHdi_.html"
     },
     {
       "id": "case-20",
@@ -821,7 +821,7 @@
     {
       "id": "case-23",
       "model": "아이폰 iPhone 13 Pro",
-      "type": "스피커 수리",
+      "type": "수리",
       "branch": "목동점",
       "date": "2026-05-11",
       "createdTime": "2026-05-11T08:03:05.693Z",
@@ -854,7 +854,7 @@
           "스피커·마이크"
         ]
       },
-      "journal_url": "articles/journal-2026-05-11-아이폰-iphone-13-pro-other-1LZ8-mdk.html"
+      "journal_url": "articles/journal-2026-05-11-아이폰-iphone-13-pro-speaker-1LZ8-mdk.html"
     },
     {
       "id": "case-24",
