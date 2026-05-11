@@ -3888,6 +3888,15 @@ function autoHyphen(el) {
   else if (v.length <= 7) el.value = v.slice(0,3) + '-' + v.slice(3);
   else el.value = v.slice(0,3) + '-' + v.slice(3,7) + '-' + v.slice(7,11);
 }
+/* submit 직전 강제 정규화 — 붙여넣기/자동완성/카카오키보드로 oninput이 안 탄 경우 대비
+   (시트가 숫자로 자동변환해서 앞 0 떼는 문제 방지) */
+function normalizePhone(s) {
+  if (!s) return '';
+  var v = (s + '').replace(/[^0-9]/g, '');
+  if (v.length === 11) return v.slice(0,3) + '-' + v.slice(3,7) + '-' + v.slice(7);
+  if (v.length === 10) return v.slice(0,3) + '-' + v.slice(3,6) + '-' + v.slice(6);
+  return s;
+}
 
 /* ── 카카오톡 알림 전송 (Google Apps Script 연동) ── */
 var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyue4JSRIza_2adIaU6Kz99MmJ33sp9HR71lLMn-lY-aivA5ME3RsP3RXNxxd33mZD77g/exec';
@@ -3904,7 +3913,7 @@ function sendNotification(data) {
 
 function submitWiz() {
   const name  = document.getElementById('wName').value.trim();
-  const phone = document.getElementById('wPhone').value.trim();
+  const phone = normalizePhone(document.getElementById('wPhone').value.trim());
   const method= document.getElementById('wMethod').value;
   if (!name || !phone || !method) { alert('이름, 연락처, 방문/접수 방법을 입력해주세요.'); return; }
   var memo = document.getElementById('wMemo').value.trim();
@@ -4477,7 +4486,7 @@ window.cartRemove = function(i){
 /* ── 장바구니 신청 ── */
 window.cartSubmit = function(){
   var name  = document.getElementById('cartName').value.trim();
-  var phone = document.getElementById('cartPhone').value.trim();
+  var phone = normalizePhone(document.getElementById('cartPhone').value.trim());
   if(!name || !phone){ alert('이름과 연락처를 입력해주세요.'); return; }
   var itemList = cart.map(function(p){ return p.model+' '+p.storage+' ('+p.price+')'; }).join(', ');
   sendNotification({
@@ -5248,7 +5257,7 @@ window.cartSubmit = function(){
 
   window.cwToStep5 = function(){
     var name = document.getElementById('cwName').value.trim();
-    var phone = document.getElementById('cwPhone').value.trim();
+    var phone = normalizePhone(document.getElementById('cwPhone').value.trim());
     var addr1 = document.getElementById('cwAddr1').value.trim();
     if(!name||!phone){ alert('이름과 연락처를 입력해주세요.'); return; }
     if(!addr1){ alert('반송 받으실 주소를 검색해주세요.'); return; }
@@ -5312,7 +5321,7 @@ window.cartSubmit = function(){
   window.cwSubmit = function(){
     var d = DEVICES.find(function(x){ return x.key===cwSel.device; });
     var name = document.getElementById('cwName').value.trim();
-    var phone = document.getElementById('cwPhone').value.trim();
+    var phone = normalizePhone(document.getElementById('cwPhone').value.trim());
     var addr = (document.getElementById('cwAddr1').value||'') + ' ' + (document.getElementById('cwAddr2').value||'');
     var memo = document.getElementById('cwMemo').value.trim();
     var insurance = document.getElementById('cwInsuranceCheck').checked ? '필요' : '불필요';
