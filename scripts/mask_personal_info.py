@@ -54,12 +54,13 @@ def _detect_faces(img_pil):
 
 
 def _shrink_to_face_only(box):
-    """검출 박스의 상단 60%만 = 실제 얼굴 영역 (어깨·몸통 제외).
-    가로 양옆 10% 마진 (얼굴 80% 폭)
+    """검출 박스의 상단 80%만 = 실제 얼굴 영역 (어깨·몸통은 일부만 노출).
+    큰 얼굴(close-up)은 박스가 넓어서 60%만 블러하면 얼굴 절반이 노출됨 → 80%로 강화.
+    가로 양옆 5% 마진만 (얼굴 90% 폭) — 더 넓게 가림.
     """
     x, y, w, h = box
-    margin_x = int(w * 0.10)
-    return (x + margin_x, y, w - margin_x * 2, int(h * 0.6))
+    margin_x = int(w * 0.05)
+    return (x + margin_x, y, w - margin_x * 2, int(h * 0.8))
 
 # ─── 살리는 패턴 (시계·날짜·날씨 — 신뢰감 주는 일반 정보) ───
 # 시계: "9:41", "12:30", "21:30", "9 : 41" (OCR 띄어쓰기 변형 허용)
@@ -231,9 +232,12 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2, model: 
                 x2 = min(W, fx + fw)
                 y2 = min(H, fy + fh)
                 if x2 > x1 and y2 > y1:
-                    # 자연스러운 가우시안 블러만 (모자이크 X)
+                    # 박스 크기에 비례한 강한 블러 (큰 얼굴일수록 더 강하게)
                     crop = img.crop((x1, y1, x2, y2))
-                    blurred = crop.filter(ImageFilter.GaussianBlur(radius=15))
+                    box_size = max(x2 - x1, y2 - y1)
+                    # radius: 작은 얼굴 15px, 큰 얼굴(>300px) 30px
+                    blur_radius = max(15, min(35, box_size // 12))
+                    blurred = crop.filter(ImageFilter.GaussianBlur(radius=blur_radius))
                     img.paste(blurred, (x1, y1, x2, y2))
             img.save(path, 'JPEG', quality=92, optimize=True)
 
