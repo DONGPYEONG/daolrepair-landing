@@ -190,6 +190,27 @@
       .art-body div[style*="border-left"], .art-body .progress-block { max-width: 92%; margin-left: auto; margin-right: auto; }
       .art-body table { max-width: 95%; margin-left: auto; margin-right: auto; }
     }
+  
+    /* 본문 링크 — 주황색 통일 (case-link, place-btn, quote-btn, nav 제외) */
+    .art-wrap a:not(.case-link):not(.place-btn):not(.quote-btn):not(.art-nav-back):not(.art-nav-logo) {
+      color: var(--orange) !important;
+      text-decoration: underline;
+      text-decoration-color: rgba(232,115,42,0.4);
+      text-underline-offset: 2px;
+    }
+    .art-wrap a:not(.case-link):not(.place-btn):not(.quote-btn):not(.art-nav-back):not(.art-nav-logo):hover {
+      text-decoration-color: var(--orange);
+    }
+    /* 결정 가이드·인라인 링크 ol/ul 너비 정리 */
+    .art-wrap ol, .art-wrap ul {
+      padding-left: 22px;
+      margin: 0 0 18px 0;
+    }
+    .art-wrap ol li, .art-wrap ul li {
+      padding-left: 4px;
+      margin-bottom: 8px;
+    }
+
   </style>
 
 <!-- ── WIZARD MODAL CSS ── -->
