@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-11T14:23:50.741162+09:00",
+  "updated_at": "2026-05-11T14:57:22.083860+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11170,
@@ -32,43 +32,43 @@
       "model": "아이패드 iPad Pro 11인치 (2세대)",
       "type": "화면 교체",
       "branch": "목동점",
-      "minutes_ago": 88
+      "minutes_ago": 122
     },
     {
       "model": "아이폰 iPhone 15 Pro",
       "type": "화면 교체",
       "branch": "목동점",
-      "minutes_ago": 105
+      "minutes_ago": 139
     },
     {
       "model": "아이폰 17프로",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 175
+      "minutes_ago": 209
     },
     {
       "model": "아이폰 iPhone X",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 2771
+      "minutes_ago": 2805
     },
     {
       "model": "아이폰 iPhone 14 Pro",
       "type": "후면 + 배터리 교체",
       "branch": "신림점",
-      "minutes_ago": 2840
+      "minutes_ago": 2873
     },
     {
       "model": "아이폰 iPhone 11",
       "type": "화면 교체",
       "branch": "신림점",
-      "minutes_ago": 2972
+      "minutes_ago": 3005
     },
     {
       "model": "아이폰 13",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 2986
+      "minutes_ago": 3020
     }
   ],
   "top_repair_types": [
