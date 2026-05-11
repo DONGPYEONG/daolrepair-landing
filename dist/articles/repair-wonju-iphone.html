@@ -32,10 +32,10 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type": "Question", "name": "원주에서 다올리페어 택배 수리 어떻게 진행되나요?", "acceptedAnswer": {"@type": "Answer", "text": "1단계: 카카오톡 \"다올리페어\" 채널에 사진+증상 → 견적 안내(무료). 2단계: 편의점·우체국·택배사로 발송. 3단계: 도착 알림톡 후 마스터 진단·수리. 4단계: 수리 완료 후 다올 부담으로 발송. 총 평균 2~3일 소요입니다."}},
+      {"@type": "Question", "name": "원주에서 다올리페어 택배 수리 어떻게 진행되나요?", "acceptedAnswer": {"@type": "Answer", "text": "1단계: 무료 견적 신청에 사진+증상 → 영업시간 내 견적 안내(무료). 2단계: 편의점·우체국·택배사로 발송. 3단계: 도착 알림톡 후 마스터 진단·수리. 4단계: 수리 완료 후 다올 부담으로 발송. 총 평균 2~3일 소요입니다."}},
       {"@type": "Question", "name": "원주에서 택배비는 얼마인가요?", "acceptedAnswer": {"@type": "Answer", "text": "발송 시 1회만 고객 부담입니다(보통 4,000원 내외). 수리 후 발송은 다올리페어가 부담하므로 무료입니다."}},
       {"@type": "Question", "name": "원주에서 보내는데 며칠 만에 받을 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "원주 기준 평균 2~3일입니다. 평일 오전에 발송하시면 다음날 다올 도착, 도착 즉시 진단·수리 후 다음날 발송, 다다음날 수령이 일반적이에요. 제주는 항공 화물택배 일정에 따라 3~4일 소요됩니다."}},
-      {"@type": "Question", "name": "수리 비용을 미리 알 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "네, 카카오톡으로 사진 보내주시면 정확한 견적을 먼저 드립니다. 진단만 받고 수리 진행 안 하셔도 비용 0원입니다."}},
+      {"@type": "Question", "name": "수리 비용을 미리 알 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "네, 무료 견적 신청에 사진 보내주시면 영업시간 내 정확한 견적 안내드립니다. 진단만 받고 수리 진행 안 하셔도 비용 0원입니다."}},
       {"@type": "Question", "name": "보증은 어떻게 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "수리한 부품에 대해 90일 무상 A/S를 제공합니다. 같은 증상으로 재발 시 무료 재수리이며, 수리 실패 시 비용은 0원입니다."}}
     ]
   }
@@ -120,6 +120,7 @@
     /* 본문 링크 — 주황색 통일 (case-link, place-btn, quote-btn, nav 제외) */
     .art-wrap a:not(.case-link):not(.place-btn):not(.quote-btn):not(.art-nav-back):not(.art-nav-logo) {
       color: var(--orange) !important;
+      font-weight: 700;
       text-decoration: underline;
       text-decoration-color: rgba(232,115,42,0.4);
       text-underline-offset: 2px;
@@ -156,13 +157,6 @@
   <h1 class="art-title">원주 아이폰 수리 — 강원도 원주에서 다올 마스터 택배 수리</h1>
   <p class="art-desc">원주에서 마스터 직접 수리 가능한 곳을 찾기 어렵다면, 다올리페어 택배 수리가 가장 가까운 옵션입니다. KTX로 1시간 거리지만 택배가 더 효율적이에요. 원주 분들의 케이스 패턴 정리.</p>
   <div class="art-meta"><span class="art-meta-author">금동평 — 대한민국 1호 디바이스 예방 마스터</span><span>2026-05-11</span></div>
-  <div style="background:linear-gradient(135deg,#fff 0%,#fff5ec 100%);border:1px solid var(--orange);border-radius:14px;padding:18px 22px;margin:24px 0;display:flex;align-items:center;gap:16px;">
-    <div style="width:48px;height:48px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:900;flex-shrink:0;">금</div>
-    <div style="font-size:14px;line-height:1.6;">
-      <div style="font-weight:900;color:var(--dark);margin-bottom:2px;">금동평 — 대한민국 1호 디바이스 예방 마스터</div>
-      <div style="color:var(--muted);">10년 이상 매장 직접 수리. 이 글은 마스터가 매장 실제 케이스·데이터 기반으로 직접 작성합니다.</div>
-    </div>
-  </div>
 
   <h2>왜 원주에서 다올리페어 택배 수리를 선택하시나</h2>
   <p>원주 일대(원주·문막·태장·단계)에 사설 수리점이 있습니다. 그래도 다올리페어 택배 수리를 선택하시는 분들의 이유는 거의 비슷합니다.</p>
@@ -174,7 +168,7 @@
   <p>원주에서 수리하신 분들 중에 "결국 다올로 다시 보내게 됐다"는 분이 적지 않습니다. <strong>처음부터 마스터에게 정확한 진단을 받는 게 결국 시간·비용 모두 아끼는 길</strong>이에요.</p>
 
   <h2>원주에서 자주 보내주시는 케이스 패턴</h2>
-  <p>최근 다올리페어에 원주 권역(원주·문막·태장·단계·횡성)에서 택배로 보내주신 케이스를 정리했습니다. 비슷한 증상이면 사진 먼저 카카오톡으로 보내주세요.</p>
+  <p>최근 다올리페어에 원주 권역(원주·문막·태장·단계·횡성)에서 택배로 보내주신 케이스를 정리했습니다. 비슷한 증상이면 사진 먼저 무료 견적 신청에 보내주세요.</p>
 
   <div class="case-box">
     <span class="case-tag">CASE 01 · 침수</span>
@@ -211,33 +205,22 @@
   <h2>원주에서 다올리페어 택배 수리 진행 과정</h2>
   <p>원주에서는 매장 방문 대신 택배 수리가 가장 합리적입니다. 같은 마스터가 직접 진단·수리하고, 90일 보증·실패 시 0원 정책 동일합니다.</p>
   <ul>
-    <li><strong>1단계 — 카카오톡 사진 견적</strong> : "다올리페어" 채널에 증상 + 사진 보내주시면 정확한 견적 안내 (무료)</li>
+    <li><strong>1단계 — 무료 견적 (사진 1장)</strong> : "다올리페어" 채널에 증상 + 사진 보내주시면 정확한 견적 안내 (무료)</li>
     <li><strong>2단계 — 택배 발송</strong> : 편의점·우체국·CJ대한통운 어디서나 발송 가능. 발송비는 고객 부담 (보통 4,000원 내외)</li>
     <li><strong>3단계 — 수리 진행</strong> : 도착 즉시 알림톡, 마스터 진단 후 1~2일 내 수리 완료</li>
     <li><strong>4단계 — 안전 발송</strong> : 보호 포장 + 운송장번호 알림톡, 다올 부담으로 발송 (무료)</li>
     <li><strong>총 소요</strong> : 원주 평균 2~3일 (제주 등 도서지역은 3~4일)</li>
   </ul>
 
-  <h3>모델별 화면 교체 비용 (참고)</h3>
-  <table class="price-table">
-    <tr><th>모델</th><td class="right">참고 가격</td></tr>
-    <tr><td>iPhone 11 / 12 / 13</td><td class="right">110,000원~</td></tr>
-    <tr><td>iPhone 14 / 14 Plus</td><td class="right">160,000원~</td></tr>
-    <tr><td>iPhone 14 Pro / 15</td><td class="right">220,000원~</td></tr>
-    <tr><td>iPhone 15 Pro / 16</td><td class="right">260,000원~</td></tr>
-    <tr><td>iPhone 16 Pro / 16 Pro Max</td><td class="right">320,000원~</td></tr>
-  </table>
-  <p style="font-size:13px;color:var(--muted);">정확한 견적은 사진 보내주시면 즉시 안내드립니다. 위 가격은 부품 종류·시기에 따라 변동됩니다.</p>
-
   
   <div class="art-good">
     <div class="art-good-title">📦 원주에서 택배 수리 진행</div>
-    <p><strong>카카오톡 채널: 다올리페어</strong> · 사진 한 장이면 견적 시작 · 평일 오전 10시~오후 9시 응대 · 카드 무이자 2~6개월 · 90일 무상 A/S · 실패 시 비용 0원</p>
+    <p><strong>무료 견적 신청 — 영업시간 내 즉시 안내</strong> · 무료 견적 신청 시 영업시간 내 즉시 안내드려요</p>
   </div>
 
   <div class="place-cta">
     <div class="place-cta-title">원주에서 택배 수리 시작하기</div>
-    <div class="place-cta-desc">카카오톡 채널 "다올리페어"에 사진 한 장이면 견적부터 시작</div>
+    <div class="place-cta-desc">무료 견적 신청에 사진 한 장이면 영업시간 내 견적 안내</div>
     <div class="place-cta-btns">
       <a href="https://xn--2j1bq2k97kxnah86c.com/#estimate" class="quote-btn">무료 견적 받기 →</a>
       <a href="https://xn--2j1bq2k97kxnah86c.com/#courier" class="place-btn" style="background:#1D1D1F;">📦 택배 수리 접수</a>
