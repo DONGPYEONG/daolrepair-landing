@@ -3024,7 +3024,12 @@ def main():
     print(f"📂 케이스 {len(cases)}개 / 기존 일지 {len(journals)}편")
 
     new_articles = []
+    SKIP_GENERIC_TYPES = {"수리", "기타", ""}  # OCR이 정확한 분류 못한 케이스 — 일지 생성 스킵
     for c in cases:
+        raw_type = (c.get("type") or "").strip()
+        if raw_type in SKIP_GENERIC_TYPES:
+            print(f"   ⏭️  type 일반('{raw_type}') 스킵: {c.get('model')} ({c.get('id')})")
+            continue
         # case에 repair_type 채우기 (type 한글에서 역추출)
         if "repair_type" not in c:
             t = c.get("type", "")
