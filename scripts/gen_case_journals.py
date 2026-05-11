@@ -2086,7 +2086,7 @@ body {{ font-family: var(--font); color: var(--text); background: #fff; line-hei
 .art-nav-reserve-dropdown a:last-child {{ border-bottom: none; }}
 .art-nav-reserve-dropdown a:hover {{ background: rgba(232,115,42,0.12); color: #E8732A; }}
 .art-nav-reserve-dropdown a span {{ font-size: 11px; color: rgba(255,255,255,0.35); display: block; margin-top: 2px; font-weight: 400; }}
-@media (max-width: 768px) {{ .art-nav-links {{ display: none; }} .art-nav-inner {{ padding: 0 20px; }} }}
+@media (max-width: 768px) {{ .art-nav-links {{ display: none; }} .art-nav-inner {{ padding: 0 20px; display: flex !important; justify-content: space-between !important; grid-template-columns: none !important; }} }}
 body {{ padding-top: 64px; }}
 .art-wrap {{ max-width: 720px; margin: 0 auto; padding: 50px 20px 100px; }}
 /* PC 본문 가독성 — 박스·표·CTA·관련글 양끝 퍼짐 방지 */
@@ -2533,7 +2533,7 @@ def update_journal_page(journals_list):
     .art-nav-links a:hover {{ color: #fff; }}
     .art-nav-home {{ background: none; border: none; color: rgba(255,255,255,0.75); cursor: pointer; padding: 6px; display: flex; align-items: center; text-decoration: none; }}
     .art-nav-home:hover {{ color: #fff; }}
-    @media (max-width: 768px) {{ .art-nav-links {{ display: none; }} .art-nav-inner {{ padding: 0 20px; }} }}
+    @media (max-width: 768px) {{ .art-nav-links {{ display: none; }} .art-nav-inner {{ padding: 0 20px; display: flex !important; justify-content: space-between !important; grid-template-columns: none !important; }} }}
 
     .list-wrap {{ max-width: 880px; margin: 0 auto; padding: 48px 20px 80px; }}
     .list-eyebrow {{ font-size: 12px; color: var(--orange); font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase; }}

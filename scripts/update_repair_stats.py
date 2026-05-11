@@ -811,6 +811,24 @@ def main():
     # ─── 6. JSON 저장 ───
     # 슬라이더는 최신 4개 (메인 페이지), 포트폴리오는 전체 (별도 페이지)
     slider_cases = portfolio_cases[:4]
+
+    # 🆕 각 케이스에 일지 글 URL 매칭 (case_id로 journal-index 매칭)
+    journal_index_path = ROOT / "data" / "journal-index.json"
+    journal_url_by_case = {}
+    if journal_index_path.exists():
+        try:
+            jidx = json.loads(journal_index_path.read_text(encoding="utf-8"))
+            for j in jidx:
+                cid = j.get("case_id", "")
+                slug = j.get("slug", "")
+                if cid and slug:
+                    journal_url_by_case[cid] = f"articles/{slug}.html"
+        except Exception:
+            pass
+    for c in portfolio_cases:
+        cid = c.get("case_id", "")
+        if cid in journal_url_by_case:
+            c["journal_url"] = journal_url_by_case[cid]
     output = {
         "updated_at": now.isoformat(),
         "tracking_since": "2026-04-14",

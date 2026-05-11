@@ -2314,6 +2314,9 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
 .ba-meta-time { background:rgba(255,107,53,0.15); color:#FF8E5A; border:1px solid rgba(255,107,53,0.3); }
 .ba-meta-branch { background:rgba(96,165,250,0.15); color:#8AB8FA; border:1px solid rgba(96,165,250,0.3); }
 .ba-meta-warranty { background:rgba(52,199,89,0.15); color:#34c759; border:1px solid rgba(52,199,89,0.3); }
+/* 일지 글 바로가기 — 비포/애프터 카드 캡션 하단 */
+.ba-journal-link { display:block; margin-top:14px; padding:11px 16px; background:rgba(232,115,42,0.12); border:1px solid rgba(232,115,42,0.35); border-radius:50px; color:#FF8E5A; font-size:12.5px; font-weight:800; text-decoration:none; transition:background 0.18s, transform 0.18s, color 0.18s; letter-spacing:-0.2px; }
+.ba-journal-link:hover { background:#E8732A; color:#fff; transform:translateY(-1px); }
 .ba-note { text-align:center; color:rgba(255,255,255,0.35); font-size:12px; margin-top:18px; }
 .ba-portfolio-cta { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:12px; margin-top:36px; }
 .ba-portfolio-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:linear-gradient(135deg,#FF6B35 0%,#E8732A 100%); color:#fff; padding:14px 28px; border-radius:50px; font-size:15px; font-weight:800; text-decoration:none; letter-spacing:0.2px; transition:transform 0.2s, box-shadow 0.2s; box-shadow:0 6px 20px rgba(255,107,53,0.35); min-width:280px; }
@@ -2444,9 +2447,12 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
         img.onerror = function(){};
         img.src = url;
       }
-      // 캡션 갱신: 비교 카드 + 메타 태그
+      // 캡션 갱신: 비교 카드 + 메타 태그 + 일지 글 링크 (있으면)
       var captionEl = card.querySelector('.ba-caption');
       if(captionEl){
+        var journalLink = c.journal_url
+          ? '<a href="' + c.journal_url + '" class="ba-journal-link">📋 실제 수리 사례 자세히 보기 →</a>'
+          : '';
         captionEl.innerHTML =
           '<div class="ba-model">' + (c.branch || '') + ' · ' + (c.date || '') + '</div>' +
           '<div class="ba-issue">' + (c.model || '') + '</div>' +
@@ -2464,7 +2470,7 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
             '<span class="ba-meta-tag ba-meta-time">⏱ ' + (c.repair_time || (c.minutes ? c.minutes + '분' : '30~60분')) + '</span>' +
             '<span class="ba-meta-tag ba-meta-branch">📍 ' + (c.branch || '') + '</span>' +
             '<span class="ba-meta-tag ba-meta-warranty">✓ 90일 보증</span>' +
-          '</div>';
+          '</div>' + journalLink;
       }
       var beforeEl = card.querySelector('.ba-before');
       var afterEl  = card.querySelector('.ba-after');
