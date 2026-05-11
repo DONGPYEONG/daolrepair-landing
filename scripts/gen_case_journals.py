@@ -722,6 +722,338 @@ TYPE_BODY = {
 </ol>
 <p>총 작업 시간 <strong>당일 1~2시간</strong>.</p>
 """,
+
+    "speaker": """
+<h2>{model} 스피커가 안 들릴 때 — 어느 스피커가 문제일까?</h2>
+<p>아이폰에는 두 종류의 스피커가 있어요. 어디가 안 들리는지에 따라 교체 부위가 달라집니다.</p>
+<ul>
+  <li><strong>상단 스피커 (이어 스피커, 통화 수신용)</strong> — 통화할 때 상대방 목소리가 안 들리거나 작게 들리면 여기 문제. 동영상·음악은 정상으로 들림.</li>
+  <li><strong>하단 스피커 (라우드 스피커, 음악·벨소리용)</strong> — 음악·벨소리·알림음이 안 들리거나 작게 들리면 여기. 통화는 정상.</li>
+  <li><strong>양쪽 모두 갈라짐·찌직</strong> — 스피커 유닛 손상 또는 그릴(스피커 입구) 막힘</li>
+</ul>
+
+<h2>매장 가기 전 자가진단 — 정말 스피커 문제인가?</h2>
+<p>스피커 교체 전에 먼저 확인할 것들:</p>
+<ol>
+  <li><strong>이어폰·블루투스 끼면 들리나?</strong> → 이어폰으로는 정상 들리면 스피커 부품 문제 확실</li>
+  <li><strong>무음 모드(좌측 스위치) OFF 상태인가?</strong> → 빨간색 보이면 무음, 단순 스위치 문제</li>
+  <li><strong>통화 vs 음악 vs 영상 — 어디서 안 들리는지</strong> → 위 표 참고해 부위 추정</li>
+  <li><strong>스피커 그릴(구멍) 청소</strong> → 부드러운 솔로 먼지 털기. 의외로 청소만으로 해결되는 경우 있음</li>
+  <li><strong>설정 → 손쉬운 사용 → 오디오·시각 설정 확인</strong> → 모노 오디오·소리 균형 잘못 잡혀 있을 수 있음</li>
+</ol>
+
+<h2>이번 케이스 자세히 보기</h2>
+<p>{date} 다올리페어 {branch}에 방문하신 {model} 사용자의 실제 사례입니다:</p>
+<ul>
+  <li><strong>모델</strong>: {model} ({model_year}년 출시)</li>
+  <li><strong>증상</strong>: 스피커 음량 저하·무음 — 위 자가진단 후에도 해결 X</li>
+  <li><strong>진단 결과</strong>: 스피커 유닛 손상 — 교체 필요 (메인보드·다른 부품 정상)</li>
+  <li><strong>주의 포인트</strong>: 침수·낙하 후 스피커 증상은 메인보드 동반 손상 가능, 정밀 진단 필수</li>
+</ul>
+
+<h2>다른 원인일 가능성 — 메인보드 음성 IC 손상</h2>
+<p>드물게 스피커 부품이 정상인데도 소리가 안 나는 경우가 있어요. 메인보드의 <strong>음성 처리 IC(코덱 칩)</strong>가 손상된 케이스인데, 주로 다음과 같은 상황에서 발생:</p>
+<ul>
+  <li>침수 후 며칠 지나서 발열·전원 + 스피커 동시 증상</li>
+  <li>높은 곳에서 떨어뜨린 후 스피커 + 통화 마이크 동시 안 됨</li>
+  <li>충전 중 발열 후 스피커 갑자기 무음</li>
+</ul>
+<p>이런 케이스는 단순 스피커 교체로 해결 안 되고 <strong>메인보드 정밀 진단</strong>이 필요합니다. 다올리페어는 부품 교체 전에 항상 원인을 먼저 진단하므로 잘못된 교체로 비용 낭비할 일 없어요.</p>
+
+<h2>매장에서 진행한 수리 과정 (당일 30~60분)</h2>
+<ol>
+  <li><strong>진단 (5~10분)</strong> — 상단/하단 어느 스피커인지 정확히 구분, 메인보드 음성 IC 동시 점검</li>
+  <li><strong>그릴 청소 시도</strong> — 청소만으로 해결되면 무료, 해결 안 되면 부품 교체 진행</li>
+  <li><strong>분해 (10~15분)</strong> — 스피커 부위 접근, 손상 확인</li>
+  <li><strong>새 스피커 유닛 교체 (10~15분)</strong> — 정품급 부품으로 교체</li>
+  <li><strong>기능 테스트 (5~10분)</strong> — 통화 수신·음악·벨소리·알림음 모두 확인</li>
+  <li><strong>방수 패킹 재부착</strong> — 표준 절차로 재부착</li>
+</ol>
+<p>데이터는 그대로 보존됩니다. <strong>스피커만 단독 교체이므로 다른 부품 영향 없어요.</strong></p>
+
+<h2>관련 글</h2>
+<p>증상별 자세한 진단은 다음 글을 참고하세요:</p>
+<ul>
+  <li><a href="iphone-speaker-not-working.html">아이폰 스피커 안 들림 — 상단·하단 부위별 진단 가이드</a></li>
+  <li><a href="iphone-water-speaker-muffled.html">아이폰 침수 후 스피커 먹먹함 — 메인보드 손상 의심 케이스</a></li>
+</ul>
+""",
+
+    "camera": """
+<h2>{model} 카메라 문제 — 어떤 증상이신가요?</h2>
+<p>카메라 증상별로 교체 부위가 달라요:</p>
+<ul>
+  <li><strong>화면이 검게 나옴 / 카메라 앱 멈춤</strong> — 카메라 모듈 자체 손상</li>
+  <li><strong>흔들림·초점 안 맞음·OIS 소리</strong> — 손떨림 보정(OIS) 회로 손상 (낙하 후 자주 발생)</li>
+  <li><strong>화면은 정상인데 사진만 흐림·번짐</strong> — 후면 카메라 보호 글래스 미세 균열</li>
+  <li><strong>플래시 안 켜짐</strong> — 플래시 LED 모듈 별도 손상</li>
+  <li><strong>전면 카메라(셀카) 만 안 됨</strong> — 전면 모듈 별도 교체</li>
+</ul>
+
+<h2>매장 가기 전 자가진단</h2>
+<ol>
+  <li>카메라 앱 강제 종료 후 재실행 → 일시적 소프트웨어 문제 배제</li>
+  <li>다른 카메라 앱(인스타·카톡 등)에서도 같은 증상인지 확인</li>
+  <li>아이폰 재시동 → 임시 메모리 정리</li>
+  <li>최신 iOS 업데이트 확인 → 일부 모델은 카메라 버그 패치 있음</li>
+  <li>후면 카메라 부근 보호 글래스 균열 여부 자세히 보기 (조명에 비춰서)</li>
+</ol>
+
+<h2>이번 케이스 자세히 보기</h2>
+<p>{date} 다올리페어 {branch} 방문 고객 사례:</p>
+<ul>
+  <li><strong>모델</strong>: {model} ({model_year}년 출시)</li>
+  <li><strong>증상</strong>: 카메라 손상</li>
+  <li><strong>진단 결과</strong>: 카메라 모듈 교체 필요 — 자가진단·소프트웨어 점검 후에도 미해결</li>
+</ul>
+
+<h2>매장 수리 과정 (당일 40~90분)</h2>
+<ol>
+  <li>정확한 부위 진단 — 모듈 vs 보호 글래스 vs 메인보드 신호 (10분)</li>
+  <li>분해, 카메라 모듈 분리 (15~20분)</li>
+  <li>새 카메라 모듈 부착, 케이블 재연결 (15~20분)</li>
+  <li>기능 테스트 — 사진·동영상·OIS·플래시·전후면 전환 모두 확인 (10분)</li>
+  <li>방수 패킹 재부착</li>
+</ol>
+<p>데이터는 그대로 보존됩니다.</p>
+""",
+
+    "water": """
+<h2>{model} 침수 — "지금 어떤 단계"이신가요?</h2>
+<p>침수는 시점에 따라 처치가 완전히 달라집니다.</p>
+<ul>
+  <li><strong>방금 막 빠뜨림 (30분 이내)</strong> — 바로 전원 OFF, 충전 X, 흔들지 X. 가능한 빨리 매장 방문</li>
+  <li><strong>몇 시간~하루 지남</strong> — 외관 멀쩡해도 내부 부식 진행 중. 사용 중지하고 방문</li>
+  <li><strong>며칠 지나서 발열·전원·화면 증상</strong> — <strong>가장 흔한 케이스</strong>. 메인보드 부식이 신호 차단 시작</li>
+  <li><strong>몇 주 지나서 갑자기 안 켜짐</strong> — 메인보드 부식이 핵심 회로까지 진행, 데이터 살리는 게 우선</li>
+</ul>
+
+<h2>침수 후 절대 하면 안 되는 것</h2>
+<ol>
+  <li><strong>전원 켜기·충전기 꽂기</strong> — 합선 위험, 메인보드 추가 손상</li>
+  <li><strong>드라이기로 말리기</strong> — 열로 부품 변형, 내부 수분이 더 깊이 침투</li>
+  <li><strong>쌀통에 넣기</strong> — 효과 거의 없고 시간만 지남, 그 사이 부식 진행</li>
+  <li><strong>흔들기</strong> — 물이 메인보드 깊은 곳으로 이동</li>
+  <li><strong>수리 미루기</strong> — 부식은 시간이 지날수록 빠르게 진행. 골든타임 24시간 이내</li>
+</ol>
+
+<h2>이번 케이스 자세히 보기</h2>
+<p>{date} 다올리페어 {branch}에 방문하신 {model} 침수 사례:</p>
+<ul>
+  <li><strong>모델</strong>: {model} ({model_year}년 출시)</li>
+  <li><strong>증상</strong>: 침수 후 다양한 이상 증상 (전원·발열·화면 등)</li>
+  <li><strong>진단</strong>: 메인보드 부식 정밀 점검 → 부분 교체로 복구</li>
+</ul>
+
+<h2>다올리페어 침수 복구 과정 (1~3일)</h2>
+<ol>
+  <li><strong>긴급 분해 (30분)</strong> — 전원 차단, 배터리·기판 분리</li>
+  <li><strong>초음파 세척 (1시간)</strong> — 전용 액제로 메인보드 부식·잔류물 제거</li>
+  <li><strong>마이크로 현미경 진단</strong> — 부식 부위·손상 부품 식별</li>
+  <li><strong>손상 부품 부분 교체</strong> — 통째로 X, 손상된 칩만 교체 (비용 절감)</li>
+  <li><strong>기능 테스트</strong> — 전원·통신·카메라·스피커·터치 모두 확인</li>
+  <li><strong>데이터 백업 권장</strong> — 침수 복구 후 100% 안정 보장 어려우니 즉시 백업 권장</li>
+</ol>
+<p><strong>수리 실패 시 비용 0원</strong>이라 부담 없이 진단받으실 수 있어요.</p>
+
+<h2>관련 글</h2>
+<ul>
+  <li><a href="iphone-water-damage-emergency-30min.html">아이폰 침수 후 30분 골든타임 — 절대 하면 안 되는 5가지</a></li>
+  <li><a href="iphone-water-damage-repair-cost-guide.html">아이폰 침수 수리비 완전 가이드</a></li>
+</ul>
+""",
+
+    "button": """
+<h2>{model} 버튼 — 어느 버튼이 문제인가요?</h2>
+<ul>
+  <li><strong>전원 버튼(우측)</strong> — 안 눌리거나 눌렀는데 반응 X / 자꾸 들어가서 화면 켜짐</li>
+  <li><strong>볼륨 버튼(좌측 위·아래)</strong> — 음량 조절 안 됨 / 한 쪽만 됨</li>
+  <li><strong>무음 스위치(좌측 위)</strong> — 무음 모드 전환 안 됨, 빨간색 표시 안 보임</li>
+  <li><strong>홈 버튼 (구형)</strong> — iPhone SE·8 이전 모델 — 안 눌리거나 진동 없음</li>
+  <li><strong>액션 버튼 (15 Pro 이후)</strong> — 사용자 지정 기능 안 됨</li>
+</ul>
+
+<h2>매장 가기 전 자가진단</h2>
+<ol>
+  <li>버튼 주변 먼지·이물 청소 (마른 솔)</li>
+  <li>버튼이 눌리는 느낌(딸깍) 있는지 vs 부드럽기만 한지</li>
+  <li>케이스 끼워 사용 중이면 케이스 빼고 테스트 — 케이스 압박으로 안 눌릴 수 있음</li>
+  <li>설정 → 손쉬운 사용 → AssistiveTouch로 임시 대체 가능 (수리 전 임시방편)</li>
+  <li>iOS 업데이트로 버튼 인식 버그 해결되는 경우 있음</li>
+</ol>
+
+<h2>이번 케이스 자세히 보기</h2>
+<p>{date} 다올리페어 {branch} 방문 고객 사례:</p>
+<ul>
+  <li><strong>모델</strong>: {model} ({model_year}년 출시)</li>
+  <li><strong>증상</strong>: 버튼 작동 이상</li>
+  <li><strong>진단 결과</strong>: 버튼 모듈 교체 또는 케이블 재연결로 해결</li>
+</ul>
+
+<h2>매장 수리 과정 (당일 40~90분)</h2>
+<ol>
+  <li>정확한 부위 진단 (10분)</li>
+  <li>분해 — 버튼 부위 접근 (20분)</li>
+  <li>버튼 모듈 또는 케이블 교체 (15~20분)</li>
+  <li>기능 테스트 — 모든 버튼 동작 확인 (10분)</li>
+</ol>
+<p>데이터는 그대로 보존됩니다.</p>
+""",
+
+    "charge": """
+<h2>{model} 충전 안 됨 — 진짜 단자 문제인가?</h2>
+<p>"충전이 안 된다"고 오시는 분들의 실제 원인은 의외로 다양합니다:</p>
+<ul>
+  <li><strong>단자 안 먼지·이물 막힘 (가장 흔함)</strong> — 청소만으로 해결, 부품 교체 X</li>
+  <li><strong>단자 핀 휘어짐·손상</strong> — 단자 부품 교체 필요</li>
+  <li><strong>케이블·충전기 문제</strong> — 다른 케이블로 테스트 우선</li>
+  <li><strong>배터리 노화로 충전 받아들이지 못함</strong> — 배터리 교체 필요</li>
+  <li><strong>메인보드 충전 IC 손상</strong> — 침수·낙하 후 자주 발생, 정밀 진단 필요</li>
+</ul>
+
+<h2>매장 가기 전 자가진단 — 5분이면 끝</h2>
+<ol>
+  <li><strong>다른 케이블·충전기로 테스트</strong> — 케이블 자체 단선 가능</li>
+  <li><strong>다른 콘센트로 테스트</strong> — 멀티탭·USB 포트 문제 배제</li>
+  <li><strong>충전 단자 안에 손전등 비춰보기</strong> — 먼지·이물 보이면 칫솔모로 살살 청소</li>
+  <li><strong>충전기 흔들면 잠깐 충전됨?</strong> → 단자 핀 손상 또는 먼지 → 매장 방문</li>
+  <li><strong>설정 → 배터리 → 최대 용량 확인</strong> → 80% 미만이면 배터리 동시 점검</li>
+</ol>
+
+<h2>이번 케이스 자세히 보기</h2>
+<p>{date} 다올리페어 {branch} 방문 고객 사례:</p>
+<ul>
+  <li><strong>모델</strong>: {model} ({model_year}년 출시)</li>
+  <li><strong>증상</strong>: 충전 불량</li>
+  <li><strong>진단 결과</strong>: 단자 청소 또는 부품 교체로 해결 (메인보드 정상)</li>
+</ul>
+
+<h2>다올리페어 진단 순서 — 부품 교체 전에 청소부터</h2>
+<ol>
+  <li><strong>단자 정밀 청소 시도 (무료)</strong> — 청소만으로 해결되면 부품 교체 X</li>
+  <li><strong>케이블·충전기 테스트</strong> — 매장 부품으로 비교 검증</li>
+  <li><strong>단자 부품 진단</strong> — 청소 후에도 안 되면 단자 부품 교체</li>
+  <li><strong>배터리 상태 점검</strong> — 동시에 80% 미만이면 동반 교체 권장</li>
+  <li><strong>메인보드 충전 IC 점검</strong> — 위 모두 정상인데 충전 안 되면 정밀 진단</li>
+</ol>
+<p>다올리페어는 단순 단자 청소로 해결되는 케이스에 부품 교체비를 청구하지 않습니다. <strong>실제 원인을 먼저 찾고 가장 적은 비용으로 해결</strong>합니다.</p>
+
+<h2>관련 글</h2>
+<ul>
+  <li><a href="iphone-15-charging-port-loose-cleaning-vs-replacement.html">아이폰 충전 단자 청소 vs 교체 — 진단 가이드</a></li>
+  <li><a href="iphone-charging-port-damage.html">아이폰 충전 단자 손상 — 모델별 수리비 정리</a></li>
+</ul>
+""",
+
+    "mainboard": """
+<h2>{model} 메인보드 수리 — 진짜 메인보드 문제인가?</h2>
+<p>"메인보드 교체해야 한다"는 견적을 받으신 분들 중 <strong>실제로 보드 전체 교체가 필요한 경우는 10건 중 2~3건뿐</strong>입니다. 다른 매장에서 70~100만원 견적 받고 다올로 오시는 분들의 대부분은 부분 수리로 해결돼요.</p>
+
+<h2>메인보드 손상 의심 증상 5가지</h2>
+<ul>
+  <li><strong>전원 안 켜짐 / 사과 로고에서 멈춤</strong> — 전원 IC 또는 부트 회로 손상 의심</li>
+  <li><strong>충전 안 됨 (단자·케이블 정상인데도)</strong> — 충전 IC 손상</li>
+  <li><strong>발열 후 갑자기 꺼짐 반복</strong> — 전력 관리 IC(PMIC) 또는 부분 합선</li>
+  <li><strong>통신 안 됨 (와이파이·블루투스·셀룰러 모두)</strong> — 통신 모듈 손상</li>
+  <li><strong>침수 후 며칠 지나서 다양한 이상</strong> — 부식 진행, 메인보드 정밀 점검 필요</li>
+</ul>
+
+<h2>다올리페어가 메인보드 다루는 방식 — 부분 수리 우선</h2>
+<p>일반 사설 매장은 메인보드 손상을 진단하면 <strong>"보드 전체 교체"</strong>로 견적을 냅니다. 비용 70~100만원, 데이터 손실 위험. 다올리페어는 다릅니다:</p>
+<ol>
+  <li><strong>마이크로 현미경 정밀 진단</strong> — 손상 부위·부품 정확히 식별 (1~2시간)</li>
+  <li><strong>손상 칩만 교체</strong> — 보드 전체 X, 문제 칩만 BGA 리워크로 교체</li>
+  <li><strong>데이터 보존</strong> — 보드 살리면 데이터도 살아남, 별도 복구 X</li>
+  <li><strong>비용 절감</strong> — 부분 수리는 보드 교체비의 30~50% 수준</li>
+  <li><strong>실패 시 0원</strong> — 정밀 작업이라 100% 보장 어렵지만, 실패 시 비용은 받지 않음</li>
+</ol>
+
+<h2>이번 케이스 자세히 보기</h2>
+<p>{date} 다올리페어 {branch}에 정밀 수리 요청 사례:</p>
+<ul>
+  <li><strong>모델</strong>: {model} ({model_year}년 출시)</li>
+  <li><strong>증상</strong>: 메인보드 의심 증상 (전원·충전·통신 등)</li>
+  <li><strong>진단 결과</strong>: 부분 수리 가능 — 보드 교체 회피</li>
+  <li><strong>주의 포인트</strong>: 정밀 수리는 진단·작업 시간 1~3일 소요</li>
+</ul>
+
+<h2>매장 수리 과정 (1~3일)</h2>
+<ol>
+  <li><strong>접수 + 데이터 백업 권장 (있는 경우만)</strong> — 보드 살리면 데이터도 살지만 만일에 대비</li>
+  <li><strong>분해 + 메인보드 분리 (1시간)</strong></li>
+  <li><strong>마이크로 현미경 진단 (1~2시간)</strong> — 손상 부위 정확히 식별</li>
+  <li><strong>손상 칩 BGA 리워크 (수 시간 ~ 1일)</strong> — 정밀 작업, 시간 소요</li>
+  <li><strong>기능 테스트 (수 시간)</strong> — 모든 기능 정상 작동 확인</li>
+  <li><strong>재조립 + 최종 검수</strong></li>
+</ol>
+<p>다른 매장에서 "메인보드 교체"라고 들으셨다면, 다올리페어에서 <strong>한 번 더 정밀 진단</strong>받아보세요. 비용 절감 가능성이 매우 높습니다.</p>
+
+<h2>관련 글</h2>
+<ul>
+  <li><a href="iphone-mainboard-repair-guide-2026.html">아이폰 메인보드 수리 — 부분 수리 vs 전체 교체 가이드</a></li>
+  <li><a href="iphone-impact-power-off-mainboard.html">아이폰 떨어뜨린 후 안 켜짐 — 메인보드 진단 케이스</a></li>
+</ul>
+""",
+
+    "mic": """
+<h2>{model} 마이크 안 됨 — 어느 마이크가 문제일까?</h2>
+<p>아이폰에는 3개의 마이크가 있어요. 어느 상황에서 안 들리는지에 따라 부위가 달라집니다.</p>
+<ul>
+  <li><strong>하단 마이크 (메인 통화용)</strong> — 통화할 때 상대방에게 내 목소리가 안 들리거나 작게 들리면</li>
+  <li><strong>전면 상단 마이크 (셀카·영상 통화)</strong> — 전면 카메라로 영상·녹화할 때 소리 안 녹음</li>
+  <li><strong>후면 마이크 (영상 촬영용)</strong> — 후면 카메라 영상에 소리 안 녹음</li>
+</ul>
+
+<h2>매장 가기 전 자가진단</h2>
+<ol>
+  <li><strong>음성 메모 앱으로 녹음 테스트</strong> — 본인 목소리 정상 녹음되는지</li>
+  <li><strong>이어폰 마이크로 통화</strong> → 정상이면 본체 마이크 부품 문제 확실</li>
+  <li><strong>마이크 구멍에 먼지·이물</strong> → 칫솔모로 살짝 청소</li>
+  <li><strong>케이스가 마이크 막고 있는지</strong> → 케이스 빼고 테스트</li>
+  <li><strong>설정 → 일반 → 손쉬운 사용 → 오디오 → 노이즈 캔슬링 OFF</strong> 시도</li>
+</ol>
+
+<h2>이번 케이스 자세히 보기</h2>
+<p>{date} 다올리페어 {branch} 방문 고객 사례:</p>
+<ul>
+  <li><strong>모델</strong>: {model} ({model_year}년 출시)</li>
+  <li><strong>증상</strong>: 마이크 입력 불량 — 자가진단 후 미해결</li>
+  <li><strong>진단 결과</strong>: 마이크 모듈 또는 케이블 교체</li>
+</ul>
+
+<h2>매장 수리 과정 (당일 30~60분)</h2>
+<ol>
+  <li>정확한 마이크 부위 진단 (10분)</li>
+  <li>분해, 마이크 모듈 분리 (15분)</li>
+  <li>새 마이크 부품 부착 (10~15분)</li>
+  <li>기능 테스트 — 통화·녹음·영상 음성 모두 (10분)</li>
+</ol>
+<p>데이터는 그대로 보존됩니다.</p>
+""",
+
+    "other": """
+<h2>{model} 정밀 수리 — 어떤 증상이신가요?</h2>
+<p>일반적인 액정·배터리·후면 유리 외에도, 다양한 증상이 발생할 수 있어요. {date} 다올리페어 {branch}에 방문하신 사례입니다.</p>
+
+<h2>이번 케이스</h2>
+<ul>
+  <li><strong>모델</strong>: {model} ({model_year}년 출시)</li>
+  <li><strong>수리 종류</strong>: {type_kr}</li>
+  <li><strong>진단</strong>: {model_weak}</li>
+</ul>
+
+<h2>다올리페어가 다른 점</h2>
+<ul>
+  <li><strong>마스터 직접 진단</strong> — 외주 X, 매장에서 바로 정밀 점검</li>
+  <li><strong>부품 교체 전 청소·복구 시도</strong> — 가능한 적은 비용으로 해결</li>
+  <li><strong>실패 시 비용 0원</strong> — 정밀 수리도 결과 보장 못 하면 비용 X</li>
+  <li><strong>90일 무상 A/S</strong> — 같은 부위 재발 시 무료 재수리</li>
+</ul>
+
+<h2>매장 수리 과정</h2>
+<p>{branch}에서 마스터가 직접 진단·수리했습니다. 자세한 비용·시간은 매장 진단 후 안내드려요.</p>
+<p>비슷한 증상이시면 카카오톡 "다올리페어" 채널에 사진 보내주시면 견적부터 시작합니다.</p>
+""",
 }
 
 DEFAULT_BODY = """
@@ -1004,15 +1336,37 @@ def make_title(c, used_titles=None):
 
 
 def make_body(c):
-    """본문 생성 — 디바이스별 분기 (애플워치·아이패드 배터리는 다른 옵션 구조)"""
-    type_key = c.get("repair_type") or c.get("type", "")
-    if "화면" in type_key or "액정" in type_key: type_key = "screen"
-    elif "후면" in type_key: type_key = "back"
-    elif "배터리" in type_key and "+" not in type_key: type_key = "battery"
-    elif "충전" in type_key: type_key = "charge"
+    """본문 생성 — 디바이스별·수리타입별 분기
+
+    repair_type을 정확히 한 카테고리로 매핑한 뒤 해당 TYPE_BODY 템플릿 사용.
+    한국어 표기·영문 표기 모두 인식.
+    """
+    raw = (c.get("repair_type") or c.get("type", "")).lower().strip()
+
+    # 영문 키 직접 매칭 (TYPE_BODY 키와 일치)
+    DIRECT_KEYS = {"screen", "back", "back-glass", "battery", "charge", "speaker",
+                   "camera", "water", "button", "mainboard", "mic", "other",
+                   "screen+battery", "screen+back"}
+
+    if raw in DIRECT_KEYS:
+        type_key = raw
+    # 한국어 키워드 → 정규화
+    elif "스피커" in raw: type_key = "speaker"
+    elif "카메라" in raw: type_key = "camera"
+    elif "마이크" in raw: type_key = "mic"
+    elif "침수" in raw or "물에" in raw or "방수" in raw: type_key = "water"
+    elif "메인보드" in raw or "기판" in raw or "보드" in raw: type_key = "mainboard"
+    elif "버튼" in raw or "전원버튼" in raw or "볼륨" in raw or "홈버튼" in raw: type_key = "button"
+    elif "충전" in raw or "단자" in raw or "독커넥터" in raw or "라이트닝" in raw: type_key = "charge"
+    elif ("화면" in raw or "액정" in raw) and "배터리" in raw: type_key = "screen+battery"
+    elif ("화면" in raw or "액정" in raw) and "후면" in raw: type_key = "screen+back"
+    elif "화면" in raw or "액정" in raw: type_key = "screen"
+    elif "후면" in raw or "백글래스" in raw or "뒷판" in raw: type_key = "back"
+    elif "배터리" in raw and "+" not in raw: type_key = "battery"
+    else: type_key = raw or "other"
 
     model = c["model"]
-    is_watch = "애플워치" in model or "에르메스" in model
+    is_watch = "애플워치" in model or "에르메스" in model or "Apple Watch" in model
     is_ipad = "아이패드" in model or "iPad" in model
 
     # 배터리 케이스 디바이스별 분기
@@ -1028,6 +1382,8 @@ def make_body(c):
         if not template or template == "__IPHONE_BATTERY__":
             if type_key == "back-glass":
                 template = TYPE_BODY["back"]
+            elif "other" in TYPE_BODY:
+                template = TYPE_BODY["other"]
             else:
                 template = DEFAULT_BODY
 
