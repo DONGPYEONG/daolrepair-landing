@@ -66,10 +66,19 @@
     ul { margin: 0 0 18px 22px; }
     ul li { font-size: 16px; line-height: 1.85; color: var(--text); margin-bottom: 6px; word-break: keep-all; }
     .case-box { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 0 14px 14px 0; padding: 22px 24px; margin: 22px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
-    .case-tag { display: inline-block; background: rgba(232,115,42,0.1); color: var(--orange); font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 50px; margin-bottom: 10px; letter-spacing: 0.3px; }
-    .case-title { font-size: 16px; font-weight: 900; color: var(--dark); margin-bottom: 10px; line-height: 1.4; }
-    .case-row { font-size: 14px; line-height: 1.75; color: var(--text); margin-bottom: 6px; }
-    .case-row strong { display: inline-block; min-width: 70px; color: var(--muted); font-weight: 700; }
+    .case-tag { display: inline-block; background: rgba(232,115,42,0.1); color: var(--orange); font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 50px; margin-bottom: 12px; letter-spacing: 0.5px; }
+    .case-title { font-size: 16px; font-weight: 900; color: var(--dark); margin-bottom: 16px; line-height: 1.45; word-break: keep-all; }
+    .case-row { display: flex; gap: 12px; padding: 10px 14px; margin-bottom: 8px; background: #fafafa; border-radius: 8px; font-size: 14px; line-height: 1.65; }
+    .case-row strong { flex-shrink: 0; min-width: 78px; color: var(--muted); font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; padding-top: 2px; }
+    .case-row.case-result { background: rgba(232,115,42,0.08); border-left: 3px solid var(--orange); }
+    .case-row.case-result strong { color: var(--orange); }
+    .case-link { display: block; margin-top: 14px; padding: 12px 16px; background: #fff; border: 1px dashed var(--orange); border-radius: 10px; color: var(--orange); font-weight: 700; font-size: 13px; text-decoration: none; text-align: center; transition: all 0.2s; }
+    .case-link:hover { background: rgba(232,115,42,0.06); border-style: solid; }
+    @media (max-width: 600px) {
+      .case-box { padding: 18px 18px; }
+      .case-row { flex-direction: column; gap: 4px; padding: 10px 12px; }
+      .case-row strong { min-width: auto; padding-top: 0; }
+    }
     .art-good { background: rgba(232,115,42,0.06); border-left: 4px solid var(--orange); padding: 18px 22px; border-radius: 8px; margin: 22px 0; }
     .art-good-title { font-size: 14px; font-weight: 800; color: var(--orange); margin-bottom: 8px; }
     .art-good p { margin: 0; font-size: 15px; }
@@ -142,28 +151,31 @@
   <div class="case-box">
     <span class="case-tag">CASE 01 · 침수</span>
     <div class="case-title">아이폰 14 Pro 침수 — 다른 매장 "수리 불가" → 다올 메인보드 정밀 진단으로 살림</div>
-    <div class="case-row"><strong>증상</strong> 비 맞은 후 다음날 발열, 전원 들어왔다 꺼짐 반복</div>
-    <div class="case-row"><strong>다른 매장</strong> "메인보드 교체 75만원, 수리 후에도 데이터 보장 어려움"</div>
-    <div class="case-row"><strong>다올 진단</strong> 메인보드 일부 회로만 부식 — 부식 청소 + 손상 부품 교체</div>
-    <div class="case-row"><strong>결과</strong> 30만원대, 데이터 그대로 살림, 90일 보증</div>
+    <div class="case-row"><strong>증상</strong><span>비 맞은 후 다음날 발열, 전원 들어왔다 꺼짐 반복</span></div>
+    <div class="case-row"><strong>다른 매장</strong><span>"메인보드 교체 75만원, 수리 후에도 데이터 보장 어려움"</span></div>
+    <div class="case-row"><strong>다올 진단</strong><span>메인보드 일부 회로만 부식 — 부식 청소 + 손상 부품 교체</span></div>
+    <div class="case-row case-result"><strong>결과</strong><span>30만원대, 데이터 그대로 살림, 90일 보증</span></div>
+    <a href="iphone-water-damage-repair-cost-guide.html" class="case-link">📖 아이폰 침수 수리비 가이드 자세히 보기 →</a>
   </div>
 
   <div class="case-box">
     <span class="case-tag">CASE 02 · 후면 유리</span>
     <div class="case-title">아이폰 15 Pro 후면 유리 깨짐 — 공식 50만원, 다른 사설 25만원 → 다올 18만원</div>
-    <div class="case-row"><strong>증상</strong> 떨어뜨려 후면 카메라 주변 유리 깨짐, 카메라는 정상</div>
-    <div class="case-row"><strong>다른 곳</strong> 공식 리퍼 50만원 견적 / 사설 25만원~</div>
-    <div class="case-row"><strong>다올</strong> 후면 유리만 분리 교체 (마스터 직접) — 카메라 분리 안 함</div>
-    <div class="case-row"><strong>결과</strong> 18만원, 90분 소요, 90일 보증</div>
+    <div class="case-row"><strong>증상</strong><span>떨어뜨려 후면 카메라 주변 유리 깨짐, 카메라는 정상</span></div>
+    <div class="case-row"><strong>다른 곳</strong><span>공식 리퍼 50만원 견적 / 사설 25만원~</span></div>
+    <div class="case-row"><strong>다올</strong><span>후면 유리만 분리 교체 (마스터 직접) — 카메라 분리 안 함</span></div>
+    <div class="case-row case-result"><strong>결과</strong><span>18만원, 90분 소요, 90일 보증</span></div>
+    <a href="iphone-12-pro-max-glass-only-broken-cost.html" class="case-link">📖 아이폰 후면 유리만 교체 — 모델별 가격 자세히 보기 →</a>
   </div>
 
   <div class="case-box">
     <span class="case-tag">CASE 03 · 배터리 + 충전 단자</span>
     <div class="case-title">아이폰 13 충전이 안 됐다 됐다 — "단자 교체 + 배터리"라고 들음 → 단자 청소만</div>
-    <div class="case-row"><strong>증상</strong> 충전기 흔들면 충전됨, 평소엔 안 됨, 배터리 80% 미만</div>
-    <div class="case-row"><strong>다른 곳</strong> "단자 교체 8만원 + 배터리 6만원"</div>
-    <div class="case-row"><strong>다올 진단</strong> 단자 깊숙이 먼지·이물 — 정밀 청소만으로 해결, 배터리는 유지 권장</div>
-    <div class="case-row"><strong>결과</strong> 청소 무료, 배터리는 시기 보고 결정 권유</div>
+    <div class="case-row"><strong>증상</strong><span>충전기 흔들면 충전됨, 평소엔 안 됨, 배터리 80% 미만</span></div>
+    <div class="case-row"><strong>다른 곳</strong><span>"단자 교체 8만원 + 배터리 6만원"</span></div>
+    <div class="case-row"><strong>다올 진단</strong><span>단자 깊숙이 먼지·이물 — 정밀 청소만으로 해결, 배터리는 유지 권장</span></div>
+    <div class="case-row case-result"><strong>결과</strong><span>청소 무료, 배터리는 시기 보고 결정 권유</span></div>
+    <a href="iphone-15-charging-port-loose-cleaning-vs-replacement.html" class="case-link">📖 아이폰 충전 단자 청소 vs 교체 자세히 보기 →</a>
   </div>
 
   <p>위 케이스들의 공통점 — <strong>"증상만 보고 부품 교체로 결론 짓지 않고, 원인을 먼저 찾는다"</strong>입니다. 그래서 비용도 적게 나오고 데이터도 더 잘 살릴 수 있어요.</p>
