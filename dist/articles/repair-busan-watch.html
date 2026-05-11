@@ -60,6 +60,21 @@
     .art-back-link a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 600; }
     .art-footer { background: #0A0A0A; color: rgba(255,255,255,0.6); padding: 32px 20px; text-align: center; font-size: 13px; }
     .art-footer a { color: rgba(255,255,255,0.85); text-decoration: none; font-weight: 700; }
+
+    .case-box { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 0 14px 14px 0; padding: 22px 24px; margin: 22px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+    .case-tag { display: inline-block; background: rgba(232,115,42,0.1); color: var(--orange); font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 50px; margin-bottom: 12px; letter-spacing: 0.5px; }
+    .case-title { font-size: 16px; font-weight: 900; color: var(--dark); margin-bottom: 16px; line-height: 1.45; word-break: keep-all; }
+    .case-row { display: flex; gap: 12px; padding: 10px 14px; margin-bottom: 8px; background: #fafafa; border-radius: 8px; font-size: 14px; line-height: 1.65; }
+    .case-row strong { flex-shrink: 0; min-width: 78px; color: var(--muted); font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; padding-top: 2px; }
+    .case-row.case-result { background: rgba(232,115,42,0.08); border-left: 3px solid var(--orange); }
+    .case-row.case-result strong { color: var(--orange); }
+    .case-link { display: block; margin-top: 14px; padding: 12px 16px; background: #fff; border: 1px dashed var(--orange); border-radius: 10px; color: var(--orange); font-weight: 700; font-size: 13px; text-decoration: none; text-align: center; transition: all 0.2s; }
+    .case-link:hover { background: rgba(232,115,42,0.06); border-style: solid; }
+    @media (max-width: 600px) {
+      .case-box { padding: 18px 18px; }
+      .case-row { flex-direction: column; gap: 4px; padding: 10px 12px; }
+      .case-row strong { min-width: auto; padding-top: 0; }
+    }
   </style>
 </head>
 <body>
@@ -128,6 +143,49 @@
   </div>
 
   
+  
+  <h2>다올리페어가 살린 워치 케이스 — 실제 사례</h2>
+  <p>다른 매장에서 "수리 불가" 또는 비싼 견적 받으셨던 케이스를 부품 단위 정밀 수리로 살려낸 실제 사례:</p>
+
+  <div class="case-box">
+    <span class="case-tag">CASE 01 · 후면 유리</span>
+    <div class="case-title">Apple Watch Series 8 후면 유리 깨짐 — 공식 75만원 → 다올 17만원</div>
+    <div class="case-row"><strong>증상</strong><span>떨어뜨려 후면 유리 거미줄 균열, 심박 센서 인식 지연</span></div>
+    <div class="case-row"><strong>공식 견적</strong><span>"본체 교체 75만원, 데이터는 백업 후 초기화"</span></div>
+    <div class="case-row"><strong>다올 진단</strong><span>후면 유리만 분리 교체 가능 — 본체·메인보드·배터리 모두 정상</span></div>
+    <div class="case-row case-result"><strong>결과</strong><span>17만원, 데이터 그대로, 90일 보증</span></div>
+    <a href="applewatch-back-glass-nationwide.html" class="case-link">📖 애플워치 후면 유리 수리 모델별 가격 →</a>
+  </div>
+
+  <div class="case-box">
+    <span class="case-tag">CASE 02 · 배터리 (스왑 거절)</span>
+    <div class="case-title">Apple Watch SE 2세대 배터리 빠른 방전 — 공식 스왑 거절 받은 후 다올로</div>
+    <div class="case-row"><strong>증상</strong><span>최대 용량 78%, 12시간도 못 가는 방전, 충전 시 발열</span></div>
+    <div class="case-row"><strong>공식 거절</strong><span>"스왑 가능 모델 아님 / 본체 교체 견적 50만원+"</span></div>
+    <div class="case-row"><strong>다올 진단</strong><span>배터리만 단독 교체 가능 — 모델·시리얼 모두 OK</span></div>
+    <div class="case-row case-result"><strong>결과</strong><span>8만원, 30분 작업, 90일 보증</span></div>
+    <a href="applewatch-battery-replacement-nationwide.html" class="case-link">📖 애플워치 배터리 교체 모델별 가격 →</a>
+  </div>
+
+  <div class="case-box">
+    <span class="case-tag">CASE 03 · 액정 (단순 유리만)</span>
+    <div class="case-title">Apple Watch Ultra 1세대 액정 균열 — 공식 통째 교체 권유 → 다올 단순 유리만 22만원</div>
+    <div class="case-row"><strong>증상</strong><span>전면 유리 거미줄 균열, 화면 표시·터치 모두 정상</span></div>
+    <div class="case-row"><strong>공식 견적</strong><span>"OLED 패널 통째 교체 — 50만원+"</span></div>
+    <div class="case-row"><strong>다올 진단</strong><span>표면 유리만 손상, LCD·디지타이저 정상 — 단순 유리 분리 교체</span></div>
+    <div class="case-row case-result"><strong>결과</strong><span>22만원, 1시간 작업, 90일 보증</span></div>
+    <a href="applewatch-screen-repair-nationwide.html" class="case-link">📖 애플워치 액정 수리 진단 가이드 →</a>
+  </div>
+
+  <h2>다올리페어가 약속하는 5가지</h2>
+  <ul style="list-style:none;padding:0;margin:18px 0 28px;">
+    <li style="padding:14px 18px;background:#fafafa;border-left:4px solid var(--orange);margin-bottom:8px;border-radius:0 8px 8px 0;font-size:15px;line-height:1.7;"><strong>① 마스터 직접 수리</strong> — 외주 X, 모든 작업 마스터 본인이 진행. 사설 수리점 80%는 외주 의뢰.</li>
+    <li style="padding:14px 18px;background:#fafafa;border-left:4px solid var(--orange);margin-bottom:8px;border-radius:0 8px 8px 0;font-size:15px;line-height:1.7;"><strong>② 부품 교체 전 청소·복구 시도</strong> — 가능한 적은 비용으로 해결. 충전 단자는 청소만으로 해결되는 경우 다수.</li>
+    <li style="padding:14px 18px;background:#fafafa;border-left:4px solid var(--orange);margin-bottom:8px;border-radius:0 8px 8px 0;font-size:15px;line-height:1.7;"><strong>③ 90일 무상 A/S</strong> — 같은 부위 재발 시 무료 재수리. 사설 수리점 평균 30일 보증과 차이.</li>
+    <li style="padding:14px 18px;background:#fafafa;border-left:4px solid var(--orange);margin-bottom:8px;border-radius:0 8px 8px 0;font-size:15px;line-height:1.7;"><strong>④ 실패 시 비용 0원</strong> — 침수·메인보드 정밀 수리도 결과 보장 안 되면 비용 X. "일단 진단비"라는 함정 X.</li>
+    <li style="padding:14px 18px;background:#fafafa;border-left:4px solid var(--orange);margin-bottom:8px;border-radius:0 8px 8px 0;font-size:15px;line-height:1.7;"><strong>⑤ 네이버 플레이스 후기 2,000개+ · 평균 4.9점</strong> — 가산·신림·목동 3지점 누적. 매장 가서 직접 확인하실 수 있어요.</li>
+  </ul>
+
   <h2>자주 묻는 질문 (Q&amp;A)</h2>
   <div style="margin:14px 0 28px;">
     <details style="background:#fafafa;border-radius:10px;padding:14px 18px;margin-bottom:8px;"><summary style="cursor:pointer;font-weight:800;color:#1a1a1a;font-size:14px;list-style:none;">Q. 애플워치 배터리 교체 시점은?</summary><div style="padding-top:10px;font-size:14px;line-height:1.75;color:#444;">A. 12시간도 못 가는 빠른 방전, 80% 미만, 충전 시 발열, 배터리 부풀어 뒷판 들뜸 중 하나라도 있으면 교체 시점. <a href='applewatch-battery-replacement-guide.html'>배터리 가이드</a> 참고.</div></details>
