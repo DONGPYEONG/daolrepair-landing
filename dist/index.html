@@ -2314,9 +2314,22 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
 .ba-meta-time { background:rgba(255,107,53,0.15); color:#FF8E5A; border:1px solid rgba(255,107,53,0.3); }
 .ba-meta-branch { background:rgba(96,165,250,0.15); color:#8AB8FA; border:1px solid rgba(96,165,250,0.3); }
 .ba-meta-warranty { background:rgba(52,199,89,0.15); color:#34c759; border:1px solid rgba(52,199,89,0.3); }
+
+/* ── 신규 캡션 디자인 (직관적 + 다올리페어 장점 강조) ── */
+.ba-meta-top { font-size:11.5px; color:rgba(255,255,255,0.5); font-weight:600; letter-spacing:0.3px; margin-bottom:10px; }
+.ba-main-title { font-size:18px; font-weight:900; color:#fff; line-height:1.3; margin-bottom:4px; letter-spacing:-0.5px; }
+.ba-main-sub { font-size:13px; color:rgba(255,255,255,0.7); font-weight:500; margin-bottom:18px; line-height:1.5; }
+.ba-benefits { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; padding:14px 0; margin-bottom:14px; background:linear-gradient(180deg,rgba(232,115,42,0.04) 0%,rgba(232,115,42,0.10) 100%); border:1px solid rgba(232,115,42,0.2); border-radius:14px; }
+.ba-benefit { text-align:center; padding:0 6px; }
+.ba-benefit-mid { border-left:1px solid rgba(255,255,255,0.08); border-right:1px solid rgba(255,255,255,0.08); }
+.ba-benefit-num { font-size:22px; font-weight:900; color:#FF8E5A; line-height:1; letter-spacing:-1px; margin-bottom:6px; }
+.ba-benefit-num span { font-size:13px; font-weight:700; margin-left:1px; opacity:0.85; }
+.ba-benefit-label { font-size:11px; color:rgba(255,255,255,0.7); font-weight:600; line-height:1.3; word-break:keep-all; }
+.ba-trust { font-size:11.5px; color:rgba(255,255,255,0.45); font-weight:500; text-align:center; margin-bottom:14px; line-height:1.5; }
+
 /* 일지 글 바로가기 — 비포/애프터 카드 캡션 하단 */
-.ba-journal-link { display:block; margin-top:14px; padding:11px 16px; background:rgba(232,115,42,0.12); border:1px solid rgba(232,115,42,0.35); border-radius:50px; color:#FF8E5A; font-size:12.5px; font-weight:800; text-decoration:none; transition:background 0.18s, transform 0.18s, color 0.18s; letter-spacing:-0.2px; }
-.ba-journal-link:hover { background:#E8732A; color:#fff; transform:translateY(-1px); }
+.ba-journal-link { display:flex; align-items:center; justify-content:center; padding:13px 16px; background:linear-gradient(135deg,#FF6B35 0%,#E8732A 100%); border:none; border-radius:50px; color:#fff; font-size:13px; font-weight:800; text-decoration:none; transition:transform 0.18s, box-shadow 0.18s; letter-spacing:-0.2px; box-shadow:0 4px 14px rgba(232,115,42,0.3); }
+.ba-journal-link:hover { transform:translateY(-2px); box-shadow:0 8px 22px rgba(232,115,42,0.5); }
 .ba-note { text-align:center; color:rgba(255,255,255,0.35); font-size:12px; margin-top:18px; }
 .ba-portfolio-cta { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:12px; margin-top:36px; }
 .ba-portfolio-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:linear-gradient(135deg,#FF6B35 0%,#E8732A 100%); color:#fff; padding:14px 28px; border-radius:50px; font-size:15px; font-weight:800; text-decoration:none; letter-spacing:0.2px; transition:transform 0.2s, box-shadow 0.2s; box-shadow:0 6px 20px rgba(255,107,53,0.35); min-width:280px; }
@@ -2447,30 +2460,35 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
         img.onerror = function(){};
         img.src = url;
       }
-      // 캡션 갱신: 비교 카드 + 메타 태그 + 일지 글 링크 (있으면)
+      // 캡션 갱신 — 다올리페어 장점 강조 디자인
       var captionEl = card.querySelector('.ba-caption');
       if(captionEl){
-        var journalLink = c.journal_url
-          ? '<a href="' + c.journal_url + '" class="ba-journal-link">📋 실제 수리 사례 자세히 보기 →</a>'
-          : '';
+        // 시간 추출 (예: "당일 · 30~60분" → "30분")
+        var timeText = c.repair_time || (c.minutes ? c.minutes + '분' : '30분');
+        var timeShort = timeText.replace(/^당일[\s·]*/, '').replace(/~.*분/, '분').trim();
+        var journalBtn = c.journal_url
+          ? '<a href="' + c.journal_url + '" class="ba-journal-link">📋 이 케이스 자세히 보기 →</a>'
+          : '<a href="articles/journal.html" class="ba-journal-link">📋 다른 수리 사례 보기 →</a>';
         captionEl.innerHTML =
-          '<div class="ba-model">' + (c.branch || '') + ' · ' + (c.date || '') + '</div>' +
-          '<div class="ba-issue">' + (c.model || '') + '</div>' +
-          '<div class="ba-compare">' +
-            '<div class="ba-compare-item ba-compare-before">' +
-              '<div class="ba-compare-label">BEFORE</div>' +
-              '<div class="ba-compare-text">' + (c.before_text || '수리 전') + '</div>' +
+          '<div class="ba-meta-top">📍 ' + (c.branch || '') + ' · ' + (c.date || '') + '</div>' +
+          '<div class="ba-main-title">' + (c.model || '') + '</div>' +
+          '<div class="ba-main-sub">' + (c.type || '수리') + ' — 깨끗하게 살려냈습니다</div>' +
+          '<div class="ba-benefits">' +
+            '<div class="ba-benefit">' +
+              '<div class="ba-benefit-num">' + timeShort + '</div>' +
+              '<div class="ba-benefit-label">당일 완료</div>' +
             '</div>' +
-            '<div class="ba-compare-item ba-compare-after">' +
-              '<div class="ba-compare-label">AFTER</div>' +
-              '<div class="ba-compare-text">' + (c.after_text || '수리 완료') + '</div>' +
+            '<div class="ba-benefit ba-benefit-mid">' +
+              '<div class="ba-benefit-num">10<span>년</span></div>' +
+              '<div class="ba-benefit-label">마스터 직접 진단</div>' +
+            '</div>' +
+            '<div class="ba-benefit">' +
+              '<div class="ba-benefit-num">0<span>원</span></div>' +
+              '<div class="ba-benefit-label">수리 실패 시</div>' +
             '</div>' +
           '</div>' +
-          '<div class="ba-meta">' +
-            '<span class="ba-meta-tag ba-meta-time">⏱ ' + (c.repair_time || (c.minutes ? c.minutes + '분' : '30~60분')) + '</span>' +
-            '<span class="ba-meta-tag ba-meta-branch">📍 ' + (c.branch || '') + '</span>' +
-            '<span class="ba-meta-tag ba-meta-warranty">✓ 90일 보증</span>' +
-          '</div>' + journalLink;
+          '<div class="ba-trust">✓ 90일 무상 A/S · 정품/DD 옵션 가격 모두 공개</div>' +
+          journalBtn;
       }
       var beforeEl = card.querySelector('.ba-before');
       var afterEl  = card.querySelector('.ba-after');
