@@ -271,7 +271,7 @@ function logToSheet(data) {
     var row = _buildRow(headers, {
       '접수시간': now,
       '이름':     data.name    || '',
-      '연락처':   data.phone   || '',
+      '연락처':   _formatPhone(data.phone),
       '기기':     data.device  || '',
       '모델':     data.model   || '',
       '수리항목': data.repairs || '',
@@ -319,7 +319,7 @@ function logToSheet(data) {
     var row = _buildRow(headers, {
       '접수시간':   now,
       '이름':       data.name    || '',
-      '연락처':     data.phone   || '',
+      '연락처':     _formatPhone(data.phone),
       '기기':       data.device  || '',
       '모델':       data.model   || '',
       '수리항목':   data.repairs || '',
@@ -354,7 +354,7 @@ function logToSheet(data) {
     sheet.appendRow([
       now,
       data.name  || '',
-      data.phone || '',
+      _formatPhone(data.phone),
       data.items || '',
       data.total || '',
       data.memo  || '',
@@ -423,6 +423,17 @@ function _buildRow(headers, dataMap) {
   return headers.map(function(h) {
     return dataMap.hasOwnProperty(h) ? dataMap[h] : '';
   });
+}
+
+// 전화번호 정규화 — 하이픈 없이 들어와도 010-XXXX-XXXX 형태로 통일
+// 시트가 숫자로 자동 변환해서 앞 0을 떼는 문제 방지
+function _formatPhone(p) {
+  if (!p) return '';
+  var s = p.toString().trim();
+  var v = s.replace(/[^0-9]/g, '');
+  if (v.length === 11) return v.slice(0,3) + '-' + v.slice(3,7) + '-' + v.slice(7);
+  if (v.length === 10) return v.slice(0,3) + '-' + v.slice(3,6) + '-' + v.slice(6);
+  return s;
 }
 
 
