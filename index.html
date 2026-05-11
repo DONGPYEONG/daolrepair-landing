@@ -1984,6 +1984,11 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
 .live-branch-card { background:#fff; border:1px solid rgba(0,0,0,0.07); border-radius:14px; padding:14px 16px; box-shadow:0 2px 8px rgba(0,0,0,0.03); }
 .live-branch-name { font-size:12px; color:rgba(0,0,0,0.5); font-weight:700; margin-bottom:4px; letter-spacing:0.3px; display:flex; align-items:center; gap:6px; }
 .live-branch-new { display:inline-block; background:linear-gradient(135deg,#FF6B35 0%,#ff8e5a 100%); color:#fff; font-size:9.5px; font-weight:900; letter-spacing:0.6px; padding:2px 7px; border-radius:50px; line-height:1.4; box-shadow:0 1px 4px rgba(255,107,53,0.35); }
+.live-branch-card-link { display:block; text-decoration:none; color:inherit; cursor:pointer; transition:border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+.live-branch-card-link:hover { border-color:rgba(255,107,53,0.5); transform:translateY(-2px); box-shadow:0 6px 18px rgba(0,0,0,0.08); }
+.live-branch-card-link:focus-visible { outline:2px solid #FF6B35; outline-offset:2px; }
+.live-branch-arrow { float:right; color:#FF6B35; font-weight:900; font-size:16px; opacity:0.6; transition:transform 0.2s, opacity 0.2s; margin-left:8px; }
+.live-branch-card-link:hover .live-branch-arrow { opacity:1; transform:translateX(3px); }
 .live-branch-num { font-size:22px; font-weight:900; letter-spacing:-0.5px; color:#1a1a1a; }
 @media (max-width:720px){
   #live-activity { padding-left:20px !important; padding-right:20px !important; }
@@ -2044,17 +2049,37 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
     if(h < 24) return h + '시간 전 업데이트';
     return Math.floor(h/24) + '일 전 업데이트';
   }
+  var BRANCH_NAVER = {
+    '가산': 'https://naver.me/xyjKp1eq',
+    '신림': 'https://naver.me/Faf1J0yG',
+    '목동': 'https://naver.me/5nojklP7'
+  };
   function renderBranches(byBranch){
     var box = document.getElementById('liveBranches');
     if(!box || !byBranch) return;
     box.innerHTML = '';
     Object.keys(byBranch).forEach(function(name){
-      var card = document.createElement('div');
-      card.className = 'live-branch-card';
+      var url = '';
+      var brKey = '';
+      if(name.indexOf('가산') >= 0){ url = BRANCH_NAVER['가산']; brKey = '가산점'; }
+      else if(name.indexOf('신림') >= 0){ url = BRANCH_NAVER['신림']; brKey = '신림점'; }
+      else if(name.indexOf('목동') >= 0){ url = BRANCH_NAVER['목동']; brKey = '목동점'; }
       var isNew = name.indexOf('목동') >= 0;
       var newBadge = isNew ? '<span class="live-branch-new">NEW</span>' : '';
+      var arrow = url ? '<span class="live-branch-arrow" aria-hidden="true">→</span>' : '';
+      var card = document.createElement(url ? 'a' : 'div');
+      card.className = 'live-branch-card' + (url ? ' live-branch-card-link' : '');
+      if(url){
+        card.href = url;
+        card.target = '_blank';
+        card.rel = 'noopener';
+        card.setAttribute('aria-label', name + ' 네이버 플레이스로 이동');
+        card.addEventListener('click', function(){
+          try { sendNotification({ type:'reservation', branch: brKey }); } catch(e){}
+        });
+      }
       card.innerHTML = '<div class="live-branch-name">📍 ' + name + newBadge + '</div>' +
-                       '<div class="live-branch-num">' + fmt(byBranch[name]) + '<span style="font-size:13px;color:rgba(0,0,0,0.4);font-weight:600;margin-left:4px;">건</span></div>';
+                       '<div class="live-branch-num">' + fmt(byBranch[name]) + '<span style="font-size:13px;color:rgba(0,0,0,0.4);font-weight:600;margin-left:4px;">건</span>' + arrow + '</div>';
       box.appendChild(card);
     });
   }
