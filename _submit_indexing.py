@@ -21,7 +21,10 @@ INDEXNOW_KEY = "2817f0d198382f679ee2af505db0c823"
 INDEXNOW_KEY_FILE = f"{INDEXNOW_KEY}.txt"
 INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow"
 
-# Google Indexing API 설정 (.env 또는 환경변수)
+# Google Indexing API 설정
+# 옵션 1 (우선) — OAuth 사용자 토큰 (refresh_token) 방식: GSC 정책 차단 우회
+GOOGLE_OAUTH_TOKEN_PATH = ROOT / ".env" / "oauth-token.json"
+# 옵션 2 (폴백) — 서비스 계정 JSON: 일반 사용자 추가 차단되어 사실상 미사용
 GOOGLE_SA_PATH = ROOT / ".env" / "google-indexing-sa.json"
 
 
@@ -67,41 +70,131 @@ def ping_indexnow(urls: list[str]) -> bool:
 # Google Indexing API (선택)
 # ────────────────────────────────────────────────────────────────
 
-def submit_google(urls: list[str]) -> int:
-    """Google Indexing API로 URL 색인 요청. JSON 키 없으면 skip.
-
-    하루 한도 200개. 실제로는 일반 페이지에도 작동하지만 정책상 채용공고용이 명시.
-    """
-    if not GOOGLE_SA_PATH.exists():
-        print("  ⚠️  Google Indexing API: SA JSON 키 없음 — skip")
-        print(f"     (위치: {GOOGLE_SA_PATH})")
-        return 0
-
+def _build_indexing_service():
+    """OAuth 토큰 우선, SA 폴백으로 Indexing API 서비스 객체 생성."""
     try:
-        from google.oauth2 import service_account
         from googleapiclient.discovery import build
     except ImportError:
-        print("  ⚠️  Google API 라이브러리 없음 — pip install google-api-python-client google-auth")
-        return 0
+        print("  ⚠️  google-api-python-client 없음 — pip install google-api-python-client google-auth google-auth-oauthlib")
+        return None, None
 
     SCOPES = ["https://www.googleapis.com/auth/indexing"]
-    creds = service_account.Credentials.from_service_account_file(
-        str(GOOGLE_SA_PATH), scopes=SCOPES
-    )
-    service = build("indexing", "v3", credentials=creds, cache_discovery=False)
 
-    success = 0
+    # 옵션 1 — OAuth 사용자 토큰 (refresh_token)
+    if GOOGLE_OAUTH_TOKEN_PATH.exists():
+        try:
+            from google.oauth2.credentials import Credentials
+            from google.auth.transport.requests import Request
+            with open(GOOGLE_OAUTH_TOKEN_PATH) as f:
+                tok = json.load(f)
+            creds = Credentials(
+                token=None,
+                refresh_token=tok["refresh_token"],
+                client_id=tok["client_id"],
+                client_secret=tok["client_secret"],
+                token_uri=tok.get("token_uri", "https://oauth2.googleapis.com/token"),
+                scopes=SCOPES,
+            )
+            creds.refresh(Request())
+            return build("indexing", "v3", credentials=creds, cache_discovery=False), "OAuth"
+        except Exception as e:
+            print(f"  ⚠️  OAuth 토큰 사용 실패: {str(e)[:200]}")
+
+    # 옵션 2 — 서비스 계정 (정책상 사실상 미작동, 폴백)
+    if GOOGLE_SA_PATH.exists():
+        try:
+            from google.oauth2 import service_account
+            creds = service_account.Credentials.from_service_account_file(
+                str(GOOGLE_SA_PATH), scopes=SCOPES
+            )
+            return build("indexing", "v3", credentials=creds, cache_discovery=False), "ServiceAccount"
+        except Exception as e:
+            print(f"  ⚠️  SA 사용 실패: {str(e)[:200]}")
+
+    print("  ⚠️  Google Indexing API: 인증 정보 없음 (oauth-token.json 또는 google-indexing-sa.json)")
+    return None, None
+
+
+# 등록 이력 — 같은 URL 반복 등록 방지
+INDEXED_LOG = ROOT / ".tmp" / "google_indexed_log.json"
+
+
+def _load_indexed_log() -> dict:
+    if INDEXED_LOG.exists():
+        try:
+            return json.loads(INDEXED_LOG.read_text())
+        except Exception:
+            pass
+    return {}
+
+
+def _save_indexed_log(log: dict) -> None:
+    INDEXED_LOG.parent.mkdir(parents=True, exist_ok=True)
+    INDEXED_LOG.write_text(json.dumps(log, indent=2, ensure_ascii=False))
+
+
+def submit_google(urls: list[str]) -> int:
+    """Google Indexing API로 URL 색인 요청. 하루 한도 200개.
+
+    OAuth 토큰 우선 → 서비스 계정 폴백 → 둘 다 없으면 skip.
+    같은 URL 반복 등록 방지 (등록 이력 추적). lastmod가 갱신되면 재등록 가능.
+    """
+    service, method = _build_indexing_service()
+    if not service:
+        return 0
+
+    # 등록 이력 로드 — {url: last_indexed_lastmod} 형태
+    log = _load_indexed_log()
+
+    # sitemap에서 각 URL의 현재 lastmod 추출 (재등록 판정용)
+    import re
+    from datetime import date
+    sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
+    pattern = re.compile(r'<url>.*?<loc>(.*?)</loc>.*?<lastmod>(.*?)</lastmod>.*?</url>', re.DOTALL)
+    lastmod_map = dict(pattern.findall(sitemap))
+
+    # 미등록 또는 lastmod 갱신된 URL만 필터링
+    todo = []
+    skipped = 0
     for url in urls:
+        current_lm = lastmod_map.get(url, "")
+        prev_lm = log.get(url, "")
+        if prev_lm and prev_lm >= current_lm:
+            skipped += 1
+            continue
+        todo.append(url)
+
+    if skipped:
+        print(f"  ↳ 이미 등록됨 (lastmod 동일) 제외: {skipped}개")
+
+    if not todo:
+        print(f"  ✓ Google Indexing API: 새로 등록할 URL 없음 (전체 {len(urls)}개 모두 등록됨)")
+        return 0
+
+    print(f"  ▶ Google Indexing API ({method}): {len(todo)}개 시도")
+    success = 0
+    quota_exceeded = False
+    today_iso = date.today().isoformat()
+    for url in todo:
         try:
             service.urlNotifications().publish(
                 body={"url": url, "type": "URL_UPDATED"}
             ).execute()
-            print(f"  ✓ Google: {url}")
             success += 1
+            log[url] = lastmod_map.get(url, today_iso)
+            if success % 20 == 0:
+                print(f"    진행: {success}/{len(todo)}")
         except Exception as e:
-            err_msg = str(e)[:200]
-            print(f"  ✗ Google {url}: {err_msg}")
-    print(f"  Google Indexing API: {success}/{len(urls)} 성공")
+            err_msg = str(e)
+            if "quotaExceeded" in err_msg or "rateLimitExceeded" in err_msg or "RESOURCE_EXHAUSTED" in err_msg:
+                print(f"    ⏸  하루 한도 도달 ({success}개 등록 후) — 내일 다시 실행")
+                quota_exceeded = True
+                break
+            print(f"    ✗ {url}: {err_msg[:150]}")
+
+    _save_indexed_log(log)
+    print(f"  ✅ Google Indexing API: {success}/{len(todo)} 성공" + (" (한도 도달)" if quota_exceeded else ""))
+    print(f"  📊 누적 등록: {len(log)}개")
     return success
 
 
@@ -143,7 +236,9 @@ def main():
         urls = args
         source = f"명령줄 {len(urls)}개"
     else:
-        urls = get_recent_urls_from_sitemap(limit=50)
+        # OAuth 토큰 있으면 한 번에 200개까지 시도, 없으면 50개
+        limit = 200 if GOOGLE_OAUTH_TOKEN_PATH.exists() else 50
+        urls = get_recent_urls_from_sitemap(limit=limit)
         source = f"sitemap 최근 {len(urls)}개"
 
     print(f"\n📤 색인 요청 시작 — {source}")
@@ -153,8 +248,8 @@ def main():
     ping_indexnow(urls)
 
     print("\n[2/2] Google Indexing API")
-    # 구글은 하루 200개 한도. 50개씩 배치.
-    submit_google(urls[:50])
+    # 하루 한도 200개. quota 도달 시 자동 중단.
+    submit_google(urls[:200])
 
     print("\n✓ 색인 요청 완료\n")
     print("📌 네이버 서치어드바이저: sitemap.xml 자동 발견 + 수동 색인 요청 50개/일 권장")

@@ -3028,13 +3028,18 @@ def main():
         # case에 repair_type 채우기 (type 한글에서 역추출)
         if "repair_type" not in c:
             t = c.get("type", "")
-            if "화면" in t or "액정" in t: c["repair_type"] = "screen"
-            elif "후면" in t: c["repair_type"] = "back"
+            if ("화면" in t or "액정" in t) and "배터리" in t: c["repair_type"] = "screen+battery"
+            elif ("화면" in t or "액정" in t) and "후면" in t: c["repair_type"] = "screen+back"
+            elif "화면" in t or "액정" in t: c["repair_type"] = "screen"
+            elif "후면" in t or "백글래스" in t or "뒷판" in t: c["repair_type"] = "back"
             elif "배터리" in t and "+" not in t: c["repair_type"] = "battery"
-            elif "충전" in t: c["repair_type"] = "charge"
+            elif "스피커" in t: c["repair_type"] = "speaker"
+            elif "마이크" in t: c["repair_type"] = "mic"
             elif "카메라" in t: c["repair_type"] = "camera"
-            elif "화면" in t and "배터리" in t: c["repair_type"] = "screen+battery"
-            elif "화면" in t and "후면" in t: c["repair_type"] = "screen+back"
+            elif "침수" in t or "물에" in t or "방수" in t: c["repair_type"] = "water"
+            elif "메인보드" in t or "기판" in t: c["repair_type"] = "mainboard"
+            elif "버튼" in t or "전원" in t or "볼륨" in t: c["repair_type"] = "button"
+            elif "충전" in t or "단자" in t or "독커넥터" in t or "라이트닝" in t: c["repair_type"] = "charge"
             else: c["repair_type"] = "other"
 
         result = generate_article(c, journals, used_titles=used_titles)

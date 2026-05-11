@@ -533,16 +533,42 @@
     "created_at": "2026-05-11"
   },
   {
-    "key": "아이폰 iPhone 13 Pro|other|2026-05|1LZ8-mdk",
-    "slug": "journal-2026-05-11-아이폰-iphone-13-pro-other-1LZ8-mdk",
-    "title": "30대 여성 손님 아이폰 iPhone 13 Pro — 스피커·마이크 선택해 목동점에서 정밀 수리",
+    "key": "아이폰 16프로|screen+back|2026-04|1Qr6LX9H",
+    "slug": "journal-2026-04-30-아이폰-16프로-screen+back-1Qr6LX9H",
+    "title": "아이폰 16프로 화면+후면 동시 파손 — 따로 vs 한 번에 비용 차이 비교한 목동점 케이스",
+    "case_id": "1Qr6LX9HuVj5phOJdPaqQRJv8l8nfrxa8",
+    "model": "아이폰 16프로",
+    "type": "screen+back",
+    "branch": "목동점",
+    "date": "2026-04-30",
+    "uploaded_at": "2026-04-30T06:05:35.635Z",
+    "url": "https://xn--2j1bq2k97kxnah86c.com/articles/journal-2026-04-30-아이폰-16프로-screen+back-1Qr6LX9H.html",
+    "created_at": "2026-05-11"
+  },
+  {
+    "key": "에르메스 5세대 44mm|screen+battery|2026-04|1ybYHdi_",
+    "slug": "journal-2026-04-17-에르메스-5세대-44mm-screen+battery-1ybYHdi_",
+    "title": "에르메스 5세대 44mm 화면 깨지고 배터리도 노화 — 가산점에서 동시 수리로 시간·비용 모두 절약",
+    "case_id": "1ybYHdi_ueiCzvFCZuxCWWssr0BfpVQbA",
+    "model": "에르메스 5세대 44mm",
+    "type": "screen+battery",
+    "branch": "가산점",
+    "date": "2026-04-17",
+    "uploaded_at": "2026-04-17T06:01:44.435Z",
+    "url": "https://xn--2j1bq2k97kxnah86c.com/articles/journal-2026-04-17-에르메스-5세대-44mm-screen+battery-1ybYHdi_.html",
+    "created_at": "2026-05-11"
+  },
+  {
+    "key": "아이폰 iPhone 13 Pro|speaker|2026-05|1LZ8-mdk",
+    "slug": "journal-2026-05-11-아이폰-iphone-13-pro-speaker-1LZ8-mdk",
+    "title": "30대 여성 손님 아이폰 iPhone 13 Pro — 스피커·마이크 선택해 목동점에서 스피커 교체",
     "case_id": "1LZ8-mdkkTYzqa7NwICF5XfxFTZRTaOy7",
     "model": "아이폰 iPhone 13 Pro",
-    "type": "other",
+    "type": "speaker",
     "branch": "목동점",
     "date": "2026-05-11",
     "uploaded_at": "2026-05-11T08:03:05.693Z",
-    "url": "https://xn--2j1bq2k97kxnah86c.com/articles/journal-2026-05-11-아이폰-iphone-13-pro-other-1LZ8-mdk.html",
+    "url": "https://xn--2j1bq2k97kxnah86c.com/articles/journal-2026-05-11-아이폰-iphone-13-pro-speaker-1LZ8-mdk.html",
     "created_at": "2026-05-11"
   }
 ]
