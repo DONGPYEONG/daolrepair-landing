@@ -47,7 +47,7 @@
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
     @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
     .art-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10,10,10,0.82);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -671,6 +671,24 @@
   </div>
 
 </div><!-- /art-wrap -->
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="applecare-plus-worth-it.html" class="related-card">
+        <span class="related-badge">수리 가이드</span>
+        <span class="related-title">애플케어+가 있으면 수리가 공짜인가요 — 실제 비용과 조건</span>
+      </a>
+      <a href="iphone-insurance-vs-repair.html" class="related-card">
+        <span class="related-badge">수리 비용·선택</span>
+        <span class="related-title">통신사 보험 vs 직접 수리 — 아이폰 어디서 수리하는 게 맞을까</span>
+      </a>
+      <a href="applecare-vs-private-vs-insurance.html" class="related-card">
+        <span class="related-badge">상황별 가이드</span>
+        <span class="related-title">아이폰 고장났을 때 어디서 고칠까 — 상황별 최적 선택 가이드</span>
+      </a>
+    </div>
+  </section>
+
 
 <footer class="art-footer">
   <div class="art-footer-brand-row"><img loading="lazy" class="art-footer-logo" src="../로고신규1.jpg" alt="다올리페어"><span class="art-footer-brand">다올리페어</span></div>

@@ -248,8 +248,30 @@ def insert_related_section(content, related_html):
             content,
             count=1
         )
+        return content, True
 
-    return content, True
+    # Fallback 1: art-footer 앞에 삽입
+    footer_pattern = r'(\s*<footer class="art-footer")'
+    if re.search(footer_pattern, content):
+        content = re.sub(
+            footer_pattern,
+            related_html + r'\1',
+            content,
+            count=1
+        )
+        return content, True
+
+    # Fallback 2: </article> 앞에 삽입
+    if '</article>' in content:
+        content = content.replace('</article>', related_html + '\n  </article>', 1)
+        return content, True
+
+    # Fallback 3: 마지막 </body> 직전 — 어떤 페이지든 적용
+    if '</body>' in content:
+        content = content.replace('</body>', related_html + '\n</body>', 1)
+        return content, True
+
+    return content, False
 
 def main():
     # 모든 글 메타데이터 수집

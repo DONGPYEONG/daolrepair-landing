@@ -47,7 +47,7 @@
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
     @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
     .art-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10,10,10,0.82);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -687,6 +687,24 @@
   </div>
 
   </div>
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="macbook-keyboard-issues.html" class="related-card">
+        <span class="related-badge">맥북 키보드 가이드</span>
+        <span class="related-title">맥북 키보드 키가 안 눌리거나 혼자 눌릴 때 — 교체 전에 꼭 확인하세요</span>
+      </a>
+      <a href="macbook-m1-m2-overheating.html" class="related-card">
+        <span class="related-badge">맥북 발열 가이드</span>
+        <span class="related-title">맥북 M1·M2 뜨거워지는 게 정상인가요 — 과열 vs 정상 온도 구분</span>
+      </a>
+      <a href="macbook-battery-replacement-guide.html" class="related-card">
+        <span class="related-badge">맥북 배터리 가이드</span>
+        <span class="related-title">맥북 배터리 교체 시기 — 사이클 수보다 이 증상을 먼저 보세요</span>
+      </a>
+    </div>
+  </section>
+
 
 <footer class="art-footer">
   <div class="art-footer-brand-row">

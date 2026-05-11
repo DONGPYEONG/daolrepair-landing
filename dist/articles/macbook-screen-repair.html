@@ -47,7 +47,7 @@
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
     @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
     .art-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10,10,10,0.82);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -719,6 +719,24 @@
   </div>
 
   </div>
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="macbook-screen-cost-by-model.html" class="related-card">
+        <span class="related-badge">맥북 수리비 가이드</span>
+        <span class="related-title">맥북 액정 교체 비용 — 모델별 완전 비교표 (2026년 기준)</span>
+      </a>
+      <a href="macbook-air-vs-pro-repair-cost.html" class="related-card">
+        <span class="related-badge">맥북 수리비 비교 가이드</span>
+        <span class="related-title">맥북 에어 vs 프로 수리비 차이 — 항목별 비교와 판단 기준</span>
+      </a>
+      <a href="macbook-pro-m4-repair-cost.html" class="related-card">
+        <span class="related-badge">맥북 수리비 가이드</span>
+        <span class="related-title">맥북 프로 M4 수리비 총정리 — 2026년 기준</span>
+      </a>
+    </div>
+  </section>
+
 
 <footer class="art-footer">
   <div class="art-footer-brand-row">

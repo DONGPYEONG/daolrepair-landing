@@ -28,7 +28,7 @@
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
     @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
     .art-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10,10,10,0.82);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -646,6 +646,24 @@
   </div>
 
 </div>
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="macbook-water-damage-mainboard.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">맥북 침수 후 안 켜짐 — 메인보드 진단과 작업 데이터 복구</span>
+      </a>
+      <a href="macbook-ssd-data-recovery.html" class="related-card">
+        <span class="related-badge">맥북 데이터 복구 가이드</span>
+        <span class="related-title">맥북 SSD 데이터 복구 가능한가? — M1 이후 변화와 복구 방법</span>
+      </a>
+      <a href="macbook-mainboard-repair-guide-2026.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">맥북 메인보드 수리 — 리퍼 100~250만원 vs 다올 30~80만원 (2026)</span>
+      </a>
+    </div>
+  </section>
+
 
 <footer class="art-footer">
   <div class="art-footer-brand-row"><img loading="lazy" class="art-footer-logo" src="../로고신규1.jpg" alt="다올리페어"><span class="art-footer-brand">다올리페어</span></div>

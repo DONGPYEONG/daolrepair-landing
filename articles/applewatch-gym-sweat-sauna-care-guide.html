@@ -47,7 +47,7 @@
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
     @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
     .art-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10,10,10,0.82);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -663,6 +663,24 @@
   </div>
 
 </div><!-- /art-wrap -->
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="applewatch-top5-failure-patterns.html" class="related-card">
+        <span class="related-badge">애플워치 수리 가이드</span>
+        <span class="related-title">수리점에서 가장 많이 보는 애플워치 고장 패턴 TOP 5</span>
+      </a>
+      <a href="applewatch-screen-repair-cost-2026.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">애플워치 액정 수리비 2026 — 시리즈·소재별 가격 총정리 (다올리페어)</span>
+      </a>
+      <a href="apple-watch-water-damage.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">애플워치 침수 — 수영용 인증 모델의 진짜 한계와 시리즈별 침수 수리 비용</span>
+      </a>
+    </div>
+  </section>
+
 
 <footer class="art-footer">
   <div class="art-footer-brand-row"><img loading="lazy" class="art-footer-logo" src="../로고신규1.jpg" alt="다올리페어"><span class="art-footer-brand">다올리페어</span></div>

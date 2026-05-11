@@ -47,7 +47,7 @@
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
     @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
     .art-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10,10,10,0.82);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -673,6 +673,24 @@
   </div>
 
 </div><!-- /art-wrap -->
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="pdf-used-iphone-check.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">중고 아이폰 살 때 확인 9가지</span>
+      </a>
+      <a href="used-device-broken-after-purchase.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">중고로 산 기기가 고장났을 때 — 수리 가능 여부 판단 가이드</span>
+      </a>
+      <a href="iphone-lost-24h-checklist.html" class="related-card">
+        <span class="related-badge">아이폰 긴급 가이드</span>
+        <span class="related-title">아이폰 분실 후 24시간 안에 해야 할 7가지 — 도용·결제 피해 막는 골든타임 가이드</span>
+      </a>
+    </div>
+  </section>
+
 
 <footer class="art-footer">
   <div class="art-footer-brand-row"><img loading="lazy" class="art-footer-logo" src="../로고신규1.jpg" alt="다올리페어"><span class="art-footer-brand">다올리페어</span></div>

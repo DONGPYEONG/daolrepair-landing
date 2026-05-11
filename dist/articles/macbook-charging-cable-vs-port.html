@@ -47,7 +47,7 @@
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
     @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
     .art-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10,10,10,0.82);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -714,6 +714,24 @@
   </div>
 
   </div>
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="macbook-charging-issues.html" class="related-card">
+        <span class="related-badge">맥북 충전 가이드</span>
+        <span class="related-title">맥북 충전 중인데 배터리가 줄어들어요 — 충전기 탓인지 포트 탓인지 찾는 법</span>
+      </a>
+      <a href="macbook-usbc-not-recognized.html" class="related-card">
+        <span class="related-badge">맥북 수리</span>
+        <span class="related-title">맥북 USB-C 포트 인식 안 됨 — 충전도 안 될 때</span>
+      </a>
+      <a href="macbook-magsafe-cable-damage.html" class="related-card">
+        <span class="related-badge">맥북 충전 문제</span>
+        <span class="related-title">맥북 MagSafe 케이블 꺾임 — 충전 됐다 안 됐다 반복되는 이유와 단자 손상 판별법</span>
+      </a>
+    </div>
+  </section>
+
 
 <footer class="art-footer">
   <p><a href="https://xn--2j1bq2k97kxnah86c.com">다올리페어</a> · <a href="find-nearest-daolrepair-gasan-sillim-mokdong.html">가산점</a> · 신림점 · 목동점 · 전국 택배 수리</p>

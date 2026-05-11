@@ -27,7 +27,7 @@
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
     @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
     .art-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10,10,10,0.82);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -669,6 +669,24 @@
   </div>
 
   </div>
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="iphone-earpiece-no-sound.html" class="related-card">
+        <span class="related-badge">아이폰 스피커·통화 가이드</span>
+        <span class="related-title">아이폰 통화 중 상대방 소리 안 들림 — 원인과 해결 방법</span>
+      </a>
+      <a href="iphone-microphone-broken.html" class="related-card">
+        <span class="related-badge">아이폰 수리</span>
+        <span class="related-title">아이폰 마이크 고장 — 어느 마이크가 문제인지 찾는 법</span>
+      </a>
+      <a href="iphone-no-sound-at-all.html" class="related-card">
+        <span class="related-badge">아이폰 소리 문제 가이드</span>
+        <span class="related-title">아이폰 소리가 전혀 안 나요 — 스피커·벨소리·통화 전부 안 될 때</span>
+      </a>
+    </div>
+  </section>
+
 <footer class="art-footer">
   <p>다올리페어 · 서울 관악구 난곡로 365-5 101호</p>
   <p>문의: <a href="tel:050713873566">0507-1387-3566</a> · <a href="https://xn--2j1bq2k97kxnah86c.com">홈페이지 바로가기</a></p>

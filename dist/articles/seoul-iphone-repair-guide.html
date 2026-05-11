@@ -67,7 +67,7 @@
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
     @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
     .art-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10,10,10,0.82);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -628,13 +628,13 @@
   <section class="art-related">
     <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
     <div class="related-grid">
-      <a href="find-nearest-daolrepair-gasan-sillim-mokdong.html" class="related-card">
-        <span class="related-badge"></span>
-        <span class="related-title">가산·신림·목동 — 우리 동네에서 가장 가까운 다올리페어 찾기</span>
-      </a>
       <a href="customer-reviews.html" class="related-card">
         <span class="related-badge"></span>
         <span class="related-title">다올리페어 고객 후기 — 네이버 누적 2,000개+ 실제 수리 후기</span>
+      </a>
+      <a href="find-nearest-daolrepair-gasan-sillim-mokdong.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">가산·신림·목동 — 우리 동네에서 가장 가까운 다올리페어 찾기</span>
       </a>
       <a href="daolrepair-2000-reviews-analysis.html" class="related-card">
         <span class="related-badge"></span>

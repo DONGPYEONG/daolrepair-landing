@@ -47,7 +47,7 @@
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
     @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
     .art-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10,10,10,0.82);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -681,6 +681,24 @@
   </article>
   <div class="art-back-link"><a href="index.html">← 칼럼 목록으로 돌아가기</a></div>
 </div>
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="iphone-official-vs-private-repair.html" class="related-card">
+        <span class="related-badge">수리 선택 가이드</span>
+        <span class="related-title">공식 서비스센터 vs 사설 수리점 — 비용·속도·품질·보증 완전 비교</span>
+      </a>
+      <a href="apple-refurb-warning.html" class="related-card">
+        <span class="related-badge">수리 전 꼭 읽기</span>
+        <span class="related-title">공식 센터에서 리퍼 권유받았다면 — 결정 전 꼭 읽어보세요</span>
+      </a>
+      <a href="iphone-back-glass-refurb-vs-repair.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">공식 센터에서 후면 파손에 리퍼를 권유했다면 — 후면유리만 교체하면 됩니다</span>
+      </a>
+    </div>
+  </section>
+
 <footer class="art-footer">
   <p>다올리페어 · 서울 관악구 난곡로 365-5 101호</p>
   <p>문의: <a href="tel:050713873566">0507-1387-3566</a> · <a href="https://xn--2j1bq2k97kxnah86c.com">홈페이지 바로가기</a></p>

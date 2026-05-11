@@ -67,7 +67,7 @@
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
     @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
     .art-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10,10,10,0.82);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -765,6 +765,24 @@
 
   <div class="art-back-link"><a href="index.html">← 칼럼 전체 보기</a></div>
 </div>
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="applewatch-wrist-detection-failure.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">애플워치 손목 감지가 자꾸 풀릴 때 — 운동·수면 기록 끊김 원인과 센서 이상 판별법</span>
+      </a>
+      <a href="applewatch-series4-crown-repair.html" class="related-card">
+        <span class="related-badge">애플워치 시리즈 4 크라운 수리</span>
+        <span class="related-title">애플워치 시리즈 4 디지털 크라운 고장 — 회전 안 됨·눌림 불량 수리</span>
+      </a>
+      <a href="applewatch-series6-crown-button-repair.html" class="related-card">
+        <span class="related-badge">애플워치 시리즈 6 버튼 수리</span>
+        <span class="related-title">애플워치 시리즈 6 크라운·사이드 버튼 고장 — 부품 교체 수리</span>
+      </a>
+    </div>
+  </section>
+
 
 <footer class="art-footer">
   <p>다올리페어 | 대표: 금동평 | 경기도 의정부시 동일로 174 2층 

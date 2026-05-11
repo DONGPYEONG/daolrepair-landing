@@ -48,7 +48,7 @@
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
     @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
     .art-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10,10,10,0.82);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -702,6 +702,24 @@
     </div>
   </div>
 </div><!-- /art-wrap -->
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="iphone-14-water-damage.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">아이폰 14 침수 후 전원 안 켜짐 — 멀쩡히 쓰다 갑자기 화면 안 나오는 이유</span>
+      </a>
+      <a href="iphone-16-water-damage.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">아이폰 16 침수 후 발열 + 액션 버튼 먹통 — 며칠 후 나타나는 부식 신호</span>
+      </a>
+      <a href="iphone-15-pro-water-damage.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">아이폰 15 Pro 침수 후 전원 안 켜짐 — USB-C 충전 됐는데 깜깜한 진짜 이유</span>
+      </a>
+    </div>
+  </section>
+
 
 <footer class="art-footer">
   <div class="art-footer-brand-row"><img loading="lazy" class="art-footer-logo" src="../로고신규1.jpg" alt="다올리페어"><span class="art-footer-brand">다올리페어</span></div>

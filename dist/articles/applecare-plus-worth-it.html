@@ -47,7 +47,7 @@
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
     @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
     .art-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10,10,10,0.82);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -693,6 +693,24 @@
   </article>
   <div class="art-back-link"><a href="index.html">← 칼럼 목록으로 돌아가기</a></div>
 </div>
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="applepencil-repair-or-buy-new.html" class="related-card">
+        <span class="related-badge">애플펜슬 가이드</span>
+        <span class="related-title">망가진 애플펜슬, 수리할까 새로 살까 — 비용과 기준 정리</span>
+      </a>
+      <a href="ipad-screen-repair-vs-iphone.html" class="related-card">
+        <span class="related-badge">아이패드 수리 가이드</span>
+        <span class="related-title">아이패드 액정 수리, 아이폰보다 왜 두 배 더 비쌀까</span>
+      </a>
+      <a href="ipad-pro-m4-repair-cost.html" class="related-card">
+        <span class="related-badge">아이패드 수리비 가이드</span>
+        <span class="related-title">아이패드 프로 M4 수리비 총정리 — 화면, 배터리, 충전단자 항목별 비교</span>
+      </a>
+    </div>
+  </section>
+
 <footer class="art-footer">
   <p>다올리페어 · 서울 관악구 난곡로 365-5 101호</p>
   <p>문의: <a href="tel:050713873566">0507-1387-3566</a> · <a href="https://xn--2j1bq2k97kxnah86c.com">홈페이지 바로가기</a></p>

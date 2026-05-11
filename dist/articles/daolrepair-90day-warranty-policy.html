@@ -48,7 +48,7 @@
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
     @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
     .art-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10,10,10,0.82);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -646,6 +646,24 @@
     </div>
   </div>
 </div><!-- /art-wrap -->
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="daolrepair-2000-reviews-analysis.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">다올리페어 네이버 후기 2,000개가 알려주는 진짜 평가</span>
+      </a>
+      <a href="customer-reviews.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">다올리페어 고객 후기 — 네이버 누적 2,000개+ 실제 수리 후기</span>
+      </a>
+      <a href="repair-questions-to-ask.html" class="related-card">
+        <span class="related-badge">수리 가이드</span>
+        <span class="related-title">수리 맡기기 전에 꼭 물어봐야 할 질문 5가지</span>
+      </a>
+    </div>
+  </section>
+
 
 <footer class="art-footer">
   <div class="art-footer-brand-row"><img loading="lazy" class="art-footer-logo" src="../로고신규1.jpg" alt="다올리페어"><span class="art-footer-brand">다올리페어</span></div>

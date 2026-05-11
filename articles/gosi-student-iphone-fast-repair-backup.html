@@ -47,7 +47,7 @@
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
     @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
     .art-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10,10,10,0.82);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -648,6 +648,24 @@
     </div>
   </div>
 </div><!-- /art-wrap -->
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="overseas-iphone-broken.html" class="related-card">
+        <span class="related-badge">여행 가이드</span>
+        <span class="related-title">해외여행 중 아이폰 고장, 어떻게 하나? — 현지 수리 vs 귀국 후 판단 기준</span>
+      </a>
+      <a href="iphone-repair-backup-guide.html" class="related-card">
+        <span class="related-badge">수리 가이드</span>
+        <span class="related-title">아이폰 수리 맡기기 전 백업 방법 — 데이터 안 날리는 체크리스트</span>
+      </a>
+      <a href="private-repair-data-safety.html" class="related-card">
+        <span class="related-badge">수리 가이드</span>
+        <span class="related-title">사설 수리점에 기기 맡기면 데이터는 안전한가요</span>
+      </a>
+    </div>
+  </section>
+
 
 <footer class="art-footer">
   <div class="art-footer-brand-row"><img loading="lazy" class="art-footer-logo" src="../로고신규1.jpg" alt="다올리페어"><span class="art-footer-brand">다올리페어</span></div>

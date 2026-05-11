@@ -47,7 +47,7 @@
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
     @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
     .art-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10,10,10,0.82);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -702,6 +702,24 @@
 
   <div class="art-back-link"><a href="index.html">← 칼럼 목록으로 돌아가기</a></div>
 </div>
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="macbook-screen-repair.html" class="related-card">
+        <span class="related-badge">맥북 화면 수리 가이드</span>
+        <span class="related-title">맥북 액정 깨졌을 때 수리비 — 기종별 비용과 올바른 선택</span>
+      </a>
+      <a href="macbook-fan-noise.html" class="related-card">
+        <span class="related-badge">맥북 팬·과열 가이드</span>
+        <span class="related-title">맥북 팬 소음이 갑자기 심해졌다면 — 정상 반응인지 고장 신호인지 구분하는 법</span>
+      </a>
+      <a href="macbook-air-m2-repair-cost.html" class="related-card">
+        <span class="related-badge">맥북 수리</span>
+        <span class="related-title">맥북 에어 M2 수리 비용 총정리 — 2026년 기준</span>
+      </a>
+    </div>
+  </section>
+
 
 <footer class="art-footer">
   <div class="art-footer-brand-row">

@@ -47,7 +47,7 @@
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; animation: fadeInPage 0.3s ease; }
     @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
     .art-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(10,10,10,0.82);
       backdrop-filter: saturate(180%) blur(24px);
       -webkit-backdrop-filter: saturate(180%) blur(24px);
@@ -633,6 +633,24 @@
     </div>
   </div>
 </div><!-- /art-wrap -->
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="iphone-12-battery-under-80-cost-vs-new.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">iPhone 12 배터리 80% 미만 — 비용 vs 새 폰 교체</span>
+      </a>
+      <a href="iphone16-battery-80-percent.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">아이폰 16 배터리 80% 근접 — 교체 시기와 비용</span>
+      </a>
+      <a href="iphone-16-pro-max-back-glass-broken-cost-risk.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">iPhone 16 Pro Max 후면 유리 깨짐 — 수리비와 방치 위험</span>
+      </a>
+    </div>
+  </section>
+
 
 <footer class="art-footer">
   <div class="art-footer-brand-row"><img loading="lazy" class="art-footer-logo" src="../로고신규1.jpg" alt="다올리페어"><span class="art-footer-brand">다올리페어</span></div>
