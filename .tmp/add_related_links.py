@@ -274,10 +274,16 @@ def insert_related_section(content, related_html):
     return content, False
 
 def main():
+    # 일반 칼럼이 아니라 자동 삽입하면 구조가 깨지는 페이지들 (후기 그리드·허브 등)
+    EXCLUDE = {
+        'index.html',
+        'customer-reviews.html',  # rv-card 그리드 안에 잘못 들어감
+    }
+
     # 모든 글 메타데이터 수집
     articles = []
     for fname in os.listdir(ARTICLES_DIR):
-        if not fname.endswith('.html') or fname == 'index.html':
+        if not fname.endswith('.html') or fname in EXCLUDE:
             continue
         filepath = os.path.join(ARTICLES_DIR, fname)
         try:
