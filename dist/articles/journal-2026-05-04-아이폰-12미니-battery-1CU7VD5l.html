@@ -755,7 +755,7 @@ window.artWizStep4 = function(){
 };
 window.artWizSubmit = function(){
   var name = document.getElementById('artWName').value.trim();
-  var phone = document.getElementById('artWPhone').value.trim();
+  var phone = document.getElementById('artWPhone').value.trim();var _pd=phone.replace(/[^0-9]/g,'');if(_pd.length===11)phone=_pd.slice(0,3)+'-'+_pd.slice(3,7)+'-'+_pd.slice(7);else if(_pd.length===10)phone=_pd.slice(0,3)+'-'+_pd.slice(3,6)+'-'+_pd.slice(6);
   var method = document.getElementById('artWMethod').value;
   if(!name||!phone||!method){alert('이름, 연락처, 방문/접수 방법을 입력해주세요.');return;}
   var memo = document.getElementById('artWMemo').value.trim();

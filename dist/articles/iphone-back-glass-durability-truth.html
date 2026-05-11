@@ -99,7 +99,7 @@
     .art-nav-reserve-dropdown a:last-child { border-bottom: none; }
     .art-nav-reserve-dropdown a:hover { background: rgba(232,115,42,0.12); color: #E8732A; }
     .art-nav-reserve-dropdown a span { font-size: 11px; color: rgba(255,255,255,0.35); display: block; margin-top: 2px; font-weight: 400; }
-    @media (max-width: 768px) { .art-nav-links { display: none;  padding: 0; margin: 0;} .art-nav-inner { padding: 0 20px; display: flex !important; justify-content: space-between !important; grid-template-columns: none !important; \} }
+    @media (max-width: 768px) { .art-nav-links { display: none;  padding: 0; margin: 0;} .art-nav-inner { padding: 0 20px; display: flex !important; justify-content: space-between !important; grid-template-columns: none !important; } }
     .art-wrap { max-width: 680px; margin: 0 auto; padding: 80px 20px 100px; }
     .art-header { padding: 40px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
     .art-cat { font-size: 12px; font-weight: 600; color: var(--orange); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
@@ -1040,7 +1040,7 @@ window.artWizStep4 = function(){
 
 window.artWizSubmit = function(){
   var name = document.getElementById('artWName').value.trim();
-  var phone = document.getElementById('artWPhone').value.trim();
+  var phone = document.getElementById('artWPhone').value.trim();var _pd=phone.replace(/[^0-9]/g,'');if(_pd.length===11)phone=_pd.slice(0,3)+'-'+_pd.slice(3,7)+'-'+_pd.slice(7);else if(_pd.length===10)phone=_pd.slice(0,3)+'-'+_pd.slice(3,6)+'-'+_pd.slice(6);
   var method = document.getElementById('artWMethod').value;
   if(!name||!phone||!method){alert('이름, 연락처, 방문/접수 방법을 입력해주세요.');return;}
   var memo = document.getElementById('artWMemo').value.trim();
