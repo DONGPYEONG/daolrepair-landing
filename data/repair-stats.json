@@ -1,20 +1,20 @@
 {
-  "updated_at": "2026-05-11T15:02:36.374816+09:00",
+  "updated_at": "2026-05-11T15:29:09.090018+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
-    "total": 11170,
-    "today": 15,
-    "this_week": 15,
-    "this_month": 120,
+    "total": 11175,
+    "today": 20,
+    "this_week": 20,
+    "this_month": 125,
     "by_branch": {
-      "가산점": 5565,
+      "가산점": 5570,
       "신림점": 5150,
       "목동점": 455
     },
     "by_type": {
       "후면 + 배터리 교체": 15,
       "화면 교체": 90,
-      "배터리 교체": 135,
+      "배터리 교체": 140,
       "후면 유리 교체": 55,
       "충전 단자 수리": 20,
       "화면 + 배터리 교체": 20,
@@ -29,46 +29,46 @@
   },
   "recent_cases": [
     {
+      "model": "애플워치 5 44mm",
+      "type": "배터리 교체",
+      "branch": "가산점",
+      "minutes_ago": 5
+    },
+    {
       "model": "아이패드 iPad Pro 11인치 (2세대)",
       "type": "화면 교체",
       "branch": "목동점",
-      "minutes_ago": 127
+      "minutes_ago": 153
     },
     {
       "model": "아이폰 iPhone 15 Pro",
       "type": "화면 교체",
       "branch": "목동점",
-      "minutes_ago": 144
+      "minutes_ago": 171
     },
     {
       "model": "아이폰 17프로",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 214
+      "minutes_ago": 241
     },
     {
       "model": "아이폰 iPhone X",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 2810
+      "minutes_ago": 2836
     },
     {
       "model": "아이폰 iPhone 14 Pro",
       "type": "후면 + 배터리 교체",
       "branch": "신림점",
-      "minutes_ago": 2878
+      "minutes_ago": 2905
     },
     {
       "model": "아이폰 iPhone 11",
       "type": "화면 교체",
       "branch": "신림점",
-      "minutes_ago": 3010
-    },
-    {
-      "model": "아이폰 13",
-      "type": "화면 교체",
-      "branch": "가산점",
-      "minutes_ago": 3025
+      "minutes_ago": 3037
     }
   ],
   "top_repair_types": [
@@ -80,7 +80,7 @@
     {
       "rank": 2,
       "label": "배터리 교체",
-      "count": 35
+      "count": 40
     },
     {
       "rank": 3,
@@ -1338,32 +1338,6 @@
       "case_id": "19Ek3Abh0X77oY0WWJtBjDuODJxDNAObu",
       "meta": {},
       "journal_url": "articles/journal-2026-04-24-아이폰-14프로-battery-19Ek3Abh.html"
-    },
-    {
-      "id": "case-41",
-      "model": "아이폰 13미니",
-      "type": "배터리 교체",
-      "branch": "목동점",
-      "date": "2026-04-24",
-      "createdTime": "2026-04-24T05:16:04.553Z",
-      "repair_time": "당일 · 30~50분",
-      "before_img": "images/before-after/1aqhzjZvq11tKT8tViDPr2he/before.jpg",
-      "after_img": "images/before-after/1aqhzjZvq11tKT8tViDPr2he/after.jpg",
-      "progress_imgs": [
-        "images/before-after/1aqhzjZvq11tKT8tViDPr2he/progress1.jpg",
-        "images/before-after/1aqhzjZvq11tKT8tViDPr2he/progress2.jpg",
-        "images/before-after/1aqhzjZvq11tKT8tViDPr2he/progress3.jpg"
-      ],
-      "progress_labels": [
-        "내부분해",
-        "교체부품",
-        "수리작업중"
-      ],
-      "before_text": "이전 배터리 성능치",
-      "after_text": "교체 후 배터리 성능치",
-      "case_id": "1aqhzjZvq11tKT8tViDPr2heE91eLvsj2",
-      "meta": {},
-      "journal_url": "articles/journal-2026-04-24-아이폰-13미니-battery-1aqhzjZv.html"
     }
   ]
 }
