@@ -232,13 +232,24 @@ def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2, model: 
                 x2 = min(W, fx + fw)
                 y2 = min(H, fy + fh)
                 if x2 > x1 and y2 > y1:
-                    # 박스 크기에 비례한 강한 블러 (큰 얼굴일수록 더 강하게)
+                    # 타원형 마스크 + 부드러운 가장자리 — 얼굴만 자연스럽게 가림
                     crop = img.crop((x1, y1, x2, y2))
                     box_size = max(x2 - x1, y2 - y1)
-                    # radius: 작은 얼굴 15px, 큰 얼굴(>300px) 30px
                     blur_radius = max(15, min(35, box_size // 12))
                     blurred = crop.filter(ImageFilter.GaussianBlur(radius=blur_radius))
-                    img.paste(blurred, (x1, y1, x2, y2))
+                    # 타원 마스크 생성 (얼굴 비율에 맞게)
+                    mask = Image.new('L', crop.size, 0)
+                    draw = ImageDraw.Draw(mask)
+                    cw, ch = crop.size
+                    # 타원이 박스 90% 차지 (양옆 5% 여유)
+                    draw.ellipse((cw*0.05, ch*0.05, cw*0.95, ch*0.95), fill=255)
+                    # 가장자리 부드럽게 (radius는 박스 크기 비례)
+                    feather = max(8, box_size // 20)
+                    mask = mask.filter(ImageFilter.GaussianBlur(radius=feather))
+                    # 원본 위에 블러된 버전을 타원 마스크로 합성
+                    crop_with_mask = crop.copy()
+                    crop_with_mask.paste(blurred, (0, 0), mask)
+                    img.paste(crop_with_mask, (x1, y1))
             img.save(path, 'JPEG', quality=92, optimize=True)
 
     # 교체 부품(parts) 사진은 더 적극적 OCR — 부품 공급사 라벨(PartsPick 등) 영문/한글 모두 잡기
