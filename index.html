@@ -1982,7 +1982,8 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
 .live-ticker-row .lt-time { color:rgba(0,0,0,0.4); font-size:12px; font-weight:500; margin-left:auto; flex-shrink:0; }
 .live-branches { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
 .live-branch-card { background:#fff; border:1px solid rgba(0,0,0,0.07); border-radius:14px; padding:14px 16px; box-shadow:0 2px 8px rgba(0,0,0,0.03); }
-.live-branch-name { font-size:12px; color:rgba(0,0,0,0.5); font-weight:700; margin-bottom:4px; letter-spacing:0.3px; }
+.live-branch-name { font-size:12px; color:rgba(0,0,0,0.5); font-weight:700; margin-bottom:4px; letter-spacing:0.3px; display:flex; align-items:center; gap:6px; }
+.live-branch-new { display:inline-block; background:linear-gradient(135deg,#FF6B35 0%,#ff8e5a 100%); color:#fff; font-size:9.5px; font-weight:900; letter-spacing:0.6px; padding:2px 7px; border-radius:50px; line-height:1.4; box-shadow:0 1px 4px rgba(255,107,53,0.35); }
 .live-branch-num { font-size:22px; font-weight:900; letter-spacing:-0.5px; color:#1a1a1a; }
 @media (max-width:720px){
   #live-activity { padding-left:20px !important; padding-right:20px !important; }
@@ -2050,7 +2051,9 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
     Object.keys(byBranch).forEach(function(name){
       var card = document.createElement('div');
       card.className = 'live-branch-card';
-      card.innerHTML = '<div class="live-branch-name">📍 ' + name + '</div>' +
+      var isNew = name.indexOf('목동') >= 0;
+      var newBadge = isNew ? '<span class="live-branch-new">NEW</span>' : '';
+      card.innerHTML = '<div class="live-branch-name">📍 ' + name + newBadge + '</div>' +
                        '<div class="live-branch-num">' + fmt(byBranch[name]) + '<span style="font-size:13px;color:rgba(0,0,0,0.4);font-weight:600;margin-left:4px;">건</span></div>';
       box.appendChild(card);
     });
