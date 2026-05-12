@@ -1382,7 +1382,18 @@ def make_body(c):
     repair_type을 정확히 한 카테고리로 매핑한 뒤 해당 TYPE_BODY 템플릿 사용.
     한국어 표기·영문 표기 모두 인식.
     """
-    raw = (c.get("repair_type") or c.get("type", "")).lower().strip()
+    # 🔒 폴더 ID overrides — 같은 폴더가 여러 type으로 분류되는 것 방지
+    # (Drive 폴더명에 sensor/other가 들어 있어도 실제 수리 부위로 강제 매핑)
+    FOLDER_TYPE_OVERRIDES = {
+        "11BNtH7gTdSRbVov7ZSm79in": "back",   # 5/12 목동 워치 SE2 후면 케이스 (sensor 자동 분류 방지)
+    }
+    case_id_for_override = c.get("case_id", "")
+    forced_type = None
+    for prefix, t in FOLDER_TYPE_OVERRIDES.items():
+        if case_id_for_override.startswith(prefix):
+            forced_type = t
+            break
+    raw = (forced_type or c.get("repair_type") or c.get("type", "")).lower().strip()
 
     # 영문 키 직접 매칭 (TYPE_BODY 키와 일치)
     DIRECT_KEYS = {"screen", "back", "back-glass", "battery", "charge", "speaker",
@@ -2536,7 +2547,17 @@ window.artPhotoPreview = function(input){
 def generate_article(case, journals, used_titles=None):
     """1편 생성. 케이스별 고유 (case_id 기반) — 같은 모델·수리도 다른 케이스면 별도 일지."""
     model = case["model"]
-    rtype = case.get("repair_type") or case.get("type", "") or ""
+    # 🔒 폴더 ID overrides — 같은 폴더가 여러 type으로 분류되는 것 방지 (make_body와 동일)
+    FOLDER_TYPE_OVERRIDES = {
+        "11BNtH7gTdSRbVov7ZSm79in": "back",   # 5/12 목동 워치 SE2 후면 케이스
+    }
+    cid_for_ov = case.get("case_id", "")
+    forced = None
+    for prefix, t in FOLDER_TYPE_OVERRIDES.items():
+        if cid_for_ov.startswith(prefix):
+            forced = t
+            break
+    rtype = forced or case.get("repair_type") or case.get("type", "") or ""
     month = case.get("date", "")[:7] if case.get("date") else ""
     case_id = case.get("case_id", "") or case.get("id", "")
     # 케이스 단위로 unique key (이전엔 model|type|month로 묶여 중복 케이스 누락됨)
