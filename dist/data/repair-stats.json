@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-12T12:54:29.396979+09:00",
+  "updated_at": "2026-05-12T13:37:40.784717+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11195,
@@ -33,43 +33,43 @@
       "model": "아이폰 iPhone 13 Pro",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 40
+      "minutes_ago": 83
     },
     {
       "model": "애플워치 Apple Watch SE (2세대)",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 114
+      "minutes_ago": 157
     },
     {
       "model": "아이폰 iPhone 13",
       "type": "화면 + 배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 157
+      "minutes_ago": 200
     },
     {
       "model": "아이폰 iPhone 13 Pro",
       "type": "수리",
       "branch": "목동점",
-      "minutes_ago": 1191
+      "minutes_ago": 1234
     },
     {
       "model": "애플워치 5 44mm",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 1291
+      "minutes_ago": 1334
     },
     {
       "model": "아이패드 iPad Pro 11인치 (2세대)",
       "type": "화면 교체",
       "branch": "목동점",
-      "minutes_ago": 1439
+      "minutes_ago": 1482
     },
     {
       "model": "아이폰 iPhone 15 Pro",
       "type": "화면 교체",
       "branch": "목동점",
-      "minutes_ago": 1456
+      "minutes_ago": 1499
     }
   ],
   "top_repair_types": [
@@ -126,7 +126,8 @@
         "options_list": [
           "DD액정"
         ]
-      }
+      },
+      "journal_url": "articles/journal-2026-05-12-아이폰-iphone-13-pro-screen-1P3hcrr2.html"
     },
     {
       "id": "case-2",
@@ -165,7 +166,8 @@
           "정품액정",
           "셀배터리"
         ]
-      }
+      },
+      "journal_url": "articles/journal-2026-05-12-아이폰-iphone-13-screen+battery-11Ntl7my.html"
     },
     {
       "id": "case-3",
@@ -270,7 +272,8 @@
         "options_list": [
           "DD액정"
         ]
-      }
+      },
+      "journal_url": "articles/journal-2026-05-12-아이폰-iphone-13-pro-screen-1P3hcrr2.html"
     },
     {
       "id": "case-2",
@@ -309,7 +312,8 @@
           "정품액정",
           "셀배터리"
         ]
-      }
+      },
+      "journal_url": "articles/journal-2026-05-12-아이폰-iphone-13-screen+battery-11Ntl7my.html"
     },
     {
       "id": "case-3",
@@ -944,7 +948,8 @@
         "options_list": [
           "배터리교체"
         ]
-      }
+      },
+      "journal_url": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html"
     },
     {
       "id": "case-26",
