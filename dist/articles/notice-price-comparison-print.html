@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>공식센터 vs 다올리페어 수리비 비교 — A6 매장 안내문 | 다올리페어</title>
+  <meta name="description" content="다올리페어 매장 비치용 A6 안내문. 공식 서비스센터 vs 다올리페어 수리비 비교. 액정·배터리·후면 유리.">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://xn--2j1bq2k97kxnah86c.com/articles/notice-price-comparison-print.html">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      background: #f0f0f0;
+      padding: 40px 20px;
+      color: #1a1a1a;
+      line-height: 1.5;
+    }
+    .toolbar {
+      max-width: 480px; margin: 0 auto 24px; text-align: center;
+    }
+    .toolbar h1 { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+    .toolbar p { font-size: 13px; color: #666; margin-bottom: 14px; line-height: 1.6; }
+    .toolbar button {
+      background: #E8732A; color: #fff; border: none;
+      padding: 12px 28px; border-radius: 30px;
+      font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit;
+    }
+    .toolbar button:hover { background: #C55E1A; }
+    .toolbar a {
+      display: inline-block; margin-left: 12px;
+      color: #666; font-size: 13px; text-decoration: underline;
+    }
+
+    /* A6 세로: 105mm × 148mm */
+    .a6-card {
+      width: 105mm;
+      height: 148mm;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      padding: 7mm 8mm;
+      display: flex;
+      flex-direction: column;
+      color: #1a1a1a;
+      overflow: hidden;
+      page-break-after: always;
+    }
+
+    .a6-header {
+      text-align: center;
+      padding-bottom: 3.5mm;
+      margin-bottom: 4mm;
+      border-bottom: 2px solid #E8732A;
+    }
+    .a6-eyebrow {
+      display: inline-block;
+      background: #E8732A;
+      color: #fff;
+      font-size: 8.5pt;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      padding: 1.5mm 4mm;
+      border-radius: 30px;
+      margin-bottom: 2.5mm;
+    }
+    .a6-title {
+      font-size: 14pt;
+      font-weight: 900;
+      line-height: 1.3;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+    }
+    .a6-title em {
+      color: #E8732A;
+      font-style: normal;
+    }
+    .a6-sub {
+      font-size: 8.5pt;
+      color: #666;
+      margin-top: 1.5mm;
+      line-height: 1.5;
+    }
+    .a6-sub strong { color: #C55E1A; }
+
+    .a6-cmp {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5mm;
+      margin-bottom: 2mm;
+    }
+    .a6-cmp-card {
+      position: relative;
+      padding: 1.8mm 2.5mm 2mm;
+      background: #fff;
+      border: 1px solid rgba(232,115,42,0.18);
+      border-radius: 2.5mm;
+      box-shadow: 0 1.5px 4px rgba(0,0,0,0.04);
+    }
+    .a6-cmp-part {
+      font-size: 8.5pt;
+      font-weight: 900;
+      color: #0A0A0A;
+      margin-bottom: 1.5mm;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 1.5mm;
+    }
+    .a6-cmp-part::before {
+      content: '';
+      width: 3mm;
+      height: 3mm;
+      background: linear-gradient(135deg, #E8732A 0%, #ff8e5a 100%);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .a6-cmp-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8mm;
+      margin-bottom: 1.2mm;
+    }
+    .a6-cmp-side {
+      padding: 1.5mm 2mm;
+      border-radius: 2mm;
+      text-align: center;
+    }
+    .a6-cmp-side.official {
+      background: #fff0f0;
+      border: 1px solid #ffd0d0;
+    }
+    .a6-cmp-side.daol {
+      background: #f0fdf4;
+      border: 1px solid #c2eccd;
+    }
+    .a6-cmp-label {
+      font-size: 6pt;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      margin-bottom: 0.5mm;
+    }
+    .a6-cmp-side.official .a6-cmp-label { color: #c53030; }
+    .a6-cmp-side.daol .a6-cmp-label { color: #16a34a; }
+    .a6-cmp-price {
+      font-size: 10pt;
+      font-weight: 900;
+      color: #1a1a1a;
+      letter-spacing: -0.3px;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+    .a6-cmp-side.official .a6-cmp-price { color: #c53030; text-decoration: line-through; }
+    .a6-save {
+      text-align: center;
+      font-size: 7pt;
+      font-weight: 800;
+      color: #C55E1A;
+    }
+    .a6-save strong {
+      color: #E8732A;
+      font-size: 7.5pt;
+    }
+
+    .a6-foot-note {
+      background: #fafaf7;
+      border-top: 0.5mm solid #1a1a1a;
+      border-bottom: 0.5mm solid #1a1a1a;
+      padding: 2.2mm 3mm;
+      margin-top: auto;
+      font-size: 6.5pt;
+      line-height: 1.55;
+      color: #444;
+      word-break: keep-all;
+    }
+    .a6-foot-note strong { color: #1a1a1a; }
+    .a6-foot-note .a6-foot-eyebrow {
+      font-size: 5.5pt;
+      font-weight: 900;
+      color: #E8732A;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 1.5mm;
+    }
+
+    .a6-footer {
+      margin-top: 2mm;
+      padding-top: 1.8mm;
+      border-top: 1px dashed #bbb;
+      font-size: 7pt;
+      color: #666;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .a6-footer .url { color: #E8732A; font-weight: 700; }
+
+    @media print {
+      body { background: #fff; padding: 0; margin: 0; }
+      .toolbar { display: none; }
+      .a6-card { box-shadow: none; margin: 0; }
+      @page { size: A6; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <h1>매장 비치용 A6 안내문 — 공식 vs 다올 수리비 비교</h1>
+    <p>아래 미리보기는 실제 인쇄 크기 (105 × 148mm).<br>인쇄 → 용지 'A6' 또는 'A4 한 장에 4개 배치' 선택.</p>
+    <button onclick="window.print()">인쇄하기</button>
+    <a href="notice-repair-vs-replacement-print.html">← 다른 안내문</a>
+  </div>
+
+  <div class="a6-card">
+    <div class="a6-header">
+      <div class="a6-eyebrow">💰 같은 부품, 같은 보증</div>
+      <div class="a6-title"><em>최대 76%</em> 더 합리적</div>
+      <div class="a6-sub">iPhone 16 Pro 기준 — <strong>정품·정품급 OEM 부품 / 90일 무상 A/S 동일</strong></div>
+    </div>
+
+    <div class="a6-cmp">
+      <!-- 액정 -->
+      <div class="a6-cmp-card">
+        <div class="a6-cmp-part">액정 교체</div>
+        <div class="a6-cmp-row">
+          <div class="a6-cmp-side official">
+            <div class="a6-cmp-label">공식센터</div>
+            <div class="a6-cmp-price">약 64만원</div>
+          </div>
+          <div class="a6-cmp-side daol">
+            <div class="a6-cmp-label">다올리페어</div>
+            <div class="a6-cmp-price">30~55만원</div>
+          </div>
+        </div>
+        <div class="a6-save">최대 <strong>34만원 절약</strong> (53% ↓)</div>
+      </div>
+
+      <!-- 배터리 -->
+      <div class="a6-cmp-card">
+        <div class="a6-cmp-part">배터리 교체</div>
+        <div class="a6-cmp-row">
+          <div class="a6-cmp-side official">
+            <div class="a6-cmp-label">공식센터</div>
+            <div class="a6-cmp-price">약 18만원</div>
+          </div>
+          <div class="a6-cmp-side daol">
+            <div class="a6-cmp-label">다올리페어</div>
+            <div class="a6-cmp-price">10~12만원</div>
+          </div>
+        </div>
+        <div class="a6-save">최대 <strong>8만원 절약</strong> (44% ↓)</div>
+      </div>
+
+      <!-- 후면 유리 -->
+      <div class="a6-cmp-card">
+        <div class="a6-cmp-part">후면 유리 교체</div>
+        <div class="a6-cmp-row">
+          <div class="a6-cmp-side official">
+            <div class="a6-cmp-label">공식센터</div>
+            <div class="a6-cmp-price">약 84만원</div>
+          </div>
+          <div class="a6-cmp-side daol">
+            <div class="a6-cmp-label">다올리페어</div>
+            <div class="a6-cmp-price">20만원</div>
+          </div>
+        </div>
+        <div class="a6-save">무려 <strong>64만원 절약</strong> (76% ↓)</div>
+      </div>
+    </div>
+
+    <div class="a6-foot-note">
+      <span class="a6-foot-eyebrow">A LITTLE FAVOR</span>
+      공식센터 가격은 모델·시기에 따라 변동될 수 있으며, <strong>AppleCare+ 가입자는 자기부담금이 더 저렴</strong>할 수 있어요. 매장에서 손님 상황에 맞춰 정직하게 비교 안내드립니다.
+    </div>
+
+    <div class="a6-footer">
+      <span class="url">다올리페어.com</span>
+    </div>
+  </div>
+
+</body>
+</html>
