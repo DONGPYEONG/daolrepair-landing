@@ -77,6 +77,22 @@ SYMPTOM_MAP = {
     "뒷판파손": ("back", "후면 유리 파손 — 카메라 보호 글래스 동반 점검"),
 }
 
+# 이전 수리 이력 키워드 — 파일명에 들어오면 메타에 prior_repair 추가
+# 글에 "이전에 어디서 수리 받았었나" 컨텍스트로 활용 (디테일 강화)
+PRIOR_REPAIR_MAP = {
+    "공식센터": ("official", "공식 서비스센터에서 이전 수리 이력 있음"),
+    "공식": ("official", "공식 서비스센터에서 이전 수리 이력 있음"),
+    "애플케어": ("official", "AppleCare+ 공식 수리 이력 있음"),
+    "케어플러스": ("official", "AppleCare+ 공식 수리 이력 있음"),
+    "사설수리점": ("private", "다른 사설 수리점에서 이전 수리 이력 있음"),
+    "사설수리": ("private", "다른 사설 수리점에서 이전 수리 이력 있음"),
+    "타사사설": ("private", "다른 사설 수리점에서 이전 수리 이력 있음"),
+    "수리없음": ("none", "이전 수리 이력 없음 (출고 후 첫 수리)"),
+    "수리이력없음": ("none", "이전 수리 이력 없음 (출고 후 첫 수리)"),
+    "첫수리": ("none", "이전 수리 이력 없음 (출고 후 첫 수리)"),
+    "이력없음": ("none", "이전 수리 이력 없음 (출고 후 첫 수리)"),
+}
+
 
 def parse_filename(filename: str) -> dict:
     """파일명에서 메타정보 추출. 빈 dict면 정보 없음.
@@ -137,6 +153,17 @@ def parse_filename(filename: str) -> dict:
         if p in ('남성', '여성'):
             meta.setdefault('gender', p)
             meta.setdefault('age_gender', p)
+            continue
+
+        # 이전 수리 이력 (PRIOR_REPAIR_MAP) — 옵션 매칭보다 우선
+        prior_matched = False
+        for kw, (code, natural) in PRIOR_REPAIR_MAP.items():
+            if kw in p:
+                meta.setdefault('prior_repair', code)
+                meta.setdefault('prior_repair_natural', natural)
+                prior_matched = True
+                break
+        if prior_matched:
             continue
 
         # 증상 (SYMPTOM_MAP 키워드) — 옵션 매칭보다 우선 검사. + 다중 증상도 각자 분리해서 매칭

@@ -1549,6 +1549,8 @@ def _make_meta_intro_box(c, meta):
         rows.append(("고장 원인", meta["cause"]))
     if meta.get("symptom_natural"):
         rows.append(("관찰된 증상", meta["symptom_natural"]))
+    if meta.get("prior_repair_natural"):
+        rows.append(("이전 수리 이력", meta["prior_repair_natural"]))
     if meta.get("options_natural"):
         rows.append(("선택 옵션", meta["options_natural"]))
     if not rows:
