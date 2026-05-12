@@ -2005,8 +2005,45 @@ def make_apple_compare(c):
     model = c.get("model", "")
     is_battery = "배터리" in rtype or rtype in {"battery", "battery+other"}
     is_back = "후면" in rtype or rtype in {"back", "back-glass"}
+    is_screen = ("화면" in rtype) or ("액정" in rtype) or ("screen" in str(rtype).lower())
     is_watch = "워치" in model or "Watch" in model.lower() or "watch" in model.lower()
     is_ipad = "아이패드" in model or "iPad" in model
+
+    # 🆕 아이패드 액정 — 전용 비교 섹션 (공식은 본체 전체 교체, 사설은 디스플레이만)
+    if is_ipad and is_screen:
+        return '''
+<h2>다올리페어 vs 애플 공식센터 — 아이패드 액정 수리</h2>
+<p>아이패드 액정은 공식·사설의 접근 방식 자체가 다릅니다. 공식은 본체 전체 교체, 사설은 디스플레이만 교체. 어디가 본인 상황에 맞는지 한눈에 비교해보세요.</p>
+<table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;">
+  <thead>
+    <tr style="background:#1a1a1a;color:#fff;">
+      <th style="padding:11px;border:1px solid #1a1a1a;text-align:left;">구분</th>
+      <th style="padding:11px;border:1px solid #1a1a1a;text-align:left;">다올리페어</th>
+      <th style="padding:11px;border:1px solid #1a1a1a;text-align:left;">애플 공식센터</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>수리 방식</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 디스플레이 모듈만 교체</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 본체 전체 교체 안내</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>수리비</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ <a href="ipad-screen-repair-cost-by-model-2026.html">모델별 18~55만원</a></td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 본체 교체 60~120만원+</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>부품</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ <a href="ipad-screen-genuine-recycled-vs-fog.html">추출 정품 / 재생 정품만</a> (fog 액정 X)</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 본체 전체이므로 디스플레이만 별도 옵션 없음</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>작업 시간</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 부품 수급 1~2일 (주말 시 2~3일)</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 수리 센터 입고 1~2주</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>예약·접수</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 카카오 채널 5분 견적 + 모델·색상 확인</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ Genius Bar 예약 — 슬롯 부족</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>본체 보존</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 본체·시리얼·각인 그대로</td><td style="padding:10px;border:1px solid #eee;color:#a85a00;">⚠️ 본체 자체 교체 (시리얼·각인 변경)</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>"비정품 부품" 메시지</strong></td><td style="padding:10px;border:1px solid #eee;">✅ 안 뜸 (해당 없음)</td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;">✅ 안 뜸</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;background:#fafafa;"><strong>보증</strong></td><td style="padding:10px;border:1px solid #eee;color:#1a7a3a;font-weight:600;">✅ 다올리페어 90일 무상</td><td style="padding:10px;border:1px solid #eee;">✅ 90일 또는 잔여 애플케어+</td></tr>
+  </tbody>
+</table>
+<p style="font-size:13px;color:#666;margin-top:-4px;">※ 아이패드는 사설 수리해도 "비정품 부품" 메시지가 뜨지 않습니다 — 부품 시리얼 매핑이 적용되지 않기 때문이며, 추출/재생 정품으로 작업해도 사용감·인증·페어링 모두 그대로입니다.</p>
+<p style="font-size:13px;color:#666;">※ 아이패드 액정-유리는 일체형 라미 구조라 "가액정(유리만 교체)" 옵션이 사실상 없습니다. 모든 다올리페어 액정 수리는 디스플레이 모듈 통째 교체이며, 정품 패널 기반의 추출/재생 정품만 사용합니다.</p>
+<div style="background:#fff5f0;border-left:4px solid #E8732A;padding:14px 18px;border-radius:0 10px 10px 0;margin:20px 0;">
+  <strong style="color:#E8732A;display:block;margin-bottom:6px;font-size:14px;">한 줄 요약</strong>
+  <p style="font-size:14px;color:#555;line-height:1.7;margin:0;">
+    ① <strong>본체·시리얼·각인 그대로 + 합리적 가격</strong>이시면 → 다올리페어 (디스플레이만 교체)<br>
+    ② <strong>본체 전체 교체로 새 제품 받기</strong> 원하시면 → 공식센터 (본체 교체 비용·시간 감수)<br>
+    아이패드는 부품 수급으로 1~2일 소요되며 (주말 시 2~3일), <a href="ipad-screen-genuine-recycled-vs-fog.html">추출 정품 / 재생 정품</a>만 사용합니다.
+  </p>
+</div>
+'''
 
     # ── "비정품 부품" 메시지 행 (기종별 차이) ──
     # 워치·아이패드는 사설 수리해도 메시지 자체가 안 뜸 (Apple 정책)

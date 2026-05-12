@@ -53,23 +53,21 @@
     .pf-handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 3px; background: #fff; transform: translateX(-50%); pointer-events: none; box-shadow: 0 0 14px rgba(0,0,0,0.4); z-index: 5; }
     .pf-handle-circle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 38px; height: 38px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.28); }
 
-    /* Caption */
+    /* Caption — 메인 슬라이더와 동일한 형식 */
     .pf-caption { padding: 18px 18px 20px; text-align: center; }
-    .pf-caption-model { font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 700; letter-spacing: 0.5px; margin-bottom: 5px; }
-    .pf-caption-title { font-size: 16px; font-weight: 800; color: #fff; line-height: 1.4; margin-bottom: 12px; letter-spacing: -0.3px; }
-    .pf-compare { display: flex; align-items: stretch; gap: 7px; margin-bottom: 12px; }
-    .pf-compare-item { flex: 1; padding: 8px 10px; border-radius: 9px; min-width: 0; }
-    .pf-compare-before { background: linear-gradient(135deg, rgba(255,69,58,0.18) 0%, rgba(255,69,58,0.08) 100%); border: 1px solid rgba(255,69,58,0.35); }
-    .pf-compare-after { background: linear-gradient(135deg, rgba(52,199,89,0.18) 0%, rgba(52,199,89,0.08) 100%); border: 1px solid rgba(52,199,89,0.35); }
-    .pf-compare-label { font-size: 9px; font-weight: 900; letter-spacing: 1.5px; margin-bottom: 2px; }
-    .pf-compare-before .pf-compare-label { color: #ff6b66; }
-    .pf-compare-after .pf-compare-label { color: #34c759; }
-    .pf-compare-text { font-size: 11px; font-weight: 700; color: #fff; line-height: 1.35; word-break: keep-all; }
-    .pf-caption-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
-    .pf-meta-tag { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 700; padding: 4px 9px; border-radius: 50px; }
-    .pf-meta-time { background: rgba(255,107,53,0.15); color: #FF8E5A; border: 1px solid rgba(255,107,53,0.3); }
-    .pf-meta-branch { background: rgba(96,165,250,0.15); color: #8AB8FA; border: 1px solid rgba(96,165,250,0.3); }
-    .pf-meta-warranty { background: rgba(52,199,89,0.15); color: #34c759; border: 1px solid rgba(52,199,89,0.3); }
+    .pf-meta-top { font-size: 11px; color: rgba(255,255,255,0.55); font-weight: 600; letter-spacing: 0.3px; margin-bottom: 8px; }
+    .pf-main-title { font-size: 17px; font-weight: 800; color: #fff; line-height: 1.4; margin-bottom: 4px; letter-spacing: -0.3px; }
+    .pf-main-sub { font-size: 13px; color: rgba(255,255,255,0.6); font-weight: 500; margin-bottom: 14px; line-height: 1.5; }
+    .pf-benefits { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; margin-bottom: 12px; }
+    .pf-benefit { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 8px 6px; min-width: 0; }
+    .pf-benefit-mid { background: rgba(232,115,42,0.1); border-color: rgba(232,115,42,0.3); }
+    .pf-benefit-num { font-size: 14px; font-weight: 900; color: #fff; letter-spacing: -0.3px; line-height: 1.2; margin-bottom: 2px; white-space: nowrap; }
+    .pf-benefit-num span { font-size: 10px; opacity: 0.85; }
+    .pf-benefit-mid .pf-benefit-num { color: #FF8E5A; }
+    .pf-benefit-label { font-size: 10px; color: rgba(255,255,255,0.55); font-weight: 600; line-height: 1.3; }
+    .pf-trust { font-size: 11px; color: rgba(52,199,89,0.85); font-weight: 600; margin-bottom: 12px; letter-spacing: 0.2px; }
+    .pf-journal-link { display: block; padding: 10px 14px; background: rgba(232,115,42,0.12); border: 1px solid rgba(232,115,42,0.35); border-radius: 10px; color: #FF8E5A; font-size: 12px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .pf-journal-link:hover { background: rgba(232,115,42,0.2); border-color: rgba(232,115,42,0.55); color: #fff; }
 
     /* CTA strip */
     .pf-cta { margin-top: 60px; background: linear-gradient(135deg, rgba(232,115,42,0.15) 0%, rgba(232,115,42,0.05) 100%); border: 1px solid rgba(232,115,42,0.25); border-radius: 22px; padding: 36px 28px; text-align: center; }
@@ -268,6 +266,27 @@
     grid.innerHTML = cases.map(function(c){
       var beforeUrl = c.before_img + '?v=' + v;
       var afterUrl  = c.after_img  + '?v=' + v;
+      // 디바이스 인지 — iPad/Watch는 시간 표기 다름
+      var modelStr = c.model || '';
+      var isIpad = modelStr.indexOf('아이패드') >= 0 || modelStr.indexOf('iPad') >= 0;
+      var isWatch = modelStr.indexOf('애플워치') >= 0 || modelStr.indexOf('Apple Watch') >= 0 || modelStr.indexOf('에르메스') >= 0;
+      var typeStr = c.type || '수리';
+      var isBack = typeStr.indexOf('후면') >= 0;
+      var timeShort, timeLabel;
+      if(isIpad){
+        timeShort = '1~2일';
+        timeLabel = '부품 수급';
+      } else if(isWatch && isBack){
+        timeShort = '6시간';
+        timeLabel = '본드 경화 (다음 날)';
+      } else {
+        var timeText = c.repair_time || (c.minutes ? c.minutes + '분' : '30분');
+        timeShort = timeText.replace(/^당일[\s·]*/, '').replace(/~.*분/, '분').trim();
+        timeLabel = '당일 완료';
+      }
+      var journalBtn = c.journal_url
+        ? '<a href="' + c.journal_url + '" class="pf-journal-link">📋 이 케이스 자세히 보기 →</a>'
+        : '<a href="articles/journal.html" class="pf-journal-link">📋 다른 수리 사례 보기 →</a>';
       return [
         '<div class="pf-card">',
           '<div class="pf-slider" data-pf-slider>',
@@ -281,23 +300,25 @@
             '</div></div>',
           '</div>',
           '<div class="pf-caption">',
-            '<div class="pf-caption-model">' + (c.branch || '') + ' · ' + (c.date || '') + '</div>',
-            '<div class="pf-caption-title">' + (c.model || '') + ' — ' + (c.type || '수리') + '</div>',
-            '<div class="pf-compare">',
-              '<div class="pf-compare-item pf-compare-before">',
-                '<div class="pf-compare-label">BEFORE</div>',
-                '<div class="pf-compare-text">' + (c.before_text || '수리 전') + '</div>',
+            '<div class="pf-meta-top">📍 ' + (c.branch || '') + ' · ' + (c.date || '') + '</div>',
+            '<div class="pf-main-title">' + (c.model || '') + '</div>',
+            '<div class="pf-main-sub">' + typeStr + ' — 깨끗하게 살려냈습니다</div>',
+            '<div class="pf-benefits">',
+              '<div class="pf-benefit">',
+                '<div class="pf-benefit-num">' + timeShort + '</div>',
+                '<div class="pf-benefit-label">' + timeLabel + '</div>',
               '</div>',
-              '<div class="pf-compare-item pf-compare-after">',
-                '<div class="pf-compare-label">AFTER</div>',
-                '<div class="pf-compare-text">' + (c.after_text || '수리 완료') + '</div>',
+              '<div class="pf-benefit pf-benefit-mid">',
+                '<div class="pf-benefit-num">2,000<span>+</span></div>',
+                '<div class="pf-benefit-label">네이버 후기 4.9★</div>',
+              '</div>',
+              '<div class="pf-benefit">',
+                '<div class="pf-benefit-num">0<span>원</span></div>',
+                '<div class="pf-benefit-label">수리 실패 시</div>',
               '</div>',
             '</div>',
-            '<div class="pf-caption-meta">',
-              '<span class="pf-meta-tag pf-meta-time">⏱ ' + (c.repair_time || (c.minutes ? c.minutes + '분' : '30~60분')) + '</span>',
-              '<span class="pf-meta-tag pf-meta-branch">📍 ' + (c.branch || '') + '</span>',
-              '<span class="pf-meta-tag pf-meta-warranty">✓ 90일 보증</span>',
-            '</div>',
+            '<div class="pf-trust">✓ 90일 무상 A/S · 마스터 직접 수리</div>',
+            journalBtn,
           '</div>',
         '</div>'
       ].join('');

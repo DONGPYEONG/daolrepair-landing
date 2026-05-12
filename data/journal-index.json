@@ -546,19 +546,6 @@
     "created_at": "2026-05-12"
   },
   {
-    "key": "아이패드 iPad Pro 11인치 (2세대)|screen|2026-05|1Y5Bwg_L",
-    "slug": "journal-2026-05-12-아이패드-ipad-pro-11인치-2세대-screen-1Y5Bwg_L",
-    "title": "아이패드 iPad Pro 11인치 (2세대) 떨어뜨림으로 망가진 30대 남성 손님 — 목동점에서 액정 교체",
-    "case_id": "1Y5Bwg_Lm4X9FCnbpvLkisT0idqYPwyyD",
-    "model": "아이패드 iPad Pro 11인치 (2세대)",
-    "type": "screen",
-    "branch": "목동점",
-    "date": "2026-05-12",
-    "uploaded_at": "2026-05-12T07:21:50.999Z",
-    "url": "https://xn--2j1bq2k97kxnah86c.com/articles/journal-2026-05-12-아이패드-ipad-pro-11인치-2세대-screen-1Y5Bwg_L.html",
-    "created_at": "2026-05-12"
-  },
-  {
     "key": "아이폰 iPhone 13|screen+battery|2026-05|11Ntl7my",
     "slug": "journal-2026-05-12-아이폰-iphone-13-screen+battery-11Ntl7my",
     "title": "30대 남성 손님 아이폰 iPhone 13 떨어뜨림으로 정품 액정과 셀 교체 배터리 교체 — 목동점 오전 케이스",
@@ -661,5 +648,18 @@
     "uploaded_at": "2026-04-16T01:34:30.687Z",
     "url": "https://xn--2j1bq2k97kxnah86c.com/articles/journal-2026-04-16-아이폰-6-screen-13Qv_rnP.html",
     "created_at": "2026-05-12"
+  },
+  {
+    "key": "caseid:1Y5Bwg_L",
+    "slug": "journal-2026-05-12-아이패드-ipad-pro-11인치-2세대-screen-1Y5Bwg_L",
+    "title": "아이패드 iPad Pro 11인치 (2세대) 떨어뜨림으로 망가진 30대 남성 손님 — 목동점에서 액정 교체",
+    "case_id": "1Y5Bwg_Lm4X9FCnbpvLkisT0idqYPwyyD",
+    "model": "아이패드 iPad Pro 11인치 (2세대)",
+    "type": "screen",
+    "branch": "목동점",
+    "date": "2026-05-12",
+    "uploaded_at": "2026-05-12T07:21:50.999Z",
+    "url": "https://xn--2j1bq2k97kxnah86c.com/articles/journal-2026-05-12-아이패드-ipad-pro-11인치-2세대-screen-1Y5Bwg_L.html",
+    "created_at": "2026-05-13"
   }
 ]
