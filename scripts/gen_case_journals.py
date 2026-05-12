@@ -1431,6 +1431,16 @@ def make_body(c):
         if prefix:
             body_html = prefix + body_html
 
+        # 🆕 본문의 일반 '증상' 라인을 케이스 메타의 구체 증상으로 치환 (첫 매치만)
+        if meta.get("symptom_natural"):
+            import re as _re
+            body_html = _re.sub(
+                r'<li><strong>증상</strong>:[^<]*</li>',
+                f'<li><strong>증상</strong>: {meta["symptom_natural"]}</li>',
+                body_html,
+                count=1,
+            )
+
     return body_html
 
 
@@ -1537,6 +1547,8 @@ def _make_meta_intro_box(c, meta):
         rows.append(("방문 시간", meta["time_natural"]))
     if meta.get("cause"):
         rows.append(("고장 원인", meta["cause"]))
+    if meta.get("symptom_natural"):
+        rows.append(("관찰된 증상", meta["symptom_natural"]))
     if meta.get("options_natural"):
         rows.append(("선택 옵션", meta["options_natural"]))
     if not rows:
