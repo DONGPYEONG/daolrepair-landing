@@ -212,18 +212,29 @@ def parse_case_folder(title):
             break
         middle.append(p)
 
-    # 마지막 토큰이 순한글 2~4자(이름)이고 모델 키워드 없으면 제거
+    # 🛡 개인정보 차단 — 모든 토큰 검사 (마지막만이 아니라 중간에 끼어 있는 이름·전화번호 모두 제거)
     MODEL_KEYWORDS = ("프로", "맥스", "미니", "플러스", "울트라", "에어", "에르메스", "PLUS", "PRO", "MAX", "MINI", "PM", "mm")
-    if len(middle) >= 1:
-        last = middle[-1]
-        is_korean_name = (
-            re.match(r"^[가-힣*]{2,4}$", last)
-            and not any(kw in last for kw in MODEL_KEYWORDS)
-        )
-        if is_korean_name:
-            middle = middle[:-1]
+    cleaned = []
+    for tok in middle:
+        # 1) 전화번호 패턴 (10~11자리 숫자) — 즉시 제거
+        if re.fullmatch(r"\d{10,11}", tok):
+            continue
+        # 2) 010-XXXX-XXXX 형식
+        if re.fullmatch(r"01[0-9][\s\-]?[0-9]{3,4}[\s\-]?[0-9]{4}", tok):
+            continue
+        # 3) 순한글 2~4자 + 모델키워드 없음 = 이름 가능성 → 제거
+        if re.fullmatch(r"[가-힣*]{2,4}", tok) and not any(kw in tok for kw in MODEL_KEYWORDS):
+            continue
+        cleaned.append(tok)
+    middle = cleaned
 
     model = " ".join(middle).strip()
+    # 다시 한 번 — 토큰 안에 합쳐진 패턴도 제거 ("공시현010668")
+    model = re.sub(r"[가-힣]{2,4}\s?01[0-9][\s\-]?[0-9]{3,4}[\s\-]?[0-9]{4}", "", model)
+    model = re.sub(r"[가-힣]{2,4}\s?\d{10,11}", "", model)
+    model = re.sub(r"\b01[0-9][\s\-]?[0-9]{3,4}[\s\-]?[0-9]{4}\b", "", model)
+    model = re.sub(r"\b\d{10,11}\b", "", model)
+    model = re.sub(r"\s+", " ", model).strip()
     return device, model, repair_type
 
 def is_case_folder(title):
