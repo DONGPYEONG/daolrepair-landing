@@ -98,7 +98,7 @@
       "branch": "목동점",
       "date": "2026-05-12",
       "createdTime": "2026-05-12T07:21:50.999Z",
-      "repair_time": "당일 · 30~60분",
+      "repair_time": "1~2일 · 부품 수급 (주말 시 2~3일)",
       "before_img": "images/before-after/1Y5Bwg_Lm4X9FCnbpvLkisT0/before.jpg",
       "after_img": "images/before-after/1Y5Bwg_Lm4X9FCnbpvLkisT0/after.jpg",
       "progress_imgs": [
@@ -242,7 +242,7 @@
       "branch": "목동점",
       "date": "2026-05-12",
       "createdTime": "2026-05-12T07:21:50.999Z",
-      "repair_time": "당일 · 30~60분",
+      "repair_time": "1~2일 · 부품 수급 (주말 시 2~3일)",
       "before_img": "images/before-after/1Y5Bwg_Lm4X9FCnbpvLkisT0/before.jpg",
       "after_img": "images/before-after/1Y5Bwg_Lm4X9FCnbpvLkisT0/after.jpg",
       "progress_imgs": [
@@ -1149,7 +1149,7 @@
     {
       "id": "case-29",
       "model": "애플워치 Apple Watch SE (2세대)",
-      "type": "센서 수리",
+      "type": "후면 유리 교체",
       "branch": "목동점",
       "date": "2026-05-12",
       "createdTime": "2026-05-12T05:10:44.246Z",
@@ -1182,7 +1182,8 @@
         "options_list": [
           "후면센서"
         ]
-      }
+      },
+      "repair_type": "back"
     },
     {
       "id": "case-30",
@@ -1487,7 +1488,7 @@
       "branch": "신림점",
       "date": "2026-05-06",
       "createdTime": "2026-05-06T01:30:59.956Z",
-      "repair_time": "당일 · 30분~1시간",
+      "repair_time": "1~2일 · 부품 수급 (주말 시 2~3일)",
       "before_img": "images/before-after/1vFX-wUWX_mgHb8Kr-inDvfY/before.jpg",
       "after_img": "images/before-after/1vFX-wUWX_mgHb8Kr-inDvfY/after.jpg",
       "progress_imgs": [

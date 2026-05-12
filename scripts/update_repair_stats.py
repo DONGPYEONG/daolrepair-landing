@@ -814,6 +814,12 @@ def main():
                              for i in range(1, len(progress_files) + 1)]
             progress_labels_for_case = [pf["label"] for pf in progress_files]
 
+        # 🆕 아이패드는 부품 수급으로 1~2일 소요 (주말 시 2~3일) — 시간 표기 자동 정정
+        _is_ipad = c["device"].lower() in ("ipad",) or "패드" in str(c.get("model","")) or "Pad" in str(c.get("model",""))
+        if _is_ipad:
+            _repair_time = "1~2일 · 부품 수급 (주말 시 2~3일)"
+        else:
+            _repair_time = TIME_BY_TYPE.get(c["repair_type"], "진단 후 안내")
         portfolio_cases.append({
             "id": f"case-{case_idx}",
             "model": device_label(c["device"], c["model"]),
@@ -822,7 +828,7 @@ def main():
             "date": display_date,
             # Drive 업로드 시각 (full ISO timestamp) — 일지 정렬 기준 (같은 날짜도 시간순 구분)
             "createdTime": c.get("createdTime", ""),
-            "repair_time": TIME_BY_TYPE.get(c["repair_type"], "진단 후 안내"),
+            "repair_time": _repair_time,
             "before_img": f"images/before-after/{folder_id}/before.jpg",
             "after_img":  f"images/before-after/{folder_id}/after.jpg",
             "progress_imgs": progress_imgs,    # 🆕 수리중 사진 경로 리스트

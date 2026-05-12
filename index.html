@@ -2562,9 +2562,18 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
       // 캡션 갱신 — 다올리페어 장점 강조 디자인
       var captionEl = card.querySelector('.ba-caption');
       if(captionEl){
-        // 시간 추출 (예: "당일 · 30~60분" → "30분")
-        var timeText = c.repair_time || (c.minutes ? c.minutes + '분' : '30분');
-        var timeShort = timeText.replace(/^당일[\s·]*/, '').replace(/~.*분/, '분').trim();
+        // 디바이스 종류 인지 — iPad는 부품 수급으로 1~2일
+        var modelStr = c.model || '';
+        var isIpad = modelStr.indexOf('아이패드') >= 0 || modelStr.indexOf('iPad') >= 0;
+        var timeShort, timeLabel;
+        if(isIpad){
+          timeShort = '1~2일';
+          timeLabel = '부품 수급';
+        } else {
+          var timeText = c.repair_time || (c.minutes ? c.minutes + '분' : '30분');
+          timeShort = timeText.replace(/^당일[\s·]*/, '').replace(/~.*분/, '분').trim();
+          timeLabel = '당일 완료';
+        }
         var journalBtn = c.journal_url
           ? '<a href="' + c.journal_url + '" class="ba-journal-link">📋 이 케이스 자세히 보기 →</a>'
           : '<a href="articles/journal.html" class="ba-journal-link">📋 다른 수리 사례 보기 →</a>';
@@ -2575,7 +2584,7 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
           '<div class="ba-benefits">' +
             '<div class="ba-benefit">' +
               '<div class="ba-benefit-num">' + timeShort + '</div>' +
-              '<div class="ba-benefit-label">당일 완료</div>' +
+              '<div class="ba-benefit-label">' + timeLabel + '</div>' +
             '</div>' +
             '<div class="ba-benefit ba-benefit-mid">' +
               '<div class="ba-benefit-num">2,000<span>+</span></div>' +

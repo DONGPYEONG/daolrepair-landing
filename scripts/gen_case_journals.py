@@ -1088,6 +1088,24 @@ QA_BY_TYPE = {
         ("수리비가 얼마나 드나요?",
          "모델별로 다릅니다. 매장 방문 또는 사진 보내주시면 마스터가 직접 견적 안내드려요. <a href='/articles/iphone-screen-repair-cost-2026.html'>아이폰 화면 수리비 가이드</a>를 참고하세요."),
     ],
+    "screen_ipad": [
+        ("아이패드 액정은 어떤 부품을 쓰나요?",
+         "다올리페어는 <strong>추출 정품(폐기 아이패드 분리) 또는 재생 정품(원판 OCA 라미네이팅 재가공)</strong>만 사용합니다. 시중 fog 액정은 색감·터치·장기 내구성 편차가 커서 사용하지 않습니다. 자세한 정책은 <a href='ipad-screen-genuine-recycled-vs-fog.html'>아이패드 액정 종류와 다올리페어 정책</a>을 참고하세요."),
+        ("왜 아이패드는 \"당일 처리\"가 어려운가요?",
+         "아이패드는 모델·색상 조합이 매우 다양해 매장에 모든 추출/재생 정품 재고를 두기 어렵습니다. 카카오 채널로 모델·색상 알려주시면 부품 입고 후 작업해 <strong>보통 1~2일</strong> 정도 걸리며, 주말·공휴일이 끼면 2~3일 소요될 수 있어요. 최신 OLED Pro는 1~3일까지 걸립니다."),
+        ("\"가액정\"이나 fog 액정으로 더 싸게 안 되나요?",
+         "안 됩니다. <strong>아이패드는 액정-유리가 일체형 라미 구조</strong>라 아이폰의 가액정(유리만 교체) 옵션이 사실상 없습니다. fog 액정은 단가는 저렴하지만 시간이 지나면 화면이 뿌옇게 흐려지는 fog 현상이 발생해 다시 비용을 들여야 합니다. 다올리페어는 정품 패널 기반의 추출/재생 정품만 사용합니다."),
+        ("화면 교체 후 데이터는 안전한가요?",
+         "네, 데이터는 그대로 보존됩니다. 액정만 교체하기 때문에 본체 메모리·설정·앱·사진은 모두 그대로예요. 자세한 내용은 <a href='iphone-repair-data-safety-by-type.html'>수리 시 데이터 안전 가이드</a> 참고."),
+        ("수리 후 트루톤·Apple Pencil은 정상 작동하나요?",
+         "네, 추출/재생 정품 모두 트루톤·Apple Pencil(2세대·USB-C·Pro 호버)·터치·자동 밝기 정상 작동합니다. 정품 패널 기반이라 디스플레이 인증이 그대로 유지돼요."),
+        ("\"비정품 부품\" 메시지가 뜨나요?",
+         "현재(2026년 기준) 아이패드는 사설 수리 후에도 <strong>\"비정품 부품\" 메시지가 뜨지 않습니다</strong>. 부품 시리얼 매핑이 적용되지 않아 추출/재생 정품으로 작업해도 사용감·인증·페어링 모두 그대로입니다."),
+        ("보증은 얼마나 되나요?",
+         "다올리페어 모든 수리는 <a href='daolrepair-90day-warranty-policy.html'>90일 무상 A/S 보증</a>입니다. 같은 부위 동일 증상 재발 시 무상 점검·재수리해드려요."),
+        ("수리비가 얼마나 드나요?",
+         "모델별로 다릅니다. <a href='/articles/ipad-screen-repair-cost-by-model-2026.html'>아이패드 액정 수리비 모델별 가이드 2026</a>에서 표준 가격을 확인하실 수 있어요. 또는 모델·색상 알려주시면 정확한 견적 안내드립니다."),
+    ],
     "back": [
         ("후면 유리는 정품인가요?",
          "정확히 말씀드리면, <strong>애플은 후면 유리만 별도 부품으로 판매하지 않아요</strong>. 다올리페어는 검증된 호환 부품으로 교체합니다. 색상·두께·질감 모두 본체와 잘 맞게 골라드리며, 자세한 비교는 <a href='iphone-back-glass-genuine-vs-compatible.html'>아이폰 후면 유리 정품급 OEM 9가지 비교</a>에서 확인하실 수 있어요."),
@@ -1198,6 +1216,29 @@ QA_BY_TYPE = {
          "다올리페어 모든 수리는 <a href='daolrepair-90day-warranty-policy.html'>90일 무상 A/S 보증</a>입니다."),
     ],
 }
+
+
+def _pick_faq_qa(rtype, model):
+    """JSON-LD FAQPage용 Q&A 선택 — 디바이스·종류별 분기 (visible FAQ와 동일 로직)"""
+    rt = (rtype or "").lower()
+    is_screen = ("화면" in rtype) or ("액정" in rtype) or ("screen" in rt)
+    is_back = ("후면" in rtype) or ("back" in rt)
+    is_battery = ("배터리" in rtype) or ("battery" in rt)
+    is_charge = ("충전" in rtype) or ("charge" in rt)
+    is_ipad = ("아이패드" in model) or ("iPad" in model)
+    is_watch = ("애플워치" in model) or ("에르메스" in model) or ("Apple Watch" in model)
+
+    if is_screen and is_ipad and "screen_ipad" in QA_BY_TYPE:
+        return QA_BY_TYPE["screen_ipad"]
+    if is_battery and is_watch and "battery_watch" in QA_BY_TYPE:
+        return QA_BY_TYPE["battery_watch"]
+    if is_battery and is_ipad and "battery_ipad" in QA_BY_TYPE:
+        return QA_BY_TYPE["battery_ipad"]
+    if is_screen: return QA_BY_TYPE.get("screen", [])
+    if is_back: return QA_BY_TYPE.get("back", [])
+    if is_battery: return QA_BY_TYPE.get("battery", [])
+    if is_charge: return QA_BY_TYPE.get("charge", [])
+    return QA_BY_TYPE.get("screen", [])
 
 
 def _has_jongseong(text):
@@ -1527,6 +1568,88 @@ def make_body(c):
 </div>
 """
 
+    # 🆕 아이패드 액정 — 부품·시간 표현 정정 (아이폰 액정 일지를 그대로 쓰지 않음)
+    is_ipad = ("아이패드" in model) or ("iPad" in model) or ("ipad" in model.lower())
+    is_screen = ("screen" in str(c.get("repair_type", ""))) or ("화면" in c.get("type","")) or ("액정" in c.get("type",""))
+    if is_ipad and is_screen:
+        import re as _ire
+        # 1) "정품 액정 vs DD(OEM) 액정" 비교표 섹션 통째 교체
+        ipad_parts_section = """
+<h2>다올리페어 아이패드 액정 부품 — 추출 정품 / 재생 정품 (fog 액정 X)</h2>
+<p>아이패드 액정은 시중에 <strong>추출 정품·재생 정품·fog 액정</strong> 3가지가 유통됩니다. 다올리페어는 <strong>추출/재생 정품만</strong> 사용합니다 — fog 액정은 시간이 지나면 화면이 뿌옇게 흐려지는 사례가 많아 사용하지 않습니다.</p>
+<table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;">
+  <thead>
+    <tr style="background:#f8f8f8;">
+      <th style="padding:10px;border:1px solid #eee;text-align:left;">항목</th>
+      <th style="padding:10px;border:1px solid #eee;text-align:left;">추출 정품</th>
+      <th style="padding:10px;border:1px solid #eee;text-align:left;">재생 정품</th>
+      <th style="padding:10px;border:1px solid #eee;text-align:left;">fog (사용 안 함)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:10px;border:1px solid #eee;">패널</td><td style="padding:10px;border:1px solid #eee;">애플 정품 그대로</td><td style="padding:10px;border:1px solid #eee;">정품 패널 + 새 라미</td><td style="padding:10px;border:1px solid #eee;">비정품 복제</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;">색감·터치</td><td style="padding:10px;border:1px solid #eee;">정품 동일</td><td style="padding:10px;border:1px solid #eee;">정품 동일</td><td style="padding:10px;border:1px solid #eee;">편차 발생</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;">장기 사용</td><td style="padding:10px;border:1px solid #eee;">변화 없음</td><td style="padding:10px;border:1px solid #eee;">변화 없음</td><td style="padding:10px;border:1px solid #eee;">fog 현상·라미 들뜸</td></tr>
+  </tbody>
+</table>
+<p style="font-size:13px;color:#666;margin-top:-8px;">※ 추출/재생 정품은 모두 정품 부품 기반이라 결과 차이가 없으며, 모델·재고에 따라 둘 중 하나로 진행됩니다. 자세한 정책은 <a href="ipad-screen-genuine-recycled-vs-fog.html">아이패드 액정 종류와 다올리페어 정책</a>을 참고하세요.</p>
+<p>참고로 <strong>아이패드는 액정-유리가 일체형 라미 구조</strong>라 아이폰의 "가액정(유리만 교체)" 옵션은 사실상 없습니다. 모든 아이패드 액정은 디스플레이 모듈 통째 교체이며, 시중 일부에서 가액정으로 부르는 부품도 품질이 떨어져 다올리페어는 취급하지 않습니다.</p>
+<p>※ 현재(2026년 기준) 아이패드는 사설 수리 후에도 "비정품 부품" 메시지가 뜨지 않습니다 — 부품 시리얼 매핑이 적용되지 않기 때문이며, 추출/재생 정품으로 작업해도 사용감·인증 변화 없이 그대로 사용 가능합니다.</p>
+<p>모델별 정확한 가격은 <a href="ipad-screen-repair-cost-by-model-2026.html">아이패드 액정 수리비 모델별 가이드 2026</a>을 참고하세요.</p>
+"""
+        # h2 "다올리페어 액정 부품 — ..."로 시작해서 다음 h2 직전까지 통째 교체
+        body_html = _ire.sub(
+            r"<h2>다올리페어 액정 부품.*?(?=<h2>)",
+            ipad_parts_section,
+            body_html,
+            count=1,
+            flags=_ire.DOTALL,
+        )
+        # 2) iPhone 가격 링크 → iPad 가격 링크
+        body_html = body_html.replace(
+            '<a href="iphone-screen-repair-cost-2026.html">아이폰 액정 수리비 2026 모델별 정리</a>',
+            '<a href="ipad-screen-repair-cost-by-model-2026.html">아이패드 액정 수리비 모델별 가이드 2026</a>',
+        )
+        body_html = body_html.replace(
+            '<a href="iphone-screen-genuine-vs-dd-oem-comparison.html">정품 액정 vs DD(OEM) 액정 차이·가격·선택 가이드</a>',
+            '<a href="ipad-screen-genuine-recycled-vs-fog.html">아이패드 액정 종류와 다올리페어 정책 (추출·재생 정품 vs fog)</a>',
+        )
+        # 3) 시간 표현 — 당일 처리 X
+        body_html = body_html.replace('당일 30분', '1~2일 (부품 수급)')
+        body_html = body_html.replace('당일 30분~1시간', '1~2일 (부품 수급)')
+        body_html = body_html.replace('당일 30~60분', '1~2일 (부품 수급)')
+        body_html = body_html.replace('당일 1~2시간', '1~2일 (부품 수급)')
+        body_html = body_html.replace('당일 픽업', '부품 입고 후 1~2일 (주말 시 2~3일)')
+        body_html = body_html.replace('수리 시간 약 30분', '수리 시간 약 1~2일 (부품 수급)')
+        body_html = body_html.replace('수리 시간 1~2시간', '수리 시간 1~2일 (부품 수급)')
+        # 4) JSON-LD / FAQ "당일 수리 가능한가요?" 답변 치환 (LD-JSON 안)
+        body_html = body_html.replace(
+            '"네, 모든 모델 화면 교체는 당일 30~60분 내 완료됩니다. 매장에서 잠시 기다리시거나 인근에서 시간 보내시면 됩니다."',
+            '"아이패드는 부품 수급 사정으로 보통 1~2일 정도 소요됩니다. 모델·색상 확인 후 추출/재생 정품 부품 입고에 시간이 필요합니다. 주말·공휴일이 끼면 2~3일 소요될 수 있어요."',
+        )
+        body_html = body_html.replace(
+            '"정품 액정 옵션을 선택하시면 출고 시와 동일한 터치 감도예요. DD(OEM) 액정 옵션도 셀 단위 품질 검증을 거쳐 일상 사용에서 차이를 느끼시기 어렵습니다."',
+            '"다올리페어는 추출 정품 또는 재생 정품 액정만 사용합니다. 둘 다 애플 정품 패널 기반이라 출고 시와 동일한 터치 감도·색감입니다. fog 액정처럼 시간이 지나며 흐려지는 일이 없어요."',
+        )
+        body_html = body_html.replace(
+            '"정품 액정·DD(OEM) 액정 모두 트루톤·자동 밝기 정상 작동합니다. 다올리페어는 두 옵션 모두 검증된 부품만 사용해요."',
+            '"추출 정품·재생 정품 모두 트루톤·자동 밝기·True Tone 정상 작동합니다. 정품 패널 기반이라 색온도 센서가 정상 인식해요."',
+        )
+        # 5) FAQ 본문 안의 추출/재생 정품 중복 표현 정리
+        body_html = body_html.replace('추출/재생 정품 액정·추출/재생 정품 액정', '추출/재생 정품 액정')
+        body_html = body_html.replace('추출/재생 정품 액정 vs 추출/재생 정품 액정', '추출 정품 vs 재생 정품 vs fog')
+        # 6) 본문 끝에 정책·가격 안내 박스 자동 삽입
+        body_html += """
+<div style="background:linear-gradient(135deg,#fff8f3 0%,#fff3ea 100%);border:1.5px solid #f5c9a0;border-radius:14px;padding:18px 22px;margin:24px 0;">
+  <div style="font-size:11px;font-weight:700;color:#E8732A;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">아이패드 액정 — 다올리페어 정책</div>
+  <ul style="margin:6px 0 0;padding-left:18px;color:#5a3a1a;font-size:14px;line-height:1.7;">
+    <li><a href="ipad-screen-genuine-recycled-vs-fog.html"><strong>왜 추출·재생 정품만 쓰나</strong></a> — fog 액정을 안 쓰는 이유</li>
+    <li><a href="ipad-screen-repair-cost-by-model-2026.html"><strong>모델별 액정 수리비</strong></a> — 미니·에어·일반·Pro·M2·M4 OLED 가격표</li>
+    <li><strong>부품 수급 보통 1~2일</strong> — 주말·공휴일 시 2~3일 소요될 수 있어요</li>
+  </ul>
+</div>
+"""
+
     return body_html
 
 
@@ -1749,6 +1872,8 @@ def make_qa(c):
             qa_list = QA_BY_TYPE["battery_ipad"]
         else:
             qa_list = QA_BY_TYPE.get("battery", [])
+    elif type_key == "screen" and is_ipad and "screen_ipad" in QA_BY_TYPE:
+        qa_list = QA_BY_TYPE["screen_ipad"]
     else:
         qa_list = QA_BY_TYPE.get(type_key) or QA_BY_TYPE.get("screen", [])
         if not qa_list and type_key == "back-glass":
@@ -2392,7 +2517,7 @@ window.artPhotoPreview = function(input){
 def generate_article(case, journals, used_titles=None):
     """1편 생성. 케이스별 고유 (case_id 기반) — 같은 모델·수리도 다른 케이스면 별도 일지."""
     model = case["model"]
-    rtype = case.get("repair_type", "")
+    rtype = case.get("repair_type") or case.get("type", "") or ""
     month = case.get("date", "")[:7] if case.get("date") else ""
     case_id = case.get("case_id", "") or case.get("id", "")
     # 케이스 단위로 unique key (이전엔 model|type|month로 묶여 중복 케이스 누락됨)
@@ -2514,7 +2639,7 @@ def generate_article(case, journals, used_titles=None):
   "mainEntity": [
     {", ".join([
         '{"@type":"Question","name":"' + q.replace('"', "'") + '","acceptedAnswer":{"@type":"Answer","text":"' + re.sub(r'<[^>]+>', '', a).replace('"', "'")[:300] + '"}}'
-        for q, a in (QA_BY_TYPE.get("screen" if "화면" in rtype or "액정" in rtype else "back" if "후면" in rtype else "battery" if "배터리" in rtype else "charge" if "충전" in rtype else "screen") or QA_BY_TYPE["screen"])[:5]
+        for q, a in (_pick_faq_qa(rtype, model))[:5]
     ])}
   ]
 }}
