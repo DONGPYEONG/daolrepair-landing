@@ -119,7 +119,7 @@
     }
     .a6-item-img {
       width: 100%;
-      height: 24mm;
+      height: 22mm;
       background: linear-gradient(180deg, #fbfbfb 0%, #f3f3f5 100%);
       display: flex;
       align-items: center;
@@ -127,7 +127,7 @@
       overflow: hidden;
       position: relative;
     }
-    .a6-item-img svg { height: 88%; width: auto; max-width: 65%; }
+    .a6-item-img svg { height: 90%; width: auto; max-width: 70%; }
     .a6-item-body {
       padding: 1.5mm 2mm 1.8mm;
       flex: 1;
@@ -141,14 +141,22 @@
       color: #0A0A0A;
       letter-spacing: -0.3px;
       line-height: 1.2;
-      margin-bottom: 0.5mm;
+      margin-bottom: 0.8mm;
     }
     .a6-item-desc {
-      font-size: 6.2pt;
-      color: #777;
-      line-height: 1.4;
+      font-size: 6pt;
+      color: #555;
+      line-height: 1.45;
       word-break: keep-all;
       margin-bottom: 1.2mm;
+    }
+    .a6-item-desc strong { color: #C55E1A; font-weight: 800; }
+    .a6-item-desc-sub {
+      font-size: 5.5pt;
+      color: #888;
+      line-height: 1.4;
+      margin-top: 0.6mm;
+      word-break: keep-all;
     }
     .a6-item-price-row {
       display: flex;
@@ -229,11 +237,11 @@
     </div>
 
     <div class="a6-grid">
-      <!-- 1. iPhone 6s (Silver) — viewBox 100×125 (실제 비율 1:2.1) -->
+      <!-- 1. iPhone 6s (Silver) — 실제 비율 1:2.06 -->
       <div class="a6-item featured">
         <span class="a6-item-tag hot">📷 빈티지</span>
         <div class="a6-item-img">
-          <svg viewBox="0 0 100 125" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 50 100" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="i6s-body" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0%" stop-color="#fafafa"/>
@@ -248,29 +256,30 @@
                 <stop offset="0%" stop-color="#fff" stop-opacity="0.55"/>
                 <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
               </radialGradient>
-              <filter id="i6s-shadow"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.18"/></filter>
+              <filter id="i6s-shadow"><feDropShadow dx="0" dy="1.2" stdDeviation="1.2" flood-color="#000" flood-opacity="0.18"/></filter>
             </defs>
-            <!-- 본체 (실제 비율 1:2.1) -->
-            <rect x="28" y="3" width="44" height="119" rx="8" fill="url(#i6s-body)" stroke="#a8a8aa" stroke-width="0.5" filter="url(#i6s-shadow)"/>
-            <!-- 화면 영역 -->
-            <rect x="32" y="14" width="36" height="92" rx="1" fill="url(#i6s-screen)"/>
+            <!-- 본체 24×49 (실제 비율 1:2.04) -->
+            <rect x="13" y="2" width="24" height="96" rx="4.5" fill="url(#i6s-body)" stroke="#a8a8aa" stroke-width="0.3" filter="url(#i6s-shadow)"/>
+            <!-- 화면 -->
+            <rect x="15" y="11" width="20" height="73" rx="0.6" fill="url(#i6s-screen)"/>
             <!-- 시계 -->
-            <text x="50" y="55" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" fill="#fff" font-weight="200">9:41</text>
-            <text x="50" y="62" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="3" fill="#fff" opacity="0.85">월요일</text>
+            <text x="25" y="46" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6" fill="#fff" font-weight="200">9:41</text>
+            <text x="25" y="51.5" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="1.8" fill="#fff" opacity="0.85">월요일</text>
             <!-- 스피커·카메라 -->
-            <rect x="44" y="9" width="9" height="1.3" rx="0.5" fill="#666"/>
-            <circle cx="58" cy="9.6" r="0.8" fill="#5a8aaa"/>
+            <rect x="21" y="7" width="5" height="0.9" rx="0.3" fill="#666"/>
+            <circle cx="29" cy="7.5" r="0.5" fill="#5a8aaa"/>
             <!-- 홈버튼 -->
-            <circle cx="50" cy="114" r="4.2" fill="none" stroke="#a8a8aa" stroke-width="0.6"/>
-            <circle cx="50" cy="114" r="3" fill="#e0e0e2"/>
+            <circle cx="25" cy="91" r="2.6" fill="none" stroke="#a8a8aa" stroke-width="0.4"/>
+            <circle cx="25" cy="91" r="1.8" fill="#e0e0e2"/>
             <!-- 광택 -->
-            <rect x="28" y="3" width="44" height="119" rx="8" fill="url(#i6s-shine)"/>
+            <rect x="13" y="2" width="24" height="96" rx="4.5" fill="url(#i6s-shine)"/>
           </svg>
         </div>
         <div class="a6-item-body">
           <div>
             <div class="a6-item-name">iPhone 6s · 128GB</div>
-            <div class="a6-item-desc">하우징 새것급 검수 · MZ 빈티지 사진 인기 · 인스타 감성</div>
+            <div class="a6-item-desc"><strong>하우징 통째 새것급 검수</strong> — MZ 빈티지 사진 트렌드 인기</div>
+            <div class="a6-item-desc-sub">필름 카메라 감성 · 인스타 업로드용으로 자주 찾으시는 모델</div>
           </div>
           <div class="a6-item-price-row">
             <span class="a6-item-price">169,000원</span>
@@ -279,11 +288,11 @@
         </div>
       </div>
 
-      <!-- 2. iPhone 7 (Jet Black) — viewBox 100×125 -->
+      <!-- 2. iPhone 7 (Jet Black) — 실제 비율 1:2.06 -->
       <div class="a6-item featured">
         <span class="a6-item-tag hot">📷 빈티지</span>
         <div class="a6-item-img">
-          <svg viewBox="0 0 100 125" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 50 100" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="i7-body" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0%" stop-color="#3a3a3c"/>
@@ -298,23 +307,24 @@
                 <stop offset="0%" stop-color="#fff" stop-opacity="0.35"/>
                 <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
               </radialGradient>
-              <filter id="i7-shadow"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.25"/></filter>
+              <filter id="i7-shadow"><feDropShadow dx="0" dy="1.2" stdDeviation="1.2" flood-color="#000" flood-opacity="0.25"/></filter>
             </defs>
-            <rect x="28" y="3" width="44" height="119" rx="8" fill="url(#i7-body)" stroke="#0a0a0c" stroke-width="0.5" filter="url(#i7-shadow)"/>
-            <rect x="32" y="14" width="36" height="92" rx="1" fill="url(#i7-screen)"/>
-            <text x="50" y="55" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" fill="#fff" font-weight="200">9:41</text>
-            <text x="50" y="62" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="3" fill="#fff" opacity="0.85">월요일</text>
-            <rect x="44" y="9" width="9" height="1.3" rx="0.5" fill="#1a1a1c"/>
-            <circle cx="58" cy="9.6" r="0.8" fill="#5a8aaa"/>
-            <circle cx="50" cy="114" r="4.2" fill="none" stroke="#3a3a3c" stroke-width="0.6"/>
-            <circle cx="50" cy="114" r="3" fill="#0a0a0c" stroke="#2a2a2c" stroke-width="0.3"/>
-            <rect x="28" y="3" width="44" height="119" rx="8" fill="url(#i7-shine)"/>
+            <rect x="13" y="2" width="24" height="96" rx="4.5" fill="url(#i7-body)" stroke="#0a0a0c" stroke-width="0.3" filter="url(#i7-shadow)"/>
+            <rect x="15" y="11" width="20" height="73" rx="0.6" fill="url(#i7-screen)"/>
+            <text x="25" y="46" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6" fill="#fff" font-weight="200">9:41</text>
+            <text x="25" y="51.5" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="1.8" fill="#fff" opacity="0.85">월요일</text>
+            <rect x="21" y="7" width="5" height="0.9" rx="0.3" fill="#1a1a1c"/>
+            <circle cx="29" cy="7.5" r="0.5" fill="#5a8aaa"/>
+            <circle cx="25" cy="91" r="2.6" fill="none" stroke="#3a3a3c" stroke-width="0.4"/>
+            <circle cx="25" cy="91" r="1.8" fill="#0a0a0c" stroke="#2a2a2c" stroke-width="0.2"/>
+            <rect x="13" y="2" width="24" height="96" rx="4.5" fill="url(#i7-shine)"/>
           </svg>
         </div>
         <div class="a6-item-body">
           <div>
             <div class="a6-item-name">iPhone 7 · 128GB</div>
-            <div class="a6-item-desc">하우징 새것급 · Jet Black 광택 · 사진·영상 넉넉한 큰 용량</div>
+            <div class="a6-item-desc"><strong>Jet Black 광택 하우징 새것급</strong> — 사진·영상 넉넉한 128GB</div>
+            <div class="a6-item-desc-sub">빈티지 감성 + 큰 용량 · 가성비 빈티지 폰의 정점</div>
           </div>
           <div class="a6-item-price-row">
             <span class="a6-item-price">189,000원</span>
@@ -360,7 +370,8 @@
         <div class="a6-item-body">
           <div>
             <div class="a6-item-name">Apple Pencil 2세대</div>
-            <div class="a6-item-desc">정품 리퍼 검수 · 신품 19만원의 절반 · 필기·드로잉 100% 정상</div>
+            <div class="a6-item-desc"><strong>정품 검수 리퍼</strong> — 신품 19만원의 절반 가격</div>
+            <div class="a6-item-desc-sub">필기·드로잉·노트 정상 작동 100% · 자기 부착·무선 충전 OK</div>
           </div>
           <div class="a6-item-price-row">
             <span class="a6-item-price">11만원</span>
@@ -369,11 +380,11 @@
         </div>
       </div>
 
-      <!-- 4. Apple 액세서리 (USB-C 어댑터 박스) -->
+      <!-- 4. Apple USB-C 20W 박스 — 실제 비율 거의 정사각형 (75×75mm) -->
       <div class="a6-item">
         <span class="a6-item-tag">병행수입</span>
         <div class="a6-item-img">
-          <svg viewBox="0 0 100 180" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="box-front" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stop-color="#fff"/>
@@ -383,34 +394,34 @@
                 <stop offset="0%" stop-color="#fff"/>
                 <stop offset="100%" stop-color="#dcdcde"/>
               </linearGradient>
-              <filter id="box-shadow"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.2"/></filter>
+              <filter id="box-shadow"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.2"/></filter>
             </defs>
-            <!-- 박스 -->
-            <rect x="20" y="30" width="60" height="125" rx="3" fill="url(#box-front)" stroke="#bbb" stroke-width="0.5" filter="url(#box-shadow)"/>
+            <!-- 박스 (75×75 실제 비율 → 정사각형) -->
+            <rect x="14" y="14" width="72" height="72" rx="3" fill="url(#box-front)" stroke="#bbb" stroke-width="0.4" filter="url(#box-shadow)"/>
             <!-- 박스 상단 걸이 구멍 -->
-            <rect x="42" y="34" width="16" height="4" rx="2" fill="none" stroke="#aaa" stroke-width="0.5"/>
-            <rect x="46" y="35" width="8" height="2" rx="1" fill="#ddd"/>
-            <!-- Apple 로고 (단순) -->
-            <path d="M50 52c-1 0-2 0.5-2.5 1.2 0.4 0.4 0.8 0.7 1.2 0.7 1 0 1.8-0.5 2.3-1.2-0.3-0.4-0.6-0.7-1-0.7zm-3 2.5c-1.2 0-2.2 1.5-2.2 2.8 0 1.4 1 2.7 2.2 2.7 0.5 0 0.8-0.2 1.2-0.4 0.3 0.2 0.7 0.4 1.2 0.4 1.2 0 2.2-1.4 2.2-2.7 0-0.6-0.2-1-0.5-1.4-0.3 0.3-0.6 0.5-0.9 0.7 0.1-0.4 0.2-0.8 0.2-1.2-0.4-0.4-1-0.7-1.6-0.7-0.4 0-0.7 0.1-1 0.3-0.3-0.2-0.6-0.3-0.8-0.5z" fill="#0a0a0a"/>
+            <rect x="42" y="17" width="16" height="3" rx="1.5" fill="none" stroke="#aaa" stroke-width="0.4"/>
+            <rect x="46" y="18" width="8" height="1.5" rx="0.7" fill="#ddd"/>
+            <!-- Apple 로고 -->
+            <text x="50" y="32" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6" fill="#0a0a0a" font-weight="700"></text>
             <!-- USB-C 텍스트 -->
-            <text x="50" y="72" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6" fill="#0a0a0a" font-weight="700">USB-C</text>
-            <text x="50" y="80" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="4" fill="#444" font-weight="500">20W Power Adapter</text>
-            <!-- 어댑터 일러스트 (박스 안에 보이는 듯) -->
-            <rect x="36" y="95" width="28" height="42" rx="4" fill="url(#adapter)" stroke="#aaa" stroke-width="0.4"/>
+            <text x="50" y="44" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6" fill="#0a0a0a" font-weight="700">USB-C</text>
+            <text x="50" y="50" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="3.5" fill="#444" font-weight="500">20W Power Adapter</text>
+            <!-- 어댑터 일러스트 (박스 안 중앙) -->
+            <rect x="38" y="56" width="24" height="24" rx="3.5" fill="url(#adapter)" stroke="#aaa" stroke-width="0.3"/>
             <!-- 핀 -->
-            <rect x="44" y="89" width="3" height="6" rx="0.5" fill="#888"/>
-            <rect x="53" y="89" width="3" height="6" rx="0.5" fill="#888"/>
+            <rect x="45" y="52" width="2.5" height="4" rx="0.4" fill="#888"/>
+            <rect x="52" y="52" width="2.5" height="4" rx="0.4" fill="#888"/>
             <!-- USB-C 포트 -->
-            <rect x="46" y="125" width="8" height="3" rx="1.5" fill="#222"/>
-            <rect x="47" y="125.5" width="6" height="2" rx="1" fill="#444"/>
+            <rect x="46" y="76" width="8" height="2" rx="1" fill="#222"/>
             <!-- 광택 -->
-            <rect x="38" y="95" width="3" height="35" rx="1.5" fill="#fff" opacity="0.7"/>
+            <rect x="40" y="58" width="2" height="20" rx="1" fill="#fff" opacity="0.65"/>
           </svg>
         </div>
         <div class="a6-item-body">
           <div>
             <div class="a6-item-name">Apple 액세서리</div>
-            <div class="a6-item-desc">병행수입 정식가보다 합리적 · 충전기·케이블·에어팟 · 불량 100% 교환</div>
+            <div class="a6-item-desc"><strong>병행수입 — 정식가보다 훨씬 합리적</strong></div>
+            <div class="a6-item-desc-sub">USB-C 어댑터·MagSafe·라이트닝 케이블·에어팟 · 불량 100% 교환 보증</div>
           </div>
           <div class="a6-item-price-row">
             <span class="a6-item-price" style="font-size:8.5pt;">가격 문의</span>
