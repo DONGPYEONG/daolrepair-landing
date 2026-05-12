@@ -1787,19 +1787,38 @@ def make_related_links(c):
     is_ipad = "아이패드" in model
 
     links = []
-    # 종류별 핵심 칼럼
+    # 종류별 핵심 칼럼 — 디바이스별 분기
     if "screen" in rtype or "화면" in rtype or "액정" in rtype:
-        links += [
-            ("아이폰 액정 수리비 2026 — 모델별·옵션별 정리", "iphone-screen-repair-cost-2026.html", "💰 가격 가이드"),
-            ("아이폰 화면에 줄·얼룩·변색 — LCD/OLED 손상 진단", "iphone-screen-line-discoloration.html", "🔍 자가진단"),
-            ("아이폰 터치가 안 돼요 — 원인별 해결법", "iphone-touch-not-working.html", "🔍 자가진단"),
-        ]
+        if is_ipad:
+            links += [
+                ("아이패드 액정 수리비 2026 — 모델별 추출·재생 정품 가격표", "ipad-screen-repair-cost-by-model-2026.html", "💰 가격 가이드"),
+                ("아이패드 액정 종류와 다올리페어 정책 — 추출·재생 정품 vs fog", "ipad-screen-genuine-recycled-vs-fog.html", "🆚 부품 정책"),
+                ("아이패드 액정 수리 vs 아이폰 액정 수리 — 작업 시간·부품·가격 차이", "ipad-screen-repair-vs-iphone.html", "🔍 비교 가이드"),
+            ]
+        elif is_watch:
+            links += [
+                ("애플워치 액정 수리비 2026 — 시리즈·소재별 가격 총정리", "applewatch-screen-repair-cost-2026.html", "💰 가격 가이드"),
+                ("애플워치 화면 변색 진단 — LCD까지 번지기 전 신호", "applewatch-screen-discoloration.html", "🔍 자가진단"),
+            ]
+        else:
+            links += [
+                ("아이폰 액정 수리비 2026 — 모델별·옵션별 정리", "iphone-screen-repair-cost-2026.html", "💰 가격 가이드"),
+                ("아이폰 화면에 줄·얼룩·변색 — LCD/OLED 손상 진단", "iphone-screen-line-discoloration.html", "🔍 자가진단"),
+                ("아이폰 터치가 안 돼요 — 원인별 해결법", "iphone-touch-not-working.html", "🔍 자가진단"),
+            ]
     if "back" in rtype or "후면" in rtype:
-        links += [
-            ("아이폰 후면 유리 모델별 수리비 (2026)", "iphone-back-glass-cost-by-model-2026.html", "💰 가격 가이드"),
-            ("아이폰 후면 유리 정품급 OEM — 9가지 비교", "iphone-back-glass-genuine-vs-compatible.html", "🆚 부품 비교"),
-            ("아이폰 뒷면이 깨졌어요 — 자가진단 5단계 + 그냥 쓸까?", "iphone-rear-cracked-self-diagnosis.html", "🔍 자가진단"),
-        ]
+        if is_watch:
+            links += [
+                ("애플워치 후면 유리 = 100% 추출 정품 — 다올리페어 정책", "applewatch-back-glass-genuine-extracted.html", "🆚 부품 정책"),
+                ("애플워치 후면 유리 모델별 수리비 — 시리즈·소재별 추출 정품 가격표", "applewatch-back-glass-cost-by-model-2026.html", "💰 가격 가이드"),
+                ("애플워치 SE 후면 유리 수리 — 부품·작업·주의사항", "applewatch-se-back-glass-repair.html", "🔧 수리 가이드"),
+            ]
+        else:
+            links += [
+                ("아이폰 후면 유리 모델별 수리비 (2026)", "iphone-back-glass-cost-by-model-2026.html", "💰 가격 가이드"),
+                ("아이폰 후면 유리 정품급 OEM — 9가지 비교", "iphone-back-glass-genuine-vs-compatible.html", "🆚 부품 비교"),
+                ("아이폰 뒷면이 깨졌어요 — 자가진단 5단계 + 그냥 쓸까?", "iphone-rear-cracked-self-diagnosis.html", "🔍 자가진단"),
+            ]
     if "battery" in rtype or "배터리" in rtype:
         if is_iphone:
             links += [

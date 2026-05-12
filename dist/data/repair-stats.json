@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-12T19:04:29.561449+09:00",
+  "updated_at": "2026-05-12T19:49:02.064640+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11230,
@@ -34,43 +34,43 @@
       "model": "애플워치 Apple Watch SE (1세대)",
       "type": "배터리 교체",
       "branch": "신림점",
-      "minutes_ago": 13
+      "minutes_ago": 58
     },
     {
       "model": "애플워치 Apple Watch Series 10 (42mm)",
       "type": "수리",
       "branch": "신림점",
-      "minutes_ago": 59
+      "minutes_ago": 103
     },
     {
       "model": "아이패드 iPad Pro 11인치 (2세대)",
       "type": "화면 교체",
       "branch": "목동점",
-      "minutes_ago": 162
+      "minutes_ago": 207
     },
     {
       "model": "아이폰 iPhone XR",
       "type": "화면 교체",
       "branch": "신림점",
-      "minutes_ago": 226
+      "minutes_ago": 270
     },
     {
       "model": "아이폰 iPhone 14 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 228
+      "minutes_ago": 273
     },
     {
       "model": "아이폰 iPhone 16 Pro Max",
       "type": "충전 단자 수리",
       "branch": "신림점",
-      "minutes_ago": 261
+      "minutes_ago": 305
     },
     {
       "model": "아이폰 iPhone 12 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 290
+      "minutes_ago": 335
     }
   ],
   "top_repair_types": [
@@ -91,6 +91,32 @@
     }
   ],
   "slider_cases": [
+    {
+      "id": "case-6",
+      "model": "아이폰 17프로",
+      "type": "화면 교체",
+      "branch": "가산점",
+      "date": "2026-05-11",
+      "createdTime": "2026-05-11T02:28:01.248Z",
+      "repair_time": "당일 · 30~60분",
+      "before_img": "images/before-after/1pHB98EyRJNYU4TawHOk6nxg/before.jpg",
+      "after_img": "images/before-after/1pHB98EyRJNYU4TawHOk6nxg/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1pHB98EyRJNYU4TawHOk6nxg/progress1.jpg",
+        "images/before-after/1pHB98EyRJNYU4TawHOk6nxg/progress2.jpg",
+        "images/before-after/1pHB98EyRJNYU4TawHOk6nxg/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
+      "before_text": "전면 액정 파손",
+      "after_text": "전면 액정 교체 완료",
+      "case_id": "1pHB98EyRJNYU4TawHOk6nxgChfUkUysn",
+      "meta": {},
+      "journal_url": "articles/journal-2026-05-11-아이폰-17프로-screen-1pHB98Ey.html"
+    },
     {
       "id": "case-1",
       "model": "아이패드 iPad Pro 11인치 (2세대)",
@@ -127,111 +153,98 @@
         "options_list": [
           "액정교체"
         ]
-      }
+      },
+      "journal_url": "articles/journal-2026-05-12-아이패드-ipad-pro-11인치-2세대-screen-1Y5Bwg_L.html"
     },
     {
-      "id": "case-3",
-      "model": "아이폰 iPhone 13 Pro",
-      "type": "화면 교체",
+      "id": "case-27",
+      "model": "아이폰 iPhone 14 Pro",
+      "type": "배터리 교체",
       "branch": "가산점",
       "date": "2026-05-12",
-      "createdTime": "2026-05-12T03:13:51.947Z",
-      "repair_time": "당일 · 30~60분",
-      "before_img": "images/before-after/1P3hcrr2N9pn0xqmeH3M7nbU/before.jpg",
-      "after_img": "images/before-after/1P3hcrr2N9pn0xqmeH3M7nbU/after.jpg",
+      "createdTime": "2026-05-12T06:15:30.169Z",
+      "repair_time": "당일 · 30~50분",
+      "before_img": "images/before-after/1ChixQPswCSH9JDZqIDXhdvS/before.jpg",
+      "after_img": "images/before-after/1ChixQPswCSH9JDZqIDXhdvS/after.jpg",
       "progress_imgs": [
-        "images/before-after/1P3hcrr2N9pn0xqmeH3M7nbU/progress1.jpg",
-        "images/before-after/1P3hcrr2N9pn0xqmeH3M7nbU/progress2.jpg",
-        "images/before-after/1P3hcrr2N9pn0xqmeH3M7nbU/progress3.jpg"
+        "images/before-after/1ChixQPswCSH9JDZqIDXhdvS/progress1.jpg",
+        "images/before-after/1ChixQPswCSH9JDZqIDXhdvS/progress2.jpg",
+        "images/before-after/1ChixQPswCSH9JDZqIDXhdvS/progress3.jpg"
       ],
       "progress_labels": [
         "내부분해",
         "교체부품",
         "수리작업중"
       ],
-      "before_text": "전면 액정 파손",
-      "after_text": "전면 액정 교체 완료",
-      "case_id": "1P3hcrr2N9pn0xqmeH3M7nbUvb8vBjwyg",
+      "before_text": "이전 배터리 성능치",
+      "after_text": "교체 후 배터리 성능치",
+      "case_id": "1ChixQPswCSH9JDZqIDXhdvS6WuznlpYb",
       "meta": {
-        "time": "1213",
+        "time": "1516",
         "age": "30대",
-        "gender": "남성",
-        "age_gender": "30대 남성",
-        "options": "DD액정",
-        "cause": "충격",
-        "time_natural": "낮 12시 13분",
-        "time_period": "점심시간",
-        "options_natural": "DD(OEM) 액정",
-        "options_list": [
-          "DD액정"
-        ]
-      },
-      "journal_url": "articles/journal-2026-05-12-아이폰-iphone-13-pro-screen-1P3hcrr2.html"
-    },
-    {
-      "id": "case-5",
-      "model": "아이폰 iPhone 15 Pro",
-      "type": "화면 교체",
-      "branch": "목동점",
-      "date": "2026-05-11",
-      "createdTime": "2026-05-11T03:38:03.118Z",
-      "repair_time": "당일 · 30~60분",
-      "before_img": "images/before-after/1camNuifEyDb3gFZXsTnWzjl/before.jpg",
-      "after_img": "images/before-after/1camNuifEyDb3gFZXsTnWzjl/after.jpg",
-      "progress_imgs": [
-        "images/before-after/1camNuifEyDb3gFZXsTnWzjl/progress1.jpg",
-        "images/before-after/1camNuifEyDb3gFZXsTnWzjl/progress2.jpg",
-        "images/before-after/1camNuifEyDb3gFZXsTnWzjl/progress3.jpg"
-      ],
-      "progress_labels": [
-        "내부분해",
-        "교체부품",
-        "수리작업중"
-      ],
-      "before_text": "전면 액정 파손",
-      "after_text": "전면 액정 교체 완료",
-      "case_id": "1camNuifEyDb3gFZXsTnWzjlZCIuGuNaL",
-      "meta": {
-        "time": "1228",
-        "age": "40대",
         "gender": "여성",
-        "age_gender": "40대 여성",
-        "options": "DD액정",
-        "cause": "충격",
-        "time_natural": "낮 12시 28분",
-        "time_period": "점심시간",
-        "options_natural": "DD(OEM) 액정",
+        "age_gender": "30대 여성",
+        "options": "정품인증배터리",
+        "symptoms": [
+          {
+            "part": "battery",
+            "natural": "배터리 최대 용량 80% 미만 (애플 권장 교체 시점)",
+            "raw": "성능치80"
+          }
+        ],
+        "cause": "자연 노화",
+        "prior_repair": "private",
+        "prior_repair_natural": "다른 사설 수리점에서 이전 수리 이력 있음",
+        "time_natural": "오후 3시 16분",
+        "time_period": "오후",
+        "options_natural": "정품 인증 배터리",
         "options_list": [
-          "DD액정"
+          "정품인증배터리"
+        ],
+        "symptom_natural": "배터리 최대 용량 80% 미만 (애플 권장 교체 시점)",
+        "symptom_parts": [
+          "battery"
         ]
       },
-      "journal_url": "articles/journal-2026-05-11-아이폰-iphone-15-pro-screen-1camNuif.html"
+      "journal_url": "articles/journal-2026-05-12-아이폰-iphone-14-pro-battery-1ChixQPs.html"
     },
     {
-      "id": "case-6",
-      "model": "아이폰 17프로",
-      "type": "화면 교체",
-      "branch": "가산점",
-      "date": "2026-05-11",
-      "createdTime": "2026-05-11T02:28:01.248Z",
-      "repair_time": "당일 · 30~60분",
-      "before_img": "images/before-after/1pHB98EyRJNYU4TawHOk6nxg/before.jpg",
-      "after_img": "images/before-after/1pHB98EyRJNYU4TawHOk6nxg/after.jpg",
+      "id": "case-29",
+      "model": "애플워치 Apple Watch SE (2세대)",
+      "type": "센서 수리",
+      "branch": "목동점",
+      "date": "2026-05-12",
+      "createdTime": "2026-05-12T05:10:44.246Z",
+      "repair_time": "당일 · 30분~1시간",
+      "before_img": "images/before-after/11BNtH7gTdSRbVov7ZSm79in/before.jpg",
+      "after_img": "images/before-after/11BNtH7gTdSRbVov7ZSm79in/after.jpg",
       "progress_imgs": [
-        "images/before-after/1pHB98EyRJNYU4TawHOk6nxg/progress1.jpg",
-        "images/before-after/1pHB98EyRJNYU4TawHOk6nxg/progress2.jpg",
-        "images/before-after/1pHB98EyRJNYU4TawHOk6nxg/progress3.jpg"
+        "images/before-after/11BNtH7gTdSRbVov7ZSm79in/progress1.jpg",
+        "images/before-after/11BNtH7gTdSRbVov7ZSm79in/progress2.jpg",
+        "images/before-after/11BNtH7gTdSRbVov7ZSm79in/progress3.jpg"
       ],
       "progress_labels": [
         "내부분해",
         "교체부품",
         "수리작업중"
       ],
-      "before_text": "전면 액정 파손",
-      "after_text": "전면 액정 교체 완료",
-      "case_id": "1pHB98EyRJNYU4TawHOk6nxgChfUkUysn",
-      "meta": {},
-      "journal_url": "articles/journal-2026-05-11-아이폰-17프로-screen-1pHB98Ey.html"
+      "before_text": "센서 오작동",
+      "after_text": "센서 정밀 수리",
+      "case_id": "11BNtH7gTdSRbVov7ZSm79in_1mljPu9Z",
+      "meta": {
+        "time": "1410",
+        "age": "20대",
+        "gender": "여성",
+        "age_gender": "20대 여성",
+        "options": "후면센서",
+        "cause": "떨어뜨림",
+        "time_natural": "오후 2시 10분",
+        "time_period": "오후",
+        "options_natural": "후면센서",
+        "options_list": [
+          "후면센서"
+        ]
+      }
     }
   ],
   "portfolio_cases": [
@@ -271,7 +284,8 @@
         "options_list": [
           "액정교체"
         ]
-      }
+      },
+      "journal_url": "articles/journal-2026-05-12-아이패드-ipad-pro-11인치-2세대-screen-1Y5Bwg_L.html"
     },
     {
       "id": "case-2",
@@ -399,7 +413,7 @@
           "셀배터리"
         ]
       },
-      "journal_url": "articles/journal-2026-05-12-아이폰-iphone-screen+battery-11Ntl7my.html"
+      "journal_url": "articles/journal-2026-05-12-아이폰-iphone-13-screen+battery-11Ntl7my.html"
     },
     {
       "id": "case-5",
@@ -502,7 +516,7 @@
           "정품액정"
         ]
       },
-      "journal_url": "articles/journal-2026-05-09-아이폰-iphone-screen-1z7zT5JR.html"
+      "journal_url": "articles/journal-2026-05-09-아이폰-iphone-11-screen-1z7zT5JR.html"
     },
     {
       "id": "case-8",
@@ -528,7 +542,7 @@
       "after_text": "전면 액정 교체 완료",
       "case_id": "1SF2kXMSdt6pIbCNQH0tiIp3ONaL3b4It",
       "meta": {},
-      "journal_url": "articles/journal-2026-05-09-아이폰-screen-1SF2kXMS.html"
+      "journal_url": "articles/journal-2026-05-09-아이폰-13-screen-1SF2kXMS.html"
     },
     {
       "id": "case-9",
@@ -606,7 +620,7 @@
       "after_text": "전면 액정 교체 완료",
       "case_id": "14mAIBCvXmew2SGH1oIeIVtLDPw_7UqxM",
       "meta": {},
-      "journal_url": "articles/journal-2026-05-06-아이폰-screen-14mAIBCv.html"
+      "journal_url": "articles/journal-2026-05-06-아이폰-16-screen-14mAIBCv.html"
     },
     {
       "id": "case-12",
@@ -760,7 +774,7 @@
           "기기후면"
         ]
       },
-      "journal_url": "articles/journal-2026-04-29-아이폰-back-1NVppdC5.html"
+      "journal_url": "articles/journal-2026-04-29-아이폰-12-back-1NVppdC5.html"
     },
     {
       "id": "case-17",
@@ -844,7 +858,7 @@
       "after_text": "전면 액정 교체 완료",
       "case_id": "1lOmdLXI-z0zJHqfxjVJCNUTg9S5bVdWw",
       "meta": {},
-      "journal_url": "articles/journal-2026-04-24-아이폰-screen-1lOmdLXI.html"
+      "journal_url": "articles/journal-2026-04-24-아이폰-11-screen-1lOmdLXI.html"
     },
     {
       "id": "case-20",
@@ -876,7 +890,7 @@
           "기기후면"
         ]
       },
-      "journal_url": "articles/journal-2026-04-20-아이폰-back-1U3GDVjv.html"
+      "journal_url": "articles/journal-2026-04-20-아이폰-15-back-1U3GDVjv.html"
     },
     {
       "id": "case-21",
@@ -1018,7 +1032,7 @@
       "after_text": "전면 액정 교체 완료",
       "case_id": "13Qv_rnPH0t9ciY5sfeYKCQE3L9dd5yr_",
       "meta": {},
-      "journal_url": "articles/journal-2026-04-16-아이폰-screen-13Qv_rnP.html"
+      "journal_url": "articles/journal-2026-04-16-아이폰-6-screen-13Qv_rnP.html"
     },
     {
       "id": "case-26",
@@ -1149,7 +1163,7 @@
     {
       "id": "case-29",
       "model": "애플워치 Apple Watch SE (2세대)",
-      "type": "후면 유리 교체",
+      "type": "센서 수리",
       "branch": "목동점",
       "date": "2026-05-12",
       "createdTime": "2026-05-12T05:10:44.246Z",
@@ -1182,8 +1196,7 @@
         "options_list": [
           "후면센서"
         ]
-      },
-      "repair_type": "back"
+      }
     },
     {
       "id": "case-30",
@@ -1217,7 +1230,8 @@
         "options_list": [
           "배터리교체"
         ]
-      }
+      },
+      "journal_url": "articles/journal-2026-05-12-애플워치-5-44mm-battery-1zlcqZig.html"
     },
     {
       "id": "case-31",

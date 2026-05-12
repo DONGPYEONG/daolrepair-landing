@@ -872,13 +872,30 @@ def main():
                 return True
         return False
 
-    # 🆕 슬라이더 다양성 — 같은 지점·같은 날 동일 부위(화면) 중복은 1건만 노출
+    # 🆕 슬라이더 다양성 — 동일 디바이스·부위 1건만 (모델 번호 큰 것 우선)
+    def _model_priority(c):
+        """iPhone 액정 케이스는 모델 번호 큰 것이 우선 (17 > 16 > 15 > 14 > 13)"""
+        m = c.get("model","")
+        if "17" in m: return 17
+        if "16" in m: return 16
+        if "15" in m: return 15
+        if "14" in m: return 14
+        if "13" in m: return 13
+        return 0
     eligible = [c for c in portfolio_cases if _slider_eligible(c)]
-    seen_branch_date_part = set()
+    # iPhone 액정인 경우 모델 번호 우선, 그 외 createdTime 기준
+    eligible.sort(key=lambda c: (-_model_priority(c) if ("아이폰" in c.get("model","") or "iPhone" in c.get("model","")) else 0, c.get("createdTime","")), reverse=False)
+    # 위 정렬은 iPhone은 모델 번호 큰 것이 앞으로, 그 외는 createdTime이 작은 게 앞으로 — 반대로 하려면 역순
+    eligible.sort(key=lambda c: (
+        # 1) iPhone 액정은 모델 번호 큰 것 우선 (17 > 13)
+        -_model_priority(c) if (("아이폰" in c.get("model","") or "iPhone" in c.get("model","")) and ("화면" in c.get("type","") or "액정" in c.get("type",""))) else 99,
+        # 2) 그 외엔 createdTime 최신순
+        -1 * (int(c.get("createdTime","0").replace("-","").replace(":","").replace("T","").replace("Z","").replace(".","")[:14] or 0) if c.get("createdTime") else 0)
+    ))
+    seen_dev_part = set()
     diverse = []
     for c in eligible:
         t = (c.get("type") or "").lower()
-        # 부위 키 — '화면/액정'은 하나의 부위로 통합 (단순 액정·액정+배터리 모두 화면 부위)
         if "화면" in t or "액정" in t:
             part = "screen"
         elif "배터리" in t:
@@ -889,15 +906,23 @@ def main():
             part = "charge"
         else:
             part = t[:6] or "etc"
-        key = (c.get("branch",""), c.get("date",""), part)
-        if key in seen_branch_date_part:
-            continue  # 같은 지점·날짜·부위는 첫 케이스만 노출
-        seen_branch_date_part.add(key)
+        m = c.get("model","")
+        if "아이폰" in m or "iPhone" in m: device = "iphone"
+        elif "아이패드" in m or "iPad" in m: device = "ipad"
+        elif "애플워치" in m or "Apple Watch" in m or "에르메스" in m: device = "watch"
+        elif "에어팟" in m or "AirPods" in m: device = "airpods"
+        elif "맥북" in m or "MacBook" in m: device = "macbook"
+        else: device = "etc"
+        # 디바이스+부위 1건만 (지점·날짜 무관)
+        key = (device, part)
+        if key in seen_dev_part:
+            continue
+        seen_dev_part.add(key)
         diverse.append(c)
         if len(diverse) >= 4:
             break
     slider_cases = diverse
-    print(f"   🎬 슬라이더 필터링: 아이폰 13시리즈+ / 같은 지점·날짜·부위 중복 제거")
+    print(f"   🎬 슬라이더 필터링: 디바이스+부위 1건 / iPhone 액정은 신모델 우선")
 
     # 🆕 각 케이스에 일지 글 URL 매칭 (case_id로 journal-index 매칭)
     journal_index_path = ROOT / "data" / "journal-index.json"
