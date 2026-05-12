@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-12T14:21:43.518460+09:00",
+  "updated_at": "2026-05-12T14:27:04.667636+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11205,
@@ -33,43 +33,43 @@
       "model": "아이폰 iPhone 12 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 8
+      "minutes_ago": 13
     },
     {
       "model": "애플워치 Apple Watch SE (2세대) 공시현 010668210201",
       "type": "센서 수리",
       "branch": "목동점",
-      "minutes_ago": 10
+      "minutes_ago": 16
     },
     {
       "model": "아이폰 iPhone 13 Pro",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 127
+      "minutes_ago": 133
     },
     {
       "model": "애플워치 Apple Watch SE (2세대)",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 201
+      "minutes_ago": 206
     },
     {
       "model": "아이폰 iPhone 13",
       "type": "화면 + 배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 244
+      "minutes_ago": 250
     },
     {
       "model": "아이폰 iPhone 13 Pro",
       "type": "수리",
       "branch": "목동점",
-      "minutes_ago": 1278
+      "minutes_ago": 1283
     },
     {
       "model": "애플워치 5 44mm",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 1378
+      "minutes_ago": 1383
     }
   ],
   "top_repair_types": [
@@ -979,12 +979,13 @@
         "age": "30대",
         "gender": "여성",
         "age_gender": "30대 여성",
-        "options": "스피커·마이크",
+        "options": "스피커+마이크",
         "time_natural": "오후 5시 2분",
         "time_period": "오후 늦게",
-        "options_natural": "스피커·마이크",
+        "options_natural": "스피커과 마이크",
         "options_list": [
-          "스피커·마이크"
+          "스피커",
+          "마이크"
         ]
       },
       "journal_url": "articles/journal-2026-05-11-아이폰-iphone-13-pro-speaker-1LZ8-mdk.html"
