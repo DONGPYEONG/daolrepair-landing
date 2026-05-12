@@ -1994,13 +1994,20 @@ document.getElementById('reviewPopup').addEventListener('click', function(e){
 .live-ticker-row.active { opacity:1; transform:translateY(0); }
 .live-ticker-row .lt-branch { background:rgba(255,107,53,0.12); color:#FF6B35; padding:3px 9px; border-radius:50px; font-size:11px; font-weight:800; letter-spacing:0.3px; }
 .live-ticker-row .lt-time { color:rgba(0,0,0,0.4); font-size:12px; font-weight:500; margin-left:auto; flex-shrink:0; }
-.live-branches { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
-.live-branch-card { background:#fff; border:1px solid rgba(0,0,0,0.07); border-radius:14px; padding:14px 16px; box-shadow:0 2px 8px rgba(0,0,0,0.03); }
-.live-branch-name { font-size:12px; color:rgba(0,0,0,0.5); font-weight:700; margin-bottom:4px; letter-spacing:0.3px; display:flex; align-items:center; gap:6px; white-space:nowrap; flex-wrap:nowrap; min-height:20px; }
+.live-branches { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.live-branch-card { background:#fff; border:1px solid rgba(0,0,0,0.07); border-radius:14px; padding:14px 16px; box-shadow:0 2px 8px rgba(0,0,0,0.03); min-width:0; overflow:hidden; }
+.live-branch-name { font-size:12px; color:rgba(0,0,0,0.5); font-weight:700; margin-bottom:4px; letter-spacing:0.3px; display:flex; align-items:center; gap:6px; white-space:nowrap; flex-wrap:nowrap; min-height:20px; min-width:0; }
 .live-branch-new { display:inline-block; background:linear-gradient(135deg,#FF6B35 0%,#ff8e5a 100%); color:#fff; font-size:9px; font-weight:900; letter-spacing:0.4px; padding:1px 6px; border-radius:50px; line-height:1.4; box-shadow:0 1px 4px rgba(255,107,53,0.35); flex-shrink:0; }
 @media (max-width:600px) {
-  .live-branch-name { font-size:11px; gap:4px; }
-  .live-branch-new { font-size:8px; padding:1px 5px; letter-spacing:0.3px; }
+  .live-branch-card { padding:12px 10px; }
+  .live-branch-name { font-size:11px; gap:4px; letter-spacing:0; }
+  .live-branch-new { font-size:8px; padding:1px 5px; letter-spacing:0.2px; }
+  .live-branches { gap:8px; }
+}
+@media (max-width:380px) {
+  .live-branch-card { padding:10px 8px; }
+  .live-branch-name { font-size:10px; gap:3px; }
+  .live-branch-new { font-size:7.5px; padding:1px 4px; }
 }
 .live-branch-card-link { display:block; text-decoration:none; color:inherit; cursor:pointer; transition:border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
 .live-branch-card-link:hover { border-color:rgba(255,107,53,0.5); transform:translateY(-2px); box-shadow:0 6px 18px rgba(0,0,0,0.08); }
