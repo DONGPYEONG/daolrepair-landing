@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-05-12T14:31:59.068254+09:00",
+  "updated_at": "2026-05-12T15:34:11.066258+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
-    "total": 11205,
-    "today": 25,
-    "this_week": 50,
-    "this_month": 155,
+    "total": 11220,
+    "today": 40,
+    "this_week": 65,
+    "this_month": 170,
     "by_branch": {
-      "가산점": 5580,
-      "신림점": 5150,
+      "가산점": 5585,
+      "신림점": 5160,
       "목동점": 475
     },
     "by_type": {
+      "화면 교체": 100,
+      "충전 단자 수리": 25,
       "후면 + 배터리 교체": 15,
-      "화면 교체": 95,
-      "배터리 교체": 150,
+      "배터리 교체": 155,
       "후면 유리 교체": 55,
-      "충전 단자 수리": 20,
       "화면 + 배터리 교체": 25,
       "배터리 + 기타": 5,
       "기타 정밀 수리": 5,
@@ -30,62 +30,62 @@
   },
   "recent_cases": [
     {
-      "model": "아이폰 iPhone 12 Pro",
+      "model": "아이폰 iPhone XR",
+      "type": "화면 교체",
+      "branch": "신림점",
+      "minutes_ago": 16
+    },
+    {
+      "model": "아이폰 iPhone 14 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
       "minutes_ago": 18
     },
     {
+      "model": "아이폰 iPhone 16 Pro Max",
+      "type": "충전 단자 수리",
+      "branch": "신림점",
+      "minutes_ago": 51
+    },
+    {
+      "model": "아이폰 iPhone 12 Pro",
+      "type": "배터리 교체",
+      "branch": "가산점",
+      "minutes_ago": 80
+    },
+    {
       "model": "애플워치 Apple Watch SE (2세대) 공시현 010668210201",
       "type": "센서 수리",
       "branch": "목동점",
-      "minutes_ago": 21
+      "minutes_ago": 83
     },
     {
       "model": "아이폰 iPhone 13 Pro",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 138
+      "minutes_ago": 200
     },
     {
       "model": "애플워치 Apple Watch SE (2세대)",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 211
-    },
-    {
-      "model": "아이폰 iPhone 13",
-      "type": "화면 + 배터리 교체",
-      "branch": "목동점",
-      "minutes_ago": 255
-    },
-    {
-      "model": "아이폰 iPhone 13 Pro",
-      "type": "수리",
-      "branch": "목동점",
-      "minutes_ago": 1288
-    },
-    {
-      "model": "애플워치 5 44mm",
-      "type": "배터리 교체",
-      "branch": "가산점",
-      "minutes_ago": 1388
+      "minutes_ago": 273
     }
   ],
   "top_repair_types": [
     {
       "rank": 1,
       "label": "배터리 교체",
-      "count": 50
+      "count": 55
     },
     {
       "rank": 2,
       "label": "화면 교체",
-      "count": 45
+      "count": 50
     },
     {
       "rank": 3,
-      "label": "후면 유리 교체",
+      "label": "충전 단자 수리",
       "count": 15
     }
   ],
@@ -914,6 +914,53 @@
     },
     {
       "id": "case-25",
+      "model": "아이폰 iPhone 12 Pro",
+      "type": "배터리 교체",
+      "branch": "가산점",
+      "date": "2026-05-12",
+      "createdTime": "2026-05-12T05:13:39.320Z",
+      "repair_time": "당일 · 30~50분",
+      "before_img": "images/before-after/1AoOnJZgAEYPAoSq4Lt6kwfU/before.jpg",
+      "after_img": "images/before-after/1AoOnJZgAEYPAoSq4Lt6kwfU/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1AoOnJZgAEYPAoSq4Lt6kwfU/progress1.jpg",
+        "images/before-after/1AoOnJZgAEYPAoSq4Lt6kwfU/progress2.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "수리작업중"
+      ],
+      "before_text": "이전 배터리 성능치",
+      "after_text": "교체 후 배터리 성능치",
+      "case_id": "1AoOnJZgAEYPAoSq4Lt6kwfUW7cfHHAye",
+      "meta": {
+        "time": "1414",
+        "age": "50대",
+        "gender": "여성",
+        "age_gender": "50대 여성",
+        "options": "일반배터리",
+        "symptoms": [
+          {
+            "part": "battery",
+            "natural": "사용 시간 급격 단축 — 일상 한 나절도 못 버팀",
+            "raw": "빨리닳음"
+          }
+        ],
+        "cause": "자연 노화",
+        "time_natural": "오후 2시 14분",
+        "time_period": "오후",
+        "options_natural": "일반 호환 배터리",
+        "options_list": [
+          "일반배터리"
+        ],
+        "symptom_natural": "사용 시간 급격 단축 — 일상 한 나절도 못 버팀",
+        "symptom_parts": [
+          "battery"
+        ]
+      }
+    },
+    {
+      "id": "case-26",
       "model": "애플워치 Apple Watch SE (2세대)",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -952,7 +999,7 @@
       "journal_url": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html"
     },
     {
-      "id": "case-26",
+      "id": "case-27",
       "model": "아이폰 iPhone 13 Pro",
       "type": "수리",
       "branch": "목동점",
@@ -991,7 +1038,7 @@
       "journal_url": "articles/journal-2026-05-11-아이폰-iphone-13-pro-speaker-1LZ8-mdk.html"
     },
     {
-      "id": "case-27",
+      "id": "case-28",
       "model": "아이폰 iPhone X",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1030,7 +1077,7 @@
       "journal_url": "articles/journal-2026-05-09-아이폰-iphone-x-battery-1DBkRFtC.html"
     },
     {
-      "id": "case-28",
+      "id": "case-29",
       "model": "아이폰 iPhone 14 Pro",
       "type": "후면 + 배터리 교체",
       "branch": "신림점",
@@ -1070,7 +1117,7 @@
       "journal_url": "articles/journal-2026-05-09-아이폰-iphone-14-pro-back-13U0ly-i.html"
     },
     {
-      "id": "case-29",
+      "id": "case-30",
       "model": "애플워치 Apple Watch SE (2세대)",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1109,7 +1156,7 @@
       "journal_url": "articles/journal-2026-05-09-애플워치-apple-watch-se-2세대-battery-1eGfabMe.html"
     },
     {
-      "id": "case-30",
+      "id": "case-31",
       "model": "아이폰 iPhone 13 Pro Max",
       "type": "후면 + 배터리 교체",
       "branch": "신림점",
@@ -1149,7 +1196,7 @@
       "journal_url": "articles/journal-2026-05-09-아이폰-iphone-13-pro-max-back-1iXABiV6.html"
     },
     {
-      "id": "case-31",
+      "id": "case-32",
       "model": "아이폰 13미니",
       "type": "배터리 교체",
       "branch": "가산점",
@@ -1175,7 +1222,7 @@
       "journal_url": "articles/journal-2026-05-08-아이폰-13미니-battery-1im7V3yy.html"
     },
     {
-      "id": "case-32",
+      "id": "case-33",
       "model": "아이패드 미니6",
       "type": "충전 단자 수리",
       "branch": "신림점",
@@ -1201,7 +1248,7 @@
       "journal_url": "articles/journal-2026-05-06-아이패드-미니6-charge-1vFX-wUW.html"
     },
     {
-      "id": "case-33",
+      "id": "case-34",
       "model": "아이폰6s",
       "type": "배터리 교체",
       "branch": "가산점",
@@ -1227,7 +1274,7 @@
       "journal_url": "articles/journal-2026-05-05-아이폰6s-battery-1bdNyoxi.html"
     },
     {
-      "id": "case-34",
+      "id": "case-35",
       "model": "아이폰 12미니",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1253,7 +1300,7 @@
       "journal_url": "articles/journal-2026-05-04-아이폰-12미니-battery-1CU7VD5l.html"
     },
     {
-      "id": "case-35",
+      "id": "case-36",
       "model": "아이폰 15프로",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1279,7 +1326,7 @@
       "journal_url": "articles/journal-2026-05-04-아이폰-15프로-battery-1P0o4qDL.html"
     },
     {
-      "id": "case-36",
+      "id": "case-37",
       "model": "애플워치 SE2 40mm",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1305,7 +1352,7 @@
       "journal_url": "articles/journal-2026-04-30-애플워치-se2-40mm-battery-1jbdaG3N.html"
     },
     {
-      "id": "case-37",
+      "id": "case-38",
       "model": "아이폰 15프로",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1331,7 +1378,7 @@
       "journal_url": "articles/journal-2026-04-30-아이폰-15프로-battery-1HkvVe9s.html"
     },
     {
-      "id": "case-38",
+      "id": "case-39",
       "model": "애플워치 SE 40mm",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1355,84 +1402,6 @@
       "case_id": "1c74rh7iWYb3hexAzNbGcsJGGy_nYLqIA",
       "meta": {},
       "journal_url": "articles/journal-2026-04-29-애플워치-se-40mm-battery-1c74rh7i.html"
-    },
-    {
-      "id": "case-39",
-      "model": "아이폰 XS MAX",
-      "type": "배터리 교체",
-      "branch": "목동점",
-      "date": "2026-04-29",
-      "createdTime": "2026-04-29T06:02:52.114Z",
-      "repair_time": "당일 · 30~50분",
-      "before_img": "images/before-after/1DLJIHqBBJReHkfyuGyt8QRU/before.jpg",
-      "after_img": "images/before-after/1DLJIHqBBJReHkfyuGyt8QRU/after.jpg",
-      "progress_imgs": [
-        "images/before-after/1DLJIHqBBJReHkfyuGyt8QRU/progress1.jpg",
-        "images/before-after/1DLJIHqBBJReHkfyuGyt8QRU/progress2.jpg",
-        "images/before-after/1DLJIHqBBJReHkfyuGyt8QRU/progress3.jpg"
-      ],
-      "progress_labels": [
-        "내부분해",
-        "교체부품",
-        "수리작업중"
-      ],
-      "before_text": "이전 배터리 성능치",
-      "after_text": "교체 후 배터리 성능치",
-      "case_id": "1DLJIHqBBJReHkfyuGyt8QRUrXlWIpKqk",
-      "meta": {},
-      "journal_url": "articles/journal-2026-04-29-아이폰-xs-max-battery-1DLJIHqB.html"
-    },
-    {
-      "id": "case-40",
-      "model": "애플워치 SE2 40mm",
-      "type": "배터리 교체",
-      "branch": "목동점",
-      "date": "2026-04-28",
-      "createdTime": "2026-04-28T01:42:04.970Z",
-      "repair_time": "당일 · 30~50분",
-      "before_img": "images/before-after/1FOnkpJ-X5f-XkBm8A9IrCPb/before.jpg",
-      "after_img": "images/before-after/1FOnkpJ-X5f-XkBm8A9IrCPb/after.jpg",
-      "progress_imgs": [
-        "images/before-after/1FOnkpJ-X5f-XkBm8A9IrCPb/progress1.jpg",
-        "images/before-after/1FOnkpJ-X5f-XkBm8A9IrCPb/progress2.jpg",
-        "images/before-after/1FOnkpJ-X5f-XkBm8A9IrCPb/progress3.jpg"
-      ],
-      "progress_labels": [
-        "내부분해",
-        "교체부품",
-        "수리작업중"
-      ],
-      "before_text": "이전 배터리 성능치",
-      "after_text": "교체 후 배터리 성능치",
-      "case_id": "1FOnkpJ-X5f-XkBm8A9IrCPbu1QodwTm9",
-      "meta": {},
-      "journal_url": "articles/journal-2026-04-28-애플워치-se2-40mm-battery-1FOnkpJ.html"
-    },
-    {
-      "id": "case-41",
-      "model": "아이폰 15프로",
-      "type": "배터리 교체",
-      "branch": "목동점",
-      "date": "2026-04-27",
-      "createdTime": "2026-04-27T01:24:42.946Z",
-      "repair_time": "당일 · 30~50분",
-      "before_img": "images/before-after/1txy7HZ2zAbkVMdkqHjP6pu6/before.jpg",
-      "after_img": "images/before-after/1txy7HZ2zAbkVMdkqHjP6pu6/after.jpg",
-      "progress_imgs": [
-        "images/before-after/1txy7HZ2zAbkVMdkqHjP6pu6/progress1.jpg",
-        "images/before-after/1txy7HZ2zAbkVMdkqHjP6pu6/progress2.jpg",
-        "images/before-after/1txy7HZ2zAbkVMdkqHjP6pu6/progress3.jpg"
-      ],
-      "progress_labels": [
-        "내부분해",
-        "교체부품",
-        "수리작업중"
-      ],
-      "before_text": "이전 배터리 성능치",
-      "after_text": "교체 후 배터리 성능치",
-      "case_id": "1txy7HZ2zAbkVMdkqHjP6pu6u055DsT58",
-      "meta": {},
-      "journal_url": "articles/journal-2026-04-27-아이폰-15프로-battery-1txy7HZ2.html"
     }
   ]
 }
