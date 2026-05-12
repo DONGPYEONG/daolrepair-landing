@@ -1232,7 +1232,6 @@ window.daolShare=function(){var title=document.title.replace(/ \| .*$/,'').trim(
 (function(){var d=document.querySelector('.daol-dock');if(!d)return;var timer=null;function atBottom(){return window.scrollY+window.innerHeight>=document.body.scrollHeight-10;}function show(){if(atBottom())return;if(window.scrollY<120)return;d.classList.remove('is-hidden');}function hide(){d.classList.add('is-hidden');}d.classList.add('is-hidden');window.addEventListener('scroll',function(){hide();clearTimeout(timer);if(!atBottom()&&window.scrollY>=120){timer=setTimeout(show,1000);}},{passive:true});setTimeout(show,1500);})();
 </script>
 
-
   <section class="art-related">
     <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
     <div class="related-grid">

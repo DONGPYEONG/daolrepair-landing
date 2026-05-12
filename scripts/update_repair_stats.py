@@ -216,8 +216,8 @@ def parse_case_folder(title):
     MODEL_KEYWORDS = ("프로", "맥스", "미니", "플러스", "울트라", "에어", "에르메스", "PLUS", "PRO", "MAX", "MINI", "PM", "mm")
     cleaned = []
     for tok in middle:
-        # 1) 전화번호 패턴 (10~11자리 숫자) — 즉시 제거
-        if re.fullmatch(r"\d{10,11}", tok):
+        # 1) 전화번호 패턴 (10~13자리 숫자) — 즉시 제거 (앱 입력 오류로 12자리 등도 발생)
+        if re.fullmatch(r"\d{10,13}", tok):
             continue
         # 2) 010-XXXX-XXXX 형식
         if re.fullmatch(r"01[0-9][\s\-]?[0-9]{3,4}[\s\-]?[0-9]{4}", tok):
@@ -231,9 +231,13 @@ def parse_case_folder(title):
     model = " ".join(middle).strip()
     # 다시 한 번 — 토큰 안에 합쳐진 패턴도 제거 ("공시현010668")
     model = re.sub(r"[가-힣]{2,4}\s?01[0-9][\s\-]?[0-9]{3,4}[\s\-]?[0-9]{4}", "", model)
-    model = re.sub(r"[가-힣]{2,4}\s?\d{10,11}", "", model)
+    model = re.sub(r"[가-힣]{2,4}\s?\d{10,13}", "", model)
     model = re.sub(r"\b01[0-9][\s\-]?[0-9]{3,4}[\s\-]?[0-9]{4}\b", "", model)
-    model = re.sub(r"\b\d{10,11}\b", "", model)
+    model = re.sub(r"\b\d{10,13}\b", "", model)
+    # 🆕 최종 백스톱 — 4자리 이상 연속 숫자가 모델에 남아 있으면 제거 (모델명에는 mm·세대 외 4+자리 숫자 없음)
+    model = re.sub(r"\d{4,}", "", model)
+    # 닫는 괄호 뒤 잔여 숫자/공백 제거: "SE (2세대) 1" → "SE (2세대)"
+    model = re.sub(r"\)\s*\d+\s*$", ")", model)
     model = re.sub(r"\s+", " ", model).strip()
     return device, model, repair_type
 
@@ -862,8 +866,32 @@ def main():
                 return True
         return False
 
-    slider_cases = [c for c in portfolio_cases if _slider_eligible(c)][:4]
-    print(f"   🎬 슬라이더 필터링: 아이폰 13시리즈 이상만 (옛 모델 제외)")
+    # 🆕 슬라이더 다양성 — 같은 지점·같은 날 동일 부위(화면) 중복은 1건만 노출
+    eligible = [c for c in portfolio_cases if _slider_eligible(c)]
+    seen_branch_date_part = set()
+    diverse = []
+    for c in eligible:
+        t = (c.get("type") or "").lower()
+        # 부위 키 — '화면/액정'은 하나의 부위로 통합 (단순 액정·액정+배터리 모두 화면 부위)
+        if "화면" in t or "액정" in t:
+            part = "screen"
+        elif "배터리" in t:
+            part = "battery"
+        elif "후면" in t or "백글래스" in t:
+            part = "back"
+        elif "충전" in t:
+            part = "charge"
+        else:
+            part = t[:6] or "etc"
+        key = (c.get("branch",""), c.get("date",""), part)
+        if key in seen_branch_date_part:
+            continue  # 같은 지점·날짜·부위는 첫 케이스만 노출
+        seen_branch_date_part.add(key)
+        diverse.append(c)
+        if len(diverse) >= 4:
+            break
+    slider_cases = diverse
+    print(f"   🎬 슬라이더 필터링: 아이폰 13시리즈+ / 같은 지점·날짜·부위 중복 제거")
 
     # 🆕 각 케이스에 일지 글 URL 매칭 (case_id로 journal-index 매칭)
     journal_index_path = ROOT / "data" / "journal-index.json"

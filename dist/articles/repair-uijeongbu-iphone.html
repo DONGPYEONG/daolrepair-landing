@@ -105,17 +105,19 @@
     .faq-q-label { color: var(--orange); margin-right: 6px; }
     .faq-a { font-size: 15px; color: var(--text); line-height: 1.8; }
     .faq-a-label { color: var(--orange); font-weight: 800; margin-right: 6px; }
-    .art-related { margin-top: 56px; padding-top: 36px; border-top: 2px solid var(--border); }
-    .art-related-heading { font-size: 18px; font-weight: 900; color: var(--dark); margin-bottom: 18px; }
-    .art-related-heading::before { content: ''; display: block; width: 28px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 10px; }
-    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
-    .related-card { display: flex; flex-direction: column; gap: 8px; padding: 18px 20px; background: #fff; border: 1px solid #eee; border-radius: 12px; text-decoration: none; transition: all 0.2s; color: inherit; }
-    .related-card:hover { border-color: var(--orange); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(232,115,42,0.1); }
-    .related-badge { font-size: 11px; font-weight: 800; color: var(--orange); text-transform: uppercase; }
-    .related-title { font-size: 14px; font-weight: 700; color: var(--dark); line-height: 1.5; }
     .art-back-link { margin-top: 40px; }
     .art-back-link a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 600; }
     .art-back-link a:hover { color: var(--orange); }
+
+    .art-related { margin-top: 56px; padding-top: 40px; border-top: 2px solid var(--border); }
+    .art-related-heading { font-size: 18px; font-weight: 900; color: var(--dark); margin-bottom: 20px; }
+    .art-related-heading::before { content: ''; display: block; width: 28px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 12px; }
+    .related-grid { display: flex; flex-direction: column; gap: 10px; }
+    .related-card { display: block; padding: 16px 20px; border: 1.5px solid var(--border); border-radius: 14px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s; }
+    .related-card:hover { border-color: var(--orange); box-shadow: 0 4px 16px rgba(232,115,42,0.1); }
+    .related-badge { display: inline-block; background: rgba(232,115,42,0.1); color: var(--orange); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; }
+    .related-title { display: block; font-size: 14px; font-weight: 700; color: var(--dark); line-height: 1.5; }
+
     .art-footer { background: #0A0A0A; color: rgba(255,255,255,0.92); padding: 32px 20px; text-align: center; font-size: 13px; font-weight: 600; }
     .art-footer a { color: rgba(255,255,255,0.85); text-decoration: none; font-weight: 700; }
     @media (max-width: 720px) { .art-related { margin-left: 16px; margin-right: 16px; } .place-cta { padding: 24px 20px; } }
@@ -379,6 +381,24 @@
 
   <div class="art-back-link"><a href="index.html">← 전체 칼럼 보기</a></div>
 </div>
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="repair-nowon-iphone.html" class="related-card">
+        <span class="related-badge">지역 가이드 · 노원</span>
+        <span class="related-title">노원 아이폰 수리 — 7호선 환승 X, 한 라인으로 가산점까지</span>
+      </a>
+      <a href="repair-dongdaemun-iphone.html" class="related-card">
+        <span class="related-badge">지역 가이드 · 동대문</span>
+        <span class="related-title">동대문 아이폰 수리 — 1호선 직통 30분, 환승 없이</span>
+      </a>
+      <a href="repair-jongno-iphone.html" class="related-card">
+        <span class="related-badge">지역 가이드 · 종로</span>
+        <span class="related-title">종로 아이폰 수리 — 1호선 직통 25분, 환승 없이</span>
+      </a>
+    </div>
+  </section>
+
 
 <footer class="art-footer">
   <p><a href="https://xn--2j1bq2k97kxnah86c.com">다올리페어</a> · 가산점 · 신림점 · 목동점 · 전국 택배 수리</p>

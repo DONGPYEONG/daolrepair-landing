@@ -61,6 +61,16 @@
     .quote-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; background: var(--orange); color: #fff !important; text-decoration: none; border-radius: 12px; font-weight: 800; font-size: 14px; box-shadow: 0 4px 14px rgba(232,115,42,0.3); }
     .art-back-link { margin-top: 40px; }
     .art-back-link a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 600; }
+    
+    .art-related { margin-top: 56px; padding-top: 40px; border-top: 2px solid var(--border); }
+    .art-related-heading { font-size: 18px; font-weight: 900; color: var(--dark); margin-bottom: 20px; }
+    .art-related-heading::before { content: ''; display: block; width: 28px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 12px; }
+    .related-grid { display: flex; flex-direction: column; gap: 10px; }
+    .related-card { display: block; padding: 16px 20px; border: 1.5px solid var(--border); border-radius: 14px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s; }
+    .related-card:hover { border-color: var(--orange); box-shadow: 0 4px 16px rgba(232,115,42,0.1); }
+    .related-badge { display: inline-block; background: rgba(232,115,42,0.1); color: var(--orange); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; }
+    .related-title { display: block; font-size: 14px; font-weight: 700; color: var(--dark); line-height: 1.5; }
+
     .art-footer { background: #0A0A0A; color: rgba(255,255,255,0.92); padding: 32px 20px; text-align: center; font-size: 13px; font-weight: 600; }
     .art-footer a { color: rgba(255,255,255,0.85); text-decoration: none; font-weight: 700; }
 
@@ -295,6 +305,24 @@
 
   <div class="art-back-link"><a href="index.html">← 전체 칼럼 보기</a></div>
 </div>
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="repair-gangseo-ipad.html" class="related-card">
+        <span class="related-badge">지역 가이드 · 강서 아이패드</span>
+        <span class="related-title">강서 아이패드 수리 — 강서 패드 수리 — 화곡·발산에서 가장 가까운 마스터</span>
+      </a>
+      <a href="repair-ilsan-ipad.html" class="related-card">
+        <span class="related-badge">지역 가이드 · 일산 아이패드</span>
+        <span class="related-title">일산 아이패드 수리 — 일산·정발산·마두 패드 — 가장 가까운 마스터</span>
+      </a>
+      <a href="repair-gwangmyeong-iphone.html" class="related-card">
+        <span class="related-badge">지역 가이드 · 광명</span>
+        <span class="related-title">광명 아이폰 수리 — 7호선 한 정거장, 가장 가까운 마스터</span>
+      </a>
+    </div>
+  </section>
+
 
 <footer class="art-footer">
   <p><a href="https://xn--2j1bq2k97kxnah86c.com">다올리페어</a> · 가산점 · 신림점 · 목동점 · 전국 택배 수리</p>

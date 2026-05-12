@@ -1468,23 +1468,32 @@ def make_body(c):
         )
         body_html = body_html.replace(
             '<strong>애플은 후면 유리만 별도 부품으로 판매하지 않습니다</strong>. 그래서 모든 사설 수리점은 <strong>정품급 OEM 부품</strong>을 사용해요.',
-            '<strong>애플은 후면 유리만 별도 부품으로 판매하지 않습니다</strong>. 그래서 다올리페어는 <strong>정품 애플워치에서 추출한 정품 후면 유리(추출 정품)</strong>로 진행합니다.',
+            '<strong>애플은 후면 유리만 별도 부품으로 판매하지 않습니다</strong>. 그래서 대부분 사설 수리점은 정품급 OEM(비정품) 부품을 쓰지만, 다올리페어는 <a href="applewatch-back-glass-genuine-extracted.html"><strong>정품 애플워치에서 추출한 정품 후면 유리(추출 정품)</strong></a>로만 진행합니다.',
         )
         body_html = body_html.replace(
             '다올리페어는 색감·두께·질감이 본체와 가장 잘 맞는 OEM 부품으로 골라드립니다.',
-            '다올리페어는 본체와 동일한 정품 추출 후면 유리만 사용합니다.',
+            '다올리페어는 본체와 동일한 정품 추출 후면 유리만 사용합니다 — 색감·두께·심박 센서 투과율이 출고 사양 그대로입니다.',
         )
         # 9가지 OEM 비교 링크는 워치엔 부적합 → 제거
         import re as _re3
         body_html = _re3.sub(
             r' 색감 비교 사례는 <a href="iphone-back-glass-genuine-vs-compatible\.html">[^<]+</a>를 참고하세요\.',
-            '',
+            ' 자세한 정책은 <a href="applewatch-back-glass-genuine-extracted.html">애플워치 후면 유리 = 100% 추출 정품</a> 글에서 확인하실 수 있어요.',
             body_html,
+        )
+        # 가격 링크 — 아이폰 후면 가격표 → 워치 후면 가격표로 교체
+        body_html = body_html.replace(
+            '<a href="iphone-back-glass-cost-by-model-2026.html">아이폰 후면 유리 모델별 수리비</a>',
+            '<a href="applewatch-back-glass-cost-by-model-2026.html">애플워치 후면 유리 모델별 수리비</a>',
+        )
+        body_html = body_html.replace(
+            "<a href='/articles/iphone-back-glass-cost-by-model-2026.html'>아이폰 후면 유리 모델별 수리비 가이드</a>",
+            "<a href='/articles/applewatch-back-glass-cost-by-model-2026.html'>애플워치 후면 유리 모델별 수리비 가이드</a>",
         )
         # FAQ 답변의 호환 부품 표현 → 추출 정품
         body_html = body_html.replace(
             '다올리페어는 검증된 호환 부품으로 교체합니다. 색상·두께·질감 모두 본체와 잘 맞게 골라드리며, 자세한 비교는 <a href=\'iphone-back-glass-genuine-vs-compatible.html\'>아이폰 후면 유리 정품급 OEM 9가지 비교</a>에서 확인하실 수 있어요.',
-            '다만 다올리페어는 <strong>정품 애플워치에서 추출한 정품 후면 유리</strong>만 사용합니다. 색상·두께·질감 모두 본체와 동일해요.',
+            '다만 다올리페어는 <a href="applewatch-back-glass-genuine-extracted.html"><strong>정품 애플워치에서 추출한 정품 후면 유리</strong></a>만 사용합니다. 색상·두께·질감 모두 본체와 동일하며, 정품급 OEM(비정품)을 쓰는 다른 사설과는 다릅니다.',
         )
 
     # 🆕 애플워치 본드 굳는 시간 — 더 명확히 ("약 1일" → "최소 6시간 / 보통 다음 날 픽업")
@@ -1505,6 +1514,18 @@ def make_body(c):
             '⏱️ 워치는 본드 굳는 시간으로 약 1일 보유',
             '⏱️ 워치는 본드 굳히기 최소 6시간 (보통 다음 날 픽업)',
         )
+
+    # 🆕 워치 후면 일지 — 본문 끝에 정책·가격 안내 박스 자동 삽입
+    if is_watch and ("back" in str(c.get("repair_type", ""))):
+        body_html += """
+<div style="background:linear-gradient(135deg,#fff8f3 0%,#fff3ea 100%);border:1.5px solid #f5c9a0;border-radius:14px;padding:18px 22px;margin:24px 0;">
+  <div style="font-size:11px;font-weight:700;color:#E8732A;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">애플워치 후면 유리 — 다올리페어 정책</div>
+  <ul style="margin:6px 0 0;padding-left:18px;color:#5a3a1a;font-size:14px;line-height:1.7;">
+    <li><a href="applewatch-back-glass-genuine-extracted.html"><strong>왜 100% 추출 정품인가</strong></a> — 다른 사설과 부품 차이 정리</li>
+    <li><a href="applewatch-back-glass-cost-by-model-2026.html"><strong>모델·소재별 후면 유리 수리비</strong></a> — Series 3~Ultra 2 가격표</li>
+  </ul>
+</div>
+"""
 
     return body_html
 
@@ -1950,12 +1971,14 @@ def make_cta(c):
 def slugify(s):
     s = s.lower().strip()
     # 🛡 개인정보 차단 — 순서 중요!
-    # 1) 한글 이름(2~4자) + 인접 전화번호(10~11자리) 묶음을 통째로 제거
+    # 1) 한글 이름(2~4자) + 인접 전화번호(10~13자리) 묶음을 통째로 제거
     s = re.sub(r"[가-힣]{2,4}[\s\-]?01[0-9][\s\-]?[0-9]{3,4}[\s\-]?[0-9]{4}", "", s)
-    s = re.sub(r"[가-힣]{2,4}[\s\-]?\d{10,11}", "", s)
+    s = re.sub(r"[가-힣]{2,4}[\s\-]?\d{10,13}", "", s)
     # 2) 단독 전화번호 패턴 제거
     s = re.sub(r"\b01[0-9][\s\-]?[0-9]{3,4}[\s\-]?[0-9]{4}\b", "", s)
-    s = re.sub(r"\b\d{10,11}\b", "", s)
+    s = re.sub(r"\b\d{10,13}\b", "", s)
+    # 3) 백스톱 — 4+ 자리 연속 숫자가 슬러그에 남아 있으면 제거 (모델명에 4+자리 숫자 없음)
+    s = re.sub(r"\d{4,}", "", s)
     s = re.sub(r"[^\w가-힣\s\-]", "", s)
     s = re.sub(r"\s+", "-", s)
     s = re.sub(r"-+", "-", s).strip("-")
