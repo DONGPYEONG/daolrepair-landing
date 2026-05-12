@@ -87,73 +87,91 @@
     .a6-gifts {
       display: flex;
       flex-direction: column;
-      gap: 3mm;
-      margin-bottom: 4mm;
+      gap: 2mm;
+      margin-bottom: 3mm;
     }
     .a6-gift {
       display: flex;
       align-items: center;
-      gap: 4mm;
-      padding: 3mm 4mm;
-      background: #fafafa;
-      border: 1px solid #eee;
-      border-radius: 3mm;
+      gap: 3.5mm;
+      padding: 2.5mm 3.5mm;
+      background: linear-gradient(135deg, #fff8f0 0%, #fff3e8 100%);
+      border: 1.2px solid #f5d4b3;
+      border-radius: 3.5mm;
+      position: relative;
+      box-shadow: 0 1px 3px rgba(232,115,42,0.08);
+    }
+    .a6-gift::after {
+      content: '🎁';
+      position: absolute;
+      top: 2mm;
+      right: 3mm;
+      font-size: 9pt;
+      opacity: 0.9;
     }
     .a6-gift-icon {
       flex-shrink: 0;
-      width: 11mm;
-      height: 11mm;
-      background: #fff;
+      width: 12mm;
+      height: 12mm;
+      background: linear-gradient(135deg, #E8732A 0%, #ff8e5a 100%);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 14pt;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      box-shadow: 0 2px 6px rgba(232,115,42,0.35);
     }
-    .a6-gift-body { flex: 1; min-width: 0; }
+    .a6-gift-body { flex: 1; min-width: 0; padding-right: 5mm; }
     .a6-gift-device {
-      font-size: 9.5pt;
+      font-size: 10pt;
       font-weight: 900;
-      color: #1a1a1a;
-      margin-bottom: 0.5mm;
-      letter-spacing: -0.2px;
+      color: #0A0A0A;
+      margin-bottom: 0.8mm;
+      letter-spacing: -0.3px;
     }
     .a6-gift-item {
       font-size: 8pt;
-      color: #555;
-      line-height: 1.45;
+      color: #4a3725;
+      line-height: 1.5;
       word-break: keep-all;
     }
     .a6-gift-item strong {
-      color: #E8732A;
+      color: #C55E1A;
       font-weight: 800;
     }
 
     .a6-howto {
-      background: #fff5f0;
+      background: linear-gradient(135deg, #fff5f0 0%, #ffe9d8 100%);
       border-left: 2mm solid #E8732A;
-      padding: 3mm 4mm;
-      border-radius: 0 2mm 2mm 0;
+      padding: 3mm 3.5mm;
+      border-radius: 0 3mm 3mm 0;
       margin-bottom: auto;
     }
     .a6-howto-title {
-      font-size: 8.5pt;
-      font-weight: 800;
+      font-size: 9pt;
+      font-weight: 900;
       color: #C55E1A;
       margin-bottom: 1.5mm;
+      letter-spacing: -0.2px;
     }
     .a6-howto p {
-      font-size: 8pt;
-      color: #444;
+      font-size: 7.5pt;
+      color: #3a2a18;
       line-height: 1.55;
       word-break: keep-all;
+      margin-bottom: 1.2mm;
     }
+    .a6-howto p:last-child { margin-bottom: 0; }
     .a6-howto strong { color: #1a1a1a; font-weight: 800; }
+    .a6-howto-thanks {
+      font-size: 7.5pt;
+      color: #8a5a2a;
+      font-style: italic;
+    }
 
     .a6-footer {
-      margin-top: 3mm;
-      padding-top: 3mm;
+      margin-top: 2.5mm;
+      padding-top: 2mm;
       border-top: 1px dashed #bbb;
       font-size: 7pt;
       color: #666;
@@ -211,8 +229,9 @@
     </div>
 
     <div class="a6-howto">
-      <div class="a6-howto-title">받으시는 방법</div>
-      <p>수리 완료 후 <strong>네이버 예약에 포토리뷰</strong>를 이쁘게 남겨주세요. 확인 후 매장에서 부착해드립니다.</p>
+      <div class="a6-howto-title">💛 다올리페어의 부탁</div>
+      <p>오늘의 수리 경험을 <strong>네이버 예약에 포토리뷰</strong>로 남겨주세요. 사진 한 장과 솔직한 후기는 다음 손님이 다올리페어를 안심하고 찾아오는 가장 큰 힘이 됩니다.</p>
+      <p class="a6-howto-thanks">정성껏 남겨주신 포토리뷰 확인 후, 매장에서 마음 담아 부착해드릴게요. 감사합니다.</p>
     </div>
 
     <div class="a6-footer">
