@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>매장 안내문 A6 인쇄 — 수리와 교체의 차이 | 다올리페어</title>
+  <meta name="description" content="다올리페어 매장 비치용 A6 안내문. 수리와 교체의 차이를 한 장에 정리. 인쇄 후 카운터·픽업대에 비치하세요.">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://xn--2j1bq2k97kxnah86c.com/articles/notice-repair-vs-replacement-print.html">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      background: #f0f0f0;
+      padding: 40px 20px;
+      color: #1a1a1a;
+      line-height: 1.5;
+    }
+    .toolbar {
+      max-width: 480px;
+      margin: 0 auto 24px;
+      text-align: center;
+    }
+    .toolbar h1 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .toolbar p {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+    .toolbar button {
+      background: #E8732A;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .toolbar button:hover { background: #C55E1A; }
+    .toolbar a {
+      display: inline-block;
+      margin-left: 12px;
+      color: #666;
+      font-size: 13px;
+      text-decoration: underline;
+    }
+    /* A6: 105mm × 148mm */
+    .a6-card {
+      width: 105mm;
+      height: 148mm;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      padding: 8mm 8mm;
+      display: flex;
+      flex-direction: column;
+      color: #1a1a1a;
+      overflow: hidden;
+      page-break-after: always;
+    }
+    .a6-header {
+      border-bottom: 2px solid #E8732A;
+      padding-bottom: 4mm;
+      margin-bottom: 5mm;
+    }
+    .a6-brand {
+      font-size: 9pt;
+      color: #E8732A;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+    .a6-title {
+      font-size: 13pt;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-top: 2mm;
+      letter-spacing: -0.3px;
+    }
+    .a6-section {
+      margin-bottom: 4mm;
+    }
+    .a6-section h3 {
+      font-size: 9pt;
+      font-weight: 800;
+      color: #E8732A;
+      margin-bottom: 1.5mm;
+      letter-spacing: -0.2px;
+    }
+    .a6-section p {
+      font-size: 8.5pt;
+      line-height: 1.55;
+      color: #333;
+      margin-bottom: 1.5mm;
+      word-break: keep-all;
+    }
+    .a6-section strong {
+      color: #1a1a1a;
+      font-weight: 800;
+    }
+    .a6-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2mm;
+      margin: 2mm 0;
+    }
+    .a6-compare-item {
+      border: 1px solid #ddd;
+      border-radius: 2mm;
+      padding: 2mm 2mm;
+    }
+    .a6-compare-item.repair { border-color: #86efac; background: #f0fdf4; }
+    .a6-compare-item.replace { border-color: #fca5a5; background: #fff5f5; }
+    .a6-compare-label {
+      font-size: 7.5pt;
+      font-weight: 800;
+      margin-bottom: 1mm;
+    }
+    .a6-compare-item.repair .a6-compare-label { color: #14532d; }
+    .a6-compare-item.replace .a6-compare-label { color: #7f1d1d; }
+    .a6-compare-price {
+      font-size: 11pt;
+      font-weight: 900;
+      color: #1a1a1a;
+      margin-bottom: 1mm;
+    }
+    .a6-compare-desc {
+      font-size: 7pt;
+      color: #555;
+      line-height: 1.4;
+    }
+    .a6-list {
+      font-size: 8pt;
+      line-height: 1.55;
+      color: #333;
+    }
+    .a6-list li {
+      list-style: none;
+      padding-left: 4mm;
+      position: relative;
+      margin-bottom: 1mm;
+    }
+    .a6-list li::before {
+      content: '·';
+      position: absolute;
+      left: 1mm;
+      color: #E8732A;
+      font-weight: 900;
+    }
+    .a6-list li strong { color: #1a1a1a; font-weight: 800; }
+    .a6-warn {
+      background: #fff5f0;
+      border-left: 2mm solid #E8732A;
+      padding: 2mm 3mm;
+      margin: 2mm 0;
+      font-size: 8pt;
+      line-height: 1.5;
+    }
+    .a6-warn strong { color: #C55E1A; }
+    .a6-footer {
+      margin-top: auto;
+      padding-top: 3mm;
+      border-top: 1px dashed #bbb;
+      font-size: 7pt;
+      color: #666;
+      text-align: center;
+      line-height: 1.5;
+    }
+    .a6-footer strong {
+      color: #1a1a1a;
+      display: block;
+      margin-bottom: 1mm;
+      font-size: 8pt;
+    }
+    .a6-footer .url { color: #E8732A; font-weight: 700; }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .toolbar { display: none; }
+      .a6-card {
+        box-shadow: none;
+        margin: 0;
+      }
+      @page { size: A6; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <h1>매장 비치용 A6 안내문</h1>
+    <p>아래 미리보기는 실제 인쇄 크기 (105 × 148mm).<br>인쇄 → 용지 'A6' 또는 'A4 한 장에 4개 배치' 선택.</p>
+    <button onclick="window.print()">인쇄하기</button>
+    <a href="notice-repair-vs-replacement.html">← 본문 글로 돌아가기</a>
+  </div>
+
+  <div class="a6-card">
+    <div class="a6-header">
+      <div class="a6-brand">📌 다올리페어 안내</div>
+      <div class="a6-title">수리 전 꼭<br>알아주세요</div>
+    </div>
+
+    <div class="a6-section">
+      <h3>'수리'와 '교체'는 다릅니다</h3>
+      <div class="a6-compare">
+        <div class="a6-compare-item replace">
+          <div class="a6-compare-label">교체 (새 폰)</div>
+          <div class="a6-compare-price">170만 원</div>
+          <div class="a6-compare-desc">본체 통째로 새 것. 모든 부품이 새 것이 됩니다.</div>
+        </div>
+        <div class="a6-compare-item repair">
+          <div class="a6-compare-label">수리 (부분 회복)</div>
+          <div class="a6-compare-price">15~30만 원</div>
+          <div class="a6-compare-desc">새 폰 가격의 10~20%. 고장난 부품만 회복.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="a6-section">
+      <h3>수리 후 알아두실 점</h3>
+      <ul class="a6-list">
+        <li>수리는 <strong>고장 부품만 회복</strong>입니다. 다른 부품은 원래의 노화 그대로입니다.</li>
+        <li>시간이 지나 다른 부분에서 고장이 생길 수 있습니다 — <strong>자연스러운 노화</strong>입니다.</li>
+        <li><strong>90일 무상 A/S</strong>는 같은 부품·같은 증상 재발 시 적용됩니다.</li>
+        <li>다른 부품 고장·새 충격·침수는 별개 수리로 처리됩니다.</li>
+      </ul>
+    </div>
+
+    <div class="a6-warn">
+      <strong>"새 폰 같은 완벽한 상태"</strong>를 원하시면 새 폰 구매(170만 원)가 가장 확실합니다. 수리는 합리적 비용으로 1~2년 더 쾌적하게 쓰는 선택입니다.
+    </div>
+
+    <div class="a6-footer">
+      <strong>다올리페어 약속</strong>
+      마스터 직접 수리 · 실패 시 비용 0원<br>
+      90일 무상 A/S · 1년 이내 재파손 50% 할인<br>
+      <span class="url">다올리페어.com / 010-8800-2033</span>
+    </div>
+  </div>
+
+</body>
+</html>
