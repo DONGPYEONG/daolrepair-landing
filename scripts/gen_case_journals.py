@@ -1444,6 +1444,7 @@ def make_body(c):
     # 🆕 후면 유리 케이스 — '1년 50% 할인' 정책은 아이폰 후면 한정
     # 워치·패드·맥북 등 비-아이폰 디바이스는 다른 카피로 자동 치환
     is_iphone = ("아이폰" in model) or ("iPhone" in model)
+    is_watch = ("애플워치" in model) or ("Apple Watch" in model) or ("Watch" in model and "iWatch" not in model)
     if not is_iphone:
         # art-warn 박스 안의 1년 50% 할인 카피 → 디바이스 중립 카피
         body_html = body_html.replace(
@@ -1456,6 +1457,53 @@ def make_body(c):
             r"다올리페어는 <strong><a[^>]+>1년 안에 재파손 시 50% 할인된 가격으로 재수리</a></strong>해드립니다\. 단독 후면 교체이기 때문에 새 폰 수준의 내구성은 어렵다는 점을 인정하고, 고객 부담을 덜어드리는 정책이에요\.",
             '단독 후면 교체이기 때문에 새 제품 수준의 내구성은 어렵습니다. 같은 부품·증상 재발 시 <strong>90일 무상 A/S</strong>로 보장합니다. 수리 후엔 케이스 사용을 권장드리고, 그 외 재파손은 별도 견적으로 안내드려요.',
             body_html,
+        )
+
+    # 🆕 애플워치 후면 유리 — 부품 표현 정정 ("정품급 OEM" → "추출 정품")
+    # 애플워치 후면 유리는 살아있는 정품 워치에서 추출한 부품으로 진행
+    if is_watch and ("back" in str(c.get("repair_type", ""))):
+        body_html = body_html.replace(
+            '"정품급 OEM" 사용 (정품 단독 부품 없음)',
+            '"추출 정품" 사용 (정품 워치 추출 부품)',
+        )
+        body_html = body_html.replace(
+            '<strong>애플은 후면 유리만 별도 부품으로 판매하지 않습니다</strong>. 그래서 모든 사설 수리점은 <strong>정품급 OEM 부품</strong>을 사용해요.',
+            '<strong>애플은 후면 유리만 별도 부품으로 판매하지 않습니다</strong>. 그래서 다올리페어는 <strong>정품 애플워치에서 추출한 정품 후면 유리(추출 정품)</strong>로 진행합니다.',
+        )
+        body_html = body_html.replace(
+            '다올리페어는 색감·두께·질감이 본체와 가장 잘 맞는 OEM 부품으로 골라드립니다.',
+            '다올리페어는 본체와 동일한 정품 추출 후면 유리만 사용합니다.',
+        )
+        # 9가지 OEM 비교 링크는 워치엔 부적합 → 제거
+        import re as _re3
+        body_html = _re3.sub(
+            r' 색감 비교 사례는 <a href="iphone-back-glass-genuine-vs-compatible\.html">[^<]+</a>를 참고하세요\.',
+            '',
+            body_html,
+        )
+        # FAQ 답변의 호환 부품 표현 → 추출 정품
+        body_html = body_html.replace(
+            '다올리페어는 검증된 호환 부품으로 교체합니다. 색상·두께·질감 모두 본체와 잘 맞게 골라드리며, 자세한 비교는 <a href=\'iphone-back-glass-genuine-vs-compatible.html\'>아이폰 후면 유리 정품급 OEM 9가지 비교</a>에서 확인하실 수 있어요.',
+            '다만 다올리페어는 <strong>정품 애플워치에서 추출한 정품 후면 유리</strong>만 사용합니다. 색상·두께·질감 모두 본체와 동일해요.',
+        )
+
+    # 🆕 애플워치 본드 굳는 시간 — 더 명확히 ("약 1일" → "최소 6시간 / 보통 다음 날 픽업")
+    if is_watch:
+        body_html = body_html.replace(
+            '본드 굳는 시간으로 약 1일 보유',
+            '본드 굳는 시간 최소 6시간 (보통 다음 날 픽업)',
+        )
+        body_html = body_html.replace(
+            '본드 굳는 시간이 필요해 약 1일 정도 매장에 보유됩니다',
+            '본드 굳는 시간이 최소 6시간 필요해 보통 다음 날 픽업해드립니다',
+        )
+        body_html = body_html.replace(
+            '본드 굳는 시간(약 1일)이 필요해',
+            '본드 굳는 시간(최소 6시간, 보통 다음 날 픽업)이 필요해',
+        )
+        body_html = body_html.replace(
+            '⏱️ 워치는 본드 굳는 시간으로 약 1일 보유',
+            '⏱️ 워치는 본드 굳히기 최소 6시간 (보통 다음 날 픽업)',
         )
 
     return body_html
