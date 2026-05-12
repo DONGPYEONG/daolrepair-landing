@@ -40,6 +40,8 @@ SYMPTOM_MAP = {
     "유리파손": ("screen", "표면 유리만 깨진 상태 (LCD 정상 — 단순 유리 교체 가능)"),
     "유리만파손": ("screen", "표면 유리만 깨진 상태 (LCD 정상 — 단순 유리 교체 가능)"),
     "단순유리": ("screen", "표면 유리만 깨진 상태 (LCD 정상)"),
+    "단순파손": ("screen", "표면 유리만 깨진 단순 파손 (LCD 정상)"),
+    "표면파손": ("screen", "표면 유리만 깨진 단순 파손 (LCD 정상)"),
     "LCD문제": ("screen", "LCD까지 손상 — 검은 멍·잉크 번짐·줄·표시 이상"),
     "LCD손상": ("screen", "LCD까지 손상 — 패널 교체 필요"),
     "잉크번짐": ("screen", "LCD 잉크 번짐 — 시간이 지날수록 검은 영역 확대"),
@@ -84,9 +86,11 @@ PRIOR_REPAIR_MAP = {
     "공식": ("official", "공식 서비스센터에서 이전 수리 이력 있음"),
     "애플케어": ("official", "AppleCare+ 공식 수리 이력 있음"),
     "케어플러스": ("official", "AppleCare+ 공식 수리 이력 있음"),
+    "사설수리이력": ("private", "다른 사설 수리점에서 이전 수리 이력 있음"),
     "사설수리점": ("private", "다른 사설 수리점에서 이전 수리 이력 있음"),
     "사설수리": ("private", "다른 사설 수리점에서 이전 수리 이력 있음"),
     "타사사설": ("private", "다른 사설 수리점에서 이전 수리 이력 있음"),
+    "공식수리이력": ("official", "공식 서비스센터에서 이전 수리 이력 있음"),
     "수리없음": ("none", "이전 수리 이력 없음 (출고 후 첫 수리)"),
     "수리이력없음": ("none", "이전 수리 이력 없음 (출고 후 첫 수리)"),
     "첫수리": ("none", "이전 수리 이력 없음 (출고 후 첫 수리)"),
@@ -155,55 +159,48 @@ def parse_filename(filename: str) -> dict:
             meta.setdefault('age_gender', p)
             continue
 
-        # 이전 수리 이력 (PRIOR_REPAIR_MAP) — 옵션 매칭보다 우선
-        prior_matched = False
-        for kw, (code, natural) in PRIOR_REPAIR_MAP.items():
-            if kw in p:
-                meta.setdefault('prior_repair', code)
-                meta.setdefault('prior_repair_natural', natural)
-                prior_matched = True
-                break
-        if prior_matched:
+        # 토큰 안에 + · , 가 섞여 있을 수 있음 → sub-token 단위로 각자 분류
+        # 예: 'DD액정·단순파손' → ['DD액정'(옵션), '단순파손'(증상)]
+        # 예: '성능치80이하+전원꺼짐' → 둘 다 증상
+        sub_tokens = re.split(r'[+·,]', p)
+        sub_tokens = [s.strip() for s in sub_tokens if s.strip()]
+        if not sub_tokens:
             continue
 
-        # 증상 (SYMPTOM_MAP 키워드) — 옵션 매칭보다 우선 검사. + 다중 증상도 각자 분리해서 매칭
-        sub_tokens = p.split('+')
-        symptom_matched = False
         for sub in sub_tokens:
-            sub = sub.strip()
-            if not sub:
+            # 우선순위: 이전수리이력 → 증상 → 옵션 → 원인
+            # 1. 이전 수리 이력
+            matched = False
+            for kw, (code, natural) in PRIOR_REPAIR_MAP.items():
+                if kw in sub:
+                    meta.setdefault('prior_repair', code)
+                    meta.setdefault('prior_repair_natural', natural)
+                    matched = True
+                    break
+            if matched:
                 continue
+            # 2. 증상
             for kw, (part, natural) in SYMPTOM_MAP.items():
                 if kw in sub:
                     meta.setdefault('symptoms', [])
                     if not any(s['raw'] == kw for s in meta['symptoms']):
                         meta['symptoms'].append({'part': part, 'natural': natural, 'raw': kw})
-                    symptom_matched = True
+                    matched = True
                     break
-        # 토큰 안의 모든 sub가 증상으로 잡혔으면 다음 토큰으로 (옵션 매칭 건너뜀)
-        if symptom_matched and all(any(kw in s for kw in SYMPTOM_MAP) for s in sub_tokens if s.strip()):
-            continue
-        if symptom_matched:
-            # 일부만 증상 — 나머지는 옵션·원인 검사 진행
-            pass
-
-        # 옵션 (액정·배터리 등 키워드 포함, +로 다중)
-        if any(kw in p for kw in OPTION_KEYWORDS):
-            if 'options' in meta:
-                meta['options'] = meta['options'] + '+' + p
-            else:
-                meta['options'] = p
-            continue
-
-        # 원인
-        cause_normalized = None
-        for kw, normalized in CAUSE_MAP.items():
-            if kw in p:
-                cause_normalized = normalized
-                break
-        if cause_normalized:
-            meta.setdefault('cause', cause_normalized)
-            continue
+            if matched:
+                continue
+            # 3. 옵션
+            if any(kw in sub for kw in OPTION_KEYWORDS):
+                if 'options' in meta:
+                    meta['options'] = meta['options'] + '+' + sub
+                else:
+                    meta['options'] = sub
+                continue
+            # 4. 원인
+            for kw, normalized in CAUSE_MAP.items():
+                if kw in sub:
+                    meta.setdefault('cause', normalized)
+                    break
 
     # 시간 자연어 변환 (1430 → "오후 2시 30분")
     if 'time' in meta:
