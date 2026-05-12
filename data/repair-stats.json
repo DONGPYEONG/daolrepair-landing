@@ -1,20 +1,20 @@
 {
-  "updated_at": "2026-05-12T10:21:37.820523+09:00",
+  "updated_at": "2026-05-12T11:11:08.196038+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
-    "total": 11185,
-    "today": 5,
-    "this_week": 30,
-    "this_month": 135,
+    "total": 11190,
+    "today": 10,
+    "this_week": 35,
+    "this_month": 140,
     "by_branch": {
       "가산점": 5570,
       "신림점": 5150,
-      "목동점": 465
+      "목동점": 470
     },
     "by_type": {
       "후면 + 배터리 교체": 15,
       "화면 교체": 90,
-      "배터리 교체": 140,
+      "배터리 교체": 145,
       "후면 유리 교체": 55,
       "충전 단자 수리": 20,
       "화면 + 배터리 교체": 25,
@@ -30,57 +30,57 @@
   },
   "recent_cases": [
     {
+      "model": "애플워치 Apple Watch SE (2세대)",
+      "type": "배터리 교체",
+      "branch": "목동점",
+      "minutes_ago": 10
+    },
+    {
       "model": "아이폰 iPhone 13",
       "type": "화면 + 배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 4
+      "minutes_ago": 54
     },
     {
       "model": "아이폰 iPhone 13 Pro",
       "type": "수리",
       "branch": "목동점",
-      "minutes_ago": 1038
+      "minutes_ago": 1088
     },
     {
       "model": "애플워치 5 44mm",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 1138
+      "minutes_ago": 1187
     },
     {
       "model": "아이패드 iPad Pro 11인치 (2세대)",
       "type": "화면 교체",
       "branch": "목동점",
-      "minutes_ago": 1286
+      "minutes_ago": 1335
     },
     {
       "model": "아이폰 iPhone 15 Pro",
       "type": "화면 교체",
       "branch": "목동점",
-      "minutes_ago": 1303
+      "minutes_ago": 1353
     },
     {
       "model": "아이폰 17프로",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 1373
-    },
-    {
-      "model": "아이폰 iPhone X",
-      "type": "배터리 교체",
-      "branch": "목동점",
-      "minutes_ago": 3969
+      "minutes_ago": 1423
     }
   ],
   "top_repair_types": [
     {
       "rank": 1,
-      "label": "화면 교체",
-      "count": 40
+      "label": "배터리 교체",
+      "count": 45
     },
     {
       "rank": 2,
-      "label": "배터리 교체",
+      "label": "화면 교체",
       "count": 40
     },
     {
