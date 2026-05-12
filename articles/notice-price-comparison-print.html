@@ -39,7 +39,7 @@
       margin: 0 auto;
       background: #fff;
       box-shadow: 0 4px 24px rgba(0,0,0,0.12);
-      padding: 7mm 8mm;
+      padding: 5mm 7mm 4mm;
       display: flex;
       flex-direction: column;
       color: #1a1a1a;
@@ -49,23 +49,23 @@
 
     .a6-header {
       text-align: center;
-      padding-bottom: 3.5mm;
-      margin-bottom: 4mm;
+      padding-bottom: 3mm;
+      margin-bottom: 3mm;
       border-bottom: 2px solid #E8732A;
     }
     .a6-eyebrow {
       display: inline-block;
-      background: #E8732A;
+      background: #c53030;
       color: #fff;
-      font-size: 8.5pt;
+      font-size: 7.5pt;
       font-weight: 800;
       letter-spacing: 0.3px;
-      padding: 1.5mm 4mm;
+      padding: 1.2mm 3.5mm;
       border-radius: 30px;
-      margin-bottom: 2.5mm;
+      margin-bottom: 2mm;
     }
     .a6-title {
-      font-size: 14pt;
+      font-size: 13.5pt;
       font-weight: 900;
       line-height: 1.3;
       letter-spacing: -0.5px;
@@ -76,32 +76,33 @@
       font-style: normal;
     }
     .a6-sub {
-      font-size: 8.5pt;
-      color: #666;
+      font-size: 7.5pt;
+      color: #555;
       margin-top: 1.5mm;
-      line-height: 1.5;
+      line-height: 1.55;
+      word-break: keep-all;
     }
-    .a6-sub strong { color: #C55E1A; }
+    .a6-sub strong { color: #c53030; }
 
     .a6-cmp {
       display: flex;
       flex-direction: column;
-      gap: 1.5mm;
-      margin-bottom: 2mm;
+      gap: 1.3mm;
+      margin-bottom: 1.8mm;
     }
     .a6-cmp-card {
       position: relative;
-      padding: 1.8mm 2.5mm 2mm;
+      padding: 1.5mm 2.2mm 1.8mm;
       background: #fff;
       border: 1px solid rgba(232,115,42,0.18);
       border-radius: 2.5mm;
       box-shadow: 0 1.5px 4px rgba(0,0,0,0.04);
     }
     .a6-cmp-part {
-      font-size: 8.5pt;
+      font-size: 8pt;
       font-weight: 900;
       color: #0A0A0A;
-      margin-bottom: 1.5mm;
+      margin-bottom: 1.2mm;
       letter-spacing: -0.3px;
       display: flex;
       align-items: center;
@@ -122,7 +123,7 @@
       margin-bottom: 1.2mm;
     }
     .a6-cmp-side {
-      padding: 1.5mm 2mm;
+      padding: 1.8mm 2mm;
       border-radius: 2mm;
       text-align: center;
     }
@@ -139,10 +140,19 @@
       font-weight: 800;
       letter-spacing: 0.4px;
       text-transform: uppercase;
-      margin-bottom: 0.5mm;
+      margin-bottom: 0.3mm;
     }
     .a6-cmp-side.official .a6-cmp-label { color: #c53030; }
     .a6-cmp-side.daol .a6-cmp-label { color: #16a34a; }
+    .a6-cmp-action {
+      font-size: 7pt;
+      font-weight: 900;
+      letter-spacing: -0.2px;
+      margin-bottom: 0.8mm;
+      line-height: 1.2;
+    }
+    .a6-cmp-side.official .a6-cmp-action { color: #c53030; }
+    .a6-cmp-side.daol .a6-cmp-action { color: #16a34a; }
     .a6-cmp-price {
       font-size: 10pt;
       font-weight: 900;
@@ -151,12 +161,13 @@
       white-space: nowrap;
       line-height: 1.2;
     }
-    .a6-cmp-side.official .a6-cmp-price { color: #c53030; text-decoration: line-through; }
+    .a6-cmp-side.official .a6-cmp-price { color: #c53030; }
     .a6-save {
       text-align: center;
       font-size: 7pt;
       font-weight: 800;
       color: #C55E1A;
+      margin-top: 0.8mm;
     }
     .a6-save strong {
       color: #E8732A;
@@ -215,54 +226,60 @@
 
   <div class="a6-card">
     <div class="a6-header">
-      <div class="a6-eyebrow">💰 같은 부품, 같은 보증</div>
-      <div class="a6-title"><em>최대 76%</em> 더 합리적</div>
-      <div class="a6-sub">iPhone 16 Pro 기준 — <strong>정품·정품급 OEM 부품 / 90일 무상 A/S 동일</strong></div>
+      <div class="a6-eyebrow">⚠️ 공식센터는 부품 단독 수리 X</div>
+      <div class="a6-title">공식은 <em>리퍼</em>, 다올은 <em>부품 수리</em></div>
+      <div class="a6-sub"><strong>충전단자 하나 때문에 본체 교체</strong>하지 마세요 — 다올은 고장 부품만 단독으로</div>
     </div>
 
     <div class="a6-cmp">
-      <!-- 액정 -->
+      <!-- 충전단자 -->
       <div class="a6-cmp-card">
-        <div class="a6-cmp-part">액정 교체</div>
+        <div class="a6-cmp-part">충전단자 고장 (16 Pro 기준)</div>
         <div class="a6-cmp-row">
           <div class="a6-cmp-side official">
             <div class="a6-cmp-label">공식센터</div>
-            <div class="a6-cmp-price">약 64만원</div>
+            <div class="a6-cmp-action">본체 교체 (리퍼)</div>
+            <div class="a6-cmp-price">약 79만원</div>
           </div>
           <div class="a6-cmp-side daol">
             <div class="a6-cmp-label">다올리페어</div>
-            <div class="a6-cmp-price">30~55만원</div>
+            <div class="a6-cmp-action">단자만 단독 교체</div>
+            <div class="a6-cmp-price">25만원</div>
           </div>
         </div>
-        <div class="a6-save">최대 <strong>34만원 절약</strong> (53% ↓)</div>
+        <div class="a6-save">무려 <strong>54만원 절약</strong> (68% ↓)</div>
       </div>
 
-      <!-- 배터리 -->
+      <!-- 메인보드 -->
       <div class="a6-cmp-card">
-        <div class="a6-cmp-part">배터리 교체</div>
+        <div class="a6-cmp-part">메인보드 손상 (16 Pro 기준)</div>
         <div class="a6-cmp-row">
           <div class="a6-cmp-side official">
             <div class="a6-cmp-label">공식센터</div>
-            <div class="a6-cmp-price">약 18만원</div>
+            <div class="a6-cmp-action">본체 교체 (리퍼)</div>
+            <div class="a6-cmp-price">약 79만원</div>
           </div>
           <div class="a6-cmp-side daol">
             <div class="a6-cmp-label">다올리페어</div>
-            <div class="a6-cmp-price">10~12만원</div>
+            <div class="a6-cmp-action">정밀 보드 수리</div>
+            <div class="a6-cmp-price">35만원</div>
           </div>
         </div>
-        <div class="a6-save">최대 <strong>8만원 절약</strong> (44% ↓)</div>
+        <div class="a6-save">무려 <strong>44만원 절약</strong> (56% ↓)</div>
       </div>
 
       <!-- 후면 유리 -->
       <div class="a6-cmp-card">
-        <div class="a6-cmp-part">후면 유리 교체</div>
+        <div class="a6-cmp-part">후면 유리 깨짐 (16 Pro 기준)</div>
         <div class="a6-cmp-row">
           <div class="a6-cmp-side official">
             <div class="a6-cmp-label">공식센터</div>
+            <div class="a6-cmp-action">본체 교체 (리퍼)</div>
             <div class="a6-cmp-price">약 84만원</div>
           </div>
           <div class="a6-cmp-side daol">
             <div class="a6-cmp-label">다올리페어</div>
+            <div class="a6-cmp-action">유리만 단독 교체</div>
             <div class="a6-cmp-price">20만원</div>
           </div>
         </div>
@@ -271,8 +288,8 @@
     </div>
 
     <div class="a6-foot-note">
-      <span class="a6-foot-eyebrow">A LITTLE FAVOR</span>
-      공식센터 가격은 모델·시기에 따라 변동될 수 있으며, <strong>AppleCare+ 가입자는 자기부담금이 더 저렴</strong>할 수 있어요. 매장에서 손님 상황에 맞춰 정직하게 비교 안내드립니다.
+      <span class="a6-foot-eyebrow">왜 이런 차이가?</span>
+      <strong>공식센터는 부품 단독 수리 X</strong> — 카메라·스피커·버튼 하나만 고장나도 본체 교체(리퍼) 견적. 다올리페어는 부품만 정확히, 90일 무상 보증.
     </div>
 
     <div class="a6-footer">
