@@ -174,6 +174,30 @@
       font-weight: 900;
       font-size: 5.5pt;
     }
+    /* 색상 칩 — 모델별 컬러 옵션 안내 */
+    .a6-item-colors {
+      display: flex;
+      align-items: center;
+      gap: 1.4mm;
+      margin: 0.6mm 0 1mm;
+      font-size: 5.6pt;
+      color: #888;
+      font-weight: 600;
+    }
+    .a6-color-label { color: #888; letter-spacing: 0.2px; }
+    .a6-color-chip {
+      width: 2.6mm;
+      height: 2.6mm;
+      border-radius: 50%;
+      border: 0.18mm solid rgba(0,0,0,0.18);
+      box-shadow: 0 0.2mm 0.4mm rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+    .a6-color-chip.silver { background: linear-gradient(135deg,#fafafa 0%,#d8d8da 100%); }
+    .a6-color-chip.spacegray { background: linear-gradient(135deg,#5a5a5c 0%,#2a2a2c 100%); }
+    .a6-color-chip.rosegold { background: linear-gradient(135deg,#f5c8b5 0%,#e0a48c 100%); }
+    .a6-color-chip.matteblack { background: linear-gradient(135deg,#3a3a3c 0%,#1a1a1c 100%); }
+    .a6-color-name { color: #444; font-weight: 600; }
     .a6-item-price {
       flex-shrink: 0;
       text-align: right;
@@ -246,7 +270,6 @@
 
   <div class="a6-card">
     <div class="a6-header">
-      <div class="a6-eyebrow">DAOLREPAIR <span class="dot">·</span> SHOP</div>
       <div class="a6-title"><em>마스터 검수</em> 정직 판매</div>
       <div class="a6-sub">하우징폰 · 리퍼 펜슬 · 액세서리</div>
     </div>
@@ -293,6 +316,13 @@
           <span class="a6-item-tag hot">📷 빈티지 트렌드</span>
           <div class="a6-item-name">iPhone 6s · 128GB</div>
           <div class="a6-item-desc">하우징 새것급 검수 · MZ 빈티지 사진용 인기</div>
+          <div class="a6-item-colors">
+            <span class="a6-color-label">색상</span>
+            <span class="a6-color-chip spacegray" title="스페이스 그레이"></span>
+            <span class="a6-color-chip silver" title="실버"></span>
+            <span class="a6-color-chip rosegold" title="로즈골드"></span>
+            <span class="a6-color-name">3종</span>
+          </div>
           <ul class="a6-item-bullets">
             <li>필름 감성</li>
             <li>인스타용</li>
@@ -336,7 +366,13 @@
         <div class="a6-item-body">
           <span class="a6-item-tag hot">📷 빈티지 트렌드</span>
           <div class="a6-item-name">iPhone 7 · 128GB</div>
-          <div class="a6-item-desc">하우징 새것급 검수 · Jet Black 광택 + 큰 용량</div>
+          <div class="a6-item-desc">하우징 새것급 검수 · 매트 블랙 광택 + 큰 용량</div>
+          <div class="a6-item-colors">
+            <span class="a6-color-label">색상</span>
+            <span class="a6-color-chip matteblack" title="매트 블랙"></span>
+            <span class="a6-color-chip silver" title="실버"></span>
+            <span class="a6-color-name">2종</span>
+          </div>
           <ul class="a6-item-bullets">
             <li>128GB</li>
             <li>매트 광택</li>

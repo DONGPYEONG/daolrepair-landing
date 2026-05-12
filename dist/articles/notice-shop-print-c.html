@@ -45,62 +45,103 @@
       page-break-after: always;
     }
 
-    /* 헤더 */
+    /* === 버전 C — 오렌지 그라디언트 강조 === */
+    .a6-card {
+      background: linear-gradient(180deg, #fff8f0 0%, #ffffff 25%) !important;
+      padding: 0 !important;
+    }
+    /* 헤더: 오렌지 그라디언트 + 흰 글씨 */
     .a6-header {
-      text-align: center;
-      padding-bottom: 2mm;
-      margin-bottom: 2.5mm;
-      border-bottom: 1.5px solid #E8732A;
-    }
-    .a6-eyebrow {
-      display: inline-block;
-      background: linear-gradient(135deg, #0A0A0A 0%, #2a2a2a 100%);
+      background: linear-gradient(135deg, #E8732A 0%, #ff8e5a 50%, #ffa97a 100%);
       color: #fff;
-      font-size: 7pt;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      padding: 1mm 3.5mm;
-      border-radius: 30px;
-      margin-bottom: 1.5mm;
+      padding: 5mm 5mm 4mm;
+      margin: 0;
+      border: none !important;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .a6-eyebrow .dot { color: #E8732A; }
+    .a6-header::before {
+      content: '';
+      position: absolute;
+      top: -10mm; right: -10mm;
+      width: 30mm; height: 30mm;
+      background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%);
+    }
+    .a6-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 40%;
+      height: 0.6mm;
+      background: rgba(255,255,255,0.6);
+      border-radius: 1mm;
+    }
     .a6-title {
-      font-size: 13pt;
+      font-size: 14pt;
       font-weight: 900;
       line-height: 1.2;
       letter-spacing: -0.5px;
       white-space: nowrap;
+      color: #fff !important;
+      position: relative;
+      text-shadow: 0 0.3mm 0.6mm rgba(0,0,0,0.15);
     }
-    .a6-title em { color: #E8732A; font-style: normal; }
+    .a6-title em {
+      color: #fff !important;
+      font-style: normal;
+      background: rgba(255,255,255,0.18);
+      padding: 0.4mm 1.8mm;
+      border-radius: 1.5mm;
+    }
     .a6-sub {
       font-size: 7pt;
-      color: #666;
-      margin-top: 1mm;
+      color: rgba(255,255,255,0.92) !important;
+      margin-top: 1.2mm;
       line-height: 1.4;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      position: relative;
     }
 
-    /* 가로 행 4개 (처음 디자인) */
+    /* 카드: 오렌지 보더 강조 + 가격 박스 둥근 칩 */
     .a6-grid {
       display: flex;
       flex-direction: column;
-      gap: 1.8mm;
-      margin-bottom: 2mm;
+      gap: 1.5mm;
+      margin: 3mm 4mm 2mm;
     }
     .a6-item {
       position: relative;
       background: #fff;
-      border: 1px solid #e8e8e8;
+      border: 1px solid #f5d4b3;
       border-radius: 2.5mm;
-      overflow: hidden;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      overflow: visible;
+      box-shadow: 0 1.5px 4px rgba(232,115,42,0.1), 0 0 0 0.3mm rgba(255,255,255,0.5) inset;
       display: flex;
       align-items: center;
       gap: 2.5mm;
       padding: 2mm 3mm;
     }
     .a6-item.featured {
-      border-color: #f5d4b3;
-      background: linear-gradient(135deg, #fff 0%, #fff8f0 100%);
+      border-color: #E8732A;
+      background: linear-gradient(135deg, #fff 0%, #fffaf3 100%);
+      box-shadow: 0 2px 6px rgba(232,115,42,0.15), 0 0 0 0.3mm rgba(232,115,42,0.05) inset;
+    }
+    /* 가격 박스 — 둥근 칩 */
+    .a6-item-price {
+      background: linear-gradient(135deg, #E8732A 0%, #ff8e5a 100%) !important;
+      color: #fff !important;
+      padding: 1.5mm 2.5mm !important;
+      border-radius: 2mm !important;
+      box-shadow: 0 1mm 2mm rgba(232,115,42,0.3) !important;
+      text-align: center !important;
+      font-size: 10pt !important;
+    }
+    .a6-item-price small {
+      color: rgba(255,255,255,0.75) !important;
+      letter-spacing: 0.3px;
     }
     .a6-item-tag {
       display: inline-block;

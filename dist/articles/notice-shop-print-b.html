@@ -45,62 +45,75 @@
       page-break-after: always;
     }
 
-    /* 헤더 */
+    /* === 버전 B — 다크 헤더 + 좌측 컬러 바 === */
+    .a6-card { background: #fafafa !important; padding: 0 !important; }
+    /* 헤더: 다크 풀와이드 */
     .a6-header {
-      text-align: center;
-      padding-bottom: 2mm;
-      margin-bottom: 2.5mm;
-      border-bottom: 1.5px solid #E8732A;
-    }
-    .a6-eyebrow {
-      display: inline-block;
-      background: linear-gradient(135deg, #0A0A0A 0%, #2a2a2a 100%);
+      background: linear-gradient(135deg, #0A0A0A 0%, #1f1f1f 50%, #2a2a2a 100%);
       color: #fff;
-      font-size: 7pt;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      padding: 1mm 3.5mm;
-      border-radius: 30px;
-      margin-bottom: 1.5mm;
+      padding: 5mm 5mm 4mm;
+      margin: 0;
+      border: none !important;
+      text-align: center;
+      position: relative;
     }
-    .a6-eyebrow .dot { color: #E8732A; }
+    .a6-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1.2mm;
+      background: linear-gradient(90deg, #E8732A 0%, #ff8e5a 100%);
+    }
     .a6-title {
-      font-size: 13pt;
+      font-size: 14pt;
       font-weight: 900;
       line-height: 1.2;
       letter-spacing: -0.5px;
       white-space: nowrap;
+      color: #fff !important;
     }
-    .a6-title em { color: #E8732A; font-style: normal; }
+    .a6-title em { color: #FF8E5A !important; font-style: normal; }
     .a6-sub {
       font-size: 7pt;
-      color: #666;
+      color: rgba(255,255,255,0.55) !important;
       margin-top: 1mm;
       line-height: 1.4;
+      letter-spacing: 0.3px;
     }
 
-    /* 가로 행 4개 (처음 디자인) */
+    /* 가로 행 4개 + 좌측 컬러 바 */
     .a6-grid {
       display: flex;
       flex-direction: column;
-      gap: 1.8mm;
-      margin-bottom: 2mm;
+      gap: 1.5mm;
+      margin: 3mm 4mm 2mm;
     }
     .a6-item {
       position: relative;
       background: #fff;
-      border: 1px solid #e8e8e8;
-      border-radius: 2.5mm;
+      border: none;
+      border-radius: 2mm;
       overflow: hidden;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
       display: flex;
       align-items: center;
       gap: 2.5mm;
-      padding: 2mm 3mm;
+      padding: 2mm 3mm 2mm 4mm;
     }
+    /* 좌측 컬러 바 (카드별 다른 색) */
+    .a6-item::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; left: 0;
+      width: 1.2mm;
+      background: #E8732A;
+    }
+    .a6-item:nth-child(1)::before { background: linear-gradient(180deg, #E8732A 0%, #ff8e5a 100%); }
+    .a6-item:nth-child(2)::before { background: linear-gradient(180deg, #1a1a1a 0%, #3a3a3c 100%); }
+    .a6-item:nth-child(3)::before { background: linear-gradient(180deg, #4a90c8 0%, #5a8aaa 100%); }
+    .a6-item:nth-child(4)::before { background: linear-gradient(180deg, #16a34a 0%, #4ade80 100%); }
     .a6-item.featured {
-      border-color: #f5d4b3;
-      background: linear-gradient(135deg, #fff 0%, #fff8f0 100%);
+      background: linear-gradient(135deg, #fff 0%, #fffaf3 100%);
     }
     .a6-item-tag {
       display: inline-block;
@@ -217,39 +230,39 @@
       margin-top: 0.5mm;
     }
 
-    /* footer note */
+    /* footer note — 다크 톤 */
     .a6-foot-note {
-      background: #fafaf7;
-      border-top: 0.5mm solid #1a1a1a;
-      border-bottom: 0.5mm solid #1a1a1a;
-      padding: 1.8mm 2.5mm;
-      margin-top: auto;
+      background: #0A0A0A;
+      color: #fff;
+      border: none;
+      padding: 2mm 4mm;
+      margin: auto 0 0;
       font-size: 6.5pt;
       line-height: 1.5;
-      color: #333;
       word-break: keep-all;
       text-align: center;
     }
-    .a6-foot-note strong { color: #0A0A0A; }
+    .a6-foot-note strong { color: #FF8E5A; }
     .a6-foot-eyebrow {
       font-size: 6pt;
       font-weight: 900;
-      color: #E8732A;
+      color: #FF8E5A;
       letter-spacing: 0.5px;
       display: block;
       margin-bottom: 1mm;
     }
 
     .a6-footer {
-      margin-top: 1.5mm;
-      padding-top: 1.2mm;
-      border-top: 1px dashed #bbb;
+      margin-top: 0;
+      padding: 1.5mm 4mm 2mm;
+      border-top: none;
+      background: #1a1a1a;
       font-size: 7pt;
-      color: #666;
+      color: rgba(255,255,255,0.55);
       text-align: center;
       line-height: 1.2;
     }
-    .a6-footer .url { color: #E8732A; font-weight: 700; }
+    .a6-footer .url { color: #FF8E5A; font-weight: 700; }
 
     @media print {
       body { background: #fff; padding: 0; margin: 0; }
