@@ -656,6 +656,19 @@ def main():
                             after_file = f; break
                     if after_file: break
         else:
+            # 🆕 screen 케이스 — BEFORE의 body_part에 따라 AFTER 동적 매칭 (같은 각도 우선)
+            # 직원 사진 패턴: "기기전면"(정면 OFF) ↔ "작동화면"(정면 ON), "파손부위"(클로즈업) ↔ "수리부위"(클로즈업)
+            if c["repair_type"] in SCREEN_TYPES and before_file:
+                before_name = before_file["name"]
+                if "기기전면" in before_name:
+                    dynamic_after = [("수리후", "작동화면"), ("수리후", "기기전면"), ("수리후", "수리부위"), ("수리후", "기기후면")]
+                elif "파손부위" in before_name:
+                    dynamic_after = [("수리후", "수리부위"), ("수리후", "작동화면"), ("수리후", "기기전면"), ("수리후", "기기후면")]
+                elif "기기후면" in before_name:
+                    dynamic_after = [("수리후", "기기후면"), ("수리후", "작동화면"), ("수리후", "기기전면"), ("수리후", "수리부위")]
+                else:
+                    dynamic_after = after_patterns
+                after_patterns = dynamic_after
             for stage, body_part in after_patterns:
                 for f in inner:
                     if (stage in f["name"] and body_part in f["name"]
