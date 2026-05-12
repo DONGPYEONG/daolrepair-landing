@@ -84,94 +84,89 @@
     }
     .a6-sub strong { color: #c53030; }
 
-    .a6-cmp {
+    /* 행 형식 카드 — 한 줄에 아이콘+부품명+공식가→다올가+절약 */
+    .a6-rows {
       display: flex;
       flex-direction: column;
-      gap: 1.3mm;
-      margin-bottom: 1.8mm;
+      gap: 1.5mm;
+      margin-bottom: 2mm;
     }
-    .a6-cmp-card {
-      position: relative;
-      padding: 1.5mm 2.2mm 1.8mm;
-      background: #fff;
-      border: 1px solid rgba(232,115,42,0.18);
-      border-radius: 2.5mm;
-      box-shadow: 0 1.5px 4px rgba(0,0,0,0.04);
-    }
-    .a6-cmp-part {
-      font-size: 8pt;
-      font-weight: 900;
-      color: #0A0A0A;
-      margin-bottom: 1.2mm;
-      letter-spacing: -0.3px;
+    .a6-row {
       display: flex;
       align-items: center;
-      gap: 1.5mm;
+      gap: 2mm;
+      padding: 2mm 2.5mm;
+      background: #fff;
+      border: 1px solid rgba(232,115,42,0.2);
+      border-radius: 2.5mm;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
-    .a6-cmp-part::before {
-      content: '';
-      width: 3mm;
-      height: 3mm;
-      background: linear-gradient(135deg, #E8732A 0%, #ff8e5a 100%);
-      border-radius: 50%;
+    .a6-row-icon {
       flex-shrink: 0;
-    }
-    .a6-cmp-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.8mm;
-      margin-bottom: 1.2mm;
-    }
-    .a6-cmp-side {
-      padding: 1.8mm 2mm;
+      width: 9mm;
+      height: 9mm;
+      background: linear-gradient(135deg, #fff5ec 0%, #ffe8d4 100%);
       border-radius: 2mm;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 0 0.3mm rgba(232,115,42,0.18);
     }
-    .a6-cmp-side.official {
-      background: #fff0f0;
-      border: 1px solid #ffd0d0;
+    .a6-row-icon svg { width: 6mm; height: 6mm; }
+    .a6-row-body {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4mm;
     }
-    .a6-cmp-side.daol {
-      background: #f0fdf4;
-      border: 1px solid #c2eccd;
-    }
-    .a6-cmp-label {
-      font-size: 6pt;
-      font-weight: 800;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-      margin-bottom: 0.3mm;
-    }
-    .a6-cmp-side.official .a6-cmp-label { color: #c53030; }
-    .a6-cmp-side.daol .a6-cmp-label { color: #16a34a; }
-    .a6-cmp-action {
-      font-size: 7pt;
-      font-weight: 900;
-      letter-spacing: -0.2px;
-      margin-bottom: 0.8mm;
-      line-height: 1.2;
-    }
-    .a6-cmp-side.official .a6-cmp-action { color: #c53030; }
-    .a6-cmp-side.daol .a6-cmp-action { color: #16a34a; }
-    .a6-cmp-price {
-      font-size: 10pt;
-      font-weight: 900;
-      color: #1a1a1a;
-      letter-spacing: -0.3px;
-      white-space: nowrap;
-      line-height: 1.2;
-    }
-    .a6-cmp-side.official .a6-cmp-price { color: #c53030; }
-    .a6-save {
-      text-align: center;
-      font-size: 7pt;
-      font-weight: 800;
-      color: #C55E1A;
-      margin-top: 0.8mm;
-    }
-    .a6-save strong {
-      color: #E8732A;
+    .a6-row-name {
       font-size: 7.5pt;
+      font-weight: 900;
+      color: #0A0A0A;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+    .a6-row-prices {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5mm;
+      font-size: 7.5pt;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    .a6-row-official {
+      color: #c53030;
+      font-weight: 700;
+      text-decoration: line-through;
+    }
+    .a6-row-arrow {
+      color: #888;
+      font-weight: 700;
+      font-size: 7pt;
+    }
+    .a6-row-daol {
+      color: #16a34a;
+      font-weight: 900;
+      font-size: 8pt;
+    }
+    .a6-row-save {
+      flex-shrink: 0;
+      text-align: right;
+      font-size: 6.5pt;
+      font-weight: 900;
+      color: #E8732A;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    .a6-row-save-amt {
+      font-size: 8pt;
+      display: block;
+    }
+    .a6-row-save-pct {
+      color: #C55E1A;
+      font-size: 6pt;
+      font-weight: 700;
     }
 
     .a6-foot-note {
@@ -231,59 +226,136 @@
       <div class="a6-sub"><strong>충전단자 하나 때문에 본체 교체</strong>하지 마세요 — 다올은 고장 부품만 단독으로</div>
     </div>
 
-    <div class="a6-cmp">
+    <div class="a6-rows">
       <!-- 충전단자 -->
-      <div class="a6-cmp-card">
-        <div class="a6-cmp-part">충전단자 고장 (16 Pro 기준)</div>
-        <div class="a6-cmp-row">
-          <div class="a6-cmp-side official">
-            <div class="a6-cmp-label">공식센터</div>
-            <div class="a6-cmp-action">본체 교체 (리퍼)</div>
-            <div class="a6-cmp-price">약 79만원</div>
-          </div>
-          <div class="a6-cmp-side daol">
-            <div class="a6-cmp-label">다올리페어</div>
-            <div class="a6-cmp-action">단자만 단독 교체</div>
-            <div class="a6-cmp-price">25만원</div>
+      <div class="a6-row">
+        <div class="a6-row-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="9" y="3" width="6" height="14" rx="1.5" fill="#1a1a1a"/>
+            <rect x="10.5" y="2" width="3" height="2" rx="0.5" fill="#444"/>
+            <rect x="10" y="6" width="1" height="6" fill="#888"/>
+            <rect x="13" y="6" width="1" height="6" fill="#888"/>
+            <path d="M8 19h8M10 21h4" stroke="#E8732A" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="a6-row-body">
+          <div class="a6-row-name">충전단자</div>
+          <div class="a6-row-prices">
+            <span class="a6-row-official">공식 79만</span>
+            <span class="a6-row-arrow">→</span>
+            <span class="a6-row-daol">다올 25만</span>
           </div>
         </div>
-        <div class="a6-save">무려 <strong>54만원 절약</strong> (68% ↓)</div>
+        <div class="a6-row-save">
+          <span class="a6-row-save-amt">-54만</span>
+          <span class="a6-row-save-pct">68% ↓</span>
+        </div>
       </div>
 
       <!-- 메인보드 -->
-      <div class="a6-cmp-card">
-        <div class="a6-cmp-part">메인보드 손상 (16 Pro 기준)</div>
-        <div class="a6-cmp-row">
-          <div class="a6-cmp-side official">
-            <div class="a6-cmp-label">공식센터</div>
-            <div class="a6-cmp-action">본체 교체 (리퍼)</div>
-            <div class="a6-cmp-price">약 79만원</div>
-          </div>
-          <div class="a6-cmp-side daol">
-            <div class="a6-cmp-label">다올리페어</div>
-            <div class="a6-cmp-action">정밀 보드 수리</div>
-            <div class="a6-cmp-price">35만원</div>
+      <div class="a6-row">
+        <div class="a6-row-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="6" width="18" height="12" rx="1.5" fill="#1a1a1a"/>
+            <rect x="6" y="9" width="5" height="3" rx="0.5" fill="#E8732A"/>
+            <rect x="13" y="9" width="5" height="3" rx="0.5" fill="#888"/>
+            <rect x="6" y="14" width="3" height="2" rx="0.3" fill="#888"/>
+            <rect x="11" y="14" width="3" height="2" rx="0.3" fill="#888"/>
+            <rect x="16" y="14" width="2" height="2" rx="0.3" fill="#888"/>
+            <line x1="3" y1="9" x2="2" y2="9" stroke="#888" stroke-width="0.8"/>
+            <line x1="3" y1="15" x2="2" y2="15" stroke="#888" stroke-width="0.8"/>
+            <line x1="22" y1="9" x2="21" y2="9" stroke="#888" stroke-width="0.8"/>
+            <line x1="22" y1="15" x2="21" y2="15" stroke="#888" stroke-width="0.8"/>
+          </svg>
+        </div>
+        <div class="a6-row-body">
+          <div class="a6-row-name">메인보드</div>
+          <div class="a6-row-prices">
+            <span class="a6-row-official">공식 79만</span>
+            <span class="a6-row-arrow">→</span>
+            <span class="a6-row-daol">다올 35만</span>
           </div>
         </div>
-        <div class="a6-save">무려 <strong>44만원 절약</strong> (56% ↓)</div>
+        <div class="a6-row-save">
+          <span class="a6-row-save-amt">-44만</span>
+          <span class="a6-row-save-pct">56% ↓</span>
+        </div>
       </div>
 
       <!-- 후면 유리 -->
-      <div class="a6-cmp-card">
-        <div class="a6-cmp-part">후면 유리 깨짐 (16 Pro 기준)</div>
-        <div class="a6-cmp-row">
-          <div class="a6-cmp-side official">
-            <div class="a6-cmp-label">공식센터</div>
-            <div class="a6-cmp-action">본체 교체 (리퍼)</div>
-            <div class="a6-cmp-price">약 84만원</div>
-          </div>
-          <div class="a6-cmp-side daol">
-            <div class="a6-cmp-label">다올리페어</div>
-            <div class="a6-cmp-action">유리만 단독 교체</div>
-            <div class="a6-cmp-price">20만원</div>
+      <div class="a6-row">
+        <div class="a6-row-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="6" y="2" width="12" height="20" rx="2" fill="#1a1a1a"/>
+            <rect x="7.5" y="4" width="5.5" height="5.5" rx="1.5" fill="#444"/>
+            <circle cx="9" cy="5.5" r="0.8" fill="#222"/>
+            <circle cx="11.5" cy="5.5" r="0.8" fill="#222"/>
+            <circle cx="9" cy="8" r="0.8" fill="#222"/>
+            <line x1="6" y1="13" x2="18" y2="20" stroke="#E8732A" stroke-width="0.8"/>
+            <line x1="9" y1="11" x2="14" y2="22" stroke="#E8732A" stroke-width="0.8"/>
+          </svg>
+        </div>
+        <div class="a6-row-body">
+          <div class="a6-row-name">후면 유리</div>
+          <div class="a6-row-prices">
+            <span class="a6-row-official">공식 84만</span>
+            <span class="a6-row-arrow">→</span>
+            <span class="a6-row-daol">다올 20만</span>
           </div>
         </div>
-        <div class="a6-save">무려 <strong>64만원 절약</strong> (76% ↓)</div>
+        <div class="a6-row-save">
+          <span class="a6-row-save-amt">-64만</span>
+          <span class="a6-row-save-pct">76% ↓</span>
+        </div>
+      </div>
+
+      <!-- 액정 -->
+      <div class="a6-row">
+        <div class="a6-row-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="6" y="2" width="12" height="20" rx="2" fill="#1a1a1a"/>
+            <rect x="7.5" y="4" width="9" height="15" rx="1" fill="#3b82f6" opacity="0.85"/>
+            <line x1="8" y1="6" x2="15" y2="6" stroke="#fff" stroke-width="0.5" opacity="0.6"/>
+            <line x1="8" y1="8" x2="13" y2="8" stroke="#fff" stroke-width="0.5" opacity="0.5"/>
+            <line x1="9" y1="10" x2="11" y2="18" stroke="#E8732A" stroke-width="0.8"/>
+          </svg>
+        </div>
+        <div class="a6-row-body">
+          <div class="a6-row-name">액정</div>
+          <div class="a6-row-prices">
+            <span class="a6-row-official">공식 64만</span>
+            <span class="a6-row-arrow">→</span>
+            <span class="a6-row-daol">다올 30~55만</span>
+          </div>
+        </div>
+        <div class="a6-row-save">
+          <span class="a6-row-save-amt">-34만</span>
+          <span class="a6-row-save-pct">53% ↓</span>
+        </div>
+      </div>
+
+      <!-- 배터리 -->
+      <div class="a6-row">
+        <div class="a6-row-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="4" y="7" width="15" height="10" rx="1.5" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+            <rect x="19" y="9.5" width="2" height="5" rx="0.5" fill="#1a1a1a"/>
+            <rect x="5.5" y="8.5" width="9" height="7" rx="0.5" fill="#22c55e"/>
+            <path d="M11 9.5L9 13H11L10 15.5L13 11H11L12 9.5z" fill="#fff"/>
+          </svg>
+        </div>
+        <div class="a6-row-body">
+          <div class="a6-row-name">배터리</div>
+          <div class="a6-row-prices">
+            <span class="a6-row-official">공식 18만</span>
+            <span class="a6-row-arrow">→</span>
+            <span class="a6-row-daol">다올 10~12만</span>
+          </div>
+        </div>
+        <div class="a6-row-save">
+          <span class="a6-row-save-amt">-8만</span>
+          <span class="a6-row-save-pct">44% ↓</span>
+        </div>
       </div>
     </div>
 
