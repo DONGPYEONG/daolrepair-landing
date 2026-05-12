@@ -957,6 +957,40 @@ def main():
         "slider_cases": slider_cases,
         "portfolio_cases": portfolio_cases,
     }
+
+    # 🛡 최종 PII 차단 — 출력 직전 모든 model 필드를 한 번 더 sanitize
+    # 어떤 단계에서 PII가 새어나와도 여기서 강제 제거
+    _PII_DIGITS = re.compile(r"\d{4,}")
+    _PII_PHONE = re.compile(r"\b01[0-9][\s\-]?[0-9]{3,4}[\s\-]?[0-9]{4}\b|\b\d{10,13}\b")
+    _PII_NAME = re.compile(r"(?<![가-힣])[가-힣]{2,4}(?![가-힣])")
+    _MODEL_KW = ("프로","맥스","미니","플러스","울트라","에어","에르메스","아이폰","애플","워치","패드","북","Watch","Phone","Pad","Mac","SE","Pro","Plus","Mini","Air","Ultra","Max","세대","mm","인치")
+    def _final_sanitize_model(m):
+        if not isinstance(m, str): return m
+        n = _PII_PHONE.sub("", m)
+        n = _PII_DIGITS.sub("", n)
+        # 한글 이름(모델 키워드 아닌 2~4자 한글)도 제거
+        parts = []
+        for tok in re.split(r"\s+", n):
+            if not tok: continue
+            if re.fullmatch(r"[가-힣]{2,4}", tok) and not any(kw in tok for kw in _MODEL_KW):
+                continue
+            parts.append(tok)
+        n = " ".join(parts)
+        n = re.sub(r"\)\s*\d*\s*$", ")", n)
+        n = re.sub(r"\s+", " ", n).strip()
+        return n
+    def _walk_sanitize(o):
+        if isinstance(o, dict):
+            for k, v in list(o.items()):
+                if k == "model" and isinstance(v, str):
+                    o[k] = _final_sanitize_model(v)
+                else:
+                    _walk_sanitize(v)
+        elif isinstance(o, list):
+            for x in o:
+                _walk_sanitize(x)
+    _walk_sanitize(output)
+
     DATA_OUT.parent.mkdir(parents=True, exist_ok=True)
     DATA_OUT.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"\n✅ 저장 완료: {DATA_OUT}")
