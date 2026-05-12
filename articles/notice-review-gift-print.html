@@ -87,58 +87,82 @@
     .a6-gifts {
       display: flex;
       flex-direction: column;
-      gap: 2mm;
-      margin-bottom: 3mm;
+      gap: 1.8mm;
+      margin-bottom: 2.5mm;
     }
     .a6-gift {
+      position: relative;
       display: flex;
       align-items: center;
-      gap: 3.5mm;
-      padding: 2.5mm 3.5mm;
-      background: linear-gradient(135deg, #fff8f0 0%, #fff3e8 100%);
-      border: 1.2px solid #f5d4b3;
-      border-radius: 3.5mm;
-      position: relative;
-      box-shadow: 0 1px 3px rgba(232,115,42,0.08);
+      gap: 2.8mm;
+      padding: 2.3mm 3mm;
+      background: #fff;
+      border: 1px solid rgba(232,115,42,0.18);
+      border-radius: 3mm;
+      box-shadow: 0 1.5px 4px rgba(232,115,42,0.06);
+      overflow: hidden;
     }
-    .a6-gift::after {
-      content: '🎁';
+    .a6-gift::before {
+      content: '';
       position: absolute;
-      top: 2mm;
-      right: 3mm;
-      font-size: 9pt;
-      opacity: 0.9;
+      top: 0; left: 0; bottom: 0;
+      width: 1mm;
+      background: linear-gradient(180deg, #E8732A 0%, #ffb988 100%);
+    }
+    .a6-gift-tag {
+      position: absolute;
+      top: 1.8mm;
+      right: 2.5mm;
+      background: linear-gradient(135deg, #E8732A 0%, #ff8e5a 100%);
+      color: #fff;
+      font-size: 5.5pt;
+      font-weight: 900;
+      letter-spacing: 0.6px;
+      padding: 0.6mm 1.8mm;
+      border-radius: 30px;
+      box-shadow: 0 1px 2px rgba(232,115,42,0.3);
+      text-transform: uppercase;
     }
     .a6-gift-icon {
       flex-shrink: 0;
-      width: 12mm;
-      height: 12mm;
-      background: linear-gradient(135deg, #E8732A 0%, #ff8e5a 100%);
-      border-radius: 50%;
+      width: 12.5mm;
+      height: 12.5mm;
+      background: radial-gradient(circle at 30% 30%, #fff5ec 0%, #ffe8d4 100%);
+      border-radius: 2.5mm;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14pt;
-      box-shadow: 0 2px 6px rgba(232,115,42,0.35);
+      box-shadow: inset 0 0 0 0.5mm rgba(232,115,42,0.12);
     }
-    .a6-gift-body { flex: 1; min-width: 0; padding-right: 5mm; }
+    .a6-gift-icon svg {
+      width: 8mm;
+      height: 8mm;
+    }
+    .a6-gift-body { flex: 1; min-width: 0; padding-right: 8mm; }
     .a6-gift-device {
-      font-size: 10pt;
+      font-size: 9.5pt;
       font-weight: 900;
       color: #0A0A0A;
-      margin-bottom: 0.8mm;
+      margin-bottom: 0.5mm;
       letter-spacing: -0.3px;
     }
     .a6-gift-item {
-      font-size: 8pt;
-      color: #4a3725;
-      line-height: 1.5;
+      font-size: 7.8pt;
+      color: #555;
+      line-height: 1.45;
       word-break: keep-all;
     }
     .a6-gift-item strong {
       color: #C55E1A;
       font-weight: 800;
     }
+    .a6-gift-value {
+      font-size: 6.5pt;
+      color: #999;
+      margin-top: 0.8mm;
+      letter-spacing: -0.1px;
+    }
+    .a6-gift-value s { color: #c5a890; }
 
     .a6-howto {
       background: linear-gradient(135deg, #fff5f0 0%, #ffe9d8 100%);
@@ -205,25 +229,97 @@
     </div>
 
     <div class="a6-gifts">
+      <!-- 아이폰 -->
       <div class="a6-gift">
-        <div class="a6-gift-icon">📱</div>
+        <span class="a6-gift-tag">FREE</span>
+        <div class="a6-gift-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- 아이폰 본체 -->
+            <rect x="18" y="6" width="28" height="52" rx="5" fill="#1a1a1a" stroke="#0A0A0A" stroke-width="0.8"/>
+            <rect x="20" y="11" width="24" height="42" rx="2" fill="#2a2a2a"/>
+            <!-- 강화유리 (떠 있는 투명 판) -->
+            <rect x="14" y="2" width="32" height="56" rx="6" fill="url(#iphoneGlass)" stroke="#E8732A" stroke-width="0.8" stroke-dasharray="2 1.5" opacity="0.85"/>
+            <!-- 광택 빛 -->
+            <line x1="20" y1="8" x2="40" y2="8" stroke="#fff" stroke-width="1" opacity="0.7" stroke-linecap="round"/>
+            <line x1="22" y1="12" x2="32" y2="12" stroke="#fff" stroke-width="0.6" opacity="0.5" stroke-linecap="round"/>
+            <!-- 반짝 -->
+            <circle cx="42" cy="14" r="1.3" fill="#FFD580"/>
+            <circle cx="42" cy="14" r="0.6" fill="#fff"/>
+            <defs>
+              <linearGradient id="iphoneGlass" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fff" stop-opacity="0.4"/>
+                <stop offset="50%" stop-color="#E8732A" stop-opacity="0.08"/>
+                <stop offset="100%" stop-color="#fff" stop-opacity="0.5"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
         <div class="a6-gift-body">
           <div class="a6-gift-device">아이폰</div>
-          <div class="a6-gift-item"><strong>강화유리</strong> 또는 <strong>사생활 보호필름</strong> 中 택 1</div>
+          <div class="a6-gift-item"><strong>강화유리</strong> 또는 <strong>사생활 보호필름</strong></div>
+          <div class="a6-gift-value">두 종류 中 원하는 1종 택</div>
         </div>
       </div>
+
+      <!-- 애플워치 -->
       <div class="a6-gift">
-        <div class="a6-gift-icon">⌚</div>
+        <span class="a6-gift-tag">FREE</span>
+        <div class="a6-gift-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- 워치밴드 위 -->
+            <path d="M22 6 L42 6 L40 16 L24 16 Z" fill="#444"/>
+            <!-- 워치밴드 아래 -->
+            <path d="M24 48 L40 48 L42 58 L22 58 Z" fill="#444"/>
+            <!-- 워치 본체 -->
+            <rect x="18" y="14" width="28" height="36" rx="5" fill="#1a1a1a" stroke="#0A0A0A" stroke-width="0.8"/>
+            <rect x="21" y="17" width="22" height="30" rx="2.5" fill="#2a2a2a"/>
+            <!-- 디지털 크라운 -->
+            <rect x="46" y="22" width="2.5" height="8" rx="1" fill="#888"/>
+            <!-- 케이스 (외곽 투명) -->
+            <rect x="14" y="10" width="36" height="44" rx="7" fill="none" stroke="#E8732A" stroke-width="0.8" stroke-dasharray="2 1.5" opacity="0.7"/>
+            <!-- 필름 광택 -->
+            <line x1="23" y1="20" x2="38" y2="20" stroke="#fff" stroke-width="0.8" opacity="0.6" stroke-linecap="round"/>
+            <!-- 반짝 -->
+            <circle cx="42" cy="20" r="1.2" fill="#FFD580"/>
+            <circle cx="42" cy="20" r="0.5" fill="#fff"/>
+          </svg>
+        </div>
         <div class="a6-gift-body">
           <div class="a6-gift-device">애플워치</div>
           <div class="a6-gift-item"><strong>우레탄 필름</strong> + <strong>투명 케이스</strong></div>
+          <div class="a6-gift-value">2종 함께 — 풀 보호</div>
         </div>
       </div>
+
+      <!-- 아이패드 -->
       <div class="a6-gift">
-        <div class="a6-gift-icon">📲</div>
+        <span class="a6-gift-tag">FREE</span>
+        <div class="a6-gift-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- 아이패드 본체 (약간 크게) -->
+            <rect x="12" y="8" width="40" height="48" rx="3" fill="#1a1a1a" stroke="#0A0A0A" stroke-width="0.8"/>
+            <rect x="14.5" y="11" width="35" height="42" rx="1.5" fill="#2a2a2a"/>
+            <!-- 강화유리 (떠 있는 투명 판) -->
+            <rect x="9" y="5" width="46" height="54" rx="4" fill="url(#ipadGlass)" stroke="#E8732A" stroke-width="0.8" stroke-dasharray="2 1.5" opacity="0.85"/>
+            <!-- 광택 빛 -->
+            <line x1="16" y1="14" x2="40" y2="14" stroke="#fff" stroke-width="1" opacity="0.7" stroke-linecap="round"/>
+            <line x1="18" y1="18" x2="30" y2="18" stroke="#fff" stroke-width="0.6" opacity="0.5" stroke-linecap="round"/>
+            <!-- 반짝 -->
+            <circle cx="48" cy="18" r="1.5" fill="#FFD580"/>
+            <circle cx="48" cy="18" r="0.7" fill="#fff"/>
+            <defs>
+              <linearGradient id="ipadGlass" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fff" stop-opacity="0.4"/>
+                <stop offset="50%" stop-color="#E8732A" stop-opacity="0.08"/>
+                <stop offset="100%" stop-color="#fff" stop-opacity="0.5"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
         <div class="a6-gift-body">
           <div class="a6-gift-device">아이패드</div>
           <div class="a6-gift-item"><strong>강화유리</strong> 부착</div>
+          <div class="a6-gift-value">전 모델 대응 · 9H 경도</div>
         </div>
       </div>
     </div>
