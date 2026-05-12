@@ -158,12 +158,24 @@
     .a6-warn {
       background: #fff5f0;
       border-left: 2mm solid #E8732A;
-      padding: 2mm 3mm;
-      margin: 2mm 0;
-      font-size: 8pt;
+      padding: 2.5mm 3.5mm;
+      margin: 2mm 0 0;
+      font-size: 7.5pt;
+      line-height: 1.55;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8mm;
+    }
+    .a6-warn p { margin: 0; word-break: keep-all; }
+    .a6-warn strong { color: #C55E1A; }
+    .a6-warn .a6-warn-promise {
+      font-size: 6.8pt;
+      color: #555;
+      padding-top: 1.8mm;
+      border-top: 1px dashed rgba(232,115,42,0.3);
       line-height: 1.5;
     }
-    .a6-warn strong { color: #C55E1A; }
+    .a6-warn .a6-warn-promise strong { color: #1a1a1a; }
     .a6-footer {
       margin-top: auto;
       padding-top: 3mm;
@@ -235,7 +247,11 @@
     </div>
 
     <div class="a6-warn">
-      <strong>"새 폰 같은 완벽한 상태"</strong>를 원하시면 새 폰 구매(100~170만 원)가 가장 확실합니다. 수리는 합리적 비용으로 1~2년 더 쾌적하게 쓰는 선택입니다.
+      <p><strong>"새 폰 같은 완벽한 상태"</strong>를 원하시면 새 폰 구매(100~170만 원)가 가장 확실합니다. 수리는 합리적 비용으로 1~2년 더 쾌적하게 쓰는 선택입니다.</p>
+      <p>수리 후엔 <strong>케이스·필름</strong>을 함께 사용하시고, 비·땀·세면대 등에 더 주의해주세요. 수리한 부분은 출고 당시 강도로 보장되지 않습니다.</p>
+      <div class="a6-warn-promise">
+        <strong>다올리페어가 약속드리는 것</strong> — 같은 부품·증상 재발 시 90일 무상 A/S, 다른 곳 새 고장은 신규 진단 무료, 수리 실패 시 비용 0원.
+      </div>
     </div>
 
     <div class="a6-footer">
