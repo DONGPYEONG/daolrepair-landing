@@ -2560,10 +2560,20 @@ def generate_article(case, journals, used_titles=None):
     rtype = forced or case.get("repair_type") or case.get("type", "") or ""
     month = case.get("date", "")[:7] if case.get("date") else ""
     case_id = case.get("case_id", "") or case.get("id", "")
-    # 케이스 단위로 unique key (이전엔 model|type|month로 묶여 중복 케이스 누락됨)
-    key = f"{model}|{rtype}|{month}|{case_id[:8]}"
+    # 🔒 케이스 단위 unique key — case_id 첫 8자리만 사용
+    # (model 표기가 sync마다 달라져도 같은 폴더는 1개 일지만)
+    key = f"caseid:{case_id[:8]}"
     if key in journals:
         return None  # 중복
+    # 🔒 백워드 호환 — 옛 형식 (model|type|month|case_id) key도 검사
+    legacy_key = f"{model}|{rtype}|{month}|{case_id[:8]}"
+    if legacy_key in journals:
+        return None
+    # 🔒 이중 방어 — articles/ 폴더에 같은 case_id prefix 가진 파일이 이미 있으면 스킵
+    import glob as _glob
+    existing = _glob.glob(f"articles/journal-*-{case_id[:8]}.html")
+    if existing:
+        return None
 
     title = make_title(case, used_titles=used_titles)
     body = make_body(case)
