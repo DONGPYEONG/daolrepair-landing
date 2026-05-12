@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-12T15:52:09.670231+09:00",
+  "updated_at": "2026-05-12T16:06:12.190446+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11220,
@@ -33,43 +33,43 @@
       "model": "아이폰 iPhone XR",
       "type": "화면 교체",
       "branch": "신림점",
-      "minutes_ago": 34
+      "minutes_ago": 48
     },
     {
       "model": "아이폰 iPhone 14 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 36
+      "minutes_ago": 50
     },
     {
       "model": "아이폰 iPhone 16 Pro Max",
       "type": "충전 단자 수리",
       "branch": "신림점",
-      "minutes_ago": 69
+      "minutes_ago": 83
     },
     {
       "model": "아이폰 iPhone 12 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 98
+      "minutes_ago": 112
     },
     {
       "model": "애플워치 Apple Watch SE (2세대) 공시현 010668210201",
       "type": "센서 수리",
       "branch": "목동점",
-      "minutes_ago": 101
+      "minutes_ago": 115
     },
     {
       "model": "아이폰 iPhone 13 Pro",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 218
+      "minutes_ago": 232
     },
     {
       "model": "애플워치 Apple Watch SE (2세대)",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 291
+      "minutes_ago": 305
     }
   ],
   "top_repair_types": [
@@ -1011,6 +1011,44 @@
     },
     {
       "id": "case-27",
+      "model": "애플워치 Apple Watch SE (2세대) 공시현 010668210201",
+      "type": "센서 수리",
+      "branch": "목동점",
+      "date": "2026-05-12",
+      "createdTime": "2026-05-12T05:10:44.246Z",
+      "repair_time": "당일 · 30분~1시간",
+      "before_img": "images/before-after/11BNtH7gTdSRbVov7ZSm79in/before.jpg",
+      "after_img": "images/before-after/11BNtH7gTdSRbVov7ZSm79in/after.jpg",
+      "progress_imgs": [
+        "images/before-after/11BNtH7gTdSRbVov7ZSm79in/progress1.jpg",
+        "images/before-after/11BNtH7gTdSRbVov7ZSm79in/progress2.jpg",
+        "images/before-after/11BNtH7gTdSRbVov7ZSm79in/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
+      "before_text": "센서 오작동",
+      "after_text": "센서 정밀 수리",
+      "case_id": "11BNtH7gTdSRbVov7ZSm79in_1mljPu9Z",
+      "meta": {
+        "time": "1410",
+        "age": "20대",
+        "gender": "여성",
+        "age_gender": "20대 여성",
+        "options": "후면센서",
+        "cause": "떨어뜨림",
+        "time_natural": "오후 2시 10분",
+        "time_period": "오후",
+        "options_natural": "후면센서",
+        "options_list": [
+          "후면센서"
+        ]
+      }
+    },
+    {
+      "id": "case-28",
       "model": "애플워치 Apple Watch SE (2세대)",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1049,7 +1087,7 @@
       "journal_url": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html"
     },
     {
-      "id": "case-28",
+      "id": "case-29",
       "model": "아이폰 iPhone 13 Pro",
       "type": "수리",
       "branch": "목동점",
@@ -1088,7 +1126,7 @@
       "journal_url": "articles/journal-2026-05-11-아이폰-iphone-13-pro-speaker-1LZ8-mdk.html"
     },
     {
-      "id": "case-29",
+      "id": "case-30",
       "model": "아이폰 iPhone X",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1127,7 +1165,7 @@
       "journal_url": "articles/journal-2026-05-09-아이폰-iphone-x-battery-1DBkRFtC.html"
     },
     {
-      "id": "case-30",
+      "id": "case-31",
       "model": "아이폰 iPhone 14 Pro",
       "type": "후면 + 배터리 교체",
       "branch": "신림점",
@@ -1167,7 +1205,7 @@
       "journal_url": "articles/journal-2026-05-09-아이폰-iphone-14-pro-back-13U0ly-i.html"
     },
     {
-      "id": "case-31",
+      "id": "case-32",
       "model": "애플워치 Apple Watch SE (2세대)",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1206,7 +1244,7 @@
       "journal_url": "articles/journal-2026-05-09-애플워치-apple-watch-se-2세대-battery-1eGfabMe.html"
     },
     {
-      "id": "case-32",
+      "id": "case-33",
       "model": "아이폰 iPhone 13 Pro Max",
       "type": "후면 + 배터리 교체",
       "branch": "신림점",
@@ -1246,7 +1284,7 @@
       "journal_url": "articles/journal-2026-05-09-아이폰-iphone-13-pro-max-back-1iXABiV6.html"
     },
     {
-      "id": "case-33",
+      "id": "case-34",
       "model": "아이폰 13미니",
       "type": "배터리 교체",
       "branch": "가산점",
@@ -1272,7 +1310,7 @@
       "journal_url": "articles/journal-2026-05-08-아이폰-13미니-battery-1im7V3yy.html"
     },
     {
-      "id": "case-34",
+      "id": "case-35",
       "model": "아이패드 미니6",
       "type": "충전 단자 수리",
       "branch": "신림점",
@@ -1298,7 +1336,7 @@
       "journal_url": "articles/journal-2026-05-06-아이패드-미니6-charge-1vFX-wUW.html"
     },
     {
-      "id": "case-35",
+      "id": "case-36",
       "model": "아이폰6s",
       "type": "배터리 교체",
       "branch": "가산점",
@@ -1324,7 +1362,7 @@
       "journal_url": "articles/journal-2026-05-05-아이폰6s-battery-1bdNyoxi.html"
     },
     {
-      "id": "case-36",
+      "id": "case-37",
       "model": "아이폰 12미니",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1350,7 +1388,7 @@
       "journal_url": "articles/journal-2026-05-04-아이폰-12미니-battery-1CU7VD5l.html"
     },
     {
-      "id": "case-37",
+      "id": "case-38",
       "model": "아이폰 15프로",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1376,7 +1414,7 @@
       "journal_url": "articles/journal-2026-05-04-아이폰-15프로-battery-1P0o4qDL.html"
     },
     {
-      "id": "case-38",
+      "id": "case-39",
       "model": "애플워치 SE2 40mm",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1402,7 +1440,7 @@
       "journal_url": "articles/journal-2026-04-30-애플워치-se2-40mm-battery-1jbdaG3N.html"
     },
     {
-      "id": "case-39",
+      "id": "case-40",
       "model": "아이폰 15프로",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1428,7 +1466,7 @@
       "journal_url": "articles/journal-2026-04-30-아이폰-15프로-battery-1HkvVe9s.html"
     },
     {
-      "id": "case-40",
+      "id": "case-41",
       "model": "애플워치 SE 40mm",
       "type": "배터리 교체",
       "branch": "목동점",
