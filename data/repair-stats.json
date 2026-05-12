@@ -95,16 +95,16 @@
       "id": "case-6",
       "model": "아이폰 17프로",
       "type": "화면 교체",
-      "branch": "가산점",
-      "date": "2026-05-11",
-      "createdTime": "2026-05-11T02:28:01.248Z",
+      "branch": "목동점",
+      "date": "2026-05-12",
+      "createdTime": "2026-05-12T07:21:50.999Z",
       "repair_time": "당일 · 30~60분",
-      "before_img": "images/before-after/1pHB98EyRJNYU4TawHOk6nxg/before.jpg",
-      "after_img": "images/before-after/1pHB98EyRJNYU4TawHOk6nxg/after.jpg",
+      "before_img": "images/before-after/1Y5Bwg_Lm4X9FCnbpvLkisT0/before.jpg",
+      "after_img": "images/before-after/1Y5Bwg_Lm4X9FCnbpvLkisT0/after.jpg",
       "progress_imgs": [
-        "images/before-after/1pHB98EyRJNYU4TawHOk6nxg/progress1.jpg",
-        "images/before-after/1pHB98EyRJNYU4TawHOk6nxg/progress2.jpg",
-        "images/before-after/1pHB98EyRJNYU4TawHOk6nxg/progress3.jpg"
+        "images/before-after/1Y5Bwg_Lm4X9FCnbpvLkisT0/progress1.jpg",
+        "images/before-after/1Y5Bwg_Lm4X9FCnbpvLkisT0/progress2.jpg",
+        "images/before-after/1Y5Bwg_Lm4X9FCnbpvLkisT0/progress3.jpg"
       ],
       "progress_labels": [
         "내부분해",
