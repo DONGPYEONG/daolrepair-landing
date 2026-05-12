@@ -425,6 +425,14 @@ def main():
     DEFAULT_AFTER  = [("수리후", "수리부위"), ("수리후", "기기후면"), ("수리후", "기기전면"), ("수리후", "작동화면")]
     DEVICE_FIRST_BEFORE = [("수리전", "기기후면"), ("수리전", "기기전면"), ("수리전", "파손부위")]
     DEVICE_FIRST_AFTER  = [("수리후", "기기후면"), ("수리후", "기기전면"), ("수리후", "작동화면"), ("수리후", "수리부위")]
+    # 🆕 screen 케이스 — AFTER는 전체 화면(기기전면) 우선 (비포·애프터 임팩트 큼)
+    SCREEN_BEFORE = [("수리전", "파손부위"), ("수리전", "기기전면"), ("수리전", "기기후면")]
+    SCREEN_AFTER  = [("수리후", "기기전면"), ("수리후", "기기후면"), ("수리후", "작동화면"), ("수리후", "수리부위")]
+    SCREEN_TYPES = {"screen", "screen+battery", "screen+back", "screen+back-glass"}
+    # 🆕 back-glass — AFTER는 기기후면 우선 (수리 부위가 후면이라 전체 후면 사진이 자연스러움)
+    BACKGLASS_BEFORE = [("수리전", "파손부위"), ("수리전", "기기후면"), ("수리전", "기기전면")]
+    BACKGLASS_AFTER  = [("수리후", "기기후면"), ("수리후", "기기전면"), ("수리후", "수리부위"), ("수리후", "작동화면")]
+    BACKGLASS_TYPES = {"back", "back-glass"}
     # 외관 변화 없어 파손부위 사진이 내부 분해/회로 사진일 가능성 높은 종류
     # 배터리·충전 단자는 파손부위가 보통 의미 있는 사진(성능치 화면·단자 클로즈업)이라 제외
     DEVICE_FIRST_TYPES = {
@@ -458,6 +466,10 @@ def main():
         if repair_type in BATTERY_TYPES:
             after = BATTERY_AFTER_OVERRIDE if (case_id and case_id in battery_action_override) else BATTERY_AFTER_DEFAULT
             return DEFAULT_BEFORE, after
+        if repair_type in SCREEN_TYPES:
+            return SCREEN_BEFORE, SCREEN_AFTER
+        if repair_type in BACKGLASS_TYPES:
+            return BACKGLASS_BEFORE, BACKGLASS_AFTER
         if repair_type in DEVICE_FIRST_TYPES:
             return DEVICE_FIRST_BEFORE, DEVICE_FIRST_AFTER
         return DEFAULT_BEFORE, DEFAULT_AFTER

@@ -1441,6 +1441,23 @@ def make_body(c):
                 count=1,
             )
 
+    # 🆕 후면 유리 케이스 — '1년 50% 할인' 정책은 아이폰 후면 한정
+    # 워치·패드·맥북 등 비-아이폰 디바이스는 다른 카피로 자동 치환
+    is_iphone = ("아이폰" in model) or ("iPhone" in model)
+    if not is_iphone:
+        # art-warn 박스 안의 1년 50% 할인 카피 → 디바이스 중립 카피
+        body_html = body_html.replace(
+            '<strong>다올리페어는 1년 안에 재파손 시 50% 할인된 가격으로 재수리</strong>해드립니다.',
+            '같은 부품·증상 재발 시 <strong>90일 무상 A/S</strong>로 보장합니다.'
+        )
+        # FAQ "수리 후 또 깨지면" 답변 치환
+        import re as _re2
+        body_html = _re2.sub(
+            r"다올리페어는 <strong><a[^>]+>1년 안에 재파손 시 50% 할인된 가격으로 재수리</a></strong>해드립니다\. 단독 후면 교체이기 때문에 새 폰 수준의 내구성은 어렵다는 점을 인정하고, 고객 부담을 덜어드리는 정책이에요\.",
+            '단독 후면 교체이기 때문에 새 제품 수준의 내구성은 어렵습니다. 같은 부품·증상 재발 시 <strong>90일 무상 A/S</strong>로 보장합니다. 수리 후엔 케이스 사용을 권장드리고, 그 외 재파손은 별도 견적으로 안내드려요.',
+            body_html,
+        )
+
     return body_html
 
 
