@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다올리페어 SHOP — A6 매장 안내문 | 다올리페어</title>
+  <meta name="description" content="다올리페어 매장 비치용 A6 안내문. 하우징폰·애플펜슬 리퍼·정품 액세서리.">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://xn--2j1bq2k97kxnah86c.com/articles/notice-shop-print.html">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      background: #f0f0f0;
+      padding: 40px 20px;
+      color: #1a1a1a;
+      line-height: 1.5;
+    }
+    .toolbar { max-width: 480px; margin: 0 auto 24px; text-align: center; }
+    .toolbar h1 { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+    .toolbar p { font-size: 13px; color: #666; margin-bottom: 14px; line-height: 1.6; }
+    .toolbar button {
+      background: #E8732A; color: #fff; border: none;
+      padding: 12px 28px; border-radius: 30px;
+      font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit;
+    }
+    .toolbar button:hover { background: #C55E1A; }
+    .toolbar a {
+      display: inline-block; margin-left: 12px;
+      color: #666; font-size: 13px; text-decoration: underline;
+    }
+
+    /* A6 세로: 105mm × 148mm */
+    .a6-card {
+      width: 105mm;
+      height: 148mm;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      padding: 5mm 6mm 3mm;
+      display: flex;
+      flex-direction: column;
+      color: #1a1a1a;
+      overflow: hidden;
+      page-break-after: always;
+    }
+
+    .a6-header {
+      text-align: center;
+      padding-bottom: 3mm;
+      margin-bottom: 3.5mm;
+      border-bottom: 2px solid #E8732A;
+    }
+    .a6-eyebrow {
+      display: inline-block;
+      background: linear-gradient(135deg, #0A0A0A 0%, #2a2a2a 100%);
+      color: #fff;
+      font-size: 7.5pt;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      padding: 1.2mm 4mm;
+      border-radius: 30px;
+      margin-bottom: 2mm;
+    }
+    .a6-eyebrow .dot { color: #E8732A; }
+    .a6-title {
+      font-size: 14pt;
+      font-weight: 900;
+      line-height: 1.3;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+    }
+    .a6-title em { color: #E8732A; font-style: normal; }
+    .a6-sub {
+      font-size: 7.5pt;
+      color: #666;
+      margin-top: 1.5mm;
+      line-height: 1.55;
+      word-break: keep-all;
+    }
+
+    /* 상품 카드 */
+    .a6-products {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5mm;
+      margin-bottom: 2mm;
+    }
+    .a6-product {
+      display: flex;
+      align-items: center;
+      gap: 2.5mm;
+      padding: 1.8mm 2.8mm;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 3mm;
+      box-shadow: 0 1.5px 4px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    .a6-product.featured {
+      background: linear-gradient(135deg, #fff8f0 0%, #fff3e8 100%);
+      border-color: #f5d4b3;
+    }
+    .a6-product-img {
+      flex-shrink: 0;
+      width: 14mm;
+      height: 14mm;
+      background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+      border-radius: 2mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 0 0.3mm rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+    .a6-product-img svg { width: 100%; height: 100%; }
+    .a6-product-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .a6-product-tag {
+      display: inline-block;
+      font-size: 5.5pt;
+      font-weight: 900;
+      color: #E8732A;
+      background: rgba(232,115,42,0.1);
+      padding: 0.5mm 2mm;
+      border-radius: 30px;
+      letter-spacing: 0.4px;
+      margin-bottom: 1mm;
+      text-transform: uppercase;
+    }
+    .a6-product-tag.hot {
+      background: linear-gradient(135deg, #c53030 0%, #E8732A 100%);
+      color: #fff;
+    }
+    .a6-product-name {
+      font-size: 9pt;
+      font-weight: 900;
+      color: #0A0A0A;
+      letter-spacing: -0.3px;
+      line-height: 1.25;
+      margin-bottom: 0.6mm;
+    }
+    .a6-product-desc {
+      font-size: 7pt;
+      color: #666;
+      line-height: 1.45;
+      word-break: keep-all;
+    }
+    .a6-product-price {
+      flex-shrink: 0;
+      text-align: right;
+      font-size: 11pt;
+      font-weight: 900;
+      color: #E8732A;
+      letter-spacing: -0.3px;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+    .a6-product-price small {
+      display: block;
+      font-size: 6pt;
+      color: #888;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-top: 0.5mm;
+    }
+
+    .a6-foot-note {
+      background: #fafaf7;
+      border-top: 0.6mm solid #1a1a1a;
+      border-bottom: 0.6mm solid #1a1a1a;
+      padding: 2.5mm 3mm;
+      margin-top: auto;
+      font-size: 7pt;
+      line-height: 1.55;
+      color: #333;
+      word-break: keep-all;
+      text-align: center;
+    }
+    .a6-foot-note strong { color: #0A0A0A; }
+    .a6-foot-note .a6-foot-eyebrow {
+      font-size: 6.5pt;
+      font-weight: 900;
+      color: #E8732A;
+      letter-spacing: 0.5px;
+      display: block;
+      margin-bottom: 1.2mm;
+    }
+
+    .a6-footer {
+      margin-top: 1.8mm;
+      padding-top: 1.5mm;
+      border-top: 1px dashed #bbb;
+      font-size: 7.5pt;
+      color: #666;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .a6-footer .url { color: #E8732A; font-weight: 700; }
+
+    @media print {
+      body { background: #fff; padding: 0; margin: 0; }
+      .toolbar { display: none; }
+      .a6-card { box-shadow: none; margin: 0; }
+      @page { size: A6; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <h1>매장 비치용 A6 안내문 — 다올리페어 SHOP</h1>
+    <p>아래 미리보기는 실제 인쇄 크기 (105 × 148mm).<br>인쇄 → 용지 'A6' 또는 'A4 한 장에 4개 배치' 선택.</p>
+    <button onclick="window.print()">인쇄하기</button>
+    <a href="notice-price-comparison-print.html">← 다른 안내문</a>
+  </div>
+
+  <div class="a6-card">
+    <div class="a6-header">
+      <div class="a6-eyebrow">DAOLREPAIR <span class="dot">·</span> SHOP</div>
+      <div class="a6-title"><em>마스터 검수</em> 정직 판매</div>
+      <div class="a6-sub">하우징폰·리퍼 펜슬·정품 액세서리 — 매장 직원에게 문의하세요</div>
+    </div>
+
+    <div class="a6-products">
+      <!-- 아이폰 6s 하우징폰 (Rose Gold) -->
+      <div class="a6-product featured">
+        <div class="a6-product-img">
+          <svg viewBox="0 0 64 80" fill="none">
+            <defs>
+              <linearGradient id="i6sBody" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f5d5cc"/>
+                <stop offset="50%" stop-color="#e8b8ac"/>
+                <stop offset="100%" stop-color="#d09c92"/>
+              </linearGradient>
+              <linearGradient id="i6sScreen" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#7da7c5" stop-opacity="0.95"/>
+                <stop offset="100%" stop-color="#4a6a85" stop-opacity="0.85"/>
+              </linearGradient>
+              <radialGradient id="i6sShine" cx="0.3" cy="0.2" r="0.6">
+                <stop offset="0%" stop-color="#fff" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <!-- 그림자 -->
+            <ellipse cx="32" cy="76" rx="14" ry="1.5" fill="#000" opacity="0.15"/>
+            <!-- 본체 -->
+            <rect x="14" y="4" width="36" height="72" rx="7" fill="url(#i6sBody)" stroke="#a07e76" stroke-width="0.5"/>
+            <!-- 화면 영역 -->
+            <rect x="17" y="13" width="30" height="52" rx="1" fill="#0a0a0a"/>
+            <rect x="18.5" y="14.5" width="27" height="49" rx="0.5" fill="url(#i6sScreen)"/>
+            <!-- 화면 콘텐츠 (홈 화면 느낌) -->
+            <rect x="20" y="18" width="23" height="3" rx="0.5" fill="#fff" opacity="0.3"/>
+            <rect x="20" y="24" width="6" height="6" rx="1" fill="#ff9f0a" opacity="0.7"/>
+            <rect x="28.5" y="24" width="6" height="6" rx="1" fill="#5e5ce6" opacity="0.6"/>
+            <rect x="37" y="24" width="6" height="6" rx="1" fill="#30d158" opacity="0.6"/>
+            <rect x="20" y="32" width="6" height="6" rx="1" fill="#ff375f" opacity="0.5"/>
+            <rect x="28.5" y="32" width="6" height="6" rx="1" fill="#64d2ff" opacity="0.5"/>
+            <!-- 광택 -->
+            <rect x="14" y="4" width="36" height="72" rx="7" fill="url(#i6sShine)"/>
+            <!-- 스피커·전면 카메라 -->
+            <rect x="27" y="8.5" width="10" height="1.4" rx="0.5" fill="#3a3a3a"/>
+            <circle cx="40" cy="9.2" r="0.8" fill="#222"/>
+            <circle cx="40" cy="9.2" r="0.4" fill="#5a8aaa"/>
+            <!-- 홈버튼 (지문센서 링) -->
+            <circle cx="32" cy="69.5" r="3.4" fill="none" stroke="#a07e76" stroke-width="0.6"/>
+            <circle cx="32" cy="69.5" r="2.4" fill="#e8b8ac" stroke="#fff" stroke-width="0.3"/>
+          </svg>
+        </div>
+        <div class="a6-product-body">
+          <span class="a6-product-tag hot">📷 빈티지 트렌드</span>
+          <div class="a6-product-name">iPhone 6s · 128GB</div>
+          <div class="a6-product-desc">하우징 새것급 검수 · MZ 빈티지 사진용 인기</div>
+        </div>
+        <div class="a6-product-price">169,000원<small>HOUSING</small></div>
+      </div>
+
+      <!-- 아이폰 7 하우징폰 (Jet Black) -->
+      <div class="a6-product featured">
+        <div class="a6-product-img">
+          <svg viewBox="0 0 64 80" fill="none">
+            <defs>
+              <linearGradient id="i7Body" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#3a3a3a"/>
+                <stop offset="50%" stop-color="#1a1a1a"/>
+                <stop offset="100%" stop-color="#0a0a0a"/>
+              </linearGradient>
+              <linearGradient id="i7Screen" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3b5a7a" stop-opacity="0.95"/>
+                <stop offset="100%" stop-color="#1a2c40" stop-opacity="0.9"/>
+              </linearGradient>
+              <radialGradient id="i7Shine" cx="0.3" cy="0.2" r="0.6">
+                <stop offset="0%" stop-color="#fff" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="32" cy="76" rx="14" ry="1.5" fill="#000" opacity="0.18"/>
+            <rect x="14" y="4" width="36" height="72" rx="7" fill="url(#i7Body)" stroke="#0A0A0A" stroke-width="0.5"/>
+            <rect x="17" y="13" width="30" height="52" rx="1" fill="#000"/>
+            <rect x="18.5" y="14.5" width="27" height="49" rx="0.5" fill="url(#i7Screen)"/>
+            <!-- 화면 콘텐츠 -->
+            <rect x="20" y="18" width="23" height="3" rx="0.5" fill="#fff" opacity="0.3"/>
+            <rect x="20" y="24" width="6" height="6" rx="1" fill="#ff9f0a" opacity="0.65"/>
+            <rect x="28.5" y="24" width="6" height="6" rx="1" fill="#5e5ce6" opacity="0.55"/>
+            <rect x="37" y="24" width="6" height="6" rx="1" fill="#30d158" opacity="0.55"/>
+            <rect x="20" y="32" width="6" height="6" rx="1" fill="#ff375f" opacity="0.5"/>
+            <rect x="28.5" y="32" width="6" height="6" rx="1" fill="#64d2ff" opacity="0.5"/>
+            <rect x="14" y="4" width="36" height="72" rx="7" fill="url(#i7Shine)"/>
+            <rect x="27" y="8.5" width="10" height="1.4" rx="0.5" fill="#1a1a1a"/>
+            <circle cx="40" cy="9.2" r="0.8" fill="#000"/>
+            <circle cx="40" cy="9.2" r="0.4" fill="#5a8aaa"/>
+            <!-- 후면이 아니라 전면이라 카메라 안 보임. 가짜 하면 어색 — 빼기 -->
+            <!-- 홈버튼 (4D 터치, 비물리) -->
+            <circle cx="32" cy="69.5" r="3.4" fill="none" stroke="#444" stroke-width="0.5"/>
+            <circle cx="32" cy="69.5" r="2.6" fill="#0a0a0a" stroke="#3a3a3a" stroke-width="0.3"/>
+          </svg>
+        </div>
+        <div class="a6-product-body">
+          <span class="a6-product-tag hot">📷 빈티지 트렌드</span>
+          <div class="a6-product-name">iPhone 7 · 128GB</div>
+          <div class="a6-product-desc">하우징 새것급 검수 · 빈티지 감성 + 큰 용량</div>
+        </div>
+        <div class="a6-product-price">189,000원<small>HOUSING</small></div>
+      </div>
+
+      <!-- 애플펜슬 2세대 리퍼 -->
+      <div class="a6-product">
+        <div class="a6-product-img">
+          <svg viewBox="0 0 64 80" fill="none">
+            <defs>
+              <linearGradient id="pencilBody" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#fafafa"/>
+                <stop offset="40%" stop-color="#fff"/>
+                <stop offset="60%" stop-color="#f0f0f0"/>
+                <stop offset="100%" stop-color="#d0d0d0"/>
+              </linearGradient>
+              <linearGradient id="pencilTip" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#aaa"/>
+                <stop offset="100%" stop-color="#666"/>
+              </linearGradient>
+            </defs>
+            <!-- 그림자 -->
+            <g transform="rotate(25, 32, 40)">
+              <ellipse cx="32" cy="72" rx="6" ry="1" fill="#000" opacity="0.15"/>
+              <!-- 본체 -->
+              <rect x="28" y="10" width="8" height="58" rx="4" fill="url(#pencilBody)" stroke="#999" stroke-width="0.4"/>
+              <!-- 끝 캡 (수평선 마크) -->
+              <line x1="28" y1="14" x2="36" y2="14" stroke="#bbb" stroke-width="0.5"/>
+              <!-- 자기 부착 평면 (한쪽이 평평) -->
+              <rect x="28" y="10" width="0.6" height="58" fill="#bbb"/>
+              <!-- 펜촉 -->
+              <path d="M28 68 L32 74 L36 68 Z" fill="url(#pencilTip)"/>
+              <circle cx="32" cy="73" r="0.6" fill="#444"/>
+              <!-- 광택 -->
+              <rect x="29" y="14" width="1.5" height="50" rx="0.7" fill="#fff" opacity="0.6"/>
+            </g>
+          </svg>
+        </div>
+        <div class="a6-product-body">
+          <span class="a6-product-tag">정품 리퍼</span>
+          <div class="a6-product-name">Apple Pencil 2세대</div>
+          <div class="a6-product-desc">정품 검수 리퍼 · 신품 약 19만원 → 절반</div>
+        </div>
+        <div class="a6-product-price">11만원<small>리퍼 정상 작동</small></div>
+      </div>
+
+      <!-- 정품 액세서리 -->
+      <div class="a6-product">
+        <div class="a6-product-img">
+          <svg viewBox="0 0 64 80" fill="none">
+            <defs>
+              <linearGradient id="adapterBody" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#fff"/>
+                <stop offset="100%" stop-color="#e8e8e8"/>
+              </linearGradient>
+              <linearGradient id="podsBody" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#fff"/>
+                <stop offset="100%" stop-color="#dcdcdc"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="32" cy="74" rx="22" ry="1.5" fill="#000" opacity="0.12"/>
+            <!-- 어댑터 (USB-C 20W) -->
+            <rect x="6" y="18" width="22" height="22" rx="4" fill="url(#adapterBody)" stroke="#aaa" stroke-width="0.5"/>
+            <!-- 핀 -->
+            <rect x="13" y="12" width="3" height="7" rx="1" fill="#888"/>
+            <rect x="19" y="12" width="3" height="7" rx="1" fill="#888"/>
+            <!-- USB-C 포트 -->
+            <rect x="14.5" y="32" width="6" height="2" rx="1" fill="#222"/>
+            <rect x="15.5" y="32.5" width="4" height="1" rx="0.5" fill="#444"/>
+            <!-- 케이블 -->
+            <path d="M28 33 Q35 30 42 36 Q48 42 44 50" stroke="#fff" stroke-width="2.6" fill="none"/>
+            <path d="M28 33 Q35 30 42 36 Q48 42 44 50" stroke="#aaa" stroke-width="0.3" fill="none"/>
+            <!-- USB-C 끝 -->
+            <rect x="26" y="31" width="3" height="4" rx="0.5" fill="#888"/>
+            <!-- 에어팟 케이스 -->
+            <ellipse cx="50" cy="58" rx="9" ry="11" fill="url(#podsBody)" stroke="#aaa" stroke-width="0.5"/>
+            <ellipse cx="50" cy="58" rx="6" ry="0.5" fill="#ccc"/>
+            <!-- 인디케이터 -->
+            <circle cx="50" cy="68" r="0.8" fill="#30d158"/>
+            <!-- 케이스 광택 -->
+            <ellipse cx="46" cy="52" rx="2.5" ry="4" fill="#fff" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="a6-product-body">
+          <span class="a6-product-tag">100% 정품</span>
+          <div class="a6-product-name">Apple 정품 액세서리</div>
+          <div class="a6-product-desc">충전기·케이블·에어팟 등 — 정가보다 합리적</div>
+        </div>
+        <div class="a6-product-price">매장 문의<small>VARIOUS</small></div>
+      </div>
+    </div>
+
+    <div class="a6-foot-note">
+      <span class="a6-foot-eyebrow">🛡 마스터가 직접 검수한 제품만 판매합니다</span>
+      <strong>하우징폰</strong>은 상태·작동 모두 확인 후 새것급으로 출고. <strong>리퍼 펜슬</strong>은 정품 검수, 정상 작동 확인 완료. 모두 <strong>다올리페어 90일 보증</strong>.
+    </div>
+
+    <div class="a6-footer">
+      <span class="url">다올리페어.com</span>
+    </div>
+  </div>
+
+</body>
+</html>
