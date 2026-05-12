@@ -5,10 +5,19 @@
 A6 매장 안내문(notice-shop-print)에 표시되는 상품 사진을 여기에 넣어주세요.
 
 📁 필요 파일 (정확히 이 이름으로 저장):
-  1. iphone-6s.jpg          — 아이폰 6s 하우징폰 (Rose Gold 권장)
-  2. iphone-7.jpg           — 아이폰 7 하우징폰 (Jet Black 권장)
-  3. apple-pencil-2.jpg     — 애플펜슬 2세대 리퍼
-  4. apple-accessories.jpg  — Apple 정품 액세서리 묶음
+
+  하우징폰 — 앞/뒤 2장씩
+  1. iphone-6s-front.jpg     — 아이폰 6s 앞면
+  2. iphone-6s-back.jpg      — 아이폰 6s 뒷면
+  3. iphone-7-front.jpg      — 아이폰 7 앞면
+  4. iphone-7-back.jpg       — 아이폰 7 뒷면
+
+  애플펜슬 — 1장
+  5. apple-pencil-2.jpg      — 애플펜슬 2세대
+
+  Apple 액세서리 — 2장 (다른 종류)
+  6. apple-accessories-1.jpg
+  7. apple-accessories-2.jpg
 
 📷 촬영 가이드:
   - 정사각형 또는 1:1 비율 (잘림 방지)
