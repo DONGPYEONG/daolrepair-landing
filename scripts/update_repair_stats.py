@@ -872,57 +872,31 @@ def main():
                 return True
         return False
 
-    # 🆕 슬라이더 다양성 — 동일 디바이스·부위 1건만 (모델 번호 큰 것 우선)
-    def _model_priority(c):
-        """iPhone 액정 케이스는 모델 번호 큰 것이 우선 (17 > 16 > 15 > 14 > 13)"""
-        m = c.get("model","")
-        if "17" in m: return 17
-        if "16" in m: return 16
-        if "15" in m: return 15
-        if "14" in m: return 14
-        if "13" in m: return 13
-        return 0
-    eligible = [c for c in portfolio_cases if _slider_eligible(c)]
-    # iPhone 액정인 경우 모델 번호 우선, 그 외 createdTime 기준
-    eligible.sort(key=lambda c: (-_model_priority(c) if ("아이폰" in c.get("model","") or "iPhone" in c.get("model","")) else 0, c.get("createdTime","")), reverse=False)
-    # 위 정렬은 iPhone은 모델 번호 큰 것이 앞으로, 그 외는 createdTime이 작은 게 앞으로 — 반대로 하려면 역순
-    eligible.sort(key=lambda c: (
-        # 1) iPhone 액정은 모델 번호 큰 것 우선 (17 > 13)
-        -_model_priority(c) if (("아이폰" in c.get("model","") or "iPhone" in c.get("model","")) and ("화면" in c.get("type","") or "액정" in c.get("type",""))) else 99,
-        # 2) 그 외엔 createdTime 최신순
-        -1 * (int(c.get("createdTime","0").replace("-","").replace(":","").replace("T","").replace("Z","").replace(".","")[:14] or 0) if c.get("createdTime") else 0)
-    ))
-    seen_dev_part = set()
-    diverse = []
-    for c in eligible:
-        t = (c.get("type") or "").lower()
-        if "화면" in t or "액정" in t:
-            part = "screen"
-        elif "배터리" in t:
-            part = "battery"
-        elif "후면" in t or "백글래스" in t:
-            part = "back"
-        elif "충전" in t:
-            part = "charge"
-        else:
-            part = t[:6] or "etc"
-        m = c.get("model","")
-        if "아이폰" in m or "iPhone" in m: device = "iphone"
-        elif "아이패드" in m or "iPad" in m: device = "ipad"
-        elif "애플워치" in m or "Apple Watch" in m or "에르메스" in m: device = "watch"
-        elif "에어팟" in m or "AirPods" in m: device = "airpods"
-        elif "맥북" in m or "MacBook" in m: device = "macbook"
-        else: device = "etc"
-        # 디바이스+부위 1건만 (지점·날짜 무관)
-        key = (device, part)
-        if key in seen_dev_part:
-            continue
-        seen_dev_part.add(key)
-        diverse.append(c)
-        if len(diverse) >= 4:
-            break
-    slider_cases = diverse
-    print(f"   🎬 슬라이더 필터링: 디바이스+부위 1건 / iPhone 액정은 신모델 우선")
+    # 🆕 슬라이더 — 사장님 명시 4개 케이스 우선 (case_id 접두어로 매칭)
+    # 사장님이 직접 선정한 슬라이더 4개. portfolio 순서와 무관하게 이 4개를 우선 노출.
+    # 변경하려면 아래 PREFERRED_SLIDER_CASE_IDS 수정.
+    PREFERRED_SLIDER_CASE_IDS = [
+        "1Y5Bwg_Lm4X9FCnbpvLkisT0",      # 5/12 목동 아이패드 Pro 11" (2세대) 화면
+        "1P3hcrr2N9pn0xqmeH3M7nbU",      # 5/12 가산 iPhone 13 Pro 화면
+        "1pHB98EyRJNYU4TawHOk6nxg",      # 5/11 가산 iPhone 17프로 화면
+        "1camNuifEyDb3gFZXsTnWzjl",      # 5/11 목동 iPhone 15 Pro 화면
+    ]
+    slider_cases = []
+    used_case_ids = set()
+    for cid_prefix in PREFERRED_SLIDER_CASE_IDS:
+        for c in portfolio_cases:
+            if c.get("case_id", "").startswith(cid_prefix):
+                slider_cases.append(c)
+                used_case_ids.add(c.get("case_id"))
+                break
+    # 부족 시 적격 케이스로 채움 (사용자가 따로 명시 안 한 자리만)
+    for c in portfolio_cases:
+        if len(slider_cases) >= 4: break
+        if c.get("case_id") in used_case_ids: continue
+        if _slider_eligible(c):
+            slider_cases.append(c)
+            used_case_ids.add(c.get("case_id"))
+    print(f"   🎬 슬라이더: 사장님 명시 {len([c for c in slider_cases if any(c.get('case_id','').startswith(p) for p in PREFERRED_SLIDER_CASE_IDS)])}건 + 자동 채움 → 총 {len(slider_cases)}건")
 
     # 🆕 각 케이스에 일지 글 URL 매칭 (case_id로 journal-index 매칭)
     journal_index_path = ROOT / "data" / "journal-index.json"
