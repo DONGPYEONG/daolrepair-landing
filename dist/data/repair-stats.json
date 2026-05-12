@@ -231,6 +231,40 @@
   ],
   "portfolio_cases": [
     {
+      "id": "case-watch-se2-40mm-back",
+      "model": "애플워치 Apple Watch SE 2세대 40mm",
+      "type": "후면 유리 교체",
+      "branch": "목동점",
+      "date": "2026-05-12",
+      "createdTime": "2026-05-12T07:00:00.000Z",
+      "repair_time": "당일 · 1~2시간",
+      "before_img": "images/before-after/watch-se2-40mm-back-11BNtH7g/before.jpg",
+      "after_img": "images/before-after/watch-se2-40mm-back-11BNtH7g/after.jpg",
+      "progress_imgs": [
+        "images/before-after/watch-se2-40mm-back-11BNtH7g/progress1.jpg",
+        "images/before-after/watch-se2-40mm-back-11BNtH7g/progress2.jpg",
+        "images/before-after/watch-se2-40mm-back-11BNtH7g/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
+      "before_text": "후면 유리 파손 (센서부)",
+      "after_text": "후면 유리 교체 완료",
+      "case_id": "watch-se2-40mm-back-11BNtH7g",
+      "repair_type": "back",
+      "meta": {
+        "time": "1410",
+        "age": "20대",
+        "gender": "여성",
+        "age_gender": "20대 여성",
+        "cause": "떨어뜨림",
+        "time_natural": "오후 2시 10분",
+        "time_period": "오후"
+      }
+    },
+    {
       "id": "case-1",
       "model": "아이폰 iPhone XR",
       "type": "화면 교체",
