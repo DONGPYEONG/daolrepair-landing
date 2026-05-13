@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.daolrepair.instapost</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/Users/richgeum/Desktop/다올리페어 홈페이지/scripts/post_reel_to_instagram.py</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/richgeum/Desktop/다올리페어 홈페이지</string>
+
+    <!-- 매일 KST 10:00 / 14:00 / 19:00 (3회) — 한도 차면 알아서 멈춤 -->
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict>
+            <key>Hour</key><integer>10</integer>
+            <key>Minute</key><integer>0</integer>
+        </dict>
+        <dict>
+            <key>Hour</key><integer>14</integer>
+            <key>Minute</key><integer>0</integer>
+        </dict>
+        <dict>
+            <key>Hour</key><integer>19</integer>
+            <key>Minute</key><integer>0</integer>
+        </dict>
+    </array>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/richgeum/Desktop/다올리페어 홈페이지/output/reels/_instapost.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/richgeum/Desktop/다올리페어 홈페이지/output/reels/_instapost.err</string>
+</dict>
+</plist>

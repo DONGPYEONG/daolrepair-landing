@@ -65,6 +65,20 @@ rsync -a \
 find dist -maxdepth 1 -name "스크린샷*" -type f -delete 2>/dev/null || true
 find dist -maxdepth 1 -name "캡쳐*" -type f -delete 2>/dev/null || true
 
+# ── 📸 인스타 Reel 영상을 public URL로 호스팅 ──
+# IG Graph API가 영상을 다운로드하려면 인터넷에서 접근 가능한 URL이 필요.
+# output/reels/*.mp4 → dist/_reels/ 로 복사 (사이트맵에는 노출 X, 검색엔진 안 색인).
+if [ -d "output/reels" ]; then
+  mkdir -p dist/_reels
+  # mp4 + txt만 복사 (_daily.log 등 제외)
+  find output/reels -maxdepth 1 -type f \( -name "*.mp4" -o -name "*.txt" \) -print0 \
+    | xargs -0 -I {} cp {} dist/_reels/ 2>/dev/null || true
+  REEL_COUNT=$(find dist/_reels -name "*.mp4" 2>/dev/null | wc -l | tr -d ' ')
+  if [ "$REEL_COUNT" -gt 0 ]; then
+    echo "📸 Reel 영상 $REEL_COUNT개를 dist/_reels/로 호스팅"
+  fi
+fi
+
 COUNT=$(find dist -type f | wc -l | tr -d ' ')
 SIZE=$(du -sh dist | cut -f1)
 echo "✅ dist/ 생성 완료: $COUNT 파일, $SIZE"
