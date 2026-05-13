@@ -400,8 +400,8 @@ TYPE_BODY = {
   <tbody>
     <tr><td style="padding:10px;border:1px solid #eee;">부품 출처</td><td style="padding:10px;border:1px solid #eee;">추출 및 재생</td><td style="padding:10px;border:1px solid #eee;">동일 사양 OEM</td></tr>
     <tr><td style="padding:10px;border:1px solid #eee;">가격</td><td style="padding:10px;border:1px solid #eee;">기준가</td><td style="padding:10px;border:1px solid #eee;">정품의 60~80%</td></tr>
-    <tr><td style="padding:10px;border:1px solid #eee;">트루톤·자동 밝기</td><td style="padding:10px;border:1px solid #eee;">정상</td><td style="padding:10px;border:1px solid #eee;">정상</td></tr>
     <tr><td style="padding:10px;border:1px solid #eee;">"비정품 부품" 메시지</td><td style="padding:10px;border:1px solid #eee;">뜸 (사설 모두 동일)</td><td style="padding:10px;border:1px solid #eee;">뜸 (사설 모두 동일)</td></tr>
+    <tr><td style="padding:10px;border:1px solid #eee;">Face ID</td><td style="padding:10px;border:1px solid #eee;">정상</td><td style="padding:10px;border:1px solid #eee;">정상 (Pro 일부 모델 IR 제한 가능)</td></tr>
     <tr><td style="padding:10px;border:1px solid #eee;">90일 보증</td><td style="padding:10px;border:1px solid #eee;">동일</td><td style="padding:10px;border:1px solid #eee;">동일</td></tr>
   </tbody>
 </table>
@@ -1077,8 +1077,8 @@ QA_BY_TYPE = {
          "<a href='iphone-screen-genuine-vs-dd-oem-comparison.html'>정품 액정</a> 옵션을 선택하시면 출고 시와 동일한 터치 감도예요. <a href='iphone-screen-genuine-vs-dd-oem-comparison.html'>DD(OEM) 액정</a> 옵션도 셀 단위 품질 검증을 거쳐 일상 사용에서 차이를 느끼시기 어렵습니다."),
         ("화면 교체 후 데이터는 안전한가요?",
          "네, 데이터는 그대로 보존됩니다. 화면만 교체하기 때문에 본체 메모리·설정·앱·사진은 모두 그대로예요. 자세한 내용은 <a href='iphone-repair-data-safety-by-type.html'>아이폰 수리 시 데이터 — 안전한 수리 vs 백업 필수</a> 참고."),
-        ("수리 후 트루톤·자동 밝기는 정상 작동하나요?",
-         "<a href='iphone-screen-genuine-vs-dd-oem-comparison.html'>정품 액정·DD(OEM) 액정 모두 트루톤·자동 밝기 정상 작동</a>합니다. 다올리페어는 두 옵션 모두 검증된 부품만 사용해요."),
+        ("정품 vs DD(OEM) 액정 — 사용감 차이가 있나요?",
+         "일상 사용에선 차이를 느끼기 어렵습니다. 두 옵션 모두 다올리페어가 직접 검증한 부품이며, 차이는 주로 ① <strong>비정품 부품 메시지</strong>(정품 옵션만 안 뜸) ② <strong>가격</strong>(DD가 30~40% 저렴)입니다. 자세한 비교는 <a href='iphone-screen-genuine-vs-dd-oem-comparison.html'>정품 vs DD(OEM) 액정 비교</a> 참고."),
         ("당일 수리 가능한가요?",
          "네, 모든 모델 화면 교체는 당일 30~60분 내 완료됩니다. 매장에서 잠시 기다리시거나 인근에서 시간 보내시면 됩니다."),
         ("보증은 얼마나 되나요?",
@@ -1097,8 +1097,8 @@ QA_BY_TYPE = {
          "분리형 구조 모델(미니 1~5, 아이패드 2~9세대, 에어 1·2 등)은 유리만 깨진 경우 <strong>디지타이저만 교체</strong>로 가격이 저렴합니다. LCD까지 손상되면(검은 멍·줄·번짐) 디스플레이 통째 교체로 가격이 올라가요. 일체형 라미 구조 모델(Pro 5·6세대, 에어 4·5·6 등)은 통째 교체로만 진행됩니다. 모델별 정확한 가격은 <a href='ipad-screen-repair-cost-by-model-2026.html'>아이패드 액정 수리비 모델별 가이드</a>를 참고하세요."),
         ("화면 교체 후 데이터는 안전한가요?",
          "네, 데이터는 그대로 보존됩니다. 액정만 교체하기 때문에 본체 메모리·설정·앱·사진은 모두 그대로예요. 자세한 내용은 <a href='iphone-repair-data-safety-by-type.html'>수리 시 데이터 안전 가이드</a> 참고."),
-        ("수리 후 트루톤·Apple Pencil은 정상 작동하나요?",
-         "네, 추출/재생 정품 모두 트루톤·Apple Pencil(2세대·USB-C·Pro 호버)·터치·자동 밝기 정상 작동합니다. 정품 패널 기반이라 디스플레이 인증이 그대로 유지돼요."),
+        ("수리 후 Apple Pencil 인식·자동 밝기는 정상인가요?",
+         "네, 추출/재생 정품은 정품 패널 기반이라 Apple Pencil(2세대·USB-C·Pro 호버)·터치·자동 밝기 모두 정상 작동합니다. fog 액정에서 흔한 펜 인식 불량·터치 둔화가 없어요."),
         ("\"비정품 부품\" 메시지가 뜨나요?",
          "현재(2026년 기준) 아이패드는 사설 수리 후에도 <strong>\"비정품 부품\" 메시지가 뜨지 않습니다</strong>. 부품 시리얼 매핑이 적용되지 않아 추출/재생 정품으로 작업해도 사용감·인증·페어링 모두 그대로입니다."),
         ("보증은 얼마나 되나요?",
@@ -1175,7 +1175,7 @@ QA_BY_TYPE = {
         ("작업 시간은 얼마나 걸리나요?",
          "당일 3~4시간 정도. 후면 유리 분리에 시간이 가장 많이 걸려요. 매장에 두고 가시거나 인근에서 시간 보내시면 됩니다."),
         ("액정 부품은 정품인가요? OEM인가요?",
-         "두 옵션 모두 가능합니다. <strong>정품 액정</strong>(가격 더 높음, 출고 시 동급) 또는 <strong>DD(OEM) 액정</strong>(합리적 가격, 트루톤 정상)에서 고객님이 직접 선택하실 수 있어요."),
+         "두 옵션 모두 가능합니다. <strong>정품 액정</strong>(가격 더 높음, 비정품 메시지 X) 또는 <strong>DD(OEM) 액정</strong>(합리적 가격, 일상 사용감 거의 동일)에서 고객님이 직접 선택하실 수 있어요."),
         ("후면 유리는 정품인가요?",
          "애플은 후면 유리만 별도 부품으로 판매하지 않아 <strong>정품급 OEM 부품</strong>으로 교체합니다. 색상·두께·질감 모두 본체와 잘 맞는 것으로 골라드리며, 자세한 비교는 <a href='iphone-back-glass-genuine-vs-compatible.html'>아이폰 후면 유리 정품급 OEM 9가지 비교</a>를 참고하세요."),
         ("수리 후 또 깨지면?",
@@ -1644,7 +1644,7 @@ def make_body(c):
         )
         body_html = body_html.replace(
             '"정품 액정·DD(OEM) 액정 모두 트루톤·자동 밝기 정상 작동합니다. 다올리페어는 두 옵션 모두 검증된 부품만 사용해요."',
-            '"추출 정품·재생 정품 모두 트루톤·자동 밝기·True Tone 정상 작동합니다. 정품 패널 기반이라 색온도 센서가 정상 인식해요."',
+            '"네, 추출/재생 정품은 정품 패널 기반이라 Apple Pencil·터치·자동 밝기 모두 정상 작동합니다. fog 액정에서 흔한 펜 인식 불량·터치 둔화가 없어요."',
         )
         # 5) FAQ 본문 안의 추출/재생 정품 중복 표현 정리
         body_html = body_html.replace('추출/재생 정품 액정·추출/재생 정품 액정', '추출/재생 정품 액정')
@@ -1962,7 +1962,7 @@ def _make_meta_qa(c, type_key, meta):
         if "DD" in options or "OEM" in options.upper():
             qa.append((
                 f"왜 정품이 아닌 DD(OEM) 옵션을 선택하셨나요?",
-                f"DD(OEM)는 정품 제조 라인 동일 사양 부품으로, 정품 대비 50~80% 가격에 트루톤·자동 밝기·페이스 ID 모두 정상 작동합니다. "
+                f"DD(OEM)는 정품 제조 라인 동일 사양 부품으로, 정품 대비 50~80% 가격에 일상 사용감 거의 동일합니다. 다만 \"비정품 부품\" 메시지는 뜨고, Face ID는 Pro 일부 모델에서 IR 인식이 제한될 수 있어요. "
                 f"가격을 우선하시거나 일상 사용 위주이신 분들이 많이 선택하세요. "
                 f"자세한 비교는 <a href='iphone-screen-genuine-vs-dd-oem-comparison.html'>정품 액정 vs DD(OEM) 액정</a> 글 참고."
             ))
