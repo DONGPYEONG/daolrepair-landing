@@ -176,19 +176,6 @@ def make_slide(slide: dict, dst: Path, page_num: int = 1, total_pages: int = 5,
     img = Image.alpha_composite(img.convert("RGBA"), bg_grad).convert("RGB")
     d = ImageDraw.Draw(img)
 
-    # ── 상단 진행 도트 ──
-    bar_y = SAFE_TOP - 60
-    bar_w_each = 120
-    bar_h = 6
-    bar_gap = 10
-    total_bar_w = bar_w_each * total_pages + bar_gap * (total_pages - 1)
-    bar_x_start = (W - total_bar_w) // 2
-    for i in range(total_pages):
-        bx = bar_x_start + i * (bar_w_each + bar_gap)
-        color = ORANGE if i < page_num else (90, 90, 95)
-        d.rounded_rectangle((bx, bar_y, bx + bar_w_each, bar_y + bar_h),
-                            radius=3, fill=color)
-
     # 좌상단 시리즈 라벨 (글 성격 기반 — 데이터에서 받음)
     series_text = f"{category} #{series_num}"
     f_series = font("SemiBold", 30)
