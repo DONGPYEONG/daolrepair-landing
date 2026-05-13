@@ -250,6 +250,7 @@ EXPERT_STEPS = {
 }
 
 # 디바이스별 오버라이드 — (수리종류, 디바이스) → STEP 4개
+# 워치는 아이폰과 구조 다름 (액정·후면 본드 접착) → 별도 카피 필수
 DEVICE_OVERRIDES = {
     ("후면 유리 교체", "애플워치"): [
         ("워치 본체 정밀 분해", "방수 본드 분리 (작업 1시간 안팎)"),
@@ -257,11 +258,27 @@ DEVICE_OVERRIDES = {
         ("정밀 합지 + 방수 실링", "본드 경화 시간 확보"),
         ("다올이 살려냅니다", "본드 경화 6시간 · 다음 날 픽업"),
     ],
+    # 워치 배터리 — 일지 글 기준: 정품/OEM 선택 옵션 X, 매장 자동 정품 우선 사용
+    # facts.json 워치 정책: 비정품 메시지 X (시리얼 매핑 없음), 본드 경화 6시간
     ("배터리 교체", "애플워치"): [
-        ("워치 본체 정밀 분해", "후면 유리 분리 — 본드 작업"),
-        ("정품 추출 배터리 사용", "워치 부품 매칭 확인"),
-        ("정밀 합지 + 방수 실링", "본드 경화 시간 확보"),
+        ("워치 본체 정밀 분해", "후면 유리 본드 분리 — 작업 30분"),
+        ("정품 우선 사용 (미수급 시 OEM)", "비정품 메시지 X (시리얼 매핑 없음)"),
+        ("정밀 합지 + 방수 실링 복원", "본드 경화 시간 확보"),
         ("다올이 살려냅니다", "본드 경화 6시간 · 다음 날 픽업"),
+    ],
+    # 워치 액정 — 일지·칼럼 기준: 유리만 vs 디스플레이 모듈 통째 진단 / 정품·DD 옵션
+    ("액정 교체", "애플워치"): [
+        ("디스플레이 모듈 정밀 분해", "본드 분리 + 케이블 보호"),
+        ("유리만 vs 모듈 통째 진단", "정품 액정·DD(OEM) 옵션"),
+        ("정밀 합지 + 본드 경화", "방수 실링 동시 복원"),
+        ("다올이 살려냅니다", "당일 1~2시간 · 본드 경화 후 픽업"),
+    ],
+    # 워치 액정+배터리 복합 (에르메스·5세대·44mm 등) — 한 번에 분해해 두 부품 교체
+    ("액정 교체 + 배터리 교체", "애플워치"): [
+        ("디스플레이·배터리 동시 분해", "본드 분리 + 배터리 커넥터 정리"),
+        ("정품 우선 사용 (미수급 시 OEM)", "두 부품 동시 교체로 시간 절약"),
+        ("정밀 합지 + 본드 경화", "방수 실링 + 발열 점검"),
+        ("다올이 살려냅니다", "동시 작업 + 본드 경화 6시간"),
     ],
 }
 
@@ -283,13 +300,17 @@ HOOK_MAP = {
 HOOK_DEVICE_OVERRIDES = {
     ("후면 유리 교체", "애플워치"): ("박살난 워치 후면", "100% 추출 정품으로 복원"),
     ("배터리 교체", "애플워치"): ("닳은 워치 배터리", "본드 경화 시간 확보 필수"),
+    ("액정 교체", "애플워치"): ("깨진 워치 화면", "유리만 vs 모듈 전체 — 정확히 진단"),
+    ("액정 교체 + 배터리 교체", "애플워치"): ("화면도 배터리도", "동시 교체로 시간·비용 절약"),
 }
 
 
 def _normalized_device(device: str) -> str:
-    """일관된 디바이스 키 — '애플워치', '아이폰', '아이패드', '맥북' 등."""
+    """일관된 디바이스 키 — '애플워치', '아이폰', '아이패드', '맥북' 등.
+    에르메스(Apple Watch Hermès)는 워치와 동일 구조이므로 '애플워치'로 정규화."""
     d = (device or "").strip()
-    # journal 슬러그는 한국어 디바이스 명만 사용하지만 안전하게 정규화
+    if d == "에르메스":
+        return "애플워치"
     return d
 
 
@@ -530,29 +551,45 @@ def make_outro_image(dst: Path) -> Path:
     # 굵은 가운데 라인
     d.rectangle((W // 2 - 220, 730, W // 2 + 220, 733), fill=(140, 140, 140))
 
-    # 핵심 3가지 — 굵게 강조
+    # 핵심 3가지 — 중앙 정렬, 굵게 강조
     y = 790
     items = [
         ("01", "대한민국 1호", "디바이스 예방 마스터"),
         ("02", "정품·정직 수리", "90일 무상 A/S 보증"),
         ("03", "수리 실패 시", "비용 0원 약속"),
     ]
+    badge_w, badge_h = 78, 64
+    gap_after_badge = 26
+    gap_between = 18
+    head_font = sdg("bold", 42)
+    tail_font = sdg("medium", 36)
+    num_font = sdg("bold", 34)
+
     for num, head, tail in items:
-        # 번호 — 주황 배지 (더 크게)
-        bx, by, bw, bh = W // 2 - 410, y - 4, 78, 64
-        d.rounded_rectangle((bx, by, bx + bw, by + bh), radius=14, fill=ORANGE)
-        nf = sdg("bold", 34)
-        nb = d.textbbox((0, 0), num, font=nf)
-        nw_ = nb[2] - nb[0]
-        d.text((bx + (bw - nw_) // 2, by + 9), num, font=nf, fill=(255, 255, 255))
-        # 본문 두 단 — head(굵게) · tail(중간)
-        d.text((bx + bw + 26, y - 2),
-               head, font=sdg("bold", 42), fill=(255, 255, 255))
-        # head 너비 측정해서 다음 줄
-        hb = d.textbbox((0, 0), head, font=sdg("bold", 42))
+        # 각 행의 전체 너비 계산 → 중앙 정렬
+        hb = d.textbbox((0, 0), head, font=head_font)
+        tb = d.textbbox((0, 0), tail, font=tail_font)
         hw = hb[2] - hb[0]
-        d.text((bx + bw + 26 + hw + 18, y + 8),
-               tail, font=sdg("medium", 36), fill=(210, 210, 210))
+        tw = tb[2] - tb[0]
+        row_w = badge_w + gap_after_badge + hw + gap_between + tw
+        row_x = (W - row_w) // 2
+
+        # 번호 배지
+        bx = row_x
+        by = y - 4
+        d.rounded_rectangle((bx, by, bx + badge_w, by + badge_h),
+                            radius=14, fill=ORANGE)
+        nb = d.textbbox((0, 0), num, font=num_font)
+        nw_ = nb[2] - nb[0]
+        d.text((bx + (badge_w - nw_) // 2, by + 9),
+               num, font=num_font, fill=(255, 255, 255))
+
+        # 본문 head + tail
+        head_x = bx + badge_w + gap_after_badge
+        d.text((head_x, y - 2), head, font=head_font, fill=(255, 255, 255))
+        d.text((head_x + hw + gap_between, y + 8),
+               tail, font=tail_font, fill=(210, 210, 210))
+
         y += 96
 
     # 가는 라인
@@ -717,7 +754,8 @@ def make_hook_image(main: str, sub: str, dst: Path) -> Path:
 
 
 def make_ba_cover(before_path: Path, after_path: Path,
-                  hook_main: str, hook_sub: str, dst: Path) -> Path:
+                  hook_main: str, hook_sub: str, dst: Path,
+                  slug_meta: dict | None = None) -> Path:
     """BEFORE / AFTER 상하 분할 커버 (9:16) — 인스타 썸네일용.
 
     구성:
@@ -777,6 +815,44 @@ def make_ba_cover(before_path: Path, after_path: Path,
     d.rounded_rectangle((30, after_y, 30 + aw + pad_x * 2, after_y + (ab[3] - ab[1]) + pad_y * 2),
                         radius=12, fill=(52, 199, 89))
     d.text((30 + pad_x, after_y + pad_y - 4), "AFTER", font=af, fill=(255, 255, 255))
+
+    # AFTER 사진 상단 — 기종 + 수리 라벨 (그라데이션 + 굵은 흰 텍스트)
+    if slug_meta:
+        device_kr = (slug_meta.get("device") or "").strip()
+        model_kr = (slug_meta.get("model") or "").replace("-", " ").strip()
+        repair_kr = (slug_meta.get("repair") or "").strip()
+        # 모델 라인
+        device_model = f"{device_kr} {model_kr}".strip()
+        # 그라데이션 어둠 (AFTER 영역 상단 ~200px)
+        overlay = Image.new("RGBA", (W, 240), (0, 0, 0, 0))
+        od = ImageDraw.Draw(overlay)
+        for i in range(240):
+            a = int(180 * ((240 - i) / 240) ** 0.7)
+            od.line([(0, i), (W, i)], fill=(0, 0, 0, a))
+        img_rgba = img.convert("RGBA")
+        img_rgba.paste(overlay, (0, H_HALF + DIVIDER), overlay)
+        img = img_rgba.convert("RGB")
+        d = ImageDraw.Draw(img)
+
+        # 기종+모델 (작게, 회색톤)
+        if device_model:
+            df = sdg("medium", 38)
+            db = d.textbbox((0, 0), device_model, font=df)
+            dw_ = db[2] - db[0]
+            d.text(((W - dw_) // 2, H_HALF + DIVIDER + 80),
+                   device_model, font=df, fill=(230, 230, 230))
+        # 수리 종류 (크게, 흰색 강조 + 외곽선)
+        if repair_kr:
+            rf_size = 60 if len(repair_kr) <= 12 else 50
+            rf = sdg("bold", rf_size)
+            rb = d.textbbox((0, 0), repair_kr, font=rf)
+            rw = rb[2] - rb[0]
+            rx = (W - rw) // 2
+            ry = H_HALF + DIVIDER + 130
+            # 외곽선
+            for off in [(-2, 0), (2, 0), (0, -2), (0, 2)]:
+                d.text((rx + off[0], ry + off[1]), repair_kr, font=rf, fill=(0, 0, 0))
+            d.text((rx, ry), repair_kr, font=rf, fill=(255, 255, 255))
 
     # 후킹 카피 — 하단 사진 위에 오버레이 (시선 끌리는 큰 폰트)
     # 텍스트 위치: 후킹 카피 = 상단 사진 위 (덜 가려진 영역)
@@ -1079,8 +1155,9 @@ def build_reel(journal_path: Path, output_dir: Path) -> tuple[Path, Path]:
     make_ba_cover(
         photos_src["before"], photos_src["after"],
         hook_main, hook_sub, cover_jpg,
+        slug_meta=slug_meta,
     )
-    print(f"🖼  커버 (BEFORE/AFTER + 후킹): {cover_jpg.relative_to(ROOT)}")
+    print(f"🖼  커버 (BEFORE/AFTER + 후킹 + 기종·수리): {cover_jpg.relative_to(ROOT)}")
 
     # 3) 아웃트로만 별도 생성 — 인트로 자리에는 BA 커버 사용
     # (IG가 영상 첫 프레임을 썸네일로 잡으므로 첫 프레임 = BA 커버여야 함)
