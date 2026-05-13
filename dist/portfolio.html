@@ -272,16 +272,17 @@ function daolCaseDetail(c){
 
   var sub;
   if(isIpad && isScreen)        sub = '액정 깨짐 → 추출/재생 정품 디스플레이로 살려냈습니다';
+  else if(isIpad && isCharge)   sub = '충전 단자 손상 → 단자 부품 정밀 교체';
   else if(isWatch && isBack)    sub = '후면 유리 깨짐 → 100% 추출 정품으로 복원';
   else if(isWatch && isScreen)  sub = '액정 손상 → 시리즈·소재 맞춤 부품으로 복원';
-  else if(isWatch && isBattery) sub = '배터리 노화 → 발열·꺼짐 해결 후 재페어링';
+  else if(isWatch && isBattery) sub = '배터리 노화 → 발열·꺼짐 해결';
   else if(isWatch && isSensor)  sub = '센서 오작동 → 심박·산소 모듈 정밀 점검';
   else if(isWatch)              sub = t + ' — 워치 분해 정밀 복원';
   else if(isCombo)              sub = t + ' — 본체 보존 + 동시 교체로 부담 ↓';
   else if(isScreen)             sub = '액정 깨짐 → 정품/DD(OEM) 옵션 비교 후 복원';
-  else if(isBack)               sub = '후면 유리 깨짐 → 레이저 분리 + 정품급 OEM 교체';
+  else if(isBack)               sub = '후면 유리 깨짐 → 정밀 분리 + 정품급 OEM 교체';
   else if(isBattery)            sub = '배터리 노화 → 셀 교체·정품 인증·일반 호환 중 선택';
-  else if(isCharge)             sub = '충전 단자 이상 → 70%는 정밀 청소로 해결';
+  else if(isCharge)             sub = '충전 단자 이상 → 정밀 청소 또는 단자 부품 교체';
   else if(isCamera)             sub = '카메라 흐림·먹통 → 모듈 단독 교체';
   else if(isSpeaker)            sub = '스피커 먹먹·노이즈 → 단품 교체';
   else if(isWater)              sub = '침수 → 분해 세척 + 보드 점검까지 단계별 복구';
@@ -289,6 +290,7 @@ function daolCaseDetail(c){
 
   var trust;
   if(isIpad && isScreen)        trust = '✓ 추출/재생 정품 액정만 사용 · fog 액정 X · 90일 보증';
+  else if(isIpad && isCharge)   trust = '✓ 단자 부품 정품 사용 · 매장 도착 시 단자 교체 위주 · 90일 보증';
   else if(isWatch && isBack)    trust = '✓ 100% 추출 정품 · 본드 6시간 경화 · 90일 보증';
   else if(isWatch && isScreen)  trust = '✓ 비정품 메시지 X · 시리즈·소재별 정확 매칭 · 90일 보증';
   else if(isWatch && isBattery) trust = '✓ 정품 우선 사용 · 비정품 메시지 X · 90일 보증';
@@ -298,7 +300,7 @@ function daolCaseDetail(c){
   else if(isScreen)             trust = '✓ 정품·DD(OEM) 가격 모두 공개 · 트루톤 정상 · 90일 보증';
   else if(isBack)               trust = '✓ 1년 내 재파손 50% 할인 · 방수 패킹 재부착 · 90일 보증';
   else if(isBattery)            trust = '✓ 셀·정품 인증·일반 호환 3옵션 가격 공개 · 90일 보증';
-  else if(isCharge)             trust = '✓ 청소 우선 진단(3만~) · 단자 교체 옵션 · 90일 보증';
+  else if(isCharge)             trust = '✓ 정밀 청소 또는 단자 부품 교체 · 90일 보증';
   else if(isCamera)             trust = '✓ 모듈 정품 우선 · 메인보드 분리 진단 · 90일 보증';
   else if(isSpeaker)            trust = '✓ 단품 정품 부품 · 90일 보증';
   else if(isWater)              trust = '✓ 분해 세척 + 단계별 견적 · 데이터 우선 보존';
