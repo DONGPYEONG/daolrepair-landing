@@ -158,18 +158,158 @@ def make_thumbnail(data: dict, dst: Path) -> Path:
     return dst
 
 
-def make_slide(slide: dict, dst: Path) -> Path:
-    """5가지 신호 중 1장 — 컬러풀 배경 + 큰 번호 + 헤드라인 + 보조 + 스티커."""
-    bg_color = slide.get("bg", (255, 240, 240))
-    accent = slide.get("accent", ORANGE)
+def make_slide(slide: dict, dst: Path, page_num: int = 1, total_pages: int = 5,
+               series_num: str = "01") -> Path:
+    """미니멀 인스타 마케팅 톤 — 사진 풀스크린 + 그라데이션 + 큰 타이포.
+    컬러: 검정·흰·다올 주황만. 잡지 표지 같은 한 메시지 1슬라이드.
+    """
+    bg_image_path = slide.get("bg_image")
+    bg_path = ROOT / bg_image_path if bg_image_path else None
 
-    img = Image.new("RGB", (W, H), bg_color)
+    # 배경 — 사진 cover-crop + 살짝 어둡게 (사진 보이게)
+    if bg_path and bg_path.exists():
+        src = Image.open(bg_path).convert("RGB")
+        sw, sh = src.size
+        sr, tr = sw / sh, W / H
+        if sr > tr:
+            nh = sh
+            nw = int(sh * tr)
+            src = src.crop(((sw - nw) // 2, 0, (sw - nw) // 2 + nw, nh))
+        else:
+            nw = sw
+            nh = int(sw / tr)
+            src = src.crop((0, (sh - nh) // 2, nw, (sh - nh) // 2 + nh))
+        img = src.resize((W, H), Image.LANCZOS)
+        # 약간만 어둡게 (사진 보이게) + 블러 살짝
+        img = img.filter(ImageFilter.GaussianBlur(radius=1.5))
+    else:
+        img = Image.new("RGB", (W, H), DARK)
+
+    # 상하 검정 그라데이션 (텍스트 가독성)
+    overlay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    od = ImageDraw.Draw(overlay)
+    # 상단 360px 어두움
+    for i in range(360):
+        a = int(220 * ((360 - i) / 360) ** 1.2)
+        od.line([(0, i), (W, i)], fill=(0, 0, 0, a))
+    # 하단 760px 어두움 (텍스트 영역 강화)
+    for i in range(760):
+        a = int(230 * (i / 760) ** 1.1)
+        od.line([(0, H - 760 + i), (W, H - 760 + i)], fill=(0, 0, 0, a))
+    img_rgba = img.convert("RGBA")
+    img_rgba = Image.alpha_composite(img_rgba, overlay)
+    img = img_rgba.convert("RGB")
     d = ImageDraw.Draw(img)
 
-    # 상단 카테고리 (작게)
-    f_cat = font("SemiBold", 34)
-    draw_centered(d, SAFE_TOP + 10, "📚 수리점 안 오는 법",
-                  f_cat, (90, 90, 90), letter_spacing=2)
+    # ── 상단: 좌측 진행 인디케이터 (━━ ━━ ── ── ──) + 우측 다올 로고 ──
+    # 진행 도트
+    bar_y = SAFE_TOP - 60
+    bar_w_each = 120
+    bar_h = 6
+    bar_gap = 10
+    total_bar_w = bar_w_each * total_pages + bar_gap * (total_pages - 1)
+    bar_x_start = (W - total_bar_w) // 2
+    for i in range(total_pages):
+        bx = bar_x_start + i * (bar_w_each + bar_gap)
+        fill = ORANGE if i < page_num else (255, 255, 255, 80)
+        d.rounded_rectangle((bx, bar_y, bx + bar_w_each, bar_y + bar_h),
+                            radius=3, fill=fill if isinstance(fill, tuple) and len(fill) == 3 else WHITE)
+        if i >= page_num:
+            d.rounded_rectangle((bx, bar_y, bx + bar_w_each, bar_y + bar_h),
+                                radius=3, fill=(120, 120, 120))
+
+    # 페이지 번호 (작게, 우측 상단)
+    page_text = f"{page_num:02d} / {total_pages:02d}"
+    f_page = font("Medium", 32)
+    pb = d.textbbox((0, 0), page_text, font=f_page)
+    d.text((W - (pb[2] - pb[0]) - 50, SAFE_TOP - 5), page_text, font=f_page,
+           fill=(220, 220, 220))
+
+    # 시리즈 라벨 (좌측 상단)
+    series_text = f"수리점 안 오는 법 #{series_num}"
+    f_series = font("SemiBold", 30)
+    d.text((50, SAFE_TOP - 3), series_text, font=f_series, fill=(220, 220, 220))
+
+    # 다올 로고 (우상단 — 페이지 번호 위)
+    img = paste_logo(img, W - 130, SAFE_TOP + 60, size=80)
+    if img.mode != "RGB":
+        img = img.convert("RGB")
+    d = ImageDraw.Draw(img)
+
+    # ── 중앙: 큰 키워드 (점프포인트) ──
+    headline = slide.get("headline", "")
+    highlight = slide.get("highlight", "")
+
+    # 메인 헤드라인 — 큰 타이포 (Black weight)
+    if len(headline) <= 8:
+        f_head_size = 130
+    elif len(headline) <= 12:
+        f_head_size = 110
+    else:
+        f_head_size = 92
+    f_head = font("Black", f_head_size)
+
+    # 하이라이트 처리 — 형광 박스 X, 주황 컬러로 강조
+    # 헤드라인 위치: 하단 시그니처(SAFE_BOTTOM-80) 위에서 충분히 여유
+    head_y = H - 700
+    if highlight and highlight in headline:
+        idx = headline.find(highlight)
+        pre = headline[:idx]
+        hi = highlight
+        post = headline[idx + len(highlight):]
+        bb_pre = d.textbbox((0, 0), pre, font=f_head)
+        bb_hi = d.textbbox((0, 0), hi, font=f_head)
+        bb_post = d.textbbox((0, 0), post, font=f_head)
+        total_w = (bb_pre[2] - bb_pre[0]) + (bb_hi[2] - bb_hi[0]) + (bb_post[2] - bb_post[0])
+        x = (W - total_w) // 2
+        # pre — 흰 + 외곽선
+        if pre:
+            draw_text_outlined(d, x, head_y, pre, f_head, WHITE, thickness=2)
+            x += bb_pre[2] - bb_pre[0]
+        # 하이라이트 — 다올 주황 + 외곽선
+        draw_text_outlined(d, x, head_y, hi, f_head, ORANGE, thickness=2)
+        x += bb_hi[2] - bb_hi[0]
+        # post — 흰
+        if post:
+            draw_text_outlined(d, x, head_y, post, f_head, WHITE, thickness=2)
+    else:
+        bb = d.textbbox((0, 0), headline, font=f_head)
+        tw = bb[2] - bb[0]
+        draw_text_outlined(d, (W - tw) // 2, head_y, headline, f_head, WHITE, thickness=2)
+
+    # 보조 본문 (Medium, 흰 + 외곽선)
+    body = slide.get("body", "")
+    f_body = font("Medium", 44)
+    bb_h = d.textbbox((0, 0), headline, font=f_head)
+    body_y = head_y + (bb_h[3] - bb_h[1]) + 50
+    for i, line in enumerate(body.split("\n")[:2]):
+        bb = d.textbbox((0, 0), line, font=f_body)
+        lw = bb[2] - bb[0]
+        draw_text_outlined(d, (W - lw) // 2, body_y + i * 62,
+                           line, f_body, (235, 235, 235), thickness=2)
+
+    # ── 하단 시그니처 ──
+    d.rectangle((W // 2 - 30, SAFE_BOTTOM - 80, W // 2 + 30, SAFE_BOTTOM - 76),
+                fill=ORANGE)
+    draw_centered(d, SAFE_BOTTOM - 55, "DAOL REPAIR",
+                  font("Bold", 30), (220, 220, 220), letter_spacing=8)
+
+    img.save(dst, quality=92)
+    return dst
+
+    # 상단 카테고리 배지 (주황 라운드)
+    cat_text = "수리점 안 오는 법"
+    f_cat = font("SemiBold", 32)
+    cb = d.textbbox((0, 0), cat_text, font=f_cat)
+    cw = cb[2] - cb[0]
+    cat_y = SAFE_TOP + 10
+    pad_x, pad_y = 20, 12
+    d.rounded_rectangle(
+        ((W - cw - pad_x * 2) // 2, cat_y,
+         (W + cw + pad_x * 2) // 2, cat_y + (cb[3] - cb[1]) + pad_y * 2),
+        radius=30, fill=ORANGE,
+    )
+    d.text(((W - cw) // 2, cat_y + pad_y - 4), cat_text, font=f_cat, fill=WHITE)
 
     # 큰 번호 동그라미 (가운데 좌측)
     num = slide.get("num", "01")
@@ -206,8 +346,13 @@ def make_slide(slide: dict, dst: Path) -> Path:
         total_w = (bb_pre[2] - bb_pre[0]) + (bb_hi[2] - bb_hi[0]) + (bb_post[2] - bb_post[0])
         x = (W - total_w) // 2
 
+        # 본문 색상 — 사진 위면 흰색 + 외곽선, 단색 위면 검정
+        body_color = WHITE if on_photo else DARK
         # pre
-        d.text((x, head_y), pre, font=f_head, fill=DARK)
+        if on_photo:
+            draw_text_outlined(d, x, head_y, pre, f_head, body_color, thickness=3)
+        else:
+            d.text((x, head_y), pre, font=f_head, fill=body_color)
         x += bb_pre[2] - bb_pre[0]
         # 하이라이트 박스 (형광 노랑)
         hi_w = bb_hi[2] - bb_hi[0]
@@ -219,16 +364,31 @@ def make_slide(slide: dict, dst: Path) -> Path:
         d.text((x, head_y), hi, font=f_head, fill=accent)
         x += hi_w
         # post
-        d.text((x, head_y), post, font=f_head, fill=DARK)
+        if on_photo:
+            draw_text_outlined(d, x, head_y, post, f_head, body_color, thickness=3)
+        else:
+            d.text((x, head_y), post, font=f_head, fill=body_color)
     else:
-        draw_centered(d, head_y, headline, f_head, DARK)
+        if on_photo:
+            bb = d.textbbox((0, 0), headline, font=f_head)
+            tw = bb[2] - bb[0]
+            draw_text_outlined(d, (W - tw) // 2, head_y, headline, f_head, WHITE, thickness=3)
+        else:
+            draw_centered(d, head_y, headline, f_head, DARK)
 
-    # 보조 본문 (작은 회색, 두 줄까지)
+    # 보조 본문 (작은 글씨)
     body = slide.get("body", "")
     f_body = font("Medium", 46)
     body_y = head_y + 160
+    body_color = (235, 235, 235) if on_photo else (70, 70, 70)
     for i, line in enumerate(body.split("\n")[:3]):
-        draw_centered(d, body_y + i * 65, line, f_body, (70, 70, 70))
+        if on_photo:
+            bb = d.textbbox((0, 0), line, font=f_body)
+            lw = bb[2] - bb[0]
+            draw_text_outlined(d, (W - lw) // 2, body_y + i * 65, line, f_body,
+                               body_color, thickness=2)
+        else:
+            draw_centered(d, body_y + i * 65, line, f_body, body_color)
 
     # 스티커 (모서리에 큰 이모지) — Apple Color Emoji는 137pt만 허용
     sticker = slide.get("sticker", "")
@@ -243,10 +403,17 @@ def make_slide(slide: dict, dst: Path) -> Path:
                 pass  # 스티커 실패해도 영상은 그대로
 
     # 하단 다올 워터마크
+    wm_color = WHITE if on_photo else accent
     d.rectangle((W // 2 - 60, SAFE_BOTTOM - 100,
                  W // 2 + 60, SAFE_BOTTOM - 94), fill=accent)
-    draw_centered(d, SAFE_BOTTOM - 70, "다올리페어",
-                  font("Bold", 40), accent, letter_spacing=3)
+    if on_photo:
+        bb = d.textbbox((0, 0), "다올리페어", font=font("Bold", 40))
+        tw = bb[2] - bb[0]
+        draw_text_outlined(d, (W - tw) // 2, SAFE_BOTTOM - 70,
+                           "다올리페어", font("Bold", 40), wm_color, thickness=2)
+    else:
+        draw_centered(d, SAFE_BOTTOM - 70, "다올리페어",
+                      font("Bold", 40), wm_color, letter_spacing=3)
 
     img.save(dst, quality=92)
     return dst
@@ -398,9 +565,11 @@ def build_info_reel(slug: str) -> tuple[Path, Path]:
     make_thumbnail(data, thumb_img)
 
     slide_imgs = []
+    total = len(data["slides"])
+    series_num = data.get("series_num", "01")
     for i, slide in enumerate(data["slides"]):
         p = TMP_DIR / f"{slug}_slide_{i:02d}.jpg"
-        make_slide(slide, p)
+        make_slide(slide, p, page_num=i + 1, total_pages=total, series_num=series_num)
         slide_imgs.append(p)
 
     wrap_img = TMP_DIR / f"{slug}_wrap.jpg"
