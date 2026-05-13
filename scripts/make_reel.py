@@ -710,6 +710,103 @@ def make_hook_image(main: str, sub: str, dst: Path) -> Path:
     return dst
 
 
+def make_ba_cover(before_path: Path, after_path: Path,
+                  hook_main: str, hook_sub: str, dst: Path) -> Path:
+    """BEFORE / AFTER 상하 분할 커버 (9:16) — 인스타 썸네일용.
+
+    구성:
+    - 상단 절반(1080×960): BEFORE 사진 + 좌상단 빨간 "BEFORE" 배지
+    - 가운데 분리 바(약 80px): 검정/오렌지 + 후킹 카피
+    - 하단 절반(1080×960): AFTER 사진 + 좌상단 초록 "AFTER" 배지
+    """
+    H_HALF = (H - 80) // 2   # 920 (가운데 80px 띠)
+    DIVIDER = 80
+    # PII 보호 — 얼굴 자동 블러
+    before_img = blur_faces(Image.open(before_path).convert("RGB"))
+    after_img = blur_faces(Image.open(after_path).convert("RGB"))
+    # 9:8 비율로 cover-crop (가로 1080 × 세로 920)
+    before_fit = fit_cover(before_img, W, H_HALF)
+    after_fit = fit_cover(after_img, W, H_HALF)
+
+    img = Image.new("RGB", (W, H), (12, 12, 12))
+    img.paste(before_fit, (0, 0))
+    img.paste(after_fit, (0, H_HALF + DIVIDER))
+
+    d = ImageDraw.Draw(img)
+
+    # 가운데 분리 바 — 검정 배경 + 오렌지 라인
+    divider_top = H_HALF
+    d.rectangle((0, divider_top, W, divider_top + DIVIDER), fill=(10, 10, 10))
+    # 오렌지 라인 (위·아래)
+    d.rectangle((0, divider_top, W, divider_top + 4), fill=ORANGE)
+    d.rectangle((0, divider_top + DIVIDER - 4, W, divider_top + DIVIDER), fill=ORANGE)
+    # 가운데 화살표 아이콘 (▼ 모양)
+    arrow_y = divider_top + DIVIDER // 2
+    arrow_w = 26
+    d.polygon([
+        (W // 2 - arrow_w, arrow_y - 12),
+        (W // 2 + arrow_w, arrow_y - 12),
+        (W // 2, arrow_y + 14),
+    ], fill=(255, 255, 255))
+
+    # BEFORE 배지 (상단 좌상)
+    bf = sdg("bold", 38)
+    bb = d.textbbox((0, 0), "BEFORE", font=bf)
+    bw = bb[2] - bb[0]
+    pad_x, pad_y = 20, 14
+    d.rounded_rectangle((30, 30, 30 + bw + pad_x * 2, 30 + (bb[3] - bb[1]) + pad_y * 2),
+                        radius=12, fill=(220, 40, 40))
+    d.text((30 + pad_x, 30 + pad_y - 4), "BEFORE", font=bf, fill=(255, 255, 255))
+
+    # AFTER 배지 (하단 좌상)
+    af = sdg("bold", 38)
+    ab = d.textbbox((0, 0), "AFTER", font=af)
+    aw = ab[2] - ab[0]
+    after_y = H_HALF + DIVIDER + 30
+    d.rounded_rectangle((30, after_y, 30 + aw + pad_x * 2, after_y + (ab[3] - ab[1]) + pad_y * 2),
+                        radius=12, fill=(52, 199, 89))
+    d.text((30 + pad_x, after_y + pad_y - 4), "AFTER", font=af, fill=(255, 255, 255))
+
+    # 후킹 카피 — 하단 사진 위에 오버레이 (시선 끌리는 큰 폰트)
+    # 텍스트 위치: 후킹 카피 = 상단 사진 위 (덜 가려진 영역)
+    # 약간 그라데이션으로 가독성 확보 — 상단 사진 위 200px 어둡게
+    overlay_draw = Image.new("RGBA", (W, 260), (0, 0, 0, 0))
+    od = ImageDraw.Draw(overlay_draw)
+    for i in range(260):
+        a = int(170 * (i / 260) ** 0.8)
+        od.line([(0, 260 - i - 1), (W, 260 - i - 1)], fill=(0, 0, 0, a))
+    img_rgba = img.convert("RGBA")
+    img_rgba.paste(overlay_draw, (0, H_HALF - 260), overlay_draw)
+    img = img_rgba.convert("RGB")
+    d = ImageDraw.Draw(img)
+
+    # 메인 후킹 카피
+    main_size = 78 if len(hook_main) <= 12 else 64
+    hf = sdg("bold", main_size)
+    if len(hook_main) > 16:
+        wrapped = "\n".join(textwrap.wrap(hook_main, width=14)[:2])
+        hb = d.multiline_textbbox((0, 0), wrapped, font=hf, align="center", spacing=10)
+        hw, hh = hb[2] - hb[0], hb[3] - hb[1]
+        ty = H_HALF - hh - 60
+        # 외곽선 + 본문
+        for off in [(-2, 0), (2, 0), (0, -2), (0, 2)]:
+            d.multiline_text(((W - hw) // 2 + off[0], ty + off[1]),
+                             wrapped, font=hf, fill=(0, 0, 0), align="center", spacing=10)
+        d.multiline_text(((W - hw) // 2, ty), wrapped, font=hf,
+                         fill=(255, 255, 255), align="center", spacing=10)
+    else:
+        hb = d.textbbox((0, 0), hook_main, font=hf)
+        hw, hh = hb[2] - hb[0], hb[3] - hb[1]
+        ty = H_HALF - hh - 60
+        for off in [(-2, 0), (2, 0), (0, -2), (0, 2)]:
+            d.text(((W - hw) // 2 + off[0], ty + off[1]),
+                   hook_main, font=hf, fill=(0, 0, 0))
+        d.text(((W - hw) // 2, ty), hook_main, font=hf, fill=(255, 255, 255))
+
+    img.save(dst, quality=92)
+    return dst
+
+
 def make_step_image(main: str, sub: str, dst: Path) -> Path:
     """STEP/AFTER 자막 — 하단, 굵고 자신감 있는 톤."""
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
@@ -945,17 +1042,15 @@ def build_reel(journal_path: Path, output_dir: Path) -> tuple[Path, Path]:
         make_step_image(m, s, dst)
         cap_imgs.append(dst)
 
-    # 2b) 인스타 커버 이미지 (썸네일) — progress1(분해 사진) + 후킹 카피
-    # 사람들이 스크롤 멈추도록 임팩트 강한 분해 장면 + 큰 한 줄 카피.
-    # BEFORE는 단순 깨진 화면일 수 있어 분해된 내부가 더 시선 끌림.
+    # 2b) 인스타 커버 이미지 (썸네일) — BEFORE / AFTER 상하 분할 + 후킹 카피
+    # 사람들이 스크롤 멈추도록 비포·애프터 대비 최대 임팩트.
     base = f"{slug_meta.get('date', date.today().isoformat())}-{journal_path.stem}"
     cover_jpg = output_dir / f"{base}.jpg"
-    # 분해 사진 + 후킹 합성 (오버레이는 hook_img 그대로 사용)
-    cover_bg_src = prepared.get("progress1") or prepared["before"]
-    bg = Image.open(cover_bg_src).convert("RGBA")
-    overlay = Image.open(hook_img_path).convert("RGBA")
-    Image.alpha_composite(bg, overlay).convert("RGB").save(cover_jpg, quality=92)
-    print(f"🖼  커버 (분해 사진+후킹): {cover_jpg.relative_to(ROOT)}")
+    make_ba_cover(
+        photos_src["before"], photos_src["after"],
+        hook_main, hook_sub, cover_jpg,
+    )
+    print(f"🖼  커버 (BEFORE/AFTER + 후킹): {cover_jpg.relative_to(ROOT)}")
 
     # 3) 인트로(브랜드 1초) + 아웃트로
     day_str = slug_meta.get("date", date.today().isoformat())
