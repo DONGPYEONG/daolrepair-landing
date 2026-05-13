@@ -839,21 +839,36 @@ def main():
             "meta": case_meta,  # 🆕 일지 생성 시 사용
         })
 
-    # ─── 5b. 사용하지 않는 폴더 prune (이전 run에서 생긴 잔여물) ───
+    # ─── 5b. 사용하지 않는 폴더 정리 ───
+    # 🛡 SAFE MODE (기본): 옛 case-NN/ 접두사만 삭제. 신규 폴더는 로그만 출력하고 보존.
+    #   Drive 인식 일시 실패·권한 끊김 등으로 의도치 않게 일지가 사라지는 사고 방지.
+    # PRUNE_AGGRESSIVE=1 환경변수로 옛 동작(전체 자동 삭제) 강제 활성화.
+    import os, shutil
     pruned = 0
+    soft_skipped = []
+    aggressive = os.environ.get("PRUNE_AGGRESSIVE") == "1"
     if IMG_OUT_DIR.exists():
-        import shutil
         for child in IMG_OUT_DIR.iterdir():
             if not child.is_dir(): continue
-            # case- 접두사는 옛날 인덱스 기반 폴더 → 모두 삭제
+            # 옛 case-NN/ 폴더는 무조건 정리 (인덱스 기반 옛 포맷)
             if child.name.startswith("case-"):
                 shutil.rmtree(child); pruned += 1
                 continue
-            # 사용 중인 폴더가 아니면 삭제
+            # 사용 중인 폴더가 아닌 경우
             if child.name not in used_folders:
-                shutil.rmtree(child); pruned += 1
+                if aggressive:
+                    shutil.rmtree(child); pruned += 1
+                else:
+                    soft_skipped.append(child.name)
     if pruned:
-        print(f"   🧹 미사용 폴더 {pruned}개 정리 완료")
+        print(f"   🧹 옛 포맷 폴더 {pruned}개 정리 완료")
+    if soft_skipped:
+        print(f"   ⚠️ Drive에서 안 보이는 폴더 {len(soft_skipped)}개 — 자동 삭제 X (SAFE MODE)")
+        for n in soft_skipped[:5]:
+            print(f"      · {n}")
+        if len(soft_skipped) > 5:
+            print(f"      ... 외 {len(soft_skipped) - 5}개")
+        print(f"   ℹ️ 진짜 삭제 원하면: PRUNE_AGGRESSIVE=1 python3 scripts/update_repair_stats.py")
 
     # ─── 6. JSON 저장 ───
     # 슬라이더는 최신 4개 (메인 페이지), 포트폴리오는 전체 (별도 페이지)
