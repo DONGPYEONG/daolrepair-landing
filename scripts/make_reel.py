@@ -282,27 +282,108 @@ DEVICE_OVERRIDES = {
     ],
 }
 
-# 후킹 카피 (BEFORE) — 호기심 + 자신감 (모든 수치는 facts.json 검증)
+# 후킹 카피 — 공식센터 가격 비교 톤 (일지·칼럼 글의 검증된 가격 범위 인용)
+# 신뢰성: specific 증상(줄·터치 등)은 일지 글 추출 시에만, 풀 카피는
+# 공식 vs 사설 가격 충격·범위형으로 모든 케이스에 통용 가능하게.
 HOOK_MAP = {
-    "배터리 교체": ("갑자기 꺼지는 폰", "최대 용량 80% 미만 — 교체 신호"),
-    "액정 교체": ("이렇게 깨졌어요", "정품·DD 옵션 합리적으로"),
-    "후면 유리 교체": ("박살난 후면 유리", "본드 정밀 작업으로 살려냅니다"),
-    "충전단자 수리": ("충전 0%", "정확한 진단부터 시작"),
-    "카메라 수리": ("흐릿한 카메라", "모듈만 교체 — 메인보드는 그대로"),
-    "침수 처리": ("물에 빠진 폰", "며칠 지났어도 가능합니다"),
-    "스피커 수리": ("소리 안 나는 폰", "수화기·라우드 동시 점검"),
-    "마이크 수리": ("내 목소리 안 들려요", "마이크 3개 중 정확히 진단"),
-    "메인보드 수리": ("안 켜지는 폰", "데이터 복구부터 우선합니다"),
-    "홈버튼 수리": ("홈버튼 먹통", "지문 인식 복원까지"),
+    "배터리 교체": [
+        ("공식 견적 받고 깜짝", "사설은 합리적 가격으로"),
+        ("리퍼 vs 배터리 교체", "교체로 절반 가격에 해결"),
+        ("공식센터는 비싸서...", "사설 합리적 가격으로"),
+        ("이 폰 더 쓰고 싶어요", "배터리만 교체로 가능"),
+        ("리퍼 하지 마세요", "배터리만 갈면 새거처럼"),
+    ],
+    "액정 교체": [
+        ("공식 75만원!?", "사설은 절반 가격"),
+        ("공식 견적 받고 깜짝", "사설로 살려냈어요"),
+        ("리퍼 안 받고 수리한 이유", "공식의 절반 가격"),
+        ("새 폰 사야 하나 했는데", "액정만 교체로 해결"),
+        ("공식 vs 사설 — 어디?", "당일 30~60분 합리적"),
+        ("리퍼 100만원+ 견적이라", "사설로 절반에 해결"),
+    ],
+    "후면 유리 교체": [
+        ("공식은 본체 교체만 가능", "리퍼 60~120만원 견적"),
+        ("리퍼 100만원!?", "사설 후면 단독 교체"),
+        ("공식 vs 사설 — 절반", "후면만 교체로 끝"),
+        ("공식센터 거절당했어요", "사설은 후면 단독 가능"),
+        ("새 폰 사야 하나 했는데", "후면만 갈면 됩니다"),
+    ],
+    "충전단자 수리": [
+        ("공식은 본체 교체 견적", "사설 단자 단독 교체"),
+        ("리퍼할 정도는 아닌데", "단자만 교체로 끝"),
+        ("공식 vs 사설 — 어디?", "당일 작업 합리적"),
+        ("공식 견적 부담돼요", "사설 합리적 가격으로"),
+    ],
+    "카메라 수리": [
+        ("공식 30만원+ 견적!?", "사설 모듈 단독 교체"),
+        ("공식은 본체 교체만", "사설 모듈만 교체로 절반"),
+        ("리퍼할 정도는 아닌데", "카메라만 교체로 끝"),
+        ("공식 견적 받고 깜짝", "사설 합리적 수리"),
+    ],
+    "침수 처리": [
+        ("공식센터 거절당했어요", "사설은 침수 받아드려요"),
+        ("공식은 침수 안 받아줘요", "포기 전에 사설로"),
+        ("물에 빠진 폰, 포기 마세요", "며칠 지났어도 가능"),
+        ("새 폰 사야 하나 했는데", "침수 복구 가능합니다"),
+    ],
+    "스피커 수리": [
+        ("공식 견적 부담돼요", "사설 스피커만 단독 교체"),
+        ("리퍼할 정도는 아닌데", "부분 교체로 합리적"),
+    ],
+    "마이크 수리": [
+        ("공식센터 다녀왔는데", "사설 마이크만 단독 교체"),
+        ("리퍼할 정도는 아닌데", "마이크 핀포인트 교체"),
+    ],
+    "메인보드 수리": [
+        ("공식은 본체 교체만 가능", "사설 메인보드 칩 복구"),
+        ("리퍼할 정도인데...", "메인보드 복구 가능?"),
+        ("데이터 살릴 수 있나?", "데이터 복구부터 우선"),
+    ],
+    "홈버튼 수리": [
+        ("공식은 본체 교체 견적", "사설 홈버튼만 교체"),
+        ("리퍼할 정도는 아닌데", "버튼 단독 교체로 끝"),
+    ],
 }
 
-# 디바이스별 후킹 오버라이드 — 스크롤 멈출 만큼 강한 카피
+# 디바이스별 후킹 오버라이드 — 공식 가격 비교 톤 (워치 가격 범위는
+# articles/applewatch-screen-repair-cost-2026.html, applewatch-back-glass-* 참조)
 HOOK_DEVICE_OVERRIDES = {
-    ("후면 유리 교체", "애플워치"): ("박살난 워치 후면", "100% 추출 정품으로 복원"),
-    ("배터리 교체", "애플워치"): ("방치하면 화면까지 들떠요", "워치 배터리 교체 신호"),
-    ("액정 교체", "애플워치"): ("이렇게 깨진 워치도?", "유리만 vs 모듈 전체 — 정확히 진단"),
-    ("액정 교체 + 배터리 교체", "애플워치"): ("이 박살난 워치도?", "화면+배터리 한 번에 살려냅니다"),
+    ("후면 유리 교체", "애플워치"): [
+        ("공식 48만원+!?", "사설 합리적 가격"),
+        ("공식은 통째 교체만", "사설 후면 단독 교체"),
+        ("리퍼 견적 받고 깜짝", "사설 100% 추출 정품으로"),
+        ("이 박살난 워치도?", "공식보다 합리적으로"),
+        ("새로 사야 하나 했는데", "후면만 갈면 됩니다"),
+    ],
+    ("배터리 교체", "애플워치"): [
+        ("공식 12만원+ 견적", "사설 합리적 가격"),
+        ("방치하면 화면까지 들떠요", "교체 신호 — 빨리"),
+        ("리퍼 vs 사설 — 절반", "정품 배터리로 복원"),
+        ("이 워치 더 쓰고 싶어요", "배터리만 갈면 가능"),
+    ],
+    ("액정 교체", "애플워치"): [
+        ("공식 36~42만원!?", "사설 절반 가격"),
+        ("Ultra 2 공식 58만원!?", "사설 합리적 수리"),
+        ("리퍼할 정도는 아닌데", "사설 합리적 가격"),
+        ("공식 견적 받고 깜짝", "사설로 살려냈어요"),
+    ],
+    ("액정 교체 + 배터리 교체", "애플워치"): [
+        ("이 박살난 워치, 살려냈어요", "화면+배터리 한 번에"),
+        ("공식 60만원+ 견적이라", "사설 동시 수리로 절반"),
+        ("리퍼할 정도였는데", "두 부품 동시 교체로 가능"),
+        ("새로 사야 하나 했는데", "동시 수리로 살려냅니다"),
+    ],
 }
+
+
+def _pick_from_pool(pool: list, slug: str) -> tuple[str, str]:
+    """카피 풀에서 슬러그 해시로 결정적 선택 (같은 영상=같은 카피, 영상끼리=다양화)."""
+    if not pool:
+        return ("", "")
+    if isinstance(pool, tuple):  # 옛 단일 카피 호환
+        return pool
+    h = int(hashlib.md5(slug.encode("utf-8")).hexdigest()[16:24], 16)
+    return pool[h % len(pool)]
 
 
 def _normalized_device(device: str) -> str:
@@ -326,33 +407,38 @@ def _lookup_with_device(map_obj, repair: str, device: str):
     return None
 
 
-def make_hook_copy(slug_meta: dict, symptoms: list[str]) -> tuple[str, str]:
-    """첫 화면 후킹 — (큰 한 줄, 작은 보조 한 줄)."""
+def make_hook_copy(slug_meta: dict, symptoms: list[str],
+                   slug: str = "") -> tuple[str, str]:
+    """첫 화면 후킹 — (큰 한 줄, 작은 보조 한 줄).
+    카피 풀에서 슬러그 해시로 결정적 선택 → 같은 영상은 항상 같은 카피,
+    영상끼리는 다양화 ("어 내 폰도?" 공감·호기심 트리거)."""
     device = _normalized_device(slug_meta.get("device", ""))
     repair = slug_meta.get("repair", "수리")
 
-    # 디바이스별 보조 카피 결정 (워치 후면 같은 케이스)
-    dev_hook = _lookup_with_device(HOOK_DEVICE_OVERRIDES, repair, device)
+    # 디바이스별 카피 풀
+    dev_pool = _lookup_with_device(HOOK_DEVICE_OVERRIDES, repair, device)
 
     # 1순위: 일지에 실제 손님 증상 인용 — 가장 임팩트
     if symptoms:
         s = symptoms[0].replace('"', '').strip()
         if len(s) <= 18:
-            if dev_hook:
-                return (f'"{s}"', dev_hook[1])
+            if dev_pool:
+                _, sub = _pick_from_pool(dev_pool, slug)
+                return (f'"{s}"', sub)
             for k, v in HOOK_MAP.items():
                 if k in repair:
-                    return (f'"{s}"', v[1])
+                    _, sub = _pick_from_pool(v, slug)
+                    return (f'"{s}"', sub)
             return (f'"{s}"', "다올이 살려냅니다")
 
-    # 2순위: 디바이스별 오버라이드
-    if dev_hook:
-        return dev_hook
+    # 2순위: 디바이스별 풀에서 선택
+    if dev_pool:
+        return _pick_from_pool(dev_pool, slug)
 
-    # 3순위: 수리 종류별
+    # 3순위: 수리 풀에서 선택
     for k, v in HOOK_MAP.items():
         if k in repair:
-            return v
+            return _pick_from_pool(v, slug)
 
     # 4순위: 기본
     device_word = {"아이폰": "이 아이폰", "아이패드": "이 아이패드",
@@ -834,14 +920,17 @@ def make_ba_cover(before_path: Path, after_path: Path,
         img = img_rgba.convert("RGB")
         d = ImageDraw.Draw(img)
 
-        # 기종+모델 (중간 크기, 밝은 회색)
+        # 기종+모델 (다올리페어 주황색 + 검정 외곽선)
         if device_model:
-            df = sdg("medium", 52)
+            df = sdg("bold", 52)
             db = d.textbbox((0, 0), device_model, font=df)
             dw_ = db[2] - db[0]
-            d.text(((W - dw_) // 2, H_HALF + DIVIDER + 70),
-                   device_model, font=df, fill=(235, 235, 235))
-        # 수리 종류 (크게, 흰색 강조 + 외곽선)
+            dy = H_HALF + DIVIDER + 70
+            for off in [(-2, 0), (2, 0), (0, -2), (0, 2)]:
+                d.text(((W - dw_) // 2 + off[0], dy + off[1]),
+                       device_model, font=df, fill=(0, 0, 0))
+            d.text(((W - dw_) // 2, dy), device_model, font=df, fill=ORANGE)
+        # 수리 종류 (크게, 다올리페어 주황색 + 검정 외곽선)
         if repair_kr:
             rf_size = 84 if len(repair_kr) <= 8 else (74 if len(repair_kr) <= 14 else 62)
             rf = sdg("bold", rf_size)
@@ -850,9 +939,10 @@ def make_ba_cover(before_path: Path, after_path: Path,
             rx = (W - rw) // 2
             ry = H_HALF + DIVIDER + 140
             # 외곽선 (두껍게 — 가독성)
-            for off in [(-3, 0), (3, 0), (0, -3), (0, 3), (-2, -2), (2, 2), (-2, 2), (2, -2)]:
+            for off in [(-3, 0), (3, 0), (0, -3), (0, 3), (-3, -3), (3, 3), (-3, 3), (3, -3)]:
                 d.text((rx + off[0], ry + off[1]), repair_kr, font=rf, fill=(0, 0, 0))
-            d.text((rx, ry), repair_kr, font=rf, fill=(255, 255, 255))
+            # 본문 — 다올리페어 주황색
+            d.text((rx, ry), repair_kr, font=rf, fill=ORANGE)
 
     # 후킹 카피 — 하단 사진 위에 오버레이 (시선 끌리는 큰 폰트)
     # 텍스트 위치: 후킹 카피 = 상단 사진 위 (덜 가려진 영역)
@@ -867,28 +957,30 @@ def make_ba_cover(before_path: Path, after_path: Path,
     img = img_rgba.convert("RGB")
     d = ImageDraw.Draw(img)
 
-    # 메인 후킹 카피
-    main_size = 78 if len(hook_main) <= 12 else 64
+    # 메인 후킹 카피 — 다올리페어 주황색 + 두꺼운 검정 외곽선 (시선 끌기)
+    main_size = 84 if len(hook_main) <= 12 else 72
     hf = sdg("bold", main_size)
     if len(hook_main) > 16:
         wrapped = "\n".join(textwrap.wrap(hook_main, width=14)[:2])
         hb = d.multiline_textbbox((0, 0), wrapped, font=hf, align="center", spacing=10)
         hw, hh = hb[2] - hb[0], hb[3] - hb[1]
         ty = H_HALF - hh - 60
-        # 외곽선 + 본문
-        for off in [(-2, 0), (2, 0), (0, -2), (0, 2)]:
+        # 두꺼운 외곽선 (가독성 + 임팩트)
+        for off in [(-4, 0), (4, 0), (0, -4), (0, 4), (-3, -3), (3, 3), (-3, 3), (3, -3)]:
             d.multiline_text(((W - hw) // 2 + off[0], ty + off[1]),
                              wrapped, font=hf, fill=(0, 0, 0), align="center", spacing=10)
+        # 본문 — 다올리페어 주황색
         d.multiline_text(((W - hw) // 2, ty), wrapped, font=hf,
-                         fill=(255, 255, 255), align="center", spacing=10)
+                         fill=ORANGE, align="center", spacing=10)
     else:
         hb = d.textbbox((0, 0), hook_main, font=hf)
         hw, hh = hb[2] - hb[0], hb[3] - hb[1]
         ty = H_HALF - hh - 60
-        for off in [(-2, 0), (2, 0), (0, -2), (0, 2)]:
+        for off in [(-4, 0), (4, 0), (0, -4), (0, 4), (-3, -3), (3, 3), (-3, 3), (3, -3)]:
             d.text(((W - hw) // 2 + off[0], ty + off[1]),
                    hook_main, font=hf, fill=(0, 0, 0))
-        d.text(((W - hw) // 2, ty), hook_main, font=hf, fill=(255, 255, 255))
+        # 본문 — 다올리페어 주황색
+        d.text(((W - hw) // 2, ty), hook_main, font=hf, fill=ORANGE)
 
     # 우측 다올리페어 로고 워터마크 (안전 영역 안 — y=320, BEFORE 배지와 동일 라인)
     if LOGO_PATH.exists():
@@ -1136,7 +1228,7 @@ def build_reel(journal_path: Path, output_dir: Path) -> tuple[Path, Path]:
         prepared[name] = dst
 
     # 2) 자막 이미지 — BEFORE는 hook image, 나머지는 step image
-    hook_main, hook_sub = make_hook_copy(slug_meta, meta["symptoms"])
+    hook_main, hook_sub = make_hook_copy(slug_meta, meta["symptoms"], journal_path.stem)
     step_caps = make_step_captions(slug_meta)
 
     cap_imgs = []
