@@ -53,6 +53,8 @@ rsync -a \
   --exclude='*.command' \
   --exclude='out.txt' \
   --exclude='err.txt' \
+  --exclude='output' \
+  --exclude='output/' \
   --exclude='스크린샷*.png' \
   --exclude='캡쳐*.png' \
   --exclude='index.html.bak' \
