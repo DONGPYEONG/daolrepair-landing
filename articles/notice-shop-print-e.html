@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다올리페어 SHOP — A6 매장 안내문 (E: 카탈로그 + Q&A) | 다올리페어</title>
+  <style>
+    @page { size: A6; margin: 0; }
+    @import url("https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&display=swap");
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Pretendard', -apple-system, 'Apple SD Gothic Neo', sans-serif; background: #f0f0f0; padding: 30px; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+    .toolbar { max-width: 105mm; margin: 0 auto 18px; background: #fff; padding: 14px 18px; border-radius: 10px; font-size: 13px; line-height: 1.5; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .toolbar h1 { font-size: 16px; margin-bottom: 6px; color: #E8732A; }
+    .toolbar button { background: #1a1a1a; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; margin-top: 6px; }
+
+    .a6-card {
+      width: 105mm;
+      height: 148mm;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      display: flex;
+      flex-direction: column;
+      color: #1a1a1a;
+      overflow: hidden;
+      page-break-after: always;
+      position: relative;
+    }
+
+    /* 컴팩트 헤더 (오렌지 라인) */
+    .a6-header {
+      padding: 3.5mm 5mm 2.5mm;
+      text-align: center;
+      border-bottom: 0.5mm solid #E8732A;
+    }
+    .a6-title {
+      font-size: 13pt;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -0.4px;
+      white-space: nowrap;
+    }
+    .a6-title em { color: #E8732A; font-style: normal; }
+    .a6-sub {
+      font-size: 7pt;
+      color: #666;
+      margin-top: 0.7mm;
+    }
+
+    /* 카탈로그 — 가로 4개 이미지 (5열 + 우측 여유 spacer) */
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) 4mm;
+      gap: 1mm;
+      padding: 1.5mm 1mm;
+      background: linear-gradient(180deg, #fafafa 0%, #fff 100%);
+    }
+    .catalog::after {
+      content: '';
+      grid-column: 5;
+    }
+    .cat-card {
+      min-width: 0;
+      background: #fff;
+      border: 0.3mm solid #e8e8e8;
+      border-radius: 1.5mm;
+      padding: 1mm 0.4mm;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 0.4mm 1mm rgba(0,0,0,0.05);
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    .cat-card.featured { border-color: #f5d4b3; background: linear-gradient(180deg, #fff 0%, #fff8f0 100%); }
+    .cat-img {
+      max-width: 100%;
+      height: 16mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .cat-img svg { height: 100%; width: auto; max-width: 18mm; }
+    .cat-name {
+      font-size: 5.4pt;
+      font-weight: 800;
+      color: #1a1a1a;
+      text-align: center;
+      line-height: 1.2;
+      margin-top: 0.6mm;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .cat-name small {
+      font-size: 4.6pt;
+      color: #888;
+      font-weight: 600;
+      display: block;
+      margin-top: 0.2mm;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cat-price {
+      font-size: 6.8pt;
+      font-weight: 900;
+      color: #E8732A;
+      letter-spacing: -0.3px;
+      margin-top: 0.5mm;
+      white-space: nowrap;
+    }
+
+    /* 메인 카피 영역 — 자연 흐름 */
+    .main-copy {
+      padding: 2mm 3.5mm 1.5mm;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2mm;
+    }
+    .qa-card {
+      background: #fff8f0;
+      border-left: 0.6mm solid #E8732A;
+      padding: 1.4mm 2mm;
+      border-radius: 0 1.5mm 1.5mm 0;
+    }
+    .qa-q {
+      font-size: 7.2pt;
+      font-weight: 900;
+      color: #0A0A0A;
+      letter-spacing: -0.2px;
+      line-height: 1.3;
+      margin-bottom: 0.5mm;
+      word-break: keep-all;
+    }
+    .qa-q::before {
+      content: 'Q. ';
+      color: #E8732A;
+      font-weight: 900;
+    }
+    .qa-a {
+      font-size: 6.2pt;
+      color: #444;
+      line-height: 1.45;
+      word-break: keep-all;
+    }
+    .qa-a::before {
+      content: 'A. ';
+      color: #16a34a;
+      font-weight: 900;
+    }
+    .qa-a strong { color: #1a1a1a; font-weight: 800; }
+
+    .colors-strip {
+      background: #f7f7f8;
+      border-radius: 1.5mm;
+      padding: 1.2mm 2mm;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6mm;
+      font-size: 5.8pt;
+    }
+    .color-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5mm;
+      color: #444;
+      line-height: 1.3;
+    }
+    .color-row strong { color: #1a1a1a; font-weight: 800; min-width: 13mm; font-size: 6.2pt; }
+    .color-row .chips { display: inline-flex; gap: 0.8mm; align-items: center; }
+    .chip { width: 2.4mm; height: 2.4mm; border-radius: 50%; border: 0.18mm solid rgba(0,0,0,0.18); }
+    .chip.silver { background: linear-gradient(135deg,#fafafa 0%,#d8d8da 100%); }
+    .chip.spacegray { background: linear-gradient(135deg,#5a5a5c 0%,#2a2a2c 100%); }
+    .chip.rosegold { background: linear-gradient(135deg,#f5c8b5 0%,#e0a48c 100%); }
+    .chip.matteblack { background: linear-gradient(135deg,#3a3a3c 0%,#1a1a1c 100%); }
+    .color-row span { color: #777; font-weight: 600; font-size: 5.6pt; }
+
+    /* 푸터 */
+    .a6-foot-note {
+      background: #0A0A0A;
+      color: #fff;
+      padding: 2mm 4mm;
+      text-align: center;
+      font-size: 6.5pt;
+      letter-spacing: 0.2px;
+      line-height: 1.4;
+      flex-shrink: 0;
+    }
+    .a6-foot-note strong { color: #FF8E5A; font-weight: 800; }
+
+    @media print {
+      body { background: #fff; padding: 0; margin: 0; }
+      .toolbar { display: none; }
+      .a6-card { box-shadow: none; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <h1>매장 비치용 A6 안내문 — 다올리페어 SHOP (버전 E)</h1>
+    <p>가로 카탈로그 4개 + Q&A 형식 설명. 손님 궁금증을 직접 풀어줌.</p>
+    <button onclick="window.print()">인쇄하기</button>
+    <a href="notice-shop-print-d.html" style="margin-left:10px;color:#E8732A;text-decoration:none;font-weight:700;">← 버전 D</a>
+    <a href="notice-shop-print.html" style="margin-left:10px;color:#E8732A;text-decoration:none;font-weight:700;">버전 A →</a>
+  </div>
+
+  <div class="a6-card">
+    <div class="a6-header">
+      <div class="a6-title"><em>마스터 검수</em> 정직 판매</div>
+      <div class="a6-sub">하우징폰 · 리퍼 펜슬 · Apple 액세서리</div>
+    </div>
+
+    <div class="catalog">
+      <!-- 1. iPhone 6s -->
+      <div class="cat-card featured">
+        <div class="cat-img">
+          <svg viewBox="0 0 50 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="e-i6s-body" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fafafa"/><stop offset="100%" stop-color="#cfcfd2"/>
+              </linearGradient>
+              <linearGradient id="e-i6s-screen" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5c87b8"/><stop offset="100%" stop-color="#2c4a6e"/>
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="46" height="96" rx="8" fill="url(#e-i6s-body)" stroke="#a8a8aa" stroke-width="0.3"/>
+            <rect x="5" y="16" width="40" height="72" rx="1" fill="url(#e-i6s-screen)"/>
+            <text x="25" y="50" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#fff" font-weight="200">9:41</text>
+            <rect x="20" y="10" width="10" height="1.4" rx="0.5" fill="#666"/>
+            <circle cx="25" cy="93" r="3.2" fill="none" stroke="#a8a8aa" stroke-width="0.4"/>
+            <circle cx="25" cy="93" r="2.2" fill="#e0e0e2"/>
+          </svg>
+        </div>
+        <div class="cat-name">iPhone 6s<small>128GB · 3색</small></div>
+        <div class="cat-price">169,000원</div>
+      </div>
+
+      <!-- 2. iPhone 7 -->
+      <div class="cat-card featured">
+        <div class="cat-img">
+          <svg viewBox="0 0 50 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="e-i7-body" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#3a3a3c"/><stop offset="100%" stop-color="#0a0a0c"/>
+              </linearGradient>
+              <linearGradient id="e-i7-screen" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3b5a7a"/><stop offset="100%" stop-color="#1a2c40"/>
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="46" height="96" rx="8" fill="url(#e-i7-body)"/>
+            <rect x="5" y="16" width="40" height="72" rx="1" fill="url(#e-i7-screen)"/>
+            <text x="25" y="50" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#fff" font-weight="200">9:41</text>
+            <rect x="20" y="10" width="10" height="1.4" rx="0.5" fill="#1a1a1c"/>
+            <circle cx="25" cy="93" r="3.2" fill="none" stroke="#3a3a3c" stroke-width="0.4"/>
+            <circle cx="25" cy="93" r="2.2" fill="#0a0a0c"/>
+          </svg>
+        </div>
+        <div class="cat-name">iPhone 7<small>128GB · 2색</small></div>
+        <div class="cat-price">189,000원</div>
+      </div>
+
+      <!-- 3. Apple Pencil 2 -->
+      <div class="cat-card">
+        <div class="cat-img">
+          <svg viewBox="0 0 100 180" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="e-pn-body" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#e8e8ea"/>
+                <stop offset="50%" stop-color="#fff"/>
+                <stop offset="100%" stop-color="#d4d4d6"/>
+              </linearGradient>
+              <linearGradient id="e-pn-tip" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#a0a0a0"/><stop offset="100%" stop-color="#5a5a5a"/>
+              </linearGradient>
+            </defs>
+            <g transform="rotate(15 50 90)">
+              <rect x="46" y="22" width="8" height="130" rx="4" fill="url(#e-pn-body)" stroke="#999" stroke-width="0.4"/>
+              <rect x="46" y="22" width="0.8" height="130" fill="#bbb"/>
+              <path d="M46 152 L50 168 L54 152 Z" fill="url(#e-pn-tip)"/>
+            </g>
+          </svg>
+        </div>
+        <div class="cat-name">Pencil 2세대<small>정품 리퍼</small></div>
+        <div class="cat-price">11만원</div>
+      </div>
+
+      <!-- 4. Apple 액세서리 -->
+      <div class="cat-card">
+        <div class="cat-img">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="e-box-front" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#e0e0e2"/>
+              </linearGradient>
+            </defs>
+            <rect x="14" y="14" width="72" height="72" rx="3" fill="url(#e-box-front)" stroke="#bbb" stroke-width="0.4"/>
+            <text x="50" y="48" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#0a0a0a" font-weight="700">USB-C</text>
+            <rect x="38" y="58" width="24" height="24" rx="3.5" fill="#fff" stroke="#aaa" stroke-width="0.3"/>
+            <rect x="46" y="78" width="8" height="2" rx="1" fill="#222"/>
+          </svg>
+        </div>
+        <div class="cat-name">Apple 액세서리<small>USB·MagSafe 등</small></div>
+        <div class="cat-price">합리가</div>
+      </div>
+    </div>
+
+    <div class="main-copy">
+      <div class="qa-card">
+        <div class="qa-q">"하우징폰"이 뭔가요?</div>
+        <div class="qa-a"><strong>외관은 새것급, 내부는 정품 본체</strong>인 리퍼 폰입니다. 본체에 새 외장(하우징)을 입혀 흠집·찍힘 없이 깨끗합니다. iPhone 6s·7은 MZ 빈티지 사진(필름 감성)용으로 인기예요.</div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-q">"정품 리퍼" 펜슬은 어떻게 다른가요?</div>
+        <div class="qa-a">정품 Apple Pencil 2세대를 <strong>마스터가 직접 검수·재정비</strong>한 제품입니다. 신품 19만원의 절반 가격이지만 정상 작동·자기 부착·무선 충전 모두 OK.</div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-q">왜 다올리페어 SHOP인가요?</div>
+        <div class="qa-a">수리 마스터가 <strong>상태·기능 100% 점검</strong> 후 판매하는 정직 매장. 하우징폰·펜슬 <strong>90일 무상 A/S</strong>, 액세서리는 불량 100% 교환으로 책임집니다.</div>
+      </div>
+
+      <div class="colors-strip">
+        <div class="color-row">
+          <strong>iPhone 6s</strong>
+          <span class="chips">
+            <span class="chip spacegray"></span>
+            <span class="chip silver"></span>
+            <span class="chip rosegold"></span>
+          </span>
+          <span>스페이스 그레이 · 실버 · 로즈골드</span>
+        </div>
+        <div class="color-row">
+          <strong>iPhone 7</strong>
+          <span class="chips">
+            <span class="chip matteblack"></span>
+            <span class="chip silver"></span>
+          </span>
+          <span>매트 블랙 · 실버</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="a6-foot-note">
+      <strong>🛡 마스터 직접 검수</strong> · 90일 보증 · 액세서리 불량 100% 교환 · <span style="color:#FF8E5A;font-weight:800;">다올리페어.com</span>
+    </div>
+  </div>
+
+</body>
+</html>
