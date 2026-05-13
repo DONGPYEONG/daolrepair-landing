@@ -755,16 +755,21 @@ def make_ba_cover(before_path: Path, after_path: Path,
         (W // 2, arrow_y + 14),
     ], fill=(255, 255, 255))
 
-    # BEFORE 배지 (상단 좌상)
+    # 인스타 피드 4:5 비율은 위·아래 각 285px 잘림 — 안전 영역(y=285~1635) 안에 핵심 배치
+    SAFE_TOP = 320  # 285 + 35 여유
+    SAFE_BOTTOM = 1600
+
+    # BEFORE 배지 (상단 사진 영역 안, 안전 영역 시작)
     bf = sdg("bold", 38)
     bb = d.textbbox((0, 0), "BEFORE", font=bf)
     bw = bb[2] - bb[0]
     pad_x, pad_y = 20, 14
-    d.rounded_rectangle((30, 30, 30 + bw + pad_x * 2, 30 + (bb[3] - bb[1]) + pad_y * 2),
+    bx, by = 30, SAFE_TOP
+    d.rounded_rectangle((bx, by, bx + bw + pad_x * 2, by + (bb[3] - bb[1]) + pad_y * 2),
                         radius=12, fill=(220, 40, 40))
-    d.text((30 + pad_x, 30 + pad_y - 4), "BEFORE", font=bf, fill=(255, 255, 255))
+    d.text((bx + pad_x, by + pad_y - 4), "BEFORE", font=bf, fill=(255, 255, 255))
 
-    # AFTER 배지 (하단 좌상)
+    # AFTER 배지 (하단 사진 영역 안)
     af = sdg("bold", 38)
     ab = d.textbbox((0, 0), "AFTER", font=af)
     aw = ab[2] - ab[0]
@@ -809,7 +814,7 @@ def make_ba_cover(before_path: Path, after_path: Path,
                    hook_main, font=hf, fill=(0, 0, 0))
         d.text(((W - hw) // 2, ty), hook_main, font=hf, fill=(255, 255, 255))
 
-    # 우측 하단 다올리페어 로고 워터마크 (인트로 역할도 함)
+    # 우측 다올리페어 로고 워터마크 (안전 영역 안 — y=320, BEFORE 배지와 동일 라인)
     if LOGO_PATH.exists():
         try:
             logo = Image.open(LOGO_PATH).convert("RGBA")
@@ -822,9 +827,8 @@ def make_ba_cover(before_path: Path, after_path: Path,
             ImageDraw.Draw(mask).rounded_rectangle(
                 (0, 0, *logo.size), radius=16, fill=255
             )
-            # 우측 상단 (상단 사진 영역) — 검정 그라데이션 위라 잘 보임
             img_rgba = img.convert("RGBA")
-            img_rgba.paste(logo, (W - logo.size[0] - 30, 30), mask)
+            img_rgba.paste(logo, (W - logo.size[0] - 30, 320), mask)
             img = img_rgba.convert("RGB")
         except Exception:
             pass
