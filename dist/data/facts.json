@@ -249,6 +249,35 @@
     ],
     "reason": "매장 실제 패턴은 지연 증상형 (CLAUDE 메모리)"
   },
+  "ios_known_bugs": {
+    "ios_26_volume_button": {
+      "affected_versions": [
+        "26.2",
+        "26.4",
+        "26.4.2",
+        "26.5"
+      ],
+      "affected_models_primary": [
+        "iPhone 13",
+        "iPhone 13 Pro",
+        "iPhone 13 mini",
+        "iPhone 13 Pro Max"
+      ],
+      "affected_models_secondary": [
+        "iPhone 14",
+        "iPhone 15"
+      ],
+      "symptom": "볼륨 버튼·제어센터 음량 조절 불가",
+      "fix_status": "Apple 미수정 (2026-05-13 기준)",
+      "store_response": "진단 무료 → 소프트웨어 버그면 임시 해결만 도움 (비용 0원). 진짜 하드웨어 고장만 수리.",
+      "wrong_claims": [
+        "iOS 26 볼륨 버그 해결됨",
+        "iOS 26.5 볼륨 패치 완료",
+        "26.4에서 수정됨"
+      ],
+      "reason": "다음 업데이트(26.6 이상)까지 Apple 미수정. 잘못된 '해결됨' 주장은 클레임으로 이어짐"
+    }
+  },
   "branches": [
     "가산점",
     "신림점",
@@ -410,7 +439,7 @@
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-아이패드-ipad-pro-11인치-2세대-screen-1Y5Bwg_L.html",
         "last_seen": "articles/journal-2026-05-12-아이패드-ipad-pro-11인치-2세대-screen-1Y5Bwg_L.html",
-        "count": 4,
+        "count": 5,
         "fix_hint": "정정 → 추출 정품 / 재생 정품만 사용"
       },
       {
@@ -428,7 +457,7 @@
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-아이폰-iphone-14-pro-battery-1ChixQPs.html",
         "last_seen": "articles/journal-2026-05-12-아이폰-iphone-14-pro-battery-1ChixQPs.html",
-        "count": 25,
+        "count": 33,
         "fix_hint": "정정 → 약 20~30%"
       },
       {
@@ -464,7 +493,7 @@
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
         "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
-        "count": 4,
+        "count": 5,
         "fix_hint": "정정 → 100% 추출 정품"
       },
       {
@@ -473,7 +502,7 @@
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
         "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
-        "count": 4,
+        "count": 5,
         "fix_hint": "정정 → 100% 추출 정품"
       },
       {
@@ -509,7 +538,7 @@
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
         "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
-        "count": 16,
+        "count": 21,
         "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
       },
       {
@@ -518,7 +547,7 @@
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
         "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
-        "count": 16,
+        "count": 21,
         "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
       },
       {
@@ -527,7 +556,7 @@
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
         "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
-        "count": 16,
+        "count": 21,
         "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
       },
       {
@@ -536,7 +565,7 @@
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
         "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
-        "count": 4,
+        "count": 5,
         "fix_hint": "워치 후면 일지는 100% 추출 정품 명시 필수"
       },
       {
@@ -545,7 +574,7 @@
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
         "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
-        "count": 4,
+        "count": 5,
         "fix_hint": "워치 후면 일지는 100% 추출 정품 명시 필수"
       }
     ]
