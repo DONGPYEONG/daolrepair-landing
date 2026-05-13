@@ -69,8 +69,8 @@ ORANGE = (232, 115, 42)
 DARK = (10, 10, 10)
 
 # ── Timing (초) ────────────────────────────────────────
-# 1초 브랜드 인트로 → 후킹 → 스토리 → 아웃트로
-INTRO_DUR  = 1.1        # 브랜드 인트로 — 짧게 (후킹 약화 X)
+# BA 커버(첫 프레임 = IG 썸네일) → 후킹 → 스토리 → 아웃트로
+INTRO_DUR  = 1.5        # BA 커버 정지 (썸네일 + 시각 후킹)
 HOOK_DUR   = 2.7        # BEFORE 사진 + 후킹 카피
 STEP_DUR   = 3.0        # progress1·2·3 각각
 AFTER_DUR  = 3.2        # AFTER 사진 + 결과 카피
@@ -803,6 +803,26 @@ def make_ba_cover(before_path: Path, after_path: Path,
                    hook_main, font=hf, fill=(0, 0, 0))
         d.text(((W - hw) // 2, ty), hook_main, font=hf, fill=(255, 255, 255))
 
+    # 우측 하단 다올리페어 로고 워터마크 (인트로 역할도 함)
+    if LOGO_PATH.exists():
+        try:
+            logo = Image.open(LOGO_PATH).convert("RGBA")
+            ratio = 110 / max(logo.size)
+            logo = logo.resize(
+                (int(logo.size[0] * ratio), int(logo.size[1] * ratio)),
+                Image.LANCZOS,
+            )
+            mask = Image.new("L", logo.size, 0)
+            ImageDraw.Draw(mask).rounded_rectangle(
+                (0, 0, *logo.size), radius=16, fill=255
+            )
+            # 우측 상단 (상단 사진 영역) — 검정 그라데이션 위라 잘 보임
+            img_rgba = img.convert("RGBA")
+            img_rgba.paste(logo, (W - logo.size[0] - 30, 30), mask)
+            img = img_rgba.convert("RGB")
+        except Exception:
+            pass
+
     img.save(dst, quality=92)
     return dst
 
@@ -1052,11 +1072,10 @@ def build_reel(journal_path: Path, output_dir: Path) -> tuple[Path, Path]:
     )
     print(f"🖼  커버 (BEFORE/AFTER + 후킹): {cover_jpg.relative_to(ROOT)}")
 
-    # 3) 인트로(브랜드 1초) + 아웃트로
+    # 3) 아웃트로만 별도 생성 — 인트로 자리에는 BA 커버 사용
+    # (IG가 영상 첫 프레임을 썸네일로 잡으므로 첫 프레임 = BA 커버여야 함)
     day_str = slug_meta.get("date", date.today().isoformat())
-    intro_img = TMP_DIR / f"{img_id}_intro.jpg"
     outro_img = TMP_DIR / f"{img_id}_outro.jpg"
-    make_intro_image(intro_img)
     make_outro_image(outro_img)
 
     # 4) Reel 조립 — 모션 프리셋 + 크로스페이드 + 자막 애니
@@ -1066,11 +1085,12 @@ def build_reel(journal_path: Path, output_dir: Path) -> tuple[Path, Path]:
     scenes_with_starts = []
     cursor = 0.0
 
-    # 4-0) 브랜드 인트로 (1.1초) — 로고 + 다올리페어
+    # 4-0) 인트로 = BA 커버 (다올리페어 로고 워터마크 포함)
+    # 이걸 첫 프레임으로 두면 IG가 자동 썸네일로 잡음.
     intro = (
-        ImageClip(str(intro_img))
+        ImageClip(str(cover_jpg))
         .with_duration(INTRO_DUR)
-        .with_effects([FadeIn(0.3), CrossFadeOut(CROSSFADE)])
+        .with_effects([CrossFadeOut(CROSSFADE)])  # FadeIn 없음 — 0초부터 BA 커버 표시
         .with_start(cursor)
     )
     scenes_with_starts.append(intro)
