@@ -26,6 +26,7 @@ import sys
 import time
 from datetime import datetime, date, timezone, timedelta
 from pathlib import Path
+from urllib.parse import quote
 
 import requests
 
@@ -118,8 +119,9 @@ def read_caption(mp4: Path) -> str:
 
 def public_url_for(mp4: Path) -> str:
     """Cloudflare에 배포된 영상의 public URL.
-    output/reels/X.mp4 → https://...com/_reels/X.mp4 (build가 dist/_reels로 배포)."""
-    return f"{SITE_BASE}{PUBLIC_REELS_PATH}/{mp4.name}"
+    파일명에 한글·'+' 등 비ASCII 문자 있으면 IG API가 거부 → URL 인코딩 필수.
+    safe='' 로 모든 특수문자(`+`, `,` 포함) 인코딩."""
+    return f"{SITE_BASE}{PUBLIC_REELS_PATH}/{quote(mp4.name, safe='-._')}"
 
 
 def igapi_post(path: str, **params) -> dict:
