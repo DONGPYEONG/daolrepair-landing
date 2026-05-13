@@ -3,12 +3,12 @@
 각 칼럼 글에 매칭되는 5~7개 슬라이드를 매뉴얼로 정의.
 키 = 칼럼 슬러그 (articles/*.html 확장자 제외)
 
-일일 자동 생성: scripts/daily_info_reel.py가 큐에서 미게시 항목을 꺼냄.
+excerpt: 칼럼 원문에서 발췌한 본문 단락 (카드 하단 회색 텍스트 — "캡처" 느낌).
 """
 
 INFO_REELS = {
     # ───────────────────────────────────────────────────────────────
-    # #01 — 배터리 교체 시기 5가지 신호 (애플워치 사례 BA 배경)
+    # #01 — 배터리 교체 시기 5가지 신호
     # ───────────────────────────────────────────────────────────────
     "applewatch-battery-replacement-timing": {
         "series_num": "01",
@@ -23,45 +23,35 @@ INFO_REELS = {
                 "headline": "최대 용량 80% 미만",
                 "body": "설정 → 배터리 → 성능 상태\n5초만에 확인 가능",
                 "highlight": "80% 미만",
-                "accent": (255, 90, 130),
-                "sticker": "⚙️",
-                "bg_image": "images/before-after/1FOnkpJ-X5f-XkBm8A9IrCPb/progress2.jpg",
+                "excerpt": "설정 → 배터리 → 배터리 상태에서 최대 용량(%)을 직접 확인할 수 있습니다. 이 숫자 하나가 교체 타이밍을 판단하는 가장 명확한 기준입니다.",
             },
             {
                 "num": "02",
                 "headline": "갑자기 셧다운",
                 "body": "30~50% 잔량인데도\n전압 강하로 꺼지는 신호",
                 "highlight": "갑자기",
-                "accent": (240, 130, 30),
-                "sticker": "⚡",
-                "bg_image": "images/before-after/1FOnkpJ-X5f-XkBm8A9IrCPb/before.jpg",
+                "excerpt": "잔량이 충분히 남아 있는데도 갑자기 꺼지는 현상은 배터리 셀의 전압 강하 신호입니다. 추운 날·고부하 작업에서 더 자주 나타납니다.",
             },
             {
                 "num": "03",
                 "headline": "배터리 부풀음",
                 "body": "화면이 들뜨거나 후면 들뜸\n방치 시 폭발 위험",
-                "highlight": "위험 신호",
-                "accent": (240, 180, 30),
-                "sticker": "⚠️",
-                "bg_image": "images/before-after/1FOnkpJ-X5f-XkBm8A9IrCPb/progress1.jpg",
+                "highlight": "부풀음",
+                "excerpt": "팽창은 방치할수록 단계적으로 손상이 커집니다. 화면이 조금 들뜨던데 괜찮겠지 하다가 화면 전체가 분리되어 오는 경우가 가장 많습니다.",
             },
             {
                 "num": "04",
                 "headline": "빠른 방전",
                 "body": "사진 한 장에 10% 빠짐\n하루도 못 가는 폰",
-                "highlight": "10% 빠짐",
-                "accent": (60, 130, 240),
-                "sticker": "💸",
-                "bg_image": "images/before-after/1FOnkpJ-X5f-XkBm8A9IrCPb/progress3.jpg",
+                "highlight": "빠른 방전",
+                "excerpt": "최대 용량이 떨어지면 실제 사용 가능 시간이 급격히 짧아집니다. 사진 한 장에 잔량이 두 자릿수로 줄어든다면 교체 시점입니다.",
             },
             {
                 "num": "05",
                 "headline": "충전 중 발열",
                 "body": "손 못 댈 만큼 뜨거움\n메인보드 손상 직전",
                 "highlight": "발열",
-                "accent": (230, 60, 60),
-                "sticker": "🔥",
-                "bg_image": "images/before-after/1FOnkpJ-X5f-XkBm8A9IrCPb/after.jpg",
+                "excerpt": "충전 중 손을 댈 수 없을 만큼 뜨거워지면 배터리 내부 저항이 비정상적으로 높아진 상태입니다. 메인보드까지 영향이 가기 전에 점검이 필요합니다.",
             },
         ],
         "wrap_headline": "5가지 중 하나라도?",
@@ -69,7 +59,7 @@ INFO_REELS = {
     },
 
     # ───────────────────────────────────────────────────────────────
-    # #02 — 배터리 부풀음 응급 대처 (실제 매장 케이스)
+    # #02 — 배터리 부풀음 응급 5가지 행동
     # ───────────────────────────────────────────────────────────────
     "iphone-battery-swollen": {
         "series_num": "02",
@@ -84,45 +74,35 @@ INFO_REELS = {
                 "headline": "충전 즉시 중단",
                 "body": "더 부풀고 더 뜨거워집니다\n전원도 꺼두세요",
                 "highlight": "충전 중단",
-                "accent": (230, 60, 60),
-                "sticker": "🔌",
-                "bg_image": "images/before-after/1AoOnJZgAEYPAoSq4Lt6kwfU/before.jpg",
+                "excerpt": "팽창한 배터리에 계속 충전하면 팽창이 빠르게 가속됩니다. 사용을 중단하고 가능한 빨리 수리점에서 점검받으세요.",
             },
             {
                 "num": "02",
                 "headline": "절대 누르지 않기",
                 "body": "화면 들떴다고 손으로 누름?\n발화·폭발의 직행 경로",
-                "highlight": "누르면 위험",
-                "accent": (240, 130, 30),
-                "sticker": "⚠️",
-                "bg_image": "images/before-after/1AoOnJZgAEYPAoSq4Lt6kwfU/progress1.jpg",
+                "highlight": "누르지 마",
+                "excerpt": "들뜬 화면을 손이나 도구로 누르면 배터리 셀이 추가로 손상되며 가스가 더 발생합니다. 화면이 들뜬 상태 그대로 매장에 가져오세요.",
             },
             {
                 "num": "03",
                 "headline": "분리수거함 금지",
                 "body": "일반 쓰레기·불연재함도 금지\n부풀이 배터리는 폭발물입니다",
                 "highlight": "버리지 마세요",
-                "accent": (240, 180, 30),
-                "sticker": "🚫",
-                "bg_image": "images/before-after/1AoOnJZgAEYPAoSq4Lt6kwfU/progress2.jpg",
+                "excerpt": "팽창 배터리는 일반 쓰레기·재활용함에 버리면 안 됩니다. 충격이나 압력만으로 발화할 수 있어 반드시 전문 수리점을 통한 폐기가 필요합니다.",
             },
             {
                 "num": "04",
                 "headline": "통풍 잘되는 곳",
                 "body": "직사광선·차량 안 금지\n실온 응달에 보관 후 이동",
                 "highlight": "응달 보관",
-                "accent": (60, 130, 240),
-                "sticker": "🌬️",
-                "bg_image": "images/before-after/1AoOnJZgAEYPAoSq4Lt6kwfU/progress3.jpg",
+                "excerpt": "여름철 차량 실내는 70℃를 넘기는 경우가 많아 팽창 배터리에는 치명적입니다. 실내 응달, 평평한 곳에 두고 가능한 빨리 이동하세요.",
             },
             {
                 "num": "05",
                 "headline": "당일 교체 상담",
                 "body": "사진만 보내도 견적 OK\n위험 부품은 빠를수록 안전",
                 "highlight": "당일 가능",
-                "accent": (232, 115, 42),
-                "sticker": "🛠️",
-                "bg_image": "images/before-after/1AoOnJZgAEYPAoSq4Lt6kwfU/after.jpg",
+                "excerpt": "팽창 상태가 3일을 넘기면 액정까지 손상되는 경우가 많고, 기판까지 가는 최악의 케이스도 있습니다. 부풀음은 응급 부품으로 보고 당일 교체가 가장 안전합니다.",
             },
         ],
         "wrap_headline": "부풀음 = 응급",
@@ -130,7 +110,7 @@ INFO_REELS = {
     },
 
     # ───────────────────────────────────────────────────────────────
-    # #03 — 후면유리 정품 vs 호환 9가지 차이
+    # #03 — 후면유리 정품 vs 호환 5가지 차이
     # ───────────────────────────────────────────────────────────────
     "iphone-back-glass-genuine-vs-compatible": {
         "series_num": "03",
@@ -145,45 +125,35 @@ INFO_REELS = {
                 "headline": "색감 일치도",
                 "body": "정품: 본체와 100%\n호환: 빛 각도에 따라 미세 차이",
                 "highlight": "색감",
-                "accent": (232, 115, 42),
-                "sticker": "🎨",
-                "bg_image": "images/before-after/11BNtH7gTdSRbVov7ZSm79in/before.jpg",
+                "excerpt": "정품급 OEM 모두 무광 검정 톤. 자세히 보면 호환이 약간 더 밝거나 어두울 수 있지만, 일반 시야에서 구분은 거의 어렵습니다.",
             },
             {
                 "num": "02",
                 "headline": "MagSafe 자석",
-                "body": "정품: 풀파워 흡착\n호환: 일부 모델에서 약해짐",
+                "body": "정품: 풀파워 흡착\n호환: 일부 모델 약해짐",
                 "highlight": "MagSafe",
-                "accent": (60, 130, 240),
-                "sticker": "🧲",
-                "bg_image": "images/before-after/11BNtH7gTdSRbVov7ZSm79in/progress1.jpg",
+                "excerpt": "MagSafe 자석은 후면유리 안쪽 모듈과 함께 옮겨가는 부품입니다. 정품·정품급 OEM 모두 동일 모듈을 재이식하기 때문에 흡착력은 거의 같습니다.",
             },
             {
                 "num": "03",
                 "headline": "무선 충전 효율",
-                "body": "정품: 7.5W 풀스피드\n호환: 일부 5W로 떨어질 수 있음",
+                "body": "정품: 7.5W 풀스피드\n호환: 모델에 따라 차이",
                 "highlight": "충전 속도",
-                "accent": (240, 180, 30),
-                "sticker": "⚡",
-                "bg_image": "images/before-after/11BNtH7gTdSRbVov7ZSm79in/progress2.jpg",
+                "excerpt": "무선 충전 코일 자체는 본체에 그대로 있어 후면유리만 교체할 때는 거의 영향이 없습니다. 단, 일부 저가 호환은 글라스 두께가 두꺼워 효율이 약간 떨어질 수 있습니다.",
             },
             {
                 "num": "04",
                 "headline": "가격 차이",
                 "body": "정품과 호환: 모델별 5~30만원 차\nPro Max일수록 격차 커짐",
                 "highlight": "수만원",
-                "accent": (255, 90, 130),
-                "sticker": "💰",
-                "bg_image": "images/before-after/11BNtH7gTdSRbVov7ZSm79in/progress3.jpg",
+                "excerpt": "정품과 호환의 가격 차이는 30~40% 수준입니다. Pro·Pro Max로 갈수록 격차가 커지고, 기본 모델은 5~10만원 안에서 차이가 납니다.",
             },
             {
                 "num": "05",
                 "headline": "재판매 가치",
                 "body": "정품: 시세 그대로\n호환: 5~10만원 감가",
                 "highlight": "감가",
-                "accent": (230, 60, 60),
-                "sticker": "📉",
-                "bg_image": "images/before-after/11BNtH7gTdSRbVov7ZSm79in/after.jpg",
+                "excerpt": "색감 민감·완벽 외관·재판매 예정이면 정품이 답입니다. 비용 절감·일반 사용·케이스 상시 사용이면 호환이 더 합리적인 선택입니다.",
             },
         ],
         "wrap_headline": "쓸 거 vs 팔 거",
@@ -191,7 +161,7 @@ INFO_REELS = {
     },
 
     # ───────────────────────────────────────────────────────────────
-    # #04 — 침수 응급조치 골든타임 24시간
+    # #04 — 침수 응급 골든타임 5단계
     # ───────────────────────────────────────────────────────────────
     "iphone-water-damage-emergency-response": {
         "series_num": "04",
@@ -206,45 +176,35 @@ INFO_REELS = {
                 "headline": "전원 즉시 OFF",
                 "body": "물 + 전기 = 메인보드 사망\n충전기도 절대 금지",
                 "highlight": "전원 OFF",
-                "accent": (230, 60, 60),
-                "sticker": "📵",
-                "bg_image": "images/before-after/13U0ly-iPhPGV5fxymDUWzP5/before.jpg",
+                "excerpt": "전원이 켜져 있으면 메인보드에 전류가 흐르며 회로가 단락(쇼트)됩니다. 즉시 강제 종료(볼륨↑ 짧게 + 볼륨↓ 짧게 + 측면 길게)하세요.",
             },
             {
                 "num": "02",
                 "headline": "쌀에 넣지 마세요",
                 "body": "쌀 = 효과 거의 0\n오히려 먼지가 내부 침투",
                 "highlight": "쌀 금지",
-                "accent": (240, 130, 30),
-                "sticker": "🚫",
-                "bg_image": "images/before-after/13U0ly-iPhPGV5fxymDUWzP5/progress1.jpg",
+                "excerpt": "쌀통에 묻기는 침수 회복률을 즉시 0%에 가깝게 만드는 행동입니다. 수분은 제거되지 않고 쌀가루만 단자 안으로 들어가 부식을 가속화합니다.",
             },
             {
                 "num": "03",
                 "headline": "드라이기 금지",
                 "body": "열풍이 내부 부품을 녹입니다\n자연 건조는 더 위험",
                 "highlight": "건조 금지",
-                "accent": (240, 180, 30),
-                "sticker": "🌬️",
-                "bg_image": "images/before-after/13U0ly-iPhPGV5fxymDUWzP5/progress2.jpg",
+                "excerpt": "헤어드라이어 열풍은 내부 부품을 변형시키고 수분을 더 깊은 곳으로 밀어 넣습니다. 메인보드 부식을 가속화하는 대표적인 잘못된 조치입니다.",
             },
             {
                 "num": "04",
                 "headline": "흔들지 말기",
                 "body": "내부에 물이 더 퍼집니다\n케이스만 벗기고 그대로",
                 "highlight": "흔들지마",
-                "accent": (60, 130, 240),
-                "sticker": "📱",
-                "bg_image": "images/before-after/13U0ly-iPhPGV5fxymDUWzP5/progress3.jpg",
+                "excerpt": "흔들면 단자 안 깊숙이 물이 들어갑니다. 겉면 물기만 가볍게 닦고 충전 단자가 아래를 향하게 둔 채로 즉시 매장에 가져오세요.",
             },
             {
                 "num": "05",
                 "headline": "24시간 안에 분해 세척",
                 "body": "지금은 멀쩡해도\n3일 뒤 부식이 시작됩니다",
                 "highlight": "24시간",
-                "accent": (232, 115, 42),
-                "sticker": "⏰",
-                "bg_image": "images/before-after/13U0ly-iPhPGV5fxymDUWzP5/after.jpg",
+                "excerpt": "맹물보다 음료(맥주·콜라·커피)가 부식을 5~10배 빠르게 진행시킵니다. 음료 침수는 24시간이 아니라 6시간이 골든타임이라 생각하시고 즉시 입고해야 합니다.",
             },
         ],
         "wrap_headline": "골든타임은 24시간",

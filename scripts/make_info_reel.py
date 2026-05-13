@@ -160,49 +160,23 @@ def make_thumbnail(data: dict, dst: Path) -> Path:
 
 def make_slide(slide: dict, dst: Path, page_num: int = 1, total_pages: int = 5,
                series_num: str = "01") -> Path:
-    """미니멀 인스타 마케팅 톤 — 사진 풀스크린 + 그라데이션 + 큰 타이포.
-    컬러: 검정·흰·다올 주황만. 잡지 표지 같은 한 메시지 1슬라이드.
+    """칼럼 발췌 카드 톤 — 다크 배경 + 흰색 종이 카드.
+    사진 배경 제거. 메인 비주얼 = 다올 칼럼에서 발췌한 듯한 카드.
+    컬러: 검정 배경·흰 카드·다올 주황 포인트.
     """
-    bg_image_path = slide.get("bg_image")
-    bg_path = ROOT / bg_image_path if bg_image_path else None
-
-    # 배경 — 사진 cover-crop + 살짝 어둡게 (사진 보이게)
-    if bg_path and bg_path.exists():
-        src = Image.open(bg_path).convert("RGB")
-        sw, sh = src.size
-        sr, tr = sw / sh, W / H
-        if sr > tr:
-            nh = sh
-            nw = int(sh * tr)
-            src = src.crop(((sw - nw) // 2, 0, (sw - nw) // 2 + nw, nh))
-        else:
-            nw = sw
-            nh = int(sw / tr)
-            src = src.crop((0, (sh - nh) // 2, nw, (sh - nh) // 2 + nh))
-        img = src.resize((W, H), Image.LANCZOS)
-        # 약간만 어둡게 (사진 보이게) + 블러 살짝
-        img = img.filter(ImageFilter.GaussianBlur(radius=1.5))
-    else:
-        img = Image.new("RGB", (W, H), DARK)
-
-    # 상하 검정 그라데이션 (텍스트 가독성)
-    overlay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    od = ImageDraw.Draw(overlay)
-    # 상단 360px 어두움
-    for i in range(360):
-        a = int(220 * ((360 - i) / 360) ** 1.2)
-        od.line([(0, i), (W, i)], fill=(0, 0, 0, a))
-    # 하단 760px 어두움 (텍스트 영역 강화)
-    for i in range(760):
-        a = int(230 * (i / 760) ** 1.1)
-        od.line([(0, H - 760 + i), (W, H - 760 + i)], fill=(0, 0, 0, a))
-    img_rgba = img.convert("RGBA")
-    img_rgba = Image.alpha_composite(img_rgba, overlay)
-    img = img_rgba.convert("RGB")
+    # ── 배경: 다크 그라데이션 (검정 → 짙은 차콜) ──
+    img = Image.new("RGB", (W, H), DARK)
+    d = ImageDraw.Draw(img)
+    # 미세 비네팅 (대각 그라데이션)
+    bg_grad = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    bgd = ImageDraw.Draw(bg_grad)
+    for i in range(H):
+        a = int(60 * (i / H))  # 위는 까맣고 아래로 갈수록 살짝 밝아짐
+        bgd.line([(0, i), (W, i)], fill=(28, 28, 32, a))
+    img = Image.alpha_composite(img.convert("RGBA"), bg_grad).convert("RGB")
     d = ImageDraw.Draw(img)
 
-    # ── 상단: 좌측 진행 인디케이터 (━━ ━━ ── ── ──) + 우측 다올 로고 ──
-    # 진행 도트
+    # ── 상단 진행 도트 ──
     bar_y = SAFE_TOP - 60
     bar_w_each = 120
     bar_h = 6
@@ -211,84 +185,163 @@ def make_slide(slide: dict, dst: Path, page_num: int = 1, total_pages: int = 5,
     bar_x_start = (W - total_bar_w) // 2
     for i in range(total_pages):
         bx = bar_x_start + i * (bar_w_each + bar_gap)
-        fill = ORANGE if i < page_num else (255, 255, 255, 80)
+        color = ORANGE if i < page_num else (90, 90, 95)
         d.rounded_rectangle((bx, bar_y, bx + bar_w_each, bar_y + bar_h),
-                            radius=3, fill=fill if isinstance(fill, tuple) and len(fill) == 3 else WHITE)
-        if i >= page_num:
-            d.rounded_rectangle((bx, bar_y, bx + bar_w_each, bar_y + bar_h),
-                                radius=3, fill=(120, 120, 120))
+                            radius=3, fill=color)
 
-    # 페이지 번호 (작게, 우측 상단)
+    # 좌상단 시리즈 라벨
+    series_text = f"수리점 안 오는 법 #{series_num}"
+    f_series = font("SemiBold", 30)
+    d.text((50, SAFE_TOP - 3), series_text, font=f_series, fill=(220, 220, 220))
+
+    # 우상단 페이지 번호
     page_text = f"{page_num:02d} / {total_pages:02d}"
     f_page = font("Medium", 32)
     pb = d.textbbox((0, 0), page_text, font=f_page)
     d.text((W - (pb[2] - pb[0]) - 50, SAFE_TOP - 5), page_text, font=f_page,
            fill=(220, 220, 220))
 
-    # 시리즈 라벨 (좌측 상단)
-    series_text = f"수리점 안 오는 법 #{series_num}"
-    f_series = font("SemiBold", 30)
-    d.text((50, SAFE_TOP - 3), series_text, font=f_series, fill=(220, 220, 220))
+    # ── 중앙: 흰색 "칼럼 발췌" 카드 ──
+    card_margin = 60
+    card_x1 = card_margin
+    card_x2 = W - card_margin
+    card_y1 = SAFE_TOP + 110
+    card_y2 = SAFE_BOTTOM - 180
+    card_w = card_x2 - card_x1
+    card_h = card_y2 - card_y1
 
-    # 다올 로고 (우상단 — 페이지 번호 위)
-    img = paste_logo(img, W - 130, SAFE_TOP + 60, size=80)
-    if img.mode != "RGB":
-        img = img.convert("RGB")
+    # 카드 그림자 (살짝 떨어진 검정)
+    shadow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    sd = ImageDraw.Draw(shadow)
+    sd.rounded_rectangle((card_x1 + 6, card_y1 + 14, card_x2 + 6, card_y2 + 14),
+                         radius=36, fill=(0, 0, 0, 120))
+    shadow = shadow.filter(ImageFilter.GaussianBlur(radius=18))
+    img = Image.alpha_composite(img.convert("RGBA"), shadow).convert("RGB")
     d = ImageDraw.Draw(img)
 
-    # ── 중앙: 큰 키워드 (점프포인트) ──
+    # 카드 본체 (흰 종이)
+    d.rounded_rectangle((card_x1, card_y1, card_x2, card_y2),
+                        radius=36, fill=(252, 252, 250))
+
+    # 카드 내부 상단 — 다올리페어 칼럼 헤더 (브라우저 캡처 느낌)
+    header_h = 100
+    header_y2 = card_y1 + header_h
+    # 상단 얇은 주황 라인
+    d.rectangle((card_x1, card_y1, card_x2, card_y1 + 8), fill=ORANGE)
+    # 좌측 다올 표시
+    daol_text = "📑 다올리페어 칼럼 발췌"
+    f_daol = font("Bold", 30)
+    d.text((card_x1 + 50, card_y1 + 35), daol_text, font=f_daol,
+           fill=(70, 70, 75))
+    # 우측 도메인
+    url_text = "다올리페어.com"
+    f_url = font("Medium", 26)
+    ub = d.textbbox((0, 0), url_text, font=f_url)
+    d.text((card_x2 - (ub[2] - ub[0]) - 50, card_y1 + 40),
+           url_text, font=f_url, fill=(150, 150, 155))
+    # 헤더 구분선
+    d.rectangle((card_x1 + 50, header_y2, card_x2 - 50, header_y2 + 2),
+                fill=(225, 225, 225))
+
+    # ── 카드 내용 ──
     headline = slide.get("headline", "")
     highlight = slide.get("highlight", "")
-
-    # 메인 헤드라인 — 큰 타이포 (Black weight)
-    if len(headline) <= 8:
-        f_head_size = 130
-    elif len(headline) <= 12:
-        f_head_size = 110
-    else:
-        f_head_size = 92
-    f_head = font("Black", f_head_size)
-
-    # 하이라이트 처리 — 형광 박스 X, 주황 컬러로 강조
-    # 헤드라인 위치: 하단 시그니처(SAFE_BOTTOM-80) 위에서 충분히 여유
-    head_y = H - 700
-    if highlight and highlight in headline:
-        idx = headline.find(highlight)
-        pre = headline[:idx]
-        hi = highlight
-        post = headline[idx + len(highlight):]
-        bb_pre = d.textbbox((0, 0), pre, font=f_head)
-        bb_hi = d.textbbox((0, 0), hi, font=f_head)
-        bb_post = d.textbbox((0, 0), post, font=f_head)
-        total_w = (bb_pre[2] - bb_pre[0]) + (bb_hi[2] - bb_hi[0]) + (bb_post[2] - bb_post[0])
-        x = (W - total_w) // 2
-        # pre — 흰 + 외곽선
-        if pre:
-            draw_text_outlined(d, x, head_y, pre, f_head, WHITE, thickness=2)
-            x += bb_pre[2] - bb_pre[0]
-        # 하이라이트 — 다올 주황 + 외곽선
-        draw_text_outlined(d, x, head_y, hi, f_head, ORANGE, thickness=2)
-        x += bb_hi[2] - bb_hi[0]
-        # post — 흰
-        if post:
-            draw_text_outlined(d, x, head_y, post, f_head, WHITE, thickness=2)
-    else:
-        bb = d.textbbox((0, 0), headline, font=f_head)
-        tw = bb[2] - bb[0]
-        draw_text_outlined(d, (W - tw) // 2, head_y, headline, f_head, WHITE, thickness=2)
-
-    # 보조 본문 (Medium, 흰 + 외곽선)
     body = slide.get("body", "")
-    f_body = font("Medium", 44)
-    bb_h = d.textbbox((0, 0), headline, font=f_head)
-    body_y = head_y + (bb_h[3] - bb_h[1]) + 50
-    for i, line in enumerate(body.split("\n")[:2]):
-        bb = d.textbbox((0, 0), line, font=f_body)
-        lw = bb[2] - bb[0]
-        draw_text_outlined(d, (W - lw) // 2, body_y + i * 62,
-                           line, f_body, (235, 235, 235), thickness=2)
 
-    # ── 하단 시그니처 ──
+    # 큰 # 번호 라벨 (블로그 헤딩 같은 느낌)
+    num = slide.get("num", "01")
+    f_num = font("Black", 60)
+    num_text = f"#{int(num):02d}"
+    d.text((card_x1 + 50, header_y2 + 50), num_text, font=f_num, fill=ORANGE)
+
+    # 헤드라인 (Pretendard Black, 진한 검정) — 칼럼 H2 톤
+    head_y = header_y2 + 150
+    # 본문 폭에 맞춰 폰트 사이즈 결정
+    if len(headline) <= 8:
+        head_size = 100
+    elif len(headline) <= 12:
+        head_size = 84
+    else:
+        head_size = 72
+    f_head = font("Black", head_size)
+
+    # 헤드라인 줄바꿈 (카드 폭 내에 맞춤)
+    head_lines = _wrap_text(d, headline, f_head, card_w - 100)
+
+    line_h = head_size + 12
+    for i, line in enumerate(head_lines):
+        # 하이라이트 부분만 주황색
+        if highlight and highlight in line:
+            idx = line.find(highlight)
+            pre = line[:idx]
+            hi = highlight
+            post = line[idx + len(highlight):]
+            bb_pre = d.textbbox((0, 0), pre, font=f_head)
+            bb_hi = d.textbbox((0, 0), hi, font=f_head)
+            bb_post = d.textbbox((0, 0), post, font=f_head)
+            total_w = (bb_pre[2] - bb_pre[0]) + (bb_hi[2] - bb_hi[0]) + (bb_post[2] - bb_post[0])
+            x = card_x1 + 50  # 왼쪽 정렬 (칼럼 글 느낌)
+            if pre:
+                d.text((x, head_y + i * line_h), pre, font=f_head, fill=(20, 20, 22))
+                x += bb_pre[2] - bb_pre[0]
+            # 하이라이트 형광펜 (연한 주황 마커)
+            hi_h = bb_hi[3] - bb_hi[1]
+            d.rectangle((x - 2, head_y + i * line_h + hi_h * 0.55,
+                         x + (bb_hi[2] - bb_hi[0]) + 2,
+                         head_y + i * line_h + hi_h + 8),
+                        fill=(255, 215, 130))
+            d.text((x, head_y + i * line_h), hi, font=f_head, fill=ORANGE)
+            x += bb_hi[2] - bb_hi[0]
+            if post:
+                d.text((x, head_y + i * line_h), post, font=f_head, fill=(20, 20, 22))
+        else:
+            d.text((card_x1 + 50, head_y + i * line_h),
+                   line, font=f_head, fill=(20, 20, 22))
+
+    # 본문 (Pretendard SemiBold, 강조 톤)
+    body_y = head_y + len(head_lines) * line_h + 50
+    f_body = font("SemiBold", 42)
+    body_line_h = 62
+    body_lines_count = 0
+    for i, line in enumerate(body.split("\n")[:3]):
+        d.text((card_x1 + 50, body_y + i * body_line_h),
+               line, font=f_body, fill=(50, 50, 55))
+        body_lines_count += 1
+
+    # ── 칼럼 발췌 단락 (회색 박스 — "캡처" 느낌) ──
+    excerpt = slide.get("excerpt", "")
+    if excerpt:
+        ex_y = body_y + body_lines_count * body_line_h + 50
+        # 좌측 인용 라인 + 회색 배경
+        ex_box_x1 = card_x1 + 50
+        ex_box_x2 = card_x2 - 50
+        ex_pad = 28
+        f_ex = font("Regular", 32)
+        ex_line_h = 48
+        # 발췌문 줄바꿈
+        ex_lines = _wrap_text(d, excerpt, f_ex, ex_box_x2 - ex_box_x1 - ex_pad * 2 - 24)
+        ex_lines = ex_lines[:4]
+        ex_h = ex_pad * 2 + len(ex_lines) * ex_line_h
+        # 박스 배경 (살짝 회색)
+        d.rounded_rectangle((ex_box_x1, ex_y, ex_box_x2, ex_y + ex_h),
+                            radius=12, fill=(244, 244, 240))
+        # 좌측 인용 라인 (주황)
+        d.rectangle((ex_box_x1, ex_y, ex_box_x1 + 6, ex_y + ex_h),
+                    fill=ORANGE)
+        for i, line in enumerate(ex_lines):
+            d.text((ex_box_x1 + ex_pad + 18, ex_y + ex_pad + i * ex_line_h),
+                   line, font=f_ex, fill=(90, 90, 95))
+
+    # 카드 하단 — 출처 표시
+    quote_y = card_y2 - 80
+    d.rectangle((card_x1 + 50, quote_y + 4, card_x1 + 58, quote_y + 36),
+                fill=ORANGE)
+    f_quote = font("SemiBold", 26)
+    d.text((card_x1 + 80, quote_y + 4),
+           "다올리페어 수리 칼럼에서 발췌",
+           font=f_quote, fill=(110, 110, 115))
+
+    # ── 하단 시그니처 (다크 영역) ──
     d.rectangle((W // 2 - 30, SAFE_BOTTOM - 80, W // 2 + 30, SAFE_BOTTOM - 76),
                 fill=ORANGE)
     draw_centered(d, SAFE_BOTTOM - 55, "DAOL REPAIR",
@@ -296,6 +349,31 @@ def make_slide(slide: dict, dst: Path, page_num: int = 1, total_pages: int = 5,
 
     img.save(dst, quality=92)
     return dst
+
+
+def _wrap_text(d, text, font_, max_w):
+    """긴 문장을 카드 폭에 맞춰 줄바꿈. 한국어 음절 단위."""
+    if not text:
+        return [""]
+    bb = d.textbbox((0, 0), text, font=font_)
+    if bb[2] - bb[0] <= max_w:
+        return [text]
+    # 어절 단위 분리
+    words = text.split(" ")
+    lines = []
+    cur = ""
+    for w in words:
+        test = (cur + " " + w).strip()
+        bb = d.textbbox((0, 0), test, font=font_)
+        if bb[2] - bb[0] <= max_w:
+            cur = test
+        else:
+            if cur:
+                lines.append(cur)
+            cur = w
+    if cur:
+        lines.append(cur)
+    return lines
 
     # 상단 카테고리 배지 (주황 라운드)
     cat_text = "수리점 안 오는 법"
