@@ -71,7 +71,7 @@ find dist -maxdepth 1 -name "캡쳐*" -type f -delete 2>/dev/null || true
 if [ -d "output/reels" ]; then
   mkdir -p dist/_reels
   # mp4 + txt만 복사 (_daily.log 등 제외)
-  find output/reels -maxdepth 1 -type f \( -name "*.mp4" -o -name "*.txt" \) -print0 \
+  find output/reels -maxdepth 1 -type f \( -name "*.mp4" -o -name "*.txt" -o -name "*.jpg" \) -print0 \
     | xargs -0 -I {} cp {} dist/_reels/ 2>/dev/null || true
   REEL_COUNT=$(find dist/_reels -name "*.mp4" 2>/dev/null | wc -l | tr -d ' ')
   if [ "$REEL_COUNT" -gt 0 ]; then

@@ -28,7 +28,7 @@ from datetime import date, datetime
 from html import unescape
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 from moviepy import (
     ImageClip, CompositeVideoClip, ColorClip, AudioFileClip,
 )
@@ -76,7 +76,7 @@ STEP_DUR   = 3.0        # progress1·2·3 각각
 AFTER_DUR  = 3.2        # AFTER 사진 + 결과 카피
 OUTRO_DUR  = 3.4        # 브랜드 핵심 + CTA
 CROSSFADE  = 0.4
-ZOOM_END   = 1.10       # Ken Burns 슬로우 줌
+ZOOM_END   = 1.05       # Ken Burns 슬로우 줌 — 컨테인 모드 대응 완만한 줌
 # 총 길이 ≈ 1.1 + 2.7 + 3.0×3 + 3.2 + 3.4 = 18.4s
 # 크로스페이드 6×0.4 = 2.4 빼면 ≈ 16.0s
 
@@ -420,6 +420,7 @@ def make_caption_text(title: str, slug_meta: dict) -> str:
 
 # ── 이미지 빌더 ────────────────────────────────────────
 def fit_cover(img: Image.Image, w: int, h: int) -> Image.Image:
+    """대상 비율로 cover-crop (전체 영역 채움, 일부 잘림 가능)."""
     sw, sh = img.size
     sr, tr = sw / sh, w / h
     if sr > tr:
@@ -431,6 +432,34 @@ def fit_cover(img: Image.Image, w: int, h: int) -> Image.Image:
         nh = int(sw / tr)
         img = img.crop((0, (sh - nh) // 2, nw, (sh - nh) // 2 + nh))
     return img.resize((w, h), Image.LANCZOS)
+
+
+def fit_letterbox_blur(img: Image.Image, w: int, h: int) -> Image.Image:
+    """원본 사진 전체 표시 (잘림 없음) + 좌/우·상/하 빈 공간은 사진 자체의 블러로 채움.
+    Apple/Instagram 프리미엄 룩 — 가로·세로 비율과 상관없이 원본 100% 노출."""
+    sw, sh = img.size
+    sr, tr = sw / sh, w / h
+
+    # 1. 블러 배경 — cover-crop으로 화면 꽉 채운 뒤 강한 가우시안 + 살짝 어둡게
+    bg = fit_cover(img, w, h)
+    bg = bg.filter(ImageFilter.GaussianBlur(radius=50))
+    dark = Image.new("RGB", (w, h), (15, 15, 15))
+    bg = Image.blend(bg, dark, 0.35)
+
+    # 2. 원본 사진을 contain 모드로 (전체 가시)
+    if sr > tr:
+        # 가로가 더 김 → 좌우 가득, 상하 레터박스
+        nw = w
+        nh = int(w / sr)
+    else:
+        # 세로가 더 김 (또는 같음) → 상하 가득, 좌우 필러박스
+        nh = h
+        nw = int(h * sr)
+    fg = img.resize((nw, nh), Image.LANCZOS)
+
+    # 3. 가운데 합성
+    bg.paste(fg, ((w - nw) // 2, (h - nh) // 2))
+    return bg
 
 
 def make_intro_image(dst: Path) -> Path:
@@ -576,11 +605,12 @@ def blur_faces(pil_img: Image.Image) -> Image.Image:
 
 
 def prepare_photo(src: Path, dst: Path, label: str = "") -> Path:
-    """원본 → 9:16 + PII 블러 + 부드러운 그라데이션 + 미니멀 코너 라벨."""
+    """원본 → 9:16 (레터박스+블러 배경) + PII 블러 + 그라데이션 + 미니멀 라벨."""
     img = Image.open(src).convert("RGB")
     # 🛡 PII 보호 — 얼굴 자동 블러 (검출 실패 시 원본)
     img = blur_faces(img)
-    img = fit_cover(img, W, H)
+    # 사진 잘림 방지 — 레터박스 + 블러 배경
+    img = fit_letterbox_blur(img, W, H)
 
     overlay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     od = ImageDraw.Draw(overlay)
@@ -914,6 +944,15 @@ def build_reel(journal_path: Path, output_dir: Path) -> tuple[Path, Path]:
         dst = TMP_DIR / f"{img_id}_step_{i}.png"
         make_step_image(m, s, dst)
         cap_imgs.append(dst)
+
+    # 2b) 인스타 커버 이미지 (썸네일) — BEFORE 사진 + 후킹 카피 합성
+    # IG Reel 썸네일이 인트로 검정 화면으로 가지 않게, 후킹 프레임을 강제 지정.
+    base = f"{slug_meta.get('date', date.today().isoformat())}-{journal_path.stem}"
+    cover_jpg = output_dir / f"{base}.jpg"
+    bg = Image.open(prepared["before"]).convert("RGBA")
+    overlay = Image.open(hook_img_path).convert("RGBA")
+    Image.alpha_composite(bg, overlay).convert("RGB").save(cover_jpg, quality=92)
+    print(f"🖼  커버: {cover_jpg.relative_to(ROOT)}")
 
     # 3) 인트로(브랜드 1초) + 아웃트로
     day_str = slug_meta.get("date", date.today().isoformat())

@@ -124,6 +124,15 @@ def public_url_for(mp4: Path) -> str:
     return f"{SITE_BASE}{PUBLIC_REELS_PATH}/{quote(mp4.name, safe='-._')}"
 
 
+def cover_url_for(mp4: Path) -> str | None:
+    """같은 이름의 .jpg 커버가 있으면 URL 반환, 없으면 None.
+    IG가 인트로 검정 화면을 썸네일로 가져가지 않게 후킹 프레임 지정."""
+    jpg = mp4.with_suffix(".jpg")
+    if not jpg.exists():
+        return None
+    return f"{SITE_BASE}{PUBLIC_REELS_PATH}/{quote(jpg.name, safe='-._')}"
+
+
 def igapi_post(path: str, **params) -> dict:
     r = requests.post(f"{API_BASE}{path}", data=params, timeout=60)
     if r.status_code >= 400:
@@ -138,17 +147,21 @@ def igapi_get(path: str, **params) -> dict:
     return r.json()
 
 
-def upload_reel(ig_user_id: str, access_token: str, video_url: str, caption: str) -> str:
+def upload_reel(ig_user_id: str, access_token: str, video_url: str,
+                caption: str, cover_url: str | None = None) -> str:
     """Reel 컨테이너 생성 + 상태 폴링 + 게시. 반환: ig_media_id."""
     print(f"  📤 컨테이너 생성 중...")
-    r = igapi_post(
-        f"/{ig_user_id}/media",
-        media_type="REELS",
-        video_url=video_url,
-        caption=caption,
-        share_to_feed="true",
-        access_token=access_token,
-    )
+    params = {
+        "media_type": "REELS",
+        "video_url": video_url,
+        "caption": caption,
+        "share_to_feed": "true",
+        "access_token": access_token,
+    }
+    if cover_url:
+        params["cover_url"] = cover_url
+        print(f"     cover_url: {cover_url}")
+    r = igapi_post(f"/{ig_user_id}/media", **params)
     creation_id = r["id"]
     print(f"     creation_id = {creation_id}")
 
