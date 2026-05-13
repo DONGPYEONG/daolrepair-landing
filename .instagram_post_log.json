@@ -1,17 +1,12 @@
 {
   "posted": [
     {
-      "slug": "2026-05-12-journal-2026-05-12-아이폰-iphone-13-screen+battery-11Ntl7my",
-      "ig_media_id": "18143261710504219",
-      "posted_at": "2026-05-13T16:35:17.506694+09:00",
-      "video_url": "https://xn--2j1bq2k97kxnah86c.com/_reels/2026-05-12-journal-2026-05-12-%EC%95%84%EC%9D%B4%ED%8F%B0-iphone-13-screen%2Bbattery-11Ntl7my.mp4"
+      "slug": "2026-05-12-journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g",
+      "ig_media_id": "18105195905094418",
+      "posted_at": "2026-05-13T16:48:04.111338+09:00",
+      "video_url": "https://xn--2j1bq2k97kxnah86c.com/_reels/2026-05-12-journal-2026-05-12-%EC%95%A0%ED%94%8C%EC%9B%8C%EC%B9%98-apple-watch-se-2%EC%84%B8%EB%8C%80-back-11BNtH7g.mp4"
     }
   ],
-  "failed": [
-    {
-      "slug": "2026-05-12-journal-2026-05-12-아이폰-iphone-13-screen+battery-11Ntl7my",
-      "failed_at": "2026-05-13T16:34:02.402773+09:00",
-      "error": "컨테이너 처리 실패: {'status_code': 'ERROR', 'status': 'Error: Media upload has failed with error code 2207076', 'id': '17935881063223584'}"
-    }
-  ]
+  "failed": [],
+  "reset_at": "2026-05-13T16:40 — 게시 모두 삭제 후 재시작"
 }
