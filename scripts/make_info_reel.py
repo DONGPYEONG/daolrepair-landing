@@ -130,12 +130,27 @@ def make_thumbnail(data: dict, dst: Path) -> Path:
     )
     d.text(((W - bw) // 2, badge_y + pad_y - 4), badge_text, font=bf, fill=WHITE)
 
-    # 메인 후킹 (두 줄, 가운데)
+    # 메인 후킹 (두 줄, 가운데) — 글자 수에 따라 폰트 자동 조정
     hook_y = 760
-    f_hook1 = font("Black", 130)
-    f_hook2 = font("ExtraBold", 100)
-    draw_centered(d, hook_y, data["hook_main"], f_hook1, ORANGE, letter_spacing=2)
-    draw_centered(d, hook_y + 160, data["hook_sub"], f_hook2, WHITE, letter_spacing=1)
+    hook_main = data["hook_main"]
+    hook_sub = data["hook_sub"]
+    # hook_main: 기종 포함되어 길어지는 경우 자동 축소
+    if len(hook_main) <= 7:
+        h1_size = 130
+    elif len(hook_main) <= 9:
+        h1_size = 110
+    else:
+        h1_size = 92
+    if len(hook_sub) <= 9:
+        h2_size = 100
+    elif len(hook_sub) <= 12:
+        h2_size = 84
+    else:
+        h2_size = 72
+    f_hook1 = font("Black", h1_size)
+    f_hook2 = font("ExtraBold", h2_size)
+    draw_centered(d, hook_y, hook_main, f_hook1, ORANGE, letter_spacing=2)
+    draw_centered(d, hook_y + h1_size + 30, hook_sub, f_hook2, WHITE, letter_spacing=1)
 
     # 부제 (제목 + 부제목)
     sub_y = 1180
@@ -181,19 +196,12 @@ def make_slide(slide: dict, dst: Path, page_num: int = 1, total_pages: int = 5,
     f_series = font("SemiBold", 30)
     d.text((50, SAFE_TOP - 3), series_text, font=f_series, fill=(220, 220, 220))
 
-    # 우상단 페이지 번호
-    page_text = f"{page_num:02d} / {total_pages:02d}"
-    f_page = font("Medium", 32)
-    pb = d.textbbox((0, 0), page_text, font=f_page)
-    d.text((W - (pb[2] - pb[0]) - 50, SAFE_TOP - 5), page_text, font=f_page,
-           fill=(220, 220, 220))
-
-    # ── 중앙: 흰색 "칼럼 발췌" 카드 ──
+    # ── 중앙: 흰색 "칼럼 발췌" 카드 (세로 풀스크린 톤) ──
     card_margin = 60
     card_x1 = card_margin
     card_x2 = W - card_margin
-    card_y1 = SAFE_TOP + 110
-    card_y2 = SAFE_BOTTOM - 180
+    card_y1 = SAFE_TOP + 60
+    card_y2 = SAFE_BOTTOM - 30
     card_w = card_x2 - card_x1
     card_h = card_y2 - card_y1
 
@@ -237,12 +245,12 @@ def make_slide(slide: dict, dst: Path, page_num: int = 1, total_pages: int = 5,
 
     # 큰 # 번호 라벨 (블로그 헤딩 같은 느낌)
     num = slide.get("num", "01")
-    f_num = font("Black", 60)
+    f_num = font("Black", 70)
     num_text = f"#{int(num):02d}"
-    d.text((card_x1 + 50, header_y2 + 50), num_text, font=f_num, fill=ORANGE)
+    d.text((card_x1 + 50, header_y2 + 90), num_text, font=f_num, fill=ORANGE)
 
     # 헤드라인 (Pretendard Black, 진한 검정) — 칼럼 H2 톤
-    head_y = header_y2 + 150
+    head_y = header_y2 + 210
     # 본문 폭에 맞춰 폰트 사이즈 결정
     if len(headline) <= 8:
         head_size = 100
@@ -286,9 +294,9 @@ def make_slide(slide: dict, dst: Path, page_num: int = 1, total_pages: int = 5,
                    line, font=f_head, fill=(20, 20, 22))
 
     # 본문 (Pretendard SemiBold, 강조 톤)
-    body_y = head_y + len(head_lines) * line_h + 50
-    f_body = font("SemiBold", 42)
-    body_line_h = 62
+    body_y = head_y + len(head_lines) * line_h + 70
+    f_body = font("SemiBold", 46)
+    body_line_h = 68
     body_lines_count = 0
     for i, line in enumerate(body.split("\n")[:3]):
         d.text((card_x1 + 50, body_y + i * body_line_h),
@@ -298,41 +306,47 @@ def make_slide(slide: dict, dst: Path, page_num: int = 1, total_pages: int = 5,
     # ── 칼럼 발췌 단락 (회색 박스 — "캡처" 느낌) ──
     excerpt = slide.get("excerpt", "")
     if excerpt:
-        ex_y = body_y + body_lines_count * body_line_h + 50
+        ex_y = body_y + body_lines_count * body_line_h + 80
         # 좌측 인용 라인 + 회색 배경
         ex_box_x1 = card_x1 + 50
         ex_box_x2 = card_x2 - 50
-        ex_pad = 28
-        f_ex = font("Regular", 32)
-        ex_line_h = 48
+        ex_pad = 36
+        f_ex = font("Regular", 36)
+        ex_line_h = 56
         # 발췌문 줄바꿈
         ex_lines = _wrap_text(d, excerpt, f_ex, ex_box_x2 - ex_box_x1 - ex_pad * 2 - 24)
-        ex_lines = ex_lines[:4]
+        ex_lines = ex_lines[:5]
         ex_h = ex_pad * 2 + len(ex_lines) * ex_line_h
         # 박스 배경 (살짝 회색)
         d.rounded_rectangle((ex_box_x1, ex_y, ex_box_x2, ex_y + ex_h),
-                            radius=12, fill=(244, 244, 240))
+                            radius=14, fill=(244, 244, 240))
         # 좌측 인용 라인 (주황)
-        d.rectangle((ex_box_x1, ex_y, ex_box_x1 + 6, ex_y + ex_h),
+        d.rectangle((ex_box_x1, ex_y, ex_box_x1 + 7, ex_y + ex_h),
                     fill=ORANGE)
         for i, line in enumerate(ex_lines):
             d.text((ex_box_x1 + ex_pad + 18, ex_y + ex_pad + i * ex_line_h),
                    line, font=f_ex, fill=(90, 90, 95))
 
-    # 카드 하단 — 출처 표시
-    quote_y = card_y2 - 80
+    # 카드 하단 — 출처 표시 + 다올리페어.com 시그니처
+    quote_y = card_y2 - 110
     d.rectangle((card_x1 + 50, quote_y + 4, card_x1 + 58, quote_y + 36),
                 fill=ORANGE)
-    f_quote = font("SemiBold", 26)
+    f_quote = font("SemiBold", 28)
     d.text((card_x1 + 80, quote_y + 4),
            "다올리페어 수리 칼럼에서 발췌",
            font=f_quote, fill=(110, 110, 115))
-
-    # ── 하단 시그니처 (다크 영역) — 홈페이지 도메인 ──
-    d.rectangle((W // 2 - 30, SAFE_BOTTOM - 80, W // 2 + 30, SAFE_BOTTOM - 76),
-                fill=ORANGE)
-    draw_centered(d, SAFE_BOTTOM - 55, "다올리페어.com",
-                  font("Bold", 36), WHITE, letter_spacing=4)
+    # 도메인 라인
+    d.rectangle((card_x1 + 50, card_y2 - 56, card_x2 - 50, card_y2 - 54),
+                fill=(230, 230, 230))
+    f_dom = font("Bold", 32)
+    db = d.textbbox((0, 0), "다올리페어.com", font=f_dom)
+    d.text((card_x1 + 50, card_y2 - 42), "다올리페어.com",
+           font=f_dom, fill=ORANGE)
+    f_tag = font("Medium", 24)
+    tag_text = "수리점 사장이 알려주는 수리점 안 오는 법"
+    tb = d.textbbox((0, 0), tag_text, font=f_tag)
+    d.text((card_x2 - (tb[2] - tb[0]) - 50, card_y2 - 36),
+           tag_text, font=f_tag, fill=(140, 140, 145))
 
     img.save(dst, quality=92)
     return dst

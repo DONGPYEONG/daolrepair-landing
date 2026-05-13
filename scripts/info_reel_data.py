@@ -13,7 +13,8 @@ INFO_REELS = {
     "applewatch-battery-replacement-timing": {
         "series_num": "01",
         "category": "수리 전 진단 체크",
-        "hook_main": "이 신호 보이면",
+        "device": "애플워치",
+        "hook_main": "애플워치 이 신호",
         "hook_sub": "지금 갈아야 해요",
         "title": "배터리 교체 시기",
         "subtitle": "5가지 신호",
@@ -64,7 +65,8 @@ INFO_REELS = {
     "iphone-battery-swollen": {
         "series_num": "02",
         "category": "응급 가이드",
-        "hook_main": "화면 들뜨면",
+        "device": "아이폰",
+        "hook_main": "아이폰 화면 들뜨면",
         "hook_sub": "지금 멈춰요",
         "title": "배터리 부풀음 응급",
         "subtitle": "5가지 행동",
@@ -115,8 +117,9 @@ INFO_REELS = {
     "iphone-back-glass-genuine-vs-compatible": {
         "series_num": "03",
         "category": "수리 결정 가이드",
-        "hook_main": "정품·호환",
-        "hook_sub": "이건 다릅니다",
+        "device": "아이폰",
+        "hook_main": "아이폰 후면유리",
+        "hook_sub": "정품·호환 이건 다릅니다",
         "title": "후면유리 비교",
         "subtitle": "5가지 차이",
         "slides": [
@@ -166,7 +169,8 @@ INFO_REELS = {
     "iphone-water-damage-emergency-response": {
         "series_num": "04",
         "category": "응급 가이드",
-        "hook_main": "침수 직후",
+        "device": "아이폰",
+        "hook_main": "아이폰 침수 직후",
         "hook_sub": "이것만은 하지마",
         "title": "침수 응급 골든타임",
         "subtitle": "24시간 5단계",
