@@ -508,6 +508,58 @@
       }
     }
   </style>
+  <!-- DAOL_MOBILE_READABILITY_v1 -->
+  <style>
+    /* 모바일 가독성 강화 — 본문 + 박스 안 문단·리스트 간격 */
+    @media (max-width: 720px) {
+      .art-body p, article.art-body p,
+      .art-wrap > p, .art-wrap > h2 + p,
+      .art-wrap > ul li, .art-wrap > ol li {
+        line-height: 1.85 !important;
+        font-size: 16px;
+      }
+      .art-wrap > p { margin-bottom: 18px; }
+      .art-wrap > h2 { margin-top: 44px; margin-bottom: 14px; line-height: 1.4; }
+      .art-wrap > h3 { margin-top: 28px; margin-bottom: 10px; line-height: 1.45; }
+
+      /* 정보 박스 안 문단·리스트 — 분리감 강화 */
+      .art-tip p, .art-warn p, .art-good p, .daollipair-box p {
+        line-height: 1.78 !important;
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+      .art-tip p:last-child, .art-warn p:last-child,
+      .art-good p:last-child, .daollipair-box p:last-child { margin-bottom: 0; }
+      .art-tip ul, .art-warn ul, .art-good ul, .daollipair-box ul,
+      .art-tip ol, .art-warn ol, .art-good ol, .daollipair-box ol {
+        margin: 6px 0 10px 0;
+        padding-left: 18px;
+        line-height: 1.78;
+      }
+      .art-tip li, .art-warn li, .art-good li, .daollipair-box li {
+        margin-bottom: 4px;
+        font-size: 15px;
+      }
+
+      /* 표 — 가로 스크롤 가능하게 */
+      .art-body table, .compare-table {
+        display: block;
+        overflow-x: auto;
+        white-space: normal;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* CTA 안 강조 텍스트 분리감 */
+      .art-cta h3 { line-height: 1.5; }
+      .art-cta p { line-height: 1.7; }
+    }
+
+    /* 본문 강조 — 굵기 차이 명확히 */
+    .art-body strong, .art-wrap strong, article strong {
+      font-weight: 800;
+    }
+  </style>
+  <!-- /DAOL_MOBILE_READABILITY_v1 -->
 </head>
 <body>
 
