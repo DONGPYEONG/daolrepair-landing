@@ -161,6 +161,9 @@ def upload_reel(ig_user_id: str, access_token: str, video_url: str,
     if cover_url:
         params["cover_url"] = cover_url
         print(f"     cover_url: {cover_url}")
+    # Fallback: cover_url 무시될 경우 영상의 4초 시점 프레임으로
+    # (인트로 1.1s + 크로스페이드 0.4s 끝나고 HOOK 카피 보이는 순간)
+    params["thumb_offset"] = "4000"
     r = igapi_post(f"/{ig_user_id}/media", **params)
     creation_id = r["id"]
     print(f"     creation_id = {creation_id}")

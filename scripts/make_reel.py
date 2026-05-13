@@ -945,14 +945,17 @@ def build_reel(journal_path: Path, output_dir: Path) -> tuple[Path, Path]:
         make_step_image(m, s, dst)
         cap_imgs.append(dst)
 
-    # 2b) 인스타 커버 이미지 (썸네일) — BEFORE 사진 + 후킹 카피 합성
-    # IG Reel 썸네일이 인트로 검정 화면으로 가지 않게, 후킹 프레임을 강제 지정.
+    # 2b) 인스타 커버 이미지 (썸네일) — progress1(분해 사진) + 후킹 카피
+    # 사람들이 스크롤 멈추도록 임팩트 강한 분해 장면 + 큰 한 줄 카피.
+    # BEFORE는 단순 깨진 화면일 수 있어 분해된 내부가 더 시선 끌림.
     base = f"{slug_meta.get('date', date.today().isoformat())}-{journal_path.stem}"
     cover_jpg = output_dir / f"{base}.jpg"
-    bg = Image.open(prepared["before"]).convert("RGBA")
+    # 분해 사진 + 후킹 합성 (오버레이는 hook_img 그대로 사용)
+    cover_bg_src = prepared.get("progress1") or prepared["before"]
+    bg = Image.open(cover_bg_src).convert("RGBA")
     overlay = Image.open(hook_img_path).convert("RGBA")
     Image.alpha_composite(bg, overlay).convert("RGB").save(cover_jpg, quality=92)
-    print(f"🖼  커버: {cover_jpg.relative_to(ROOT)}")
+    print(f"🖼  커버 (분해 사진+후킹): {cover_jpg.relative_to(ROOT)}")
 
     # 3) 인트로(브랜드 1초) + 아웃트로
     day_str = slug_meta.get("date", date.today().isoformat())
