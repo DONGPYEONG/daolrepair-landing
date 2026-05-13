@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>다올리페어 Reel 게시 허브</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    background: #f5f5f7; color: #1d1d1f; padding: 16px;
+    padding-bottom: env(safe-area-inset-bottom);
+    -webkit-font-smoothing: antialiased;
+  }
+  header {
+    text-align: center; padding: 12px 0 20px;
+  }
+  h1 {
+    font-size: 22px; font-weight: 800; color: #E8732A; letter-spacing: -0.3px;
+  }
+  .stats {
+    font-size: 13px; color: #666; margin-top: 6px;
+  }
+  .guide {
+    background: #fff8f3; border: 1px solid #f5d4b3; border-radius: 12px;
+    padding: 14px 16px; margin-bottom: 20px; font-size: 13px; line-height: 1.7;
+  }
+  .guide strong { color: #E8732A; }
+  .grid {
+    display: grid; gap: 16px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 700px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  .card {
+    background: #fff; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+  }
+  .status {
+    position: absolute; top: 10px; right: 10px; z-index: 2;
+    padding: 4px 10px; border-radius: 50px; font-size: 11px; font-weight: 700;
+  }
+  .status.posted { background: rgba(52,199,89,0.12); color: #1a7a3a; }
+  .status.pending { background: rgba(232,115,42,0.12); color: #C55E1A; }
+  .cover-link {
+    display: block; position: relative;
+    aspect-ratio: 9/16; background: #1a1a1a; overflow: hidden;
+    max-height: 480px;
+  }
+  .cover-link img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .no-cover {
+    height: 100%; display: flex; align-items: center; justify-content: center;
+    color: #888; font-size: 14px;
+  }
+  .play-icon {
+    position: absolute; bottom: 12px; right: 12px;
+    background: rgba(0,0,0,0.5); color: #fff; width: 36px; height: 36px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(8px);
+  }
+  .info { padding: 14px 16px; }
+  .title {
+    font-size: 13px; font-weight: 600; color: #444;
+    margin-bottom: 12px; line-height: 1.4;
+    overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
+    -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  }
+  .actions {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  }
+  .btn {
+    padding: 12px 14px; border-radius: 10px; border: 1.5px solid #e5e5e7;
+    background: #fff; color: #1d1d1f; font-size: 14px; font-weight: 700;
+    cursor: pointer; text-align: center; text-decoration: none;
+    font-family: inherit; transition: background 0.15s, transform 0.1s;
+  }
+  .btn:active { transform: scale(0.96); }
+  .btn.primary { background: #E8732A; color: #fff; border-color: #E8732A; }
+  .btn.primary:active { background: #C55E1A; }
+  .btn.copied { background: #34c759; color: #fff; border-color: #34c759; }
+  details.caption-preview {
+    margin-top: 14px; font-size: 12px; color: #666;
+  }
+  details summary { cursor: pointer; user-select: none; font-weight: 600; }
+  details pre {
+    white-space: pre-wrap; word-break: keep-all;
+    margin-top: 10px; padding: 12px; background: #fafafa; border-radius: 8px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .toast {
+    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+    background: #1d1d1f; color: #fff; padding: 12px 20px; border-radius: 50px;
+    font-size: 14px; font-weight: 600; opacity: 0; pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s; z-index: 100;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(-10px); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📸 Reel 게시 허브</h1>
+  <div class="stats">전체 9개 · 게시 완료 1개 · 대기 8개</div>
+</header>
+
+<section class="guide">
+  <strong>📲 인스타 게시 방법</strong><br>
+  ① "<strong>📥 영상 저장</strong>" 길게 눌러 "동영상 저장" → 사진 앱에 다운로드<br>
+  ② "<strong>📋 캡션 복사</strong>" 탭 → 캡션·해시태그 클립보드 복사<br>
+  ③ 인스타 앱 → + → Reel → 갤러리에서 영상 선택<br>
+  ④ 🎵 음악 → 인기/Trending 탭 → 트렌딩 음원 추가<br>
+  ⑤ 캡션란에 길게 눌러 "붙여넣기" → 게시
+</section>
+
+<div class="grid">
+
+<article class="card" data-slug="2026-05-12-journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g">
+  <span class="status pending">대기</span>
+  <a href="/_reels/2026-05-12-journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.mp4" class="cover-link" download="2026-05-12-journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.mp4">
+    <img src="/_reels/2026-05-12-journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.jpg" alt="" loading="lazy">
+    <span class="play-icon">▶︎</span>
+  </a>
+  <div class="info">
+    <div class="title">2026 05 12 2026 05 12 애플워치 apple watch se 2세대 back 11BNtH7g</div>
+    <div class="actions">
+      <a href="/_reels/2026-05-12-journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.mp4" download="2026-05-12-journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.mp4" class="btn primary">
+        📥 영상 저장
+      </a>
+      <button class="btn" onclick="copyCaption(this)" data-caption="🔧 다올리페어 오늘의 수리
+
+애플워치 Apple Watch SE (2세대) 떨어뜨림으로 목동점 방문하신 20대 여성 손님 사례
+
+· 모델: 애플워치 apple watch se 2세대
+· 작업: 후면 유리 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#applewatchse2세대 #후면유리 #백글라스 #애플워치 #applewatch #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원">
+        📋 캡션 복사
+      </button>
+    </div>
+    <details class="caption-preview">
+      <summary>캡션 미리보기</summary>
+      <pre>🔧 다올리페어 오늘의 수리
+
+애플워치 Apple Watch SE (2세대) 떨어뜨림으로 목동점 방문하신 20대 여성 손님 사례
+
+· 모델: 애플워치 apple watch se 2세대
+· 작업: 후면 유리 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#applewatchse2세대 #후면유리 #백글라스 #애플워치 #applewatch #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원</pre>
+    </details>
+  </div>
+</article>
+<article class="card" data-slug="2026-04-29-journal-2026-04-29-애플워치-se-40mm-battery-1c74rh7i">
+  <span class="status pending">대기</span>
+  <a href="/_reels/2026-04-29-journal-2026-04-29-애플워치-se-40mm-battery-1c74rh7i.mp4" class="cover-link" download="2026-04-29-journal-2026-04-29-애플워치-se-40mm-battery-1c74rh7i.mp4">
+    <img src="/_reels/2026-04-29-journal-2026-04-29-애플워치-se-40mm-battery-1c74rh7i.jpg" alt="" loading="lazy">
+    <span class="play-icon">▶︎</span>
+  </a>
+  <div class="info">
+    <div class="title">2026 04 29 2026 04 29 애플워치 se 40mm battery 1c74rh7i</div>
+    <div class="actions">
+      <a href="/_reels/2026-04-29-journal-2026-04-29-애플워치-se-40mm-battery-1c74rh7i.mp4" download="2026-04-29-journal-2026-04-29-애플워치-se-40mm-battery-1c74rh7i.mp4" class="btn primary">
+        📥 영상 저장
+      </a>
+      <button class="btn" onclick="copyCaption(this)" data-caption="🔧 다올리페어 오늘의 수리
+
+애플워치 SE 40mm 배터리 80% 미만, 지금 갈아야 하나 더 써도 되나? — 목동점 진단 후기
+
+· 모델: 애플워치 se 40mm
+· 작업: 배터리 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#se40mm #배터리교체 #아이폰배터리 #애플워치 #applewatch #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원">
+        📋 캡션 복사
+      </button>
+    </div>
+    <details class="caption-preview">
+      <summary>캡션 미리보기</summary>
+      <pre>🔧 다올리페어 오늘의 수리
+
+애플워치 SE 40mm 배터리 80% 미만, 지금 갈아야 하나 더 써도 되나? — 목동점 진단 후기
+
+· 모델: 애플워치 se 40mm
+· 작업: 배터리 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#se40mm #배터리교체 #아이폰배터리 #애플워치 #applewatch #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원</pre>
+    </details>
+  </div>
+</article>
+<article class="card" data-slug="2026-04-29-journal-2026-04-29-아이폰-12-back-1NVppdC5">
+  <span class="status pending">대기</span>
+  <a href="/_reels/2026-04-29-journal-2026-04-29-아이폰-12-back-1NVppdC5.mp4" class="cover-link" download="2026-04-29-journal-2026-04-29-아이폰-12-back-1NVppdC5.mp4">
+    <img src="/_reels/2026-04-29-journal-2026-04-29-아이폰-12-back-1NVppdC5.jpg" alt="" loading="lazy">
+    <span class="play-icon">▶︎</span>
+  </a>
+  <div class="info">
+    <div class="title">2026 04 29 2026 04 29 아이폰 12 back 1NVppdC5</div>
+    <div class="actions">
+      <a href="/_reels/2026-04-29-journal-2026-04-29-아이폰-12-back-1NVppdC5.mp4" download="2026-04-29-journal-2026-04-29-아이폰-12-back-1NVppdC5.mp4" class="btn primary">
+        📥 영상 저장
+      </a>
+      <button class="btn" onclick="copyCaption(this)" data-caption="🔧 다올리페어 오늘의 수리
+
+아이폰 12 뒷면 깨진 채로 출근하던 분의 다올리페어 신림점 당일 해결 사례
+
+· 모델: 아이폰 12
+· 작업: 후면 유리 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#12 #후면유리 #백글라스 #아이폰 #iphone #iphonerepair #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원">
+        📋 캡션 복사
+      </button>
+    </div>
+    <details class="caption-preview">
+      <summary>캡션 미리보기</summary>
+      <pre>🔧 다올리페어 오늘의 수리
+
+아이폰 12 뒷면 깨진 채로 출근하던 분의 다올리페어 신림점 당일 해결 사례
+
+· 모델: 아이폰 12
+· 작업: 후면 유리 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#12 #후면유리 #백글라스 #아이폰 #iphone #iphonerepair #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원</pre>
+    </details>
+  </div>
+</article>
+<article class="card" data-slug="2026-04-27-journal-2026-04-27-아이폰-15프로-battery-1txy7HZ2">
+  <span class="status pending">대기</span>
+  <a href="/_reels/2026-04-27-journal-2026-04-27-아이폰-15프로-battery-1txy7HZ2.mp4" class="cover-link" download="2026-04-27-journal-2026-04-27-아이폰-15프로-battery-1txy7HZ2.mp4">
+    <img src="/_reels/2026-04-27-journal-2026-04-27-아이폰-15프로-battery-1txy7HZ2.jpg" alt="" loading="lazy">
+    <span class="play-icon">▶︎</span>
+  </a>
+  <div class="info">
+    <div class="title">2026 04 27 2026 04 27 아이폰 15프로 battery 1txy7HZ2</div>
+    <div class="actions">
+      <a href="/_reels/2026-04-27-journal-2026-04-27-아이폰-15프로-battery-1txy7HZ2.mp4" download="2026-04-27-journal-2026-04-27-아이폰-15프로-battery-1txy7HZ2.mp4" class="btn primary">
+        📥 영상 저장
+      </a>
+      <button class="btn" onclick="copyCaption(this)" data-caption="🔧 다올리페어 오늘의 수리
+
+아이폰 15프로 배터리 교체 — 옵션마다 결과·시간 어떻게 다른가? 다올리페어 목동점 실제 비교
+
+· 모델: 아이폰 15프로
+· 작업: 배터리 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#15프로 #배터리교체 #아이폰배터리 #아이폰 #iphone #iphonerepair #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원">
+        📋 캡션 복사
+      </button>
+    </div>
+    <details class="caption-preview">
+      <summary>캡션 미리보기</summary>
+      <pre>🔧 다올리페어 오늘의 수리
+
+아이폰 15프로 배터리 교체 — 옵션마다 결과·시간 어떻게 다른가? 다올리페어 목동점 실제 비교
+
+· 모델: 아이폰 15프로
+· 작업: 배터리 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#15프로 #배터리교체 #아이폰배터리 #아이폰 #iphone #iphonerepair #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원</pre>
+    </details>
+  </div>
+</article>
+<article class="card" data-slug="2026-04-28-journal-2026-04-28-애플워치-se2-40mm-battery-1FOnkpJ">
+  <span class="status pending">대기</span>
+  <a href="/_reels/2026-04-28-journal-2026-04-28-애플워치-se2-40mm-battery-1FOnkpJ.mp4" class="cover-link" download="2026-04-28-journal-2026-04-28-애플워치-se2-40mm-battery-1FOnkpJ.mp4">
+    <img src="/_reels/2026-04-28-journal-2026-04-28-애플워치-se2-40mm-battery-1FOnkpJ.jpg" alt="" loading="lazy">
+    <span class="play-icon">▶︎</span>
+  </a>
+  <div class="info">
+    <div class="title">2026 04 28 2026 04 28 애플워치 se2 40mm battery 1FOnkpJ</div>
+    <div class="actions">
+      <a href="/_reels/2026-04-28-journal-2026-04-28-애플워치-se2-40mm-battery-1FOnkpJ.mp4" download="2026-04-28-journal-2026-04-28-애플워치-se2-40mm-battery-1FOnkpJ.mp4" class="btn primary">
+        📥 영상 저장
+      </a>
+      <button class="btn" onclick="copyCaption(this)" data-caption="🔧 다올리페어 오늘의 수리
+
+애플워치 SE2 40mm 배터리 교체 — 메시지 없이 100% 표시되는 옵션 선택한 목동점 케이스
+
+· 모델: 애플워치 se2 40mm
+· 작업: 배터리 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#se240mm #배터리교체 #아이폰배터리 #애플워치 #applewatch #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원">
+        📋 캡션 복사
+      </button>
+    </div>
+    <details class="caption-preview">
+      <summary>캡션 미리보기</summary>
+      <pre>🔧 다올리페어 오늘의 수리
+
+애플워치 SE2 40mm 배터리 교체 — 메시지 없이 100% 표시되는 옵션 선택한 목동점 케이스
+
+· 모델: 애플워치 se2 40mm
+· 작업: 배터리 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#se240mm #배터리교체 #아이폰배터리 #애플워치 #applewatch #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원</pre>
+    </details>
+  </div>
+</article>
+<article class="card" data-slug="2026-05-06-journal-2026-05-06-아이폰-16-screen-14mAIBCv">
+  <span class="status pending">대기</span>
+  <a href="/_reels/2026-05-06-journal-2026-05-06-아이폰-16-screen-14mAIBCv.mp4" class="cover-link" download="2026-05-06-journal-2026-05-06-아이폰-16-screen-14mAIBCv.mp4">
+    <img src="/_reels/2026-05-06-journal-2026-05-06-아이폰-16-screen-14mAIBCv.jpg" alt="" loading="lazy">
+    <span class="play-icon">▶︎</span>
+  </a>
+  <div class="info">
+    <div class="title">2026 05 06 2026 05 06 아이폰 16 screen 14mAIBCv</div>
+    <div class="actions">
+      <a href="/_reels/2026-05-06-journal-2026-05-06-아이폰-16-screen-14mAIBCv.mp4" download="2026-05-06-journal-2026-05-06-아이폰-16-screen-14mAIBCv.mp4" class="btn primary">
+        📥 영상 저장
+      </a>
+      <button class="btn" onclick="copyCaption(this)" data-caption="🔧 다올리페어 오늘의 수리
+
+아이폰 16 액정 수리비 차이, 정말 공식센터의 절반? — 다올리페어 신림점 견적 비교
+
+· 모델: 아이폰 16
+· 작업: 액정 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#16 #액정교체 #아이폰액정 #아이폰 #iphone #iphonerepair #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원">
+        📋 캡션 복사
+      </button>
+    </div>
+    <details class="caption-preview">
+      <summary>캡션 미리보기</summary>
+      <pre>🔧 다올리페어 오늘의 수리
+
+아이폰 16 액정 수리비 차이, 정말 공식센터의 절반? — 다올리페어 신림점 견적 비교
+
+· 모델: 아이폰 16
+· 작업: 액정 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#16 #액정교체 #아이폰액정 #아이폰 #iphone #iphonerepair #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원</pre>
+    </details>
+  </div>
+</article>
+<article class="card" data-slug="2026-04-17-journal-2026-04-17-에르메스-5세대-44mm-screen+battery-1ybYHdi_">
+  <span class="status pending">대기</span>
+  <a href="/_reels/2026-04-17-journal-2026-04-17-에르메스-5세대-44mm-screen+battery-1ybYHdi_.mp4" class="cover-link" download="2026-04-17-journal-2026-04-17-에르메스-5세대-44mm-screen+battery-1ybYHdi_.mp4">
+    <img src="/_reels/2026-04-17-journal-2026-04-17-에르메스-5세대-44mm-screen+battery-1ybYHdi_.jpg" alt="" loading="lazy">
+    <span class="play-icon">▶︎</span>
+  </a>
+  <div class="info">
+    <div class="title">2026 04 17 2026 04 17 에르메스 5세대 44mm screen+battery 1ybYHdi_</div>
+    <div class="actions">
+      <a href="/_reels/2026-04-17-journal-2026-04-17-에르메스-5세대-44mm-screen+battery-1ybYHdi_.mp4" download="2026-04-17-journal-2026-04-17-에르메스-5세대-44mm-screen+battery-1ybYHdi_.mp4" class="btn primary">
+        📥 영상 저장
+      </a>
+      <button class="btn" onclick="copyCaption(this)" data-caption="🔧 다올리페어 오늘의 수리
+
+에르메스 5세대 44mm 화면 깨지고 배터리도 노화 — 가산점에서 동시 수리로 시간·비용 모두 절약
+
+· 모델: 에르메스 5세대 44mm
+· 작업: 액정 교체 + 배터리 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#5세대44mm #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원">
+        📋 캡션 복사
+      </button>
+    </div>
+    <details class="caption-preview">
+      <summary>캡션 미리보기</summary>
+      <pre>🔧 다올리페어 오늘의 수리
+
+에르메스 5세대 44mm 화면 깨지고 배터리도 노화 — 가산점에서 동시 수리로 시간·비용 모두 절약
+
+· 모델: 에르메스 5세대 44mm
+· 작업: 액정 교체 + 배터리 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#5세대44mm #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원</pre>
+    </details>
+  </div>
+</article>
+<article class="card" data-slug="2026-05-09-journal-2026-05-09-아이폰-iphone-11-screen-1z7zT5JR">
+  <span class="status pending">대기</span>
+  <a href="/_reels/2026-05-09-journal-2026-05-09-아이폰-iphone-11-screen-1z7zT5JR.mp4" class="cover-link" download="2026-05-09-journal-2026-05-09-아이폰-iphone-11-screen-1z7zT5JR.mp4">
+    <img src="/_reels/2026-05-09-journal-2026-05-09-아이폰-iphone-11-screen-1z7zT5JR.jpg" alt="" loading="lazy">
+    <span class="play-icon">▶︎</span>
+  </a>
+  <div class="info">
+    <div class="title">2026 05 09 2026 05 09 아이폰 iphone 11 screen 1z7zT5JR</div>
+    <div class="actions">
+      <a href="/_reels/2026-05-09-journal-2026-05-09-아이폰-iphone-11-screen-1z7zT5JR.mp4" download="2026-05-09-journal-2026-05-09-아이폰-iphone-11-screen-1z7zT5JR.mp4" class="btn primary">
+        📥 영상 저장
+      </a>
+      <button class="btn" onclick="copyCaption(this)" data-caption="🔧 다올리페어 오늘의 수리
+
+아이폰 iPhone 11 정품 액정 교체 — 20대 남성 손님이 신림점 방문한 사례
+
+· 모델: 아이폰 iphone 11
+· 작업: 액정 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#iphone11 #액정교체 #아이폰액정 #아이폰 #iphone #iphonerepair #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원">
+        📋 캡션 복사
+      </button>
+    </div>
+    <details class="caption-preview">
+      <summary>캡션 미리보기</summary>
+      <pre>🔧 다올리페어 오늘의 수리
+
+아이폰 iPhone 11 정품 액정 교체 — 20대 남성 손님이 신림점 방문한 사례
+
+· 모델: 아이폰 iphone 11
+· 작업: 액정 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#iphone11 #액정교체 #아이폰액정 #아이폰 #iphone #iphonerepair #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원</pre>
+    </details>
+  </div>
+</article>
+<article class="card" data-slug="2026-05-04-journal-2026-05-04-아이폰-15프로-battery-1P0o4qDL">
+  <span class="status posted">✓ 게시 완료</span>
+  <a href="/_reels/2026-05-04-journal-2026-05-04-아이폰-15프로-battery-1P0o4qDL.mp4" class="cover-link" download="2026-05-04-journal-2026-05-04-아이폰-15프로-battery-1P0o4qDL.mp4">
+    <img src="/_reels/2026-05-04-journal-2026-05-04-아이폰-15프로-battery-1P0o4qDL.jpg" alt="" loading="lazy">
+    <span class="play-icon">▶︎</span>
+  </a>
+  <div class="info">
+    <div class="title">2026 05 04 2026 05 04 아이폰 15프로 battery 1P0o4qDL</div>
+    <div class="actions">
+      <a href="/_reels/2026-05-04-journal-2026-05-04-아이폰-15프로-battery-1P0o4qDL.mp4" download="2026-05-04-journal-2026-05-04-아이폰-15프로-battery-1P0o4qDL.mp4" class="btn primary">
+        📥 영상 저장
+      </a>
+      <button class="btn" onclick="copyCaption(this)" data-caption="🔧 다올리페어 오늘의 수리
+
+아이폰 15프로 갑자기 꺼지는 증상, 점심 때 배터리 교체 끝낸 목동점 케이스
+
+· 모델: 아이폰 15프로
+· 작업: 배터리 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#15프로 #배터리교체 #아이폰배터리 #아이폰 #iphone #iphonerepair #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원">
+        📋 캡션 복사
+      </button>
+    </div>
+    <details class="caption-preview">
+      <summary>캡션 미리보기</summary>
+      <pre>🔧 다올리페어 오늘의 수리
+
+아이폰 15프로 갑자기 꺼지는 증상, 점심 때 배터리 교체 끝낸 목동점 케이스
+
+· 모델: 아이폰 15프로
+· 작업: 배터리 교체
+· 보증: 90일 · 수리 실패 0원
+· 진단: 무료
+
+✨ 가산·신림·목동 직영 / 전국 택배 가능
+📞 카톡 채널 &quot;다올리페어&quot; 또는 무료견적 폼
+
+— 다올리페어 (대한민국 1호 디바이스 예방 마스터)
+
+#15프로 #배터리교체 #아이폰배터리 #아이폰 #iphone #iphonerepair #다올리페어 #아이폰수리 #아이패드수리 #애플워치수리 #가산아이폰수리 #신림아이폰수리 #목동아이폰수리 #사설수리 #정품수리 #당일수리 #수리실패0원</pre>
+    </details>
+  </div>
+</article>
+</div>
+
+<div class="toast" id="toast">캡션 복사됨 ✓</div>
+
+<script>
+function copyCaption(btn) {
+  const text = btn.getAttribute('data-caption');
+  // iOS Safari fallback — execCommand
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.setAttribute('readonly', '');
+  ta.style.position = 'absolute';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  ta.setSelectionRange(0, 99999);
+  let ok = false;
+  try { ok = document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+
+  if (!ok && navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => showToast('캡션 복사됨 ✓'));
+    return;
+  }
+  if (ok) showToast('캡션 복사됨 ✓');
+  else showToast('복사 실패 — 미리보기에서 수동 복사', false);
+
+  btn.classList.add('copied');
+  btn.textContent = '✓ 복사됨';
+  setTimeout(() => {
+    btn.classList.remove('copied');
+    btn.textContent = '📋 캡션 복사';
+  }, 2000);
+}
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1800);
+}
+</script>
+
+</body>
+</html>

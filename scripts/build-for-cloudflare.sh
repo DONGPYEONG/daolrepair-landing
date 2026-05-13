@@ -77,6 +77,8 @@ if [ -d "output/reels" ]; then
   if [ "$REEL_COUNT" -gt 0 ]; then
     echo "📸 Reel 영상 $REEL_COUNT개를 dist/_reels/로 호스팅"
   fi
+  # 모바일 다운로드 허브 페이지
+  python3 "$(dirname "$0")/gen_reel_hub.py" 2>/dev/null || true
 fi
 
 COUNT=$(find dist -type f | wc -l | tr -d ' ')
