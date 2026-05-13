@@ -2,6 +2,22 @@
 # Cloudflare 빌드용 — .git, secrets, dev 스크립트 등 제외하고 dist/ 생성
 set -e
 
+# ── 🛡 디테일 검증 (빌드 직전 자동) ──
+# data/facts.json 룰 위반 검사. 기본 = warning만 (빌드 통과), STRICT_VALIDATE=1 = error 시 빌드 차단.
+if [ -z "$SKIP_VALIDATE" ]; then
+  echo "🔍 디테일 검증 중..."
+  VALIDATE_ARGS="--quick"
+  if [ -z "$STRICT_VALIDATE" ]; then
+    VALIDATE_ARGS="$VALIDATE_ARGS --warn-only"
+  fi
+  if ! python3 "$(dirname "$0")/validate.py" $VALIDATE_ARGS --audit; then
+    echo ""
+    echo "❌ 위 위반 정정 후 다시 빌드하세요."
+    echo "   (긴급 우회: SKIP_VALIDATE=1 bash scripts/build-for-cloudflare.sh)"
+    exit 1
+  fi
+fi
+
 echo "📦 dist/ 폴더 생성 중..."
 rm -rf dist
 mkdir -p dist

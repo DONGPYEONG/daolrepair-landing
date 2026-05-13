@@ -1,0 +1,543 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "last_updated": "2026-05-13",
+    "description": "다올리페어 사실·표현·PII 룰 단일 진실 소스. 모든 칼럼·일지·sub 문구는 이 파일과 일치해야 함. 빌드 직전 scripts/validate.py 가 검사.",
+    "philosophy": "디테일이 핵심. 클레임으로 이어지는 잘못된 표현·가격·약속을 빌드 단계에서 차단."
+  },
+  "pii": {
+    "regex_patterns": [
+      "\\b01[0-9][\\s\\-]?[0-9]{3,4}[\\s\\-]?[0-9]{4}\\b",
+      "\\b\\d{10,13}\\b"
+    ],
+    "name_safe_keywords": [
+      "프로",
+      "맥스",
+      "미니",
+      "플러스",
+      "울트라",
+      "에어",
+      "에르메스",
+      "아이폰",
+      "애플",
+      "워치",
+      "패드",
+      "북",
+      "펜슬",
+      "Watch",
+      "iPhone",
+      "iPad",
+      "MacBook",
+      "AirPods",
+      "Pencil",
+      "Pro",
+      "Plus",
+      "Mini",
+      "Air",
+      "Ultra",
+      "Max",
+      "SE",
+      "세대",
+      "mm",
+      "인치",
+      "GB",
+      "TB"
+    ],
+    "_comment": "이 키워드를 포함하지 않는 한글 2~4자 단독 토큰은 이름으로 간주해 제거. PII 누출 차단의 마지막 방어선."
+  },
+  "forbidden_phrases": {
+    "absolute": [
+      {
+        "phrase": "새 폰 수준",
+        "reason": "새 폰 수준 약속 금지 — 단독 수리는 새 폰 내구성 보장 어려움",
+        "severity": "error"
+      },
+      {
+        "phrase": "시세 보존",
+        "reason": "수리 후 시세 보존 약속 금지 — 클레임 위험",
+        "severity": "error"
+      },
+      {
+        "phrase": "100% 보장",
+        "reason": "절대 보장 표현 금지",
+        "severity": "error"
+      },
+      {
+        "phrase": "영구 보증",
+        "reason": "영구 보증 약속 금지 (90일 무상이 표준)",
+        "severity": "error"
+      },
+      {
+        "phrase": "완벽 복원",
+        "reason": "완벽 표현 금지 — 솔직한 안내가 다올리페어 톤",
+        "severity": "error"
+      },
+      {
+        "phrase": "방수 보장",
+        "reason": "방수 보장 X — 패킹 재부착이지만 IP 등급 그대로 보장 X",
+        "severity": "error"
+      },
+      {
+        "phrase": "IP 등급 그대로",
+        "reason": "출고 시 IP 등급 보장 X",
+        "severity": "error"
+      }
+    ],
+    "context_specific": [
+      {
+        "applies_to_pattern": "iphone|아이폰",
+        "applies_to_negative": "watch|애플워치|에르메스|ipad|아이패드",
+        "forbidden": [
+          "배터리 확인 안 됨"
+        ],
+        "reason": "배터리 \"확인 안 됨\" 표현 금지 (CLAUDE 메모리)"
+      }
+    ]
+  },
+  "device_facts": {
+    "iphone": {
+      "back_method": "정밀 분리 (레이저는 일부 케이스만)",
+      "back_method_wrong": [
+        "반드시 레이저",
+        "레이저 작업으로",
+        "100% 레이저"
+      ],
+      "back_warranty": "1년 내 재파손 50% 할인 (다올리페어 별도 정책)",
+      "screen_options": [
+        "정품 액정",
+        "DD(OEM) 액정"
+      ],
+      "screen_options_truetone": "정품·DD 모두 트루톤 정상",
+      "battery_options": [
+        "셀 교체",
+        "정품 인증",
+        "일반 호환"
+      ],
+      "battery_message_rules": "정품 인증·셀 교체는 메시지 X, 일반 호환은 뜸",
+      "charge_cleaning_ratio": {
+        "value": "약 20~30%",
+        "wrong_values": [
+          "50%",
+          "60%",
+          "70%",
+          "50~60%",
+          "60~70%",
+          "70% 이상",
+          "약 60%",
+          "약 70%"
+        ],
+        "context": "매장 도착 고객은 이미 자가 시도 후 방문이라 단자 교체 필요한 경우가 더 많음"
+      }
+    },
+    "watch": {
+      "back_parts": "100% 추출 정품",
+      "back_parts_wrong": [
+        "정품급 OEM",
+        "OEM 부품",
+        "호환 부품"
+      ],
+      "back_bond_hours": {
+        "value": 6,
+        "display": "최소 6시간 (보통 다음 날 픽업)",
+        "wrong_values": [
+          "1시간",
+          "30분",
+          "약 1일",
+          "당일 픽업"
+        ]
+      },
+      "screen_options": "시리즈·소재(알루미늄/스테인리스/에르메스)별 부품 매칭",
+      "battery_repairing": false,
+      "battery_repairing_wrong": [
+        "재페어링",
+        "페어링 다시"
+      ],
+      "non_genuine_message": "어떤 부품이든 메시지 X (워치는 부품 시리얼 매핑 없음)",
+      "warranty": "90일 무상 (아이폰 후면 1년 50% 할인 정책은 워치엔 적용 X)"
+    },
+    "ipad": {
+      "screen_parts": "추출 정품 / 재생 정품만 사용",
+      "screen_parts_wrong": [
+        "fog 액정",
+        "가액정",
+        "단순 유리"
+      ],
+      "screen_structures": {
+        "separable": {
+          "models": [
+            "mini 1~5",
+            "iPad 2~9세대",
+            "iPad Air 1·2"
+          ],
+          "note": "디지타이저(유리) + LCD 분리 → 유리만 깨졌으면 디지타이저만 교체 (저렴)"
+        },
+        "laminated": {
+          "models": [
+            "iPad Pro 5·6세대",
+            "iPad Air 4·5·6",
+            "Pro 3·4세대 일부"
+          ],
+          "note": "일체형 라미 → 디스플레이 모듈 통째 교체만"
+        }
+      },
+      "screen_part_supply_days": "1~2일 (주말 시 2~3일)",
+      "screen_part_supply_wrong": [
+        "당일 픽업",
+        "30분",
+        "당일 30~60분"
+      ],
+      "non_repair_models": [
+        {
+          "model": "iPad Pro M4 OLED 11\"",
+          "reason": "액정 부품가 100만원+"
+        },
+        {
+          "model": "iPad Pro M4 OLED 13\"",
+          "reason": "액정 부품가 100만원+"
+        },
+        {
+          "model": "iPad mini 6 액정",
+          "reason": "단가 미정/수리 안 함"
+        },
+        {
+          "model": "iPad mini 7 액정",
+          "reason": "단가 미정/수리 안 함"
+        }
+      ],
+      "charge_cleaning": {
+        "ratio": "매장 도착 시 청소만으로 해결되는 경우 드뭅니다 (대부분 단자 교체 필요)",
+        "wrong_values": [
+          "50%",
+          "60%",
+          "70%",
+          "50~60%",
+          "약 50~60%"
+        ],
+        "context": "이미 자가 시도 후 매장 방문 → 단자 교체 위주"
+      },
+      "non_genuine_message": "사설 수리 후에도 메시지 X (시리얼 매핑 없음)",
+      "warranty": "90일 무상"
+    }
+  },
+  "battery_baseline": {
+    "replacement_threshold": "최대 용량 80% 미만",
+    "wrong_values": [
+      "75% 미만",
+      "85% 미만",
+      "70% 미만"
+    ]
+  },
+  "applecare_plus": {
+    "screen": "4.9만원",
+    "other": "12.9만원"
+  },
+  "water_damage_pattern": {
+    "real_pattern": "대부분 며칠 후 발열·전원·화면 증상으로 가져옴",
+    "wrong_pattern": [
+      "방금 빠뜨림이 대부분",
+      "즉시 방문이 일반"
+    ],
+    "reason": "매장 실제 패턴은 지연 증상형 (CLAUDE 메모리)"
+  },
+  "branches": [
+    "가산점",
+    "신림점",
+    "목동점"
+  ],
+  "domain": {
+    "kr": "다올리페어.com",
+    "punycode": "xn--2j1bq2k97kxnah86c.com"
+  },
+  "required_in_context": [
+    {
+      "id": "watch_back_must_mention_extracted",
+      "applies_to_glob": "articles/journal-*애플워치*back*.html",
+      "must_contain_any": [
+        "추출 정품"
+      ],
+      "must_not_contain": [
+        "정품급 OEM"
+      ],
+      "reason": "워치 후면 일지는 100% 추출 정품 명시 필수"
+    },
+    {
+      "id": "ipad_screen_must_mention_genuine",
+      "applies_to_glob": "articles/journal-*아이패드*screen*.html",
+      "must_contain_any": [
+        "추출 정품",
+        "재생 정품"
+      ],
+      "must_not_contain": [
+        "fog 액정 사용",
+        "fog 액정으로"
+      ],
+      "reason": "아이패드 액정 일지는 추출/재생 정품 명시 필수, fog 사용 X"
+    },
+    {
+      "id": "warranty_mention",
+      "applies_to_glob": "articles/journal-*.html",
+      "must_contain_any": [
+        "90일",
+        "보증"
+      ],
+      "reason": "모든 일지는 보증 안내 필수"
+    }
+  ],
+  "candidates": {
+    "_comment": "validate.py --learn 으로 발견된 새 위반 패턴이 여기에 누적. 사장님 검토 후 정식 룰로 승격.",
+    "items": [
+      {
+        "rule": "device_facts.iphone.charge_cleaning",
+        "found": "50%",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-04-30-아이폰-15프로-battery-1HkvVe9s.html",
+        "last_seen": "articles/journal-2026-04-30-아이폰-15프로-battery-1HkvVe9s.html",
+        "count": 1,
+        "fix_hint": "정정 → 약 20~30%"
+      },
+      {
+        "rule": "device_facts.watch.back_bond_hours",
+        "found": "1시간",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-04-30-애플워치-se2-40mm-battery-1jbdaG3N.html",
+        "last_seen": "articles/journal-2026-04-30-애플워치-se2-40mm-battery-1jbdaG3N.html",
+        "count": 1,
+        "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
+      },
+      {
+        "rule": "device_facts.watch.back_bond_hours",
+        "found": "30분",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-04-30-애플워치-se2-40mm-battery-1jbdaG3N.html",
+        "last_seen": "articles/journal-2026-04-30-애플워치-se2-40mm-battery-1jbdaG3N.html",
+        "count": 1,
+        "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
+      },
+      {
+        "rule": "device_facts.watch.back_bond_hours",
+        "found": "약 1일",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-04-30-애플워치-se2-40mm-battery-1jbdaG3N.html",
+        "last_seen": "articles/journal-2026-04-30-애플워치-se2-40mm-battery-1jbdaG3N.html",
+        "count": 1,
+        "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
+      },
+      {
+        "rule": "device_facts.iphone.charge_cleaning",
+        "found": "50%",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-04-아이폰-12미니-battery-1CU7VD5l.html",
+        "last_seen": "articles/journal-2026-05-04-아이폰-12미니-battery-1CU7VD5l.html",
+        "count": 1,
+        "fix_hint": "정정 → 약 20~30%"
+      },
+      {
+        "rule": "device_facts.iphone.charge_cleaning",
+        "found": "50%",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-04-아이폰-15프로-battery-1P0o4qDL.html",
+        "last_seen": "articles/journal-2026-05-04-아이폰-15프로-battery-1P0o4qDL.html",
+        "count": 1,
+        "fix_hint": "정정 → 약 20~30%"
+      },
+      {
+        "rule": "device_facts.iphone.charge_cleaning",
+        "found": "50%",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-05-아이폰6s-battery-1bdNyoxi.html",
+        "last_seen": "articles/journal-2026-05-05-아이폰6s-battery-1bdNyoxi.html",
+        "count": 1,
+        "fix_hint": "정정 → 약 20~30%"
+      },
+      {
+        "rule": "device_facts.iphone.charge_cleaning",
+        "found": "50%",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-08-아이폰-13미니-battery-1im7V3yy.html",
+        "last_seen": "articles/journal-2026-05-08-아이폰-13미니-battery-1im7V3yy.html",
+        "count": 1,
+        "fix_hint": "정정 → 약 20~30%"
+      },
+      {
+        "rule": "device_facts.iphone.charge_cleaning",
+        "found": "50%",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-09-아이폰-iphone-x-battery-1DBkRFtC.html",
+        "last_seen": "articles/journal-2026-05-09-아이폰-iphone-x-battery-1DBkRFtC.html",
+        "count": 1,
+        "fix_hint": "정정 → 약 20~30%"
+      },
+      {
+        "rule": "device_facts.watch.back_bond_hours",
+        "found": "1시간",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-09-애플워치-apple-watch-se-2세대-battery-1eGfabMe.html",
+        "last_seen": "articles/journal-2026-05-09-애플워치-apple-watch-se-2세대-battery-1eGfabMe.html",
+        "count": 1,
+        "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
+      },
+      {
+        "rule": "device_facts.watch.back_bond_hours",
+        "found": "30분",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-09-애플워치-apple-watch-se-2세대-battery-1eGfabMe.html",
+        "last_seen": "articles/journal-2026-05-09-애플워치-apple-watch-se-2세대-battery-1eGfabMe.html",
+        "count": 1,
+        "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
+      },
+      {
+        "rule": "device_facts.watch.back_bond_hours",
+        "found": "약 1일",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-09-애플워치-apple-watch-se-2세대-battery-1eGfabMe.html",
+        "last_seen": "articles/journal-2026-05-09-애플워치-apple-watch-se-2세대-battery-1eGfabMe.html",
+        "count": 1,
+        "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
+      },
+      {
+        "rule": "device_facts.ipad.screen_parts",
+        "found": "fog 액정",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-12-아이패드-ipad-pro-11인치-2세대-screen-1Y5Bwg_L.html",
+        "last_seen": "articles/journal-2026-05-12-아이패드-ipad-pro-11인치-2세대-screen-1Y5Bwg_L.html",
+        "count": 1,
+        "fix_hint": "정정 → 추출 정품 / 재생 정품만 사용"
+      },
+      {
+        "rule": "device_facts.iphone.charge_cleaning",
+        "found": "50%",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-12-아이폰-iphone-12-pro-battery-1AoOnJZg.html",
+        "last_seen": "articles/journal-2026-05-12-아이폰-iphone-12-pro-battery-1AoOnJZg.html",
+        "count": 1,
+        "fix_hint": "정정 → 약 20~30%"
+      },
+      {
+        "rule": "device_facts.iphone.charge_cleaning",
+        "found": "50%",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-12-아이폰-iphone-14-pro-battery-1ChixQPs.html",
+        "last_seen": "articles/journal-2026-05-12-아이폰-iphone-14-pro-battery-1ChixQPs.html",
+        "count": 1,
+        "fix_hint": "정정 → 약 20~30%"
+      },
+      {
+        "rule": "device_facts.watch.back_bond_hours",
+        "found": "1시간",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-12-애플워치-5-44mm-battery-1zlcqZig.html",
+        "last_seen": "articles/journal-2026-05-12-애플워치-5-44mm-battery-1zlcqZig.html",
+        "count": 1,
+        "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
+      },
+      {
+        "rule": "device_facts.watch.back_bond_hours",
+        "found": "30분",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-12-애플워치-5-44mm-battery-1zlcqZig.html",
+        "last_seen": "articles/journal-2026-05-12-애플워치-5-44mm-battery-1zlcqZig.html",
+        "count": 1,
+        "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
+      },
+      {
+        "rule": "device_facts.watch.back_bond_hours",
+        "found": "약 1일",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-12-애플워치-5-44mm-battery-1zlcqZig.html",
+        "last_seen": "articles/journal-2026-05-12-애플워치-5-44mm-battery-1zlcqZig.html",
+        "count": 1,
+        "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
+      },
+      {
+        "rule": "device_facts.watch.back_parts",
+        "found": "정품급 OEM",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
+        "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
+        "count": 1,
+        "fix_hint": "정정 → 100% 추출 정품"
+      },
+      {
+        "rule": "device_facts.watch.back_parts",
+        "found": "OEM 부품",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
+        "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
+        "count": 1,
+        "fix_hint": "정정 → 100% 추출 정품"
+      },
+      {
+        "rule": "device_facts.watch.back_bond_hours",
+        "found": "1시간",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
+        "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
+        "count": 1,
+        "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
+      },
+      {
+        "rule": "device_facts.watch.back_bond_hours",
+        "found": "30분",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
+        "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
+        "count": 1,
+        "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
+      },
+      {
+        "rule": "device_facts.watch.back_bond_hours",
+        "found": "약 1일",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
+        "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
+        "count": 1,
+        "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
+      },
+      {
+        "rule": "device_facts.watch.back_bond_hours",
+        "found": "1시간",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
+        "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
+        "count": 1,
+        "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
+      },
+      {
+        "rule": "device_facts.watch.back_bond_hours",
+        "found": "30분",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
+        "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
+        "count": 1,
+        "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
+      },
+      {
+        "rule": "device_facts.watch.back_bond_hours",
+        "found": "약 1일",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
+        "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
+        "count": 1,
+        "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
+      },
+      {
+        "rule": "required.watch_back_must_mention_extracted",
+        "found": "(none of: 추출 정품)",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
+        "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
+        "count": 1,
+        "fix_hint": "워치 후면 일지는 100% 추출 정품 명시 필수"
+      },
+      {
+        "rule": "required.watch_back_must_mention_extracted (must_not)",
+        "found": "정품급 OEM",
+        "severity": "error",
+        "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
+        "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
+        "count": 1,
+        "fix_hint": "워치 후면 일지는 100% 추출 정품 명시 필수"
+      }
+    ]
+  }
+}
