@@ -2,6 +2,13 @@
 # Cloudflare 빌드용 — .git, secrets, dev 스크립트 등 제외하고 dist/ 생성
 set -e
 
+# ── 🔎 검색 인덱스 자동 재생성 ──
+# 새 글 추가/제목 변경 시 articles/search-data.js를 자동 갱신해야 검색에서 노출됨.
+if [ -f "$(dirname "$0")/../articles/_gen_search_data.py" ]; then
+  echo "🔎 검색 인덱스 재생성 중..."
+  python3 "$(dirname "$0")/../articles/_gen_search_data.py"
+fi
+
 # ── 🛡 디테일 검증 (빌드 직전 자동) ──
 # data/facts.json 룰 위반 검사. 기본 = warning만 (빌드 통과), STRICT_VALIDATE=1 = error 시 빌드 차단.
 if [ -z "$SKIP_VALIDATE" ]; then
