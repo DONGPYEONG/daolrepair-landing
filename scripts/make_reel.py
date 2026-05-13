@@ -57,11 +57,24 @@ LOGO_PATH = ROOT / "로고신규1.jpg"
 OUT_DIR = ROOT / "output" / "reels"
 TMP_DIR = ROOT / "output" / "_reel_tmp"
 
-# ── Typography ─────────────────────────────────────────
-SDG = "/System/Library/Fonts/AppleSDGothicNeo.ttc"
+# ── Typography — Pretendard (2024-2026 한국 인스타 트렌드 폰트) ──────────
+# SIL Open Font License — 상업 사용 무료. assets/fonts/ 폴더에 OTF 포함.
+PRETENDARD_DIR = ROOT / "assets" / "fonts"
 HEL = "/System/Library/Fonts/HelveticaNeue.ttc"
-SDG_IDX = {"regular": 0, "medium": 2, "semibold": 4, "bold": 6, "light": 8, "thin": 10}
 HEL_IDX = {"regular": 0, "medium": 10, "bold": 1, "light": 7, "ultralight": 5}
+
+_PRETENDARD_PATHS = {
+    "light":     str(PRETENDARD_DIR / "Pretendard-Light.otf"),
+    "regular":   str(PRETENDARD_DIR / "Pretendard-Regular.otf"),
+    "medium":    str(PRETENDARD_DIR / "Pretendard-Medium.otf"),
+    "semibold":  str(PRETENDARD_DIR / "Pretendard-SemiBold.otf"),
+    "bold":      str(PRETENDARD_DIR / "Pretendard-Bold.otf"),
+    "extrabold": str(PRETENDARD_DIR / "Pretendard-ExtraBold.otf"),
+    "black":     str(PRETENDARD_DIR / "Pretendard-Black.otf"),
+}
+# Apple SD Gothic Neo 폴백 (Pretendard 없을 때만 — 보통 발생 X)
+_SDG_FALLBACK = "/System/Library/Fonts/AppleSDGothicNeo.ttc"
+_SDG_IDX = {"regular": 0, "medium": 2, "semibold": 4, "bold": 6, "light": 8, "thin": 10}
 
 W, H = 1080, 1920
 FPS = 30
@@ -89,7 +102,14 @@ MUSIC_VOL = 0.55       # 0.0~1.0 — BGM 볼륨
 
 # ── 폰트 헬퍼 ──────────────────────────────────────────
 def sdg(weight: str, size: int) -> ImageFont.FreeTypeFont:
-    return ImageFont.truetype(SDG, size=size, index=SDG_IDX[weight])
+    """Pretendard 우선, 없으면 Apple SD Gothic Neo 폴백.
+    함수명은 호환성 유지 (sdg → 실제로는 Pretendard)."""
+    path = _PRETENDARD_PATHS.get(weight)
+    if path and Path(path).exists():
+        return ImageFont.truetype(path, size=size)
+    # 폴백
+    idx_key = weight if weight in _SDG_IDX else "regular"
+    return ImageFont.truetype(_SDG_FALLBACK, size=size, index=_SDG_IDX[idx_key])
 
 
 def hel(weight: str, size: int) -> ImageFont.FreeTypeFont:
