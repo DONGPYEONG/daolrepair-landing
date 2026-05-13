@@ -83,6 +83,9 @@ def build():
         📋 캡션 복사
       </button>
     </div>
+    <button class="btn done-toggle" onclick="toggleDone(this)" data-slug="{html.escape(slug)}">
+      ✓ 게시 완료로 표시
+    </button>
     <details class="caption-preview">
       <summary>캡션 미리보기</summary>
       <pre>{html.escape(caption)}</pre>
@@ -174,6 +177,14 @@ def build():
   .btn.primary {{ background: #E8732A; color: #fff; border-color: #E8732A; }}
   .btn.primary:active {{ background: #C55E1A; }}
   .btn.copied {{ background: #34c759; color: #fff; border-color: #34c759; }}
+  .done-toggle {{
+    grid-column: 1 / -1; margin-top: 8px;
+    border: 1.5px dashed #e5e5e7; color: #888; background: transparent;
+  }}
+  .card.done .done-toggle {{
+    background: #34c759; color: #fff; border-color: #34c759; border-style: solid;
+  }}
+  .card.done .cover-link {{ opacity: 0.5; }}
   details.caption-preview {{
     margin-top: 14px; font-size: 12px; color: #666;
   }}
@@ -250,6 +261,37 @@ function showToast(msg) {{
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 1800);
 }}
+
+// 게시 완료 표시 — localStorage에 저장 (휴대폰 브라우저에 유지)
+function toggleDone(btn) {{
+  const slug = btn.getAttribute('data-slug');
+  const card = btn.closest('.card');
+  const key = 'daol_reel_done_' + slug;
+  const isDone = localStorage.getItem(key) === '1';
+  if (isDone) {{
+    localStorage.removeItem(key);
+    card.classList.remove('done');
+    btn.textContent = '✓ 게시 완료로 표시';
+    showToast('게시 완료 해제됨');
+  }} else {{
+    localStorage.setItem(key, '1');
+    card.classList.add('done');
+    btn.textContent = '✓ 게시 완료';
+    showToast('게시 완료 표시됨 ✓');
+  }}
+}}
+
+// 페이지 로드 시 localStorage 복원
+document.addEventListener('DOMContentLoaded', function() {{
+  document.querySelectorAll('.card').forEach(card => {{
+    const slug = card.getAttribute('data-slug');
+    if (localStorage.getItem('daol_reel_done_' + slug) === '1') {{
+      card.classList.add('done');
+      const btn = card.querySelector('.done-toggle');
+      if (btn) btn.textContent = '✓ 게시 완료';
+    }}
+  }});
+}});
 </script>
 
 </body>
