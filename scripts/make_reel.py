@@ -39,6 +39,17 @@ try:
 except ImportError:
     HAS_AUDIO_FX = False
 
+try:
+    import cv2
+    import numpy as np
+    HAS_CV2 = True
+    _FACE_CASCADE = cv2.CascadeClassifier(
+        cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
+    )
+except Exception:
+    HAS_CV2 = False
+    _FACE_CASCADE = None
+
 ROOT = Path(__file__).parent.parent
 ARTICLES = ROOT / "articles"
 IMAGES_DIR = ROOT / "images" / "before-after"
@@ -58,14 +69,16 @@ ORANGE = (232, 115, 42)
 DARK = (10, 10, 10)
 
 # ── Timing (초) ────────────────────────────────────────
-# 각 씬 ~3초 — 카피가 녹아 들어갈 시간 확보
-HOOK_DUR   = 2.8        # BEFORE 사진 + 후킹 카피
+# 1초 브랜드 인트로 → 후킹 → 스토리 → 아웃트로
+INTRO_DUR  = 1.1        # 브랜드 인트로 — 짧게 (후킹 약화 X)
+HOOK_DUR   = 2.7        # BEFORE 사진 + 후킹 카피
 STEP_DUR   = 3.0        # progress1·2·3 각각
 AFTER_DUR  = 3.2        # AFTER 사진 + 결과 카피
 OUTRO_DUR  = 3.4        # 브랜드 핵심 + CTA
 CROSSFADE  = 0.4
 ZOOM_END   = 1.10       # Ken Burns 슬로우 줌
-# 총 길이 ≈ 2.8 + 3.0×3 + 3.2 + 3.4 = 18.4s, 크로스페이드 5×0.4 = 2.0 빼면 ≈ 16.4s
+# 총 길이 ≈ 1.1 + 2.7 + 3.0×3 + 3.2 + 3.4 = 18.4s
+# 크로스페이드 6×0.4 = 2.4 빼면 ≈ 16.0s
 
 # ── 음악 (선택) ────────────────────────────────────────
 # scripts/music/ 폴더에 mp3·m4a·wav 파일 1개라도 있으면 자동으로 BGM 합성.
@@ -420,34 +433,44 @@ def fit_cover(img: Image.Image, w: int, h: int) -> Image.Image:
     return img.resize((w, h), Image.LANCZOS)
 
 
-def make_intro_image(dst: Path, day_str: str) -> Path:
-    """인트로: 브랜드 선언 — "이렇게 수리합니다" — 일기X / 광고O."""
+def make_intro_image(dst: Path) -> Path:
+    """1초 브랜드 인트로 — 로고 + 다올리페어 + 영문 (미니멀)."""
     img = Image.new("RGB", (W, H), DARK)
     d = ImageDraw.Draw(img)
 
-    # 작은 영문 eyebrow — 브랜드 카테고리
-    draw_centered(d, 760, "APPLE REPAIR · MASTER SERVICE",
-                  hel("light", 24), (130, 130, 130), letter_spacing=10)
+    # 로고 (큰 사이즈, 화면 상단 1/3 지점)
+    if LOGO_PATH.exists():
+        logo = Image.open(LOGO_PATH).convert("RGBA")
+        ratio = 400 / max(logo.size)
+        logo = logo.resize(
+            (int(logo.size[0] * ratio), int(logo.size[1] * ratio)),
+            Image.LANCZOS,
+        )
+        # 둥근 마스크
+        mask = Image.new("L", logo.size, 0)
+        ImageDraw.Draw(mask).rounded_rectangle(
+            (0, 0, *logo.size), radius=60, fill=255
+        )
+        img.paste(
+            logo.convert("RGB"),
+            ((W - logo.size[0]) // 2, 660),
+            mask,
+        )
 
-    # 가는 분리 라인 (위)
-    d.rectangle((W // 2 - 60, 820, W // 2 + 60, 821), fill=(140, 140, 140))
+    # 브랜드명 (큰·Bold)
+    draw_centered(
+        d, 1130, "다올리페어",
+        sdg("bold", 116), (255, 255, 255), letter_spacing=6,
+    )
 
-    # 메인 선언 — 큰 한국어 (Light weight — 고급)
-    draw_centered(d, 880, "이렇게",
-                  sdg("light", 130), (255, 255, 255), letter_spacing=4)
-    draw_centered(d, 1030, "수리합니다",
-                  sdg("medium", 130), (255, 255, 255), letter_spacing=4)
+    # 영문 (작게, 트래킹 넓게)
+    draw_centered(
+        d, 1300, "APPLE REPAIR MASTER",
+        hel("light", 32), (160, 160, 160), letter_spacing=14,
+    )
 
-    # 작은 주황 도트
-    d.ellipse((W // 2 - 6, 1220, W // 2 + 6, 1232), fill=ORANGE)
-
-    # 브랜드
-    draw_centered(d, 1265, "다올리페어",
-                  sdg("medium", 52), (220, 220, 220), letter_spacing=2)
-
-    # 슬로건
-    draw_centered(d, 1340, "DAOL REPAIR",
-                  hel("light", 26), (140, 140, 140), letter_spacing=12)
+    # 짧은 주황 라인 (액센트)
+    d.rectangle((W // 2 - 44, 1395, W // 2 + 44, 1399), fill=ORANGE)
 
     img.save(dst, quality=95)
     return dst
@@ -524,9 +547,39 @@ def make_outro_image(dst: Path) -> Path:
     return dst
 
 
+def blur_faces(pil_img: Image.Image) -> Image.Image:
+    """OpenCV 얼굴 검출 → 가우시안 블러. 검출 실패 시 원본 그대로."""
+    if not HAS_CV2 or _FACE_CASCADE is None:
+        return pil_img
+    try:
+        cv_img = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
+        gray = cv2.cvtColor(cv_img, cv2.COLOR_BGR2GRAY)
+        faces = _FACE_CASCADE.detectMultiScale(
+            gray, scaleFactor=1.1, minNeighbors=5,
+            minSize=(40, 40), flags=cv2.CASCADE_SCALE_IMAGE,
+        )
+        if len(faces) == 0:
+            return pil_img
+        for (x, y, fw, fh) in faces:
+            # 살짝 확장 (이마·턱까지 커버)
+            pad = int(max(fw, fh) * 0.15)
+            x0 = max(0, x - pad); y0 = max(0, y - pad)
+            x1 = min(cv_img.shape[1], x + fw + pad); y1 = min(cv_img.shape[0], y + fh + pad)
+            roi = cv_img[y0:y1, x0:x1]
+            # 강한 가우시안 블러
+            k = max(31, ((x1 - x0) // 8) | 1)  # 홀수 보장
+            blurred = cv2.GaussianBlur(roi, (k, k), 0)
+            cv_img[y0:y1, x0:x1] = blurred
+        return Image.fromarray(cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB))
+    except Exception:
+        return pil_img
+
+
 def prepare_photo(src: Path, dst: Path, label: str = "") -> Path:
-    """원본 → 9:16 + 부드러운 그라데이션 + 미니멀 코너 라벨."""
+    """원본 → 9:16 + PII 블러 + 부드러운 그라데이션 + 미니멀 코너 라벨."""
     img = Image.open(src).convert("RGB")
+    # 🛡 PII 보호 — 얼굴 자동 블러 (검출 실패 시 원본)
+    img = blur_faces(img)
     img = fit_cover(img, W, H)
 
     overlay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
@@ -715,6 +768,41 @@ def _photo_punch(clip, d):
     """이지드 줌 (느린 시작 → 빠른 끝) — 후킹 강."""
     return clip.resized(lambda t, dd=d: 1.0 + 0.12 * ((t / dd) ** 1.7)).with_position(("center", "center"))
 
+def _photo_tilt_up(clip, d):
+    """위로 틸트 — 시선이 위로 이동 (하단→상단)."""
+    s = 1.10
+    base_y = (H - H * s) / 2
+    tilt = 80
+    return clip.resized(s).with_position(
+        lambda t, dd=d: ("center", base_y + tilt / 2 - tilt * (t / dd))
+    )
+
+def _photo_tilt_down(clip, d):
+    """아래로 틸트 (상단→하단)."""
+    s = 1.10
+    base_y = (H - H * s) / 2
+    tilt = 80
+    return clip.resized(s).with_position(
+        lambda t, dd=d: ("center", base_y - tilt / 2 + tilt * (t / dd))
+    )
+
+def _photo_zoom_pan_right(clip, d):
+    """줌 + 우측 팬 (시네마틱)."""
+    pan = 40
+    base_x = lambda s: (W - W * s) / 2
+    return clip.resized(lambda t, dd=d: 1.0 + 0.08 * (t / dd)).with_position(
+        lambda t, dd=d: (base_x(1.0 + 0.08 * (t/dd)) + pan/2 - pan*(t/dd), "center")
+    )
+
+def _photo_pulse(clip, d):
+    """줌 1.0 → 1.12 → 1.06 (펄스 — 강조)."""
+    def s(t, dd=d):
+        # 0.4dd까지 1.0→1.12, 그 뒤 1.12→1.06
+        if t < dd * 0.4:
+            return 1.0 + 0.12 * (t / (dd * 0.4))
+        return 1.12 - 0.06 * ((t - dd * 0.4) / (dd * 0.6))
+    return clip.resized(lambda t, dd=d: s(t, dd)).with_position(("center", "center"))
+
 
 def _cap_fade(clip, d):
     return clip.with_position((0, 0)).with_effects([FadeIn(0.4)])
@@ -737,12 +825,16 @@ def _cap_slide_right(clip, d):
 
 
 MOTION_PRESETS = [
-    ("Slow Zoom In",   _photo_zoom_in,   _cap_fade),
-    ("Slow Zoom Out",  _photo_zoom_out,  _cap_slide_up),
-    ("Pan Right",      _photo_pan_right, _cap_fade),
-    ("Pan Left",       _photo_pan_left,  _cap_slide_right),
-    ("Diagonal Drift", _photo_diagonal,  _cap_fade),
-    ("Punch In",       _photo_punch,     _cap_slide_up),
+    ("Slow Zoom In",      _photo_zoom_in,        _cap_fade),
+    ("Slow Zoom Out",     _photo_zoom_out,       _cap_slide_up),
+    ("Pan Right",         _photo_pan_right,      _cap_fade),
+    ("Pan Left",          _photo_pan_left,       _cap_slide_right),
+    ("Diagonal Drift",    _photo_diagonal,       _cap_fade),
+    ("Punch In",          _photo_punch,          _cap_slide_up),
+    ("Tilt Up",           _photo_tilt_up,        _cap_fade),
+    ("Tilt Down",         _photo_tilt_down,      _cap_slide_up),
+    ("Zoom + Pan Right",  _photo_zoom_pan_right, _cap_slide_right),
+    ("Cinematic Pulse",   _photo_pulse,          _cap_fade),
 ]
 
 
@@ -752,15 +844,25 @@ def pick_motion_preset(slug: str) -> tuple[str, callable, callable]:
     return MOTION_PRESETS[h % len(MOTION_PRESETS)]
 
 
-# ── 음악 탐지 ─────────────────────────────────────────
-def find_music_file() -> Path | None:
+# ── 음악 회전 ─────────────────────────────────────────
+# scripts/music/ 폴더에 여러 파일 두면 영상마다 다른 곡 회전 (슬러그 해시).
+def list_music_files() -> list[Path]:
     if not MUSIC_DIR.exists():
-        return None
+        return []
+    files = []
     for ext in ("mp3", "m4a", "wav", "aac"):
-        files = sorted(MUSIC_DIR.glob(f"*.{ext}"))
-        if files:
-            return files[0]
-    return None
+        files.extend(sorted(MUSIC_DIR.glob(f"*.{ext}")))
+    # _ 로 시작하는 파일(스킵용) 제외
+    return [f for f in files if not f.name.startswith("_")]
+
+
+def pick_music_file(slug: str) -> Path | None:
+    """슬러그 해시로 결정 — 같은 영상은 항상 같은 곡."""
+    files = list_music_files()
+    if not files:
+        return None
+    h = int(hashlib.md5(slug.encode("utf-8")).hexdigest()[8:16], 16)
+    return files[h % len(files)]
 
 
 # ── Reel 빌드 ─────────────────────────────────────────
@@ -813,9 +915,11 @@ def build_reel(journal_path: Path, output_dir: Path) -> tuple[Path, Path]:
         make_step_image(m, s, dst)
         cap_imgs.append(dst)
 
-    # 3) 아웃트로 (인트로는 제외 — BEFORE 사진 + 후킹으로 시작)
+    # 3) 인트로(브랜드 1초) + 아웃트로
     day_str = slug_meta.get("date", date.today().isoformat())
+    intro_img = TMP_DIR / f"{img_id}_intro.jpg"
     outro_img = TMP_DIR / f"{img_id}_outro.jpg"
+    make_intro_image(intro_img)
     make_outro_image(outro_img)
 
     # 4) Reel 조립 — 모션 프리셋 + 크로스페이드 + 자막 애니
@@ -824,6 +928,16 @@ def build_reel(journal_path: Path, output_dir: Path) -> tuple[Path, Path]:
 
     scenes_with_starts = []
     cursor = 0.0
+
+    # 4-0) 브랜드 인트로 (1.1초) — 로고 + 다올리페어
+    intro = (
+        ImageClip(str(intro_img))
+        .with_duration(INTRO_DUR)
+        .with_effects([FadeIn(0.3), CrossFadeOut(CROSSFADE)])
+        .with_start(cursor)
+    )
+    scenes_with_starts.append(intro)
+    cursor += INTRO_DUR - CROSSFADE
 
     scene_durations = [HOOK_DUR, STEP_DUR, STEP_DUR, STEP_DUR, AFTER_DUR]
     photo_keys = ["before", "progress1", "progress2", "progress3", "after"]
@@ -839,11 +953,8 @@ def build_reel(journal_path: Path, output_dir: Path) -> tuple[Path, Path]:
 
         scene = CompositeVideoClip([photo, caption], size=(W, H)).with_duration(dur)
 
-        effects = []
-        if i == 0:
-            effects.append(FadeIn(0.4))
-        else:
-            effects.append(CrossFadeIn(CROSSFADE))
+        # 첫 씬(BEFORE)도 인트로와 크로스페이드
+        effects = [CrossFadeIn(CROSSFADE)]
         if i < len(photo_keys) - 1:
             effects.append(CrossFadeOut(CROSSFADE))
         scene = scene.with_effects(effects)
@@ -864,8 +975,8 @@ def build_reel(journal_path: Path, output_dir: Path) -> tuple[Path, Path]:
     final = CompositeVideoClip(scenes_with_starts, size=(W, H)).with_duration(total_dur)
     final = final.with_fps(FPS)
 
-    # 5) 음악 (선택) — scripts/music/ 폴더에 파일 있으면 자동 합성
-    music_path = find_music_file()
+    # 5) 음악 (선택) — scripts/music/ 폴더 파일 회전 (슬러그 해시)
+    music_path = pick_music_file(journal_path.stem)
     use_audio = False
     if music_path and HAS_AUDIO_FX:
         try:
