@@ -159,7 +159,7 @@ def make_thumbnail(data: dict, dst: Path) -> Path:
 
 
 def make_slide(slide: dict, dst: Path, page_num: int = 1, total_pages: int = 5,
-               series_num: str = "01") -> Path:
+               series_num: str = "01", category: str = "수리점 안 오는 법") -> Path:
     """칼럼 발췌 카드 톤 — 다크 배경 + 흰색 종이 카드.
     사진 배경 제거. 메인 비주얼 = 다올 칼럼에서 발췌한 듯한 카드.
     컬러: 검정 배경·흰 카드·다올 주황 포인트.
@@ -189,8 +189,8 @@ def make_slide(slide: dict, dst: Path, page_num: int = 1, total_pages: int = 5,
         d.rounded_rectangle((bx, bar_y, bx + bar_w_each, bar_y + bar_h),
                             radius=3, fill=color)
 
-    # 좌상단 시리즈 라벨
-    series_text = f"수리점 안 오는 법 #{series_num}"
+    # 좌상단 시리즈 라벨 (글 성격 기반 — 데이터에서 받음)
+    series_text = f"{category} #{series_num}"
     f_series = font("SemiBold", 30)
     d.text((50, SAFE_TOP - 3), series_text, font=f_series, fill=(220, 220, 220))
 
@@ -341,11 +341,11 @@ def make_slide(slide: dict, dst: Path, page_num: int = 1, total_pages: int = 5,
            "다올리페어 수리 칼럼에서 발췌",
            font=f_quote, fill=(110, 110, 115))
 
-    # ── 하단 시그니처 (다크 영역) ──
+    # ── 하단 시그니처 (다크 영역) — 홈페이지 도메인 ──
     d.rectangle((W // 2 - 30, SAFE_BOTTOM - 80, W // 2 + 30, SAFE_BOTTOM - 76),
                 fill=ORANGE)
-    draw_centered(d, SAFE_BOTTOM - 55, "DAOL REPAIR",
-                  font("Bold", 30), (220, 220, 220), letter_spacing=8)
+    draw_centered(d, SAFE_BOTTOM - 55, "다올리페어.com",
+                  font("Bold", 36), WHITE, letter_spacing=4)
 
     img.save(dst, quality=92)
     return dst
@@ -645,9 +645,11 @@ def build_info_reel(slug: str) -> tuple[Path, Path]:
     slide_imgs = []
     total = len(data["slides"])
     series_num = data.get("series_num", "01")
+    category = data.get("category", "수리점 안 오는 법")
     for i, slide in enumerate(data["slides"]):
         p = TMP_DIR / f"{slug}_slide_{i:02d}.jpg"
-        make_slide(slide, p, page_num=i + 1, total_pages=total, series_num=series_num)
+        make_slide(slide, p, page_num=i + 1, total_pages=total,
+                   series_num=series_num, category=category)
         slide_imgs.append(p)
 
     wrap_img = TMP_DIR / f"{slug}_wrap.jpg"
