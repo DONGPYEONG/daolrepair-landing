@@ -476,64 +476,255 @@
     .sr-cat{font-size:11px;color:#E8732A;font-weight:700;margin-bottom:4px}
     .sr-title{font-size:14px;font-weight:700;color:#0a0a0a;line-height:1.4;margin-bottom:4px}
     .sr-desc{font-size:12px;color:#999;line-height:1.5}
-    .sr-empty{padding:24px;text-align:center;color:#999;font-size:14px}
+    .sr-empty{padding:24px;text-align:center;color:#999;font-size:14px;line-height:1.7}
+    .search-result.sr-strong{border-left:3px solid #E8732A}
+    .search-result.sr-good{border-left:3px solid #fbb98a}
+    .search-result.sr-soft{border-left:3px solid transparent}
   </style>
   <script src="search-data.js"></script>
   <script>
+    // ── 의도 매핑 — 고객 자연어 → 검색 키워드 확장 ────────────────────────
+    // 키: 사용자가 자주 입력하는 자연어 표현 (부분 문자열 매칭)
+    // 값: 추가로 점수에 반영할 동의어·관련 키워드 (공백 구분)
+    var INTENT_MAP = {
+      // 전원·부팅
+      '안 켜': '전원 부팅 안켜짐 메인보드 배터리', '안켜': '전원 부팅 안켜짐 메인보드 배터리',
+      '꺼져': '전원 갑자기 꺼짐 배터리 셧다운', '꺼짐': '전원 갑자기 꺼짐 배터리 셧다운',
+      '재부팅': '재부팅 부팅 전원 메인보드',
+      '먹통': '전원 부팅 메인보드 안켜짐',
+      // 화면·터치
+      '터치 안': '터치 화면 액정 고스트', '터치안': '터치 화면 액정 고스트',
+      '터치 이상': '터치 화면 액정 고스트',
+      '줄이 가': '액정 화면 줄 디스플레이 손상', '줄이가': '액정 화면 줄 디스플레이 손상',
+      '줄 가': '액정 화면 줄 디스플레이',
+      '깜빡': '화면 깜빡임 액정 디스플레이',
+      '검은': '화면 블랙 액정 메인보드', '까매': '화면 블랙 액정',
+      '깨졌': '화면 액정 깨짐 교체 수리비', '깨진': '화면 액정 깨짐 교체 수리비', '깨짐': '화면 액정 깨짐',
+      '금 가': '화면 액정 깨짐 잔금', '금이 가': '화면 액정 깨짐',
+      '얼룩': '액정 화면 디스플레이 손상 침수',
+      '변색': '액정 화면 디스플레이 손상 침수',
+      '잔상': '액정 번인 디스플레이',
+      // 배터리·발열
+      '빨리 닳': '배터리 소모 교체 수명', '빨리닳': '배터리 소모 교체',
+      '오래 안': '배터리 수명 교체',
+      '발열': '발열 배터리 메인보드 침수',
+      '뜨거': '발열 배터리 메인보드',
+      '부풀': '배터리 스웰링 부풀음 교체',
+      '80%': '배터리 최대용량 교체 시기',
+      '수명': '배터리 최대용량 교체',
+      // 충전
+      '충전 안': '충전 단자 케이블 배터리', '충전안': '충전 단자 케이블 배터리',
+      '느리게 충전': '충전 단자 케이블 ic',
+      '인식 안': '충전 단자 케이블 라이트닝 c타입',
+      '단자': '충전 단자 청소 교체',
+      '라이트닝': '충전 단자 라이트닝',
+      'c타입': '충전 단자 c타입 usb-c',
+      // 침수·물
+      '물에': '침수 침수 처리 부식', '물 들어': '침수 침수 처리 부식',
+      '물빠': '침수 침수 처리', '물빠뜨': '침수 침수 처리',
+      '바다': '침수 침수 처리 염수',
+      '비 맞': '침수 침수 처리', '비맞': '침수 침수 처리',
+      '커피': '침수 음료 침수 처리', '음료': '침수 음료 침수 처리',
+      // 소리·통화
+      '안 들려': '스피커 수화기 통화 마이크', '안들려': '스피커 수화기 통화 마이크',
+      '소리 안': '스피커 수화기 통화 마이크',
+      '음량': '볼륨 스피커 통화', '볼륨': '볼륨 버튼',
+      '먹먹': '스피커 수화기 통화 침수',
+      '마이크': '마이크 통화 녹음',
+      '벨소리': '스피커 벨 알림 수화기',
+      // 카메라
+      '카메라 흐': '카메라 손떨림 ois 모듈',
+      '카메라 안': '카메라 모듈 교체 손떨림',
+      '흔들': '카메라 손떨림 ois',
+      '초점': '카메라 손떨림 ois 모듈',
+      '얼룩 카메라': '카메라 모듈 렌즈',
+      // 버튼
+      '버튼 안': '버튼 사이드 볼륨 홈 수리',
+      '홈 버튼': '홈 버튼 수리',
+      '사이드 버튼': '사이드 버튼 전원',
+      // 가격·비용
+      '얼마': '수리비 가격 비용 견적',
+      '비용': '수리비 가격 비용 견적',
+      '가격': '수리비 가격 비용 견적',
+      '저렴': '수리비 가격 사설',
+      '싸': '수리비 가격 사설',
+      // 지역·매장
+      '근처': '가산 신림 목동 지점 매장',
+      '어디': '가산 신림 목동 지점 매장 위치',
+      '가까운': '가산 신림 목동 지점',
+      '직접 가': '매장 방문 가산 신림 목동',
+      // 택배·전국
+      '택배': '택배 전국 발송 수리',
+      '전국': '택배 전국 발송',
+      // 보증·후기
+      '보증': '90일 보증 수리 실패 0원',
+      '후기': '네이버 리뷰 후기',
+      '리뷰': '네이버 리뷰 후기',
+      // 일반 표현
+      '망가': '수리 교체 고장',
+      '고장': '수리 교체 고장',
+      '문제': '진단 수리 증상',
+      '이상': '진단 증상 수리',
+      // 모델 별칭
+      '아이폰': 'iphone', '아이패드': 'ipad', '애플워치': 'applewatch apple watch',
+      '맥북': 'macbook', '에어팟': 'airpods', '애플펜슬': 'apple pencil',
+      // 기능
+      '페이스': 'face id 페이스 아이디',
+      '터치 아이디': 'touch id 지문',
+      '트루톤': 'true tone 트루톤',
+      '방수': '방수 ip등급 침수',
+      'esim': 'esim e-sim 유심',
+      '유심': 'esim 유심 sim'
+    };
+
+    // 한국어 조사·어미 제거 (간단한 휴리스틱)
+    var KO_SUFFIXES = /(이에요|예요|이야|이지|네요|입니다|이다|는데|는데요|는지|는지요|어요|아요|구요|요)$/;
+    var KO_PARTICLES = /(이|가|을|를|은|는|에|의|도|만|와|과|로|으로|에서|한테|에게|부터|까지|보다)$/;
+
+    function normalizeQuery(q){
+      q = (q||'').trim().toLowerCase();
+      // 어미 제거
+      for(var i=0;i<3;i++){
+        var prev = q;
+        q = q.replace(KO_SUFFIXES, '');
+        q = q.replace(/\s+$/, '');
+        if(q === prev) break;
+      }
+      return q;
+    }
+
+    // 의도 확장: 자연어 표현 매칭 시 키워드 추가
+    function expandQuery(q){
+      var extras = [];
+      var lower = q.toLowerCase();
+      for(var key in INTENT_MAP){
+        if(lower.indexOf(key) !== -1){
+          INTENT_MAP[key].split(/\s+/).forEach(function(t){ if(t) extras.push(t.toLowerCase()); });
+        }
+      }
+      return extras;
+    }
+
+    // 어절을 조사 제거해 단어로 분리
+    function tokenize(q){
+      return q.split(/\s+/).map(function(w){
+        for(var i=0;i<2;i++){
+          var prev = w;
+          w = w.replace(KO_PARTICLES, '');
+          if(w === prev) break;
+        }
+        return w;
+      }).filter(function(w){ return w.length > 0; });
+    }
+
     function doSearch(q){
-      const results=document.getElementById('searchResults');
-      const clear=document.querySelector('.search-clear');
-      const grid=document.getElementById('articleGrid');
-      const tabs=document.querySelector('.tab-wrap');
-      q=q.trim().toLowerCase();
-      if(!q){clearSearch();return}
+      var results = document.getElementById('searchResults');
+      var clear = document.querySelector('.search-clear');
+      var grid = document.getElementById('articleGrid');
+      var tabs = document.querySelector('.tab-wrap');
+      q = (q||'').trim();
+      if(!q){ clearSearch(); return; }
       clear.style.display='block';
       results.style.display='block';
-      if(grid)grid.style.display='none';
-      if(tabs)tabs.style.display='none';
+      if(grid) grid.style.display='none';
+      if(tabs) tabs.style.display='none';
 
-      const data=window.DAOL_SEARCH_DATA||[];
-      const scored=[];
-      for(const item of data){
-        let score=0;
-        const t=(item.title||'').toLowerCase();
-        const d=(item.desc||'').toLowerCase();
-        const k=(item.kw||'').toLowerCase();
-        if(t.includes(q))score+=10;
-        if(t.startsWith(q))score+=5;
-        if(k.includes(q))score+=4;
-        if(d.includes(q))score+=2;
-        // 단어별 매칭
-        for(const w of q.split(/\s+/)){
-          if(!w)continue;
-          if(t.includes(w))score+=3;
-          if(k.includes(w))score+=1;
-          if(d.includes(w))score+=1;
+      var normQ = normalizeQuery(q);
+      var rawTokens = tokenize(normQ);
+      var intentTokens = expandQuery(normQ);
+      // 검색 어휘 = 원본 토큰 + 의도 확장 토큰 (중복 제거)
+      var allTokens = {};
+      [normQ].concat(rawTokens, intentTokens).forEach(function(t){
+        if(t && t.length >= 1) allTokens[t] = true;
+      });
+      var tokenList = Object.keys(allTokens);
+
+      var data = window.DAOL_SEARCH_DATA || [];
+      var scored = [];
+
+      for(var i=0;i<data.length;i++){
+        var item = data[i];
+        var t = (item.title||'').toLowerCase();
+        var d = (item.desc||'').toLowerCase();
+        var k = (item.kw||'').toLowerCase();
+        var score = 0;
+
+        // 정확한 구문 매칭 (가장 높은 점수)
+        if(t.indexOf(normQ) !== -1) score += 30;
+        if(t.indexOf(normQ) === 0) score += 10;
+        if(k.indexOf(normQ) !== -1) score += 12;
+        if(d.indexOf(normQ) !== -1) score += 6;
+
+        // 토큰별 가중치 (원본 토큰은 가산, 의도 확장 토큰은 보조)
+        for(var j=0;j<tokenList.length;j++){
+          var w = tokenList[j];
+          if(!w || w.length < 2) continue;
+          var isIntent = (intentTokens.indexOf(w) !== -1) && (rawTokens.indexOf(w) === -1);
+          var wTitle = isIntent ? 2 : 6;
+          var wKw    = isIntent ? 2 : 4;
+          var wDesc  = isIntent ? 1 : 2;
+          if(t.indexOf(w) !== -1) score += wTitle;
+          if(k.indexOf(w) !== -1) score += wKw;
+          if(d.indexOf(w) !== -1) score += wDesc;
         }
-        if(score>0)scored.push({score,item});
+
+        // 2-gram 부분 매칭 (오타·축약 보완)
+        if(score === 0 && normQ.length >= 2){
+          var bigrams = [];
+          for(var g=0; g<normQ.length-1; g++){
+            var bg = normQ.substr(g,2);
+            if(/\s/.test(bg)) continue;
+            bigrams.push(bg);
+          }
+          var hits = 0;
+          for(var b=0;b<bigrams.length;b++){
+            if(t.indexOf(bigrams[b]) !== -1 || k.indexOf(bigrams[b]) !== -1) hits++;
+          }
+          if(hits >= Math.max(2, Math.floor(bigrams.length * 0.6))) score += hits;
+        }
+
+        if(score > 0) scored.push({score:score, item:item});
       }
-      scored.sort((a,b)=>b.score-a.score);
-      const top=scored.slice(0,30);
-      if(top.length===0){
-        results.innerHTML='<div class="sr-empty">검색 결과가 없어요. 다른 키워드로 시도해보세요.</div>';
-        return
+
+      scored.sort(function(a,b){ return b.score - a.score; });
+      var top = scored.slice(0, 30);
+
+      if(top.length === 0){
+        results.innerHTML =
+          '<div class="sr-empty">"' + q + '"에 딱 맞는 글이 없어요.<br>' +
+          '<small style="display:block;margin-top:8px;color:#bbb;">' +
+          '예시: "물에 빠뜨림", "배터리 빨리 닳아요", "터치 안 돼요", "가까운 매장"' +
+          '</small></div>';
+        return;
       }
-      results.innerHTML=top.map(({item})=>
-        `<a class="search-result" href="${item.slug}.html">`+
-        `<div class="sr-cat">${item.cat||'수리 가이드'}</div>`+
-        `<div class="sr-title">${item.title}</div>`+
-        `<div class="sr-desc">${(item.desc||'').slice(0,120)}</div>`+
-        `</a>`
-      ).join('');
+
+      // 점수에 따라 매칭 배지 표시
+      var maxScore = top[0].score;
+      results.innerHTML = top.map(function(r){
+        var item = r.item;
+        var matchClass = r.score >= maxScore * 0.7 ? 'sr-strong' : (r.score >= maxScore * 0.4 ? 'sr-good' : 'sr-soft');
+        return '<a class="search-result ' + matchClass + '" href="' + item.slug + '.html">' +
+          '<div class="sr-cat">' + (item.cat || '수리 가이드') + '</div>' +
+          '<div class="sr-title">' + item.title + '</div>' +
+          '<div class="sr-desc">' + (item.desc || '').slice(0,120) + '</div>' +
+          '</a>';
+      }).join('');
     }
+
     function clearSearch(){
-      document.getElementById('siteSearch').value='';
-      document.getElementById('searchResults').style.display='none';
-      document.querySelector('.search-clear').style.display='none';
-      const grid=document.getElementById('articleGrid');
-      const tabs=document.querySelector('.tab-wrap');
-      if(grid)grid.style.display='';
-      if(tabs)tabs.style.display='';
+      var inp = document.getElementById('siteSearch');
+      if(inp) inp.value = '';
+      var res = document.getElementById('searchResults');
+      if(res) res.style.display = 'none';
+      var clr = document.querySelector('.search-clear');
+      if(clr) clr.style.display = 'none';
+      var grid = document.getElementById('articleGrid');
+      var tabs = document.querySelector('.tab-wrap');
+      if(grid) grid.style.display = '';
+      if(tabs) tabs.style.display = '';
+      currentQuery = '';
+      var countEl = document.getElementById('searchResultCount');
+      if(countEl) countEl.classList.remove('show');
     }
   </script>
 
@@ -573,14 +764,6 @@
     </a>
   </div>
 
-  <!-- 검색 -->
-  <div class="search-wrap">
-    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-    </svg>
-    <input type="text" id="searchInput" class="search-input" placeholder="배터리, 침수, 화면... 검색어를 입력하세요" oninput="handleSearch(this.value)">
-    <button class="search-clear" id="searchClear" onclick="clearSearch()">×</button>
-  </div>
   <div class="search-result-count" id="searchResultCount"></div>
 
   <!-- 카테고리 탭 -->
@@ -5532,21 +5715,6 @@ document.addEventListener('DOMContentLoaded', function() {
   var tabBtn = document.querySelector('.tab-btn[onclick*="filterTab(\'' + hash + '\'"]');
   if (tabBtn) tabBtn.click();
 });
-
-function handleSearch(value) {
-  currentQuery = value.trim().toLowerCase();
-  document.getElementById('searchClear').style.display = currentQuery ? 'block' : 'none';
-  filterCards();
-}
-
-function clearSearch() {
-  var input = document.getElementById('searchInput');
-  input.value = '';
-  currentQuery = '';
-  document.getElementById('searchClear').style.display = 'none';
-  filterCards();
-  input.focus();
-}
 
 var journalOnly = false;  // #journal 해시 활성 시 일지만 표시
 
