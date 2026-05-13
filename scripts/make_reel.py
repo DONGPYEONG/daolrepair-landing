@@ -296,12 +296,12 @@ HOOK_MAP = {
     "홈버튼 수리": ("홈버튼 먹통", "지문 인식 복원까지"),
 }
 
-# 디바이스별 후킹 오버라이드
+# 디바이스별 후킹 오버라이드 — 스크롤 멈출 만큼 강한 카피
 HOOK_DEVICE_OVERRIDES = {
     ("후면 유리 교체", "애플워치"): ("박살난 워치 후면", "100% 추출 정품으로 복원"),
-    ("배터리 교체", "애플워치"): ("닳은 워치 배터리", "본드 경화 시간 확보 필수"),
-    ("액정 교체", "애플워치"): ("깨진 워치 화면", "유리만 vs 모듈 전체 — 정확히 진단"),
-    ("액정 교체 + 배터리 교체", "애플워치"): ("화면도 배터리도", "동시 교체로 시간·비용 절약"),
+    ("배터리 교체", "애플워치"): ("방치하면 화면까지 들떠요", "워치 배터리 교체 신호"),
+    ("액정 교체", "애플워치"): ("이렇게 깨진 워치도?", "유리만 vs 모듈 전체 — 정확히 진단"),
+    ("액정 교체 + 배터리 교체", "애플워치"): ("이 박살난 워치도?", "화면+배터리 한 번에 살려냅니다"),
 }
 
 
@@ -834,23 +834,23 @@ def make_ba_cover(before_path: Path, after_path: Path,
         img = img_rgba.convert("RGB")
         d = ImageDraw.Draw(img)
 
-        # 기종+모델 (작게, 회색톤)
+        # 기종+모델 (중간 크기, 밝은 회색)
         if device_model:
-            df = sdg("medium", 38)
+            df = sdg("medium", 52)
             db = d.textbbox((0, 0), device_model, font=df)
             dw_ = db[2] - db[0]
-            d.text(((W - dw_) // 2, H_HALF + DIVIDER + 80),
-                   device_model, font=df, fill=(230, 230, 230))
+            d.text(((W - dw_) // 2, H_HALF + DIVIDER + 70),
+                   device_model, font=df, fill=(235, 235, 235))
         # 수리 종류 (크게, 흰색 강조 + 외곽선)
         if repair_kr:
-            rf_size = 60 if len(repair_kr) <= 12 else 50
+            rf_size = 84 if len(repair_kr) <= 8 else (74 if len(repair_kr) <= 14 else 62)
             rf = sdg("bold", rf_size)
             rb = d.textbbox((0, 0), repair_kr, font=rf)
             rw = rb[2] - rb[0]
             rx = (W - rw) // 2
-            ry = H_HALF + DIVIDER + 130
-            # 외곽선
-            for off in [(-2, 0), (2, 0), (0, -2), (0, 2)]:
+            ry = H_HALF + DIVIDER + 140
+            # 외곽선 (두껍게 — 가독성)
+            for off in [(-3, 0), (3, 0), (0, -3), (0, 3), (-2, -2), (2, 2), (-2, 2), (2, -2)]:
                 d.text((rx + off[0], ry + off[1]), repair_kr, font=rf, fill=(0, 0, 0))
             d.text((rx, ry), repair_kr, font=rf, fill=(255, 255, 255))
 
