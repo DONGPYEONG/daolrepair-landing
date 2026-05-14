@@ -89,6 +89,9 @@ def build():
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>다올리페어 캐러셀 게시 허브</title>
 <meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <style>
   * {{ box-sizing: border-box; margin: 0; padding: 0; }}
   body {{
