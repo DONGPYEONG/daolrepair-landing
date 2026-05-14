@@ -186,8 +186,7 @@
     .art-related { margin-top: 56px; padding-top: 40px; border-top: 2px solid var(--border); }
     .art-related-heading { font-size: 18px; font-weight: 900; color: var(--dark); margin-bottom: 20px; }
     .art-related-heading::before { content: ''; display: block; width: 28px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 12px; }
-    .related-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
-    @media (min-width: 768px) { .related-grid { grid-template-columns: 1fr 1fr; gap: 14px; } }
+    .related-grid { display: flex; flex-direction: column; gap: 10px; }
     .related-card { display: block; padding: 16px 20px; border: 1.5px solid var(--border); border-radius: 14px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s; }
     .related-card:hover { border-color: var(--orange); box-shadow: 0 4px 16px rgba(232,115,42,0.1); }
     .related-badge { display: inline-block; background: rgba(232,115,42,0.1); color: var(--orange); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; }
@@ -1009,9 +1008,9 @@
         <span class="related-badge">수리점 선택 가이드</span>
         <span class="related-title">애플 공식 수리 vs 사설 수리점 — 어떨 때 어디 가야 하는지 솔직하게 정리했습니다</span>
       </a>
-      <a href="iphone-repair-shop-guide.html" class="related-card">
-        <span class="related-badge">수리점 선택 가이드</span>
-        <span class="related-title">아이폰 사설 수리점 고르는 법 — 후회 없는 선택을 위한 체크리스트</span>
+      <a href="iphone-refurbish-guide.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">아이폰 리퍼 — 받기 전에 꼭 알아야 할 5가지 (수리로 끝낼 수 있는 케이스)</span>
       </a>
     </div>
   </section>

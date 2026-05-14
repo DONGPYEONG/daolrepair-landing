@@ -137,8 +137,7 @@
     .art-related { margin-top: 56px; padding-top: 40px; border-top: 2px solid var(--border); }
     .art-related-heading { font-size: 18px; font-weight: 900; color: var(--dark); margin-bottom: 20px; }
     .art-related-heading::before { content: ''; display: block; width: 28px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 12px; }
-    .related-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
-    @media (min-width: 768px) { .related-grid { grid-template-columns: 1fr 1fr; gap: 14px; } }
+    .related-grid { display: flex; flex-direction: column; gap: 10px; }
     .related-card { display: block; padding: 16px 20px; border: 1.5px solid var(--border); border-radius: 14px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s; }
     .related-card:hover { border-color: var(--orange); box-shadow: 0 4px 16px rgba(232,115,42,0.1); }
     .related-badge { display: inline-block; background: rgba(232,115,42,0.1); color: var(--orange); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; }
@@ -833,13 +832,13 @@
         <span class="related-badge">아이패드 버튼 수리 가이드</span>
         <span class="related-title">아이패드 10세대 전원 버튼 안 눌림 — 물리 버튼 수리</span>
       </a>
+      <a href="iphone-13-volume-button-ios-26-bug.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">iPhone 13 iOS 26 업데이트 후 볼륨 버튼 안 먹는 문제 — 소프트웨어 버그 진단 가이드</span>
+      </a>
       <a href="iphone-charging-terminal-repair-cost.html" class="related-card">
         <span class="related-badge"></span>
         <span class="related-title">아이폰 충전단자 수리 비용 — 청소(3만원~) vs 교체(15만원~) 정직 공개</span>
-      </a>
-      <a href="applewatch-se-power-button-repair.html" class="related-card">
-        <span class="related-badge">애플워치 SE 버튼 수리</span>
-        <span class="related-title">애플워치 SE 사이드 버튼 안 눌림 — 전원·SOS 버튼 수리</span>
       </a>
     </div>
   </section>

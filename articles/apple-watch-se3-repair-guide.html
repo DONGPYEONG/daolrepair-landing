@@ -817,6 +817,10 @@
   <section class="art-related">
     <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
     <div class="related-grid">
+      <a href="applewatch-refurbish-guide.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">애플워치 리퍼 — 통째 교체 견적 받기 전에 (부분 수리 가능합니다)</span>
+      </a>
       <a href="applewatch-ultra-repair-cost.html" class="related-card">
         <span class="related-badge"></span>
         <span class="related-title">애플워치 Ultra 수리 비용 총정리 — Ultra·Ultra 2 항목별 실제 수리비 2026년 기준</span>
@@ -824,10 +828,6 @@
       <a href="applewatch-se2-repair-cost.html" class="related-card">
         <span class="related-badge"></span>
         <span class="related-title">애플워치 SE 2세대 수리 비용 총정리 — 가성비 기종, 고치는 게 맞을까</span>
-      </a>
-      <a href="applewatch-series7-8-repair-cost.html" class="related-card">
-        <span class="related-badge"></span>
-        <span class="related-title">애플워치 Series 7·8 수리 비용 총정리 — 단종됐어도 수리는 됩니다, 2026년 기준</span>
       </a>
     </div>
   </section>
@@ -843,8 +843,7 @@
     .art-related { margin-top: 56px; padding-top: 40px; border-top: 2px solid var(--border); }
     .art-related-heading { font-size: 18px; font-weight: 900; color: var(--dark); margin-bottom: 20px; }
     .art-related-heading::before { content: ''; display: block; width: 28px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 12px; }
-    .related-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
-    @media (min-width: 768px) { .related-grid { grid-template-columns: 1fr 1fr; gap: 14px; } }
+    .related-grid { display: flex; flex-direction: column; gap: 10px; }
     .related-card { display: block; padding: 16px 20px; border: 1.5px solid var(--border); border-radius: 14px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s; }
     .related-card:hover { border-color: var(--orange); box-shadow: 0 4px 16px rgba(232,115,42,0.1); }
     .related-badge { display: inline-block; background: rgba(232,115,42,0.1); color: var(--orange); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; }
