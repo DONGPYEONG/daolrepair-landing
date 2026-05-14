@@ -643,14 +643,53 @@ def make_outro(dst: Path) -> Path:
     return dst
 
 
+# ── 해시태그 — 주제별 거래 의도 키워드 ───────────────
+# 원칙: "아이폰 배터리" 같은 모호 키워드 X
+#       "아이폰 배터리 교체", "사설 배터리 교체" 같이 거래 의도 분명한 키워드 O
+TOPIC_HASHTAGS_REEL = {
+    "battery": [
+        "#아이폰배터리교체", "#아이폰배터리교체비용", "#아이폰사설배터리교체",
+        "#아이폰배터리수리", "#애플워치배터리교체",
+        "#가산아이폰배터리교체", "#신림아이폰배터리교체", "#목동아이폰배터리교체",
+    ],
+    "back_glass": [
+        "#아이폰후면유리교체", "#아이폰후면유리수리", "#아이폰후면유리교체비용",
+        "#아이폰뒷판교체", "#아이폰후면파손",
+        "#가산아이폰후면유리", "#신림아이폰후면유리", "#목동아이폰후면유리",
+    ],
+    "water": [
+        "#아이폰침수수리", "#아이폰침수복구", "#아이폰침수비용",
+        "#아이폰물에빠짐", "#침수폰수리",
+        "#가산아이폰침수", "#신림아이폰침수", "#목동아이폰침수",
+    ],
+    "screen": [
+        "#아이폰액정교체", "#아이폰액정수리", "#아이폰액정교체비용",
+        "#아이폰사설액정교체", "#아이폰화면깨짐",
+        "#가산아이폰액정교체", "#신림아이폰액정교체", "#목동아이폰액정교체",
+    ],
+}
+
+BRAND_HASHTAGS_REEL = [
+    "#다올리페어", "#수리점안오는법", "#디바이스예방마스터", "#아이폰수리",
+]
+
+
+def _detect_reel_topic(slug: str, data: dict) -> str:
+    """글 슬러그·제목 기반으로 주제 자동 감지."""
+    s = (slug + " " + data.get("title", "")).lower()
+    if "back" in s or "후면" in (slug + data.get("title", "")):
+        return "back_glass"
+    if "water" in s or "침수" in (slug + data.get("title", "")):
+        return "water"
+    if "screen" in s or "액정" in (slug + data.get("title", "")):
+        return "screen"
+    return "battery"
+
+
 # ── 캡션 ────────────────────────────────────────────
-def make_caption(data: dict) -> str:
-    hashtags = [
-        "#다올리페어", "#수리점안오는법", "#디바이스예방", "#수리꿀팁",
-        "#아이폰수리", "#아이패드수리", "#애플워치수리",
-        "#가산아이폰수리", "#신림아이폰수리", "#목동아이폰수리",
-        "#배터리교체", "#액정교체", "#정직수리", "#수리실패0원",
-    ]
+def make_caption(data: dict, slug: str = "") -> str:
+    topic = _detect_reel_topic(slug, data)
+    hashtags = TOPIC_HASHTAGS_REEL.get(topic, TOPIC_HASHTAGS_REEL["battery"]) + BRAND_HASHTAGS_REEL
     body = f"""📚 {data['category']} #{data['series_num']}
 
 {data['title']} {data['subtitle']}
@@ -795,7 +834,7 @@ def build_info_reel(slug: str) -> tuple[Path, Path]:
     Image.open(thumb_img).save(thumb_out, quality=92)
 
     # 캡션
-    cap_path.write_text(make_caption(data), encoding="utf-8")
+    cap_path.write_text(make_caption(data, slug=slug), encoding="utf-8")
 
     return mp4, cap_path
 

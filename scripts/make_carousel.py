@@ -422,16 +422,19 @@ def make_slide(slide: dict, dst: Path, page_num: int, total: int,
 
 
 def make_summary(data: dict, dst: Path) -> Path:
-    """N+1. 정리 + CTA."""
-    img = make_dark_bg()
+    """N+1. 정리 + CTA — 흰 배경 (표지와 톤 통일)."""
+    img = Image.new("RGB", (W, H), (252, 252, 250))
     d = ImageDraw.Draw(img)
+
+    # 상단 주황 라인 (브랜드 시그니처)
+    d.rectangle((0, 0, W, 16), fill=ORANGE)
 
     # 상단 배지
     badge_text = "✅ 정리"
     bf = font("Bold", 36)
     bb = d.textbbox((0, 0), badge_text, font=bf)
     bw = bb[2] - bb[0]
-    badge_y = 100
+    badge_y = 110
     pad_x, pad_y = 24, 14
     d.rounded_rectangle(
         ((W - bw - pad_x * 2) // 2, badge_y,
@@ -440,21 +443,30 @@ def make_summary(data: dict, dst: Path) -> Path:
     )
     d.text(((W - bw) // 2, badge_y + pad_y - 4), badge_text, font=bf, fill=WHITE)
 
-    # 메인 헤드라인
+    # 메인 헤드라인 — 노란 형광펜 + 진한 주황
     f_head = font("Black", 90)
-    draw_centered(d, 320, data["summary_headline"], f_head, ORANGE, letter_spacing=2)
+    head_text = data["summary_headline"]
+    bb_h = d.textbbox((0, 0), head_text, font=f_head)
+    head_w = bb_h[2] - bb_h[0]
+    head_h = bb_h[3] - bb_h[1]
+    head_x = (W - head_w) // 2
+    head_y = 320
+    d.rectangle((head_x - 10, head_y + head_h * 0.40,
+                 head_x + head_w + 10, head_y + head_h + 14),
+                fill=HIGHLIGHT_YELLOW)
+    d.text((head_x, head_y), head_text, font=f_head, fill=ORANGE_DARK)
 
-    # 본문
+    # 본문 — 진한 검정
     f_body = font("Medium", 40)
     body = data["summary_body"]
     body_y = 530
     for i, line in enumerate(body.split("\n")[:6]):
-        draw_centered(d, body_y + i * 60, line, f_body, WHITE)
+        draw_centered(d, body_y + i * 60, line, f_body, (40, 40, 45))
 
     # 짧은 주황 라인
     d.rectangle((W // 2 - 60, 970, W // 2 + 60, 976), fill=ORANGE)
 
-    # CTA 버튼
+    # CTA 버튼 (주황)
     cta_text = data["summary_cta"]
     f_cta = font("Bold", 44)
     cb = d.textbbox((0, 0), cta_text, font=f_cta)
@@ -469,69 +481,140 @@ def make_summary(data: dict, dst: Path) -> Path:
 
     # 도메인
     draw_centered(d, 1190, "다올리페어.com",
-                  font("Medium", 32), (180, 180, 180), letter_spacing=3)
+                  font("Medium", 32), (110, 110, 115), letter_spacing=3)
 
     img.save(dst, quality=92)
     return dst
 
 
 def make_outro(data: dict, dst: Path) -> Path:
-    """마지막. 저장·공유 유도 + 다음 호 예고."""
-    img = make_dark_bg()
+    """마지막. 저장·공유 유도 + 다음 호 예고 — 흰 배경 (표지와 톤 통일)."""
+    img = Image.new("RGB", (W, H), (252, 252, 250))
     d = ImageDraw.Draw(img)
 
-    # 저장 박스
-    box_y1 = 200
+    # 상단 주황 라인
+    d.rectangle((0, 0, W, 16), fill=ORANGE)
+
+    # 저장 박스 (연한 주황 배경)
+    box_y1 = 130
     box_h = 280
     d.rounded_rectangle((80, box_y1, W - 80, box_y1 + box_h),
-                        radius=24, fill=(28, 28, 32))
+                        radius=24, fill=(255, 244, 235))
     d.rectangle((80, box_y1, W - 80, box_y1 + 6), fill=ORANGE)
     f_label = font("Bold", 40)
-    draw_centered(d, box_y1 + 40, "💾 저장하기", f_label, ORANGE)
+    draw_centered(d, box_y1 + 40, "💾 저장하기", f_label, ORANGE_DARK)
     f_body = font("Medium", 36)
     for i, line in enumerate(data["outro_save_msg"].split("\n")):
-        draw_centered(d, box_y1 + 130 + i * 52, line, f_body, WHITE)
+        draw_centered(d, box_y1 + 130 + i * 52, line, f_body, (40, 40, 45))
 
     # 공유 박스
-    box2_y1 = box_y1 + box_h + 40
+    box2_y1 = box_y1 + box_h + 30
     d.rounded_rectangle((80, box2_y1, W - 80, box2_y1 + box_h),
-                        radius=24, fill=(28, 28, 32))
+                        radius=24, fill=(255, 244, 235))
     d.rectangle((80, box2_y1, W - 80, box2_y1 + 6), fill=ORANGE)
-    draw_centered(d, box2_y1 + 40, "🔄 친구에게 공유", f_label, ORANGE)
+    draw_centered(d, box2_y1 + 40, "🔄 친구에게 공유", f_label, ORANGE_DARK)
     for i, line in enumerate(data["outro_share_msg"].split("\n")):
-        draw_centered(d, box2_y1 + 130 + i * 52, line, f_body, WHITE)
+        draw_centered(d, box2_y1 + 130 + i * 52, line, f_body, (40, 40, 45))
 
     # 다음 호 예고
-    next_y = box2_y1 + box_h + 50
+    next_y = box2_y1 + box_h + 40
     d.rectangle((W // 2 - 80, next_y, W // 2 + 80, next_y + 4), fill=ORANGE)
     draw_centered(d, next_y + 30, "다음 호",
-                  font("Bold", 30), (180, 180, 180), letter_spacing=4)
+                  font("Bold", 30), (110, 110, 115), letter_spacing=4)
     draw_centered(d, next_y + 80, data["outro_next"],
-                  font("Bold", 34), WHITE, letter_spacing=1)
+                  font("Bold", 34), (20, 20, 22), letter_spacing=1)
 
     # 시그니처
     draw_centered(d, H - 110, "다올리페어",
-                  font("Black", 48), ORANGE, letter_spacing=4)
+                  font("Black", 48), ORANGE_DARK, letter_spacing=4)
     draw_centered(d, H - 55, "수리비 0원 프로젝트",
-                  font("Medium", 28), (180, 180, 180), letter_spacing=3)
+                  font("Medium", 28), (110, 110, 115), letter_spacing=3)
 
     img.save(dst, quality=92)
     return dst
 
 
+# ── 해시태그 — 주제별 거래 의도 키워드 ───────────────
+# 원칙: "아이폰 배터리" 같은 모호 키워드 X
+#       "아이폰 배터리 교체", "사설 배터리 교체" 같이 거래 의도 분명한 키워드 O
+TOPIC_HASHTAGS = {
+    "battery": [
+        # 거래 의도 — 검색량 + 구매 의도 둘 다 ↑
+        "#아이폰배터리교체",
+        "#아이폰배터리교체비용",
+        "#아이폰사설배터리교체",
+        "#아이폰배터리수리",
+        "#아이폰배터리방전",
+        # 지역 + 거래
+        "#가산아이폰배터리교체",
+        "#신림아이폰배터리교체",
+        "#목동아이폰배터리교체",
+        # 광역 (관련 노출)
+        "#아이폰배터리",
+        "#배터리수명",
+    ],
+    "back_glass": [
+        "#아이폰후면유리교체",
+        "#아이폰후면유리수리",
+        "#아이폰후면유리교체비용",
+        "#아이폰후면깨짐",
+        "#아이폰후면파손",
+        "#가산아이폰후면유리",
+        "#신림아이폰후면유리",
+        "#목동아이폰후면유리",
+        "#아이폰뒷판교체",
+        "#아이폰케이스추천",
+    ],
+    "water": [
+        "#아이폰침수수리",
+        "#아이폰침수복구",
+        "#아이폰침수비용",
+        "#아이폰물에빠짐",
+        "#침수폰살리기",
+        "#가산아이폰침수",
+        "#신림아이폰침수",
+        "#목동아이폰침수",
+        "#아이폰침수응급",
+        "#침수폰수리",
+    ],
+    "screen": [
+        "#아이폰액정교체",
+        "#아이폰액정수리",
+        "#아이폰액정교체비용",
+        "#아이폰사설액정교체",
+        "#아이폰화면깨짐",
+        "#가산아이폰액정교체",
+        "#신림아이폰액정교체",
+        "#목동아이폰액정교체",
+        "#아이폰액정",
+        "#아이폰파손수리",
+    ],
+}
+
+# 모든 주제 공통 (브랜드 + 시리즈)
+BRAND_HASHTAGS = [
+    "#다올리페어",
+    "#수리비0원프로젝트",
+    "#디바이스예방마스터",
+    "#수리점안오는법",
+    "#아이폰수리",
+]
+
+
 # ── 캡션 ────────────────────────────────────────────
 def make_caption(data: dict) -> str:
-    hashtags = [
-        "#다올리페어", "#수리비0원프로젝트", "#디바이스예방마스터",
-        "#아이폰배터리", "#배터리관리", "#배터리수명", "#배터리오래쓰기",
-        "#아이폰꿀팁", "#아이폰관리법", "#수리점안오는법",
-        "#아이폰수리", "#가산아이폰수리", "#신림아이폰수리", "#목동아이폰수리",
-    ]
+    topic = data.get("topic", "battery")
+    topic_tags = TOPIC_HASHTAGS.get(topic, TOPIC_HASHTAGS["battery"])
+    hashtags = topic_tags + BRAND_HASHTAGS
+
+    # 도입 본문 첫 두 줄을 캡션 인트로로 활용
+    intro_lines = data.get("intro_body", "").split("\n")
+    intro_preview = "\n".join([l for l in intro_lines if l.strip()][:3])
+
     return (
         f"📬 {data['series_name']} #{data['series_num']}\n\n"
         f"{data['cover_hook_top']} {data['cover_hook_main']} {data['cover_hook_sub']}\n\n"
-        "수리점 사장이 직접 정리한 진짜 노하우.\n"
-        "이 7가지만 지키면 배터리 수명이 1.5~2배 늘어납니다.\n\n"
+        f"{intro_preview}\n\n"
         "━━━━━━━━━━━━━━━━━━━━\n"
         "🌐 다올리페어.com\n"
         "📍 가산 · 신림 · 목동 직영점\n"
