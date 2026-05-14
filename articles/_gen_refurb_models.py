@@ -20,8 +20,8 @@ SITE = "https://xn--2j1bq2k97kxnah86c.com"
 # ─── 부품 공통 리스트 — 다올리페어가 단가표로 제공하는 모든 부품 (사장님 명시 2026-05-14)
 # Face ID 제외 (메모리: Face ID 글 작성 안 함)
 COMMON_IPHONE_PARTS = [
-    "디스플레이(액정) — 정품·정품인증·DD·호환 4단계",
-    "배터리 — 셀 교체·정품 인증·일반 호환 3옵션",
+    "디스플레이(액정) — 정품 또는 DD 2가지",
+    "배터리 — 셀 교체·일반 호환·정품 인증 3옵션",
     "후면유리 (전 모델 색상)",
     "후면 카메라 모듈·렌즈",
     "전면 카메라",
@@ -546,7 +546,7 @@ MODEL_DETAILS = {
     "iPhone 15 Pro": [
         "A17 Pro 칩 + 티타늄 프레임. 무게 줄었지만 변형 위험 유의.",
         "USB-C 단자. 인식 불량 시 단독 수리 가능.",
-        "OLED ProMotion 액정. 4단계 옵션 비교.",
+        "OLED ProMotion 액정. 정품·DD 2가지 옵션.",
     ],
     "iPhone 15": [
         "A16 칩 + 알루미늄 프레임. Pro와 칩셋 차이.",
@@ -714,7 +714,7 @@ def build_html(slug: str, data: dict) -> str:
 
     # device별 부품 요약 문구 (부품 리스트 아래) — 정확한 옵션 명시
     if device == "아이폰":
-        parts_summary = "다올리페어는 부품별로 다양한 옵션을 모두 공개합니다 (액정 4단계, 배터리 3옵션 등)."
+        parts_summary = "다올리페어는 부품별 옵션을 공개합니다 (액정 2가지: 정품·DD, 배터리 3옵션: 셀 교체·일반·정품 인증)."
     elif device == "애플워치":
         parts_summary = "다올리페어는 부품별 가격을 공개합니다 (액정은 정품 단독, 배터리는 정품 추출·OEM 2옵션)."
     else:
@@ -724,7 +724,7 @@ def build_html(slug: str, data: dict) -> str:
     if device == "아이폰":
         daolrepair_options = (
             f"{model}은 다올리페어에서 부품별로 다양한 옵션을 안내합니다. "
-            "<strong>액정</strong>은 정품·DD(OEM) 2단계, <strong>배터리</strong>는 셀 교체·정품 인증·일반 호환 3옵션, "
+            "<strong>액정</strong>은 정품·DD 2가지, <strong>배터리</strong>는 셀 교체·일반·정품 인증 3옵션, "
             "<strong>후면유리</strong>는 정품급 OEM으로 진행됩니다. 부품별 가격을 모두 공개하고 비교 견적을 안내합니다. "
             "90일 보증, 수리 실패 시 비용 0원, 당일 처리 가능합니다."
         )
