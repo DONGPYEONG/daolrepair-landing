@@ -47,6 +47,9 @@ REFURB_MODELS = {
     # ─── iPhone (단가표 기준 — 거의 모든 부품 수리 가능)
     "iphone-17-pro-max-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 17 Pro Max",
+        "title_custom": "iPhone 17 Pro Max 리퍼 80만원+? — 부품 단독 수리로 절반 절약",
+        "h1_custom": "리퍼 견적이 부담된다면 — 단독 교체 가능 부위",
+        "subtitle_custom": "A19 Pro · 티타늄 · USB-C 단독 수리 가능",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
         "available_parts": COMMON_IPHONE_PARTS,
@@ -54,6 +57,9 @@ REFURB_MODELS = {
     },
     "iphone-17-pro-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 17 Pro",
+        "title_custom": "iPhone 17 Pro 화면 깨졌어도 — 액정만 단독 교체 가능",
+        "h1_custom": "리퍼 받기 전에 알아두세요",
+        "subtitle_custom": "A19 Pro · USB-C · OLED ProMotion",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
         "available_parts": COMMON_IPHONE_PARTS,
@@ -61,6 +67,9 @@ REFURB_MODELS = {
     },
     "iphone-16-pro-max-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 16 Pro Max",
+        "title_custom": "iPhone 16 Pro Max 액정 깨짐 — 리퍼 견적 받기 전에",
+        "h1_custom": "단가표 가장 인기 — 부품 수급 안정",
+        "subtitle_custom": "A18 Pro · Camera Control · USB-C 3.0",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
         "available_parts": COMMON_IPHONE_PARTS,
@@ -68,6 +77,9 @@ REFURB_MODELS = {
     },
     "iphone-15-pro-max-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 15 Pro Max",
+        "title_custom": "iPhone 15 Pro Max 액정·후면 깨졌어도 — 리퍼 말고 부분 수리",
+        "h1_custom": "티타늄 프레임 변형 주의",
+        "subtitle_custom": "A17 Pro · USB-C 3.0 · ProMotion",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
         "available_parts": COMMON_IPHONE_PARTS,
@@ -75,6 +87,9 @@ REFURB_MODELS = {
     },
     "iphone-15-pro-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 15 Pro",
+        "title_custom": "iPhone 15 Pro USB-C 단자 인식 안 됨 — 단자만 수리 가능",
+        "h1_custom": "리퍼 견적 받기 전에 — 단독 교체 가능 부위",
+        "subtitle_custom": "티타늄 · USB-C 도입 · 120Hz",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
         "available_parts": COMMON_IPHONE_PARTS,
@@ -82,6 +97,9 @@ REFURB_MODELS = {
     },
     "iphone-15-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 15",
+        "title_custom": "iPhone 15 USB-C 도입 모델 — 리퍼 견적이 새 폰 가격?",
+        "h1_custom": "부분 수리로 충분합니다",
+        "subtitle_custom": "A16 · USB-C 2.0 · 일반 OLED",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
         "available_parts": COMMON_IPHONE_PARTS,
@@ -89,6 +107,9 @@ REFURB_MODELS = {
     },
     "iphone-14-pro-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 14 Pro",
+        "title_custom": "iPhone 14 Pro 다이내믹 아일랜드 깨짐 — 액정 단독 교체 가능",
+        "h1_custom": "리퍼 견적 받기 전에",
+        "subtitle_custom": "A16 · ProMotion 120Hz · Lightning",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
         "available_parts": COMMON_IPHONE_PARTS,
@@ -96,6 +117,9 @@ REFURB_MODELS = {
     },
     "iphone-13-pro-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 13 Pro",
+        "title_custom": "iPhone 13 Pro 액정·배터리 1년차 — 리퍼 견적 받기 전에",
+        "h1_custom": "단가표에서 가장 안정적인 모델",
+        "subtitle_custom": "A15 Bionic · ProMotion · Lightning",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
         "available_parts": COMMON_IPHONE_PARTS,
@@ -103,6 +127,9 @@ REFURB_MODELS = {
     },
     "iphone-13-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 13",
+        "title_custom": "iPhone 13 배터리·액정 깨짐 — 리퍼 말고 부분 수리",
+        "h1_custom": "인기 모델 · 부품 수급 안정",
+        "subtitle_custom": "A15 · 일반 OLED · Lightning",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
         "available_parts": COMMON_IPHONE_PARTS,
@@ -110,6 +137,9 @@ REFURB_MODELS = {
     },
     "iphone-se-3-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone SE 3세대",
+        "title_custom": "iPhone SE 3 홈버튼·LCD — 리퍼 견적이 본체 가격?",
+        "h1_custom": "부분 수리로 절반 이하",
+        "subtitle_custom": "A15 · Touch ID · LCD · Lightning",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
         "available_parts": COMMON_IPHONE_BUDGET_PARTS,
@@ -121,6 +151,9 @@ REFURB_MODELS = {
     # 최신(Ultra 2, Series 9~10)은 제외 — 부품 수급 어려움
     "apple-watch-se-2-refurbish-vs-repair": {
         "device": "애플워치", "device_eng": "Apple Watch", "model": "Apple Watch SE 2세대",
+        "title_custom": "Apple Watch SE 2세대 액정 깨짐 — 통째 교체 X, 액정만 단독 교체",
+        "h1_custom": "리퍼 견적 받기 전에",
+        "subtitle_custom": "Retina OLED · 합리적 옵션",
         "hub_slug": "applewatch-refurbish-guide",
         "hub_title": "애플워치 리퍼 가이드",
         "available_parts": ["디스플레이(액정)", "배터리", "후면"],
@@ -128,6 +161,9 @@ REFURB_MODELS = {
     },
     "apple-watch-se-1-refurbish-vs-repair": {
         "device": "애플워치", "device_eng": "Apple Watch", "model": "Apple Watch SE 1세대",
+        "title_custom": "Apple Watch SE 1세대 배터리·액정 — 리퍼 말고 부분 수리",
+        "h1_custom": "합리적 옵션 · 부품 수급 안정",
+        "subtitle_custom": "S5 · Retina · 단가표 합리적",
         "hub_slug": "applewatch-refurbish-guide",
         "hub_title": "애플워치 리퍼 가이드",
         "available_parts": ["디스플레이(액정)", "배터리", "후면"],
@@ -135,6 +171,9 @@ REFURB_MODELS = {
     },
     "apple-watch-series-7-refurbish-vs-repair": {
         "device": "애플워치", "device_eng": "Apple Watch", "model": "Apple Watch Series 7",
+        "title_custom": "Apple Watch Series 7 Always-on 깨짐 — 액정 단독 교체 가능",
+        "h1_custom": "리퍼 견적 받기 전에",
+        "subtitle_custom": "S7 · Retina Always-on",
         "hub_slug": "applewatch-refurbish-guide",
         "hub_title": "애플워치 리퍼 가이드",
         "available_parts": ["디스플레이(액정)", "배터리", "후면 세라믹"],
@@ -142,6 +181,9 @@ REFURB_MODELS = {
     },
     "apple-watch-series-6-refurbish-vs-repair": {
         "device": "애플워치", "device_eng": "Apple Watch", "model": "Apple Watch Series 6",
+        "title_custom": "Apple Watch Series 6 후면 세라믹 깨짐 — 후면만 단독 교체",
+        "h1_custom": "리퍼 견적 부담된다면",
+        "subtitle_custom": "S6 · 혈중 산소 센서 · 안정",
         "hub_slug": "applewatch-refurbish-guide",
         "hub_title": "애플워치 리퍼 가이드",
         "available_parts": ["디스플레이(액정)", "배터리", "후면 세라믹"],
@@ -149,6 +191,9 @@ REFURB_MODELS = {
     },
     "apple-watch-series-5-refurbish-vs-repair": {
         "device": "애플워치", "device_eng": "Apple Watch", "model": "Apple Watch Series 5",
+        "title_custom": "Apple Watch Series 5 화면 들뜸·배터리 부풀음 — 부분 수리로 살림",
+        "h1_custom": "리퍼 말고 단독 수리",
+        "subtitle_custom": "S5 · Always-on 첫 도입",
         "hub_slug": "applewatch-refurbish-guide",
         "hub_title": "애플워치 리퍼 가이드",
         "available_parts": ["디스플레이(액정)", "배터리", "후면 세라믹"],
@@ -159,6 +204,9 @@ REFURB_MODELS = {
     # M4 모델은 부품 수급 어려워 제외. 검증된 인기 모델만.
     "ipad-pro-11-m2-refurbish-vs-repair": {
         "device": "아이패드", "device_eng": "iPad", "model": "iPad Pro 11형 (M2, 4세대)",
+        "title_custom": "iPad Pro 11 M2 액정 깨짐 — 리퍼 100만? 절반 가능",
+        "h1_custom": "단가표 인기 모델",
+        "subtitle_custom": "M2 · Liquid Retina · USB-C 3.0",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
         "available_parts": ["디스플레이(액정)", "배터리", "충전 단자", "후면 카메라"],
@@ -166,6 +214,9 @@ REFURB_MODELS = {
     },
     "ipad-pro-11-m1-refurbish-vs-repair": {
         "device": "아이패드", "device_eng": "iPad", "model": "iPad Pro 11형 (M1, 3세대)",
+        "title_custom": "iPad Pro 11 M1 충전 단자 인식 안 됨 — 단자만 수리 가능",
+        "h1_custom": "단가표 가장 안정적인 패드",
+        "subtitle_custom": "M1 · USB-C · 부품 수급 안정",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
         "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
@@ -173,6 +224,9 @@ REFURB_MODELS = {
     },
     "ipad-pro-12-9-5th-refurbish-vs-repair": {
         "device": "아이패드", "device_eng": "iPad", "model": "iPad Pro 12.9형 5세대 (M1)",
+        "title_custom": "iPad Pro 12.9 mini-LED 깨짐 — 리퍼 견적 받기 전에",
+        "h1_custom": "12.9형 큰 액정 · M1",
+        "subtitle_custom": "Liquid Retina XDR · USB-C Thunderbolt",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
         "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
@@ -180,6 +234,9 @@ REFURB_MODELS = {
     },
     "ipad-air-5th-refurbish-vs-repair": {
         "device": "아이패드", "device_eng": "iPad", "model": "iPad Air 5세대 (M1)",
+        "title_custom": "iPad Air 5 M1 액정·배터리 — 리퍼 말고 부분 수리",
+        "h1_custom": "Pro급 성능 + 합리적 가격",
+        "subtitle_custom": "M1 · Liquid Retina · USB-C",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
         "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
@@ -187,6 +244,9 @@ REFURB_MODELS = {
     },
     "ipad-air-4th-refurbish-vs-repair": {
         "device": "아이패드", "device_eng": "iPad", "model": "iPad Air 4세대",
+        "title_custom": "iPad Air 4세대 USB-C 인식 불량 — 단자 단독 수리",
+        "h1_custom": "Air USB-C 첫 도입 모델",
+        "subtitle_custom": "A14 · Liquid Retina · USB-C",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
         "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
@@ -194,6 +254,9 @@ REFURB_MODELS = {
     },
     "ipad-10th-refurbish-vs-repair": {
         "device": "아이패드", "device_eng": "iPad", "model": "iPad (10세대)",
+        "title_custom": "iPad 10세대 펜슬 1세대 어댑터 + 액정 — 리퍼 받기 전에",
+        "h1_custom": "엔트리 인기 1위",
+        "subtitle_custom": "A14 · USB-C · 일반 Retina",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
         "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
@@ -201,6 +264,9 @@ REFURB_MODELS = {
     },
     "ipad-9th-refurbish-vs-repair": {
         "device": "아이패드", "device_eng": "iPad", "model": "iPad (9세대)",
+        "title_custom": "iPad 9세대 Lightning 단자 인식 불량 — 단자만 단독 수리",
+        "h1_custom": "단가표 가장 저렴한 패드",
+        "subtitle_custom": "A13 · Lightning · Touch ID",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
         "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
@@ -208,6 +274,9 @@ REFURB_MODELS = {
     },
     "ipad-mini-6th-refurbish-vs-repair": {
         "device": "아이패드", "device_eng": "iPad", "model": "iPad mini 6세대",
+        "title_custom": "iPad mini 6 액정 깨짐·배터리 부풀음 — 리퍼 말고 부분 수리",
+        "h1_custom": "8.3형 휴대성 우수",
+        "subtitle_custom": "A15 · USB-C · 전원 Touch ID",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
         "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
@@ -352,7 +421,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     </div>
 
     <h2>다올리페어 옵션</h2>
-    <p>{model}은 다올리페어에서 정품·정품 인증·DD(OEM)·일반 호환 등 부품 등급별 가격을 모두 공개하고 비교 견적을 안내합니다. 90일 보증, 수리 실패 시 비용 0원, 당일 처리 가능합니다.</p>
+    <p>{daolrepair_options}</p>
 
     <h2>자주 묻는 질문 (FAQ)</h2>
 {faq_blocks}
@@ -545,9 +614,10 @@ def build_html(slug: str, data: dict) -> str:
     tier = data.get("tier", "mid")
     parts_items = "\n".join([f"        <li>{p}</li>" for p in data["available_parts"]])
 
-    title = f"{model} 리퍼 vs 수리 — 부품 단독 교체 가능한 부위 (다올리페어)"
-    h1 = f"{model} 리퍼 vs 수리"
-    subtitle = f"부품 단독 교체로 끝낼 수 있는 케이스"
+    # 모델별 차별화된 title·h1·subtitle (사장님 명시 — 동일 제목 금지)
+    title = data.get("title_custom", f"{model} 리퍼 vs 수리")
+    h1 = data.get("h1_custom", f"{model} 리퍼 견적 받기 전에")
+    subtitle = data.get("subtitle_custom", "부품 단독 교체로 끝낼 수 있는 케이스")
     meta_desc = (
         f"{model} 공식 리퍼 견적 부담되세요? "
         f"단일 부품 손상은 사설 부분 수리로 절반 이하 가능. "
@@ -573,6 +643,29 @@ def build_html(slug: str, data: dict) -> str:
     detail_list = MODEL_DETAILS.get(model, [])
     detail_html = "<ul>" + "".join(f"<li>{d}</li>" for d in detail_list) + "</ul>"
 
+    # device별 부품 옵션 안내 (메모리 룰 — 아이폰/워치/패드 다른 옵션 체계)
+    if device == "아이폰":
+        daolrepair_options = (
+            f"{model}은 다올리페어에서 부품별로 다양한 옵션을 안내합니다. "
+            "<strong>액정</strong>은 정품·DD(OEM) 2단계, <strong>배터리</strong>는 셀 교체·정품 인증·일반 호환 3옵션, "
+            "<strong>후면유리</strong>는 정품급 OEM으로 진행됩니다. 부품별 가격을 모두 공개하고 비교 견적을 안내합니다. "
+            "90일 보증, 수리 실패 시 비용 0원, 당일 처리 가능합니다."
+        )
+    elif device == "애플워치":
+        daolrepair_options = (
+            f"{model}은 다올리페어에서 부품별 옵션으로 안내합니다. "
+            "<strong>액정</strong>은 정품·OEM 2단계, <strong>배터리</strong>는 정품 추출·OEM 2옵션입니다 "
+            "(워치는 본체 구조상 셀 교체 옵션 없음). <strong>후면 세라믹·유리</strong>는 단독 교체 가능. "
+            "부품별 가격을 공개하고 비교 견적을 안내합니다. 90일 보증, 당일 처리 가능합니다."
+        )
+    else:  # 아이패드
+        daolrepair_options = (
+            f"{model}은 다올리페어에서 부품별 옵션으로 안내합니다. "
+            "<strong>액정</strong>은 정품·OEM 2단계, <strong>배터리</strong>는 정품 추출·OEM 2옵션입니다 "
+            "(패드는 본체 구조상 셀 교체 옵션 없음). 부품별 가격을 공개하고 비교 견적을 안내합니다. "
+            "90일 보증, 수리 실패 시 비용 0원, 당일 처리 가능합니다."
+        )
+
     # FAQ
     faqs = _faqs_for(model, device)
     faq_blocks = "\n".join([
@@ -596,6 +689,7 @@ def build_html(slug: str, data: dict) -> str:
         parts_items=parts_items,
         detail_html=detail_html,
         faq_blocks=faq_blocks,
+        daolrepair_options=daolrepair_options,
         hub_slug=data["hub_slug"],
         hub_title=data["hub_title"],
         cta_headline=TIER_CTA_HEADLINE[tier],
