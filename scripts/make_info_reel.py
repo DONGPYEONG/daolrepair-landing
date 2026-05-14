@@ -282,8 +282,11 @@ def make_slide(slide: dict, dst: Path, page_num: int = 1, total_pages: int = 5,
     head_lines = _wrap_text(d, headline, f_head, card_w - 100)
 
     line_h = head_size + 12
+    # 본문 강조 톤과 통일: 진한 노란 형광펜 + 주황 굵은 글씨
+    HIGHLIGHT_YELLOW = (255, 224, 88)  # 본문 .art-highlight와 동일
+    HIGHLIGHT_ORANGE = (197, 94, 26)   # 본문 #C55E1A와 동일
     for i, line in enumerate(head_lines):
-        # 하이라이트 부분만 주황색
+        # 하이라이트 부분만 주황색 + 노란 형광펜
         if highlight and highlight in line:
             idx = line.find(highlight)
             pre = line[:idx]
@@ -292,18 +295,17 @@ def make_slide(slide: dict, dst: Path, page_num: int = 1, total_pages: int = 5,
             bb_pre = d.textbbox((0, 0), pre, font=f_head)
             bb_hi = d.textbbox((0, 0), hi, font=f_head)
             bb_post = d.textbbox((0, 0), post, font=f_head)
-            total_w = (bb_pre[2] - bb_pre[0]) + (bb_hi[2] - bb_hi[0]) + (bb_post[2] - bb_post[0])
             x = card_x1 + 50  # 왼쪽 정렬 (칼럼 글 느낌)
             if pre:
                 d.text((x, head_y + i * line_h), pre, font=f_head, fill=(20, 20, 22))
                 x += bb_pre[2] - bb_pre[0]
-            # 하이라이트 형광펜 (연한 주황 마커)
+            # 형광펜 박스 — 진한 노란 (본문 톤과 통일), 더 큰 영역
             hi_h = bb_hi[3] - bb_hi[1]
-            d.rectangle((x - 2, head_y + i * line_h + hi_h * 0.55,
-                         x + (bb_hi[2] - bb_hi[0]) + 2,
-                         head_y + i * line_h + hi_h + 8),
-                        fill=(255, 215, 130))
-            d.text((x, head_y + i * line_h), hi, font=f_head, fill=ORANGE)
+            d.rectangle((x - 4, head_y + i * line_h + hi_h * 0.40,
+                         x + (bb_hi[2] - bb_hi[0]) + 4,
+                         head_y + i * line_h + hi_h + 14),
+                        fill=HIGHLIGHT_YELLOW)
+            d.text((x, head_y + i * line_h), hi, font=f_head, fill=HIGHLIGHT_ORANGE)
             x += bb_hi[2] - bb_hi[0]
             if post:
                 d.text((x, head_y + i * line_h), post, font=f_head, fill=(20, 20, 22))
@@ -311,14 +313,35 @@ def make_slide(slide: dict, dst: Path, page_num: int = 1, total_pages: int = 5,
             d.text((card_x1 + 50, head_y + i * line_h),
                    line, font=f_head, fill=(20, 20, 22))
 
-    # 본문 (Pretendard SemiBold, 강조 톤)
+    # 본문 (Pretendard SemiBold, 강조 톤 + highlight 형광펜)
     body_y = head_y + len(head_lines) * line_h + 70
     f_body = font("SemiBold", 46)
     body_line_h = 68
     body_lines_count = 0
     for i, line in enumerate(body.split("\n")[:3]):
-        d.text((card_x1 + 50, body_y + i * body_line_h),
-               line, font=f_body, fill=(50, 50, 55))
+        # 본문 줄에 highlight 키워드가 있으면 형광펜 적용
+        if highlight and highlight in line:
+            idx = line.find(highlight)
+            pre = line[:idx]
+            hi = highlight
+            post = line[idx + len(highlight):]
+            bb_hi = d.textbbox((0, 0), hi, font=f_body)
+            x = card_x1 + 50
+            if pre:
+                d.text((x, body_y + i * body_line_h), pre, font=f_body, fill=(50, 50, 55))
+                x += d.textbbox((0, 0), pre, font=f_body)[2]
+            hi_h = bb_hi[3] - bb_hi[1]
+            d.rectangle((x - 3, body_y + i * body_line_h + hi_h * 0.45,
+                         x + (bb_hi[2] - bb_hi[0]) + 3,
+                         body_y + i * body_line_h + hi_h + 10),
+                        fill=HIGHLIGHT_YELLOW)
+            d.text((x, body_y + i * body_line_h), hi, font=f_body, fill=HIGHLIGHT_ORANGE)
+            x += bb_hi[2] - bb_hi[0]
+            if post:
+                d.text((x, body_y + i * body_line_h), post, font=f_body, fill=(50, 50, 55))
+        else:
+            d.text((card_x1 + 50, body_y + i * body_line_h),
+                   line, font=f_body, fill=(50, 50, 55))
         body_lines_count += 1
 
     # ── 칼럼 발췌 단락 (회색 박스 — "캡처" 느낌) ──
