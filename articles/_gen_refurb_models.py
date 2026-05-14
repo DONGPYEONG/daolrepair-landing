@@ -43,6 +43,35 @@ COMMON_IPHONE_BUDGET_PARTS = [
     "메인보드 부분 복구·침수 처리",
 ]
 
+# 애플워치 부품 — 거의 모든 부품 수리 가능 (사장님 명시 2026-05-14)
+# 액정은 정품 단독, OEM·호환 X
+COMMON_WATCH_PARTS = [
+    "디스플레이(액정) — 정품 액정만 사용",
+    "배터리 — 정품 추출·OEM 2옵션",
+    "후면 세라믹·유리",
+    "디지털 크라운 (헐거움·인식 불량)",
+    "전원·사이드 버튼",
+    "심박·혈중 산소 센서 모듈",
+    "스피커·마이크",
+    "무한사과(부팅 무한 루프) 복구",
+    "침수 처리",
+    "메인보드 부분 복구",
+]
+
+# 아이패드 부품 — 거의 모든 부품 수리 가능
+COMMON_IPAD_PARTS = [
+    "디스플레이(액정) — 정품·OEM 옵션",
+    "배터리 — 정품 추출·OEM 2옵션",
+    "충전 단자 (USB-C·Lightning)",
+    "전·후면 카메라 모듈",
+    "스피커·마이크",
+    "전원·볼륨 버튼",
+    "Touch ID·홈버튼 (해당 모델)",
+    "무한사과(부팅 무한 루프) 복구",
+    "침수 처리",
+    "메인보드 부분 복구",
+]
+
 REFURB_MODELS = {
     # ─── iPhone (단가표 기준 — 거의 모든 부품 수리 가능)
     "iphone-17-pro-max-refurbish-vs-repair": {
@@ -156,7 +185,7 @@ REFURB_MODELS = {
         "subtitle_custom": "Retina OLED · 합리적 옵션",
         "hub_slug": "applewatch-refurbish-guide",
         "hub_title": "애플워치 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면"],
+        "available_parts": COMMON_WATCH_PARTS,
         "tier": "budget",
     },
     "apple-watch-se-1-refurbish-vs-repair": {
@@ -166,7 +195,7 @@ REFURB_MODELS = {
         "subtitle_custom": "S5 · Retina · 단가표 합리적",
         "hub_slug": "applewatch-refurbish-guide",
         "hub_title": "애플워치 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면"],
+        "available_parts": COMMON_WATCH_PARTS,
         "tier": "budget",
     },
     "apple-watch-series-7-refurbish-vs-repair": {
@@ -176,7 +205,7 @@ REFURB_MODELS = {
         "subtitle_custom": "S7 · Retina Always-on",
         "hub_slug": "applewatch-refurbish-guide",
         "hub_title": "애플워치 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면 세라믹"],
+        "available_parts": COMMON_WATCH_PARTS,
         "tier": "mid",
     },
     "apple-watch-series-6-refurbish-vs-repair": {
@@ -186,7 +215,7 @@ REFURB_MODELS = {
         "subtitle_custom": "S6 · 혈중 산소 센서 · 안정",
         "hub_slug": "applewatch-refurbish-guide",
         "hub_title": "애플워치 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면 세라믹"],
+        "available_parts": COMMON_WATCH_PARTS,
         "tier": "mid",
     },
     "apple-watch-series-5-refurbish-vs-repair": {
@@ -196,7 +225,7 @@ REFURB_MODELS = {
         "subtitle_custom": "S5 · Always-on 첫 도입",
         "hub_slug": "applewatch-refurbish-guide",
         "hub_title": "애플워치 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면 세라믹"],
+        "available_parts": COMMON_WATCH_PARTS,
         "tier": "mid",
     },
 
@@ -209,7 +238,7 @@ REFURB_MODELS = {
         "subtitle_custom": "M2 · Liquid Retina · USB-C 3.0",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "충전 단자", "후면 카메라"],
+        "available_parts": COMMON_IPAD_PARTS,
         "tier": "premium",
     },
     "ipad-pro-11-m1-refurbish-vs-repair": {
@@ -219,7 +248,7 @@ REFURB_MODELS = {
         "subtitle_custom": "M1 · USB-C · 부품 수급 안정",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
+        "available_parts": COMMON_IPAD_PARTS,
         "tier": "premium",
     },
     "ipad-pro-12-9-5th-refurbish-vs-repair": {
@@ -229,7 +258,7 @@ REFURB_MODELS = {
         "subtitle_custom": "Liquid Retina XDR · USB-C Thunderbolt",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
+        "available_parts": COMMON_IPAD_PARTS,
         "tier": "premium",
     },
     "ipad-air-5th-refurbish-vs-repair": {
@@ -239,7 +268,7 @@ REFURB_MODELS = {
         "subtitle_custom": "M1 · Liquid Retina · USB-C",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
+        "available_parts": COMMON_IPAD_PARTS,
         "tier": "mid",
     },
     "ipad-air-4th-refurbish-vs-repair": {
@@ -249,7 +278,7 @@ REFURB_MODELS = {
         "subtitle_custom": "A14 · Liquid Retina · USB-C",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
+        "available_parts": COMMON_IPAD_PARTS,
         "tier": "mid",
     },
     "ipad-10th-refurbish-vs-repair": {
@@ -259,7 +288,7 @@ REFURB_MODELS = {
         "subtitle_custom": "A14 · USB-C · 일반 Retina",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
+        "available_parts": COMMON_IPAD_PARTS,
         "tier": "budget",
     },
     "ipad-9th-refurbish-vs-repair": {
@@ -269,7 +298,7 @@ REFURB_MODELS = {
         "subtitle_custom": "A13 · Lightning · Touch ID",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
+        "available_parts": COMMON_IPAD_PARTS,
         "tier": "budget",
     },
     "ipad-mini-6th-refurbish-vs-repair": {
@@ -279,7 +308,7 @@ REFURB_MODELS = {
         "subtitle_custom": "A15 · USB-C · 전원 Touch ID",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
+        "available_parts": COMMON_IPAD_PARTS,
         "tier": "mid",
     },
 }
@@ -333,6 +362,26 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
     :root {{ --orange: #E8732A; --dark: #0A0A0A; --text: #1a1a1a; --muted: #666; --border: #e8e8e8; --font: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }}
     body {{ font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; }}
+    /* 상단 네비 */
+    .art-nav {{ position: sticky; top: 0; z-index: 1000; background: rgba(10,10,10,0.92); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(255,255,255,0.08); }}
+    .art-nav-inner {{ max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }}
+    .art-nav-logo {{ display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }}
+    .art-nav-logo img {{ width: 34px; height: 34px; border-radius: 8px; }}
+    .art-nav-logo-text {{ display: flex; flex-direction: column; line-height: 1; }}
+    .art-nav-logo-ko {{ font-size: 14px; font-weight: 900; color: #fff; }}
+    .art-nav-logo-ko em {{ color: var(--orange); font-style: normal; }}
+    .art-nav-logo-en {{ font-size: 8px; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 1.3px; margin-top: 2px; }}
+    .art-nav-links {{ display: flex; gap: 0; list-style: none; padding: 0; margin: 0; align-items: center; }}
+    .art-nav-links li {{ position: relative; }}
+    .art-nav-links li + li::before {{ content: ''; display: block; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 12px; background: rgba(255,255,255,0.12); }}
+    .art-nav-links a {{ color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; font-weight: 500; padding: 0 12px; transition: color 0.2s; }}
+    .art-nav-links a:hover {{ color: #fff; }}
+    .art-nav-reserve-btn {{ background: var(--orange); color: #fff; text-decoration: none; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; white-space: nowrap; }}
+    .art-nav-reserve-btn:hover {{ background: #C55E1A; }}
+    @media (max-width: 640px) {{
+      .art-nav-links {{ display: none; }}
+      .art-nav-logo-en {{ display: none; }}
+    }}
     .art-wrap {{ max-width: 680px; margin: 0 auto; padding: 50px 20px 100px; }}
     .related-grid {{ display: grid; grid-template-columns: 1fr; gap: 10px; }}
     @media (min-width: 768px) {{ .related-grid {{ grid-template-columns: 1fr 1fr; gap: 14px; }} }}
@@ -376,6 +425,25 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   </style>
 </head>
 <body>
+  <nav class="art-nav">
+    <div class="art-nav-inner">
+      <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-logo">
+        <img loading="lazy" src="../로고신규1.jpg" alt="다올리페어">
+        <div class="art-nav-logo-text">
+          <span class="art-nav-logo-ko">다올<em>리페어</em></span>
+          <span class="art-nav-logo-en">Device Repair Master</span>
+        </div>
+      </a>
+      <ul class="art-nav-links">
+        <li><a href="https://xn--2j1bq2k97kxnah86c.com/#services">서비스</a></li>
+        <li><a href="https://xn--2j1bq2k97kxnah86c.com/#estimate">수리 견적</a></li>
+        <li><a href="index.html">수리 칼럼</a></li>
+        <li><a href="https://xn--2j1bq2k97kxnah86c.com/#reviews">후기</a></li>
+        <li><a href="https://xn--2j1bq2k97kxnah86c.com/#locations">지점</a></li>
+      </ul>
+      <a href="https://xn--2j1bq2k97kxnah86c.com/#booking-form" class="art-nav-reserve-btn">수리 예약</a>
+    </div>
+  </nav>
   <div class="art-wrap art-body">
     <span class="related-badge">📌 {device} 리퍼 가이드</span>
     <h1>{h1}</h1>
@@ -398,7 +466,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 {parts_items}
       </ul>
     </div>
-    <p>위 부품 중 <strong>단일 손상</strong>이면 리퍼 대신 부분 수리로 끝낼 수 있습니다. 데이터·페어링·앱 설정 모두 보존되고 수리 시간도 짧습니다. 다올리페어는 부품 등급별(정품·정품 인증·DD·일반 호환) 가격을 모두 공개합니다.</p>
+    <p>위 부품 중 <strong>단일 손상</strong>이면 리퍼 대신 부분 수리로 끝낼 수 있습니다. 데이터·페어링·앱 설정 모두 보존되고 수리 시간도 짧습니다. {parts_summary}</p>
 
     <h2>리퍼가 답인 경우 (드뭅니다)</h2>
     <p>대부분 부품 단독 수리로 해결되지만 다음 케이스는 리퍼를 고려해야 합니다:</p>
@@ -643,6 +711,14 @@ def build_html(slug: str, data: dict) -> str:
     detail_list = MODEL_DETAILS.get(model, [])
     detail_html = "<ul>" + "".join(f"<li>{d}</li>" for d in detail_list) + "</ul>"
 
+    # device별 부품 요약 문구 (부품 리스트 아래) — 정확한 옵션 명시
+    if device == "아이폰":
+        parts_summary = "다올리페어는 부품별로 다양한 옵션을 모두 공개합니다 (액정 4단계, 배터리 3옵션 등)."
+    elif device == "애플워치":
+        parts_summary = "다올리페어는 부품별 가격을 공개합니다 (액정은 정품 단독, 배터리는 정품 추출·OEM 2옵션)."
+    else:
+        parts_summary = "다올리페어는 부품별 가격을 공개합니다 (액정·배터리 모두 정품·OEM 옵션)."
+
     # device별 부품 옵션 안내 (메모리 룰 — 아이폰/워치/패드 다른 옵션 체계)
     if device == "아이폰":
         daolrepair_options = (
@@ -654,8 +730,9 @@ def build_html(slug: str, data: dict) -> str:
     elif device == "애플워치":
         daolrepair_options = (
             f"{model}은 다올리페어에서 부품별 옵션으로 안내합니다. "
-            "<strong>액정</strong>은 정품·OEM 2단계, <strong>배터리</strong>는 정품 추출·OEM 2옵션입니다 "
-            "(워치는 본체 구조상 셀 교체 옵션 없음). <strong>후면 세라믹·유리</strong>는 단독 교체 가능. "
+            "<strong>액정</strong>은 정품 액정만 사용합니다 (OEM·호환 X). "
+            "<strong>배터리</strong>는 정품 추출·OEM 2옵션입니다 (워치는 본체 구조상 셀 교체 옵션 없음). "
+            "<strong>후면 세라믹·유리</strong>는 단독 교체 가능. "
             "부품별 가격을 공개하고 비교 견적을 안내합니다. 90일 보증, 당일 처리 가능합니다."
         )
     else:  # 아이패드
@@ -687,6 +764,7 @@ def build_html(slug: str, data: dict) -> str:
         hook_text=hook_text,
         intro=intro,
         parts_items=parts_items,
+        parts_summary=parts_summary,
         detail_html=detail_html,
         faq_blocks=faq_blocks,
         daolrepair_options=daolrepair_options,

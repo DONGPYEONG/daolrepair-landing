@@ -38,6 +38,25 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --orange: #E8732A; --dark: #0A0A0A; --text: #1a1a1a; --muted: #666; --border: #e8e8e8; --font: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    /* 상단 네비 */
+    .art-nav { position: sticky; top: 0; z-index: 1000; background: rgba(10,10,10,0.92); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .art-nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .art-nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .art-nav-logo img { width: 34px; height: 34px; border-radius: 8px; }
+    .art-nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .art-nav-logo-ko { font-size: 14px; font-weight: 900; color: #fff; }
+    .art-nav-logo-ko em { color: var(--orange); font-style: normal; }
+    .art-nav-logo-en { font-size: 8px; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 1.3px; margin-top: 2px; }
+    .art-nav-links { display: flex; list-style: none; padding: 0; margin: 0; align-items: center; }
+    .art-nav-links li { position: relative; }
+    .art-nav-links li + li::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 12px; background: rgba(255,255,255,0.12); }
+    .art-nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; font-weight: 500; padding: 0 12px; transition: color 0.2s; }
+    .art-nav-links a:hover { color: #fff; }
+    .art-nav-reserve-btn { background: var(--orange); color: #fff; text-decoration: none; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    @media (max-width: 640px) {
+      .art-nav-links { display: none; }
+      .art-nav-logo-en { display: none; }
+    }
     .art-wrap { max-width: 680px; margin: 0 auto; padding: 50px 20px 100px; }
     .art-related-heading { font-size: 18px; font-weight: 900; color: var(--dark); margin-bottom: 20px; }
     .art-related-heading::before { content: ''; display: block; width: 28px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 12px; }
@@ -78,6 +97,25 @@
   </style>
 </head>
 <body>
+  <nav class="art-nav">
+    <div class="art-nav-inner">
+      <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-logo">
+        <img loading="lazy" src="../로고신규1.jpg" alt="다올리페어">
+        <div class="art-nav-logo-text">
+          <span class="art-nav-logo-ko">다올<em>리페어</em></span>
+          <span class="art-nav-logo-en">Device Repair Master</span>
+        </div>
+      </a>
+      <ul class="art-nav-links">
+        <li><a href="https://xn--2j1bq2k97kxnah86c.com/#services">서비스</a></li>
+        <li><a href="https://xn--2j1bq2k97kxnah86c.com/#estimate">수리 견적</a></li>
+        <li><a href="index.html">수리 칼럼</a></li>
+        <li><a href="https://xn--2j1bq2k97kxnah86c.com/#reviews">후기</a></li>
+        <li><a href="https://xn--2j1bq2k97kxnah86c.com/#locations">지점</a></li>
+      </ul>
+      <a href="https://xn--2j1bq2k97kxnah86c.com/#booking-form" class="art-nav-reserve-btn">수리 예약</a>
+    </div>
+  </nav>
   <div class="art-wrap art-body">
     <span class="related-badge">📌 다올리페어 리퍼 가이드</span>
     <h1>애플워치 리퍼 — 통째 교체 견적 받기 전에</h1>
@@ -93,11 +131,11 @@
         <tr><th>모델</th><th>공식 리퍼 (참고)</th><th>다올리페어 사설 (시작가)</th></tr>
       </thead>
       <tbody>
-        <tr><td>Apple Watch Series 7</td><td>리퍼 32~42만원</td><td class="price-orange">사설 16~24만원</td></tr>
-        <tr><td>Apple Watch Series 6</td><td>리퍼 28~38만원</td><td class="price-orange">사설 14~22만원</td></tr>
-        <tr><td>Apple Watch Series 5</td><td>리퍼 26~34만원</td><td class="price-orange">사설 13~20만원</td></tr>
-        <tr><td>Apple Watch SE 2세대</td><td>리퍼 24~32만원</td><td class="price-orange">사설 12~18만원</td></tr>
-        <tr><td>Apple Watch SE 1세대</td><td>리퍼 22~28만원</td><td class="price-orange">사설 11~16만원</td></tr>
+        <tr><td>Apple Watch Series 7</td><td>리퍼 32~42만원</td><td class="price-orange">배터리 6만원~ / 액정 14만원~</td></tr>
+        <tr><td>Apple Watch Series 6</td><td>리퍼 28~38만원</td><td class="price-orange">배터리 6만원~ / 액정 12만원~</td></tr>
+        <tr><td>Apple Watch Series 5</td><td>리퍼 26~34만원</td><td class="price-orange">배터리 5만원~ / 액정 10만원~</td></tr>
+        <tr><td>Apple Watch SE 2세대</td><td>리퍼 24~32만원</td><td class="price-orange">배터리 5만원~ / 액정 10만원~</td></tr>
+        <tr><td>Apple Watch SE 1세대</td><td>리퍼 22~28만원</td><td class="price-orange">배터리 5만원~ / 액정 9만원~</td></tr>
       </tbody>
     </table>
     <p style="font-size:13.5px;color:#666;">공식 리퍼는 모델·손상 정도에 따라 산정됩니다. 사설 수리는 부품 단독 교체 가격대(액정/배터리/후면)이며 다올리페어 견적을 시작점으로 안내합니다. AppleCare+ 가입자는 자기부담금 10만원으로 리퍼 가능.</p>
@@ -177,24 +215,5 @@
       border-radius: 2px !important;
     }
   </style>
-
-  <section class="art-related">
-    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
-    <div class="related-grid">
-      <a href="apple-watch-se-2-refurbish-vs-repair.html" class="related-card">
-        <span class="related-badge"></span>
-        <span class="related-title">Apple Watch SE 2세대 액정 깨짐 — 통째 교체 X, 액정만 단독 교체</span>
-      </a>
-      <a href="apple-watch-se-1-refurbish-vs-repair.html" class="related-card">
-        <span class="related-badge"></span>
-        <span class="related-title">Apple Watch SE 1세대 배터리·액정 — 리퍼 말고 부분 수리</span>
-      </a>
-      <a href="apple-watch-series-7-refurbish-vs-repair.html" class="related-card">
-        <span class="related-badge"></span>
-        <span class="related-title">Apple Watch Series 7 Always-on 깨짐 — 액정 단독 교체 가능</span>
-      </a>
-    </div>
-  </section>
-
 </body>
 </html>

@@ -32,6 +32,26 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --orange: #E8732A; --dark: #0A0A0A; --text: #1a1a1a; --muted: #666; --border: #e8e8e8; --font: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
     body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; }
+    /* 상단 네비 */
+    .art-nav { position: sticky; top: 0; z-index: 1000; background: rgba(10,10,10,0.92); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .art-nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .art-nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .art-nav-logo img { width: 34px; height: 34px; border-radius: 8px; }
+    .art-nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .art-nav-logo-ko { font-size: 14px; font-weight: 900; color: #fff; }
+    .art-nav-logo-ko em { color: var(--orange); font-style: normal; }
+    .art-nav-logo-en { font-size: 8px; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 1.3px; margin-top: 2px; }
+    .art-nav-links { display: flex; gap: 0; list-style: none; padding: 0; margin: 0; align-items: center; }
+    .art-nav-links li { position: relative; }
+    .art-nav-links li + li::before { content: ''; display: block; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 12px; background: rgba(255,255,255,0.12); }
+    .art-nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; font-weight: 500; padding: 0 12px; transition: color 0.2s; }
+    .art-nav-links a:hover { color: #fff; }
+    .art-nav-reserve-btn { background: var(--orange); color: #fff; text-decoration: none; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .art-nav-reserve-btn:hover { background: #C55E1A; }
+    @media (max-width: 640px) {
+      .art-nav-links { display: none; }
+      .art-nav-logo-en { display: none; }
+    }
     .art-wrap { max-width: 680px; margin: 0 auto; padding: 50px 20px 100px; }
     .related-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
     @media (min-width: 768px) { .related-grid { grid-template-columns: 1fr 1fr; gap: 14px; } }
@@ -75,6 +95,25 @@
   </style>
 </head>
 <body>
+  <nav class="art-nav">
+    <div class="art-nav-inner">
+      <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-logo">
+        <img loading="lazy" src="../로고신규1.jpg" alt="다올리페어">
+        <div class="art-nav-logo-text">
+          <span class="art-nav-logo-ko">다올<em>리페어</em></span>
+          <span class="art-nav-logo-en">Device Repair Master</span>
+        </div>
+      </a>
+      <ul class="art-nav-links">
+        <li><a href="https://xn--2j1bq2k97kxnah86c.com/#services">서비스</a></li>
+        <li><a href="https://xn--2j1bq2k97kxnah86c.com/#estimate">수리 견적</a></li>
+        <li><a href="index.html">수리 칼럼</a></li>
+        <li><a href="https://xn--2j1bq2k97kxnah86c.com/#reviews">후기</a></li>
+        <li><a href="https://xn--2j1bq2k97kxnah86c.com/#locations">지점</a></li>
+      </ul>
+      <a href="https://xn--2j1bq2k97kxnah86c.com/#booking-form" class="art-nav-reserve-btn">수리 예약</a>
+    </div>
+  </nav>
   <div class="art-wrap art-body">
     <span class="related-badge">📌 애플워치 리퍼 가이드</span>
     <h1>리퍼 견적 받기 전에</h1>
@@ -94,12 +133,19 @@
     <div class="case-list parts">
       <strong class="list-title">✅ 다올리페어 사설 부분 수리 가능</strong>
       <ul>
-        <li>디스플레이(액정)</li>
-        <li>배터리</li>
-        <li>후면</li>
+        <li>디스플레이(액정) — 정품 액정만 사용</li>
+        <li>배터리 — 정품 추출·OEM 2옵션</li>
+        <li>후면 세라믹·유리</li>
+        <li>디지털 크라운 (헐거움·인식 불량)</li>
+        <li>전원·사이드 버튼</li>
+        <li>심박·혈중 산소 센서 모듈</li>
+        <li>스피커·마이크</li>
+        <li>무한사과(부팅 무한 루프) 복구</li>
+        <li>침수 처리</li>
+        <li>메인보드 부분 복구</li>
       </ul>
     </div>
-    <p>위 부품 중 <strong>단일 손상</strong>이면 리퍼 대신 부분 수리로 끝낼 수 있습니다. 데이터·페어링·앱 설정 모두 보존되고 수리 시간도 짧습니다. 다올리페어는 부품 등급별(정품·정품 인증·DD·일반 호환) 가격을 모두 공개합니다.</p>
+    <p>위 부품 중 <strong>단일 손상</strong>이면 리퍼 대신 부분 수리로 끝낼 수 있습니다. 데이터·페어링·앱 설정 모두 보존되고 수리 시간도 짧습니다. 다올리페어는 부품별 가격을 공개합니다 (액정은 정품 단독, 배터리는 정품 추출·OEM 2옵션).</p>
 
     <h2>리퍼가 답인 경우 (드뭅니다)</h2>
     <p>대부분 부품 단독 수리로 해결되지만 다음 케이스는 리퍼를 고려해야 합니다:</p>
@@ -122,7 +168,7 @@
     </div>
 
     <h2>다올리페어 옵션</h2>
-    <p>Apple Watch SE 2세대은 다올리페어에서 부품별 옵션으로 안내합니다. <strong>액정</strong>은 정품·OEM 2단계, <strong>배터리</strong>는 정품 추출·OEM 2옵션입니다 (워치는 본체 구조상 셀 교체 옵션 없음). <strong>후면 세라믹·유리</strong>는 단독 교체 가능. 부품별 가격을 공개하고 비교 견적을 안내합니다. 90일 보증, 당일 처리 가능합니다.</p>
+    <p>Apple Watch SE 2세대은 다올리페어에서 부품별 옵션으로 안내합니다. <strong>액정</strong>은 정품 액정만 사용합니다 (OEM·호환 X). <strong>배터리</strong>는 정품 추출·OEM 2옵션입니다 (워치는 본체 구조상 셀 교체 옵션 없음). <strong>후면 세라믹·유리</strong>는 단독 교체 가능. 부품별 가격을 공개하고 비교 견적을 안내합니다. 90일 보증, 당일 처리 가능합니다.</p>
 
     <h2>자주 묻는 질문 (FAQ)</h2>
     <div class="faq-block">
@@ -163,24 +209,5 @@
       border-radius: 2px !important;
     }
   </style>
-
-  <section class="art-related">
-    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
-    <div class="related-grid">
-      <a href="apple-watch-series-7-refurbish-vs-repair.html" class="related-card">
-        <span class="related-badge"></span>
-        <span class="related-title">Apple Watch Series 7 Always-on 깨짐 — 액정 단독 교체 가능</span>
-      </a>
-      <a href="apple-watch-se-1-refurbish-vs-repair.html" class="related-card">
-        <span class="related-badge"></span>
-        <span class="related-title">Apple Watch SE 1세대 배터리·액정 — 리퍼 말고 부분 수리</span>
-      </a>
-      <a href="apple-watch-series-6-refurbish-vs-repair.html" class="related-card">
-        <span class="related-badge"></span>
-        <span class="related-title">Apple Watch Series 6 후면 세라믹 깨짐 — 후면만 단독 교체</span>
-      </a>
-    </div>
-  </section>
-
 </body>
 </html>

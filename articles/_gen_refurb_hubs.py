@@ -77,11 +77,11 @@ REFURB_HUBS = {
         "hook_text": "공식센터에서 \"애플워치는 부품 단독 수리가 안 되고 통째 교체만 가능합니다\"라고 들으셨다면 — <strong>사설 수리는 다릅니다.</strong> 액정·배터리·후면유리 단독 교체 가능합니다.",
         "intro": "애플워치는 공식센터에서 부품 단독 수리를 거의 받지 않습니다. 액정 하나만 깨져도 통째 교체 리퍼만 가능합니다. 그래서 \"애플워치는 수리가 안 된다\"는 인식이 퍼졌지만, 사설 수리점에서는 액정·배터리·후면유리·크라운·센서 등 부품 단독 교체가 가능합니다. 이 글에서 애플워치 리퍼 받기 전에 꼭 알아야 할 정보를 정리했습니다.",
         "price_table": [
-            ("Apple Watch Series 7", "리퍼 32~42만원", "사설 16~24만원"),
-            ("Apple Watch Series 6", "리퍼 28~38만원", "사설 14~22만원"),
-            ("Apple Watch Series 5", "리퍼 26~34만원", "사설 13~20만원"),
-            ("Apple Watch SE 2세대", "리퍼 24~32만원", "사설 12~18만원"),
-            ("Apple Watch SE 1세대", "리퍼 22~28만원", "사설 11~16만원"),
+            ("Apple Watch Series 7", "리퍼 32~42만원", "배터리 6만원~ / 액정 14만원~"),
+            ("Apple Watch Series 6", "리퍼 28~38만원", "배터리 6만원~ / 액정 12만원~"),
+            ("Apple Watch Series 5", "리퍼 26~34만원", "배터리 5만원~ / 액정 10만원~"),
+            ("Apple Watch SE 2세대", "리퍼 24~32만원", "배터리 5만원~ / 액정 10만원~"),
+            ("Apple Watch SE 1세대", "리퍼 22~28만원", "배터리 5만원~ / 액정 9만원~"),
         ],
         "price_note": "공식 리퍼는 모델·손상 정도에 따라 산정됩니다. 사설 수리는 부품 단독 교체 가격대(액정/배터리/후면)이며 다올리페어 견적을 시작점으로 안내합니다. AppleCare+ 가입자는 자기부담금 10만원으로 리퍼 가능.",
         "case_yes_refurb": [
@@ -196,6 +196,25 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
     :root {{ --orange: #E8732A; --dark: #0A0A0A; --text: #1a1a1a; --muted: #666; --border: #e8e8e8; --font: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }}
     body {{ font-family: var(--font); color: var(--text); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased; }}
+    /* 상단 네비 */
+    .art-nav {{ position: sticky; top: 0; z-index: 1000; background: rgba(10,10,10,0.92); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(255,255,255,0.08); }}
+    .art-nav-inner {{ max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }}
+    .art-nav-logo {{ display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }}
+    .art-nav-logo img {{ width: 34px; height: 34px; border-radius: 8px; }}
+    .art-nav-logo-text {{ display: flex; flex-direction: column; line-height: 1; }}
+    .art-nav-logo-ko {{ font-size: 14px; font-weight: 900; color: #fff; }}
+    .art-nav-logo-ko em {{ color: var(--orange); font-style: normal; }}
+    .art-nav-logo-en {{ font-size: 8px; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 1.3px; margin-top: 2px; }}
+    .art-nav-links {{ display: flex; list-style: none; padding: 0; margin: 0; align-items: center; }}
+    .art-nav-links li {{ position: relative; }}
+    .art-nav-links li + li::before {{ content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 12px; background: rgba(255,255,255,0.12); }}
+    .art-nav-links a {{ color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; font-weight: 500; padding: 0 12px; transition: color 0.2s; }}
+    .art-nav-links a:hover {{ color: #fff; }}
+    .art-nav-reserve-btn {{ background: var(--orange); color: #fff; text-decoration: none; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; white-space: nowrap; }}
+    @media (max-width: 640px) {{
+      .art-nav-links {{ display: none; }}
+      .art-nav-logo-en {{ display: none; }}
+    }}
     .art-wrap {{ max-width: 680px; margin: 0 auto; padding: 50px 20px 100px; }}
     .art-related-heading {{ font-size: 18px; font-weight: 900; color: var(--dark); margin-bottom: 20px; }}
     .art-related-heading::before {{ content: ''; display: block; width: 28px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 12px; }}
@@ -236,6 +255,25 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   </style>
 </head>
 <body>
+  <nav class="art-nav">
+    <div class="art-nav-inner">
+      <a href="https://xn--2j1bq2k97kxnah86c.com" class="art-nav-logo">
+        <img loading="lazy" src="../로고신규1.jpg" alt="다올리페어">
+        <div class="art-nav-logo-text">
+          <span class="art-nav-logo-ko">다올<em>리페어</em></span>
+          <span class="art-nav-logo-en">Device Repair Master</span>
+        </div>
+      </a>
+      <ul class="art-nav-links">
+        <li><a href="https://xn--2j1bq2k97kxnah86c.com/#services">서비스</a></li>
+        <li><a href="https://xn--2j1bq2k97kxnah86c.com/#estimate">수리 견적</a></li>
+        <li><a href="index.html">수리 칼럼</a></li>
+        <li><a href="https://xn--2j1bq2k97kxnah86c.com/#reviews">후기</a></li>
+        <li><a href="https://xn--2j1bq2k97kxnah86c.com/#locations">지점</a></li>
+      </ul>
+      <a href="https://xn--2j1bq2k97kxnah86c.com/#booking-form" class="art-nav-reserve-btn">수리 예약</a>
+    </div>
+  </nav>
   <div class="art-wrap art-body">
     <span class="related-badge">📌 다올리페어 리퍼 가이드</span>
     <h1>{h1}</h1>
