@@ -17,76 +17,102 @@ SITE = "https://xn--2j1bq2k97kxnah86c.com"
 
 
 # 모델별 데이터: 슬러그 → 메타·콘텐츠
+# ─── 부품 공통 리스트 — 다올리페어가 단가표로 제공하는 모든 부품 (사장님 명시 2026-05-14)
+# Face ID 제외 (메모리: Face ID 글 작성 안 함)
+COMMON_IPHONE_PARTS = [
+    "디스플레이(액정) — 정품·정품인증·DD·호환 4단계",
+    "배터리 — 셀 교체·정품 인증·일반 호환 3옵션",
+    "후면유리 (전 모델 색상)",
+    "후면 카메라 모듈·렌즈",
+    "전면 카메라",
+    "충전 단자 (라이트닝·USB-C)",
+    "스피커·이어피스·마이크",
+    "진동 모터·전원·볼륨·무음 스위치",
+    "Wi-Fi·블루투스 안테나",
+    "메인보드 부분 복구·침수 처리",
+]
+
+COMMON_IPHONE_BUDGET_PARTS = [
+    "디스플레이(액정) — 정품·OEM 옵션",
+    "배터리 — 셀 교체·정품 인증·일반 호환",
+    "후면유리",
+    "충전 단자",
+    "전·후면 카메라 모듈",
+    "스피커·마이크·진동 모터",
+    "버튼류·홈버튼",
+    "메인보드 부분 복구·침수 처리",
+]
+
 REFURB_MODELS = {
-    # ─── iPhone ───
+    # ─── iPhone (단가표 기준 — 거의 모든 부품 수리 가능)
     "iphone-17-pro-max-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 17 Pro Max",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면유리", "후면 카메라 모듈", "충전 단자", "스피커·마이크"],
+        "available_parts": COMMON_IPHONE_PARTS,
         "tier": "premium",
     },
     "iphone-17-pro-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 17 Pro",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면유리", "후면 카메라 모듈", "충전 단자"],
+        "available_parts": COMMON_IPHONE_PARTS,
         "tier": "premium",
     },
     "iphone-16-pro-max-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 16 Pro Max",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면유리", "후면 카메라 모듈", "충전 단자", "스피커"],
+        "available_parts": COMMON_IPHONE_PARTS,
         "tier": "premium",
     },
     "iphone-15-pro-max-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 15 Pro Max",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면유리", "후면 카메라 모듈", "충전 단자", "스피커·마이크"],
+        "available_parts": COMMON_IPHONE_PARTS,
         "tier": "premium",
     },
     "iphone-15-pro-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 15 Pro",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면유리", "후면 카메라 모듈", "충전 단자"],
+        "available_parts": COMMON_IPHONE_PARTS,
         "tier": "premium",
     },
     "iphone-15-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 15",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면유리", "후면 카메라 모듈", "충전 단자"],
+        "available_parts": COMMON_IPHONE_PARTS,
         "tier": "mid",
     },
     "iphone-14-pro-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 14 Pro",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면유리", "후면 카메라 모듈", "충전 단자"],
+        "available_parts": COMMON_IPHONE_PARTS,
         "tier": "mid",
     },
     "iphone-13-pro-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 13 Pro",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면유리", "후면 카메라 모듈"],
+        "available_parts": COMMON_IPHONE_PARTS,
         "tier": "mid",
     },
     "iphone-13-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone 13",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면유리", "후면 카메라 모듈"],
+        "available_parts": COMMON_IPHONE_PARTS,
         "tier": "mid",
     },
     "iphone-se-3-refurbish-vs-repair": {
         "device": "아이폰", "device_eng": "iPhone", "model": "iPhone SE 3세대",
         "hub_slug": "iphone-refurbish-guide",
         "hub_title": "아이폰 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면유리", "충전 단자"],
+        "available_parts": COMMON_IPHONE_BUDGET_PARTS,
         "tier": "budget",
     },
 
@@ -268,6 +294,16 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     .art-cta-btns {{ display: flex; flex-direction: column; gap: 12px; align-items: center; }}
     @media (min-width: 640px) {{ .art-cta-btns {{ flex-direction: row; justify-content: center; flex-wrap: wrap; }} }}
     .art-cta-btn {{ display: inline-block; background: var(--orange); color: #fff; text-decoration: none; padding: 16px 40px; border-radius: 50px; font-size: 16px; font-weight: 800; }}
+    .faq-block {{ margin: 14px 0; border-bottom: 1px solid var(--border); padding-bottom: 18px; }}
+    .faq-q {{ font-size: 15px; font-weight: 800; color: var(--dark); margin-bottom: 10px; line-height: 1.5; }}
+    .faq-a {{ font-size: 14.5px; color: #444; line-height: 1.85; }}
+    .detail-box {{ background: #fafafa; border-radius: 14px; padding: 22px 26px; margin: 20px 0 28px; }}
+    .detail-box strong.list-title {{ display: block; font-size: 15px; color: var(--dark); margin-bottom: 10px; }}
+    /* PC에서 "함께 읽으면 좋은 글" 섹션 정렬 (가운데, 본문 폭에 맞춤) */
+    .art-related {{ max-width: 680px; margin: 60px auto 40px; padding: 40px 20px 0; border-top: 2px solid var(--border); }}
+    .art-related-heading {{ font-size: 18px; font-weight: 900; color: var(--dark); margin-bottom: 20px; }}
+    .art-related-heading::before {{ content: ''; display: block; width: 28px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 12px; }}
+    @media (min-width: 768px) {{ .related-grid {{ grid-template-columns: 1fr 1fr; gap: 14px; }} }}
   </style>
 </head>
 <body>
@@ -280,20 +316,26 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
     <p>{intro}</p>
 
-    <h2>{model} 부분 수리 가능한 부품</h2>
+    <h2>{model} 모델 특이점 — 수리 전 알아두세요</h2>
+    <div class="detail-box">
+      <strong class="list-title">📋 이 모델 수리 시 주의·특징</strong>
+      {detail_html}
+    </div>
+
+    <h2>{model} 부분 수리 가능한 부품 — 거의 모든 부위 가능</h2>
     <div class="case-list parts">
       <strong class="list-title">✅ 다올리페어 사설 부분 수리 가능</strong>
       <ul>
 {parts_items}
       </ul>
     </div>
-    <p>위 부품 중 <strong>단일 손상</strong>이면 리퍼 대신 부분 수리로 끝낼 수 있습니다. 데이터·페어링·앱 설정 모두 보존되고 수리 시간도 짧습니다.</p>
+    <p>위 부품 중 <strong>단일 손상</strong>이면 리퍼 대신 부분 수리로 끝낼 수 있습니다. 데이터·페어링·앱 설정 모두 보존되고 수리 시간도 짧습니다. 다올리페어는 부품 등급별(정품·정품 인증·DD·일반 호환) 가격을 모두 공개합니다.</p>
 
-    <h2>리퍼가 답인 경우</h2>
-    <p>다음 케이스는 부품 단독 수리로 어려울 수 있어 리퍼를 고려해야 합니다:</p>
+    <h2>리퍼가 답인 경우 (드뭅니다)</h2>
+    <p>대부분 부품 단독 수리로 해결되지만 다음 케이스는 리퍼를 고려해야 합니다:</p>
     <ul>
       <li>메인보드 침수로 부식이 광범위하게 진행된 경우</li>
-      <li>다중 부품 동시 손상 (화면·후면·배터리·카메라 등)</li>
+      <li>다중 부품 동시 손상 (화면·후면·배터리·카메라 + α)</li>
       <li>프레임이 크게 변형된 외관 파손 + 내부 손상</li>
     </ul>
 
@@ -311,6 +353,9 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
     <h2>다올리페어 옵션</h2>
     <p>{model}은 다올리페어에서 정품·정품 인증·DD(OEM)·일반 호환 등 부품 등급별 가격을 모두 공개하고 비교 견적을 안내합니다. 90일 보증, 수리 실패 시 비용 0원, 당일 처리 가능합니다.</p>
+
+    <h2>자주 묻는 질문 (FAQ)</h2>
+{faq_blocks}
 
     <div class="art-cta">
       <div class="art-cta-eyebrow">{model} 리퍼 견적 비교</div>
@@ -336,6 +381,162 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 </body>
 </html>
 """
+
+
+# 모델별 디테일 (수리 시 알아둘 특이점)
+MODEL_DETAILS = {
+    "iPhone 17 Pro Max": [
+        "최신 A19 Pro 칩셋. 메인보드 부품 수급은 가능하지만 단가 높음.",
+        "USB-C 단자 + Action Button + Camera Control 버튼 추가.",
+        "OLED 액정 — 정품 또는 정품 인증 옵션 추천 (TrueTone 보장).",
+    ],
+    "iPhone 17 Pro": [
+        "A19 Pro 칩 + 알루미늄 프레임 변경. 외관 흠집은 케이스 권장.",
+        "USB-C + Action Button. 단자 수리 가능.",
+        "OLED 액정 — 정품 인증으로도 화질 동일.",
+    ],
+    "iPhone 16 Pro Max": [
+        "A18 Pro 칩 + Camera Control 버튼. 단가표에서 가장 인기.",
+        "USB-C 3.0 — 외장 SSD 등 고속 데이터 가능. 단자 수리 가능.",
+        "OLED ProMotion. 정품 액정 권장 (120Hz).",
+    ],
+    "iPhone 15 Pro Max": [
+        "A17 Pro 칩 + 티타늄 프레임. 떨어뜨림 시 변형 주의.",
+        "USB-C 도입 (3.0). Lightning과 달리 단자 부품 수급 OK.",
+        "OLED ProMotion + Always-on. 정품 인증 액정으로 120Hz 보장.",
+    ],
+    "iPhone 15 Pro": [
+        "A17 Pro 칩 + 티타늄 프레임. 무게 줄었지만 변형 위험 유의.",
+        "USB-C 단자. 인식 불량 시 단독 수리 가능.",
+        "OLED ProMotion 액정. 4단계 옵션 비교.",
+    ],
+    "iPhone 15": [
+        "A16 칩 + 알루미늄 프레임. Pro와 칩셋 차이.",
+        "USB-C 2.0 도입 — Lightning에서 변경. 단자 수리 가능.",
+        "OLED 일반 (60Hz). DD·호환 옵션 가성비 ↑.",
+    ],
+    "iPhone 14 Pro": [
+        "A16 칩 + 다이내믹 아일랜드 첫 도입. 액정 수리 시 정품 인증 권장.",
+        "Lightning 단자 (마지막 Lightning Pro). 단독 수리 가능.",
+        "OLED ProMotion 120Hz + Always-on.",
+    ],
+    "iPhone 13 Pro": [
+        "A15 Bionic + 120Hz OLED. 단가표 가장 안정적 모델.",
+        "Lightning 단자. 부품 수급 매우 안정적.",
+        "후면 카메라 모듈 — 정품 인증 권장 (시네마틱 모드).",
+    ],
+    "iPhone 13": [
+        "A15 Bionic + 일반 OLED. 가성비 인기 모델.",
+        "Lightning 단자. 단독 수리 가격 합리적.",
+        "DD·호환 액정도 화질 안정적.",
+    ],
+    "iPhone SE 3세대": [
+        "A15 Bionic + LCD 액정 (OLED 아님). Touch ID 홈버튼.",
+        "Lightning 단자. 부품 수급 매우 안정적, 가격 저렴.",
+        "프레임 변경 없이 부분 수리로 새 폰 수준 사용감 가능.",
+    ],
+    "Apple Watch SE 2세대": [
+        "Retina OLED 액정 (Always-on 없음). 정품 옵션 우선 추천.",
+        "디지털 크라운 단독 수리 가능.",
+        "후면 세라믹 단독 교체 가능.",
+    ],
+    "Apple Watch SE 1세대": [
+        "S5 칩 + Retina OLED. 단가표에서 합리적 옵션.",
+        "디지털 크라운·배터리 단독 수리 가능.",
+        "후면 단독 교체로 외관 복원 가능.",
+    ],
+    "Apple Watch Series 7": [
+        "Retina Always-on 액정. 정품 인증 권장 (Always-on 보장).",
+        "S7 칩 + 더 빠른 충전. 배터리 정품 추출 권장.",
+        "후면 세라믹 깨짐 시 단독 교체 가능.",
+    ],
+    "Apple Watch Series 6": [
+        "S6 칩 + Retina Always-on. 단가표에서 안정적.",
+        "혈중 산소 센서 — 후면 손상 시 센서 보존 위해 정품 후면 권장.",
+        "배터리 정품 추출 / OEM 옵션 모두 가능.",
+    ],
+    "Apple Watch Series 5": [
+        "S5 칩 + Always-on 첫 도입. 단가표에서 합리적 가격.",
+        "디지털 크라운 헐거움 — 단독 수리 가능.",
+        "후면 세라믹 교체로 외관 복원 가능.",
+    ],
+    "iPad Pro 11형 (M2, 4세대)": [
+        "M2 칩 + Liquid Retina. 단가표에서 인기 모델.",
+        "USB-C 단자 (3.0). 단독 수리 가능.",
+        "Apple Pencil 2 호환. 펜 수리 시 펜만 별도.",
+    ],
+    "iPad Pro 11형 (M1, 3세대)": [
+        "M1 칩 + Liquid Retina. 부품 수급 매우 안정적.",
+        "USB-C 단자. 인식 불량 단독 수리 가능.",
+        "Pro 모델 중 가성비 ↑.",
+    ],
+    "iPad Pro 12.9형 5세대 (M1)": [
+        "M1 칩 + Liquid Retina XDR (mini-LED). 액정 정품 권장.",
+        "USB-C Thunderbolt. 단자 단독 수리 가능.",
+        "큰 액정이라 부분 수리 비용 12.9형이 11형보다 ↑.",
+    ],
+    "iPad Air 5세대 (M1)": [
+        "M1 칩 + Liquid Retina. Pro급 성능에 합리적 가격.",
+        "USB-C 단자. 단독 수리 가능.",
+        "정품·OEM 액정 옵션 모두 안정적.",
+    ],
+    "iPad Air 4세대": [
+        "A14 칩 + Liquid Retina. Air 시리즈 인기 모델.",
+        "USB-C 단자 첫 도입 (Air 시리즈). 단자 수리 안정적.",
+        "Apple Pencil 2 호환.",
+    ],
+    "iPad (10세대)": [
+        "A14 칩 + 일반 Retina. USB-C 도입.",
+        "Apple Pencil 1세대 어댑터 필요 (특이점).",
+        "엔트리 모델 중 인기 1위. 단가표 합리적.",
+    ],
+    "iPad (9세대)": [
+        "A13 칩 + 일반 Retina. Lightning 단자 (마지막 라이트닝 패드).",
+        "Touch ID 홈버튼. 단가표 가장 저렴.",
+        "Apple Pencil 1세대 호환 (어댑터 불필요).",
+    ],
+    "iPad mini 6세대": [
+        "A15 칩 + 8.3형 Liquid Retina. USB-C 도입.",
+        "Touch ID = 전원 버튼. 휴대성 우수.",
+        "Apple Pencil 2 호환.",
+    ],
+}
+
+
+def _faqs_for(model: str, device: str) -> list:
+    """모델·기기별 공통 FAQ (모델명 동적 치환)."""
+    faqs = [
+        (f"{model} 리퍼 받으면 데이터가 보존되나요?",
+         f"리퍼는 {model}을 반납하고 새 기기를 받는 교체 방식이라 반납 기기 데이터는 삭제됩니다. iCloud·컴퓨터 백업이 완전하지 않으면 사진·메모·앱 설정 일부가 손실될 수 있습니다. 부품 단독 수리는 메인보드 그대로 두기 때문에 데이터 100% 보존됩니다."),
+    ]
+    if device == "아이폰":
+        faqs += [
+            (f"{model} 부분 수리 후 비정품 부품 메시지가 뜨나요?",
+             f"부품·기기별로 다릅니다. {model} 액정(정품·DD 모두)은 사설 수리하면 메시지가 뜹니다. 후면유리는 안 뜹니다. 배터리는 셀 교체·정품 인증은 안 뜨고 일반 호환만 \"정품 배터리 아님\" 경고가 뜹니다. 카메라는 메시지가 뜹니다."),
+            (f"{model} 액정만 깨졌는데 공식센터에서 리퍼 견적이 나오는 이유?",
+             f"공식센터는 단일 부품 수리가 제한적이고, 메인보드 진단을 동반하기 때문에 견적이 높게 산정됩니다. 사설은 {model} 액정만 단독 교체해서 비용을 절반 이하로 끝낼 수 있습니다."),
+            (f"{model} 수리 시간은 얼마나 걸리나요?",
+             f"다올리페어는 {model} 액정·배터리·충전 단자는 당일 30~60분, 후면유리는 본드 경화 시간 포함 약 6시간이 소요됩니다. 공식 리퍼는 본사 발송 시 1~2주 대기가 일반적입니다."),
+        ]
+    elif device == "애플워치":
+        faqs += [
+            (f"{model} 사설 수리 후 비정품 메시지가 뜨나요?",
+             f"애플워치는 사설 수리 후에도 비정품 부품 메시지가 별도로 뜨지 않습니다. 아이폰과 달리 워치는 부품 시리얼 매핑 시스템이 활성화되지 않았습니다."),
+            (f"{model} 액정만 깨졌는데 공식센터는 통째 교체만 가능한가요?",
+             f"공식센터는 애플워치 단일 부품 수리를 거의 받지 않고 통째 교체 리퍼만 진행합니다. 그래서 \"애플워치는 수리 안 된다\"는 인식이 퍼졌지만, 다올리페어 사설에서는 {model} 액정·배터리·후면·디지털 크라운 모두 단독 수리 가능합니다."),
+            (f"{model} 수리 시간은 얼마나 걸리나요?",
+             f"다올리페어 사설은 액정·배터리는 당일 30~60분, 후면 세라믹·유리는 본드 경화로 약 4~6시간 소요됩니다. 페어링도 그대로 유지됩니다."),
+        ]
+    else:  # 아이패드
+        faqs += [
+            (f"{model} 사설 수리 후 정품 부품 메시지가 뜨나요?",
+             f"아이패드는 사설 수리 후에도 별도의 비정품 부품 메시지가 뜨지 않습니다. 아이폰과 달리 부품 시리얼 매핑이 활성화되지 않았습니다."),
+            (f"{model} 액정 단독 교체가 정말 가능한가요?",
+             f"공식센터는 단일 부품 수리가 제한적이지만 다올리페어 사설에서는 {model} 액정 단독 교체 가능합니다. 모델별로 정품·OEM 옵션이 있어 가격을 비교할 수 있습니다."),
+            (f"{model} 수리 시간은 얼마나 걸리나요?",
+             f"다올리페어 사설은 {model} 액정·배터리는 당일 처리(약 1~2시간), 충전 단자는 1~2시간 정도 소요됩니다. 공식 리퍼는 본사 발송 시 1~2주 대기가 일반적입니다."),
+        ]
+    return faqs
 
 
 def build_html(slug: str, data: dict) -> str:
@@ -368,6 +569,17 @@ def build_html(slug: str, data: dict) -> str:
         "이 글에서 부분 수리로 끝낼 수 있는 케이스와 리퍼가 답인 케이스를 정리했습니다."
     )
 
+    # 모델 디테일 (특이점)
+    detail_list = MODEL_DETAILS.get(model, [])
+    detail_html = "<ul>" + "".join(f"<li>{d}</li>" for d in detail_list) + "</ul>"
+
+    # FAQ
+    faqs = _faqs_for(model, device)
+    faq_blocks = "\n".join([
+        f'    <div class="faq-block">\n      <div class="faq-q">Q. {q}</div>\n      <div class="faq-a">{a}</div>\n    </div>'
+        for q, a in faqs
+    ])
+
     return HTML_TEMPLATE.format(
         title=title,
         h1=h1,
@@ -382,6 +594,8 @@ def build_html(slug: str, data: dict) -> str:
         hook_text=hook_text,
         intro=intro,
         parts_items=parts_items,
+        detail_html=detail_html,
+        faq_blocks=faq_blocks,
         hub_slug=data["hub_slug"],
         hub_title=data["hub_title"],
         cta_headline=TIER_CTA_HEADLINE[tier],
