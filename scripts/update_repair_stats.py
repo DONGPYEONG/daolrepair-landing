@@ -843,7 +843,7 @@ def main():
     # 🛡 SAFE MODE (기본): 옛 case-NN/ 접두사만 삭제. 신규 폴더는 로그만 출력하고 보존.
     #   Drive 인식 일시 실패·권한 끊김 등으로 의도치 않게 일지가 사라지는 사고 방지.
     # PRUNE_AGGRESSIVE=1 환경변수로 옛 동작(전체 자동 삭제) 강제 활성화.
-    import os, shutil
+    import shutil
     pruned = 0
     soft_skipped = []
     aggressive = os.environ.get("PRUNE_AGGRESSIVE") == "1"

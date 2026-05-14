@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.daolrepair.drivesync</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-c</string>
+        <string>cd "/Users/richgeum/Desktop/다올리페어 홈페이지" &amp;&amp; /usr/bin/python3 scripts/update_repair_stats.py &amp;&amp; /usr/bin/python3 scripts/gen_case_journals.py</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/richgeum/Desktop/다올리페어 홈페이지</string>
+
+    <!-- 매일 KST 08:30 실행 (BA Reel 09:00, 정보 Reel 09:30 이전에 새 일지 준비) -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>8</integer>
+        <key>Minute</key>
+        <integer>30</integer>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/richgeum/Desktop/다올리페어 홈페이지/output/reels/_drive_sync.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/richgeum/Desktop/다올리페어 홈페이지/output/reels/_drive_sync.err</string>
+</dict>
+</plist>
