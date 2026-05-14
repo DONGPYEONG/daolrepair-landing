@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.daolrepair.dailyreel</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/Users/richgeum/Desktop/다올리페어 홈페이지/scripts/daily_reel.py</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/richgeum/Desktop/다올리페어 홈페이지</string>
+
+    <!-- 매일 KST 09:00 실행 -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>9</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <!-- 등록 직후 한 번 실행 (테스트용) -->
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/richgeum/Desktop/다올리페어 홈페이지/output/reels/_daily.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/richgeum/Desktop/다올리페어 홈페이지/output/reels/_daily.err</string>
+</dict>
+</plist>
