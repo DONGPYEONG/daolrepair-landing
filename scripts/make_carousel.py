@@ -141,23 +141,44 @@ def make_cover(data: dict, dst: Path) -> Path:
     )
     d.text(((W - bw) // 2, badge_y + pad_y - 4), badge_text, font=bf, fill=WHITE)
 
-    # 메인 후킹 3줄 (가운데)
+    # 메인 후킹 3줄 (가운데) — 일관된 큰 크기 (#01 기준)
     hook_top = data["cover_hook_top"]
     hook_main = data["cover_hook_main"]
     hook_sub = data["cover_hook_sub"]
 
-    # 글자 수에 따라 폰트 사이즈
-    def _size(text, base):
-        if len(text) <= 7:
-            return base
-        elif len(text) <= 10:
-            return base - 12
-        else:
-            return base - 24
+    # 시리즈 간 통일된 크기 — 글자 수 ≤9까지는 base 유지
+    # 폭은 _fit_size_to_width로 최종 안전성 확보
+    HOOK_TOP_BASE = 110
+    HOOK_MAIN_BASE = 120
+    HOOK_SUB_BASE = 100
 
-    f_top = font("Black", _size(hook_top, 110))
-    f_main = font("Black", _size(hook_main, 120))
-    f_sub = font("ExtraBold", _size(hook_sub, 100))
+    def _size(text, base):
+        if len(text) <= 9:
+            return base  # 대부분 시리즈가 9자 이하 → 동일 크기
+        elif len(text) <= 12:
+            return base - 14
+        else:
+            return base - 26
+
+    def _fit_size_to_width(text, weight, base_size, max_w):
+        """폭에 맞춰 마지막 안전 축소 — 잘림 방지."""
+        size = base_size
+        for _ in range(3):
+            f = font(weight, size)
+            bb = d.textbbox((0, 0), text, font=f)
+            if bb[2] - bb[0] <= max_w:
+                return f, size
+            size -= 8
+        return font(weight, size), size
+
+    max_hook_w = W - 80  # 양쪽 40px 여백
+    top_size = _size(hook_top, HOOK_TOP_BASE)
+    main_size = _size(hook_main, HOOK_MAIN_BASE)
+    sub_size = _size(hook_sub, HOOK_SUB_BASE)
+
+    f_top, top_size = _fit_size_to_width(hook_top, "Black", top_size, max_hook_w)
+    f_main, main_size = _fit_size_to_width(hook_main, "Black", main_size, max_hook_w)
+    f_sub, sub_size = _fit_size_to_width(hook_sub, "ExtraBold", sub_size, max_hook_w)
 
     # 메인 후킹 — 검정 + 주황(메인줄에 형광펜)
     y_start = 450
@@ -165,19 +186,19 @@ def make_cover(data: dict, dst: Path) -> Path:
     draw_centered(d, y_start, hook_top, f_top, (20, 20, 22), letter_spacing=2)
 
     # hook_main: 노란 형광펜 + 진한 주황 (가장 임팩트)
-    main_y = y_start + _size(hook_top, 110) + 20
+    main_y = y_start + top_size + 20
     bb_main = d.textbbox((0, 0), hook_main, font=f_main)
     main_w = bb_main[2] - bb_main[0]
     main_h = bb_main[3] - bb_main[1]
     main_x = (W - main_w) // 2
-    # 형광펜 박스 (글씨 아래 1/2 영역만)
+    # 형광펜 박스
     d.rectangle((main_x - 8, main_y + main_h * 0.40,
                  main_x + main_w + 8, main_y + main_h + 14),
                 fill=HIGHLIGHT_YELLOW)
     d.text((main_x, main_y), hook_main, font=f_main, fill=ORANGE_DARK)
 
     # hook_sub: 진한 검정
-    sub_y = main_y + _size(hook_main, 120) + 50
+    sub_y = main_y + main_size + 50
     draw_centered(d, sub_y, hook_sub, f_sub, (20, 20, 22), letter_spacing=1)
 
     # 짧은 주황 라인 (하단 시그니처 위)
