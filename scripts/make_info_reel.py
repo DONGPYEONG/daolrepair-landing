@@ -150,11 +150,18 @@ def make_thumbnail(data: dict, dst: Path) -> Path:
         h2_size = 72
 
     # 3줄 구조: 위에 기종 라벨이 있으면 시작 y를 조금 올림
+    # hook_top 글자 수에 따라 자동 조정 (h1_size와 동일 크기 톤)
     if hook_top:
-        hook_y = 700
-        f_top = font("Bold", 80)
+        if len(hook_top) <= 4:
+            top_size = h1_size  # hook_main과 동일 크기
+        elif len(hook_top) <= 7:
+            top_size = h1_size - 10
+        else:
+            top_size = h1_size - 30
+        hook_y = 590
+        f_top = font("Black", top_size)
         draw_centered(d, hook_y, hook_top, f_top, WHITE, letter_spacing=2)
-        hook_y += 110
+        hook_y += top_size + 30
     else:
         hook_y = 760
 
