@@ -439,7 +439,7 @@
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-아이패드-ipad-pro-11인치-2세대-screen-1Y5Bwg_L.html",
         "last_seen": "articles/journal-2026-05-12-아이패드-ipad-pro-11인치-2세대-screen-1Y5Bwg_L.html",
-        "count": 15,
+        "count": 14,
         "fix_hint": "정정 → 추출 정품 / 재생 정품만 사용"
       },
       {
@@ -456,8 +456,8 @@
         "found": "50%",
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-아이폰-iphone-14-pro-battery-1ChixQPs.html",
-        "last_seen": "articles/journal-2026-05-14-아이폰-iphone-15-pro-max-battery-1Zo1BU6U.html",
-        "count": 120,
+        "last_seen": "articles/journal-2026-05-12-아이폰-iphone-14-pro-battery-1ChixQPs.html",
+        "count": 105,
         "fix_hint": "정정 → 약 20~30%"
       },
       {
@@ -493,7 +493,7 @@
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
         "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
-        "count": 15,
+        "count": 14,
         "fix_hint": "정정 → 100% 추출 정품"
       },
       {
@@ -502,7 +502,7 @@
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
         "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
-        "count": 15,
+        "count": 14,
         "fix_hint": "정정 → 100% 추출 정품"
       },
       {
@@ -537,8 +537,8 @@
         "found": "1시간",
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
-        "last_seen": "articles/journal-2026-05-14-애플워치-apple-watch-series-3-38mm-battery-19FiLwNR.html",
-        "count": 76,
+        "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
+        "count": 66,
         "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
       },
       {
@@ -546,8 +546,8 @@
         "found": "30분",
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
-        "last_seen": "articles/journal-2026-05-14-애플워치-apple-watch-series-3-38mm-battery-19FiLwNR.html",
-        "count": 77,
+        "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
+        "count": 66,
         "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
       },
       {
@@ -555,8 +555,8 @@
         "found": "약 1일",
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
-        "last_seen": "articles/journal-2026-05-14-애플워치-apple-watch-series-3-38mm-battery-19FiLwNR.html",
-        "count": 77,
+        "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-battery-1SfOeD-D.html",
+        "count": 66,
         "fix_hint": "정정 → 최소 6시간 (보통 다음 날 픽업)"
       },
       {
@@ -565,7 +565,7 @@
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
         "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
-        "count": 15,
+        "count": 14,
         "fix_hint": "워치 후면 일지는 100% 추출 정품 명시 필수"
       },
       {
@@ -574,7 +574,7 @@
         "severity": "error",
         "first_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
         "last_seen": "articles/journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g.html",
-        "count": 15,
+        "count": 14,
         "fix_hint": "워치 후면 일지는 100% 추출 정품 명시 필수"
       }
     ]

@@ -48,28 +48,38 @@ def pick_next(log: dict) -> str | None:
     return None
 
 
+DAILY_COUNT = 3  # 하루에 처리할 정보 Reel 개수 (사장님 명시 2026-05-14)
+
+
 def main():
     log = load_log()
-    slug = pick_next(log)
-    if not slug:
-        print("⚠️ 처리할 신규 정보 Reel 없음. INFO_REELS에 항목 추가 필요.")
+    produced = 0
+    for i in range(DAILY_COUNT):
+        slug = pick_next(log)
+        if not slug:
+            print(f"⚠️ 큐 소진 — {produced}/{DAILY_COUNT}개 생성 후 종료. INFO_REELS에 항목 추가 필요.")
+            break
+
+        info = INFO_REELS[slug]
+        print(f"\n📚 [{i+1}/{DAILY_COUNT}] 정보성 Reel #{info['series_num']}: {info['title']} ({slug})")
+
+        result = subprocess.run(
+            [sys.executable, str(MAKE_INFO), slug],
+            cwd=ROOT,
+        )
+        if result.returncode != 0:
+            print(f"❌ make_info_reel.py 실패 (exit {result.returncode})")
+            break
+
+        log.setdefault("done", []).append(slug)
+        log["last_run"] = datetime.now().isoformat()
+        save_log(log)
+        produced += 1
+        print(f"✅ #{info['series_num']} 완료")
+
+    if produced == 0:
         return 0
-
-    info = INFO_REELS[slug]
-    print(f"📚 오늘의 정보성 Reel #{info['series_num']}: {info['title']} ({slug})")
-
-    result = subprocess.run(
-        [sys.executable, str(MAKE_INFO), slug],
-        cwd=ROOT,
-    )
-    if result.returncode != 0:
-        print(f"❌ make_info_reel.py 실패 (exit {result.returncode})")
-        return result.returncode
-
-    log.setdefault("done", []).append(slug)
-    log["last_run"] = datetime.now().isoformat()
-    save_log(log)
-    print(f"✅ 영상 생성 완료 — output/reels/")
+    print(f"\n📊 오늘 생성 {produced}개 — output/reels/")
 
     # 빌드 + push (휴대폰 허브 자동 반영)
     print("\n🚀 빌드 + push 자동 진행 중...")
