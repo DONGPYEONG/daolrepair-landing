@@ -582,6 +582,72 @@ def make_outro(data: dict, dst: Path) -> Path:
     return dst
 
 
+def make_follow(data: dict, dst: Path) -> Path:
+    """마지막 +1. 팔로우 유도 + 댓글 유도 — 흰 배경 + 다올 톤."""
+    img = Image.new("RGB", (W, H), (252, 252, 250))
+    d = ImageDraw.Draw(img)
+
+    # 상단 주황 라인
+    d.rectangle((0, 0, W, 16), fill=ORANGE)
+
+    # 상단 큰 헤드라인
+    head_y = 100
+    f_head = font("Black", 88)
+    head_text = "팔로우하면 좋은 이유"
+    bb = d.textbbox((0, 0), head_text, font=f_head)
+    head_w = bb[2] - bb[0]
+    head_h = bb[3] - bb[1]
+    head_x = (W - head_w) // 2
+    # 형광펜 + 진한 주황
+    d.rectangle((head_x - 10, head_y + head_h * 0.40,
+                 head_x + head_w + 10, head_y + head_h + 14),
+                fill=HIGHLIGHT_YELLOW)
+    d.text((head_x, head_y), head_text, font=f_head, fill=ORANGE_DARK)
+
+    # 3가지 이유 박스
+    reasons = [
+        ("📱", "수리비 0원 프로젝트", "매일 디바이스 예방 정보가\n무료로 올라옵니다"),
+        ("💡", "공식 vs 사설 비교", "수리받기 전 결정 가이드\n호구 안 당하게 도와드려요"),
+        ("🔧", "신규 시리즈 최우선", "새 콘텐츠·시리즈가\n팔로워에게 가장 먼저"),
+    ]
+
+    box_y_start = 280
+    box_h = 240
+    box_gap = 20
+
+    for i, (icon, title, body) in enumerate(reasons):
+        box_y = box_y_start + i * (box_h + box_gap)
+        # 박스 배경 (연한 주황)
+        d.rounded_rectangle((80, box_y, W - 80, box_y + box_h),
+                            radius=20, fill=(255, 244, 235))
+        d.rectangle((80, box_y, W - 80, box_y + 6), fill=ORANGE)
+        # 아이콘 + 제목
+        f_icon = font("Bold", 48)
+        d.text((110, box_y + 32), icon, font=f_icon, fill=(20, 20, 22))
+        f_title = font("Black", 42)
+        d.text((180, box_y + 38), title, font=f_title, fill=ORANGE_DARK)
+        # 본문
+        f_body = font("Medium", 32)
+        for j, line in enumerate(body.split("\n")):
+            d.text((110, box_y + 110 + j * 48), line,
+                   font=f_body, fill=(50, 50, 55))
+
+    # 하단 댓글 유도 + 시그니처
+    cta_y = box_y_start + 3 * (box_h + box_gap) + 30
+    d.rectangle((W // 2 - 80, cta_y, W // 2 + 80, cta_y + 4), fill=ORANGE)
+    draw_centered(d, cta_y + 30, "💬 댓글 + 친구 태그도 환영해요",
+                  font("Bold", 36), (20, 20, 22), letter_spacing=1)
+
+    # 시그니처
+    draw_centered(d, H - 110, "다올리페어",
+                  font("Black", 48), ORANGE_DARK, letter_spacing=4)
+    draw_centered(d, H - 55, "@다올리페어 팔로우 →",
+                  font("Bold", 32), ORANGE, letter_spacing=2)
+
+    img.save(dst, quality=92)
+    return dst
+
+
 # ── 해시태그 — 주제별 거래 의도 키워드 ───────────────
 # 원칙: "아이폰 배터리" 같은 모호 키워드 X
 #       "아이폰 배터리 교체", "사설 배터리 교체" 같이 거래 의도 분명한 키워드 O
@@ -703,7 +769,7 @@ def build_carousel(slug: str) -> Path:
     series_num = data["series_num"]
     series_label = f"{data['series_name']} #{series_num}"
     slides = data["slides"]
-    total_pages = len(slides) + 4  # cover + intro + N + summary + outro
+    total_pages = len(slides) + 5  # cover + intro + N + summary + outro + follow
 
     files = []
 
@@ -730,10 +796,16 @@ def build_carousel(slug: str) -> Path:
     make_summary(data, p)
     files.append(p)
 
-    # 마지막. 마무리
+    # N+2. 마무리
     outro_idx = summary_idx + 1
     p = out_dir / f"{outro_idx:02d}.jpg"
     make_outro(data, p)
+    files.append(p)
+
+    # 마지막. 팔로우 + 댓글 유도 (신규)
+    follow_idx = outro_idx + 1
+    p = out_dir / f"{follow_idx:02d}.jpg"
+    make_follow(data, p)
     files.append(p)
 
     # 캡션
