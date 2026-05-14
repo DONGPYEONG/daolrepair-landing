@@ -81,6 +81,29 @@ if [ -d "output/reels" ]; then
   python3 "$(dirname "$0")/gen_reel_hub.py" 2>/dev/null || true
 fi
 
+# ── 📬 인스타 캐러셀 호스팅 + ZIP 다운로드 ──
+# output/carousels/{slug}/*.jpg → dist/_carousels/{slug}/ 로 복사 + ZIP 생성
+if [ -d "output/carousels" ]; then
+  mkdir -p dist/_carousels
+  CAROUSEL_COUNT=0
+  for slug_dir in output/carousels/*/; do
+    if [ -d "$slug_dir" ]; then
+      slug=$(basename "$slug_dir")
+      mkdir -p "dist/_carousels/$slug"
+      cp "$slug_dir"*.jpg "dist/_carousels/$slug/" 2>/dev/null || true
+      cp "$slug_dir"caption.txt "dist/_carousels/$slug/" 2>/dev/null || true
+      # ZIP 생성 (인스타 업로드용 11장 한 번에 저장)
+      (cd "dist/_carousels/$slug" && zip -q "$slug.zip" *.jpg caption.txt 2>/dev/null) || true
+      CAROUSEL_COUNT=$((CAROUSEL_COUNT + 1))
+    fi
+  done
+  if [ "$CAROUSEL_COUNT" -gt 0 ]; then
+    echo "📬 캐러셀 ${CAROUSEL_COUNT}개를 dist/_carousels/로 호스팅"
+  fi
+  # 캐러셀 허브 페이지 생성
+  python3 "$(dirname "$0")/gen_carousel_hub.py" 2>/dev/null || true
+fi
+
 COUNT=$(find dist -type f | wc -l | tr -d ' ')
 SIZE=$(du -sh dist | cut -f1)
 echo "✅ dist/ 생성 완료: $COUNT 파일, $SIZE"
