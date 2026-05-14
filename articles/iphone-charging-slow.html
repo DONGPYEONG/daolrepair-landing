@@ -576,6 +576,29 @@
     }
   </style>
   <!-- /DAOL_READABILITY_v2 -->
+
+  <style>
+    /* DAOL_BLUE_LINK_FIX_v1 — 본문 모든 링크 통일 (브라우저 기본 파란색·밑줄 방지) */
+    .art-wrap a:not(.related-card):not(.art-cta-btn):not(.art-cta-btn-ghost):not([class*="btn"]):not([class*="kakao"]):not([class*="dock"]),
+    .art-body a:not(.related-card):not(.art-cta-btn):not(.art-cta-btn-ghost):not([class*="btn"]),
+    .article-content a:not([class*="btn"]) {
+      color: #E8732A !important;
+      text-decoration: underline !important;
+      text-underline-offset: 2px;
+      font-weight: 600;
+    }
+    .art-wrap a:hover:not(.related-card):not(.art-cta-btn):not(.art-cta-btn-ghost):not([class*="btn"]) {
+      color: #C55E1A !important;
+    }
+    /* 인라인 style="color:#fff" 등 흰색 글씨 링크는 그대로 (CTA 안 흰 글씨 등) */
+    .art-wrap a[style*="color:#fff"],
+    .art-wrap a[style*="color: #fff"],
+    .art-wrap a[style*="color:#FFF"],
+    .art-wrap a[style*="color: #FFF"] {
+      color: #fff !important;
+    }
+  </style>
+
 </head>
 <body data-cat="iphone">
 
