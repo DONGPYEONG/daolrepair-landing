@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-14T10:27:25.218765+09:00",
+  "updated_at": "2026-05-14T10:51:30.064420+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11250,
@@ -34,43 +34,43 @@
       "model": "아이폰 iPhone 15 Pro Max",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 21
+      "minutes_ago": 45
     },
     {
       "model": "애플워치 Apple Watch SE (2세대)",
       "type": "화면 교체",
       "branch": "신림점",
-      "minutes_ago": 989
+      "minutes_ago": 1013
     },
     {
       "model": "애플워치 Apple Watch Series 4 (44mm)",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 1085
+      "minutes_ago": 1109
     },
     {
       "model": "애플워치 Apple Watch SE (1세대)",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 1159
+      "minutes_ago": 1183
     },
     {
       "model": "애플워치 Apple Watch SE (1세대)",
       "type": "배터리 교체",
       "branch": "신림점",
-      "minutes_ago": 2376
+      "minutes_ago": 2400
     },
     {
       "model": "애플워치 Apple Watch Series 10 (42mm)",
       "type": "수리",
       "branch": "신림점",
-      "minutes_ago": 2422
+      "minutes_ago": 2446
     },
     {
       "model": "아이패드 iPad Pro 11인치 (2세대)",
       "type": "화면 교체",
       "branch": "목동점",
-      "minutes_ago": 2525
+      "minutes_ago": 2549
     }
   ],
   "top_repair_types": [
@@ -1095,7 +1095,8 @@
         "symptom_parts": [
           "battery"
         ]
-      }
+      },
+      "journal_url": "articles/journal-2026-05-14-아이폰-iphone-15-pro-max-battery-1Zo1BU6U.html"
     },
     {
       "id": "case-28",
@@ -1133,7 +1134,8 @@
         "options_list": [
           "배터리교체"
         ]
-      }
+      },
+      "journal_url": "articles/journal-2026-05-13-애플워치-apple-watch-se-1세대-battery-1eip1zDM.html"
     },
     {
       "id": "case-29",
@@ -1170,7 +1172,8 @@
         "options_list": [
           "배터리교체"
         ]
-      }
+      },
+      "journal_url": "articles/journal-2026-05-12-애플워치-apple-watch-se-1세대-battery-1bGWXkRJ.html"
     },
     {
       "id": "case-30",
@@ -1296,7 +1299,8 @@
         "options_list": [
           "충전포트"
         ]
-      }
+      },
+      "journal_url": "articles/journal-2026-05-12-아이폰-iphone-16-pro-max-charge-1x798OZw.html"
     },
     {
       "id": "case-33",
