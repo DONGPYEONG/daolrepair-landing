@@ -16,7 +16,7 @@ INFO_REELS = {
         "device": "아이폰",
         "hook_top": "아이폰",
         "hook_main": "이 신호 보이면",
-        "hook_sub": "지금 갈아야 해요",
+        "hook_sub": "지금 갈아야 해요!",
         "title": "배터리 교체 시기",
         "subtitle": "5가지 신호",
         "slides": [
@@ -69,7 +69,7 @@ INFO_REELS = {
         "device": "아이폰",
         "hook_top": "아이폰",
         "hook_main": "화면 들뜨면",
-        "hook_sub": "지금 멈춰요",
+        "hook_sub": "지금 멈추세요!",
         "title": "배터리 부풀음 응급",
         "subtitle": "5가지 행동",
         "slides": [
@@ -122,7 +122,7 @@ INFO_REELS = {
         "device": "아이폰",
         "hook_top": "아이폰",
         "hook_main": "후면유리 교체",
-        "hook_sub": "정품·호환 이건 달라요",
+        "hook_sub": "정품·호환 이건 달라요!",
         "title": "후면유리 비교",
         "subtitle": "5가지 차이",
         "slides": [
@@ -175,7 +175,7 @@ INFO_REELS = {
         "device": "아이폰",
         "hook_top": "아이폰",
         "hook_main": "침수 직후",
-        "hook_sub": "이것만은 하지마",
+        "hook_sub": "이것만은 하지마세요!",
         "title": "침수 응급 골든타임",
         "subtitle": "24시간 5단계",
         "slides": [

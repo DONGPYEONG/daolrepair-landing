@@ -301,18 +301,23 @@
   </style>
   <!-- /DAOL_READABILITY_v2 -->
 
+
   <style>
-    /* DAOL_BLUE_LINK_FIX_v1 — 본문 모든 링크 통일 (브라우저 기본 파란색·밑줄 방지) */
+    /* DAOL_LINK_HIGHLIGHT_v2 — 본문 링크/강조 통일: 주황 굵은 + 노란 형광펜 (인스타 광고 톤) */
     .art-wrap a:not(.related-card):not(.art-cta-btn):not(.art-cta-btn-ghost):not([class*="btn"]):not([class*="kakao"]):not([class*="dock"]),
     .art-body a:not(.related-card):not(.art-cta-btn):not(.art-cta-btn-ghost):not([class*="btn"]),
     .article-content a:not([class*="btn"]) {
-      color: #E8732A !important;
-      text-decoration: underline !important;
-      text-underline-offset: 2px;
-      font-weight: 600;
+      color: #C55E1A !important;
+      font-weight: 800 !important;
+      background: linear-gradient(transparent 55%, rgba(255, 224, 88, 0.65) 55%) !important;
+      text-decoration: none !important;
+      padding: 0 3px !important;
+      border-radius: 2px !important;
+      transition: background 0.2s !important;
     }
     .art-wrap a:hover:not(.related-card):not(.art-cta-btn):not(.art-cta-btn-ghost):not([class*="btn"]) {
-      color: #C55E1A !important;
+      background: linear-gradient(transparent 0%, rgba(255, 200, 60, 0.8) 0%) !important;
+      color: #1a1a1a !important;
     }
     /* 인라인 style="color:#fff" 등 흰색 글씨 링크는 그대로 (CTA 안 흰 글씨 등) */
     .art-wrap a[style*="color:#fff"],
@@ -320,6 +325,15 @@
     .art-wrap a[style*="color:#FFF"],
     .art-wrap a[style*="color: #FFF"] {
       color: #fff !important;
+      background: transparent !important;
+    }
+    /* 본문 강조 마커 — class="art-highlight" 또는 <mark> 태그도 동일 톤 */
+    .art-wrap mark, .art-wrap .art-highlight {
+      color: #C55E1A !important;
+      font-weight: 800 !important;
+      background: linear-gradient(transparent 55%, rgba(255, 224, 88, 0.65) 55%) !important;
+      padding: 0 3px !important;
+      border-radius: 2px !important;
     }
   </style>
 
