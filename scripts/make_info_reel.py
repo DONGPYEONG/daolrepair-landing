@@ -277,6 +277,11 @@ def make_slide(slide: dict, dst: Path, page_num: int = 1, total_pages: int = 5,
     else:
         head_size = 72
     f_head = font("Black", head_size)
+    # 폭 검증 — 카드에 안 들어가면 한 단계 더 축소 (잘림 방지)
+    bb_check = d.textbbox((0, 0), headline, font=f_head)
+    if bb_check[2] - bb_check[0] > card_w - 100:
+        head_size = max(58, head_size - 14)
+        f_head = font("Black", head_size)
 
     # 헤드라인 줄바꿈 (카드 폭 내에 맞춤)
     head_lines = _wrap_text(d, headline, f_head, card_w - 100)

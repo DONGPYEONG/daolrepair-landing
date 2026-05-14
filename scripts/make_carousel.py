@@ -327,6 +327,11 @@ def make_slide(slide: dict, dst: Path, page_num: int, total: int,
     else:
         head_size = 54
     f_head = font("Black", head_size)
+    # 폭 검증 — 카드 안에 안 들어가면 한 단계 더 축소
+    bb_check = d.textbbox((0, 0), headline, font=f_head)
+    if bb_check[2] - bb_check[0] > card_w - 80:
+        head_size = max(44, head_size - 10)
+        f_head = font("Black", head_size)
     head_lines = _wrap_text(d, headline, f_head, card_w - 80)
     head_y = card_y1 + 210
     line_h = head_size + 10
@@ -443,18 +448,40 @@ def make_summary(data: dict, dst: Path) -> Path:
     )
     d.text(((W - bw) // 2, badge_y + pad_y - 4), badge_text, font=bf, fill=WHITE)
 
-    # 메인 헤드라인 — 노란 형광펜 + 진한 주황
-    f_head = font("Black", 90)
+    # 메인 헤드라인 — 글자 수에 따라 자동 축소 + 폭 넘으면 줄바꿈
     head_text = data["summary_headline"]
-    bb_h = d.textbbox((0, 0), head_text, font=f_head)
-    head_w = bb_h[2] - bb_h[0]
-    head_h = bb_h[3] - bb_h[1]
-    head_x = (W - head_w) // 2
+    # 글자 수 기반 1차 폰트 선택
+    if len(head_text) <= 8:
+        head_size = 100
+    elif len(head_text) <= 12:
+        head_size = 84
+    elif len(head_text) <= 16:
+        head_size = 70
+    else:
+        head_size = 58
+    f_head = font("Black", head_size)
+    # 폭 한도 (양쪽 60px 여백)
+    max_w = W - 120
+    bb_check = d.textbbox((0, 0), head_text, font=f_head)
+    if bb_check[2] - bb_check[0] > max_w:
+        # 한 번 더 축소
+        head_size = max(48, head_size - 14)
+        f_head = font("Black", head_size)
+    # 그래도 넘으면 줄바꿈
+    head_lines = _wrap_text(d, head_text, f_head, max_w)
     head_y = 320
-    d.rectangle((head_x - 10, head_y + head_h * 0.40,
-                 head_x + head_w + 10, head_y + head_h + 14),
-                fill=HIGHLIGHT_YELLOW)
-    d.text((head_x, head_y), head_text, font=f_head, fill=ORANGE_DARK)
+    line_h = head_size + 12
+    for i, line in enumerate(head_lines):
+        bb_h = d.textbbox((0, 0), line, font=f_head)
+        head_w = bb_h[2] - bb_h[0]
+        head_h = bb_h[3] - bb_h[1]
+        head_x = (W - head_w) // 2
+        y_pos = head_y + i * line_h
+        # 형광펜 박스
+        d.rectangle((head_x - 10, y_pos + head_h * 0.40,
+                     head_x + head_w + 10, y_pos + head_h + 14),
+                    fill=HIGHLIGHT_YELLOW)
+        d.text((head_x, y_pos), line, font=f_head, fill=ORANGE_DARK)
 
     # 본문 — 진한 검정
     f_body = font("Medium", 40)
