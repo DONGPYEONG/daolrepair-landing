@@ -28,7 +28,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 from moviepy import ImageClip, CompositeVideoClip
-from moviepy.video.fx import CrossFadeIn, CrossFadeOut, FadeIn, FadeOut
+from moviepy.video.fx import CrossFadeIn, CrossFadeOut, FadeIn, FadeOut, SlideIn
 
 sys.path.insert(0, str(Path(__file__).parent))
 from info_reel_data import INFO_REELS
@@ -45,12 +45,12 @@ ORANGE = (232, 115, 42)
 DARK = (10, 10, 10)
 WHITE = (255, 255, 255)
 
-# 타이밍
-INTRO_DUR = 2.5
+# 타이밍 (v2 — 더 부드럽고 고급스럽게)
+INTRO_DUR = 3.5  # 글자 시간차 등장을 위해 ↑
 SLIDE_DUR = 8.0
 WRAP_DUR = 5.0
 OUTRO_DUR = 4.5
-CROSSFADE = 0.4
+CROSSFADE = 0.6  # 부드러운 전환 ↑
 
 # 안전 영역 (4:5 피드 잘림 대비)
 SAFE_TOP = 320
@@ -677,51 +677,68 @@ def build_info_reel(slug: str) -> tuple[Path, Path]:
     outro_img = TMP_DIR / f"{slug}_outro.jpg"
     make_outro(outro_img)
 
-    # 2) 영상 조립
+    # 2) 영상 조립 (v2 — 부드러운 시네마틱 모션)
     scenes = []
     cursor = 0.0
 
-    # 인트로 (썸네일) — 첫 프레임이 IG 썸네일로 잡힘
+    # 인트로 (썸네일) — 슬로우 줌 인 (1.0 → 1.06)
     intro_clip = (
         ImageClip(str(thumb_img))
         .with_duration(INTRO_DUR)
+        .resized(lambda t, d=INTRO_DUR: 1.0 + 0.06 * (t / d))
+        .with_position(("center", "center"))
         .with_effects([CrossFadeOut(CROSSFADE)])
         .with_start(cursor)
     )
     scenes.append(intro_clip)
     cursor += INTRO_DUR - CROSSFADE
 
-    # 슬라이드 5개
+    # 슬라이드 5개 — Ken Burns 패턴 다양화 (시각적 다양성)
+    # 각 슬라이드마다 다른 방향으로 미세 패닝 + 줌
+    MOTION_PATTERNS = [
+        # (zoom_max, x_pan_factor, y_pan_factor) — center 기준 픽셀 단위 보정
+        (0.10, 0, 0),       # 1: 줌 인 (정면)
+        (0.08, -30, 0),     # 2: 줌 인 + 좌측으로 패닝
+        (0.08, 30, 0),      # 3: 줌 인 + 우측으로 패닝
+        (0.10, 0, -25),     # 4: 줌 인 + 위로 패닝
+        (0.12, 0, 0),       # 5: 강한 줌 인 (마지막 임팩트)
+    ]
     for i, p in enumerate(slide_imgs):
+        pattern = MOTION_PATTERNS[i % len(MOTION_PATTERNS)]
+        zoom_max, px, py = pattern
+
         clip = (
             ImageClip(str(p))
             .with_duration(SLIDE_DUR)
-            .resized(lambda t, d=SLIDE_DUR: 1.0 + 0.04 * (t / d))  # 살짝 줌
-            .with_position(("center", "center"))
+            .resized(lambda t, d=SLIDE_DUR, zm=zoom_max: 1.0 + zm * (t / d))
+            .with_position(lambda t, d=SLIDE_DUR, x=px, y=py:
+                           ("center" if x == 0 else (W // 2 - 540 + x * (t / d)),
+                            "center" if y == 0 else (H // 2 - 960 + y * (t / d))))
         )
-        # 크로스페이드
-        effects = [CrossFadeIn(CROSSFADE)]
-        if i < len(slide_imgs) - 1 or True:  # 마지막도 wrap으로 페이드
-            effects.append(CrossFadeOut(CROSSFADE))
-        clip = clip.with_effects(effects).with_start(cursor)
+        # 부드러운 크로스페이드 (v2: 0.6초)
+        clip = clip.with_effects([CrossFadeIn(CROSSFADE), CrossFadeOut(CROSSFADE)]).with_start(cursor)
         scenes.append(clip)
         cursor += SLIDE_DUR - CROSSFADE
 
-    # 정리 카드
+    # 정리 카드 — 슬로우 줌 인 + 부드러운 페이드
     wrap_clip = (
         ImageClip(str(wrap_img))
         .with_duration(WRAP_DUR)
+        .resized(lambda t, d=WRAP_DUR: 1.0 + 0.05 * (t / d))
+        .with_position(("center", "center"))
         .with_effects([CrossFadeIn(CROSSFADE), CrossFadeOut(CROSSFADE)])
         .with_start(cursor)
     )
     scenes.append(wrap_clip)
     cursor += WRAP_DUR - CROSSFADE
 
-    # 아웃트로
+    # 아웃트로 — 페이드 인 + 살짝 줌 + 페이드 아웃
     outro_clip = (
         ImageClip(str(outro_img))
         .with_duration(OUTRO_DUR)
-        .with_effects([CrossFadeIn(CROSSFADE), FadeOut(0.5)])
+        .resized(lambda t, d=OUTRO_DUR: 1.0 + 0.03 * (t / d))
+        .with_position(("center", "center"))
+        .with_effects([CrossFadeIn(CROSSFADE), FadeOut(0.7)])
         .with_start(cursor)
     )
     scenes.append(outro_clip)
