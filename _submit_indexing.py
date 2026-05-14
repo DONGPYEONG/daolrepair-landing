@@ -206,8 +206,8 @@ def submit_google(urls: list[str]) -> int:
 # Sitemap에서 최근 URL 추출
 # ────────────────────────────────────────────────────────────────
 
-def get_recent_urls_from_sitemap(limit: int = 50, only_today: bool = False) -> list[str]:
-    """sitemap.xml에서 최근 lastmod 기준 URL 추출."""
+def get_recent_urls_from_sitemap(limit=None, only_today: bool = False) -> list:
+    """sitemap.xml에서 URL 추출. limit=None이면 전체."""
     import re
     from datetime import date
 
@@ -223,9 +223,12 @@ def get_recent_urls_from_sitemap(limit: int = 50, only_today: bool = False) -> l
     if only_today:
         urls = [u for u, lm in entries if lm == today]
     else:
-        # lastmod 내림차순 정렬해서 limit 만큼
+        # lastmod 내림차순 정렬, limit 있으면 자르기
         entries.sort(key=lambda x: x[1], reverse=True)
-        urls = [u for u, _ in entries[:limit]]
+        if limit is None:
+            urls = [u for u, _ in entries]
+        else:
+            urls = [u for u, _ in entries[:limit]]
 
     return urls
 
@@ -240,19 +243,18 @@ def main():
         urls = args
         source = f"명령줄 {len(urls)}개"
     else:
-        # OAuth 토큰 있으면 한 번에 200개까지 시도, 없으면 50개
-        limit = 200 if GOOGLE_OAUTH_TOKEN_PATH.exists() else 50
-        urls = get_recent_urls_from_sitemap(limit=limit)
-        source = f"sitemap 최근 {len(urls)}개"
+        # IndexNow는 한 번에 10,000개까지 허용 → sitemap 전체 제출
+        urls = get_recent_urls_from_sitemap(limit=None)
+        source = f"sitemap 전체 {len(urls)}개"
 
     print(f"\n📤 색인 요청 시작 — {source}")
     print(f"   호스트: {SITE_HOST}\n")
 
-    print("[1/2] IndexNow (Bing·Yandex)")
+    print("[1/2] IndexNow (Naver·Yandex·Bing)")
     ping_indexnow(urls)
 
     print("\n[2/2] Google Indexing API")
-    # 하루 한도 200개. quota 도달 시 자동 중단.
+    # 구글은 일일 한도 200개 (API 정책). 신규/lastmod 갱신된 URL 우선.
     submit_google(urls[:200])
 
     print("\n✓ 색인 요청 완료\n")
