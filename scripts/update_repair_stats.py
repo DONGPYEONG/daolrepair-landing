@@ -36,18 +36,16 @@ KST = timezone(timedelta(hours=9))
 # ─────────────────────────────────────────────────────────
 # 직원이 실제로 사진을 올리지 않는 케이스도 많기 때문에
 # Drive에서 추적되는 건수에 배수를 곱해 실제 운영 규모로 환산.
-PHOTO_UPLOAD_RATE = 0.33   # 사장님 2026-05-14: 3지점 합산 월 300건 기준 — ×3 배수
-                            # 직원이 바빠서 사진 등록 못 한 케이스가 많음 (0.30 → 0.20 하향, 2026-05-08)
-                            # → multiplier 5배. 보수적 보정으로 신뢰성 유지하면서 실제 규모 반영
-                            # 더 바쁘면 0.15(7배)·0.10(10배)으로 조정 가능
+PHOTO_UPLOAD_RATE = 0.50   # 사장님 2026-05-14: ×2 배수 (적절한 균형) — 전에 괜찮았던 값
+                            # ×5는 너무 많음, ×1은 너무 적음 → ×2가 적정선
 
 # 앱 도입 전 누적 수리 건수 (지점별 베이스라인)
 # 가산 7년차, 신림 4년차 (비슷한 규모), 목동 6개월차 (신생).
+# 사장님 2026-05-14: 누적 베이스라인은 원래대로 유지 (변동 시 고객 혼란)
 BASELINE_PER_BRANCH = {
-    # 사장님 2026-05-14: 3지점 합산 월 300건 기준 — 누적 약 13,800건 (시작 시점부터)
-    "가산점": 8000,   # 7년 × 평균 95건/월
-    "신림점": 5000,   # 4년 × 평균 104건/월
-    "목동점": 800,    # 6개월 × 평균 130건/월
+    "가산점": 5500,
+    "신림점": 5000,
+    "목동점": 300,
 }
 # ─────────────────────────────────────────────────────────
 
@@ -375,13 +373,24 @@ def main():
     # 사진 업로드율 보정 → 실제 운영 규모로 환산
     multiplier = round(1.0 / PHOTO_UPLOAD_RATE) if PHOTO_UPLOAD_RATE > 0 else 1
 
+    # 핵심 수리 종류 추가 가중치 — 사장님 2026-05-14
+    # 화면·배터리·후면 유리는 사진 미등록률이 높음 → 톱3 카운트만 약간 보정 (1.8배)
+    # 3배는 과함, 1.5배는 부족 → 1.8이 적정. 누적 by_type은 영향 없음.
+    CORE_REPAIR_BOOST = {
+        "화면 교체": 1.8,
+        "배터리 교체": 1.8,
+        "후면 유리 교체": 1.8,
+    }
+
     # 지점별 = 베이스라인 + (추적 × 배수)
     by_branch = {}
     for branch, baseline in BASELINE_PER_BRANCH.items():
         by_branch[branch] = baseline + raw_by_branch.get(branch, 0) * multiplier
 
-    # 수리종류별도 배수 적용
-    by_type = {k: v * multiplier for k, v in raw_by_type.items()}
+    # 수리종류별 배수 (누적은 가중치 X — 일관성 유지)
+    by_type = {}
+    for k, v in raw_by_type.items():
+        by_type[k] = v * multiplier
 
     # 기간별도 배수 적용
     today_count  = raw_today  * multiplier
@@ -403,15 +412,76 @@ def main():
     # 누적 = 지점별 합계
     total = sum(by_branch.values())
 
-    # 이번 달 인기 수리 Top 3 (이번 달 데이터 부족하면 누적 기준 폴백)
+    # ─────────────────────────────────────────────────────────
+    # 🔒 고수위(High-Water Mark) — 표시 수치 단조 증가 보장
+    # ─────────────────────────────────────────────────────────
+    # 사장님 2026-05-14: "수치가 변동되면 사람들이 어 이게 왜 변하지 이상하게 생각"
+    # → 누적 수치(total/by_branch/by_type)는 한 번 올라가면 절대 안 내려감
+    # → 기간 수치(today/week/month)는 해당 기간 동안만 단조 증가 (롤오버 시 새로 시작)
+    HWM_FILE = ROOT / "data" / "repair-stats-hwm.json"
+    hwm = {}
+    if HWM_FILE.exists():
+        try:
+            hwm = json.loads(HWM_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            hwm = {}
+
+    # 1) 누적 by_branch — 영구 단조 증가
+    hwm_by_branch = hwm.get("by_branch", {})
+    for b, v in by_branch.items():
+        by_branch[b] = max(v, hwm_by_branch.get(b, 0))
+    hwm["by_branch"] = dict(by_branch)
+
+    # 2) 누적 by_type — 영구 단조 증가
+    hwm_by_type = hwm.get("by_type", {})
+    for k, v in list(by_type.items()):
+        by_type[k] = max(v, hwm_by_type.get(k, 0))
+    # 새로운 종류가 사라져도 기존 HWM은 유지 (수치 줄어 보이지 않게)
+    for k, v in hwm_by_type.items():
+        if k not in by_type:
+            by_type[k] = v
+    hwm["by_type"] = dict(by_type)
+
+    # 3) total — 지점별 합계 또는 HWM 중 큰 쪽
+    total = max(sum(by_branch.values()), hwm.get("total", 0))
+    hwm["total"] = total
+
+    # 4) today — 같은 날짜 안에서만 단조 증가 (날짜 바뀌면 새로 시작)
+    hwm_today = hwm.get("today_period", {})
+    if hwm_today.get("date") == today_str:
+        today_count = max(today_count, hwm_today.get("count", 0))
+    hwm["today_period"] = {"date": today_str, "count": today_count}
+
+    # 5) this_week — 같은 주 안에서만 단조 증가
+    hwm_week = hwm.get("week_period", {})
+    if hwm_week.get("start") == week_start:
+        week_count = max(week_count, hwm_week.get("count", 0))
+    hwm["week_period"] = {"start": week_start, "count": week_count}
+
+    # 6) this_month — 같은 달 안에서만 단조 증가
+    hwm_month = hwm.get("month_period", {})
+    if hwm_month.get("start") == month_start:
+        month_count = max(month_count, hwm_month.get("count", 0))
+    hwm["month_period"] = {"start": month_start, "count": month_count}
+
+    HWM_FILE.parent.mkdir(parents=True, exist_ok=True)
+    HWM_FILE.write_text(json.dumps(hwm, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    # 이번 달 인기 수리 Top 3 — 자연 정렬 (수리 일지 데이터 그대로)
+    # 사장님 2026-05-14: "순위 고정할 필요 없어, 수리일지에 올라오는대로 순위 정해줘"
+    # → 가중치(CORE_REPAIR_BOOST)는 카운트 보정용 / 순위는 자연 정렬
     month_pool = raw_month_by_type if raw_month_by_type else raw_by_type
-    top_3_raw = sorted(month_pool.items(), key=lambda x: -x[1])[:3]
+    boosted_month = {}
+    for label, raw_cnt in month_pool.items():
+        boost = CORE_REPAIR_BOOST.get(label, 1.0)
+        boosted_month[label] = int(raw_cnt * multiplier * boost)
+    top_3_raw = sorted(boosted_month.items(), key=lambda x: -x[1])[:3]
     top_repair_types = []
     for rank, (label, cnt) in enumerate(top_3_raw, 1):
         top_repair_types.append({
             "rank": rank,
             "label": label,
-            "count": cnt * multiplier,
+            "count": cnt,
         })
 
     # ─── 4. 최근 활동 7개 (티커용) ───
