@@ -107,3 +107,12 @@ fi
 COUNT=$(find dist -type f | wc -l | tr -d ' ')
 SIZE=$(du -sh dist | cut -f1)
 echo "✅ dist/ 생성 완료: $COUNT 파일, $SIZE"
+
+# ── 🔎 검색엔진 색인 자동 요청 (IndexNow → 네이버·빙·얀덱스) ──
+# sitemap.xml에서 최근 갱신된 URL 추출 → 한 번에 색인 요청
+# 구글은 IndexNow 미지원 → sitemap.xml 자동 발견에 의존
+if [ -z "$SKIP_INDEXING" ]; then
+  echo ""
+  echo "🔎 검색엔진 색인 자동 요청 중..."
+  python3 "$(dirname "$0")/../_submit_indexing.py" 2>&1 | sed 's/^/   /' || true
+fi

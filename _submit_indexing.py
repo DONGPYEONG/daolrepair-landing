@@ -17,9 +17,13 @@ SITE_HOST = "xn--2j1bq2k97kxnah86c.com"
 SITE_BASE = f"https://{SITE_HOST}"
 
 # IndexNow 설정
+# 엔드포인트 변경 이력 (2026-05-14):
+#   - api.indexnow.org → Bing이 "UserForbiddedToAccessSite" 403 반환 (Bing-side 차단)
+#   - yandex.com/indexnow → 202 success. IndexNow 프로토콜상 한 곳 submit이 모든 참여 엔진에 공유됨
+#   → Yandex 직접 endpoint 사용. 네이버·얀덱스에 즉시 색인, 빙은 자체 신뢰도 회복 후 적용
 INDEXNOW_KEY = "2817f0d198382f679ee2af505db0c823"
 INDEXNOW_KEY_FILE = f"{INDEXNOW_KEY}.txt"
-INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow"
+INDEXNOW_ENDPOINT = "https://yandex.com/indexnow"
 
 # Google Indexing API 설정
 # 옵션 1 (우선) — OAuth 사용자 토큰 (refresh_token) 방식: GSC 정책 차단 우회
