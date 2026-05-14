@@ -90,28 +90,9 @@ REFURB_MODELS = {
         "tier": "budget",
     },
 
-    # ─── Apple Watch ───
-    "apple-watch-ultra-2-refurbish-vs-repair": {
-        "device": "애플워치", "device_eng": "Apple Watch", "model": "Apple Watch Ultra 2",
-        "hub_slug": "applewatch-refurbish-guide",
-        "hub_title": "애플워치 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면 센서", "디지털 크라운"],
-        "tier": "premium",
-    },
-    "apple-watch-series-10-refurbish-vs-repair": {
-        "device": "애플워치", "device_eng": "Apple Watch", "model": "Apple Watch Series 10",
-        "hub_slug": "applewatch-refurbish-guide",
-        "hub_title": "애플워치 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면 센서·세라믹"],
-        "tier": "premium",
-    },
-    "apple-watch-series-9-refurbish-vs-repair": {
-        "device": "애플워치", "device_eng": "Apple Watch", "model": "Apple Watch Series 9",
-        "hub_slug": "applewatch-refurbish-guide",
-        "hub_title": "애플워치 리퍼 가이드",
-        "available_parts": ["디스플레이(액정)", "배터리", "후면 센서·세라믹"],
-        "tier": "premium",
-    },
+    # ─── Apple Watch (단가표 기준 — 사장님 명시 2026-05-14)
+    # 실제 수리 빈도 높은 모델: SE 시리즈, Series 5/6/7
+    # 최신(Ultra 2, Series 9~10)은 제외 — 부품 수급 어려움
     "apple-watch-se-2-refurbish-vs-repair": {
         "device": "애플워치", "device_eng": "Apple Watch", "model": "Apple Watch SE 2세대",
         "hub_slug": "applewatch-refurbish-guide",
@@ -119,24 +100,67 @@ REFURB_MODELS = {
         "available_parts": ["디스플레이(액정)", "배터리", "후면"],
         "tier": "budget",
     },
+    "apple-watch-se-1-refurbish-vs-repair": {
+        "device": "애플워치", "device_eng": "Apple Watch", "model": "Apple Watch SE 1세대",
+        "hub_slug": "applewatch-refurbish-guide",
+        "hub_title": "애플워치 리퍼 가이드",
+        "available_parts": ["디스플레이(액정)", "배터리", "후면"],
+        "tier": "budget",
+    },
+    "apple-watch-series-7-refurbish-vs-repair": {
+        "device": "애플워치", "device_eng": "Apple Watch", "model": "Apple Watch Series 7",
+        "hub_slug": "applewatch-refurbish-guide",
+        "hub_title": "애플워치 리퍼 가이드",
+        "available_parts": ["디스플레이(액정)", "배터리", "후면 세라믹"],
+        "tier": "mid",
+    },
+    "apple-watch-series-6-refurbish-vs-repair": {
+        "device": "애플워치", "device_eng": "Apple Watch", "model": "Apple Watch Series 6",
+        "hub_slug": "applewatch-refurbish-guide",
+        "hub_title": "애플워치 리퍼 가이드",
+        "available_parts": ["디스플레이(액정)", "배터리", "후면 세라믹"],
+        "tier": "mid",
+    },
+    "apple-watch-series-5-refurbish-vs-repair": {
+        "device": "애플워치", "device_eng": "Apple Watch", "model": "Apple Watch Series 5",
+        "hub_slug": "applewatch-refurbish-guide",
+        "hub_title": "애플워치 리퍼 가이드",
+        "available_parts": ["디스플레이(액정)", "배터리", "후면 세라믹"],
+        "tier": "mid",
+    },
 
-    # ─── iPad ───
-    "ipad-pro-m4-refurbish-vs-repair": {
-        "device": "아이패드", "device_eng": "iPad", "model": "iPad Pro M4",
+    # ─── iPad (단가표 기준 — 사장님 명시 2026-05-14)
+    # M4 모델은 부품 수급 어려워 제외. 검증된 인기 모델만.
+    "ipad-pro-11-m2-refurbish-vs-repair": {
+        "device": "아이패드", "device_eng": "iPad", "model": "iPad Pro 11형 (M2, 4세대)",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
         "available_parts": ["디스플레이(액정)", "배터리", "충전 단자", "후면 카메라"],
         "tier": "premium",
     },
-    "ipad-air-m4-refurbish-vs-repair": {
-        "device": "아이패드", "device_eng": "iPad", "model": "iPad Air M4",
+    "ipad-pro-11-m1-refurbish-vs-repair": {
+        "device": "아이패드", "device_eng": "iPad", "model": "iPad Pro 11형 (M1, 3세대)",
+        "hub_slug": "ipad-refurbish-guide",
+        "hub_title": "아이패드 리퍼 가이드",
+        "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
+        "tier": "premium",
+    },
+    "ipad-pro-12-9-5th-refurbish-vs-repair": {
+        "device": "아이패드", "device_eng": "iPad", "model": "iPad Pro 12.9형 5세대 (M1)",
+        "hub_slug": "ipad-refurbish-guide",
+        "hub_title": "아이패드 리퍼 가이드",
+        "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
+        "tier": "premium",
+    },
+    "ipad-air-5th-refurbish-vs-repair": {
+        "device": "아이패드", "device_eng": "iPad", "model": "iPad Air 5세대 (M1)",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
         "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
         "tier": "mid",
     },
-    "ipad-mini-a17-refurbish-vs-repair": {
-        "device": "아이패드", "device_eng": "iPad", "model": "iPad mini (A17 Pro)",
+    "ipad-air-4th-refurbish-vs-repair": {
+        "device": "아이패드", "device_eng": "iPad", "model": "iPad Air 4세대",
         "hub_slug": "ipad-refurbish-guide",
         "hub_title": "아이패드 리퍼 가이드",
         "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
@@ -148,6 +172,20 @@ REFURB_MODELS = {
         "hub_title": "아이패드 리퍼 가이드",
         "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
         "tier": "budget",
+    },
+    "ipad-9th-refurbish-vs-repair": {
+        "device": "아이패드", "device_eng": "iPad", "model": "iPad (9세대)",
+        "hub_slug": "ipad-refurbish-guide",
+        "hub_title": "아이패드 리퍼 가이드",
+        "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
+        "tier": "budget",
+    },
+    "ipad-mini-6th-refurbish-vs-repair": {
+        "device": "아이패드", "device_eng": "iPad", "model": "iPad mini 6세대",
+        "hub_slug": "ipad-refurbish-guide",
+        "hub_title": "아이패드 리퍼 가이드",
+        "available_parts": ["디스플레이(액정)", "배터리", "충전 단자"],
+        "tier": "mid",
     },
 }
 
