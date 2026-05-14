@@ -130,11 +130,12 @@ def make_thumbnail(data: dict, dst: Path) -> Path:
     )
     d.text(((W - bw) // 2, badge_y + pad_y - 4), badge_text, font=bf, fill=WHITE)
 
-    # 메인 후킹 (두 줄, 가운데) — 글자 수에 따라 폰트 자동 조정
-    hook_y = 760
+    # 메인 후킹 (3줄, 가운데) — 기종 + 메인 + 보조
+    hook_top = data.get("hook_top", "")
     hook_main = data["hook_main"]
     hook_sub = data["hook_sub"]
-    # hook_main: 기종 포함되어 길어지는 경우 자동 축소
+
+    # 글자 수에 따라 폰트 자동 조정
     if len(hook_main) <= 7:
         h1_size = 130
     elif len(hook_main) <= 9:
@@ -147,6 +148,16 @@ def make_thumbnail(data: dict, dst: Path) -> Path:
         h2_size = 84
     else:
         h2_size = 72
+
+    # 3줄 구조: 위에 기종 라벨이 있으면 시작 y를 조금 올림
+    if hook_top:
+        hook_y = 700
+        f_top = font("Bold", 80)
+        draw_centered(d, hook_y, hook_top, f_top, WHITE, letter_spacing=2)
+        hook_y += 110
+    else:
+        hook_y = 760
+
     f_hook1 = font("Black", h1_size)
     f_hook2 = font("ExtraBold", h2_size)
     draw_centered(d, hook_y, hook_main, f_hook1, ORANGE, letter_spacing=2)
