@@ -502,9 +502,24 @@ def make_step_captions(slug_meta: dict) -> list[tuple[str, str]]:
 
 
 def make_caption_text(title: str, slug_meta: dict) -> str:
+    import hashlib as _h
     device = slug_meta.get("device", "")
     model = slug_meta.get("model", "").replace("-", " ").strip()
     repair = slug_meta.get("repair", "")
+
+    # 댓글 유도 카피 풀 — 슬러그 해시 기반 결정적 선택 (영상끼리 다양화)
+    COMMENT_CTAS = [
+        "💬 비슷한 경험 있으세요? 댓글로 알려주세요!",
+        "💬 여러분 폰은 어떠세요? 댓글 남겨주세요!",
+        "💬 궁금한 점 댓글 주시면 영상으로 답변해드려요",
+        "💬 내 폰도 이런 신호 있어요? 댓글 ↓",
+        "💬 비슷한 수리 받으신 분 댓글 남겨주세요!",
+        "💬 친구 태그해서 알려주세요 ↓",
+        "💬 댓글로 질문 주시면 친절하게 답변드려요",
+    ]
+    slug_id = (slug_meta.get("slug") or model or title)
+    h = int(_h.md5(slug_id.encode("utf-8")).hexdigest()[:8], 16)
+    comment_cta = COMMENT_CTAS[h % len(COMMENT_CTAS)]
 
     body = f"""🔧 다올리페어 오늘의 수리
 
@@ -524,39 +539,81 @@ def make_caption_text(title: str, slug_meta: dict) -> str:
 
 👉 프로필 링크 → 무료 견적 + 후기 2,000+
 
+{comment_cta}
+
 — 다올리페어 (대한민국 1호 디바이스 예방 마스터)"""
 
-    base_tags = [
-        "#다올리페어", "#아이폰수리", "#아이패드수리", "#애플워치수리",
-        "#가산아이폰수리", "#신림아이폰수리", "#목동아이폰수리",
-        "#사설수리", "#정품수리", "#당일수리", "#수리실패0원",
+    # 기종 + 수리 부위 + 거래 의도 키워드 동적 생성 (사장님 명시 — 기종별 정확)
+    # 원칙: '아이폰 카메라'(모호) X / '아이폰 카메라 수리·교체·리퍼' 같이 거래 의도 분명한 키워드 O
+    DEVICE_LABEL = {
+        "아이폰": "아이폰",
+        "아이패드": "아이패드",
+        "애플워치": "애플워치",
+        "에르메스": "애플워치",
+        "맥북": "맥북",
+    }
+    # 수리 부위별 거래 의도 키워드 (수리/교체/안됨/리퍼/비용/방전/수리비)
+    REPAIR_INTENT = {
+        "배터리 교체": ("배터리", ["배터리교체", "배터리교체비용", "사설배터리교체", "배터리수리", "배터리방전"]),
+        "액정 교체": ("액정", ["액정교체", "액정교체비용", "사설액정교체", "액정수리", "화면깨짐", "화면안나옴"]),
+        "후면 유리 교체": ("후면유리", ["후면유리교체", "후면유리수리", "후면유리교체비용", "후면깨짐", "뒷판교체", "후면파손"]),
+        "카메라 수리": ("카메라", ["카메라교체", "카메라수리", "카메라안됨", "카메라리퍼", "카메라교체비용", "카메라파손"]),
+        "충전단자 수리": ("충전단자", ["충전단자수리", "충전불량", "충전안됨", "충전구수리", "충전단자교체"]),
+        "침수 처리": ("침수", ["침수수리", "침수복구", "침수비용", "물에빠짐", "침수응급"]),
+        "스피커 수리": ("스피커", ["스피커수리", "스피커안됨", "소리안남", "스피커교체"]),
+        "마이크 수리": ("마이크", ["마이크수리", "마이크안됨", "통화소리안남"]),
+        "메인보드 수리": ("메인보드", ["메인보드수리", "메인보드복구", "전원안켜짐"]),
+        "홈버튼 수리": ("홈버튼", ["홈버튼수리", "홈버튼안됨"]),
+    }
+
+    dev_kr = DEVICE_LABEL.get(device.strip(), "아이폰")
+    region_prefixes = ["가산", "신림", "목동"]
+
+    # 1) 수리 부위 거래 의도 (가장 검색되는 키워드 우선)
+    hashtags = []
+    if repair in REPAIR_INTENT:
+        part_label, intent_keywords = REPAIR_INTENT[repair]
+        # 예: #아이폰후면유리교체 / #아이폰후면유리교체비용
+        for k in intent_keywords:
+            hashtags.append(f"#{dev_kr}{k}")
+        # 모델 + 부위 (검색 의도) — 모델에서 영문 기종명 제거 (중복 방지)
+        if model:
+            model_norm = model.replace(" ", "").replace("-", "").lower()
+            for prefix in ["applewatch", "apple watch", "iphone", "ipad", "macbook"]:
+                if model_norm.startswith(prefix.replace(" ", "")):
+                    model_norm = model_norm[len(prefix.replace(" ", "")):]
+                    break
+            if model_norm:
+                hashtags.insert(0, f"#{dev_kr}{model_norm}{part_label}수리")
+                hashtags.insert(1, f"#{dev_kr}{model_norm}{part_label}교체")
+        # 지역 + 기종 + 부위
+        for r in region_prefixes:
+            hashtags.append(f"#{r}{dev_kr}{part_label}")
+            hashtags.append(f"#{r}{dev_kr}{intent_keywords[0]}")
+    else:
+        # 매핑 없는 수리는 일반 톤
+        if model:
+            hashtags.append(f"#{dev_kr}{model.replace(' ', '').replace('-', '').lower()}수리")
+        hashtags.append(f"#{dev_kr}수리")
+
+    # 2) 광역 (브랜드 + 채널 시그니처)
+    brand_tags = [
+        "#다올리페어", "#수리비0원프로젝트", "#디바이스예방마스터",
+        f"#가산{dev_kr}수리", f"#신림{dev_kr}수리", f"#목동{dev_kr}수리",
+        "#사설수리", "#당일수리", "#수리실패0원",
     ]
-    dev_tags = {
-        "아이폰": ["#아이폰", "#iphone", "#iphonerepair"],
-        "아이패드": ["#아이패드", "#ipad", "#ipadrepair"],
-        "애플워치": ["#애플워치", "#applewatch"],
-        "맥북": ["#맥북", "#macbook"],
-    }
-    rep_tags = {
-        "배터리 교체": ["#배터리교체", "#아이폰배터리"],
-        "액정 교체": ["#액정교체", "#아이폰액정"],
-        "후면 유리 교체": ["#후면유리", "#백글라스"],
-        "충전단자 수리": ["#충전단자", "#충전불량"],
-        "카메라 수리": ["#카메라수리"],
-        "침수 처리": ["#아이폰침수", "#침수수리"],
-    }
-    tags = base_tags[:]
-    for k, v in dev_tags.items():
-        if k in device:
-            tags = v + tags
+
+    # 중복 제거 + 30개 한도
+    seen = set()
+    final = []
+    for t in hashtags + brand_tags:
+        if t not in seen:
+            seen.add(t)
+            final.append(t)
+        if len(final) >= 28:
             break
-    for k, v in rep_tags.items():
-        if k == repair:
-            tags = v + tags
-            break
-    if model:
-        tags.insert(0, f"#{model.replace(' ', '').lower()}")
-    return body + "\n\n" + " ".join(tags[:25])
+
+    return body + "\n\n" + " ".join(final)
 
 
 # ── 이미지 빌더 ────────────────────────────────────────

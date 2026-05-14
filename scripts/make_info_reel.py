@@ -691,10 +691,26 @@ def _detect_reel_topic(slug: str, data: dict) -> str:
     return "battery"
 
 
+# 댓글 유도 카피 풀 (공통)
+COMMENT_CTAS_REEL = [
+    "💬 비슷한 경험 있으세요? 댓글로 알려주세요!",
+    "💬 여러분 폰은 어떠세요? 댓글 남겨주세요!",
+    "💬 궁금한 점 댓글 주시면 영상으로 답변해드려요",
+    "💬 내 폰도 이런 신호 있어요? 댓글 ↓",
+    "💬 비슷한 수리 받으신 분 댓글 남겨주세요!",
+    "💬 친구 태그해서 알려주세요 ↓",
+    "💬 댓글로 질문 주시면 친절하게 답변드려요",
+]
+
+
 # ── 캡션 ────────────────────────────────────────────
 def make_caption(data: dict, slug: str = "") -> str:
+    import hashlib as _h
     topic = _detect_reel_topic(slug, data)
     hashtags = TOPIC_HASHTAGS_REEL.get(topic, TOPIC_HASHTAGS_REEL["battery"]) + BRAND_HASHTAGS_REEL
+    h = int(_h.md5((slug or data.get("title", "")).encode("utf-8")).hexdigest()[:8], 16)
+    comment_cta = COMMENT_CTAS_REEL[h % len(COMMENT_CTAS_REEL)]
+
     body = f"""📚 {data['category']} #{data['series_num']}
 
 {data['title']} {data['subtitle']}
@@ -710,6 +726,8 @@ def make_caption(data: dict, slug: str = "") -> str:
 ━━━━━━━━━━━━━━━━━━━━
 
 👉 프로필 링크 → 무료 견적
+
+{comment_cta}
 
 — 다올리페어 (대한민국 1호 디바이스 예방 마스터)"""
     return body + "\n\n" + " ".join(hashtags)

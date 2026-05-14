@@ -649,15 +649,30 @@ BRAND_HASHTAGS = [
 ]
 
 
+# 댓글 유도 카피 풀 (공통, 캐러셀 톤)
+COMMENT_CTAS_CAROUSEL = [
+    "💬 비슷한 경험 있으세요? 댓글로 알려주세요!",
+    "💬 여러분도 이런 적 있나요? 댓글 ↓",
+    "💬 궁금한 점 댓글 주시면 답변해드려요",
+    "💬 어떤 콘텐츠가 필요하세요? 댓글로 알려주세요!",
+    "💬 친구에게 공유 + 친구 태그도 환영해요 ↓",
+    "💬 비슷한 수리 받으신 분 댓글 남겨주세요!",
+]
+
+
 # ── 캡션 ────────────────────────────────────────────
 def make_caption(data: dict) -> str:
+    import hashlib as _h
     topic = data.get("topic", "battery")
     topic_tags = TOPIC_HASHTAGS.get(topic, TOPIC_HASHTAGS["battery"])
     hashtags = topic_tags + BRAND_HASHTAGS
 
-    # 도입 본문 첫 두 줄을 캡션 인트로로 활용
     intro_lines = data.get("intro_body", "").split("\n")
     intro_preview = "\n".join([l for l in intro_lines if l.strip()][:3])
+
+    slug_id = (data.get("series_num", "") + data.get("cover_hook_main", ""))
+    h = int(_h.md5(slug_id.encode("utf-8")).hexdigest()[:8], 16)
+    comment_cta = COMMENT_CTAS_CAROUSEL[h % len(COMMENT_CTAS_CAROUSEL)]
 
     return (
         f"📬 {data['series_name']} #{data['series_num']}\n\n"
@@ -670,7 +685,8 @@ def make_caption(data: dict) -> str:
         "💬 카톡 채널 \"다올리페어\"\n"
         "━━━━━━━━━━━━━━━━━━━━\n\n"
         "👉 저장해두고 한 번씩 체크하세요\n"
-        "🔄 친구에게 공유 — 그 친구의 폰도 살아납니다\n\n"
+        "🔄 친구에게 공유 — 그 친구의 폰도 살아납니다\n"
+        f"{comment_cta}\n\n"
         "— 다올리페어 (대한민국 1호 디바이스 예방 마스터)\n\n"
         + " ".join(hashtags)
     )
