@@ -115,16 +115,24 @@ def draw_card_signature(d, x1, x2, y2):
 # ── 슬라이드별 빌더 ──────────────────────────────────
 
 def make_cover(data: dict, dst: Path) -> Path:
-    """1. 표지 — 큰 후킹 + 시리즈 라벨."""
-    img = make_dark_bg()
+    """1. 표지 — 흰 배경 + 큰 후킹 (영상 표지와 차별화).
+
+    영상 표지 = 검정 배경 → 캐러셀 표지 = 흰 배경 + 노란 형광 강조
+    인스타 피드에서 시각적으로 분리 + 다올 미니멀 톤
+    """
+    # 흰 배경 + 미세 패턴
+    img = Image.new("RGB", (W, H), (252, 252, 250))
     d = ImageDraw.Draw(img)
+
+    # 상단 주황 가로 라인 (브랜드 시그니처)
+    d.rectangle((0, 0, W, 16), fill=ORANGE)
 
     # 상단 시리즈 배지 (주황 라운드)
     badge_text = f"📬 {data['series_name']} #{data['series_num']}"
     bf = font("Bold", 36)
     bb = d.textbbox((0, 0), badge_text, font=bf)
     bw = bb[2] - bb[0]
-    badge_y = 100
+    badge_y = 110
     pad_x, pad_y = 24, 14
     d.rounded_rectangle(
         ((W - bw - pad_x * 2) // 2, badge_y,
@@ -151,26 +159,39 @@ def make_cover(data: dict, dst: Path) -> Path:
     f_main = font("Black", _size(hook_main, 120))
     f_sub = font("ExtraBold", _size(hook_sub, 100))
 
-    # 중앙 정렬 (3줄)
+    # 메인 후킹 — 검정 + 주황(메인줄에 형광펜)
     y_start = 450
-    draw_centered(d, y_start, hook_top, f_top, WHITE, letter_spacing=2)
-    draw_centered(d, y_start + _size(hook_top, 110) + 20,
-                  hook_main, f_main, ORANGE, letter_spacing=2)
-    draw_centered(d, y_start + _size(hook_top, 110) + _size(hook_main, 120) + 50,
-                  hook_sub, f_sub, WHITE, letter_spacing=1)
+    # hook_top: 진한 검정
+    draw_centered(d, y_start, hook_top, f_top, (20, 20, 22), letter_spacing=2)
 
-    # 짧은 주황 라인
+    # hook_main: 노란 형광펜 + 진한 주황 (가장 임팩트)
+    main_y = y_start + _size(hook_top, 110) + 20
+    bb_main = d.textbbox((0, 0), hook_main, font=f_main)
+    main_w = bb_main[2] - bb_main[0]
+    main_h = bb_main[3] - bb_main[1]
+    main_x = (W - main_w) // 2
+    # 형광펜 박스 (글씨 아래 1/2 영역만)
+    d.rectangle((main_x - 8, main_y + main_h * 0.40,
+                 main_x + main_w + 8, main_y + main_h + 14),
+                fill=HIGHLIGHT_YELLOW)
+    d.text((main_x, main_y), hook_main, font=f_main, fill=ORANGE_DARK)
+
+    # hook_sub: 진한 검정
+    sub_y = main_y + _size(hook_main, 120) + 50
+    draw_centered(d, sub_y, hook_sub, f_sub, (20, 20, 22), letter_spacing=1)
+
+    # 짧은 주황 라인 (하단 시그니처 위)
     d.rectangle((W // 2 - 60, 1130, W // 2 + 60, 1136), fill=ORANGE)
 
     # 하단 시그니처
     draw_centered(d, 1170, "다올리페어",
-                  font("Bold", 50), ORANGE, letter_spacing=4)
+                  font("Bold", 50), ORANGE_DARK, letter_spacing=4)
     draw_centered(d, 1235, "대한민국 1호 디바이스 예방 마스터",
-                  font("Medium", 30), (180, 180, 180), letter_spacing=2)
+                  font("Medium", 30), (110, 110, 115), letter_spacing=2)
 
     # 스와이프 힌트
     draw_centered(d, 1290, "→ 옆으로 넘겨보세요",
-                  font("Medium", 26), (140, 140, 140), letter_spacing=2)
+                  font("Medium", 26), (160, 160, 165), letter_spacing=2)
 
     img.save(dst, quality=92)
     return dst
