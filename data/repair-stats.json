@@ -1,15 +1,15 @@
 {
-  "updated_at": "2026-05-14T10:51:30.064420+09:00",
+  "updated_at": "2026-05-14T11:29:19.177019+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
-    "total": 11250,
-    "today": 5,
-    "this_week": 95,
-    "this_month": 200,
+    "total": 11255,
+    "today": 10,
+    "this_week": 100,
+    "this_month": 205,
     "by_branch": {
       "가산점": 5590,
       "신림점": 5175,
-      "목동점": 485
+      "목동점": 490
     },
     "by_type": {
       "화면 교체": 105,
@@ -22,7 +22,7 @@
       "배터리 + 기타": 5,
       "기타 정밀 수리": 5,
       "충전 + 기타": 5,
-      "카메라 수리": 5,
+      "카메라 수리": 10,
       "센서 수리": 10,
       "mute": 5,
       "화면 + 후면 유리 교체": 5,
@@ -31,46 +31,46 @@
   },
   "recent_cases": [
     {
+      "model": "아이폰 iPhone 14",
+      "type": "카메라 수리",
+      "branch": "목동점",
+      "minutes_ago": 12
+    },
+    {
       "model": "아이폰 iPhone 15 Pro Max",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 45
+      "minutes_ago": 83
     },
     {
       "model": "애플워치 Apple Watch SE (2세대)",
       "type": "화면 교체",
       "branch": "신림점",
-      "minutes_ago": 1013
+      "minutes_ago": 1051
     },
     {
       "model": "애플워치 Apple Watch Series 4 (44mm)",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 1109
+      "minutes_ago": 1147
     },
     {
       "model": "애플워치 Apple Watch SE (1세대)",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 1183
+      "minutes_ago": 1221
     },
     {
       "model": "애플워치 Apple Watch SE (1세대)",
       "type": "배터리 교체",
       "branch": "신림점",
-      "minutes_ago": 2400
+      "minutes_ago": 2438
     },
     {
       "model": "애플워치 Apple Watch Series 10 (42mm)",
       "type": "수리",
       "branch": "신림점",
-      "minutes_ago": 2446
-    },
-    {
-      "model": "아이패드 iPad Pro 11인치 (2세대)",
-      "type": "화면 교체",
-      "branch": "목동점",
-      "minutes_ago": 2549
+      "minutes_ago": 2484
     }
   ],
   "top_repair_types": [
