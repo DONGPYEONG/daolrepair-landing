@@ -796,16 +796,16 @@ def build_carousel(slug: str) -> Path:
     make_summary(data, p)
     files.append(p)
 
-    # N+2. 마무리
-    outro_idx = summary_idx + 1
-    p = out_dir / f"{outro_idx:02d}.jpg"
-    make_outro(data, p)
-    files.append(p)
-
-    # 마지막. 팔로우 + 댓글 유도 (신규)
-    follow_idx = outro_idx + 1
+    # N+2. 팔로우 + 댓글 유도 (마지막 직전 — 사장님 명시 2026-05-14)
+    follow_idx = summary_idx + 1
     p = out_dir / f"{follow_idx:02d}.jpg"
     make_follow(data, p)
+    files.append(p)
+
+    # 마지막. 마무리 (저장·공유·다음 호 예고)
+    outro_idx = follow_idx + 1
+    p = out_dir / f"{outro_idx:02d}.jpg"
+    make_outro(data, p)
     files.append(p)
 
     # 캡션
