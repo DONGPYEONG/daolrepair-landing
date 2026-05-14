@@ -88,7 +88,7 @@
     .detail-box { background: #fafafa; border-radius: 14px; padding: 22px 26px; margin: 20px 0 28px; }
     .detail-box strong.list-title { display: block; font-size: 15px; color: var(--dark); margin-bottom: 10px; }
     /* PC에서 "함께 읽으면 좋은 글" 섹션 정렬 (가운데, 본문 폭에 맞춤) */
-    .art-related { max-width: 680px; margin: 60px auto 40px; padding: 40px 20px 0; border-top: 2px solid var(--border); }
+    .art-related { margin: 60px 0 0; padding: 40px 0 0; border-top: 2px solid var(--border); }
     .art-related-heading { font-size: 18px; font-weight: 900; color: var(--dark); margin-bottom: 20px; }
     .art-related-heading::before { content: ''; display: block; width: 28px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 12px; }
     @media (min-width: 768px) { .related-grid { grid-template-columns: 1fr 1fr; gap: 14px; } }
@@ -197,6 +197,24 @@
       </div>
     </div>
 
+
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="apple-watch-se-2-refurbish-vs-repair.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">Apple Watch SE 2세대 액정 깨짐 — 통째 교체 X, 액정만 단독 교체</span>
+      </a>
+      <a href="apple-watch-series-5-refurbish-vs-repair.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">Apple Watch Series 5 화면 들뜸·배터리 부풀음 — 부분 수리로 살림</span>
+      </a>
+      <a href="apple-watch-series-7-refurbish-vs-repair.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">Apple Watch Series 7 Always-on 깨짐 — 액정 단독 교체 가능</span>
+      </a>
+    </div>
+  </section>
   </div>
 
   <style>
@@ -209,5 +227,6 @@
       border-radius: 2px !important;
     }
   </style>
+
 </body>
 </html>

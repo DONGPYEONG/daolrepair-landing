@@ -88,7 +88,7 @@
     .detail-box { background: #fafafa; border-radius: 14px; padding: 22px 26px; margin: 20px 0 28px; }
     .detail-box strong.list-title { display: block; font-size: 15px; color: var(--dark); margin-bottom: 10px; }
     /* PC에서 "함께 읽으면 좋은 글" 섹션 정렬 (가운데, 본문 폭에 맞춤) */
-    .art-related { max-width: 680px; margin: 60px auto 40px; padding: 40px 20px 0; border-top: 2px solid var(--border); }
+    .art-related { margin: 60px 0 0; padding: 40px 0 0; border-top: 2px solid var(--border); }
     .art-related-heading { font-size: 18px; font-weight: 900; color: var(--dark); margin-bottom: 20px; }
     .art-related-heading::before { content: ''; display: block; width: 28px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 12px; }
     @media (min-width: 768px) { .related-grid { grid-template-columns: 1fr 1fr; gap: 14px; } }
@@ -197,6 +197,24 @@
       </div>
     </div>
 
+
+  <section class="art-related">
+    <h2 class="art-related-heading">함께 읽으면 좋은 글</h2>
+    <div class="related-grid">
+      <a href="ipad-air-4th-refurbish-vs-repair.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">iPad Air 4세대 USB-C 인식 불량 — 단자 단독 수리</span>
+      </a>
+      <a href="ipad-pro-11-m1-refurbish-vs-repair.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">iPad Pro 11 M1 충전 단자 인식 안 됨 — 단자만 수리 가능</span>
+      </a>
+      <a href="ipad-mini-6th-refurbish-vs-repair.html" class="related-card">
+        <span class="related-badge"></span>
+        <span class="related-title">iPad mini 6 액정 깨짐·배터리 부풀음 — 리퍼 말고 부분 수리</span>
+      </a>
+    </div>
+  </section>
   </div>
 
   <style>
@@ -209,5 +227,6 @@
       border-radius: 2px !important;
     }
   </style>
+
 </body>
 </html>
