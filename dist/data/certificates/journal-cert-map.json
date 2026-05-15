@@ -518,5 +518,35 @@
     "repair_date": "2026-05-14",
     "technician": "",
     "customer_name_masked": "이*희"
+  },
+  "journal-2026-05-15-아이폰-iphone-13-battery-1CH0oLAR": {
+    "cert_id": "18X9B-rG1Tfls4UrgZ96Eavg4DaoWKrPb",
+    "store": "가산점",
+    "model": "iPhone 13",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 90000,
+    "repair_date": "2026-05-15",
+    "technician": "금동평",
+    "customer_name_masked": "김*학"
+  },
+  "journal-2026-05-15-아이폰-iphone-13-mini-battery-1_2PEmAC": {
+    "cert_id": "1_2PEmACjXdSqglKqJCNhFho6UUBhJ3Wv",
+    "store": "목동점",
+    "model": "iPhone 13 mini",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 110000,
+    "repair_date": "2026-05-15",
+    "technician": "김현기",
+    "customer_name_masked": "손*우"
+  },
+  "journal-2026-05-15-애플워치-apple-watch-se-1세대-battery-1vpx9NKK": {
+    "cert_id": "1vpx9NKKK_D9VbvsJvC2QUMjn2qL0NDRj",
+    "store": "목동점",
+    "model": "Apple Watch SE (1세대)",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 0,
+    "repair_date": "2026-05-15",
+    "technician": "김현기",
+    "customer_name_masked": "박*미"
   }
 }

@@ -1,7 +1,7 @@
 {
   "date": "2026-05-14",
   "total": 6,
-  "fetched_at": "2026-05-15T15:52:54.852638+09:00",
+  "fetched_at": "2026-05-15T16:44:32.438485+09:00",
   "certificates": [
     {
       "id": "1u-_HbcagkVWho4eXZ1kqpJGVVLauYLw-",
@@ -17,6 +17,20 @@
       "vat_supply": 0,
       "vat_amount": 0,
       "technician": "",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
       "photos": {
         "imei": null,
         "before": null,
@@ -42,9 +56,29 @@
       "vat_supply": 0,
       "vat_amount": 0,
       "technician": "",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
       "photos": {
-        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1Vv6O01E6BFerK7moiuirc3dr7jsClwVN",
-        "before": "https://daolrepair-photos.fly.dev/api/thumb/1VIzZCArzIqHOmILhJ0a4KFRQhWeSsu-s",
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1Vv6O01E6BFerK7moiuirc3dr7jsClwVN",
+          "captured_at": "2026-05-14T13:57:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1VIzZCArzIqHOmILhJ0a4KFRQhWeSsu-s",
+          "captured_at": "2026-05-14T13:41:00+09:00"
+        },
         "after": null
       },
       "kakao_sent_at": null,
@@ -67,10 +101,33 @@
       "vat_supply": 0,
       "vat_amount": 0,
       "technician": "",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
       "photos": {
-        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1mqJc5t2QFMgVAaPMKD5T8IAY619k1ZhY",
-        "before": "https://daolrepair-photos.fly.dev/api/thumb/1SJBWDCT_2hR4J3pEYncSW3EfUBMsQJvK",
-        "after": "https://daolrepair-photos.fly.dev/api/thumb/1DYfwf4x7WJCB_xQjM3k2voPqAp7rPRe1"
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1mqJc5t2QFMgVAaPMKD5T8IAY619k1ZhY",
+          "captured_at": "2026-05-14T11:51:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1SJBWDCT_2hR4J3pEYncSW3EfUBMsQJvK",
+          "captured_at": "2026-05-14T11:50:00+09:00"
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1DYfwf4x7WJCB_xQjM3k2voPqAp7rPRe1",
+          "captured_at": "2026-05-14T15:41:00+09:00"
+        }
       },
       "kakao_sent_at": null,
       "created_at": "2026-05-14T02:50:20.465Z",
@@ -92,9 +149,29 @@
       "vat_supply": 0,
       "vat_amount": 0,
       "technician": "",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
       "photos": {
-        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1KYlliCbV3ZcgozYUwNSN6TqwjJRCGduN",
-        "before": "https://daolrepair-photos.fly.dev/api/thumb/1GSrKk8LU5bhAMUA7yDti3g4dUVCLHws_",
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1KYlliCbV3ZcgozYUwNSN6TqwjJRCGduN",
+          "captured_at": "2026-05-14T11:31:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1GSrKk8LU5bhAMUA7yDti3g4dUVCLHws_",
+          "captured_at": "2026-05-14T11:31:00+09:00"
+        },
         "after": null
       },
       "kakao_sent_at": null,
@@ -117,10 +194,33 @@
       "vat_supply": 181818,
       "vat_amount": 18182,
       "technician": "김현기",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
       "photos": {
-        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1nAkVG3pSZJrhLqcxfpkxzewg3SudP_6F",
-        "before": "https://daolrepair-photos.fly.dev/api/thumb/1Uak5jhMrmMa1qmtEziesCqu9vA2ACTbW",
-        "after": "https://daolrepair-photos.fly.dev/api/thumb/1s_aXWUcBELj9erxjEWnXQHsX8KKmSpCO"
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1nAkVG3pSZJrhLqcxfpkxzewg3SudP_6F",
+          "captured_at": "2026-05-14T11:18:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1Uak5jhMrmMa1qmtEziesCqu9vA2ACTbW",
+          "captured_at": "2026-05-14T11:24:00+09:00"
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1s_aXWUcBELj9erxjEWnXQHsX8KKmSpCO",
+          "captured_at": "2026-05-14T11:30:00+09:00"
+        }
       },
       "kakao_sent_at": null,
       "created_at": "2026-05-14T02:16:51.070Z",
@@ -142,10 +242,33 @@
       "vat_supply": 90909,
       "vat_amount": 9091,
       "technician": "김현기",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
       "photos": {
-        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1yb_RPRP2auoLvJA0shwHPpOIsVGdIPuW",
-        "before": "https://daolrepair-photos.fly.dev/api/thumb/136BDmUCbZ_UUrkhfDEnQUoaFx9nGThjl",
-        "after": "https://daolrepair-photos.fly.dev/api/thumb/1o60Yu_CMKy63y0zY1pyuzjrdN6wLolYi"
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1yb_RPRP2auoLvJA0shwHPpOIsVGdIPuW",
+          "captured_at": "2026-05-14T10:06:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/136BDmUCbZ_UUrkhfDEnQUoaFx9nGThjl",
+          "captured_at": "2026-05-14T10:06:00+09:00"
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1o60Yu_CMKy63y0zY1pyuzjrdN6wLolYi",
+          "captured_at": "2026-05-14T10:23:00+09:00"
+        }
       },
       "kakao_sent_at": null,
       "created_at": "2026-05-14T01:05:38.554Z",
