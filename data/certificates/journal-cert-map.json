@@ -1,0 +1,522 @@
+{
+  "journal-2026-04-15-아이폰7-screen-1l_qsfwc": {
+    "cert_id": "1l_qsfwchJ8yBU11A6pV0fcbp4XZkCGxc",
+    "store": "목동점",
+    "model": "아이폰7",
+    "repair_description": "액정 교체 수리 완료",
+    "price": 100000,
+    "repair_date": "2026-04-15",
+    "technician": "김현기",
+    "customer_name_masked": "정*영"
+  },
+  "journal-2026-04-16-아이폰-6-screen-13Qv_rnP": {
+    "cert_id": "13Qv_rnPH0t9ciY5sfeYKCQE3L9dd5yr_",
+    "store": "목동점",
+    "model": "6",
+    "repair_description": "액정 교체 수리 완료",
+    "price": 70000,
+    "repair_date": "2026-04-16",
+    "technician": "김현기",
+    "customer_name_masked": "유*현"
+  },
+  "journal-2026-04-17-아이폰-15plus-back-1izFb94b": {
+    "cert_id": "1izFb94bU42HNKMaSGjIodRmdFo08qC9E",
+    "store": "목동점",
+    "model": "15PLUS",
+    "repair_description": "후면 유리 수리 완료",
+    "price": 150000,
+    "repair_date": "2026-04-17",
+    "technician": "김현기",
+    "customer_name_masked": "이*준"
+  },
+  "journal-2026-04-17-에르메스-5세대-44mm-screen+battery-1ybYHdi_": {
+    "cert_id": "1ybYHdi_ueiCzvFCZuxCWWssr0BfpVQbA",
+    "store": "가산점",
+    "model": "에르메스 5세대 44mm",
+    "repair_description": "액정 교체, 배터리 교체 수리 완료",
+    "price": 200000,
+    "repair_date": "2026-04-17",
+    "technician": "",
+    "customer_name_masked": "오*의"
+  },
+  "journal-2026-04-18-아이폰-12프로맥스-screen-1YTvaa_L": {
+    "cert_id": "1YTvaa_LzyizCxIr0smGdZoplWLdxAs_M",
+    "store": "목동점",
+    "model": "12프로맥스",
+    "repair_description": "액정 교체 수리 완료",
+    "price": 300000,
+    "repair_date": "2026-04-18",
+    "technician": "김현기",
+    "customer_name_masked": "김*태"
+  },
+  "journal-2026-04-18-아이폰-13미니-back-1fBI5NGp": {
+    "cert_id": "1fBI5NGpXK22yh8cnFTxzzsaMqhY5Kn7Z",
+    "store": "목동점",
+    "model": "13미니",
+    "repair_description": "후면 유리 수리 완료",
+    "price": 130000,
+    "repair_date": "2026-04-18",
+    "technician": "김현기",
+    "customer_name_masked": "김*경"
+  },
+  "journal-2026-04-20-아이폰-15-back-1U3GDVjv": {
+    "cert_id": "1U3GDVjv89Ual7PluLlNfMlV5REzBMf_s",
+    "store": "목동점",
+    "model": "15",
+    "repair_description": "후면 유리 수리 완료",
+    "price": 154000,
+    "repair_date": "2026-04-20",
+    "technician": "김현기",
+    "customer_name_masked": "유*언"
+  },
+  "journal-2026-04-24-아이폰-11-screen-1lOmdLXI": {
+    "cert_id": "1lOmdLXI-z0zJHqfxjVJCNUTg9S5bVdWw",
+    "store": "신림점",
+    "model": "11",
+    "repair_description": "액정 교체 수리 완료",
+    "price": 180000,
+    "repair_date": "2026-04-24",
+    "technician": "김선웅",
+    "customer_name_masked": "왕*종"
+  },
+  "journal-2026-04-24-아이폰-13미니-battery-1aqhzjZv": {
+    "cert_id": "1aqhzjZvq11tKT8tViDPr2heE91eLvsj2",
+    "store": "목동점",
+    "model": "13미니",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 100000,
+    "repair_date": "2026-04-24",
+    "technician": "김현기",
+    "customer_name_masked": "손*별"
+  },
+  "journal-2026-04-24-아이폰-14프로-battery-19Ek3Abh": {
+    "cert_id": "19Ek3Abh0X77oY0WWJtBjDuODJxDNAObu",
+    "store": "신림점",
+    "model": "14프로",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 160000,
+    "repair_date": "2026-04-24",
+    "technician": "김선웅",
+    "customer_name_masked": "정*채"
+  },
+  "journal-2026-04-25-아이폰-13미니-battery-17S150oq": {
+    "cert_id": "17S150oqCz0w6FHNec5p_4Bof8q8RyVFu",
+    "store": "목동점",
+    "model": "13미니",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 0,
+    "repair_date": "2026-04-25",
+    "technician": "김현기",
+    "customer_name_masked": "허*라"
+  },
+  "journal-2026-04-27-아이폰-14프로-back-1vyc6Flj": {
+    "cert_id": "1vyc6FljazH5ZsdoTiNwjGlsv74Xaep4Y",
+    "store": "신림점",
+    "model": "14프로",
+    "repair_description": "후면 유리 수리 완료",
+    "price": 0,
+    "repair_date": "2026-04-27",
+    "technician": "",
+    "customer_name_masked": "정*훈"
+  },
+  "journal-2026-04-27-아이폰-15프로-battery-1txy7HZ2": {
+    "cert_id": "1txy7HZ2zAbkVMdkqHjP6pu6u055DsT58",
+    "store": "목동점",
+    "model": "15프로",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 0,
+    "repair_date": "2026-04-27",
+    "technician": "김현기",
+    "customer_name_masked": "이*정"
+  },
+  "journal-2026-04-28-아이폰-16프로-screen-11Ceo0pE": {
+    "cert_id": "11Ceo0pEjUBL9ey5-DiSnVk7as7f4yvIF",
+    "store": "신림점",
+    "model": "16프로",
+    "repair_description": "액정 교체 수리 완료",
+    "price": 300000,
+    "repair_date": "2026-04-28",
+    "technician": "김선웅",
+    "customer_name_masked": "곽*희"
+  },
+  "journal-2026-04-28-애플워치-se2-40mm-battery-1FOnkpJ": {
+    "cert_id": "1FOnkpJ-X5f-XkBm8A9IrCPbu1QodwTm9",
+    "store": "목동점",
+    "model": "SE2 40mm",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 60000,
+    "repair_date": "2026-04-28",
+    "technician": "김현기",
+    "customer_name_masked": "이*재"
+  },
+  "journal-2026-04-29-아이폰-12-back-1NVppdC5": {
+    "cert_id": "1NVppdC5tP7cAyFGlk9aGGwCkHBZ1DsB_",
+    "store": "신림점",
+    "model": "12",
+    "repair_description": "후면 유리 수리 완료",
+    "price": 150000,
+    "repair_date": "2026-04-29",
+    "technician": "김선웅",
+    "customer_name_masked": "조*여"
+  },
+  "journal-2026-04-29-아이폰-xs-max-battery-1DLJIHqB": {
+    "cert_id": "1DLJIHqBBJReHkfyuGyt8QRUrXlWIpKqk",
+    "store": "목동점",
+    "model": "XS MAX",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 80000,
+    "repair_date": "2026-04-29",
+    "technician": "김현기",
+    "customer_name_masked": "김*상"
+  },
+  "journal-2026-04-29-애플워치-se-40mm-battery-1c74rh7i": {
+    "cert_id": "1c74rh7iWYb3hexAzNbGcsJGGy_nYLqIA",
+    "store": "목동점",
+    "model": "SE 40mm",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 0,
+    "repair_date": "2026-04-29",
+    "technician": "",
+    "customer_name_masked": "윤*빈"
+  },
+  "journal-2026-04-30-아이폰-15프로-battery-1HkvVe9s": {
+    "cert_id": "1HkvVe9sIlLXVxru308MTFGYPpJgh4ua3",
+    "store": "목동점",
+    "model": "15프로",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 100000,
+    "repair_date": "2026-04-30",
+    "technician": "김현기",
+    "customer_name_masked": "문*오"
+  },
+  "journal-2026-04-30-아이폰-16프로-screen+back-1Qr6LX9H": {
+    "cert_id": "1Qr6LX9HuVj5phOJdPaqQRJv8l8nfrxa8",
+    "store": "목동점",
+    "model": "16프로",
+    "repair_description": "액정 교체, 후면 유리 수리 완료",
+    "price": 750000,
+    "repair_date": "2026-04-30",
+    "technician": "김현기",
+    "customer_name_masked": "박*민"
+  },
+  "journal-2026-04-30-애플워치-se2-40mm-battery-1jbdaG3N": {
+    "cert_id": "1jbdaG3NLgXd_kSgNcx077LDNcZupGYm4",
+    "store": "목동점",
+    "model": "SE2 40mm",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 60000,
+    "repair_date": "2026-04-30",
+    "technician": "김현기",
+    "customer_name_masked": "이*수"
+  },
+  "journal-2026-05-01-아이폰-15프로-back-1f2FXtA6": {
+    "cert_id": "1f2FXtA6qBWEQSqzw9DUQ96A7-emle3kA",
+    "store": "신림점",
+    "model": "15프로",
+    "repair_description": "후면 유리 수리 완료",
+    "price": 180000,
+    "repair_date": "2026-05-01",
+    "technician": "김선웅",
+    "customer_name_masked": "이*희"
+  },
+  "journal-2026-05-04-아이폰-12미니-battery-1CU7VD5l": {
+    "cert_id": "1CU7VD5ld1RpZ2lOBDhtYwmRjaLsxaZ0C",
+    "store": "목동점",
+    "model": "12미니",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 80000,
+    "repair_date": "2026-05-04",
+    "technician": "김현기",
+    "customer_name_masked": "김*슬"
+  },
+  "journal-2026-05-04-아이폰-12프로-back-1Vv7RtlP": {
+    "cert_id": "1Vv7RtlP0nfSvWfJplYYUP6zz2HdAdfvO",
+    "store": "목동점",
+    "model": "12프로",
+    "repair_description": "후면 유리 수리 완료",
+    "price": 140000,
+    "repair_date": "2026-05-04",
+    "technician": "김현기",
+    "customer_name_masked": "정*현"
+  },
+  "journal-2026-05-04-아이폰-15프로-battery-1P0o4qDL": {
+    "cert_id": "1P0o4qDL9IsS1eaG35f8wvkw_g_ZrM38E",
+    "store": "목동점",
+    "model": "15프로",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 100000,
+    "repair_date": "2026-05-04",
+    "technician": "김현기",
+    "customer_name_masked": "김*숙"
+  },
+  "journal-2026-05-05-아이폰6s-battery-1bdNyoxi": {
+    "cert_id": "1bdNyoxif9BBqw8f53pwjRE3vZcNL4NsM",
+    "store": "가산점",
+    "model": "아이폰6s",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 40000,
+    "repair_date": "2026-05-05",
+    "technician": "금동평",
+    "customer_name_masked": "박*민"
+  },
+  "journal-2026-05-06-아이폰-14프로-back-1Cc9oGIu": {
+    "cert_id": "1Cc9oGIuweCMbTyVNn7kTbbeW9jbIwi-g",
+    "store": "신림점",
+    "model": "14프로",
+    "repair_description": "후면 유리 수리 완료",
+    "price": 180000,
+    "repair_date": "2026-05-06",
+    "technician": "김선웅",
+    "customer_name_masked": "김*윤"
+  },
+  "journal-2026-05-06-아이폰-16-screen-14mAIBCv": {
+    "cert_id": "14mAIBCvXmew2SGH1oIeIVtLDPw_7UqxM",
+    "store": "신림점",
+    "model": "16",
+    "repair_description": "액정 교체 수리 완료",
+    "price": 300000,
+    "repair_date": "2026-05-06",
+    "technician": "김선웅",
+    "customer_name_masked": "김*범"
+  },
+  "journal-2026-05-07-아이폰-15프로-screen-1OyrzlRP": {
+    "cert_id": "1OyrzlRPy-yl6H-qjV7DRjaDB1StVbHWi",
+    "store": "가산점",
+    "model": "15프로",
+    "repair_description": "액정 교체 수리 완료",
+    "price": 300000,
+    "repair_date": "2026-05-07",
+    "technician": "김영식",
+    "customer_name_masked": "이*기"
+  },
+  "journal-2026-05-08-아이폰-13미니-battery-1im7V3yy": {
+    "cert_id": "1im7V3yy-voaAfwyskTDqXQ31tVA9Ayjn",
+    "store": "가산점",
+    "model": "13미니",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 110000,
+    "repair_date": "2026-05-08",
+    "technician": "김영식",
+    "customer_name_masked": "김*민"
+  },
+  "journal-2026-05-08-아이폰-17프로-screen-1osELxQa": {
+    "cert_id": "1osELxQatz3FfFiTdXoLFlfUojzzQm4mh",
+    "store": "가산점",
+    "model": "17프로",
+    "repair_description": "액정 교체 수리 완료",
+    "price": 250000,
+    "repair_date": "2026-05-08",
+    "technician": "김영식",
+    "customer_name_masked": "장*숙"
+  },
+  "journal-2026-05-09-아이폰-13-screen-1SF2kXMS": {
+    "cert_id": "1SF2kXMSdt6pIbCNQH0tiIp3ONaL3b4It",
+    "store": "가산점",
+    "model": "13",
+    "repair_description": "액정 교체 수리 완료",
+    "price": 150000,
+    "repair_date": "2026-05-09",
+    "technician": "김영식",
+    "customer_name_masked": "황*람"
+  },
+  "journal-2026-05-09-아이폰-iphone-11-screen-1z7zT5JR": {
+    "cert_id": "1z7zT5JRCwBur4B2nkUE75nIZ0CkDVv5s",
+    "store": "신림점",
+    "model": "iPhone 11",
+    "repair_description": "액정 교체 수리 완료",
+    "price": 0,
+    "repair_date": "2026-05-09",
+    "technician": "",
+    "customer_name_masked": "김*훈"
+  },
+  "journal-2026-05-09-아이폰-iphone-13-pro-max-back-1iXABiV6": {
+    "cert_id": "1iXABiV6sTO4RH24Wm1tYrzLM8d6T8WMA",
+    "store": "신림점",
+    "model": "iPhone 13 Pro Max",
+    "repair_description": "후면 유리, 배터리 교체 수리 완료",
+    "price": 180000,
+    "repair_date": "2026-05-09",
+    "technician": "김선웅",
+    "customer_name_masked": "이*리"
+  },
+  "journal-2026-05-09-아이폰-iphone-x-battery-1DBkRFtC": {
+    "cert_id": "1DBkRFtCFMN8FMBJ-J3tX5stz5l0Z76gj",
+    "store": "목동점",
+    "model": "iPhone X",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 70000,
+    "repair_date": "2026-05-09",
+    "technician": "김현기",
+    "customer_name_masked": "김*"
+  },
+  "journal-2026-05-09-애플워치-apple-watch-se-2세대-battery-1eGfabMe": {
+    "cert_id": "1eGfabMe--t8v0pyWoJXwMEnwBbeF0Xa7",
+    "store": "목동점",
+    "model": "Apple Watch SE (2세대)",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 60000,
+    "repair_date": "2026-05-09",
+    "technician": "김현기",
+    "customer_name_masked": "이*재"
+  },
+  "journal-2026-05-11-아이폰-17프로-screen-1pHB98Ey": {
+    "cert_id": "1pHB98EyRJNYU4TawHOk6nxgChfUkUysn",
+    "store": "가산점",
+    "model": "17프로",
+    "repair_description": "액정 교체 수리 완료",
+    "price": 275000,
+    "repair_date": "2026-05-11",
+    "technician": "김영식",
+    "customer_name_masked": "백*슬"
+  },
+  "journal-2026-05-11-아이폰-iphone-15-pro-screen-1camNuif": {
+    "cert_id": "1camNuifEyDb3gFZXsTnWzjlZCIuGuNaL",
+    "store": "목동점",
+    "model": "iPhone 15 Pro",
+    "repair_description": "액정 교체 수리 완료",
+    "price": 350000,
+    "repair_date": "2026-05-11",
+    "technician": "김현기",
+    "customer_name_masked": "박*영"
+  },
+  "journal-2026-05-12-아이패드-ipad-pro-11인치-2세대-screen-1Y5Bwg_L": {
+    "cert_id": "1Y5Bwg_Lm4X9FCnbpvLkisT0idqYPwyyD",
+    "store": "목동점",
+    "model": "iPad Pro 11인치 (2세대)",
+    "repair_description": "액정 교체 수리 완료",
+    "price": 250000,
+    "repair_date": "2026-05-12",
+    "technician": "김현기",
+    "customer_name_masked": "오*호"
+  },
+  "journal-2026-05-12-아이폰-iphone-12-pro-battery-1AoOnJZg": {
+    "cert_id": "1AoOnJZgAEYPAoSq4Lt6kwfUW7cfHHAye",
+    "store": "가산점",
+    "model": "iPhone 12 Pro",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 120000,
+    "repair_date": "2026-05-12",
+    "technician": "김영식",
+    "customer_name_masked": "박*옥"
+  },
+  "journal-2026-05-12-아이폰-iphone-13-pro-screen-1P3hcrr2": {
+    "cert_id": "1P3hcrr2N9pn0xqmeH3M7nbUvb8vBjwyg",
+    "store": "가산점",
+    "model": "iPhone 13 Pro",
+    "repair_description": "액정 교체 수리 완료",
+    "price": 200000,
+    "repair_date": "2026-05-12",
+    "technician": "금동평",
+    "customer_name_masked": "소*섭"
+  },
+  "journal-2026-05-12-아이폰-iphone-13-screen+battery-11Ntl7my": {
+    "cert_id": "11Ntl7my10BTyYCAoTN9OAVGOx6G_iiHD",
+    "store": "목동점",
+    "model": "iPhone 13",
+    "repair_description": "액정 교체, 배터리 교체 수리 완료",
+    "price": 0,
+    "repair_date": "2026-05-12",
+    "technician": "",
+    "customer_name_masked": "백*권"
+  },
+  "journal-2026-05-12-아이폰-iphone-14-pro-battery-1ChixQPs": {
+    "cert_id": "1ChixQPswCSH9JDZqIDXhdvS6WuznlpYb",
+    "store": "가산점",
+    "model": "iPhone 14 Pro",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 0,
+    "repair_date": "2026-05-12",
+    "technician": "",
+    "customer_name_masked": "남*정"
+  },
+  "journal-2026-05-12-아이폰-iphone-16-pro-max-charge-1x798OZw": {
+    "cert_id": "1x798OZw1OoLVLTeib7DvNgXYDlyhr-2F",
+    "store": "신림점",
+    "model": "iPhone 16 Pro Max",
+    "repair_description": "충전 포트 수리 완료",
+    "price": 0,
+    "repair_date": "2026-05-12",
+    "technician": "",
+    "customer_name_masked": "이*희"
+  },
+  "journal-2026-05-12-애플워치-5-44mm-battery-1zlcqZig": {
+    "cert_id": "1zlcqZigVMVr7kvCiRsvQCduKPDsU-EsO",
+    "store": "가산점",
+    "model": "5 44mm",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 0,
+    "repair_date": "2026-05-12",
+    "technician": "",
+    "customer_name_masked": "조*모"
+  },
+  "journal-2026-05-12-애플워치-apple-watch-se-1세대-battery-1bGWXkRJ": {
+    "cert_id": "1bGWXkRJIO0Czc0eA1_tscS5XYCFQd1L7",
+    "store": "신림점",
+    "model": "Apple Watch SE (1세대)",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 0,
+    "repair_date": "2026-05-12",
+    "technician": "",
+    "customer_name_masked": "박*지"
+  },
+  "journal-2026-05-12-애플워치-apple-watch-se-2세대-back-11BNtH7g": {
+    "cert_id": "1VK82mS8pGhYCmeEl4wt7-Y6EK_4d2Ir5",
+    "store": "신림점",
+    "model": "Se2",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 200000,
+    "repair_date": "2026-05-12",
+    "technician": "김선웅",
+    "customer_name_masked": "고*지"
+  },
+  "journal-2026-05-13-애플워치-apple-watch-se-1세대-battery-1eip1zDM": {
+    "cert_id": "1eip1zDMQWHW4BR7qRwop3iBWeYer0aTH",
+    "store": "목동점",
+    "model": "Apple Watch SE (1세대)",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 60000,
+    "repair_date": "2026-05-13",
+    "technician": "김현기",
+    "customer_name_masked": "오*민"
+  },
+  "journal-2026-05-13-애플워치-apple-watch-se-2세대-screen-19YA6zSn": {
+    "cert_id": "19YA6zSn4Y6Mijt45EdscOZ5_z6Jaz1VN",
+    "store": "신림점",
+    "model": "Apple Watch SE (2세대)",
+    "repair_description": "액정 교체 수리 완료",
+    "price": 150000,
+    "repair_date": "2026-05-13",
+    "technician": "김선웅",
+    "customer_name_masked": "김*선"
+  },
+  "journal-2026-05-14-아이폰-iphone-14-camera-1bQZRNi2": {
+    "cert_id": "1bQZRNi2f-wFMrUKYrF9nCs_NnJ2Ejl-O",
+    "store": "목동점",
+    "model": "iPhone 14",
+    "repair_description": "카메라 수리 완료",
+    "price": 200000,
+    "repair_date": "2026-05-14",
+    "technician": "김현기",
+    "customer_name_masked": "김*연"
+  },
+  "journal-2026-05-14-아이폰-iphone-15-pro-max-battery-1Zo1BU6U": {
+    "cert_id": "1Zo1BU6UtYIn8gdWmWCc_Rr9Sdo2WPhbQ",
+    "store": "목동점",
+    "model": "iPhone 15 Pro Max",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 100000,
+    "repair_date": "2026-05-14",
+    "technician": "김현기",
+    "customer_name_masked": "이*정"
+  },
+  "journal-2026-05-14-애플워치-apple-watch-series-3-38mm-battery-19FiLwNR": {
+    "cert_id": "19FiLwNRNJ0rEKEkunhBakgiSrz4_tT35",
+    "store": "신림점",
+    "model": "Apple Watch Series 3 (38mm)",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 0,
+    "repair_date": "2026-05-14",
+    "technician": "",
+    "customer_name_masked": "이*희"
+  }
+}

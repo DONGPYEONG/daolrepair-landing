@@ -703,6 +703,105 @@ def make_intro_image(dst: Path) -> Path:
     return dst
 
 
+def load_journal_cert_map():
+    """journal stem → cert info 매핑 로드."""
+    map_path = ROOT / "data" / "certificates" / "journal-cert-map.json"
+    if not map_path.exists():
+        return {}
+    try:
+        return json.loads(map_path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def make_cert_card_image(cert, dst: Path) -> Path:
+    """수리 확인서 정보 슬라이드 — 정직 인증 어필.
+    BA Reel의 AFTER와 OUTRO 사이에 3초간 표시.
+    """
+    img = Image.new("RGB", (W, H), DARK)
+    d = ImageDraw.Draw(img)
+
+    # 상단 배지 (📋 수리 확인서)
+    badge_text = "📋  수리 확인서 발급 완료"
+    bf = sdg("bold", 44)
+    bb = d.textbbox((0, 0), badge_text, font=bf)
+    bw = bb[2] - bb[0]
+    badge_y = 240
+    pad_x, pad_y = 36, 22
+    d.rounded_rectangle(
+        ((W - bw - pad_x * 2) // 2, badge_y,
+         (W + bw + pad_x * 2) // 2, badge_y + (bb[3] - bb[1]) + pad_y * 2),
+        radius=44, fill=ORANGE,
+    )
+    d.text(((W - bw) // 2, badge_y + pad_y - 4), badge_text, font=bf, fill=(255,255,255))
+
+    # 중앙 카드
+    card_x1 = 80
+    card_x2 = W - 80
+    card_y1 = 440
+    card_y2 = 1480
+    d.rounded_rectangle((card_x1, card_y1, card_x2, card_y2),
+                        radius=28, fill=(248, 248, 248))
+    d.rectangle((card_x1, card_y1, card_x2, card_y1 + 8), fill=ORANGE)
+
+    inner_x = card_x1 + 60
+    y = card_y1 + 70
+
+    # 제목
+    title = "다올리페어 정직 인증"
+    f_title = sdg("black", 64)
+    tb = d.textbbox((0, 0), title, font=f_title)
+    d.text(((W - (tb[2] - tb[0])) // 2, y), title, font=f_title, fill=DARK)
+    y += 110
+
+    # 굵은 라인
+    d.rectangle((card_x1 + 80, y, card_x2 - 80, y + 4), fill=ORANGE)
+    y += 50
+
+    # 정보 행 (라벨 + 값)
+    f_label = sdg("medium", 36)
+    f_value = sdg("bold", 44)
+    rows = []
+    if cert.get("store"):
+        rows.append(("매장", cert["store"]))
+    if cert.get("customer_name_masked"):
+        rows.append(("고객", f"{cert['customer_name_masked']} 고객님"))
+    if cert.get("model"):
+        rows.append(("기기", cert["model"]))
+    if cert.get("repair_description"):
+        desc = cert["repair_description"][:18]  # 한 줄 제한
+        rows.append(("작업", desc))
+    if cert.get("repair_date"):
+        rows.append(("일자", cert["repair_date"]))
+
+    for label, value in rows[:5]:
+        d.text((inner_x, y + 4), label, font=f_label, fill=(140, 140, 140))
+        d.text((inner_x + 200, y), value, font=f_value, fill=DARK)
+        y += 85
+
+    # 가격 (있으면 강조)
+    if cert.get("price", 0) > 0:
+        y += 20
+        d.rectangle((card_x1 + 80, y, card_x2 - 80, y + 2), fill=(220, 220, 220))
+        y += 30
+        d.text((inner_x, y + 4), "수리 금액", font=f_label, fill=(140, 140, 140))
+        price_text = f"{cert['price']:,}원"
+        f_price = sdg("black", 56)
+        d.text((inner_x + 200, y - 6), price_text, font=f_price, fill=ORANGE)
+
+    # 하단 안내
+    foot_y = card_y2 + 80
+    draw_centered(d, foot_y, "✓  카카오톡 자동 발급",
+                  sdg("medium", 42), (230, 230, 230), letter_spacing=2)
+    draw_centered(d, foot_y + 80, "✓  90일 무상 A/S",
+                  sdg("medium", 42), (230, 230, 230), letter_spacing=2)
+    draw_centered(d, foot_y + 160, "✓  매장 · 사업자번호 · 영수증 포함",
+                  sdg("medium", 38), (170, 170, 170), letter_spacing=1)
+
+    img.save(dst, quality=95)
+    return dst
+
+
 def make_outro_image(dst: Path) -> Path:
     """아웃트로: 굵은 톤 — 자신감 있게."""
     img = Image.new("RGB", (W, H), DARK)
@@ -1391,6 +1490,22 @@ def build_reel(journal_path: Path, output_dir: Path) -> tuple[Path, Path]:
         scene = scene.with_start(cursor)
         scenes_with_starts.append(scene)
         cursor += dur - (CROSSFADE if i < len(photo_keys) - 1 else 0)
+
+    # 수리 확인서 정보 슬라이드 (cert 매칭되는 경우만, 3초)
+    cert_map = load_journal_cert_map()
+    cert_info = cert_map.get(journal_path.stem)
+    CERT_DUR = 3.0
+    if cert_info:
+        cert_img = TMP_DIR / f"{img_id}_cert.jpg"
+        make_cert_card_image(cert_info, cert_img)
+        cert_scene = (
+            ImageClip(str(cert_img))
+            .with_duration(CERT_DUR)
+            .with_effects([CrossFadeIn(CROSSFADE), CrossFadeOut(CROSSFADE)])
+            .with_start(cursor - CROSSFADE)
+        )
+        scenes_with_starts.append(cert_scene)
+        cursor += CERT_DUR - CROSSFADE
 
     # 아웃트로
     outro = (

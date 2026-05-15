@@ -145,37 +145,67 @@ CERT_BOX_TEMPLATE = '''
   <!-- 수리 확인서 발급 정보 (자동 삽입) -->
   <style>
     .art-cert-info {{
+      max-width: 680px;
+      margin: 48px auto;
+      padding: 28px 32px;
       background: linear-gradient(135deg, #fff8f3 0%, #fff 100%);
-      border: 1.5px solid #f5d4b3; border-radius: 16px;
-      padding: 24px 28px; margin: 40px 0;
+      border: 1.5px solid #f5d4b3;
+      border-radius: 18px;
+      box-sizing: border-box;
     }}
     .art-cert-info-label {{
-      display: inline-block; background: var(--orange, #E8732A);
+      display: inline-block; background: #E8732A;
       color: #fff; font-size: 11px; font-weight: 800;
-      padding: 4px 10px; border-radius: 50px;
-      letter-spacing: 0.5px; margin-bottom: 14px;
+      padding: 5px 12px; border-radius: 50px;
+      letter-spacing: 0.5px; margin-bottom: 16px;
     }}
     .art-cert-info h3 {{
-      font-size: 17px; font-weight: 800; color: #1a1a1a;
-      margin: 0 0 16px; line-height: 1.4;
+      font-size: 18px; font-weight: 900; color: #1a1a1a;
+      margin: 0 0 18px; line-height: 1.4;
     }}
-    .art-cert-grid {{ display: grid; grid-template-columns: auto 1fr; gap: 10px 18px; font-size: 14px; }}
+    .art-cert-photos {{
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 8px; margin: 18px 0;
+    }}
+    .art-cert-photo {{
+      position: relative; aspect-ratio: 3/4; border-radius: 10px;
+      overflow: hidden; background: #f0f0f0;
+    }}
+    .art-cert-photo img {{
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }}
+    .art-cert-photo span {{
+      position: absolute; bottom: 6px; left: 6px;
+      background: rgba(0,0,0,0.65); color: #fff;
+      font-size: 10px; font-weight: 700;
+      padding: 2px 6px; border-radius: 4px;
+    }}
+    .art-cert-grid {{
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 10px 18px; font-size: 14.5px;
+    }}
     .art-cert-grid dt {{ color: #888; font-weight: 600; }}
     .art-cert-grid dd {{ margin: 0; color: #222; font-weight: 700; }}
-    .art-cert-price {{ color: var(--orange, #E8732A); font-size: 16px; }}
+    .art-cert-price {{ color: #E8732A; font-size: 16px; }}
     .art-cert-foot {{
-      margin-top: 16px; padding-top: 14px; border-top: 1px dashed #e8d4b3;
-      font-size: 13px; color: #666; line-height: 1.6;
+      margin-top: 18px; padding-top: 14px;
+      border-top: 1px dashed #e8d4b3;
+      font-size: 13px; color: #666; line-height: 1.7;
+    }}
+    @media (max-width: 600px) {{
+      .art-cert-info {{ margin: 32px 16px; padding: 22px 20px; }}
+      .art-cert-grid {{ grid-template-columns: 70px 1fr; font-size: 14px; }}
     }}
   </style>
   <div class="art-cert-info">
     <div class="art-cert-info-label">📋 수리 확인서 발급 완료</div>
-    <h3>{model} {repair_summary} — 정직 인증</h3>
+    <h3>{model} {repair_summary} — 다올리페어 정직 인증</h3>
+    {photos_html}
     <dl class="art-cert-grid">
       <dt>매장</dt><dd>다올리페어 {store}</dd>
       <dt>고객</dt><dd>{customer_masked} 고객님</dd>
       <dt>수리일</dt><dd>{repair_date}</dd>
-      <dt>작업 내역</dt><dd>{repair_description}</dd>
+      <dt>작업</dt><dd>{repair_description}</dd>
       {technician_row}
       {price_row}
     </dl>
@@ -187,20 +217,36 @@ CERT_BOX_TEMPLATE = '''
 
 
 def render_cert_box(cert):
-    """인증서 정보 박스 HTML 생성."""
+    """인증서 정보 박스 HTML 생성 — 사진 + 정렬 포함."""
     technician_row = ""
     if cert.get("technician"):
-        technician_row = f"<dt>담당 마스터</dt><dd>{cert['technician']}</dd>"
+        technician_row = f"<dt>담당</dt><dd>{cert['technician']}</dd>"
     price_row = ""
     if cert.get("price", 0) > 0:
         price_row = f'<dt>수리 금액</dt><dd class="art-cert-price">{cert["price"]:,}원</dd>'
+
+    # 사진 — IMEI 제외 (개인정보 보호), before·after만
+    photos = cert.get("photos", {}) or {}
+    photo_items = []
+    if photos.get("before"):
+        photo_items.append((photos["before"], "수리 전"))
+    if photos.get("after"):
+        photo_items.append((photos["after"], "수리 후"))
+    photos_html = ""
+    if photo_items:
+        photo_blocks = ""
+        for url, label in photo_items:
+            photo_blocks += f'<div class="art-cert-photo"><img src="{url}" alt="{label}" loading="lazy"><span>{label}</span></div>'
+        photos_html = f'<div class="art-cert-photos">{photo_blocks}</div>'
+
     return CERT_BOX_TEMPLATE.format(
         model=cert.get("model", ""),
-        repair_summary=cert.get("repair_description", "수리"),
+        repair_summary=cert.get("repair_description", "수리").replace(" 수리 완료", ""),
         store=cert.get("store", ""),
         customer_masked=cert.get("customer_name_masked") or "고객",
         repair_date=cert.get("repair_date", ""),
         repair_description=cert.get("repair_description", ""),
+        photos_html=photos_html,
         technician_row=technician_row,
         price_row=price_row,
     )
@@ -248,6 +294,9 @@ def main():
         return
     print(f"📥 인증서 통합 로드: {len(certs)}건")
 
+    # journal stem → cert lookup 맵 작성 (BA Reel 영상 생성용)
+    journal_cert_map = {}
+
     # PII 마스킹 (전체)
     for c in certs:
         if "customer_name" in c:
@@ -274,6 +323,17 @@ def main():
         cert = find_cert_match(meta, by_date)
         if cert:
             matched += 1
+            # journal stem → cert 매핑 저장 (BA Reel 영상 cert 슬라이드용)
+            journal_cert_map[j.stem] = {
+                "cert_id": cert.get("id"),
+                "store": cert.get("store"),
+                "model": cert.get("model"),
+                "repair_description": cert.get("repair_description"),
+                "price": cert.get("price"),
+                "repair_date": cert.get("repair_date"),
+                "technician": cert.get("technician"),
+                "customer_name_masked": cert.get("customer_name_masked"),
+            }
             if enrich_journal(j, cert):
                 enriched += 1
                 print(f"  ✓ {j.name[:60]}... → {cert.get('store', '')} {cert.get('price', 0):,}원")
@@ -281,6 +341,11 @@ def main():
                 skipped += 1
         else:
             no_match.append(j.name)
+
+    # journal-cert 매핑 저장
+    map_path = CERT_DIR / "journal-cert-map.json"
+    map_path.write_text(json.dumps(journal_cert_map, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"\n📌 journal-cert 매핑 저장: {map_path.relative_to(ROOT)} ({len(journal_cert_map)}개)")
 
     print(f"\n📊 결과:")
     print(f"  · 일지 글 총 {len(journals)}개")
