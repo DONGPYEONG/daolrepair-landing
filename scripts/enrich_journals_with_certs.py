@@ -9,17 +9,47 @@ from pathlib import Path
 from datetime import datetime
 
 ROOT = Path(__file__).parent.parent
-CERT_DATA = ROOT / "data" / "certificates" / "all-2026-04-15_to_2026-05-15.json"
+CERT_DIR = ROOT / "data" / "certificates"
 ARTICLES_DIR = ROOT / "articles"
 
 
+def load_all_certs():
+    """data/certificates/ 안 모든 JSON 파일 로드 → 통합."""
+    all_certs = []
+    seen_ids = set()
+    for json_file in sorted(CERT_DIR.glob("*.json")):
+        try:
+            d = json.loads(json_file.read_text(encoding="utf-8"))
+            for c in d.get("certificates", []):
+                cid = c.get("id")
+                if cid and cid not in seen_ids:
+                    all_certs.append(c)
+                    seen_ids.add(cid)
+        except Exception:
+            continue
+    return all_certs
+
+
 def normalize_model(m):
-    """모델 정규화 — 공백 제거, 소문자, 숫자 추출."""
+    """모델 정규화 — 공백·구분자 제거, 소문자, 디바이스 키워드 통일."""
     if not m: return ""
-    s = re.sub(r"\s+", "", m.lower())
-    s = s.replace("iphone", "").replace("아이폰", "").replace("애플워치", "applewatch")
-    s = s.replace("ipad", "").replace("아이패드", "")
-    s = re.sub(r"[^a-z0-9가-힣]", "", s)
+    s = re.sub(r"[\s\-_().]+", "", m.lower())
+    # 디바이스 키워드 다 제거 (모델 식별자만 남기기)
+    for kw in ["iphone", "아이폰", "applewatch", "apple watch", "애플워치",
+               "에르메스", "hermes", "ipad", "아이패드", "ipados",
+               "macbook", "맥북", "airpods", "에어팟", "pencil", "펜슬"]:
+        s = s.replace(kw.replace(" ", ""), "")
+    # 세대 표현 통일
+    s = s.replace("1세대", "1").replace("2세대", "2").replace("3세대", "3")
+    s = s.replace("4세대", "4").replace("5세대", "5").replace("6세대", "6")
+    s = s.replace("7세대", "7").replace("8세대", "8").replace("9세대", "9")
+    s = s.replace("10세대", "10").replace("11세대", "11").replace("12세대", "12")
+    # mm 표기 통일
+    s = s.replace("mm", "")
+    # 프로/맥스 통일
+    s = s.replace("프로맥스", "promax").replace("프로", "pro").replace("맥스", "max")
+    s = s.replace("미니", "mini").replace("플러스", "plus")
+    s = re.sub(r"[^a-z0-9]", "", s)
     return s
 
 
@@ -45,44 +75,69 @@ def normalize_repair_type(rt):
 
 def parse_journal_filename(filename):
     """파일명에서 날짜·모델·타입 추출.
-    journal-YYYY-MM-DD-기종-모델-타입-해시.html
+    형식: journal-YYYY-MM-DD-{기종 + 모델 자유}-{타입}-{해시}.html
+    예: journal-2026-04-15-아이폰7-screen-1l_qsfwc.html  → 기종+모델="아이폰7"
+        journal-2026-05-14-아이폰-iphone-15-pro-max-battery-1Zo1BU6U.html
     """
-    name = filename.replace(".html", "")
-    m = re.match(r"journal-(\d{4}-\d{2}-\d{2})-([^-]+)-(.+)-([^-]+)-([^-]+)$", name)
+    name = filename.replace(".html", "").replace("journal-", "")
+    # 날짜 추출
+    m = re.match(r"^(\d{4}-\d{2}-\d{2})-(.+)$", name)
     if not m: return None
+    date = m.group(1)
+    rest = m.group(2)
+    # 끝에 해시 (영문숫자 6+자) 제거
+    parts = rest.rsplit("-", 1)
+    if len(parts) != 2: return None
+    hash_str = parts[1]
+    body = parts[0]
+    # 끝에 타입 추출 (screen/battery/back/charge/camera/speaker/button/sensor/mainboard/water/other + 복합)
+    type_pattern = r"(screen\+battery|screen\+back|back\+battery|back\+camera|battery\+back|battery\+other|charge\+other|screen|battery|back|back-glass|charge|camera|speaker|button|sensor|mainboard|water|other)"
+    m2 = re.match(r"^(.+?)-" + type_pattern + r"$", body)
+    if not m2: return None
+    device_model = m2.group(1)
+    repair_type = m2.group(2)
     return {
-        "date": m.group(1),
-        "device": m.group(2),
-        "model": m.group(3),
-        "repair_type": m.group(4),
-        "hash": m.group(5),
+        "date": date,
+        "device_model": device_model,  # 통합 (기종+모델)
+        "repair_type": repair_type,
+        "hash": hash_str,
     }
 
 
 def find_cert_match(journal_meta, certs_by_date):
-    """일지 메타 → 매칭되는 인증서 찾기."""
+    """일지 메타 → 매칭되는 인증서 찾기.
+    점수제: 모델 일치 + 타입 일치 합산, 90+ = 매칭.
+    """
     date_certs = certs_by_date.get(journal_meta["date"], [])
     if not date_certs:
         return None
-    j_model_norm = normalize_model(journal_meta["model"])
+    j_model_norm = normalize_model(journal_meta["device_model"])
     j_type_norm = normalize_repair_type(journal_meta["repair_type"])
 
     candidates = []
     for cert in date_certs:
         c_model_norm = normalize_model(cert.get("model", ""))
         c_type_norm = normalize_repair_type(cert.get("repair_type", ""))
-        # 정확 매칭
-        if c_model_norm == j_model_norm and c_type_norm == j_type_norm:
-            candidates.append((cert, 100))
-        # 부분 매칭 (모델만)
-        elif c_model_norm == j_model_norm:
-            candidates.append((cert, 50))
-        # 모델 포함
-        elif j_model_norm in c_model_norm or c_model_norm in j_model_norm:
-            candidates.append((cert, 30))
+        score = 0
+        # 모델 점수
+        if c_model_norm == j_model_norm:
+            score += 70
+        elif c_model_norm and j_model_norm and (c_model_norm in j_model_norm or j_model_norm in c_model_norm):
+            # 부분 포함
+            short = min(len(c_model_norm), len(j_model_norm))
+            long = max(len(c_model_norm), len(j_model_norm))
+            score += int(50 * short / max(long, 1))
+        # 타입 점수
+        if c_type_norm == j_type_norm:
+            score += 30
+        elif j_type_norm in c_type_norm or c_type_norm in j_type_norm:
+            score += 20
+        if score > 0:
+            candidates.append((cert, score))
     if not candidates:
         return None
     candidates.sort(key=lambda x: -x[1])
+    # 50점 이상이면 매칭 (정확보다 약간 관대하게)
     return candidates[0][0] if candidates[0][1] >= 50 else None
 
 
@@ -138,7 +193,7 @@ def render_cert_box(cert):
         technician_row = f"<dt>담당 마스터</dt><dd>{cert['technician']}</dd>"
     price_row = ""
     if cert.get("price", 0) > 0:
-        price_row = f'<dt>실 결제 금액</dt><dd class="art-cert-price">{cert["price"]:,}원 (VAT 포함)</dd>'
+        price_row = f'<dt>수리 금액</dt><dd class="art-cert-price">{cert["price"]:,}원</dd>'
     return CERT_BOX_TEMPLATE.format(
         model=cert.get("model", ""),
         repair_summary=cert.get("repair_description", "수리"),
@@ -187,12 +242,11 @@ def enrich_journal(journal_path, cert):
 
 
 def main():
-    if not CERT_DATA.exists():
-        print(f"❌ 인증서 데이터 없음: {CERT_DATA}")
+    certs = load_all_certs()
+    if not certs:
+        print(f"❌ 인증서 데이터 없음: {CERT_DIR}")
         return
-
-    data = json.loads(CERT_DATA.read_text(encoding="utf-8"))
-    certs = data["certificates"]
+    print(f"📥 인증서 통합 로드: {len(certs)}건")
 
     # PII 마스킹 (전체)
     for c in certs:

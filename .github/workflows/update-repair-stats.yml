@@ -72,6 +72,32 @@ jobs:
       - name: 📋 신규 케이스 → 수리 일지 자동 생성
         run: python3 scripts/gen_case_journals.py
 
+      - name: 🔑 다올리페어 앱 Admin API 키 복원
+        env:
+          DAOLREPAIR_APP_API_KEY: ${{ secrets.DAOLREPAIR_APP_API_KEY }}
+        run: |
+          mkdir -p .env
+          if [ -n "$DAOLREPAIR_APP_API_KEY" ]; then
+            printf '%s' "$DAOLREPAIR_APP_API_KEY" > .env/daolrepair-app-api.txt
+            echo "✅ Admin API 키 복원"
+          else
+            echo "⚠️ DAOLREPAIR_APP_API_KEY secret 미설정 — 수리 확인서 페치 스킵"
+          fi
+
+      - name: 📥 수리 확인서 API 자동 페치 (어제 + 오늘)
+        run: |
+          if [ -f .env/daolrepair-app-api.txt ]; then
+            python3 scripts/fetch_certificates.py --no-photos || true
+            # 오늘 데이터도 한 번 더 (오전·오후 신규 추가분)
+            python3 scripts/fetch_certificates.py --date "$(TZ=Asia/Seoul date +'%Y-%m-%d')" --no-photos || true
+          fi
+
+      - name: 📝 일지 글 인증서 정보 자동 보강
+        run: |
+          if [ -f data/certificates/all-2026-04-15_to_2026-05-15.json ] || ls data/certificates/*.json >/dev/null 2>&1; then
+            python3 scripts/enrich_journals_with_certs.py || true
+          fi
+
       - name: 📦 Cloudflare 배포용 dist/ 빌드
         run: bash scripts/build-for-cloudflare.sh
 
@@ -79,7 +105,7 @@ jobs:
         run: |
           git config user.name  "daolrepair-bot"
           git config user.email "bot@daolrepair.local"
-          git add data/repair-stats.json data/journal-index.json images/before-after/ articles/ sitemap.xml dist/ || true
+          git add data/repair-stats.json data/journal-index.json data/certificates/ images/before-after/ articles/ sitemap.xml dist/ || true
           if git diff --cached --quiet; then
             echo "ℹ️  변경사항 없음 — 커밋 건너뜀"
           else

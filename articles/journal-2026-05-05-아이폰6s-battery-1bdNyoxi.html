@@ -402,6 +402,29 @@ body { padding-top: 64px; }
       padding: 0 3px !important;
       border-radius: 2px !important;
     }
+  
+/* DAOL_JOURNAL_FIX_v1 — CTA 버튼 배경 보존 + 관련 글 카드 스타일 */
+.art-wrap a[style*="color:#fff"]:not(.art-cta-btn):not(.art-cta-btn-ghost):not([class*="btn"]),
+.art-wrap a[style*="color: #fff"]:not(.art-cta-btn):not(.art-cta-btn-ghost):not([class*="btn"]) {
+  color: #fff !important;
+  background: transparent !important;
+}
+/* CTA 버튼은 배경 유지 */
+.art-wrap a.art-cta-btn[style*="color:#fff"],
+.art-wrap a.art-cta-btn[style*="color: #fff"] {
+  color: #fff !important;
+}
+/* 관련 글 카드 — 누락된 스타일 보충 */
+.art-related, section.art-related { margin: 56px auto 40px !important; padding: 40px 20px 0 !important; border-top: 2px solid #e8e8e8 !important; }
+.art-related-heading { font-size: 18px !important; font-weight: 900 !important; color: #1a1a1a !important; margin-bottom: 20px !important; position: relative; }
+.art-related-heading::before { content: '' !important; display: block !important; width: 28px !important; height: 3px !important; background: #E8732A !important; border-radius: 2px !important; margin-bottom: 12px !important; }
+.related-grid { display: grid !important; grid-template-columns: 1fr !important; gap: 10px !important; }
+.related-card { display: block !important; padding: 16px 20px !important; border: 1.5px solid #e8e8e8 !important; border-radius: 14px !important; text-decoration: none !important; color: inherit !important; transition: border-color 0.2s !important; background: #fff !important; }
+.related-card:hover { border-color: #E8732A !important; box-shadow: 0 4px 16px rgba(232,115,42,0.1) !important; }
+.related-badge { display: inline-block !important; background: rgba(232,115,42,0.1) !important; color: #E8732A !important; font-size: 11px !important; font-weight: 700 !important; padding: 2px 8px !important; border-radius: 10px !important; margin-bottom: 6px !important; }
+.related-title { display: block !important; font-size: 14px !important; font-weight: 700 !important; color: #1a1a1a !important; line-height: 1.5 !important; }
+@media (min-width: 768px) { .related-grid { grid-template-columns: 1fr 1fr !important; gap: 14px !important; } }
+
   </style>
 
 
@@ -625,7 +648,50 @@ function daolShare() {
 </div>
 
 
-<div class="art-cta" style="background:linear-gradient(135deg,rgba(232,115,42,0.06) 0%,rgba(232,115,42,0.02) 100%);border:1px solid rgba(232,115,42,0.25);border-radius:18px;padding:30px 24px;margin:32px 0;text-align:center;">
+
+  <!-- 수리 확인서 발급 정보 (자동 삽입) -->
+  <style>
+    .art-cert-info {
+      background: linear-gradient(135deg, #fff8f3 0%, #fff 100%);
+      border: 1.5px solid #f5d4b3; border-radius: 16px;
+      padding: 24px 28px; margin: 40px 0;
+    }
+    .art-cert-info-label {
+      display: inline-block; background: var(--orange, #E8732A);
+      color: #fff; font-size: 11px; font-weight: 800;
+      padding: 4px 10px; border-radius: 50px;
+      letter-spacing: 0.5px; margin-bottom: 14px;
+    }
+    .art-cert-info h3 {
+      font-size: 17px; font-weight: 800; color: #1a1a1a;
+      margin: 0 0 16px; line-height: 1.4;
+    }
+    .art-cert-grid { display: grid; grid-template-columns: auto 1fr; gap: 10px 18px; font-size: 14px; }
+    .art-cert-grid dt { color: #888; font-weight: 600; }
+    .art-cert-grid dd { margin: 0; color: #222; font-weight: 700; }
+    .art-cert-price { color: var(--orange, #E8732A); font-size: 16px; }
+    .art-cert-foot {
+      margin-top: 16px; padding-top: 14px; border-top: 1px dashed #e8d4b3;
+      font-size: 13px; color: #666; line-height: 1.6;
+    }
+  </style>
+  <div class="art-cert-info">
+    <div class="art-cert-info-label">📋 수리 확인서 발급 완료</div>
+    <h3>아이폰6s 배터리 교체 수리 완료 — 정직 인증</h3>
+    <dl class="art-cert-grid">
+      <dt>매장</dt><dd>다올리페어 가산점</dd>
+      <dt>고객</dt><dd>박*민 고객님</dd>
+      <dt>수리일</dt><dd>2026-05-05</dd>
+      <dt>작업 내역</dt><dd>배터리 교체 수리 완료</dd>
+      <dt>담당 마스터</dt><dd>금동평</dd>
+      <dt>수리 금액</dt><dd class="art-cert-price">40,000원</dd>
+    </dl>
+    <div class="art-cert-foot">
+      이 수리는 카카오톡으로 수리 확인서가 자동 발급됐습니다. 다올리페어는 모든 수리에 정직 인증서 + 90일 무상 A/S 제공.
+    </div>
+  </div>
+
+  <div class="art-cta" style="background:linear-gradient(135deg,rgba(232,115,42,0.06) 0%,rgba(232,115,42,0.02) 100%);border:1px solid rgba(232,115,42,0.25);border-radius:18px;padding:30px 24px;margin:32px 0;text-align:center;">
   <div style="display:inline-block;background:rgba(232,115,42,0.15);color:#E8732A;font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 12px;border-radius:50px;margin-bottom:14px;">FREE ESTIMATE</div>
   <h3 style="font-size:22px;font-weight:900;color:#1a1a1a;margin-bottom:8px;letter-spacing:-0.5px;">같은 증상으로 고민 중이신가요?</h3>
   <p style="font-size:14px;color:#666;line-height:1.7;margin-bottom:22px;">
