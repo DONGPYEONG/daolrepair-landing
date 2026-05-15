@@ -1,0 +1,26 @@
+﻿Campaign,Campaign Status,Campaign Daily Budget,Campaign type,Networks,Languages,Locations,Bid Strategy Type,Ad group,Ad Group Status,Default max. CPC
+DR-iPhone,Paused,30000,Search,Google search,Korean,South Korea,Manual CPC,,,
+DR-iPhone,Paused,,,,,,,General,Paused,800
+DR-iPhone,Paused,,,,,,,Gasan,Paused,800
+DR-iPhone,Paused,,,,,,,Sillim,Paused,800
+DR-iPhone,Paused,,,,,,,Mokdong,Paused,800
+DR-iPad,Paused,5000,Search,Google search,Korean,South Korea,Manual CPC,,,
+DR-iPad,Paused,,,,,,,General,Paused,800
+DR-iPad,Paused,,,,,,,Gasan,Paused,800
+DR-iPad,Paused,,,,,,,Sillim,Paused,800
+DR-iPad,Paused,,,,,,,Mokdong,Paused,800
+DR-AppleWatch,Paused,5000,Search,Google search,Korean,South Korea,Manual CPC,,,
+DR-AppleWatch,Paused,,,,,,,General,Paused,800
+DR-AppleWatch,Paused,,,,,,,Gasan,Paused,800
+DR-AppleWatch,Paused,,,,,,,Sillim,Paused,800
+DR-AppleWatch,Paused,,,,,,,Mokdong,Paused,800
+DR-ApplePencil,Paused,2000,Search,Google search,Korean,South Korea,Manual CPC,,,
+DR-ApplePencil,Paused,,,,,,,General,Paused,800
+DR-ApplePencil,Paused,,,,,,,Gasan,Paused,800
+DR-ApplePencil,Paused,,,,,,,Sillim,Paused,800
+DR-ApplePencil,Paused,,,,,,,Mokdong,Paused,800
+DR-MacBook,Paused,5000,Search,Google search,Korean,South Korea,Manual CPC,,,
+DR-MacBook,Paused,,,,,,,General,Paused,800
+DR-MacBook,Paused,,,,,,,Gasan,Paused,800
+DR-MacBook,Paused,,,,,,,Sillim,Paused,800
+DR-MacBook,Paused,,,,,,,Mokdong,Paused,800
