@@ -859,6 +859,17 @@ def build_info_reel(slug: str) -> tuple[Path, Path]:
     # 캡션
     cap_path.write_text(make_caption(data, slug=slug), encoding="utf-8")
 
+    # 자문자답 댓글 세트
+    try:
+        from gen_comments import INFO_REEL_COMMENTS_BY_SLUG, INFO_REEL_COMMENTS_FALLBACK, format_comments_block
+        c1, r1, c2, r2 = INFO_REEL_COMMENTS_BY_SLUG.get(slug, INFO_REEL_COMMENTS_FALLBACK)
+        title = "다올리페어 정보 Reel — " + slug.replace("-", " ")
+        comments_content = format_comments_block(title, c1, r1, c2, r2)
+        comments_path = cap_path.parent / (cap_path.stem + "_comments.txt")
+        comments_path.write_text(comments_content, encoding="utf-8")
+    except Exception:
+        pass
+
     return mp4, cap_path
 
 

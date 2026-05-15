@@ -812,6 +812,17 @@ def build_carousel(slug: str) -> Path:
     cap_path = out_dir / "caption.txt"
     cap_path.write_text(make_caption(data), encoding="utf-8")
 
+    # 자문자답 댓글 세트
+    try:
+        from gen_comments import CAROUSEL_COMMENTS, format_comments_block
+        if slug in CAROUSEL_COMMENTS:
+            c1, r1, c2, r2 = CAROUSEL_COMMENTS[slug]
+            title = slug.replace("-", " ").replace("iphone", "iPhone")
+            comments_content = format_comments_block(title, c1, r1, c2, r2)
+            (out_dir / "comments.txt").write_text(comments_content, encoding="utf-8")
+    except Exception:
+        pass
+
     return out_dir
 
 

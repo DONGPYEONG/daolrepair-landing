@@ -1449,6 +1449,18 @@ def build_reel(journal_path: Path, output_dir: Path) -> tuple[Path, Path]:
     caption_text = make_caption_text(meta["title"], slug_meta)
     cap_path.write_text(caption_text, encoding="utf-8")
 
+    # 자문자답 댓글 세트
+    try:
+        from gen_comments import get_ba_reel_comment, format_comments_block
+        repair_type = slug_meta.get("repair_type", "other") if isinstance(slug_meta, dict) else "other"
+        c1, r1, c2, r2 = get_ba_reel_comment(repair_type)
+        title = "다올리페어 수리 일지 — " + meta.get("title", "")[:40]
+        comments_content = format_comments_block(title, c1, r1, c2, r2)
+        comments_path = cap_path.parent / (cap_path.stem + "_comments.txt")
+        comments_path.write_text(comments_content, encoding="utf-8")
+    except Exception:
+        pass
+
     return mp4_path, cap_path
 
 
