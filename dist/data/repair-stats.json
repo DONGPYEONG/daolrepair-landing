@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-15T16:40:42.648086+09:00",
+  "updated_at": "2026-05-15T17:05:29.460112+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11652,
@@ -36,43 +36,43 @@
       "model": "아이폰 iPhone 13 mini",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 22
+      "minutes_ago": 47
     },
     {
       "model": "아이폰 iPhone 14",
       "type": "수리",
       "branch": "신림점",
-      "minutes_ago": 81
+      "minutes_ago": 106
     },
     {
       "model": "아이폰 iPhone 13",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 218
+      "minutes_ago": 243
     },
     {
       "model": "애플워치 Apple Watch SE (1세대)",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 266
+      "minutes_ago": 291
     },
     {
       "model": "아이폰 iPhone 13",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 327
+      "minutes_ago": 351
     },
     {
       "model": "애플워치 Apple Watch SE (1세대)",
       "type": "화면 교체",
       "branch": "신림점",
-      "minutes_ago": 1311
+      "minutes_ago": 1335
     },
     {
       "model": "애플워치 Apple Watch Series 8 (45mm)",
       "type": "센서 수리",
       "branch": "신림점",
-      "minutes_ago": 1619
+      "minutes_ago": 1643
     }
   ],
   "top_repair_types": [
@@ -1134,7 +1134,8 @@
         "symptom_parts": [
           "battery"
         ]
-      }
+      },
+      "journal_url": "articles/journal-2026-05-15-아이폰-iphone-13-mini-battery-1_2PEmAC.html"
     },
     {
       "id": "case-29",

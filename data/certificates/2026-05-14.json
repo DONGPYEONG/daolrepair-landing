@@ -1,7 +1,7 @@
 {
   "date": "2026-05-14",
   "total": 6,
-  "fetched_at": "2026-05-15T16:44:32.438485+09:00",
+  "fetched_at": "2026-05-15T17:05:57.150862+09:00",
   "certificates": [
     {
       "id": "1u-_HbcagkVWho4eXZ1kqpJGVVLauYLw-",
@@ -40,7 +40,9 @@
       "created_at": "2026-05-14T09:49:38.997Z",
       "customer_name_masked": "한*재",
       "customer_phone_masked": "",
-      "repair_type_normalized": "screen"
+      "repair_type_normalized": "screen",
+      "photos_flat": {},
+      "photos_captured": {}
     },
     {
       "id": "1fgAGQtdxbEhnDbMlQM8p4n1TJPM_1qQX",
@@ -85,7 +87,15 @@
       "created_at": "2026-05-14T04:41:31.886Z",
       "customer_name_masked": "조*용",
       "customer_phone_masked": "",
-      "repair_type_normalized": "sensor"
+      "repair_type_normalized": "sensor",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1Vv6O01E6BFerK7moiuirc3dr7jsClwVN",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1VIzZCArzIqHOmILhJ0a4KFRQhWeSsu-s"
+      },
+      "photos_captured": {
+        "imei": "2026-05-14T13:57:00+09:00",
+        "before": "2026-05-14T13:41:00+09:00"
+      }
     },
     {
       "id": "19FiLwNRNJ0rEKEkunhBakgiSrz4_tT35",
@@ -133,7 +143,18 @@
       "created_at": "2026-05-14T02:50:20.465Z",
       "customer_name_masked": "이*희",
       "customer_phone_masked": "",
-      "repair_type_normalized": "battery"
+      "repair_type_normalized": "battery",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1mqJc5t2QFMgVAaPMKD5T8IAY619k1ZhY",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1SJBWDCT_2hR4J3pEYncSW3EfUBMsQJvK",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1DYfwf4x7WJCB_xQjM3k2voPqAp7rPRe1"
+      },
+      "photos_captured": {
+        "imei": "2026-05-14T11:51:00+09:00",
+        "before": "2026-05-14T11:50:00+09:00",
+        "after": "2026-05-14T15:41:00+09:00"
+      },
+      "repair_duration_min": 231
     },
     {
       "id": "1yOof8bPibhd9CHBMaXNKbBw7u3OUF0TX",
@@ -178,7 +199,15 @@
       "created_at": "2026-05-14T02:30:14.957Z",
       "customer_name_masked": "이*호",
       "customer_phone_masked": "",
-      "repair_type_normalized": "battery"
+      "repair_type_normalized": "battery",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1KYlliCbV3ZcgozYUwNSN6TqwjJRCGduN",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1GSrKk8LU5bhAMUA7yDti3g4dUVCLHws_"
+      },
+      "photos_captured": {
+        "imei": "2026-05-14T11:31:00+09:00",
+        "before": "2026-05-14T11:31:00+09:00"
+      }
     },
     {
       "id": "1bQZRNi2f-wFMrUKYrF9nCs_NnJ2Ejl-O",
@@ -226,7 +255,18 @@
       "created_at": "2026-05-14T02:16:51.070Z",
       "customer_name_masked": "김*연",
       "customer_phone_masked": "",
-      "repair_type_normalized": "camera"
+      "repair_type_normalized": "camera",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1nAkVG3pSZJrhLqcxfpkxzewg3SudP_6F",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1Uak5jhMrmMa1qmtEziesCqu9vA2ACTbW",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1s_aXWUcBELj9erxjEWnXQHsX8KKmSpCO"
+      },
+      "photos_captured": {
+        "imei": "2026-05-14T11:18:00+09:00",
+        "before": "2026-05-14T11:24:00+09:00",
+        "after": "2026-05-14T11:30:00+09:00"
+      },
+      "repair_duration_min": 6
     },
     {
       "id": "1Zo1BU6UtYIn8gdWmWCc_Rr9Sdo2WPhbQ",
@@ -274,7 +314,18 @@
       "created_at": "2026-05-14T01:05:38.554Z",
       "customer_name_masked": "이*정",
       "customer_phone_masked": "",
-      "repair_type_normalized": "battery"
+      "repair_type_normalized": "battery",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1yb_RPRP2auoLvJA0shwHPpOIsVGdIPuW",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/136BDmUCbZ_UUrkhfDEnQUoaFx9nGThjl",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1o60Yu_CMKy63y0zY1pyuzjrdN6wLolYi"
+      },
+      "photos_captured": {
+        "imei": "2026-05-14T10:06:00+09:00",
+        "before": "2026-05-14T10:06:00+09:00",
+        "after": "2026-05-14T10:23:00+09:00"
+      },
+      "repair_duration_min": 17
     }
   ]
 }
