@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-05-15T12:57:55.336127+09:00",
+  "updated_at": "2026-05-15T13:05:58.427439+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
-    "total": 11648,
-    "today": 6,
-    "this_week": 54,
+    "total": 11650,
+    "today": 8,
+    "this_week": 56,
     "this_month": 137,
     "by_branch": {
-      "가산점": 5885,
+      "가산점": 5887,
       "신림점": 5244,
       "목동점": 519
     },
@@ -32,53 +32,53 @@
   },
   "recent_cases": [
     {
+      "model": "아이폰 iPhone 13",
+      "type": "배터리 교체",
+      "branch": "가산점",
+      "minutes_ago": 4
+    },
+    {
       "model": "애플워치 Apple Watch SE (1세대)",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 44
+      "minutes_ago": 52
     },
     {
       "model": "아이폰 iPhone 13",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 104
+      "minutes_ago": 112
     },
     {
       "model": "아이폰 iPhone 13",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 118
+      "minutes_ago": 126
     },
     {
       "model": "애플워치 Apple Watch SE (1세대)",
       "type": "화면 교체",
       "branch": "신림점",
-      "minutes_ago": 1088
+      "minutes_ago": 1096
     },
     {
       "model": "애플워치 Apple Watch Series 8 (45mm)",
       "type": "센서 수리",
       "branch": "신림점",
-      "minutes_ago": 1396
+      "minutes_ago": 1404
     },
     {
       "model": "애플워치 Apple Watch Series 3 (38mm)",
       "type": "배터리 교체",
       "branch": "신림점",
-      "minutes_ago": 1507
-    },
-    {
-      "model": "아이폰 iPhone 13 Pro",
-      "type": "배터리 교체",
-      "branch": "가산점",
-      "minutes_ago": 1527
+      "minutes_ago": 1515
     }
   ],
   "top_repair_types": [
     {
       "rank": 1,
       "label": "배터리 교체",
-      "count": 72
+      "count": 75
     },
     {
       "rank": 2,
@@ -1736,46 +1736,6 @@
         ]
       },
       "journal_url": "articles/journal-2026-05-09-애플워치-apple-watch-se-2세대-battery-1eGfabMe.html"
-    },
-    {
-      "id": "case-44",
-      "model": "아이폰 iPhone 13 Pro Max",
-      "type": "후면 + 배터리 교체",
-      "branch": "신림점",
-      "date": "2026-05-09",
-      "createdTime": "2026-05-09T02:15:55.403Z",
-      "repair_time": "당일 · 3~4시간",
-      "before_img": "images/before-after/1iXABiV6sTO4RH24Wm1tYrzL/before.jpg",
-      "after_img": "images/before-after/1iXABiV6sTO4RH24Wm1tYrzL/after.jpg",
-      "progress_imgs": [
-        "images/before-after/1iXABiV6sTO4RH24Wm1tYrzL/progress1.jpg",
-        "images/before-after/1iXABiV6sTO4RH24Wm1tYrzL/progress2.jpg",
-        "images/before-after/1iXABiV6sTO4RH24Wm1tYrzL/progress3.jpg"
-      ],
-      "progress_labels": [
-        "내부분해",
-        "교체부품",
-        "수리작업중"
-      ],
-      "before_text": "후면 + 배터리 노화",
-      "after_text": "후면 교체 + 배터리 성능치 정상",
-      "case_id": "1iXABiV6sTO4RH24Wm1tYrzLM8d6T8WMA",
-      "meta": {
-        "time": "1115",
-        "age": "20대",
-        "gender": "여성",
-        "age_gender": "20대 여성",
-        "options": "후면유리+셀배터리",
-        "cause": "떨어뜨림",
-        "time_natural": "오전 11시 15분",
-        "time_period": "점심시간",
-        "options_natural": "후면유리과 셀 교체 배터리",
-        "options_list": [
-          "후면유리",
-          "셀배터리"
-        ]
-      },
-      "journal_url": "articles/journal-2026-05-09-아이폰-iphone-13-pro-max-back-1iXABiV6.html"
     }
   ]
 }
