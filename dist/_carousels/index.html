@@ -59,8 +59,25 @@
   .btn.primary { background: #E8732A; color: #fff; border-color: #E8732A; }
   .btn.primary:active { background: #C55E1A; }
   .btn.copied { background: #34c759; color: #fff; border-color: #34c759; }
+  .comment-section {
+    margin-top: 14px; padding: 12px; background: #f9f9fb;
+    border-radius: 12px; border: 1px solid #e5e5e7;
+  }
+  .comment-section-title {
+    font-size: 12px; font-weight: 800; color: #E8732A;
+    margin-bottom: 10px; letter-spacing: 0.2px;
+  }
+  .comment-step { margin-bottom: 8px; }
+  .comment-step:last-child { margin-bottom: 0; }
+  .comment-step-label {
+    display: block; font-size: 11px; font-weight: 600; color: #666;
+    margin-bottom: 4px;
+  }
+  .comment-btn { width: 100%; font-size: 13px; padding: 10px 12px; }
+  .comment-btn.comment-q { background: #fff8f3; border-color: #f5d4b3; color: #E8732A; }
+  .comment-btn.comment-a { background: #f0f7ff; border-color: #c8dcfb; color: #1976d2; }
   .done-toggle {
-    grid-column: 1 / -1; margin-top: 8px;
+    margin-top: 8px;
     border: 1.5px dashed #e5e5e7; color: #888; background: transparent;
   }
   .card.done .done-toggle {
@@ -119,7 +136,7 @@
       <a href="/_carousels/travel-insurance-phone-claim/travel-insurance-phone-claim.zip" download="travel-insurance-phone-claim.zip" class="btn primary">
         📦 11장 ZIP 다운로드
       </a>
-      <button class="btn" onclick="copyCaption(this)" data-caption="📬 수리비 0원 프로젝트 #02
+      <button class="btn" onclick="copyText(this, this.dataset.caption, '캡션 복사됨 ✓')" data-caption="📬 수리비 0원 프로젝트 #02
 
 여행 중 폰 깨짐 보험으로 20만원 환급받기
 
@@ -143,6 +160,33 @@
 #아이폰액정교체 #아이폰액정수리 #아이폰액정교체비용 #아이폰사설액정교체 #아이폰화면깨짐 #가산아이폰액정교체 #신림아이폰액정교체 #목동아이폰액정교체 #아이폰액정 #아이폰파손수리 #다올리페어 #수리비0원프로젝트 #디바이스예방마스터 #수리점안오는법 #아이폰수리">
         📋 캡션 복사
       </button>
+    </div>
+    <div class="comment-section">
+      <div class="comment-section-title">💬 게시 후 자문자답 (도달 ↑)</div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕐 5분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '여행 가서 폰 떨어뜨렸는데 보험 청구 가능한지 몰랐어요... 작년에 25만원 그냥 냈는데 진짜 분해요 ㅠㅠ', '댓글1 복사됨 ✓')">
+          📋 댓글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕒 15분 후 (위 댓글에 답글)</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '다음번엔 꼭 청구하세요! 영문 진단서 무료로 발급해드리니까 외국에서 사고나도 한국 와서 청구 가능합니다', '답글1 복사됨 ✓')">
+          📋 답글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕧 30분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '품목당 20만원이면 폰이랑 워치 따로따로 20만원씩 되는 거예요?', '댓글2 복사됨 ✓')">
+          📋 댓글 2 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">📩 위 댓글에 답글</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '네 맞아요! 폰·워치·패드 각각 별도 품목이라 각각 20만원씩 청구 가능합니다 ✨', '답글2 복사됨 ✓')">
+          📋 답글 2 복사
+        </button>
+      </div>
     </div>
     <button class="btn done-toggle" onclick="toggleDone(this)" data-slug="travel-insurance-phone-claim">
       ✓ 게시 완료로 표시
@@ -189,7 +233,7 @@
       <a href="/_carousels/iphone-water-damage-prevention/iphone-water-damage-prevention.zip" download="iphone-water-damage-prevention.zip" class="btn primary">
         📦 11장 ZIP 다운로드
       </a>
-      <button class="btn" onclick="copyCaption(this)" data-caption="📬 수리비 0원 프로젝트 #03
+      <button class="btn" onclick="copyText(this, this.dataset.caption, '캡션 복사됨 ✓')" data-caption="📬 수리비 0원 프로젝트 #03
 
 자취생 침수 사고 예방 5가지 체크리스트
 
@@ -213,6 +257,33 @@
 #아이폰침수수리 #아이폰침수복구 #아이폰침수비용 #아이폰물에빠짐 #침수폰살리기 #가산아이폰침수 #신림아이폰침수 #목동아이폰침수 #아이폰침수응급 #침수폰수리 #다올리페어 #수리비0원프로젝트 #디바이스예방마스터 #수리점안오는법 #아이폰수리">
         📋 캡션 복사
       </button>
+    </div>
+    <div class="comment-section">
+      <div class="comment-section-title">💬 게시 후 자문자답 (도달 ↑)</div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕐 5분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '자취 5년 차인데 화장실에서 폰 본 적이 진짜 많아요... 무섭네요 😱', '댓글1 복사됨 ✓')">
+          📋 댓글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕒 15분 후 (위 댓글에 답글)</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '다행히 아직 안 빠지셨다니 ㅎㅎ 화장실 거치대 5천원이면 평생 안전합니다!', '답글1 복사됨 ✓')">
+          📋 답글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕧 30분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '주방에서 요리하면서 폰으로 레시피 보다가 한 번 물 튀어서 식겁한 적 있어요', '댓글2 복사됨 ✓')">
+          📋 댓글 2 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">📩 위 댓글에 답글</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '방수폰이라도 비누·기름 들어간 물엔 약해요. 주방엔 거치대 추천드려요!', '답글2 복사됨 ✓')">
+          📋 답글 2 복사
+        </button>
+      </div>
     </div>
     <button class="btn done-toggle" onclick="toggleDone(this)" data-slug="iphone-water-damage-prevention">
       ✓ 게시 완료로 표시
@@ -259,7 +330,7 @@
       <a href="/_carousels/iphone-used-buying-checklist/iphone-used-buying-checklist.zip" download="iphone-used-buying-checklist.zip" class="btn primary">
         📦 11장 ZIP 다운로드
       </a>
-      <button class="btn" onclick="copyCaption(this)" data-caption="📬 수리비 0원 프로젝트 #04
+      <button class="btn" onclick="copyText(this, this.dataset.caption, '캡션 복사됨 ✓')" data-caption="📬 수리비 0원 프로젝트 #04
 
 중고폰 사기 전에 이거 안 보면 호구당해요
 
@@ -283,6 +354,33 @@
 #아이폰액정교체 #아이폰액정수리 #아이폰액정교체비용 #아이폰사설액정교체 #아이폰화면깨짐 #가산아이폰액정교체 #신림아이폰액정교체 #목동아이폰액정교체 #아이폰액정 #아이폰파손수리 #다올리페어 #수리비0원프로젝트 #디바이스예방마스터 #수리점안오는법 #아이폰수리">
         📋 캡션 복사
       </button>
+    </div>
+    <div class="comment-section">
+      <div class="comment-section-title">💬 게시 후 자문자답 (도달 ↑)</div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕐 5분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '중고 아이폰 사려고 보고 있는데 시리얼/IMEI 같은 거 처음 들어봐요... 이거 안 보면 진짜 위험한가요?', '댓글1 복사됨 ✓')">
+          📋 댓글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕒 15분 후 (위 댓글에 답글)</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '도난·분실 폰 거를 수 있는 유일한 방법이에요. Apple 사이트에서 30초면 끝나니까 꼭 체크하세요!', '답글1 복사됨 ✓')">
+          📋 답글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕧 30분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '비정품 부품 메시지 뜨는 폰은 얼마나 감가되나요?', '댓글2 복사됨 ✓')">
+          📋 댓글 2 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">📩 위 댓글에 답글</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '보통 5~10만원 감가됩니다. 가격 협상 시 이 부분 어필하면 더 깎을 수 있어요!', '답글2 복사됨 ✓')">
+          📋 답글 2 복사
+        </button>
+      </div>
     </div>
     <button class="btn done-toggle" onclick="toggleDone(this)" data-slug="iphone-used-buying-checklist">
       ✓ 게시 완료로 표시
@@ -329,7 +427,7 @@
       <a href="/_carousels/iphone-repair-vs-new-decision/iphone-repair-vs-new-decision.zip" download="iphone-repair-vs-new-decision.zip" class="btn primary">
         📦 11장 ZIP 다운로드
       </a>
-      <button class="btn" onclick="copyCaption(this)" data-caption="📬 수리비 0원 프로젝트 #06
+      <button class="btn" onclick="copyText(this, this.dataset.caption, '캡션 복사됨 ✓')" data-caption="📬 수리비 0원 프로젝트 #06
 
 수리비 견적 받고 고민될 때 이 공식으로 결정
 
@@ -353,6 +451,33 @@
 #아이폰액정교체 #아이폰액정수리 #아이폰액정교체비용 #아이폰사설액정교체 #아이폰화면깨짐 #가산아이폰액정교체 #신림아이폰액정교체 #목동아이폰액정교체 #아이폰액정 #아이폰파손수리 #다올리페어 #수리비0원프로젝트 #디바이스예방마스터 #수리점안오는법 #아이폰수리">
         📋 캡션 복사
       </button>
+    </div>
+    <div class="comment-section">
+      <div class="comment-section-title">💬 게시 후 자문자답 (도달 ↑)</div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕐 5분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, 'iPhone 11 액정+배터리 합쳐서 견적 17만원 받았는데 이거 새 거 사는 게 나을까요? 🤔', '댓글1 복사됨 ✓')">
+          📋 댓글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕒 15분 후 (위 댓글에 답글)</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '중고 시세가 25만원이라 50% 룰로는 새거 추천드려요. 14·15 중고 30만원대 노려보세요!', '답글1 복사됨 ✓')">
+          📋 답글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕧 30분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, 'iPhone 13 액정 한쪽만 깨졌는데 수리비 8만원이면 무조건 수리가 답이죠?', '댓글2 복사됨 ✓')">
+          📋 댓글 2 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">📩 위 댓글에 답글</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '네 무조건 수리예요. 13은 iOS 지원 3~4년 남았고, 단일 부품 손상은 신품 대비 1/10 가격이라 압도적 이득!', '답글2 복사됨 ✓')">
+          📋 답글 2 복사
+        </button>
+      </div>
     </div>
     <button class="btn done-toggle" onclick="toggleDone(this)" data-slug="iphone-repair-vs-new-decision">
       ✓ 게시 완료로 표시
@@ -399,7 +524,7 @@
       <a href="/_carousels/iphone-repair-quote-checklist/iphone-repair-quote-checklist.zip" download="iphone-repair-quote-checklist.zip" class="btn primary">
         📦 11장 ZIP 다운로드
       </a>
-      <button class="btn" onclick="copyCaption(this)" data-caption="📬 수리비 0원 프로젝트 #07
+      <button class="btn" onclick="copyText(this, this.dataset.caption, '캡션 복사됨 ✓')" data-caption="📬 수리비 0원 프로젝트 #07
 
 수리 견적 받기 전 이거 모르면 호구당해요
 
@@ -423,6 +548,33 @@
 #아이폰액정교체 #아이폰액정수리 #아이폰액정교체비용 #아이폰사설액정교체 #아이폰화면깨짐 #가산아이폰액정교체 #신림아이폰액정교체 #목동아이폰액정교체 #아이폰액정 #아이폰파손수리 #다올리페어 #수리비0원프로젝트 #디바이스예방마스터 #수리점안오는법 #아이폰수리">
         📋 캡션 복사
       </button>
+    </div>
+    <div class="comment-section">
+      <div class="comment-section-title">💬 게시 후 자문자답 (도달 ↑)</div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕐 5분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '다른 매장에서 전화 견적 8만원이라더니 가서 30만원 부르더라구요... 너무 화났어요 😡', '댓글1 복사됨 ✓')">
+          📋 댓글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕒 15분 후 (위 댓글에 답글)</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '전형적인 미끼 견적입니다. 다음엔 방문 견적 받고 추가비 가능성 사전에 꼭 물어보세요!', '답글1 복사됨 ✓')">
+          📋 답글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕧 30분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '보증서 안 주는 매장도 있나요? 다 영수증에 적어주는 줄 알았는데', '댓글2 복사됨 ✓')">
+          📋 댓글 2 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">📩 위 댓글에 답글</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '구두 약속만 하는 곳 의외로 많아요. 보증서면화 안 하면 그 매장 피하세요!', '답글2 복사됨 ✓')">
+          📋 답글 2 복사
+        </button>
+      </div>
     </div>
     <button class="btn done-toggle" onclick="toggleDone(this)" data-slug="iphone-repair-quote-checklist">
       ✓ 게시 완료로 표시
@@ -469,7 +621,7 @@
       <a href="/_carousels/iphone-private-repair-shop-checklist/iphone-private-repair-shop-checklist.zip" download="iphone-private-repair-shop-checklist.zip" class="btn primary">
         📦 11장 ZIP 다운로드
       </a>
-      <button class="btn" onclick="copyCaption(this)" data-caption="📬 수리비 0원 프로젝트 #08
+      <button class="btn" onclick="copyText(this, this.dataset.caption, '캡션 복사됨 ✓')" data-caption="📬 수리비 0원 프로젝트 #08
 
 사설 수리점 이거 5개만 보면 안 망합니다
 
@@ -493,6 +645,33 @@
 #아이폰액정교체 #아이폰액정수리 #아이폰액정교체비용 #아이폰사설액정교체 #아이폰화면깨짐 #가산아이폰액정교체 #신림아이폰액정교체 #목동아이폰액정교체 #아이폰액정 #아이폰파손수리 #다올리페어 #수리비0원프로젝트 #디바이스예방마스터 #수리점안오는법 #아이폰수리">
         📋 캡션 복사
       </button>
+    </div>
+    <div class="comment-section">
+      <div class="comment-section-title">💬 게시 후 자문자답 (도달 ↑)</div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕐 5분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '구글 후기 별점은 다 5점이던데 그것도 가짜일 수 있나요?', '댓글1 복사됨 ✓')">
+          📋 댓글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕒 15분 후 (위 댓글에 답글)</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '네, 별점만 보지 마시고 부정 후기에 답변 다는 태도가 진짜 중요해요. 사장님이 답글 정성껏 쓰는 매장이 진짜입니다.', '답글1 복사됨 ✓')">
+          📋 답글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕧 30분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '후기 1000+ 매장이 그렇게 많지 않던데 그래도 필수인가요?', '댓글2 복사됨 ✓')">
+          📋 댓글 2 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">📩 위 댓글에 답글</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '수도권 기준 후기 1000+에 4.5점 이상이면 안정권이에요. 다올리페어는 1000+ 후기 + 4.9점 운영 중!', '답글2 복사됨 ✓')">
+          📋 답글 2 복사
+        </button>
+      </div>
     </div>
     <button class="btn done-toggle" onclick="toggleDone(this)" data-slug="iphone-private-repair-shop-checklist">
       ✓ 게시 완료로 표시
@@ -539,7 +718,7 @@
       <a href="/_carousels/iphone-post-repair-checklist/iphone-post-repair-checklist.zip" download="iphone-post-repair-checklist.zip" class="btn primary">
         📦 11장 ZIP 다운로드
       </a>
-      <button class="btn" onclick="copyCaption(this)" data-caption="📬 수리비 0원 프로젝트 #10
+      <button class="btn" onclick="copyText(this, this.dataset.caption, '캡션 복사됨 ✓')" data-caption="📬 수리비 0원 프로젝트 #10
 
 수리 끝났다고 방심하면 보증 날아갑니다
 
@@ -563,6 +742,33 @@
 #아이폰액정교체 #아이폰액정수리 #아이폰액정교체비용 #아이폰사설액정교체 #아이폰화면깨짐 #가산아이폰액정교체 #신림아이폰액정교체 #목동아이폰액정교체 #아이폰액정 #아이폰파손수리 #다올리페어 #수리비0원프로젝트 #디바이스예방마스터 #수리점안오는법 #아이폰수리">
         📋 캡션 복사
       </button>
+    </div>
+    <div class="comment-section">
+      <div class="comment-section-title">💬 게시 후 자문자답 (도달 ↑)</div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕐 5분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '수리받고 3개월 지났는데 화면 한쪽 색이 좀 이상해요... 보증 받을 수 있을까요?', '댓글1 복사됨 ✓')">
+          📋 댓글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕒 15분 후 (위 댓글에 답글)</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '90일 안이면 무상 A/S 가능합니다. 사진 찍어서 DM 주세요. 다올리페어 가산점에서 점검 도와드릴게요!', '답글1 복사됨 ✓')">
+          📋 답글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕧 30분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '받은 그날 다 정상이면 1주일 후엔 안 봐도 되나요?', '댓글2 복사됨 ✓')">
+          📋 댓글 2 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">📩 위 댓글에 답글</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '1주일 안에 한 번 더 풀체크 권장이에요. 가끔 받은 직후엔 안 보이던 작은 결함이 발견됩니다!', '답글2 복사됨 ✓')">
+          📋 답글 2 복사
+        </button>
+      </div>
     </div>
     <button class="btn done-toggle" onclick="toggleDone(this)" data-slug="iphone-post-repair-checklist">
       ✓ 게시 완료로 표시
@@ -609,7 +815,7 @@
       <a href="/_carousels/iphone-official-vs-private-repair/iphone-official-vs-private-repair.zip" download="iphone-official-vs-private-repair.zip" class="btn primary">
         📦 11장 ZIP 다운로드
       </a>
-      <button class="btn" onclick="copyCaption(this)" data-caption="📬 수리비 0원 프로젝트 #05
+      <button class="btn" onclick="copyText(this, this.dataset.caption, '캡션 복사됨 ✓')" data-caption="📬 수리비 0원 프로젝트 #05
 
 공식센터 vs 사설 7가지 진짜 차이 결정 가이드
 
@@ -633,6 +839,33 @@
 #아이폰액정교체 #아이폰액정수리 #아이폰액정교체비용 #아이폰사설액정교체 #아이폰화면깨짐 #가산아이폰액정교체 #신림아이폰액정교체 #목동아이폰액정교체 #아이폰액정 #아이폰파손수리 #다올리페어 #수리비0원프로젝트 #디바이스예방마스터 #수리점안오는법 #아이폰수리">
         📋 캡션 복사
       </button>
+    </div>
+    <div class="comment-section">
+      <div class="comment-section-title">💬 게시 후 자문자답 (도달 ↑)</div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕐 5분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '애플케어+ 없는데 공식 가야 한다는 분도 계시던데 어떻게 생각하세요?', '댓글1 복사됨 ✓')">
+          📋 댓글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕒 15분 후 (위 댓글에 답글)</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '케어+ 없으면 공식 견적이 너무 비싸요. 정직한 사설 견적부터 비교해보시는 게 답입니다!', '답글1 복사됨 ✓')">
+          📋 답글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕧 30분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '데이터 보존 차이 있다는 거 처음 알았어요. 백업 안 했을 때 진짜 중요하네요', '댓글2 복사됨 ✓')">
+          📋 댓글 2 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">📩 위 댓글에 답글</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '맞아요. 메인보드 수리 시 공식은 초기화될 수 있어요. 사설은 부품만 교체해서 데이터 그대로!', '답글2 복사됨 ✓')">
+          📋 답글 2 복사
+        </button>
+      </div>
     </div>
     <button class="btn done-toggle" onclick="toggleDone(this)" data-slug="iphone-official-vs-private-repair">
       ✓ 게시 완료로 표시
@@ -679,7 +912,7 @@
       <a href="/_carousels/iphone-battery-longevity-habits/iphone-battery-longevity-habits.zip" download="iphone-battery-longevity-habits.zip" class="btn primary">
         📦 11장 ZIP 다운로드
       </a>
-      <button class="btn" onclick="copyCaption(this)" data-caption="📬 수리비 0원 프로젝트 #01
+      <button class="btn" onclick="copyText(this, this.dataset.caption, '캡션 복사됨 ✓')" data-caption="📬 수리비 0원 프로젝트 #01
 
 아이폰 배터리 2배 오래 쓰는 7가지 습관
 
@@ -703,6 +936,33 @@
 #아이폰배터리교체 #아이폰배터리교체비용 #아이폰사설배터리교체 #아이폰배터리수리 #아이폰배터리방전 #가산아이폰배터리교체 #신림아이폰배터리교체 #목동아이폰배터리교체 #아이폰배터리 #배터리수명 #다올리페어 #수리비0원프로젝트 #디바이스예방마스터 #수리점안오는법 #아이폰수리">
         📋 캡션 복사
       </button>
+    </div>
+    <div class="comment-section">
+      <div class="comment-section-title">💬 게시 후 자문자답 (도달 ↑)</div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕐 5분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '저는 매일 100%까지 충전했는데 1년 만에 80% 됐어요 ㅠㅠ 진작 알 걸 그랬네요...', '댓글1 복사됨 ✓')">
+          📋 댓글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕒 15분 후 (위 댓글에 답글)</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '80% 충전 습관으로 바꾸시면 다음 1년은 90% 유지하실 수 있어요! 늦지 않았습니다 💪', '답글1 복사됨 ✓')">
+          📋 답글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕧 30분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '무선 충전 자주 쓰는데 케이스 빼고 해야 한다는 거 처음 알았어요!', '댓글2 복사됨 ✓')">
+          📋 댓글 2 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">📩 위 댓글에 답글</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '무선 충전 발열이 진짜 큰 문제예요. 케이스 빼면 배터리 온도 5~10℃ 떨어집니다!', '답글2 복사됨 ✓')">
+          📋 답글 2 복사
+        </button>
+      </div>
     </div>
     <button class="btn done-toggle" onclick="toggleDone(this)" data-slug="iphone-battery-longevity-habits">
       ✓ 게시 완료로 표시
@@ -749,7 +1009,7 @@
       <a href="/_carousels/iphone-battery-80-decision/iphone-battery-80-decision.zip" download="iphone-battery-80-decision.zip" class="btn primary">
         📦 11장 ZIP 다운로드
       </a>
-      <button class="btn" onclick="copyCaption(this)" data-caption="📬 수리비 0원 프로젝트 #09
+      <button class="btn" onclick="copyText(this, this.dataset.caption, '캡션 복사됨 ✓')" data-caption="📬 수리비 0원 프로젝트 #09
 
 배터리 80% 미만 지금 교체? 미루기? 결정 공식
 
@@ -773,6 +1033,33 @@
 #아이폰배터리교체 #아이폰배터리교체비용 #아이폰사설배터리교체 #아이폰배터리수리 #아이폰배터리방전 #가산아이폰배터리교체 #신림아이폰배터리교체 #목동아이폰배터리교체 #아이폰배터리 #배터리수명 #다올리페어 #수리비0원프로젝트 #디바이스예방마스터 #수리점안오는법 #아이폰수리">
         📋 캡션 복사
       </button>
+    </div>
+    <div class="comment-section">
+      <div class="comment-section-title">💬 게시 후 자문자답 (도달 ↑)</div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕐 5분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '82%인데 셧다운은 없어요. 그래도 교체해야 하나요?', '댓글1 복사됨 ✓')">
+          📋 댓글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕒 15분 후 (위 댓글에 답글)</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '82% + 셧다운 X + 사용 불편 X면 6개월 미루기 OK입니다. 80% 깨지면 그때 진행하세요!', '답글1 복사됨 ✓')">
+          📋 답글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕧 30분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '충전 중에 너무 뜨거워지는 것도 위험 신호인가요?', '댓글2 복사됨 ✓')">
+          📋 댓글 2 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">📩 위 댓글에 답글</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '네, 발열 + 부풀음은 즉시 매장 가셔야 하는 응급 신호입니다. 화면 손상 + 발화 위험 있어요!', '답글2 복사됨 ✓')">
+          📋 답글 2 복사
+        </button>
+      </div>
     </div>
     <button class="btn done-toggle" onclick="toggleDone(this)" data-slug="iphone-battery-80-decision">
       ✓ 게시 완료로 표시
@@ -813,8 +1100,8 @@
 <div class="toast" id="toast">캡션 복사됨 ✓</div>
 
 <script>
-function copyCaption(btn) {
-  const text = btn.getAttribute('data-caption');
+function copyText(btn, text, successMsg) {
+  const origText = btn.textContent;
   const ta = document.createElement('textarea');
   ta.value = text;
   ta.setAttribute('readonly', '');
@@ -827,16 +1114,16 @@ function copyCaption(btn) {
   try { ok = document.execCommand('copy'); } catch(e) {}
   document.body.removeChild(ta);
   if (!ok && navigator.clipboard) {
-    navigator.clipboard.writeText(text).then(() => showToast('캡션 복사됨 ✓'));
+    navigator.clipboard.writeText(text).then(() => showToast(successMsg));
     return;
   }
-  if (ok) showToast('캡션 복사됨 ✓');
+  if (ok) showToast(successMsg);
   else showToast('복사 실패 — 미리보기에서 수동 복사', false);
   btn.classList.add('copied');
   btn.textContent = '✓ 복사됨';
   setTimeout(() => {
     btn.classList.remove('copied');
-    btn.textContent = '📋 캡션 복사';
+    btn.textContent = origText;
   }, 2000);
 }
 function showToast(msg) {

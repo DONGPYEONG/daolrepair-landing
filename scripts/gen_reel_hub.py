@@ -14,9 +14,24 @@
 게시 완료 표시 (.instagram_post_log.json)는 회색으로 처리.
 """
 from __future__ import annotations
-import html
+import html, re
 import json
 from pathlib import Path
+
+
+def _parse_comments(comments_text):
+    """comments.txt에서 댓글1·답글1·댓글2·답글2 추출."""
+    if not comments_text:
+        return None
+    result = {"comment1": "", "reply1": "", "comment2": "", "reply2": ""}
+    blocks = re.findall(r"【(댓글|답글)\s*(\d+)】\s*\n(.+?)(?=\n[━═━]{3,}|\n▼|\n【|\Z)",
+                       comments_text, re.DOTALL)
+    for kind, num, body in blocks:
+        body = body.strip()
+        key = ("comment" if kind == "댓글" else "reply") + num
+        if key in result:
+            result[key] = body
+    return result if any(result.values()) else None
 
 ROOT = Path(__file__).parent.parent
 REELS_DIR = ROOT / "output" / "reels"
@@ -50,6 +65,9 @@ def build():
         cover = mp4.with_suffix(".jpg")
         cap_file = mp4.with_suffix(".txt")
         caption = cap_file.read_text(encoding="utf-8") if cap_file.exists() else ""
+        comments_file = mp4.parent / (mp4.stem + "_comments.txt")
+        comments_text = comments_file.read_text(encoding="utf-8") if comments_file.exists() else ""
+        comments_parsed = _parse_comments(comments_text) if comments_text else None
 
         # URL 인코딩은 브라우저가 자동 처리
         mp4_url = f"/_reels/{mp4.name}"
@@ -66,6 +84,43 @@ def build():
         caption_attr = html.escape(caption, quote=True)
         name_short = slug.replace("journal-", "").replace("-", " ")[:60]
 
+        # 자문자답 댓글 섹션
+        if comments_parsed:
+            c1 = html.escape(comments_parsed.get("comment1", ""), quote=True)
+            r1 = html.escape(comments_parsed.get("reply1", ""), quote=True)
+            c2 = html.escape(comments_parsed.get("comment2", ""), quote=True)
+            r2 = html.escape(comments_parsed.get("reply2", ""), quote=True)
+            comments_section = f'''
+    <div class="comment-section">
+      <div class="comment-section-title">💬 게시 후 자문자답 (도달 ↑)</div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕐 5분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '{c1}', '댓글1 복사됨 ✓')">
+          📋 댓글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕒 15분 후 (위 댓글에 답글)</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '{r1}', '답글1 복사됨 ✓')">
+          📋 답글 1 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">🕧 30분 후</span>
+        <button class="btn comment-btn comment-q" onclick="copyText(this, '{c2}', '댓글2 복사됨 ✓')">
+          📋 댓글 2 복사
+        </button>
+      </div>
+      <div class="comment-step">
+        <span class="comment-step-label">📩 위 댓글에 답글</span>
+        <button class="btn comment-btn comment-a" onclick="copyText(this, '{r2}', '답글2 복사됨 ✓')">
+          📋 답글 2 복사
+        </button>
+      </div>
+    </div>'''
+        else:
+            comments_section = ""
+
         cards.append(f'''
 <article class="card" data-slug="{html.escape(slug)}">
   {status_badge}
@@ -79,10 +134,10 @@ def build():
       <a href="{html.escape(mp4_url)}" download="{html.escape(mp4.name)}" class="btn primary">
         📥 영상 저장
       </a>
-      <button class="btn" onclick="copyCaption(this)" data-caption="{caption_attr}">
+      <button class="btn" onclick="copyText(this, this.dataset.caption, '캡션 복사됨 ✓')" data-caption="{caption_attr}">
         📋 캡션 복사
       </button>
-    </div>
+    </div>{comments_section}
     <button class="btn done-toggle" onclick="toggleDone(this)" data-slug="{html.escape(slug)}">
       ✓ 게시 완료로 표시
     </button>
@@ -180,8 +235,25 @@ def build():
   .btn.primary {{ background: #E8732A; color: #fff; border-color: #E8732A; }}
   .btn.primary:active {{ background: #C55E1A; }}
   .btn.copied {{ background: #34c759; color: #fff; border-color: #34c759; }}
+  .comment-section {{
+    margin-top: 14px; padding: 12px; background: #f9f9fb;
+    border-radius: 12px; border: 1px solid #e5e5e7;
+  }}
+  .comment-section-title {{
+    font-size: 12px; font-weight: 800; color: #E8732A;
+    margin-bottom: 10px; letter-spacing: 0.2px;
+  }}
+  .comment-step {{ margin-bottom: 8px; }}
+  .comment-step:last-child {{ margin-bottom: 0; }}
+  .comment-step-label {{
+    display: block; font-size: 11px; font-weight: 600; color: #666;
+    margin-bottom: 4px;
+  }}
+  .comment-btn {{ width: 100%; font-size: 13px; padding: 10px 12px; }}
+  .comment-btn.comment-q {{ background: #fff8f3; border-color: #f5d4b3; color: #E8732A; }}
+  .comment-btn.comment-a {{ background: #f0f7ff; border-color: #c8dcfb; color: #1976d2; }}
   .done-toggle {{
-    grid-column: 1 / -1; margin-top: 8px;
+    margin-top: 8px;
     border: 1.5px dashed #e5e5e7; color: #888; background: transparent;
   }}
   .card.done .done-toggle {{
@@ -229,9 +301,8 @@ def build():
 <div class="toast" id="toast">캡션 복사됨 ✓</div>
 
 <script>
-function copyCaption(btn) {{
-  const text = btn.getAttribute('data-caption');
-  // iOS Safari fallback — execCommand
+function copyText(btn, text, successMsg) {{
+  const origText = btn.textContent;
   const ta = document.createElement('textarea');
   ta.value = text;
   ta.setAttribute('readonly', '');
@@ -243,19 +314,17 @@ function copyCaption(btn) {{
   let ok = false;
   try {{ ok = document.execCommand('copy'); }} catch(e) {{}}
   document.body.removeChild(ta);
-
   if (!ok && navigator.clipboard) {{
-    navigator.clipboard.writeText(text).then(() => showToast('캡션 복사됨 ✓'));
+    navigator.clipboard.writeText(text).then(() => showToast(successMsg));
     return;
   }}
-  if (ok) showToast('캡션 복사됨 ✓');
+  if (ok) showToast(successMsg);
   else showToast('복사 실패 — 미리보기에서 수동 복사', false);
-
   btn.classList.add('copied');
   btn.textContent = '✓ 복사됨';
   setTimeout(() => {{
     btn.classList.remove('copied');
-    btn.textContent = '📋 캡션 복사';
+    btn.textContent = origText;
   }}, 2000);
 }}
 function showToast(msg) {{

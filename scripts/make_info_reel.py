@@ -116,8 +116,8 @@ def make_thumbnail(data: dict, dst: Path) -> Path:
     img = Image.new("RGB", (W, H), DARK)
     d = ImageDraw.Draw(img)
 
-    # 상단 카테고리 배지 (📚 수리점 안 오는 법 #N)
-    badge_text = f"📚 {data['category']} #{data['series_num']}"
+    # 상단 카테고리 배지 (번호 없음 — 순서 무관 게시)
+    badge_text = f"📚 {data['category']}"
     bf = font("Bold", 40)
     bb = d.textbbox((0, 0), badge_text, font=bf)
     bw = bb[2] - bb[0]
@@ -209,8 +209,8 @@ def make_slide(slide: dict, dst: Path, page_num: int = 1, total_pages: int = 5,
     img = Image.alpha_composite(img.convert("RGBA"), bg_grad).convert("RGB")
     d = ImageDraw.Draw(img)
 
-    # 좌상단 시리즈 라벨 (글 성격 기반 — 데이터에서 받음)
-    series_text = f"{category} #{series_num}"
+    # 좌상단 시리즈 라벨 (번호 없음 — 순서 무관 게시)
+    series_text = f"{category}"
     f_series = font("SemiBold", 30)
     d.text((50, SAFE_TOP - 3), series_text, font=f_series, fill=(220, 220, 220))
 
@@ -549,8 +549,8 @@ def make_wrap(data: dict, dst: Path) -> Path:
     img = Image.new("RGB", (W, H), DARK)
     d = ImageDraw.Draw(img)
 
-    # 상단 배지
-    badge_text = f"📚 {data['category']} #{data['series_num']}"
+    # 상단 배지 (번호 없음)
+    badge_text = f"📚 {data['category']}"
     bf = font("Bold", 36)
     bb = d.textbbox((0, 0), badge_text, font=bf)
     bw = bb[2] - bb[0]
@@ -563,15 +563,51 @@ def make_wrap(data: dict, dst: Path) -> Path:
     )
     d.text(((W - bw) // 2, badge_y + pad_y - 4), badge_text, font=bf, fill=WHITE)
 
-    # 메인 헤드라인 (질문형)
-    f_wrap_head = font("Black", 120)
-    draw_centered(d, 760, data["wrap_headline"], f_wrap_head, ORANGE, letter_spacing=2)
+    # 메인 헤드라인 (질문형) — 폭 자동 축소 또는 줄바꿈
+    headline = data["wrap_headline"]
+    MAX_W = W - 120  # 좌우 60px 마진
+    head_size = 120
+    f_wrap_head = font("Black", head_size)
+    hb = d.textbbox((0, 0), headline, font=f_wrap_head)
+    hw = hb[2] - hb[0]
+    # 폭 초과 시 줄바꿈 시도 (공백 또는 = 기준)
+    head_lines = [headline]
+    if hw > MAX_W:
+        # 공백/= 위치에서 분할
+        for sep in [" = ", " vs ", " — ", " ", "·"]:
+            if sep in headline:
+                parts = headline.split(sep, 1)
+                if len(parts) == 2 and all(len(p.strip()) >= 2 for p in parts):
+                    sep_keep = sep.strip() + " " if sep.strip() in ("=", "vs", "—") else ""
+                    head_lines = [parts[0].strip() + (" " + sep.strip() if sep.strip() in ("=", "vs", "—") else ""),
+                                  parts[1].strip()]
+                    break
+        # 그래도 한 줄 폭 초과 시 폰트 축소
+        while head_size > 70:
+            f_wrap_head = font("Black", head_size)
+            max_line_w = max(d.textbbox((0, 0), l, font=f_wrap_head)[2] for l in head_lines)
+            if max_line_w <= MAX_W:
+                break
+            head_size -= 10
+    line_h = head_size + 16
+    head_start_y = 760 - (len(head_lines) - 1) * line_h // 2
+    for i, line in enumerate(head_lines):
+        draw_centered(d, head_start_y + i * line_h, line, f_wrap_head, ORANGE, letter_spacing=2)
 
-    # 보조 (두 줄)
-    f_wrap_body = font("Medium", 54)
+    # 보조 (두 줄) — 자동 축소
     body = data["wrap_body"]
-    for i, line in enumerate(body.split("\n")[:3]):
-        draw_centered(d, 940 + i * 80, line, f_wrap_body, WHITE)
+    body_lines = body.split("\n")[:3]
+    body_size = 54
+    f_wrap_body = font("Medium", body_size)
+    while body_size > 38:
+        f_wrap_body = font("Medium", body_size)
+        max_w = max(d.textbbox((0, 0), l, font=f_wrap_body)[2] for l in body_lines)
+        if max_w <= MAX_W:
+            break
+        body_size -= 4
+    body_start_y = head_start_y + len(head_lines) * line_h + 60
+    for i, line in enumerate(body_lines):
+        draw_centered(d, body_start_y + i * (body_size + 26), line, f_wrap_body, WHITE)
 
     # 짧은 주황 라인
     d.rectangle((W // 2 - 80, 1230, W // 2 + 80, 1234), fill=ORANGE)
@@ -711,7 +747,7 @@ def make_caption(data: dict, slug: str = "") -> str:
     h = int(_h.md5((slug or data.get("title", "")).encode("utf-8")).hexdigest()[:8], 16)
     comment_cta = COMMENT_CTAS_REEL[h % len(COMMENT_CTAS_REEL)]
 
-    body = f"""📚 {data['category']} #{data['series_num']}
+    body = f"""📚 {data['category']}
 
 {data['title']} {data['subtitle']}
 
