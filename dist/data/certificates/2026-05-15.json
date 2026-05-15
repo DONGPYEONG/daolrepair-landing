@@ -1,8 +1,61 @@
 {
   "date": "2026-05-15",
-  "total": 6,
-  "fetched_at": "2026-05-15T18:23:41.535011+09:00",
+  "total": 7,
+  "fetched_at": "2026-05-15T19:05:24.940752+09:00",
   "certificates": [
+    {
+      "id": "17VhkJIgB3CipeSvKmJswooAwsPUEJF_V",
+      "store": "가산점",
+      "store_address": "서울시 금천구 가산디지털 1로 168, 우림라이온스밸리 A동 117호",
+      "business_no": "603-13-92594",
+      "device": "아이폰",
+      "model": "iPhone 13 Pro",
+      "repair_date": "2026-05-15",
+      "repair_type": "battery",
+      "repair_description": "배터리 교체 수리 완료",
+      "price": 0,
+      "vat_supply": 0,
+      "vat_amount": 0,
+      "technician": "",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1mTUTjM-UYvAYbON6890GFOECRIdwLKqJ",
+          "captured_at": "2026-05-15T19:01:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1SLSQg29bn9ZT8qZQ1Mwl-i4ZsfiVNff0",
+          "captured_at": "2026-05-15T19:00:00+09:00"
+        },
+        "after": null
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-15T10:00:52.643Z",
+      "customer_name_masked": "김*형",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "battery",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1mTUTjM-UYvAYbON6890GFOECRIdwLKqJ",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1SLSQg29bn9ZT8qZQ1Mwl-i4ZsfiVNff0"
+      },
+      "photos_captured": {
+        "imei": "2026-05-15T19:01:00+09:00",
+        "before": "2026-05-15T19:00:00+09:00"
+      }
+    },
     {
       "id": "1gnZPpenvrPNsV0fcMSMgyxcQmQjas64c",
       "store": "가산점",
@@ -135,13 +188,13 @@
       "vat_supply": 0,
       "vat_amount": 0,
       "technician": "",
-      "cause": null,
-      "cause_label": null,
+      "cause": "water",
+      "cause_label": "침수",
       "repair_options": {},
       "repair_symptoms": {},
-      "gender": null,
-      "age_range": null,
-      "prev_repair_where": null,
+      "gender": "F",
+      "age_range": "20대",
+      "prev_repair_where": "unofficial",
       "videos": {
         "before": null,
         "progress": null,
@@ -155,8 +208,8 @@
           "captured_at": "2026-05-15T15:19:00+09:00"
         },
         "before": {
-          "url": "https://daolrepair-photos.fly.dev/api/thumb/15o-mIHDRLuV1Sf4SQhXACf5txhsp-UQ0",
-          "captured_at": "2026-05-15T15:19:00+09:00"
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1SS0UtvaMhcr0vFezkaV8UlL5F4c8nLMv",
+          "captured_at": "2026-05-15T19:00:00+09:00"
         },
         "after": {
           "url": "https://daolrepair-photos.fly.dev/api/thumb/1Fd0aY-cfpaNzC3zSBR5JOi2ahRbJveNc",
@@ -170,15 +223,14 @@
       "repair_type_normalized": "back+camera",
       "photos_flat": {
         "imei": "https://daolrepair-photos.fly.dev/api/thumb/1-FRX9swEk_5T_R0jZQXgGU9r73zfxmgm",
-        "before": "https://daolrepair-photos.fly.dev/api/thumb/15o-mIHDRLuV1Sf4SQhXACf5txhsp-UQ0",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1SS0UtvaMhcr0vFezkaV8UlL5F4c8nLMv",
         "after": "https://daolrepair-photos.fly.dev/api/thumb/1Fd0aY-cfpaNzC3zSBR5JOi2ahRbJveNc"
       },
       "photos_captured": {
         "imei": "2026-05-15T15:19:00+09:00",
-        "before": "2026-05-15T15:19:00+09:00",
+        "before": "2026-05-15T19:00:00+09:00",
         "after": "2026-05-15T17:21:00+09:00"
-      },
-      "repair_duration_min": 122
+      }
     },
     {
       "id": "18X9B-rG1Tfls4UrgZ96Eavg4DaoWKrPb",
