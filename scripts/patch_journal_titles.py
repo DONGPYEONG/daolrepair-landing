@@ -18,87 +18,140 @@ CERT_MAP = ROOT / "data" / "certificates" / "journal-cert-map.json"
 ARTICLES = ROOT / "articles"
 
 
-# 후킹 + SEO 최적화 제목 패턴 (수리 종류별, deterministic 선택)
+# 후킹 + SEO 최적화 제목 패턴 — device·option별 정확한 표현 (메모리 룰 적용)
+# 메모리 룰:
+#   - iPhone 액정: 정품·DD 2가지 / iPhone 배터리: 셀·일반·정품 인증 3옵션
+#   - iPad 액정: 정품 추출·재생 / iPad 배터리: 정품급 / iPad 시간: 1~2일 부품 수급
+#   - Watch 액정: 정품 단독 / Watch 배터리: 정품 추출
+
 TITLE_PATTERNS = {
-    "screen": [
-        "{model} 액정 깨짐 — 당일 30분 정품 교체 완료",
-        "{model} 화면 박살 → 30분 만에 새 화면으로 복원",
-        "{model} 액정 수리 — 정품·DD 옵션 직접 비교 후 교체",
-        "{model} 화면 깨짐 → 당일 픽업 완료",
-        "{model} 액정 교체 — 정품 사용 + 90일 보증",
-    ],
-    "battery": [
-        "{model} 배터리 교체 — 성능치 100% 인증",
-        "{model} 배터리 노화 → 30분 만에 새 배터리로",
-        "{model} 갑자기 꺼짐 해결 — 배터리 교체 후 정상화",
-        "{model} 배터리 80% 미만 → 정품 인증으로 복구",
-        "{model} 배터리 교체 — 메시지 없는 정품 셀 옵션",
-    ],
-    "back": [
-        "{model} 후면 유리 깨짐 — 정품급 교체 완료",
-        "{model} 뒷판 박살 → 색감·MagSafe 그대로 복원",
-        "{model} 후면 단독 교체 — 액정 강요 없이 깔끔",
-        "{model} 후면 유리 깨짐 → 당일 픽업 완료",
-        "{model} 뒷면 깨짐 → 정품급 OEM으로 복구",
-    ],
-    "back-glass": [
-        "{model} 후면 유리 깨짐 — 정품급 교체 완료",
-        "{model} 뒷판 박살 → 색감·MagSafe 그대로 복원",
-        "{model} 후면 단독 교체 — 액정 강요 없이 깔끔",
-    ],
-    "charge": [
-        "{model} 충전 안 됨 — 단자 청소로 살린 케이스",
-        "{model} 충전 불안정 → 단자 교체로 정상화",
-        "{model} 충전구 고장 → 30분 부품 교체",
-        "{model} 충전 안 들어감 → 정밀 진단 후 복구",
-    ],
-    "camera": [
-        "{model} 카메라 흔들림 → 모듈 교체 완료",
-        "{model} 카메라 흐림 → 렌즈 교체로 선명함 복원",
-        "{model} 후면 카메라 고장 → 단독 수리",
-        "{model} OIS 손상 → 정밀 모듈 교체",
-    ],
-    "speaker": [
-        "{model} 스피커 고장 → 부품 교체로 사운드 복원",
-        "{model} 통화 소리 안 들림 → 이어스피커 교체",
-        "{model} 음악 소리 작음 → 라우드스피커 교체",
-    ],
-    "button": [
-        "{model} 전원 버튼 고장 → 부품 교체 완료",
-        "{model} 볼륨 버튼 수리 — 30분 당일 처리",
-        "{model} 버튼 고장 → 정밀 부품 교체",
-    ],
-    "water": [
-        "{model} 침수 응급 → 24시간 안에 복구 성공",
-        "{model} 물에 빠진 후 → 분해 세척으로 살림",
-        "{model} 침수 복구 — 메인보드 부식 제거 완료",
-    ],
-    "sensor": [
-        "{model} Face ID 고장 → 센서 교체 완료",
-        "{model} 센서 손상 → 정밀 수리로 복구",
-        "{model} 근접 센서 고장 → 부품 교체",
-    ],
-    "mainboard": [
-        "{model} 무한 사과 → 메인보드 정밀 수리로 복구",
-        "{model} 부팅 안 됨 → BGA 수리 후 정상화",
-        "{model} 메인보드 손상 → 마스터 직영 수리",
-    ],
-    "screen+battery": [
-        "{model} 액정+배터리 동시 교체 — 분해 한 번에 절약",
-        "{model} 화면+배터리 동시 수리 — 시간·비용 절약",
-        "{model} 액정·배터리 한 번에 — 다올리페어 정직 견적",
-    ],
-    "screen+back": [
-        "{model} 앞뒤 동시 수리 — 한 번에 완료",
-        "{model} 화면+후면 동시 교체 — 분해 1회로 절약",
-    ],
-    "back+battery": [
-        "{model} 후면+배터리 동시 작업 — 시간 절약",
-        "{model} 뒷판·배터리 한 번에 — 마스터 정밀 수리",
-    ],
-    "back+camera": [
-        "{model} 후면·카메라 동시 수리 — 한 번에 완료",
-    ],
+    # ─── iPhone screen ───
+    "iphone:screen": {
+        "정품": [
+            "{model} 액정 정품 교체 — 당일 30분 완료",
+            "{model} 화면 깨짐 → 정품 액정 30분 교체",
+            "{model} 정품 액정 교체 후기 — 다올리페어",
+        ],
+        "DD": [
+            "{model} 액정 DD 교체 — 가성비 30분 옵션",
+            "{model} 화면 깨짐 → DD 액정으로 합리적 복구",
+        ],
+        "default": [
+            "{model} 액정 교체 — 당일 30분 완료",
+            "{model} 화면 깨짐 → 30분 픽업 완료",
+            "{model} 액정 수리 — 정품·DD 옵션 비교 후 교체",
+        ],
+    },
+    # ─── iPhone battery ───
+    "iphone:battery": {
+        "정품인증": [
+            "{model} 정품 인증 배터리 교체 — 메시지 없는 옵션",
+            "{model} 배터리 정품 인증으로 교체 — 30분 당일",
+        ],
+        "셀": [
+            "{model} 셀 교체 배터리 — 가성비 옵션 30분",
+            "{model} 배터리 셀 교체 — 합리적 가격",
+        ],
+        "일반": [
+            "{model} 일반 호환 배터리 — 합리적 30분 교체",
+        ],
+        "default": [
+            "{model} 배터리 교체 — 30분 당일 복구",
+            "{model} 배터리 노화 → 30분 만에 새 배터리로",
+            "{model} 갑자기 꺼짐 해결 — 배터리 교체 후 정상화",
+        ],
+    },
+    # ─── iPhone back ───
+    "iphone:back": {
+        "default": [
+            "{model} 후면 유리 정품급 교체 완료",
+            "{model} 뒷판 깨짐 → 색감·MagSafe 그대로 복원",
+            "{model} 후면 단독 교체 — 액정 강요 없이 깔끔",
+        ],
+    },
+    "iphone:back-glass": {"default": ["{model} 후면 유리 정품급 교체 완료", "{model} 뒷판 깨짐 → 정품급 OEM으로 복구"]},
+    "iphone:charge": {
+        "default": [
+            "{model} 충전 안 됨 — 단자 청소로 살린 케이스",
+            "{model} 충전 불안정 → 단자 교체로 정상화",
+            "{model} 충전구 고장 → 30분 부품 교체",
+        ],
+    },
+    "iphone:camera": {
+        "default": [
+            "{model} 카메라 흔들림 → 모듈 교체 완료",
+            "{model} 카메라 흐림 → 렌즈 교체로 선명함 복원",
+            "{model} OIS 손상 → 정밀 모듈 교체",
+        ],
+    },
+    "iphone:speaker": {"default": ["{model} 스피커 고장 → 부품 교체로 사운드 복원", "{model} 통화 소리 안 들림 → 이어스피커 교체"]},
+    "iphone:button": {"default": ["{model} 전원 버튼 고장 → 부품 교체 완료", "{model} 볼륨 버튼 수리 — 30분 당일 처리"]},
+    "iphone:water": {"default": ["{model} 침수 응급 → 24시간 안에 복구 성공", "{model} 물에 빠진 후 → 분해 세척으로 살림"]},
+    "iphone:sensor": {"default": ["{model} Face ID 고장 → 센서 교체 완료", "{model} 센서 손상 → 정밀 수리로 복구"]},
+    "iphone:mainboard": {"default": ["{model} 무한 사과 → 메인보드 정밀 수리", "{model} 부팅 안 됨 → BGA 수리 후 정상화"]},
+    "iphone:screen+battery": {"default": ["{model} 액정+배터리 동시 교체 — 분해 한 번에 절약", "{model} 화면+배터리 동시 수리"]},
+    "iphone:screen+back": {"default": ["{model} 앞뒤 동시 수리 — 한 번에 완료"]},
+    "iphone:back+battery": {"default": ["{model} 후면+배터리 동시 작업 — 시간 절약"]},
+    "iphone:back+camera": {"default": ["{model} 후면·카메라 동시 수리 — 한 번에 완료"]},
+
+    # ─── iPad — 1~2일 부품 수급 (당일 X) ───
+    "ipad:screen": {
+        "default": [
+            "{model} 액정 교체 — 정품 추출·재생 옵션",
+            "{model} 화면 깨짐 → 1~2일 부품 수급 후 복구",
+            "{model} 액정 수리 — 마스터 직영 정밀 작업",
+        ],
+    },
+    "ipad:battery": {
+        "default": [
+            "{model} 배터리 교체 — 정품급 셀 사용",
+            "{model} 배터리 노화 → 정품급 배터리로 복구",
+        ],
+    },
+    "ipad:back": {"default": ["{model} 후면 수리 — 마스터 직영 정밀 작업"]},
+    "ipad:charge": {"default": ["{model} 충전 안 됨 → 단자 정밀 수리", "{model} 충전구 고장 → 부품 교체 복구"]},
+    "ipad:camera": {"default": ["{model} 카메라 수리 — 정밀 모듈 교체"]},
+    "ipad:speaker": {"default": ["{model} 스피커 수리 — 부품 교체 완료"]},
+    "ipad:button": {"default": ["{model} 버튼 수리 — 마스터 직영 정밀 작업", "{model} 홈버튼 수리 후기"]},
+    "ipad:water": {"default": ["{model} 침수 응급 → 분해 세척 복구"]},
+    "ipad:mainboard": {"default": ["{model} 메인보드 정밀 수리 — 마스터 직영"]},
+
+    # ─── Watch — 정품 단독 액정 / 정품 추출 부자재 ───
+    "watch:screen": {
+        "default": [
+            "{model} 액정 정품 교체 — 마스터 직영",
+            "{model} 화면 깨짐 → 정품 액정으로 복구",
+        ],
+    },
+    "watch:battery": {
+        "default": [
+            "{model} 배터리 정품 추출 셀 교체",
+            "{model} 배터리 노화 → 정품 추출로 복구",
+            "{model} 배터리 교체 — 90일 무상 A/S",
+        ],
+    },
+    "watch:back": {"default": ["{model} 후면 세라믹 정품 추출 교체", "{model} 뒷판 깨짐 → 정품 추출 복구"]},
+    "watch:button": {"default": ["{model} 크라운·버튼 수리 — 정품 추출 부자재"]},
+    "watch:water": {"default": ["{model} 침수 복구 — 분해 세척 + 부자재 교체"]},
+    "watch:speaker": {"default": ["{model} 스피커 수리 — 정품 추출 부자재 교체"]},
+    "watch:sensor": {"default": ["{model} 센서 수리 — 정밀 작업 복구"]},
+    "watch:screen+battery": {"default": ["{model} 액정+배터리 동시 교체 — 분해 한 번에"]},
+    "watch:back+battery": {"default": ["{model} 후면+배터리 동시 교체"]},
+
+    # ─── AirPods ───
+    "airpods:battery": {"default": ["{model} 배터리 정품 추출 교체", "{model} 배터리 노화 → 정품 추출로 복구"]},
+    "airpods:speaker": {"default": ["{model} 한쪽 스피커 교체 — 정품 추출 부품"]},
+    "airpods:charge": {"default": ["{model} 케이스 충전 안 됨 → 셀·단자 정밀 수리"]},
+
+    # ─── MacBook ───
+    "macbook:battery": {"default": ["{model} 배터리 교체 — 마스터 직영 정밀 작업"]},
+    "macbook:screen": {"default": ["{model} 액정 교체 — 정품 추출 부품"]},
+    "macbook:button": {"default": ["{model} 키보드 수리 — 정밀 부품 교체"]},
+    "macbook:water": {"default": ["{model} 침수 응급 → 분해 세척 복구"]},
+
+    # ─── Pencil ───
+    "pencil:battery": {"default": ["{model} 배터리 교체 — 정밀 작업"]},
+    "pencil:other": {"default": ["{model} 수리 — 마스터 직영 정밀 작업"]},
 }
 
 DEFAULT_TITLES = [
@@ -106,6 +159,34 @@ DEFAULT_TITLES = [
     "{model} 정밀 수리 — 90일 무상 A/S 보증",
     "{model} 수리 후기 — 마스터 직영 정직 견적",
 ]
+
+
+def detect_option_key(repair_options, repair_type):
+    """repair_options에서 옵션 키 추출 (정품/DD/정품인증/셀/일반 등)."""
+    if not repair_options or not isinstance(repair_options, dict):
+        return "default"
+    # battery 관련 우선
+    if "battery" in repair_type:
+        bat = (repair_options.get("battery") or "").replace(" ", "")
+        if "정품인증" in bat or "인증" in bat: return "정품인증"
+        if "셀" in bat: return "셀"
+        if "일반" in bat: return "일반"
+    if "screen" in repair_type:
+        scr = (repair_options.get("screen") or "").replace(" ", "")
+        if "정품인증" in scr: return "정품인증"
+        if "정품" in scr: return "정품"
+        if "DD" in scr.upper(): return "DD"
+    return "default"
+
+
+def device_key(device_hint):
+    """device_hint → TITLE_PATTERNS 키 prefix."""
+    if device_hint == "애플워치": return "watch"
+    if device_hint == "아이패드": return "ipad"
+    if device_hint == "맥북": return "macbook"
+    if device_hint == "에어팟": return "airpods"
+    if device_hint == "애플펜슬": return "pencil"
+    return "iphone"
 
 
 def normalize_model(model, device_hint=None):
@@ -189,12 +270,28 @@ def normalize_model(model, device_hint=None):
     return m
 
 
-def pick_title(case_id, repair_type, model, device_hint=None):
-    """case_id 기반 deterministic 선택 (같은 케이스 → 같은 제목)."""
-    patterns = TITLE_PATTERNS.get(repair_type) or DEFAULT_TITLES
-    seed = int(hashlib.md5((case_id or model).encode("utf-8")).hexdigest()[:8], 16)
-    template = patterns[seed % len(patterns)]
-    return template.format(model=normalize_model(model, device_hint))
+def pick_title(case_id, repair_type, model, device_hint=None, repair_options=None):
+    """case_id 기반 deterministic 선택. device + option별 정확한 패턴 사용."""
+    dev_key = device_key(device_hint)
+    opt_key = detect_option_key(repair_options, repair_type)
+
+    # device:type 매칭
+    type_patterns = TITLE_PATTERNS.get(f"{dev_key}:{repair_type}")
+    if not type_patterns:
+        # 폴백 — device 무관 default 사용
+        return _hash_pick(case_id or model, DEFAULT_TITLES).format(
+            model=normalize_model(model, device_hint))
+
+    # option별 매칭, 없으면 default
+    candidates = type_patterns.get(opt_key) or type_patterns.get("default") or DEFAULT_TITLES
+    return _hash_pick(case_id or model, candidates).format(
+        model=normalize_model(model, device_hint))
+
+
+def _hash_pick(seed_str, items):
+    """deterministic 선택."""
+    seed = int(hashlib.md5(seed_str.encode("utf-8")).hexdigest()[:8], 16)
+    return items[seed % len(items)]
 
 
 def parse_filename(filename):
@@ -260,8 +357,24 @@ def patch_journal(journal_path, new_title):
     journal_path.write_text(c, encoding="utf-8")
 
 
+def _load_raw_certs():
+    """모든 raw cert 데이터 로드 (cert_id → cert object)."""
+    by_id = {}
+    for f in sorted((ROOT / "data" / "certificates").glob("*.json")):
+        if "map" in f.name: continue
+        try:
+            d = json.loads(f.read_text(encoding="utf-8"))
+            for c in d.get("certificates", []):
+                cid = c.get("id")
+                if cid: by_id[cid] = c
+        except Exception:
+            continue
+    return by_id
+
+
 def main():
     cert_map = json.loads(CERT_MAP.read_text(encoding="utf-8")) if CERT_MAP.exists() else {}
+    raw_certs = _load_raw_certs()  # cert_id → full cert (repair_options 포함)
     journals = sorted(ARTICLES.glob("journal-*.html"))
 
     print(f"📚 일지 {len(journals)}개 제목 일괄 교체")
@@ -271,6 +384,9 @@ def main():
         device_hint, repair_type = parse_filename(j.name)
         cert = cert_map.get(j.stem, {})
         model = cert.get("model") or ""
+        # raw cert에서 repair_options 가져오기
+        raw_cert = raw_certs.get(cert.get("cert_id", "")) or {}
+        repair_options = raw_cert.get("repair_options") or {}
         # cert 없으면 파일명에서 모델 추출 시도
         if not model:
             # journal-YYYY-MM-DD-{device}-{model}-{type}-{hash}
@@ -288,13 +404,16 @@ def main():
             model = re.sub(type_re, "", name_after_date)
             model = model.replace("-", " ").strip() or "디바이스"
 
-        new_title = pick_title(j.stem, repair_type, model, device_hint)
-        # 중복 방지 — 같은 제목 발생 시 모델만 살짝 변형
+        new_title = pick_title(j.stem, repair_type, model, device_hint, repair_options)
+        # 중복 방지 — 같은 제목 발생 시 패턴 풀에서 다른 거 선택
         if new_title in title_to_journals:
-            patterns = TITLE_PATTERNS.get(repair_type) or DEFAULT_TITLES
-            for offset in range(1, len(patterns)):
+            dev_key = device_key(device_hint)
+            type_patterns = TITLE_PATTERNS.get(f"{dev_key}:{repair_type}", {})
+            opt_key = detect_option_key(repair_options, repair_type)
+            candidates = type_patterns.get(opt_key) or type_patterns.get("default") or DEFAULT_TITLES
+            for offset in range(1, len(candidates) * 3):
                 seed = int(hashlib.md5((j.stem + str(offset)).encode("utf-8")).hexdigest()[:8], 16)
-                alt = patterns[seed % len(patterns)].format(model=normalize_model(model, device_hint))
+                alt = candidates[seed % len(candidates)].format(model=normalize_model(model, device_hint))
                 if alt not in title_to_journals:
                     new_title = alt
                     break
