@@ -75,30 +75,32 @@ def normalize_repair_type(rt):
 
 def parse_journal_filename(filename):
     """파일명에서 날짜·모델·타입 추출.
-    형식: journal-YYYY-MM-DD-{기종 + 모델 자유}-{타입}-{해시}.html
-    예: journal-2026-04-15-아이폰7-screen-1l_qsfwc.html  → 기종+모델="아이폰7"
-        journal-2026-05-14-아이폰-iphone-15-pro-max-battery-1Zo1BU6U.html
+    형식: journal-YYYY-MM-DD-{기종+모델}-{타입}-{해시}.html
+
+    해시는 영문·숫자·_·- 조합으로 가변 길이 (예: 1l_qsfwc, 1g-4Xu6x, 13U0ly-i).
+    → 정규식으로 타입 + 그 뒤 = 해시 한 번에 매칭.
     """
     name = filename.replace(".html", "").replace("journal-", "")
-    # 날짜 추출
     m = re.match(r"^(\d{4}-\d{2}-\d{2})-(.+)$", name)
     if not m: return None
     date = m.group(1)
     rest = m.group(2)
-    # 끝에 해시 (영문숫자 6+자) 제거
-    parts = rest.rsplit("-", 1)
-    if len(parts) != 2: return None
-    hash_str = parts[1]
-    body = parts[0]
-    # 끝에 타입 추출 (screen/battery/back/charge/camera/speaker/button/sensor/mainboard/water/other + 복합)
-    type_pattern = r"(screen\+battery|screen\+back|back\+battery|back\+camera|battery\+back|battery\+other|charge\+other|screen|battery|back|back-glass|charge|camera|speaker|button|sensor|mainboard|water|other)"
-    m2 = re.match(r"^(.+?)-" + type_pattern + r"$", body)
+
+    # 타입 정규식 — 복합 타입 먼저 (긴 것부터 매칭)
+    type_pattern = (r"(screen\+battery\+back|screen\+battery|screen\+back|"
+                    r"back\+battery|back\+camera|battery\+back|battery\+other|"
+                    r"charge\+other|"
+                    r"screen|battery|back-glass|back|charge|camera|"
+                    r"speaker|button|sensor|mainboard|water|other)")
+    # 타입 + 해시 한 번에 매칭 — 해시에 - 있어도 끝까지 잡음
+    m2 = re.search(r"-" + type_pattern + r"-([A-Za-z0-9_\-]+)$", rest)
     if not m2: return None
-    device_model = m2.group(1)
-    repair_type = m2.group(2)
+    device_model = rest[:m2.start()]
+    repair_type = m2.group(1)
+    hash_str = m2.group(2)
     return {
         "date": date,
-        "device_model": device_model,  # 통합 (기종+모델)
+        "device_model": device_model,
         "repair_type": repair_type,
         "hash": hash_str,
     }
