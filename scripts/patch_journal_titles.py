@@ -25,133 +25,194 @@ ARTICLES = ROOT / "articles"
 #   - Watch 액정: 정품 단독 / Watch 배터리: 정품 추출
 
 TITLE_PATTERNS = {
-    # ─── iPhone screen ───
+    # ─── iPhone screen — 길게: 모델 + 옵션 + 비용·당일 + 매장 ───
     "iphone:screen": {
         "정품": [
-            "{model} 액정 정품 교체 — 당일 30분 완료",
-            "{model} 화면 깨짐 → 정품 액정 30분 교체",
-            "{model} 정품 액정 교체 후기 — 다올리페어",
+            "{model} 액정 정품 교체 비용 — 30분 당일 사설 수리 ({store})",
+            "{model} 화면 깨짐 정품 액정 교체 — 다올리페어 {store} 30분 사례",
+            "{model} 정품 액정 수리 가격 — 당일 픽업 ({store} 케이스)",
         ],
         "DD": [
-            "{model} 액정 DD 교체 — 가성비 30분 옵션",
-            "{model} 화면 깨짐 → DD 액정으로 합리적 복구",
+            "{model} 액정 DD 교체 비용 가격 — 가성비 30분 사설 ({store})",
+            "{model} 화면 깨짐 DD 액정 교체 — 다올리페어 {store} 합리적 가격",
+            "{model} 액정 DD vs 정품 — DD 선택 30분 당일 ({store})",
         ],
         "default": [
-            "{model} 액정 교체 — 당일 30분 완료",
-            "{model} 화면 깨짐 → 30분 픽업 완료",
-            "{model} 액정 수리 — 정품·DD 옵션 비교 후 교체",
+            "{model} 액정 교체 비용 가격 — 30분 당일 사설 수리 ({store})",
+            "{model} 화면 깨짐 — 정품·DD 옵션 비교 후 30분 교체 ({store})",
+            "{model} 액정 수리 후기 — 다올리페어 {store} 당일 30분",
         ],
     },
     # ─── iPhone battery ───
     "iphone:battery": {
         "정품인증": [
-            "{model} 정품 인증 배터리 교체 — 메시지 없는 옵션",
-            "{model} 배터리 정품 인증으로 교체 — 30분 당일",
+            "{model} 정품 인증 배터리 교체 비용 — 메시지 없는 옵션 ({store})",
+            "{model} 배터리 정품 인증 셀 교체 — 30분 당일 다올리페어 {store}",
+            "{model} 배터리 교체 가격 정품 인증 — 메시지 없음 ({store})",
         ],
         "셀": [
-            "{model} 셀 교체 배터리 — 가성비 옵션 30분",
-            "{model} 배터리 셀 교체 — 합리적 가격",
+            "{model} 셀 교체 배터리 비용 — 가성비 30분 옵션 ({store})",
+            "{model} 배터리 셀 교체 가격 — 합리적 30분 ({store})",
+            "{model} 배터리 셀 교체 후기 — 다올리페어 {store} 가성비",
         ],
         "일반": [
-            "{model} 일반 호환 배터리 — 합리적 30분 교체",
+            "{model} 일반 호환 배터리 교체 비용 — 합리적 30분 ({store})",
         ],
         "default": [
-            "{model} 배터리 교체 — 30분 당일 복구",
-            "{model} 배터리 노화 → 30분 만에 새 배터리로",
-            "{model} 갑자기 꺼짐 해결 — 배터리 교체 후 정상화",
+            "{model} 배터리 교체 비용 가격 — 30분 당일 사설 ({store})",
+            "{model} 배터리 노화 80% 미만 → 30분 새 배터리 ({store})",
+            "{model} 갑자기 꺼짐 → 배터리 교체로 해결 ({store})",
+            "{model} 배터리 교체 후기 — 다올리페어 {store} 30분 사례",
         ],
     },
     # ─── iPhone back ───
     "iphone:back": {
         "default": [
-            "{model} 후면 유리 정품급 교체 완료",
-            "{model} 뒷판 깨짐 → 색감·MagSafe 그대로 복원",
-            "{model} 후면 단독 교체 — 액정 강요 없이 깔끔",
+            "{model} 후면 유리 교체 비용 — 정품급 OEM ({store})",
+            "{model} 뒷판 깨짐 수리 가격 — 색감·MagSafe 그대로 ({store})",
+            "{model} 후면 유리 단독 교체 — 액정 강요 없이 ({store})",
+            "{model} 후면 깨짐 → 정품급 교체 후기 (다올리페어 {store})",
         ],
     },
-    "iphone:back-glass": {"default": ["{model} 후면 유리 정품급 교체 완료", "{model} 뒷판 깨짐 → 정품급 OEM으로 복구"]},
+    "iphone:back-glass": {
+        "default": [
+            "{model} 후면 유리 교체 비용 — 정품급 OEM ({store})",
+            "{model} 뒷판 깨짐 가격 — 색감 MagSafe 그대로 복원 ({store})",
+        ],
+    },
     "iphone:charge": {
         "default": [
-            "{model} 충전 안 됨 — 단자 청소로 살린 케이스",
-            "{model} 충전 불안정 → 단자 교체로 정상화",
-            "{model} 충전구 고장 → 30분 부품 교체",
+            "{model} 충전 안 됨 — 단자 청소·교체 30분 ({store})",
+            "{model} 충전구 고장 수리 비용 — 부품 교체 30분 ({store})",
+            "{model} 충전 불안정 → 단자 정밀 수리 ({store})",
         ],
     },
     "iphone:camera": {
         "default": [
-            "{model} 카메라 흔들림 → 모듈 교체 완료",
-            "{model} 카메라 흐림 → 렌즈 교체로 선명함 복원",
-            "{model} OIS 손상 → 정밀 모듈 교체",
+            "{model} 카메라 흔들림 OIS 손상 → 모듈 교체 ({store})",
+            "{model} 카메라 흐림 가격 — 렌즈·모듈 교체 ({store})",
+            "{model} 후면 카메라 고장 수리 — 다올리페어 {store}",
         ],
     },
-    "iphone:speaker": {"default": ["{model} 스피커 고장 → 부품 교체로 사운드 복원", "{model} 통화 소리 안 들림 → 이어스피커 교체"]},
-    "iphone:button": {"default": ["{model} 전원 버튼 고장 → 부품 교체 완료", "{model} 볼륨 버튼 수리 — 30분 당일 처리"]},
-    "iphone:water": {"default": ["{model} 침수 응급 → 24시간 안에 복구 성공", "{model} 물에 빠진 후 → 분해 세척으로 살림"]},
-    "iphone:sensor": {"default": ["{model} Face ID 고장 → 센서 교체 완료", "{model} 센서 손상 → 정밀 수리로 복구"]},
-    "iphone:mainboard": {"default": ["{model} 무한 사과 → 메인보드 정밀 수리", "{model} 부팅 안 됨 → BGA 수리 후 정상화"]},
-    "iphone:screen+battery": {"default": ["{model} 액정+배터리 동시 교체 — 분해 한 번에 절약", "{model} 화면+배터리 동시 수리"]},
-    "iphone:screen+back": {"default": ["{model} 앞뒤 동시 수리 — 한 번에 완료"]},
-    "iphone:back+battery": {"default": ["{model} 후면+배터리 동시 작업 — 시간 절약"]},
-    "iphone:back+camera": {"default": ["{model} 후면·카메라 동시 수리 — 한 번에 완료"]},
+    "iphone:speaker": {
+        "default": [
+            "{model} 스피커 고장 수리 비용 — 부품 교체 ({store})",
+            "{model} 통화 소리 안 들림 → 이어스피커 교체 ({store})",
+        ],
+    },
+    "iphone:button": {
+        "default": [
+            "{model} 전원·볼륨 버튼 고장 수리 비용 ({store})",
+            "{model} 버튼 수리 가격 — 30분 부품 교체 ({store})",
+        ],
+    },
+    "iphone:water": {
+        "default": [
+            "{model} 침수 응급 수리 — 24시간 안에 복구 ({store})",
+            "{model} 물에 빠진 후 → 분해 세척으로 살린 사례 ({store})",
+        ],
+    },
+    "iphone:sensor": {
+        "default": [
+            "{model} Face ID 고장 → 센서 교체 수리 ({store})",
+            "{model} 센서 손상 정밀 수리 — 다올리페어 {store}",
+        ],
+    },
+    "iphone:mainboard": {
+        "default": [
+            "{model} 무한 사과 부트 루프 → 메인보드 정밀 수리 ({store})",
+            "{model} 부팅 안 됨 → BGA 수리 비용 ({store})",
+        ],
+    },
+    "iphone:screen+battery": {
+        "default": [
+            "{model} 액정+배터리 동시 교체 비용 — 분해 한 번에 ({store})",
+            "{model} 화면+배터리 동시 수리 가격 — 시간 절약 ({store})",
+        ],
+    },
+    "iphone:screen+back": {"default": ["{model} 앞뒤 동시 수리 비용 — 화면+후면 한 번에 ({store})"]},
+    "iphone:back+battery": {"default": ["{model} 후면+배터리 동시 교체 비용 — 시간 절약 ({store})"]},
+    "iphone:back+camera": {"default": ["{model} 후면·카메라 동시 수리 — 한 번에 완료 ({store})"]},
 
-    # ─── iPad — 1~2일 부품 수급 (당일 X) ───
+    # ─── iPad — 1~2일 부품 수급 ───
     "ipad:screen": {
         "default": [
-            "{model} 액정 교체 — 정품 추출·재생 옵션",
-            "{model} 화면 깨짐 → 1~2일 부품 수급 후 복구",
-            "{model} 액정 수리 — 마스터 직영 정밀 작업",
+            "{model} 액정 교체 비용 가격 — 정품 추출 1~2일 부품 수급 ({store})",
+            "{model} 화면 깨짐 수리 — 정품 추출·재생 옵션 ({store})",
+            "{model} 액정 수리 후기 — 다올리페어 {store} 마스터 직영",
         ],
     },
     "ipad:battery": {
         "default": [
-            "{model} 배터리 교체 — 정품급 셀 사용",
-            "{model} 배터리 노화 → 정품급 배터리로 복구",
+            "{model} 배터리 교체 비용 — 정품급 셀 1~2일 ({store})",
+            "{model} 배터리 노화 수리 가격 — 정품급 ({store})",
         ],
     },
-    "ipad:back": {"default": ["{model} 후면 수리 — 마스터 직영 정밀 작업"]},
-    "ipad:charge": {"default": ["{model} 충전 안 됨 → 단자 정밀 수리", "{model} 충전구 고장 → 부품 교체 복구"]},
-    "ipad:camera": {"default": ["{model} 카메라 수리 — 정밀 모듈 교체"]},
-    "ipad:speaker": {"default": ["{model} 스피커 수리 — 부품 교체 완료"]},
-    "ipad:button": {"default": ["{model} 버튼 수리 — 마스터 직영 정밀 작업", "{model} 홈버튼 수리 후기"]},
-    "ipad:water": {"default": ["{model} 침수 응급 → 분해 세척 복구"]},
-    "ipad:mainboard": {"default": ["{model} 메인보드 정밀 수리 — 마스터 직영"]},
+    "ipad:back": {"default": ["{model} 후면 수리 비용 — 마스터 직영 ({store})"]},
+    "ipad:charge": {
+        "default": [
+            "{model} 충전 안 됨 — 단자 정밀 수리 ({store})",
+            "{model} 충전구 고장 수리 비용 — 부품 교체 ({store})",
+        ],
+    },
+    "ipad:camera": {"default": ["{model} 카메라 수리 비용 — 정밀 모듈 교체 ({store})"]},
+    "ipad:speaker": {"default": ["{model} 스피커 수리 — 부품 교체 ({store})"]},
+    "ipad:button": {
+        "default": [
+            "{model} 홈버튼·전원 버튼 수리 비용 ({store})",
+            "{model} 버튼 수리 — 마스터 직영 정밀 작업 ({store})",
+        ],
+    },
+    "ipad:water": {"default": ["{model} 침수 응급 수리 — 분해 세척 ({store})"]},
+    "ipad:mainboard": {"default": ["{model} 메인보드 정밀 수리 — 마스터 직영 ({store})"]},
 
     # ─── Watch — 정품 단독 액정 / 정품 추출 부자재 ───
     "watch:screen": {
         "default": [
-            "{model} 액정 정품 교체 — 마스터 직영",
-            "{model} 화면 깨짐 → 정품 액정으로 복구",
+            "{model} 액정 교체 비용 가격 — 정품 액정 사용 ({store})",
+            "{model} 화면 깨짐 수리 — 정품 액정 단독 ({store})",
+            "{model} 액정 수리 후기 — 다올리페어 {store} 마스터 직영",
         ],
     },
     "watch:battery": {
         "default": [
-            "{model} 배터리 정품 추출 셀 교체",
-            "{model} 배터리 노화 → 정품 추출로 복구",
-            "{model} 배터리 교체 — 90일 무상 A/S",
+            "{model} 배터리 교체 비용 — 정품 추출 셀 ({store})",
+            "{model} 배터리 노화 → 정품 추출 셀 교체 ({store})",
+            "{model} 배터리 수리 가격 — 정품 추출 + 90일 보증 ({store})",
         ],
     },
-    "watch:back": {"default": ["{model} 후면 세라믹 정품 추출 교체", "{model} 뒷판 깨짐 → 정품 추출 복구"]},
-    "watch:button": {"default": ["{model} 크라운·버튼 수리 — 정품 추출 부자재"]},
-    "watch:water": {"default": ["{model} 침수 복구 — 분해 세척 + 부자재 교체"]},
-    "watch:speaker": {"default": ["{model} 스피커 수리 — 정품 추출 부자재 교체"]},
-    "watch:sensor": {"default": ["{model} 센서 수리 — 정밀 작업 복구"]},
-    "watch:screen+battery": {"default": ["{model} 액정+배터리 동시 교체 — 분해 한 번에"]},
-    "watch:back+battery": {"default": ["{model} 후면+배터리 동시 교체"]},
+    "watch:back": {
+        "default": [
+            "{model} 후면 세라믹 교체 비용 — 정품 추출 ({store})",
+            "{model} 뒷판 깨짐 → 정품 추출 복구 ({store})",
+        ],
+    },
+    "watch:button": {"default": ["{model} 크라운·버튼 수리 비용 — 정품 추출 부자재 ({store})"]},
+    "watch:water": {"default": ["{model} 침수 복구 — 분해 세척 + 부자재 교체 ({store})"]},
+    "watch:speaker": {"default": ["{model} 스피커 수리 비용 — 정품 추출 부자재 ({store})"]},
+    "watch:sensor": {"default": ["{model} 센서 수리 비용 — 정밀 작업 ({store})"]},
+    "watch:screen+battery": {"default": ["{model} 액정+배터리 동시 교체 비용 — 한 번에 ({store})"]},
+    "watch:back+battery": {"default": ["{model} 후면+배터리 동시 교체 비용 ({store})"]},
 
     # ─── AirPods ───
-    "airpods:battery": {"default": ["{model} 배터리 정품 추출 교체", "{model} 배터리 노화 → 정품 추출로 복구"]},
-    "airpods:speaker": {"default": ["{model} 한쪽 스피커 교체 — 정품 추출 부품"]},
-    "airpods:charge": {"default": ["{model} 케이스 충전 안 됨 → 셀·단자 정밀 수리"]},
+    "airpods:battery": {
+        "default": [
+            "{model} 배터리 교체 비용 — 정품 추출 셀 ({store})",
+            "{model} 배터리 노화 → 정품 추출로 복구 ({store})",
+        ],
+    },
+    "airpods:speaker": {"default": ["{model} 한쪽 스피커 교체 비용 — 정품 추출 부품 ({store})"]},
+    "airpods:charge": {"default": ["{model} 케이스 충전 안 됨 → 셀·단자 수리 ({store})"]},
 
     # ─── MacBook ───
-    "macbook:battery": {"default": ["{model} 배터리 교체 — 마스터 직영 정밀 작업"]},
-    "macbook:screen": {"default": ["{model} 액정 교체 — 정품 추출 부품"]},
-    "macbook:button": {"default": ["{model} 키보드 수리 — 정밀 부품 교체"]},
-    "macbook:water": {"default": ["{model} 침수 응급 → 분해 세척 복구"]},
+    "macbook:battery": {"default": ["{model} 배터리 교체 비용 — 마스터 직영 ({store})"]},
+    "macbook:screen": {"default": ["{model} 액정 교체 비용 — 정품 추출 부품 ({store})"]},
+    "macbook:button": {"default": ["{model} 키보드 수리 비용 — 정밀 부품 교체 ({store})"]},
+    "macbook:water": {"default": ["{model} 침수 응급 수리 — 분해 세척 ({store})"]},
 
     # ─── Pencil ───
-    "pencil:battery": {"default": ["{model} 배터리 교체 — 정밀 작업"]},
-    "pencil:other": {"default": ["{model} 수리 — 마스터 직영 정밀 작업"]},
+    "pencil:battery": {"default": ["{model} 배터리 교체 비용 — 정밀 작업 ({store})"]},
+    "pencil:other": {"default": ["{model} 수리 비용 — 마스터 직영 ({store})"]},
 }
 
 DEFAULT_TITLES = [
@@ -270,22 +331,23 @@ def normalize_model(model, device_hint=None):
     return m
 
 
-def pick_title(case_id, repair_type, model, device_hint=None, repair_options=None):
+def pick_title(case_id, repair_type, model, device_hint=None, repair_options=None, store=""):
     """case_id 기반 deterministic 선택. device + option별 정확한 패턴 사용."""
     dev_key = device_key(device_hint)
     opt_key = detect_option_key(repair_options, repair_type)
 
+    # store 정규화 (가산점 → 가산점 그대로, 없으면 "다올리페어")
+    store_display = store if store else "다올리페어"
+
     # device:type 매칭
     type_patterns = TITLE_PATTERNS.get(f"{dev_key}:{repair_type}")
     if not type_patterns:
-        # 폴백 — device 무관 default 사용
         return _hash_pick(case_id or model, DEFAULT_TITLES).format(
-            model=normalize_model(model, device_hint))
+            model=normalize_model(model, device_hint), store=store_display)
 
-    # option별 매칭, 없으면 default
     candidates = type_patterns.get(opt_key) or type_patterns.get("default") or DEFAULT_TITLES
     return _hash_pick(case_id or model, candidates).format(
-        model=normalize_model(model, device_hint))
+        model=normalize_model(model, device_hint), store=store_display)
 
 
 def _hash_pick(seed_str, items):
@@ -404,7 +466,8 @@ def main():
             model = re.sub(type_re, "", name_after_date)
             model = model.replace("-", " ").strip() or "디바이스"
 
-        new_title = pick_title(j.stem, repair_type, model, device_hint, repair_options)
+        store = cert.get("store") or "다올리페어"
+        new_title = pick_title(j.stem, repair_type, model, device_hint, repair_options, store)
         # 중복 방지 — 같은 제목 발생 시 패턴 풀에서 다른 거 선택
         if new_title in title_to_journals:
             dev_key = device_key(device_hint)
@@ -413,7 +476,8 @@ def main():
             candidates = type_patterns.get(opt_key) or type_patterns.get("default") or DEFAULT_TITLES
             for offset in range(1, len(candidates) * 3):
                 seed = int(hashlib.md5((j.stem + str(offset)).encode("utf-8")).hexdigest()[:8], 16)
-                alt = candidates[seed % len(candidates)].format(model=normalize_model(model, device_hint))
+                alt = candidates[seed % len(candidates)].format(
+                    model=normalize_model(model, device_hint), store=store)
                 if alt not in title_to_journals:
                     new_title = alt
                     break
