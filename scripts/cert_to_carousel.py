@@ -71,7 +71,7 @@ def make_cert_carousel_data(cert):
         "intro_body": (
             f"{store} {customer} 고객님 케이스.\n"
             f"수리 일자 {date_str}, 담당 마스터 {technician or '직영 기사'}.\n\n"
-            f"카카오톡으로 수리 확인서 자동 발급 + 90일 무상 A/S."
+            f"필요 시 카카오톡 수리 확인서 발급 가능 + 90일 무상 A/S."
         ),
         "intro_author": "다올리페어 마스터",
         "slides": [
@@ -100,7 +100,7 @@ def make_cert_carousel_data(cert):
                 "num": "04",
                 "headline": "수리 확인서 발급",
                 "highlight": "카카오톡",
-                "body": "수리 완료 시 자동 발급\n매장명 · 사업자번호 · 영수증 포함",
+                "body": "요청 시 카카오톡으로 발급\n매장명 · 사업자번호 · 영수증 포함",
                 "excerpt": "모든 수리는 카카오톡으로 정식 수리 확인서 발급. 사진 + 영수증 + 보증 조건까지 완비. 보험 청구·환불 분쟁 시 공식 증빙 자료로 사용 가능.",
             },
             {

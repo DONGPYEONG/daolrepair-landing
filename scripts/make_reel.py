@@ -791,11 +791,11 @@ def make_cert_card_image(cert, dst: Path) -> Path:
 
     # 하단 안내
     foot_y = card_y2 + 80
-    draw_centered(d, foot_y, "✓  카카오톡 자동 발급",
+    draw_centered(d, foot_y, "✓  90일 무상 A/S",
                   sdg("medium", 42), (230, 230, 230), letter_spacing=2)
-    draw_centered(d, foot_y + 80, "✓  90일 무상 A/S",
+    draw_centered(d, foot_y + 80, "✓  매장 · 사업자번호 · 영수증 포함",
                   sdg("medium", 42), (230, 230, 230), letter_spacing=2)
-    draw_centered(d, foot_y + 160, "✓  매장 · 사업자번호 · 영수증 포함",
+    draw_centered(d, foot_y + 160, "✓  필요 시 카카오톡 수리 확인서 발급",
                   sdg("medium", 38), (170, 170, 170), letter_spacing=1)
 
     img.save(dst, quality=95)

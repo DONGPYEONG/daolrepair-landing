@@ -99,26 +99,62 @@ def download_photo(url, dst):
         return False
 
 
+def get_photo_url(photo_entry):
+    """photos.before 구조 변경 대응 — 객체면 .url, 문자열이면 그대로."""
+    if not photo_entry: return None
+    if isinstance(photo_entry, dict): return photo_entry.get("url")
+    return photo_entry  # 옛 형식 (문자열)
+
+
+def get_photo_captured_at(photo_entry):
+    """사진 캡처 시각 추출."""
+    if not photo_entry or not isinstance(photo_entry, dict): return None
+    return photo_entry.get("captured_at")
+
+
 def process_certificate(cert, download_photos=True):
     """수리 확인서 1건 처리 — PII 마스킹 + 사진 다운로드."""
     # PII 마스킹
     cert["customer_name_masked"] = mask_name(cert.get("customer_name", ""))
     cert["customer_phone_masked"] = mask_phone(cert.get("customer_phone", ""))
-    # 원본 PII는 별도 보관 안 함 (콘텐츠에서 사용 안 함)
     cert.pop("customer_name", None)
     cert.pop("customer_phone", None)
 
     # repair_type 정규화
     cert["repair_type_normalized"] = normalize_repair_type(cert.get("repair_type", ""))
 
+    # 사진 URL 평면화 (캡처 시각도 별도 저장)
+    photos = cert.get("photos", {}) or {}
+    photos_flat = {}
+    photos_captured = {}
+    for kind in ("imei", "before", "after"):
+        entry = photos.get(kind)
+        url = get_photo_url(entry)
+        if url:
+            photos_flat[kind] = url
+            captured = get_photo_captured_at(entry)
+            if captured:
+                photos_captured[kind] = captured
+    cert["photos_flat"] = photos_flat
+    cert["photos_captured"] = photos_captured
+
+    # 캡처 시각으로 소요 시간 계산
+    if photos_captured.get("before") and photos_captured.get("after"):
+        try:
+            from datetime import datetime
+            t_before = datetime.fromisoformat(photos_captured["before"].replace("Z", "+00:00"))
+            t_after = datetime.fromisoformat(photos_captured["after"].replace("Z", "+00:00"))
+            elapsed_min = int((t_after - t_before).total_seconds() / 60)
+            if 0 < elapsed_min < 60 * 24 * 7:  # 1주일 안
+                cert["repair_duration_min"] = elapsed_min
+        except Exception:
+            pass
+
     # 사진 다운로드 (선택)
     if download_photos:
         cert_id = cert["id"]
-        photos = cert.get("photos", {})
         local_photos = {}
-        for kind in ("imei", "before", "after"):
-            url = photos.get(kind)
-            if not url: continue
+        for kind, url in photos_flat.items():
             local = PHOTOS_DIR / cert_id / f"{kind}.jpg"
             if download_photo(url, local):
                 local_photos[kind] = str(local.relative_to(ROOT))

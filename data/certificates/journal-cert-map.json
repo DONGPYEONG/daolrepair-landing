@@ -529,6 +529,7 @@
     "technician": "금동평",
     "customer_name_masked": "김*학"
   },
+<<<<<<< HEAD
   "journal-2026-05-15-아이폰-iphone-13-mini-battery-1_2PEmAC": {
     "cert_id": "1_2PEmACjXdSqglKqJCNhFho6UUBhJ3Wv",
     "store": "목동점",
@@ -539,6 +540,8 @@
     "technician": "김현기",
     "customer_name_masked": "손*우"
   },
+=======
+>>>>>>> baf43f47 (🔧 수리 확인서 박스 — 자동 발급 표현 제거 + 신규 필드 활용)
   "journal-2026-05-15-애플워치-apple-watch-se-1세대-battery-1vpx9NKK": {
     "cert_id": "1vpx9NKKK_D9VbvsJvC2QUMjn2qL0NDRj",
     "store": "목동점",
