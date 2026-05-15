@@ -555,7 +555,50 @@ function daolShare() {
 <!-- /review-cta-card -->
 
 
-<div class="art-cta" style="background:linear-gradient(135deg,rgba(232,115,42,0.06) 0%,rgba(232,115,42,0.02) 100%);border:1px solid rgba(232,115,42,0.25);border-radius:18px;padding:30px 24px;margin:32px 0;text-align:center;">
+
+  <!-- 수리 확인서 발급 정보 (자동 삽입) -->
+  <style>
+    .art-cert-info {
+      background: linear-gradient(135deg, #fff8f3 0%, #fff 100%);
+      border: 1.5px solid #f5d4b3; border-radius: 16px;
+      padding: 24px 28px; margin: 40px 0;
+    }
+    .art-cert-info-label {
+      display: inline-block; background: var(--orange, #E8732A);
+      color: #fff; font-size: 11px; font-weight: 800;
+      padding: 4px 10px; border-radius: 50px;
+      letter-spacing: 0.5px; margin-bottom: 14px;
+    }
+    .art-cert-info h3 {
+      font-size: 17px; font-weight: 800; color: #1a1a1a;
+      margin: 0 0 16px; line-height: 1.4;
+    }
+    .art-cert-grid { display: grid; grid-template-columns: auto 1fr; gap: 10px 18px; font-size: 14px; }
+    .art-cert-grid dt { color: #888; font-weight: 600; }
+    .art-cert-grid dd { margin: 0; color: #222; font-weight: 700; }
+    .art-cert-price { color: var(--orange, #E8732A); font-size: 16px; }
+    .art-cert-foot {
+      margin-top: 16px; padding-top: 14px; border-top: 1px dashed #e8d4b3;
+      font-size: 13px; color: #666; line-height: 1.6;
+    }
+  </style>
+  <div class="art-cert-info">
+    <div class="art-cert-info-label">📋 수리 확인서 발급 완료</div>
+    <h3>13미니 배터리 교체 수리 완료 — 정직 인증</h3>
+    <dl class="art-cert-grid">
+      <dt>매장</dt><dd>다올리페어 목동점</dd>
+      <dt>고객</dt><dd>허*라 고객님</dd>
+      <dt>수리일</dt><dd>2026-04-25</dd>
+      <dt>작업 내역</dt><dd>배터리 교체 수리 완료</dd>
+      <dt>담당 마스터</dt><dd>김현기</dd>
+      
+    </dl>
+    <div class="art-cert-foot">
+      이 수리는 카카오톡으로 수리 확인서가 자동 발급됐습니다. 다올리페어는 모든 수리에 정직 인증서 + 90일 무상 A/S 제공.
+    </div>
+  </div>
+
+  <div class="art-cta" style="background:linear-gradient(135deg,rgba(232,115,42,0.06) 0%,rgba(232,115,42,0.02) 100%);border:1px solid rgba(232,115,42,0.25);border-radius:18px;padding:30px 24px;margin:32px 0;text-align:center;">
   <div style="display:inline-block;background:rgba(232,115,42,0.15);color:#E8732A;font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 12px;border-radius:50px;margin-bottom:14px;">FREE ESTIMATE</div>
   <h3 style="font-size:22px;font-weight:900;color:#1a1a1a;margin-bottom:8px;letter-spacing:-0.5px;">같은 증상으로 고민 중이신가요?</h3>
   <p style="font-size:14px;color:#666;line-height:1.7;margin-bottom:22px;">

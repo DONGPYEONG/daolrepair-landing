@@ -1,0 +1,126 @@
+{
+  "date": "2026-05-15",
+  "total": 4,
+  "fetched_at": "2026-05-15T15:48:48.545815+09:00",
+  "certificates": [
+    {
+      "id": "1hjihYqdTm78Hwpj-Xy7cUXlOYKdlo42p",
+      "store": "신림점",
+      "store_address": "서울시 관악구 난곡로 365-5 골드인하우스 102호",
+      "business_no": "417-25-64525",
+      "device": "아이폰",
+      "model": "iPhone 14",
+      "repair_date": "2026-05-15",
+      "repair_type": "back+camera",
+      "repair_description": "후면 유리, 카메라 수리 완료",
+      "price": 0,
+      "vat_supply": 0,
+      "vat_amount": 0,
+      "technician": "",
+      "photos": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1-FRX9swEk_5T_R0jZQXgGU9r73zfxmgm",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/15o-mIHDRLuV1Sf4SQhXACf5txhsp-UQ0",
+        "after": null
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-15T06:18:51.366Z",
+      "customer_name_masked": "김*주",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "back+camera",
+      "photos_local": {
+        "imei": "data/certificates/photos/1hjihYqdTm78Hwpj-Xy7cUXlOYKdlo42p/imei.jpg",
+        "before": "data/certificates/photos/1hjihYqdTm78Hwpj-Xy7cUXlOYKdlo42p/before.jpg"
+      }
+    },
+    {
+      "id": "18X9B-rG1Tfls4UrgZ96Eavg4DaoWKrPb",
+      "store": "가산점",
+      "store_address": "서울시 금천구 가산디지털 1로 168, 우림라이온스밸리 A동 117호",
+      "business_no": "603-13-92594",
+      "device": "아이폰",
+      "model": "iPhone 13",
+      "repair_date": "2026-05-15",
+      "repair_type": "battery",
+      "repair_description": "배터리 교체 수리 완료",
+      "price": 90000,
+      "vat_supply": 81818,
+      "vat_amount": 8182,
+      "technician": "금동평",
+      "photos": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1_x2B5BpZOz3bH7n-MbuVbFziw92xflJo",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1kPoBwpSxb0AYpArL4Lgzplo2ani8Upxq",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1WnS_YPe4CFEyHQDKSpr6z0qAXBt3nIQ_"
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-15T04:01:48.314Z",
+      "customer_name_masked": "김*학",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "battery",
+      "photos_local": {
+        "imei": "data/certificates/photos/18X9B-rG1Tfls4UrgZ96Eavg4DaoWKrPb/imei.jpg",
+        "before": "data/certificates/photos/18X9B-rG1Tfls4UrgZ96Eavg4DaoWKrPb/before.jpg",
+        "after": "data/certificates/photos/18X9B-rG1Tfls4UrgZ96Eavg4DaoWKrPb/after.jpg"
+      }
+    },
+    {
+      "id": "1vpx9NKKK_D9VbvsJvC2QUMjn2qL0NDRj",
+      "store": "목동점",
+      "store_address": "서울시 양천구 목동동로63, 대영프라자 107호",
+      "business_no": "459-15-02863",
+      "device": "애플워치",
+      "model": "Apple Watch SE (1세대)",
+      "repair_date": "2026-05-15",
+      "repair_type": "battery",
+      "repair_description": "배터리 교체 수리 완료",
+      "price": 0,
+      "vat_supply": 0,
+      "vat_amount": 0,
+      "technician": "김현기",
+      "photos": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1B8D9p9SNR4xHcNzQJUQpoJ8w_e0E26jb",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1Ttsh6munXTjBrPA07vSTKRzA5_clc3hd",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1PcejzjbSmxJiQg6dvvdWfgQcoN8b_hLm"
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-15T03:13:45.982Z",
+      "customer_name_masked": "박*미",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "battery",
+      "photos_local": {
+        "imei": "data/certificates/photos/1vpx9NKKK_D9VbvsJvC2QUMjn2qL0NDRj/imei.jpg",
+        "before": "data/certificates/photos/1vpx9NKKK_D9VbvsJvC2QUMjn2qL0NDRj/before.jpg",
+        "after": "data/certificates/photos/1vpx9NKKK_D9VbvsJvC2QUMjn2qL0NDRj/after.jpg"
+      }
+    },
+    {
+      "id": "1CH0oLARzEdYQMk2x1qeSlYqTwKoIsdeg",
+      "store": "목동점",
+      "store_address": "서울시 양천구 목동동로63, 대영프라자 107호",
+      "business_no": "459-15-02863",
+      "device": "아이폰",
+      "model": "iPhone 13",
+      "repair_date": "2026-05-15",
+      "repair_type": "battery",
+      "repair_description": "배터리 교체 수리 완료",
+      "price": 90000,
+      "vat_supply": 81818,
+      "vat_amount": 8182,
+      "technician": "김현기",
+      "photos": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1mklZY54dBnv3ADJrvC7HAvbUQx9yNJU6",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1o-0B6z1xtMib5dspkVnabk8jUjX2Yo_X",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1mWsA5KDaGUEMDdbFxjcFv5DFgzyt7BbZ"
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-15T02:13:33.694Z",
+      "customer_name_masked": "이**나",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "battery",
+      "photos_local": {
+        "imei": "data/certificates/photos/1CH0oLARzEdYQMk2x1qeSlYqTwKoIsdeg/imei.jpg",
+        "before": "data/certificates/photos/1CH0oLARzEdYQMk2x1qeSlYqTwKoIsdeg/before.jpg",
+        "after": "data/certificates/photos/1CH0oLARzEdYQMk2x1qeSlYqTwKoIsdeg/after.jpg"
+      }
+    }
+  ]
+}
