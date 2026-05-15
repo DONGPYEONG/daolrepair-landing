@@ -93,3 +93,6 @@
    📋 인덱스: data/journal-index.json
    📑 articles/index.html — 수리 일지 탭 + 58개 카드 자동 등록
    📋 articles/journal.html — 일지 전용 페이지 (58편) 생성
+📂 Drive 크롤링 시작 (root=1-JNrAO3m4x3OaYbA0NlJT5tWvbmypLbn)
+   ✓ 지점 발견: ['신림점', '목동점', '가산점']
+   ✓ 날짜 폴더 60개 발견

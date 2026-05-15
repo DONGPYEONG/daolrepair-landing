@@ -4,3 +4,43 @@
   warnings.warn(eol_message.format("3.9"), FutureWarning)
 /Users/richgeum/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
   warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/richgeum/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+/Users/richgeum/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/richgeum/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+Traceback (most recent call last):
+  File "/Users/richgeum/Desktop/다올리페어 홈페이지/scripts/update_repair_stats.py", line 1064, in <module>
+    main()
+  File "/Users/richgeum/Desktop/다올리페어 홈페이지/scripts/update_repair_stats.py", line 314, in main
+    res = drive.files().list(
+  File "/Users/richgeum/Library/Python/3.9/lib/python/site-packages/googleapiclient/_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "/Users/richgeum/Library/Python/3.9/lib/python/site-packages/googleapiclient/http.py", line 923, in execute
+    resp, content = _retry_request(
+  File "/Users/richgeum/Library/Python/3.9/lib/python/site-packages/googleapiclient/http.py", line 222, in _retry_request
+    raise exception
+  File "/Users/richgeum/Library/Python/3.9/lib/python/site-packages/googleapiclient/http.py", line 191, in _retry_request
+    resp, content = http.request(uri, method, *args, **kwargs)
+  File "/Users/richgeum/Library/Python/3.9/lib/python/site-packages/google_auth_httplib2.py", line 216, in request
+    response, content = self.http.request(
+  File "/Users/richgeum/Library/Python/3.9/lib/python/site-packages/httplib2/__init__.py", line 1727, in request
+    (response, content) = self._request(
+  File "/Users/richgeum/Library/Python/3.9/lib/python/site-packages/httplib2/__init__.py", line 1447, in _request
+    (response, content) = self._conn_request(conn, request_uri, method, body, headers)
+  File "/Users/richgeum/Library/Python/3.9/lib/python/site-packages/httplib2/__init__.py", line 1399, in _conn_request
+    response = conn.getresponse()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 1349, in getresponse
+    response.begin()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 316, in begin
+    version, status, reason = self._read_status()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 277, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+socket.timeout: The read operation timed out

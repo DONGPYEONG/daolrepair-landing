@@ -63,3 +63,4 @@
 error: Your local changes to the following files would be overwritten by merge:
 	data/repair-stats
 ✅ 모든 작업 완료 — 휴대폰 허브에서 확인 가능
+⚠️ 큐 소진 — 0/3개 생성 후 종료. INFO_REELS에 항목 추가 필요.
