@@ -1026,156 +1026,159 @@ def make_hook_image(main: str, sub: str, dst: Path) -> Path:
 def make_ba_cover(before_path: Path, after_path: Path,
                   hook_main: str, hook_sub: str, dst: Path,
                   slug_meta: dict | None = None) -> Path:
-    """BEFORE / AFTER 상하 분할 커버 (9:16) — 인스타 썸네일용.
+    """BEFORE 중심 호기심 커버 (9:16) — 인스타 썸네일용.
+
+    사장님 2026-05-15 명시:
+    - BEFORE/AFTER 분할 X → BEFORE만 보여주고 "이것도 살릴 수 있다고!?" 식 후킹
+    - 파손·노화 상태가 시각적으로 더 자극적 + 호기심 유발 → CTR ↑
 
     구성:
-    - 상단 절반(1080×960): BEFORE 사진 + 좌상단 빨간 "BEFORE" 배지
-    - 가운데 분리 바(약 80px): 검정/오렌지 + 후킹 카피
-    - 하단 절반(1080×960): AFTER 사진 + 좌상단 초록 "AFTER" 배지
+    - 전체 화면: BEFORE 사진 (얼굴 자동 블러)
+    - 상단 그라데이션 어둠 + 디바이스·수리 라벨
+    - 중앙: 빨간 "BEFORE" 배지 + 큰 호기심 후킹 카피
+    - 하단 그라데이션 어둠 + "이것도? 다올이 살린다" 어필
     """
-    H_HALF = (H - 80) // 2   # 920 (가운데 80px 띠)
-    DIVIDER = 80
+    # 호기심 유발 후킹 — repair type 기반 자동 선택
+    repair = (slug_meta.get("repair", "") if slug_meta else "")
+    device = (slug_meta.get("device", "") if slug_meta else "")
+    CURIOSITY_HOOKS = {
+        "screen": ["이것도 살릴 수 있다고!?", "이 화면이 30분 만에...?", "박살난 액정 복구 가능?", "이거 그냥 버려야 할까?"],
+        "battery": ["성능치 80% 미만 → 100%!?", "이 배터리 살릴 수 있어!?", "갑자기 꺼지는 폰 어떡해?", "배터리 부풀음... 응급?"],
+        "back": ["뒷판 박살이 복구 가능!?", "이것도 정품급으로?", "후면 깨졌는데 그대로 쓰면?", "케이스로 가려도 될까?"],
+        "back-glass": ["뒷판 박살이 복구 가능!?", "이것도 정품급으로?"],
+        "charge": ["충전 안 되는 폰 살릴 수 있다고?", "케이블 3개 바꿔도 안되면?", "이거 단자 청소만으로?"],
+        "camera": ["카메라 흔들림 복구 가능!?", "OIS 손상도 살린다고?", "흐린 사진... 모듈 교체?"],
+        "water": ["물에 빠진 폰 살릴 수 있다고!?", "침수 며칠 후 발열...?", "쌀에 넣지 말고 이거!"],
+        "speaker": ["스피커 고장 → 복구 가능?", "한쪽 안 들리는 거 고친다고?"],
+        "button": ["전원 버튼 안 눌리는데 수리?", "버튼 고장 부품 교체로?"],
+        "sensor": ["Face ID 고장 → 수리 가능!?", "센서 손상도 복구된다고?"],
+        "mainboard": ["무한 사과 → 메인보드 살린다!?", "부팅 안 되는 폰 살릴 수 있어?"],
+        "screen+battery": ["액정+배터리 한 번에 살린다!?", "둘 다 망가졌는데 동시에?"],
+        "screen+back": ["앞뒤 다 깨졌는데 복구!?", "이것도 한 번에 살린다고?"],
+        "back+battery": ["후면+배터리 동시에 살리기?"],
+        "back+camera": ["후면·카메라 한 번에 복구?"],
+    }
+    import hashlib as _h
+    pool = CURIOSITY_HOOKS.get(repair) or ["이것도 살릴 수 있다고!?", "이게 복구가 가능해!?"]
+    seed = int(_h.md5((slug_meta.get("slug", "") if slug_meta else dst.stem).encode("utf-8")).hexdigest()[:8], 16)
+    curiosity_text = pool[seed % len(pool)]
     # PII 보호 — 얼굴 자동 블러
     before_img = blur_faces(Image.open(before_path).convert("RGB"))
-    after_img = blur_faces(Image.open(after_path).convert("RGB"))
-    # 9:8 비율로 cover-crop (가로 1080 × 세로 920)
-    before_fit = fit_cover(before_img, W, H_HALF)
-    after_fit = fit_cover(after_img, W, H_HALF)
+    # 전체 화면(9:16) cover-crop
+    before_fit = fit_cover(before_img, W, H)
 
     img = Image.new("RGB", (W, H), (12, 12, 12))
     img.paste(before_fit, (0, 0))
-    img.paste(after_fit, (0, H_HALF + DIVIDER))
-
     d = ImageDraw.Draw(img)
 
-    # 가운데 분리 바 — 검정 배경 + 오렌지 라인
-    divider_top = H_HALF
-    d.rectangle((0, divider_top, W, divider_top + DIVIDER), fill=(10, 10, 10))
-    # 오렌지 라인 (위·아래)
-    d.rectangle((0, divider_top, W, divider_top + 4), fill=ORANGE)
-    d.rectangle((0, divider_top + DIVIDER - 4, W, divider_top + DIVIDER), fill=ORANGE)
-    # 가운데 화살표 아이콘 (▼ 모양)
-    arrow_y = divider_top + DIVIDER // 2
-    arrow_w = 26
-    d.polygon([
-        (W // 2 - arrow_w, arrow_y - 12),
-        (W // 2 + arrow_w, arrow_y - 12),
-        (W // 2, arrow_y + 14),
-    ], fill=(255, 255, 255))
-
-    # 인스타 피드 4:5 비율은 위·아래 각 285px 잘림 — 안전 영역(y=285~1635) 안에 핵심 배치
-    SAFE_TOP = 320  # 285 + 35 여유
+    # 인스타 피드 4:5 안전 영역 (위·아래 285px 잘림)
+    SAFE_TOP = 320
     SAFE_BOTTOM = 1600
 
-    # BEFORE 배지 (상단 사진 영역 안, 안전 영역 시작)
-    bf = sdg("bold", 38)
-    bb = d.textbbox((0, 0), "BEFORE", font=bf)
-    bw = bb[2] - bb[0]
-    pad_x, pad_y = 20, 14
-    bx, by = 30, SAFE_TOP
-    d.rounded_rectangle((bx, by, bx + bw + pad_x * 2, by + (bb[3] - bb[1]) + pad_y * 2),
-                        radius=12, fill=(220, 40, 40))
-    d.text((bx + pad_x, by + pad_y - 4), "BEFORE", font=bf, fill=(255, 255, 255))
+    # 상단 그라데이션 어둠 (디바이스·수리 라벨 가독성)
+    top_overlay = Image.new("RGBA", (W, 480), (0, 0, 0, 0))
+    od = ImageDraw.Draw(top_overlay)
+    for i in range(480):
+        a = int(200 * ((480 - i) / 480) ** 0.7)
+        od.line([(0, i), (W, i)], fill=(0, 0, 0, a))
+    img_rgba = img.convert("RGBA")
+    img_rgba.paste(top_overlay, (0, 0), top_overlay)
 
-    # AFTER 배지 (하단 사진 영역 안)
-    af = sdg("bold", 38)
-    ab = d.textbbox((0, 0), "AFTER", font=af)
-    aw = ab[2] - ab[0]
-    after_y = H_HALF + DIVIDER + 30
-    d.rounded_rectangle((30, after_y, 30 + aw + pad_x * 2, after_y + (ab[3] - ab[1]) + pad_y * 2),
-                        radius=12, fill=(52, 199, 89))
-    d.text((30 + pad_x, after_y + pad_y - 4), "AFTER", font=af, fill=(255, 255, 255))
+    # 하단 그라데이션 어둠 (후킹 카피 가독성)
+    bot_overlay = Image.new("RGBA", (W, 600), (0, 0, 0, 0))
+    od2 = ImageDraw.Draw(bot_overlay)
+    for i in range(600):
+        a = int(200 * (i / 600) ** 0.7)
+        od2.line([(0, i), (W, i)], fill=(0, 0, 0, a))
+    img_rgba.paste(bot_overlay, (0, H - 600), bot_overlay)
+    img = img_rgba.convert("RGB")
+    d = ImageDraw.Draw(img)
 
-    # AFTER 사진 상단 — 기종 + 수리 라벨 (그라데이션 + 굵은 흰 텍스트)
+    # 상단 — 디바이스 + 모델 + 수리 라벨
     if slug_meta:
         device_kr = (slug_meta.get("device") or "").strip()
         model_kr = (slug_meta.get("model") or "").replace("-", " ").strip()
         repair_kr = (slug_meta.get("repair") or "").strip()
-        # 모델 라인
         device_model = f"{device_kr} {model_kr}".strip()
-        # 그라데이션 어둠 (AFTER 영역 상단 ~200px)
-        overlay = Image.new("RGBA", (W, 240), (0, 0, 0, 0))
-        od = ImageDraw.Draw(overlay)
-        for i in range(240):
-            a = int(180 * ((240 - i) / 240) ** 0.7)
-            od.line([(0, i), (W, i)], fill=(0, 0, 0, a))
-        img_rgba = img.convert("RGBA")
-        img_rgba.paste(overlay, (0, H_HALF + DIVIDER), overlay)
-        img = img_rgba.convert("RGB")
-        d = ImageDraw.Draw(img)
 
-        # 기종+모델 (다올리페어 주황색 + 검정 외곽선)
         if device_model:
-            df = sdg("bold", 52)
+            df = sdg("bold", 56)
             db = d.textbbox((0, 0), device_model, font=df)
             dw_ = db[2] - db[0]
-            dy = H_HALF + DIVIDER + 70
-            for off in [(-2, 0), (2, 0), (0, -2), (0, 2)]:
+            dy = SAFE_TOP
+            for off in [(-3, 0), (3, 0), (0, -3), (0, 3)]:
                 d.text(((W - dw_) // 2 + off[0], dy + off[1]),
                        device_model, font=df, fill=(0, 0, 0))
             d.text(((W - dw_) // 2, dy), device_model, font=df, fill=ORANGE)
-        # 수리 종류 (크게, 다올리페어 주황색 + 검정 외곽선)
+
         if repair_kr:
-            rf_size = 84 if len(repair_kr) <= 8 else (74 if len(repair_kr) <= 14 else 62)
+            rf_size = 84 if len(repair_kr) <= 8 else (72 if len(repair_kr) <= 14 else 60)
             rf = sdg("bold", rf_size)
             rb = d.textbbox((0, 0), repair_kr, font=rf)
             rw = rb[2] - rb[0]
             rx = (W - rw) // 2
-            ry = H_HALF + DIVIDER + 140
-            # 외곽선 (두껍게 — 가독성)
+            ry = SAFE_TOP + 80
             for off in [(-3, 0), (3, 0), (0, -3), (0, 3), (-3, -3), (3, 3), (-3, 3), (3, -3)]:
                 d.text((rx + off[0], ry + off[1]), repair_kr, font=rf, fill=(0, 0, 0))
-            # 본문 — 다올리페어 주황색
-            d.text((rx, ry), repair_kr, font=rf, fill=ORANGE)
+            d.text((rx, ry), repair_kr, font=rf, fill=(255, 255, 255))
 
-    # 후킹 카피 — 하단 사진 위에 오버레이 (시선 끌리는 큰 폰트)
-    # 텍스트 위치: 후킹 카피 = 상단 사진 위 (덜 가려진 영역)
-    # 약간 그라데이션으로 가독성 확보 — 상단 사진 위 200px 어둡게
-    overlay_draw = Image.new("RGBA", (W, 260), (0, 0, 0, 0))
-    od = ImageDraw.Draw(overlay_draw)
-    for i in range(260):
-        a = int(170 * (i / 260) ** 0.8)
-        od.line([(0, 260 - i - 1), (W, 260 - i - 1)], fill=(0, 0, 0, a))
-    img_rgba = img.convert("RGBA")
-    img_rgba.paste(overlay_draw, (0, H_HALF - 260), overlay_draw)
-    img = img_rgba.convert("RGB")
-    d = ImageDraw.Draw(img)
+    # 중앙 — BEFORE 배지 (좌측 상단)
+    bf = sdg("bold", 40)
+    bb = d.textbbox((0, 0), "🔥 BEFORE", font=bf)
+    bw = bb[2] - bb[0]
+    pad_x, pad_y = 22, 16
+    badge_x, badge_y = 40, SAFE_TOP + 240
+    d.rounded_rectangle((badge_x, badge_y, badge_x + bw + pad_x * 2, badge_y + (bb[3] - bb[1]) + pad_y * 2),
+                        radius=14, fill=(220, 40, 40))
+    d.text((badge_x + pad_x, badge_y + pad_y - 4), "🔥 BEFORE", font=bf, fill=(255, 255, 255))
 
-    # 메인 후킹 카피 — 더 큰 글씨 (피드에서 손가락 멈추도록) + 진한 외곽선
-    # 84/72 → 120/96으로 ↑ (인스타 후킹 강화)
-    if len(hook_main) <= 8:
-        main_size = 130
-    elif len(hook_main) <= 12:
+    # 호기심 후킹 카피 — 하단 (피드에서 손 멈추는 메시지)
+    # "이것도 살릴 수 있다고!?" 식으로 호기심 자극
+    main_text = curiosity_text
+    if len(main_text) <= 12:
         main_size = 120
-    else:
+    elif len(main_text) <= 18:
         main_size = 96
+    else:
+        main_size = 80
     hf = sdg("bold", main_size)
-    # 폭 검증 — 안 들어가면 한 단계 축소
-    bb_check = d.textbbox((0, 0), hook_main, font=hf)
-    if bb_check[2] - bb_check[0] > W - 60:
-        main_size = max(80, main_size - 16)
+    bb_check = d.textbbox((0, 0), main_text, font=hf)
+    if bb_check[2] - bb_check[0] > W - 80:
+        main_size = max(72, main_size - 16)
         hf = sdg("bold", main_size)
-    if len(hook_main) > 16:
-        wrapped = "\n".join(textwrap.wrap(hook_main, width=14)[:2])
-        hb = d.multiline_textbbox((0, 0), wrapped, font=hf, align="center", spacing=10)
+
+    # 두 줄로 줄바꿈 (긴 경우)
+    if len(main_text) > 14:
+        wrapped = "\n".join(textwrap.wrap(main_text, width=12)[:2])
+        hb = d.multiline_textbbox((0, 0), wrapped, font=hf, align="center", spacing=12)
         hw, hh = hb[2] - hb[0], hb[3] - hb[1]
-        ty = H_HALF - hh - 60
-        # 두꺼운 외곽선 (큰 글씨에 맞춰 강화)
+        ty = H - 380 - hh
         for off in [(-5, 0), (5, 0), (0, -5), (0, 5), (-4, -4), (4, 4), (-4, 4), (4, -4)]:
             d.multiline_text(((W - hw) // 2 + off[0], ty + off[1]),
-                             wrapped, font=hf, fill=(0, 0, 0), align="center", spacing=10)
+                             wrapped, font=hf, fill=(0, 0, 0), align="center", spacing=12)
         d.multiline_text(((W - hw) // 2, ty), wrapped, font=hf,
-                         fill=ORANGE, align="center", spacing=10)
+                         fill=ORANGE, align="center", spacing=12)
     else:
-        hb = d.textbbox((0, 0), hook_main, font=hf)
+        hb = d.textbbox((0, 0), main_text, font=hf)
         hw, hh = hb[2] - hb[0], hb[3] - hb[1]
-        ty = H_HALF - hh - 60
+        ty = H - 380 - hh
         for off in [(-5, 0), (5, 0), (0, -5), (0, 5), (-4, -4), (4, 4), (-4, 4), (4, -4)]:
             d.text(((W - hw) // 2 + off[0], ty + off[1]),
-                   hook_main, font=hf, fill=(0, 0, 0))
-        d.text(((W - hw) // 2, ty), hook_main, font=hf, fill=ORANGE)
+                   main_text, font=hf, fill=(0, 0, 0))
+        d.text(((W - hw) // 2, ty), main_text, font=hf, fill=ORANGE)
 
-    # 우측 다올리페어 로고 워터마크 (안전 영역 안 — y=320, BEFORE 배지와 동일 라인)
+    # 하단 — 다올리페어 어필
+    bottom_text = "👉 다올리페어가 살립니다"
+    btf = sdg("bold", 46)
+    btb = d.textbbox((0, 0), bottom_text, font=btf)
+    btw = btb[2] - btb[0]
+    bty = H - 250
+    for off in [(-2, 0), (2, 0), (0, -2), (0, 2)]:
+        d.text(((W - btw) // 2 + off[0], bty + off[1]),
+               bottom_text, font=btf, fill=(0, 0, 0))
+    d.text(((W - btw) // 2, bty), bottom_text, font=btf, fill=(255, 255, 255))
+
+    # 우측 다올리페어 로고 워터마크 (안전 영역 안)
     if LOGO_PATH.exists():
         try:
             logo = Image.open(LOGO_PATH).convert("RGBA")
