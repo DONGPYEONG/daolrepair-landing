@@ -752,5 +752,44 @@
     "uploaded_at": "2026-05-14T02:50:20.465Z",
     "url": "https://xn--2j1bq2k97kxnah86c.com/articles/journal-2026-05-14-애플워치-apple-watch-series-3-38mm-battery-19FiLwNR.html",
     "created_at": "2026-05-14"
+  },
+  {
+    "key": "caseid:18X9B-rG",
+    "slug": "journal-2026-05-15-아이폰-iphone-13-battery-18X9B-rG",
+    "title": "오후에 아이폰 iPhone 13 자연 노화 → 가산점에서 당일 해결한 사례",
+    "case_id": "18X9B-rG1Tfls4UrgZ96Eavg4DaoWKrPb",
+    "model": "아이폰 iPhone 13",
+    "type": "battery",
+    "branch": "가산점",
+    "date": "2026-05-15",
+    "uploaded_at": "2026-05-15T04:01:48.314Z",
+    "url": "https://xn--2j1bq2k97kxnah86c.com/articles/journal-2026-05-15-아이폰-iphone-13-battery-18X9B-rG.html",
+    "created_at": "2026-05-15"
+  },
+  {
+    "key": "caseid:1vpx9NKK",
+    "slug": "journal-2026-05-15-애플워치-apple-watch-se-1세대-battery-1vpx9NKK",
+    "title": "애플워치 Apple Watch SE (1세대) 자연 노화로 목동점 방문하신 20대 여성 손님 사례",
+    "case_id": "1vpx9NKKK_D9VbvsJvC2QUMjn2qL0NDRj",
+    "model": "애플워치 Apple Watch SE (1세대)",
+    "type": "battery",
+    "branch": "목동점",
+    "date": "2026-05-15",
+    "uploaded_at": "2026-05-15T03:13:45.982Z",
+    "url": "https://xn--2j1bq2k97kxnah86c.com/articles/journal-2026-05-15-애플워치-apple-watch-se-1세대-battery-1vpx9NKK.html",
+    "created_at": "2026-05-15"
+  },
+  {
+    "key": "caseid:1CH0oLAR",
+    "slug": "journal-2026-05-15-아이폰-iphone-13-battery-1CH0oLAR",
+    "title": "점심시간에 아이폰 iPhone 13 자연 노화 → 목동점에서 당일 해결한 사례",
+    "case_id": "1CH0oLARzEdYQMk2x1qeSlYqTwKoIsdeg",
+    "model": "아이폰 iPhone 13",
+    "type": "battery",
+    "branch": "목동점",
+    "date": "2026-05-15",
+    "uploaded_at": "2026-05-15T02:13:33.694Z",
+    "url": "https://xn--2j1bq2k97kxnah86c.com/articles/journal-2026-05-15-아이폰-iphone-13-battery-1CH0oLAR.html",
+    "created_at": "2026-05-15"
   }
 ]
