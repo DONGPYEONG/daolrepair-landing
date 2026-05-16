@@ -257,24 +257,80 @@ def get_ba_reel_comment(repair_type, model=""):
     return BA_REEL_COMMENTS_BY_TYPE["other"]
 
 
+def _load_reel_comments_cache():
+    """LLM이 일지별로 생성한 댓글 4세트 캐시 (output/_reel_comments_cache.json)."""
+    import json as _json
+    p = Path(__file__).parent.parent / "output" / "_reel_comments_cache.json"
+    if not p.exists():
+        return {}
+    try:
+        return _json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def _extract_journal_slug(reel_filename: str) -> str:
+    """`2026-05-15-journal-...-1CH0oLAR.txt` → `journal-...-1CH0oLAR`."""
+    if len(reel_filename) > 11 and reel_filename[10] == "-":
+        return reel_filename[11:]
+    return reel_filename
+
+
 def gen_ba_reel_comments():
-    """모든 BA Reel(.txt 옆에 _comments.txt) 생성."""
+    """모든 BA Reel(.txt 옆에 _comments.txt) 생성.
+    LLM 캐시(_reel_comments_cache.json)에 일지별 댓글 있으면 우선 사용 — 일지마다 유니크.
+    캐시 없으면 수리종류별 풀(BA_REEL_COMMENTS_BY_TYPE)에서 fallback.
+    """
     root = Path(__file__).parent.parent
     reels_dir = root / "output" / "reels"
     if not reels_dir.exists(): return
+
+    cache = _load_reel_comments_cache()
+    cache_hits = 0
+    pool_fallback = 0
     count = 0
+
+    # 일지 제목 매핑 (slug → title) — comments.txt 헤더용
+    titles_by_slug = {}
+    articles_dir = root / "articles"
+    if articles_dir.exists():
+        import re as _re
+        for journal in articles_dir.glob("journal-*.html"):
+            try:
+                # 전체 읽기 — h1.art-title 이 head 4KB 뒤에 있는 글 다수
+                content = journal.read_text(encoding="utf-8")
+                m = _re.search(r'<h1[^>]*class="art-title"[^>]*>([^<]+)</h1>', content)
+                if m:
+                    titles_by_slug[journal.stem] = m.group(1).strip()
+            except Exception:
+                pass
+
     for txt_file in sorted(reels_dir.glob("*.txt")):
         if txt_file.name.endswith("_comments.txt"): continue
         name = txt_file.stem
-        parts = name.split("-")
-        repair_type = parts[-2] if len(parts) >= 2 else "other"
-        c1, r1, c2, r2 = get_ba_reel_comment(repair_type)
-        title = "다올리페어 수리 일지 — " + (parts[-2] if len(parts) >= 2 else "")
+        journal_slug = _extract_journal_slug(name)
+
+        # LLM 캐시에 있으면 일지별 유니크 카피 사용
+        cached = cache.get(journal_slug)
+        if cached:
+            c1 = cached.get("comment1", "")
+            r1 = cached.get("reply1", "")
+            c2 = cached.get("comment2", "")
+            r2 = cached.get("reply2", "")
+            cache_hits += 1
+        else:
+            parts = name.split("-")
+            repair_type = parts[-2] if len(parts) >= 2 else "other"
+            c1, r1, c2, r2 = get_ba_reel_comment(repair_type)
+            pool_fallback += 1
+
+        # 제목 — 일지 h1 우선, 없으면 슬러그
+        title = titles_by_slug.get(journal_slug) or f"다올리페어 수리 일지 — {journal_slug}"
         content = format_comments_block(title, c1, r1, c2, r2)
         comments_path = txt_file.parent / (txt_file.stem + "_comments.txt")
         comments_path.write_text(content, encoding="utf-8")
         count += 1
-    print(f"✅ BA Reel {count}개 comments 생성")
+    print(f"✅ BA Reel {count}개 comments 생성 (LLM 캐시 {cache_hits}편 · 풀 fallback {pool_fallback}편)")
 
 
 # ─────────────────────────────────────────────────────────
