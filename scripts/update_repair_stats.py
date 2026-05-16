@@ -823,12 +823,25 @@ def main():
                 download(before_file["id"], before_path)
                 download(after_file["id"], after_path)
                 # 수리중 사진 다운로드 (progress1.jpg, progress2.jpg, ...)
+                # 🛡 사장님(2026-05-16) 명시 — 매장 직원이 같은 사진을 다른 라벨로 두 번 올리는
+                # 사고 자동 차단. 다운로드 후 MD5 비교로 중복 제거 + 번호 재정렬.
+                import hashlib as _hl
                 progress_paths = []
                 progress_labels = []
-                for i, pf in enumerate(progress_files, 1):
-                    p_path = case_dir / f"progress{i}.jpg"
-                    download(pf["file"]["id"], p_path)
-                    progress_paths.append(p_path)
+                seen_hashes = set()
+                for pf in progress_files:
+                    tmp_path = case_dir / f"_tmp_progress_{pf['file']['id'][:10]}.jpg"
+                    download(pf["file"]["id"], tmp_path)
+                    h = _hl.md5(tmp_path.read_bytes()).hexdigest()
+                    if h in seen_hashes:
+                        # 중복 — 삭제 (같은 사진 두 번 X)
+                        tmp_path.unlink()
+                        continue
+                    seen_hashes.add(h)
+                    idx = len(progress_paths) + 1
+                    final_path = case_dir / f"progress{idx}.jpg"
+                    tmp_path.rename(final_path)
+                    progress_paths.append(final_path)
                     progress_labels.append(pf["label"])
                 # 사용 안 하는 progress 파일 정리
                 for old_p in case_dir.glob("progress*.jpg"):
