@@ -720,6 +720,18 @@ def main():
             done = False
             while not done:
                 _, done = downloader.next_chunk()
+        # 🔄 EXIF orientation 자동 적용 (브라우저·PIL 둘 다 같은 방향으로 보이게)
+        # 매장에서 가로로 찍은 사진이 EXIF 만으로 회전 표시되면 PIL 처리 시 가로로
+        # 나옴. 다운로드 직후 픽셀 회전 + EXIF 제거.
+        try:
+            from PIL import Image as _PImg, ImageOps as _PImgOps
+            _i = _PImg.open(dest)
+            _ex = _i.getexif()
+            if _ex.get(0x0112, 1) != 1:
+                _new = _PImgOps.exif_transpose(_i)
+                _new.save(dest, "JPEG", quality=92)
+        except Exception:
+            pass  # PIL 없거나 JPEG 아닌 케이스 — 원본 유지
 
     portfolio_cases = []
     IMG_OUT_DIR.mkdir(parents=True, exist_ok=True)

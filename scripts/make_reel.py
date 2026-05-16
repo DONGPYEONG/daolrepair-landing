@@ -188,19 +188,48 @@ def parse_slug_meta(slug: str) -> dict:
         "speaker": "스피커 수리", "mic": "마이크 수리", "microphone": "마이크 수리",
         "board": "메인보드 수리", "homebutton": "홈버튼 수리",
     }
+    meta = None
     for i in range(len(parts) - 1, 4, -1):
         token = parts[i].lower()
         if "+" in token:
             subs = [repair_map[t] for t in token.split("+") if t in repair_map]
             if subs:
-                return {"date": d, "device": device,
+                meta = {"date": d, "device": device,
                         "model": "-".join(parts[5:i]),
                         "repair": " + ".join(subs)}
+                break
         if token in repair_map:
-            return {"date": d, "device": device,
+            meta = {"date": d, "device": device,
                     "model": "-".join(parts[5:i]),
                     "repair": repair_map[token]}
-    return {"date": d, "device": device, "model": parts[5] if len(parts) > 5 else "", "repair": ""}
+            break
+    if meta is None:
+        meta = {"date": d, "device": device, "model": parts[5] if len(parts) > 5 else "", "repair": ""}
+
+    # 🔍 일지 HTML 제목 기반 repair 라벨 보정 — 카메라 유리·복합 부위 같이
+    # 슬러그 토큰만으로는 표현 못 하는 케이스 자동 정정 (사장님: "릴스는 항상 일지 보고 반영")
+    try:
+        from pathlib import Path as _P
+        import re as _re
+        _root = _P(__file__).resolve().parent.parent
+        _html_path = _root / "articles" / f"{slug}.html"
+        if _html_path.exists():
+            _html = _html_path.read_text(encoding="utf-8")
+            _m = _re.search(r"<title>([^<]+)</title>", _html)
+            if _m:
+                title = _m.group(1)
+                # 우선순위: 더 구체적인 라벨 먼저 매칭
+                if "후면 카메라 유리" in title:
+                    meta["repair"] = "후면 카메라 유리 교체"
+                elif "카메라 모듈" in title:
+                    meta["repair"] = "카메라 모듈 교체"
+                elif "메인 카메라" in title or "광각 카메라" in title:
+                    meta["repair"] = "카메라 모듈 교체"
+                elif "Face ID" in title or "페이스 ID" in title:
+                    meta["repair"] = "Face ID 수리"
+    except Exception:
+        pass
+    return meta
 
 
 # ── 후킹 카피 + 스토리 자막 (data/facts.json + 실제 일지·칼럼 글에서 검증) ──
@@ -1046,97 +1075,105 @@ def make_ba_cover(before_path: Path, after_path: Path,
     # 수리 종류별 어울리는 어조 + 충분한 변형 (deterministic 선택)
     # - 복구/살리기: screen·back·camera·water·mainboard (파손·고장 회복)
     # - 교체/해결: battery·charge·button·speaker·sensor (부품 새것으로)
+    # 후킹 풀 — 사장님 2026-05-16 명시:
+    #   "수치·금액 쓰는 게 확실히 눌러보고 싶게 함. 단 맞는 타입에만, 다 똑같이 X"
+    # 정확한 결제가 노출 금지 (price_disclosure 메모리) → "공식 절반대"·% 변화·시간만 사용
     CURIOSITY_HOOKS = {
         "screen": [
-            "박살난 액정 복구 가능!?",
-            "줄·점 가득한 화면 살린다고?",
-            "터치 안 먹는 폰 어떡해?",
-            "이 화면이 30분 만에...?",
-            "공식 절반 가격에 정품?",
+            # 수치·금액·시간 주도 (가능한 안전 표현만)
+            "공식 대비 절반대 진행",
+            "30분에 액정 교체 끝!?",
+            "정품 vs DD 두 옵션",
+            "당일 수리 30~60분",
+            "공식 거절된 액정도 가능?",
+            # 호기심·증상
+            "박살난 액정 살린다고??",
             "검은 화면도 살릴 수 있다고?",
-            "박살 액정 → 새것처럼?",
-            "이거 모르고 28만원 낼 뻔",
-            "수리점이 안 알려주는 액정 가격",
-            "공식 거절당한 액정도 가능?",
+            "줄·점 가득한 화면 어떡해?",
+            "터치 안 먹는 폰 끝났을까?",
             "이 액정 보고 폰 바꾸지 마세요",
-            "액정 갈았는데 진짜 같다고??",
+            "박살 액정 → 같은 날 정상?",
         ],
         "battery": [
-            "성능치 80% 미만 → 새것처럼?",
+            # 수치·% 주도 (가장 직관적·안전)
+            "70% → 100% 30분 만에",
+            "성능치 78% → 100% 회복",
+            "공식 대비 절반대 진행",
+            "당일 30~50분 · 데이터 그대로",
+            "메시지 안 뜨는 정품 인증",
+            # 호기심·증상
             "갑자기 꺼지는 폰 어떡해?",
-            "배터리 부풀어 화면 들뜸...?",
-            "30분 만에 새 배터리!?",
-            "셀 교체 4만원대 가능!?",
-            "노화 배터리 어떻게 해야해?",
-            "배터리만 갈면 새거처럼!?",
-            "이거 모르면 배터리값 30% 더 냄",
-            "갑자기 꺼지는 폰, 호구되지 마세요",
+            "배터리 부풀어 화면 들뜸?",
             "성능 80%에 폰 바꾸지 마세요",
-            "공식 13만원 → 사설은?",
-            "배터리 부푼 폰 그냥 쓰지 마세요",
-            "30~50%인데 꺼지는 폰?",
+            "공식 거절된 배터리도 가능?",
         ],
         "watch-battery": [
             "워치도 배터리 교체 된다고??",
-            "애플워치 진짜 수리됩니다",
             "공식 거절당한 워치 살린다고?",
-            "워치는 새로 사라고? 아니요",
-            "이 워치도 살릴 수 있다고??",
-            "수명 다 됐다던 워치 부활!?",
-            "워치 셀 교체 가능한 거 아세요?",
-            "이거 모르고 워치 새로 살 뻔",
-            "워치 배터리 부풀어 화면 들뜸?",
-            "한 번 충전에 반나절도 안 가요?",
+            "수명 다 됐다던 워치 부활?",
+            "한 번 충전 반나절? 셀 교체 가능",
+            "워치 부풀어 화면 들뜸? 응급!",
+            "워치 새로 사기 전에 보세요",
         ],
         "watch-screen": [
-            "워치 박살났는데 살아났어",
-            "애플워치 액정 정말 수리됩니다",
-            "이 워치도 살릴 수 있다고??",
-            "워치는 새로 사는 거 아니에요",
-            "공식 거절당한 워치도 가능",
             "박살난 워치 액정 30분이면?",
-            "이거 모르면 워치 새로 살 뻔",
-            "워치 액정 수리 안 된다고? X",
-            "수리점이 안 알려주는 워치 가격",
+            "워치 액정 수리 진짜 됩니다",
+            "공식 거절당한 워치도 가능",
+            "워치는 새로 사는 거 아니에요",
+            "공식 대비 합리적 · 정품",
         ],
         "watch-back": [
-            "워치 뒷판도 교체된다고??",
-            "워치 후면 깨짐... 살릴 수 있어요",
-            "이거 모르고 워치 버릴 뻔",
             "워치 뒷판 단독 교체 가능?",
+            "워치 후면 깨짐... 살린다고?",
+            "공식 대비 절반대 가능",
+            "워치 버리기 전에 보세요",
         ],
         "back": [
-            "뒷판 박살 → 정품급 그대로?",
+            # 수치·금액·시간 주도
+            "공식 대비 절반대 진행",
+            "후면 유리 3~4시간 당일!",
+            "공식 거절도 사설 가능",
+            "정품급 OEM · 같은 날 픽업",
+            # 호기심·증상
+            "뒷판 박살 → 단독 교체 가능?",
             "케이스로 가려도 괜찮을까?",
-            "후면 깨짐 → 단독 교체 가능?",
-            "공식 30만 vs 사설 절반?",
             "MagSafe 흡착력 그대로 복원?",
-            "맥세이프 충전기에서 미끄러진 폰...",
-            "이거 모르고 후면 30만원 낼 뻔",
-            "뒷판만 살짝 깨졌는데... 가능?",
-            "수리점이 안 알려주는 뒷판 가격",
+            "맥세이프에서 미끄러진 폰...",
+            "뒷판만 살짝 깨졌는데 가능?",
         ],
         "back-glass": [
-            "뒷판 박살 → 정품급 그대로?",
-            "후면 깨짐 → 단독 교체 가능?",
-            "공식 30만 vs 사설 절반?",
-            "MagSafe 흡착력 그대로 복원?",
+            "공식 대비 절반대 진행",
+            "정품급 OEM · 같은 날 픽업",
+            "후면 유리 3~4시간 당일",
+            "MagSafe 흡착력 그대로?",
+            "뒷판 박살 → 단독 교체 가능?",
+        ],
+        "back-camera-glass": [
+            # 카메라 유리 전용 풀 — MagSafe·뒷판 어휘 X (사장님 명시)
+            "정품 부품 30분 만에",
+            "카메라 유리만 단독 교체 가능?",
+            "정품 부품 · 정밀 탈거 30분",
+            "Pro 카메라 유리 살린다고?",
+            "카메라 흐리게 보이면 유리 확인",
+            "카메라 유리 깨짐 → 당일 30분",
+            "공식 대비 합리적 · 정품 부품",
+            "후면 카메라 유리 단독 가능",
         ],
         "charge": [
-            "충전 안 되는 폰 어떡해?",
+            "충전 30분 만에 정상화!",
+            "단자 청소 vs 교체 무료 진단",
             "케이블 3개 바꿔도 안 되면?",
-            "단자 청소만으로 해결!?",
             "충전 들어왔다 끊겼다...?",
-            "충전구 부품 교체 30분?",
             "젓가락으로 후비지 마세요!",
+            "MFi 4종 테스트 통과 확인",
         ],
         "camera": [
-            "흔들리는 사진 → 멀쩡하게?",
-            "OIS 손상 모듈 교체!?",
-            "흐린 카메라 어떡해?",
-            "떨어뜨린 후 카메라 떨림...",
-            "후면 카메라 단독 수리?",
-            "Pro Max 카메라 살릴 수 있나?",
+            "흔들리는 사진 → OIS 모듈 교체",
+            "흐린 카메라 1시간 안에",
+            "정품 모듈만 사용",
+            "떨어뜨린 후 카메라 떨림?",
+            "후면 카메라 단독 수리 가능",
+            "Pro Max 망원 카메라도 가능?",
         ],
         "water": [
             "물에 빠진 폰 살릴 수 있다고!?",
@@ -1204,9 +1241,14 @@ def make_ba_cover(before_path: Path, after_path: Path,
     }
     import hashlib as _h
     # repair_type 정규화 (한글 → 영어 매핑)
+    # 우선순위: 더 구체적인 라벨(카메라 유리·복합) 먼저 매칭
     repair_norm = repair.lower()
-    if "화면" in repair or "액정" in repair: repair_norm = "screen"
+    if "후면 카메라 유리" in repair or "카메라 유리" in repair:
+        repair_norm = "back-camera-glass"
+    elif "화면" in repair or "액정" in repair: repair_norm = "screen"
     elif "배터리" in repair: repair_norm = "battery"
+    elif ("후면" in repair or "뒷면" in repair) and "카메라" not in repair:
+        repair_norm = "back"
     elif "후면" in repair or "뒷면" in repair: repair_norm = "back"
     elif "충전" in repair: repair_norm = "charge"
     elif "카메라" in repair: repair_norm = "camera"

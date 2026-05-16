@@ -93,6 +93,16 @@ def download_photo(url, dst):
             data = resp.read()
         dst.parent.mkdir(parents=True, exist_ok=True)
         dst.write_bytes(data)
+        # 🔄 EXIF orientation 자동 적용 (가로로 찍힌 사진 자동 회전)
+        try:
+            from PIL import Image as _PImg, ImageOps as _PImgOps
+            _i = _PImg.open(dst)
+            _ex = _i.getexif()
+            if _ex.get(0x0112, 1) != 1:
+                _new = _PImgOps.exif_transpose(_i)
+                _new.save(dst, "JPEG", quality=92)
+        except Exception:
+            pass
         return True
     except Exception as e:
         print(f"   ⚠️ 사진 다운로드 실패 ({url}): {e}")
