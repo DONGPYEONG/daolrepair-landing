@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-16T23:11:38.978505+09:00",
+  "updated_at": "2026-05-16T23:19:36.276805+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11668,
@@ -36,43 +36,43 @@
       "model": "아이폰 iPhone 13 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 361
+      "minutes_ago": 369
     },
     {
       "model": "아이패드 iPad 7세대",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 528
+      "minutes_ago": 536
     },
     {
       "model": "아이폰 iPhone 17",
       "type": "후면 유리 교체",
       "branch": "신림점",
-      "minutes_ago": 558
+      "minutes_ago": 566
     },
     {
       "model": "아이폰 iPhone 16 Pro",
       "type": "화면 + 후면 유리 교체",
       "branch": "가산점",
-      "minutes_ago": 667
+      "minutes_ago": 675
     },
     {
       "model": "아이폰 iPhone 13",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 699
+      "minutes_ago": 707
     },
     {
       "model": "애플워치 Apple Watch Series 4 (40mm)",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 726
+      "minutes_ago": 734
     },
     {
       "model": "아이폰 iPhone 13 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 1690
+      "minutes_ago": 1698
     }
   ],
   "top_repair_types": [
