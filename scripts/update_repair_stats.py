@@ -516,9 +516,11 @@ def main():
     SCREEN_BEFORE = [("수리전", "파손부위"), ("수리전", "기기전면"), ("수리전", "기기후면")]
     SCREEN_AFTER  = [("수리후", "작동화면"), ("수리후", "기기전면"), ("수리후", "기기후면"), ("수리후", "수리부위")]
     SCREEN_TYPES = {"screen", "screen+battery", "screen+back", "screen+back-glass"}
-    # 🆕 back-glass — AFTER는 기기후면 우선 (수리 부위가 후면이라 전체 후면 사진이 자연스러움)
+    # 🆕 back-glass — AFTER는 후면 부위 사진만 (수리 부위가 후면이라 후면 사진이 자연스러움)
+    # ❌ "작동화면" 제외 (사장님 2026-05-16 명시) — 후면 수리에 화면 켜진 사진은 부적합.
+    # 매장 직원이 "수리후_기기전면" 라벨로 작동 화면을 올리는 사고 방지 안전장치.
     BACKGLASS_BEFORE = [("수리전", "파손부위"), ("수리전", "기기후면"), ("수리전", "기기전면")]
-    BACKGLASS_AFTER  = [("수리후", "기기후면"), ("수리후", "기기전면"), ("수리후", "수리부위"), ("수리후", "작동화면")]
+    BACKGLASS_AFTER  = [("수리후", "기기후면"), ("수리후", "수리부위"), ("수리후", "기기전면")]
     BACKGLASS_TYPES = {"back", "back-glass"}
     # 외관 변화 없어 파손부위 사진이 내부 분해/회로 사진일 가능성 높은 종류
     # 배터리·충전 단자는 파손부위가 보통 의미 있는 사진(성능치 화면·단자 클로즈업)이라 제외
@@ -767,17 +769,33 @@ def main():
         after_path  = case_dir / "after.jpg"
 
         # 🆕 "수리중" 사진 후보 — 일지 본문 중간에 삽입 (신뢰감 강화)
-        # 우선순위: 내부분해 → 교체부품 → 수리작업중 (최대 3장)
-        PROGRESS_PATTERNS = [("수리중", "내부분해"), ("수리중", "교체부품"), ("수리중", "수리작업중")]
-        progress_files = []  # [{file, label, path}]
-        for stage, body_part in PROGRESS_PATTERNS:
-            for f in inner:
-                if (stage in f["name"] and body_part in f["name"]
-                    and is_safe_file(f["name"])):
-                    progress_files.append({"file": f, "label": body_part})
-                    break
-            if len(progress_files) >= 3:
+        # 사장님(2026-05-16) 명시 — 매장에서 수리중 사진 다 올려도 일부만 들어감.
+        # 우선순위 라벨(내부분해·교체부품·수리작업중)부터 한 장씩 + 그 외 "수리중" 사진도
+        # 모두 추가 (라벨링 누락된 직원 실수 자동 보정). 최대 5장.
+        PROGRESS_PRIORITY = ["내부분해", "교체부품", "수리작업중", "조립중", "분해", "장착", "테스트"]
+        progress_files = []  # [{file, label}]
+        seen_ids = set()
+        # 1순위: 우선순위 라벨 각 1장씩
+        for body_part in PROGRESS_PRIORITY:
+            if len(progress_files) >= 5:
                 break
+            for f in inner:
+                if ("수리중" in f["name"] and body_part in f["name"]
+                    and is_safe_file(f["name"]) and f["id"] not in seen_ids):
+                    progress_files.append({"file": f, "label": body_part})
+                    seen_ids.add(f["id"])
+                    break
+        # 2순위: 위에 매칭 안 된 "수리중" 파일 추가 (직원이 다른 라벨로 올린 경우 보정)
+        for f in inner:
+            if len(progress_files) >= 5:
+                break
+            if ("수리중" in f["name"] and f["id"] not in seen_ids
+                and is_safe_file(f["name"])):
+                # 라벨 추출 시도 (예: "수리중_분리과정_1430..." → "분리과정")
+                parts = f["name"].split("_")
+                label = parts[1] if len(parts) > 1 else "수리과정"
+                progress_files.append({"file": f, "label": label})
+                seen_ids.add(f["id"])
 
         # 메타 파일로 file_id 추적 — Vision이 다른 파일 선택했으면 재다운로드
         meta_path = case_dir / "_meta.json"
