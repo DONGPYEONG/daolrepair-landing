@@ -1,8 +1,61 @@
 {
   "date": "2026-05-16",
-  "total": 5,
-  "fetched_at": "2026-05-16T17:08:17.508018+09:00",
+  "total": 6,
+  "fetched_at": "2026-05-16T17:15:40.621843+09:00",
   "certificates": [
+    {
+      "id": "1L5fUo13z55McZBdNM5Bq-w9d7r9qSWbo",
+      "store": "가산점",
+      "store_address": "서울시 금천구 가산디지털 1로 168, 우림라이온스밸리 A동 117호",
+      "business_no": "603-13-92594",
+      "device": "아이폰",
+      "model": "iPhone 13 Pro",
+      "repair_date": "2026-05-16",
+      "repair_type": "battery",
+      "repair_description": "배터리 교체 수리 완료",
+      "price": 0,
+      "vat_supply": 0,
+      "vat_amount": 0,
+      "technician": "",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1SiBjXBess_c4X0lrrJkqmOscHTkd6hC_",
+          "captured_at": "2026-05-16T17:10:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/12J9r66CMzorzaZmAWsNRIyx3WYXHcc0g",
+          "captured_at": "2026-05-16T17:10:00+09:00"
+        },
+        "after": null
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-16T08:10:21.285Z",
+      "customer_name_masked": "강*진",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "battery",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1SiBjXBess_c4X0lrrJkqmOscHTkd6hC_",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/12J9r66CMzorzaZmAWsNRIyx3WYXHcc0g"
+      },
+      "photos_captured": {
+        "imei": "2026-05-16T17:10:00+09:00",
+        "before": "2026-05-16T17:10:00+09:00"
+      }
+    },
     {
       "id": "1zstheMY67rZFxK3buLKFHOcxEF3NEMny",
       "store": "가산점",
