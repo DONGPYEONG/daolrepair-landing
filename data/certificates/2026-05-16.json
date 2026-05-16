@@ -1,7 +1,7 @@
 {
   "date": "2026-05-16",
   "total": 6,
-  "fetched_at": "2026-05-16T17:15:40.621843+09:00",
+  "fetched_at": "2026-05-16T19:26:33.255066+09:00",
   "certificates": [
     {
       "id": "1L5fUo13z55McZBdNM5Bq-w9d7r9qSWbo",
@@ -13,17 +13,23 @@
       "repair_date": "2026-05-16",
       "repair_type": "battery",
       "repair_description": "배터리 교체 수리 완료",
-      "price": 0,
-      "vat_supply": 0,
-      "vat_amount": 0,
-      "technician": "",
-      "cause": null,
-      "cause_label": null,
-      "repair_options": {},
-      "repair_symptoms": {},
-      "gender": null,
-      "age_range": null,
-      "prev_repair_where": null,
+      "price": 110000,
+      "vat_supply": 100000,
+      "vat_amount": 10000,
+      "technician": "금동평",
+      "cause": "natural_aging",
+      "cause_label": "노화수명",
+      "repair_options": {
+        "battery": "정품인증배터리"
+      },
+      "repair_symptoms": {
+        "battery": [
+          "성능치 80% 이하"
+        ]
+      },
+      "gender": "F",
+      "age_range": "30대",
+      "prev_repair_where": "first_repair",
       "videos": {
         "before": null,
         "progress": null,
@@ -40,7 +46,10 @@
           "url": "https://daolrepair-photos.fly.dev/api/thumb/12J9r66CMzorzaZmAWsNRIyx3WYXHcc0g",
           "captured_at": "2026-05-16T17:10:00+09:00"
         },
-        "after": null
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1ZxKI6-cRvlYZ_DVduzUCgPbW4UfLUKHo",
+          "captured_at": "2026-05-16T17:32:00+09:00"
+        }
       },
       "kakao_sent_at": null,
       "created_at": "2026-05-16T08:10:21.285Z",
@@ -49,12 +58,15 @@
       "repair_type_normalized": "battery",
       "photos_flat": {
         "imei": "https://daolrepair-photos.fly.dev/api/thumb/1SiBjXBess_c4X0lrrJkqmOscHTkd6hC_",
-        "before": "https://daolrepair-photos.fly.dev/api/thumb/12J9r66CMzorzaZmAWsNRIyx3WYXHcc0g"
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/12J9r66CMzorzaZmAWsNRIyx3WYXHcc0g",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1ZxKI6-cRvlYZ_DVduzUCgPbW4UfLUKHo"
       },
       "photos_captured": {
         "imei": "2026-05-16T17:10:00+09:00",
-        "before": "2026-05-16T17:10:00+09:00"
-      }
+        "before": "2026-05-16T17:10:00+09:00",
+        "after": "2026-05-16T17:32:00+09:00"
+      },
+      "repair_duration_min": 22
     },
     {
       "id": "1zstheMY67rZFxK3buLKFHOcxEF3NEMny",

@@ -639,6 +639,16 @@
     "technician": "김현기",
     "customer_name_masked": "고*경"
   },
+  "journal-2026-05-16-아이폰-iphone-13-pro-battery-1L5fUo13": {
+    "cert_id": "1L5fUo13z55McZBdNM5Bq-w9d7r9qSWbo",
+    "store": "가산점",
+    "model": "iPhone 13 Pro",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 110000,
+    "repair_date": "2026-05-16",
+    "technician": "금동평",
+    "customer_name_masked": "강*진"
+  },
   "journal-2026-05-16-아이폰-iphone-16-pro-screen+back-17Osa-2v": {
     "cert_id": "17Osa-2vRXIhlo3Ft2Nh7EbLPf_-4xfCM",
     "store": "가산점",

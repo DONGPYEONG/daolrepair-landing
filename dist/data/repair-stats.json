@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-16T17:15:16.156150+09:00",
+  "updated_at": "2026-05-16T19:20:06.050413+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11668,
@@ -36,43 +36,43 @@
       "model": "아이폰 iPhone 13 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 4
+      "minutes_ago": 129
     },
     {
       "model": "아이패드 iPad 7세대",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 172
+      "minutes_ago": 296
     },
     {
       "model": "아이폰 iPhone 17",
       "type": "후면 유리 교체",
       "branch": "신림점",
-      "minutes_ago": 201
+      "minutes_ago": 326
     },
     {
       "model": "아이폰 iPhone 16 Pro",
       "type": "화면 + 후면 유리 교체",
       "branch": "가산점",
-      "minutes_ago": 311
+      "minutes_ago": 436
     },
     {
       "model": "아이폰 iPhone 13",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 342
+      "minutes_ago": 467
     },
     {
       "model": "애플워치 Apple Watch Series 4 (40mm)",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 370
+      "minutes_ago": 495
     },
     {
       "model": "아이폰 iPhone 13 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 1334
+      "minutes_ago": 1459
     }
   ],
   "top_repair_types": [
@@ -1224,6 +1224,57 @@
     },
     {
       "id": "case-31",
+      "model": "아이폰 iPhone 13 Pro",
+      "type": "배터리 교체",
+      "branch": "가산점",
+      "date": "2026-05-16",
+      "createdTime": "2026-05-16T08:10:21.285Z",
+      "repair_time": "당일 · 30~50분",
+      "before_img": "images/before-after/1L5fUo13z55McZBdNM5Bq-w9/before.jpg",
+      "after_img": "images/before-after/1L5fUo13z55McZBdNM5Bq-w9/after.jpg",
+      "progress_imgs": [
+        "images/before-after/1L5fUo13z55McZBdNM5Bq-w9/progress1.jpg",
+        "images/before-after/1L5fUo13z55McZBdNM5Bq-w9/progress2.jpg",
+        "images/before-after/1L5fUo13z55McZBdNM5Bq-w9/progress3.jpg",
+        "images/before-after/1L5fUo13z55McZBdNM5Bq-w9/progress4.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중",
+        "탈거부품"
+      ],
+      "before_text": "이전 배터리 성능치",
+      "after_text": "교체 후 배터리 성능치",
+      "case_id": "1L5fUo13z55McZBdNM5Bq-w9d7r9qSWbo",
+      "meta": {
+        "time": "1710",
+        "age": "30대",
+        "gender": "여성",
+        "age_gender": "30대 여성",
+        "options": "정품인증배터리",
+        "symptoms": [
+          {
+            "part": "battery",
+            "natural": "배터리 최대 용량 80% 미만 (애플 권장 교체 시점)",
+            "raw": "성능치80"
+          }
+        ],
+        "cause": "자연 노화",
+        "time_natural": "오후 5시 10분",
+        "time_period": "오후 늦게",
+        "options_natural": "정품 인증 배터리",
+        "options_list": [
+          "정품인증배터리"
+        ],
+        "symptom_natural": "배터리 최대 용량 80% 미만 (애플 권장 교체 시점)",
+        "symptom_parts": [
+          "battery"
+        ]
+      }
+    },
+    {
+      "id": "case-32",
       "model": "아이폰 iPhone 13",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1271,7 +1322,7 @@
       "journal_url": "articles/journal-2026-05-16-아이폰-iphone-13-battery-1DL6yZsn.html"
     },
     {
-      "id": "case-32",
+      "id": "case-33",
       "model": "애플워치 Apple Watch Series 4 (40mm)",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1310,7 +1361,7 @@
       "journal_url": "articles/journal-2026-05-16-애플워치-apple-watch-series-4-40mm-battery-1arNQcbL.html"
     },
     {
-      "id": "case-33",
+      "id": "case-34",
       "model": "아이폰 iPhone 13 mini",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1362,7 +1413,7 @@
       "journal_url": "articles/journal-2026-05-15-아이폰-iphone-13-mini-battery-1_2PEmAC.html"
     },
     {
-      "id": "case-34",
+      "id": "case-35",
       "model": "아이폰 iPhone 14",
       "type": "수리",
       "branch": "신림점",
@@ -1417,7 +1468,7 @@
       }
     },
     {
-      "id": "case-35",
+      "id": "case-36",
       "model": "아이폰 iPhone 13",
       "type": "배터리 교체",
       "branch": "가산점",
@@ -1467,7 +1518,7 @@
       "journal_url": "articles/journal-2026-05-15-아이폰-iphone-13-battery-18X9B-rG.html"
     },
     {
-      "id": "case-36",
+      "id": "case-37",
       "model": "애플워치 Apple Watch SE (1세대)",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1506,7 +1557,7 @@
       "journal_url": "articles/journal-2026-05-15-애플워치-apple-watch-se-1세대-battery-1vpx9NKK.html"
     },
     {
-      "id": "case-37",
+      "id": "case-38",
       "model": "아이폰 iPhone 13",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1556,7 +1607,7 @@
       "journal_url": "articles/journal-2026-05-15-아이폰-iphone-13-battery-1CH0oLAR.html"
     },
     {
-      "id": "case-38",
+      "id": "case-39",
       "model": "애플워치 Apple Watch Series 3 (38mm)",
       "type": "배터리 교체",
       "branch": "신림점",
@@ -1595,7 +1646,7 @@
       "journal_url": "articles/journal-2026-05-14-애플워치-apple-watch-series-3-38mm-battery-19FiLwNR.html"
     },
     {
-      "id": "case-39",
+      "id": "case-40",
       "model": "아이폰 iPhone 14",
       "type": "카메라 수리",
       "branch": "목동점",
@@ -1633,7 +1684,7 @@
       "journal_url": "articles/journal-2026-05-14-아이폰-iphone-14-camera-1bQZRNi2.html"
     },
     {
-      "id": "case-40",
+      "id": "case-41",
       "model": "아이폰 iPhone 15 Pro Max",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1683,7 +1734,7 @@
       "journal_url": "articles/journal-2026-05-14-아이폰-iphone-15-pro-max-battery-1Zo1BU6U.html"
     },
     {
-      "id": "case-41",
+      "id": "case-42",
       "model": "애플워치 Apple Watch SE (1세대)",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1722,7 +1773,7 @@
       "journal_url": "articles/journal-2026-05-13-애플워치-apple-watch-se-1세대-battery-1eip1zDM.html"
     },
     {
-      "id": "case-42",
+      "id": "case-43",
       "model": "애플워치 Apple Watch SE (1세대)",
       "type": "배터리 교체",
       "branch": "신림점",
@@ -1760,7 +1811,7 @@
       "journal_url": "articles/journal-2026-05-12-애플워치-apple-watch-se-1세대-battery-1bGWXkRJ.html"
     },
     {
-      "id": "case-43",
+      "id": "case-44",
       "model": "애플워치 Apple Watch Series 10 (42mm)",
       "type": "수리",
       "branch": "신림점",
@@ -1799,7 +1850,7 @@
       }
     },
     {
-      "id": "case-44",
+      "id": "case-45",
       "model": "아이폰 iPhone 14 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
