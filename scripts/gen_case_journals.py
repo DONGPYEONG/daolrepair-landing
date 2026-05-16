@@ -2665,9 +2665,34 @@ def generate_article(case, journals, used_titles=None):
     after_img = case.get("after_img", "")
     progress_imgs = case.get("progress_imgs", []) or []
     progress_labels = case.get("progress_labels", []) or []
+    # 🆕 콤보 케이스 — 부위별 BEFORE/AFTER 페어 (액정 + 후면 유리 등)
+    ba_pairs = case.get("ba_pairs", []) or []
 
     photo_block = ""
-    if before_img and after_img:
+    # 🆕 콤보 케이스 — 2개 이상의 부위별 BA 페어가 있으면 부위별 섹션으로 렌더링
+    if ba_pairs and len(ba_pairs) > 1:
+        sections_html = ""
+        for pair in ba_pairs:
+            label = pair.get("label", "수리 부위")
+            b_url = f"{SITE_BASE}/{pair.get('before','')}"
+            a_url = f"{SITE_BASE}/{pair.get('after','')}"
+            sections_html += f'''
+<div class="ba-section">
+  <h3 class="ba-section-title">{label}</h3>
+  <div class="ba-photos">
+    <figure class="ba-photo">
+      <img loading="lazy" src="{b_url}" alt="{model} {label} 수리 전 사진">
+      <figcaption><span class="ba-tag ba-tag-before">BEFORE</span> {label} 수리 전</figcaption>
+    </figure>
+    <figure class="ba-photo">
+      <img loading="lazy" src="{a_url}" alt="{model} {label} 수리 후 사진">
+      <figcaption><span class="ba-tag ba-tag-after">AFTER</span> {label} 완료</figcaption>
+    </figure>
+  </div>
+</div>'''
+        photo_block = sections_html + f'\n<p class="ba-caption-text">↑ {case["branch"]}에서 직접 진행한 실제 수리 사진 (부위별 BEFORE / AFTER)</p>\n'
+    elif before_img and after_img:
+        # 단일 페어 (기존 동작)
         # 절대 URL 사용 (한글 폴더명·공백 인코딩 이슈 회피, 라이브 서버에서 정상 로드)
         before_url = f"{SITE_BASE}/{before_img}"
         after_url = f"{SITE_BASE}/{after_img}"
@@ -2827,6 +2852,10 @@ body {{ padding-top: 64px; }}
 .faq-q {{ font-weight: 800; color: var(--text); margin-bottom: 10px; font-size: 15px; line-height: 1.5; }}
 .faq-a {{ color: #555; line-height: 1.85; font-size: 14px; }}
 .faq-a a {{ color: var(--orange); }}
+.ba-section {{ margin: 28px 0 8px; }}
+.ba-section + .ba-section {{ margin-top: 22px; }}
+.ba-section-title {{ font-size: 15px; font-weight: 800; color: var(--text); margin: 0 0 10px; padding-left: 10px; border-left: 3px solid var(--orange); line-height: 1.4; }}
+.ba-section .ba-photos {{ margin: 0; }}
 .ba-photos {{ display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 28px 0 8px; }}
 .ba-photo {{ margin: 0; background: #0a0a0a; border-radius: 14px; overflow: hidden; position: relative; }}
 .ba-photo img {{

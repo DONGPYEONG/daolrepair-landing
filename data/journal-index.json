@@ -832,19 +832,6 @@
     "created_at": "2026-05-16"
   },
   {
-    "key": "caseid:17Osa-2v",
-    "slug": "journal-2026-05-16-아이폰-iphone-16-pro-screen+back-17Osa-2v",
-    "title": "20대 남성 손님 아이폰 16 프로 (iPhone 16 Pro) 떨어뜨림 — 가산점에서 액정 + 후면 유리 교체한 케이스",
-    "case_id": "17Osa-2vRXIhlo3Ft2Nh7EbLPf_-4xfCM",
-    "model": "아이폰 16 프로 (iPhone 16 Pro)",
-    "type": "screen+back",
-    "branch": "가산점",
-    "date": "2026-05-16",
-    "uploaded_at": "2026-05-16T03:03:56.853Z",
-    "url": "https://xn--2j1bq2k97kxnah86c.com/articles/journal-2026-05-16-아이폰-iphone-16-pro-screen+back-17Osa-2v.html",
-    "created_at": "2026-05-16"
-  },
-  {
     "key": "caseid:1zstheMY",
     "slug": "journal-2026-05-16-아이패드-ipad-7세대-screen-1zstheMY",
     "title": "아이패드 7세대 (iPad 7)세대 떨어뜨림으로 망가진 20대 여성 손님 — 가산점에서 액정 교체",
@@ -881,6 +868,19 @@
     "date": "2026-05-16",
     "uploaded_at": "2026-05-16T08:10:21.285Z",
     "url": "https://xn--2j1bq2k97kxnah86c.com/articles/journal-2026-05-16-아이폰-iphone-13-pro-battery-1L5fUo13.html",
+    "created_at": "2026-05-16"
+  },
+  {
+    "key": "caseid:17Osa-2v",
+    "slug": "journal-2026-05-16-아이폰-iphone-16-pro-screen+back-17Osa-2v",
+    "title": "20대 남성 손님 아이폰 16 프로 (iPhone 16 Pro) 떨어뜨림 — 가산점에서 액정 + 후면 유리 교체한 케이스",
+    "case_id": "17Osa-2vRXIhlo3Ft2Nh7EbLPf_-4xfCM",
+    "model": "아이폰 iPhone 16 Pro",
+    "type": "screen+back",
+    "branch": "가산점",
+    "date": "2026-05-16",
+    "uploaded_at": "2026-05-16T03:03:56.853Z",
+    "url": "https://xn--2j1bq2k97kxnah86c.com/articles/journal-2026-05-16-아이폰-iphone-16-pro-screen+back-17Osa-2v.html",
     "created_at": "2026-05-16"
   }
 ]

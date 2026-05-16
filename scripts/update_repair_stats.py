@@ -794,6 +794,20 @@ def main():
             print(f"   ⏭️  스킵 (안전한 사진 짝 없음): {device_label(c['device'], c['model'])} {c['repair_type']}")
             continue
 
+        # 🆕 콤보 케이스 (screen+back 등) — 2번째 BA 페어 추가 수집 (후면 유리)
+        # 매장 앱이 분할 슬롯으로 업로드 (2026-05-17~) → 두 부위 각각 BEFORE/AFTER 페어 확보
+        back_before_file = None
+        back_after_file = None
+        if c["repair_type"] in COMBO_SCREEN_BACK_TYPES:
+            for f in inner:
+                if ("수리전" in f["name"] and "후면 유리 파손부위" in f["name"]
+                    and is_safe_file(f["name"])):
+                    back_before_file = f; break
+            for f in inner:
+                if ("수리후" in f["name"] and "후면 유리 수리부위" in f["name"]
+                    and is_safe_file(f["name"])):
+                    back_after_file = f; break
+
         case_idx += 1
         # 폴더명을 Drive 케이스 ID 기반으로 (캐시 충돌 방지)
         # 한 케이스 = 영구 고유 폴더 → 다른 케이스가 같은 자리 들어와도 사진 안 섞임
@@ -853,12 +867,21 @@ def main():
             and cached_progress_ids == progress_ids  # 수리중 사진 변경 시도 재다운로드
         )
 
+        # 🆕 콤보 2번째 페어 다운로드 경로
+        back_before_path = case_dir / "before-back.jpg"
+        back_after_path  = case_dir / "after-back.jpg"
+        has_back_pair = bool(back_before_file and back_after_file)
+
         if same_files:
             print(f"   ✓ case-{case_idx} ({folder_id[:10]}...): {device_label(c['device'], c['model'])} ({c['repair_type']}) — 캐시 사용")
         else:
             try:
                 download(before_file["id"], before_path)
                 download(after_file["id"], after_path)
+                # 콤보 2번째 페어 다운로드 (있을 때만)
+                if has_back_pair:
+                    download(back_before_file["id"], back_before_path)
+                    download(back_after_file["id"], back_after_path)
                 # 수리중 사진 다운로드 (progress1.jpg, progress2.jpg, ...)
                 # 🛡 사장님(2026-05-16) 명시 — 매장 직원이 같은 사진을 다른 라벨로 두 번 올리는
                 # 사고 자동 차단. 다운로드 후 MD5 비교로 중복 제거 + 번호 재정렬.
@@ -886,15 +909,21 @@ def main():
                         try: old_p.unlink()
                         except Exception: pass
 
+                _meta_dict = {
+                    "before_file_id": before_file["id"],
+                    "after_file_id": after_file["id"],
+                    "before_name": before_file["name"],
+                    "after_name": after_file["name"],
+                    "progress_file_ids": progress_ids,
+                    "progress_labels": progress_labels,  # 본문 캡션용
+                }
+                if has_back_pair:
+                    _meta_dict["back_before_file_id"] = back_before_file["id"]
+                    _meta_dict["back_after_file_id"] = back_after_file["id"]
+                    _meta_dict["back_before_name"] = back_before_file["name"]
+                    _meta_dict["back_after_name"] = back_after_file["name"]
                 meta_path.write_text(
-                    json.dumps({
-                        "before_file_id": before_file["id"],
-                        "after_file_id": after_file["id"],
-                        "before_name": before_file["name"],
-                        "after_name": after_file["name"],
-                        "progress_file_ids": progress_ids,
-                        "progress_labels": progress_labels,  # 본문 캡션용
-                    }, ensure_ascii=False),
+                    json.dumps(_meta_dict, ensure_ascii=False),
                     encoding="utf-8"
                 )
                 reason = "Vision 재선택" if cached_meta else "새로 다운로드"
@@ -907,6 +936,9 @@ def main():
                     model_for_mask = f"{c.get('device','')} {c.get('model','')}"
                     mask_image(before_path, model=model_for_mask)
                     mask_image(after_path, model=model_for_mask)
+                    if has_back_pair:
+                        mask_image(back_before_path, model=model_for_mask)
+                        mask_image(back_after_path, model=model_for_mask)
                     for p_path, p_label in zip(progress_paths, progress_labels):
                         # 교체부품 사진은 부품 공급사 라벨(PartsPick 등) 자동 블러 강화
                         ptype = "parts" if p_label == "교체부품" else ""
@@ -959,7 +991,23 @@ def main():
             _repair_time = "1~2일 · 부품 수급 (주말 시 2~3일)"
         else:
             _repair_time = TIME_BY_TYPE.get(c["repair_type"], "진단 후 안내")
-        portfolio_cases.append({
+        # 🆕 콤보 케이스 ba_pairs — 2쌍 다 있으면 부위별로 표시
+        # 캐시 경로에서도 디스크에 파일 있으면 인식 (재실행 시 has_back_pair 변수 사라짐 대비)
+        _back_b_rel = f"images/before-after/{folder_id}/before-back.jpg"
+        _back_a_rel = f"images/before-after/{folder_id}/after-back.jpg"
+        _has_back_on_disk = (case_dir / "before-back.jpg").exists() and (case_dir / "after-back.jpg").exists()
+        _ba_pairs = None
+        if c["repair_type"] in COMBO_SCREEN_BACK_TYPES and _has_back_on_disk:
+            _ba_pairs = [
+                {"label": "액정 교체",
+                 "before": f"images/before-after/{folder_id}/before.jpg",
+                 "after":  f"images/before-after/{folder_id}/after.jpg"},
+                {"label": "후면 유리 교체",
+                 "before": _back_b_rel,
+                 "after":  _back_a_rel},
+            ]
+
+        _case_entry = {
             "id": f"case-{case_idx}",
             "model": device_label(c["device"], c["model"]),
             "type": TYPE_LABELS.get(c["repair_type"], "수리"),
@@ -976,7 +1024,10 @@ def main():
             "after_text": after_text,
             "case_id": c["id"],
             "meta": case_meta,  # 🆕 일지 생성 시 사용
-        })
+        }
+        if _ba_pairs:
+            _case_entry["ba_pairs"] = _ba_pairs
+        portfolio_cases.append(_case_entry)
 
     # ─── 5b. 사용하지 않는 폴더 정리 ───
     # 🛡 SAFE MODE (기본): 옛 case-NN/ 접두사만 삭제. 신규 폴더는 로그만 출력하고 보존.
