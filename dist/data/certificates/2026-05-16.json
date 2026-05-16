@@ -1,7 +1,7 @@
 {
   "date": "2026-05-16",
   "total": 5,
-  "fetched_at": "2026-05-16T14:27:22.586236+09:00",
+  "fetched_at": "2026-05-16T16:03:15.105312+09:00",
   "certificates": [
     {
       "id": "1zstheMY67rZFxK3buLKFHOcxEF3NEMny",
@@ -13,17 +13,17 @@
       "repair_date": "2026-05-16",
       "repair_type": "screen",
       "repair_description": "액정 교체 수리 완료",
-      "price": 0,
-      "vat_supply": 0,
-      "vat_amount": 0,
-      "technician": "",
-      "cause": null,
-      "cause_label": null,
+      "price": 132000,
+      "vat_supply": 120000,
+      "vat_amount": 12000,
+      "technician": "금동평",
+      "cause": "drop",
+      "cause_label": "떨어뜨림",
       "repair_options": {},
       "repair_symptoms": {},
-      "gender": null,
-      "age_range": null,
-      "prev_repair_where": null,
+      "gender": "F",
+      "age_range": "20대",
+      "prev_repair_where": "first_repair",
       "videos": {
         "before": null,
         "progress": null,
@@ -40,7 +40,10 @@
           "url": "https://daolrepair-photos.fly.dev/api/thumb/1ekYqhMiXOdSWeEEEPLyGtFJcCBD7jRwk",
           "captured_at": "2026-05-16T14:23:00+09:00"
         },
-        "after": null
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1OzPGXDP4LOxUnMWPLj3-VrP6LWQCXAOW",
+          "captured_at": "2026-05-16T15:29:00+09:00"
+        }
       },
       "kakao_sent_at": null,
       "created_at": "2026-05-16T05:23:09.721Z",
@@ -49,12 +52,15 @@
       "repair_type_normalized": "screen",
       "photos_flat": {
         "imei": "https://daolrepair-photos.fly.dev/api/thumb/1MRcoW4VpvPETtkSC8MDQ0RntVuBisshz",
-        "before": "https://daolrepair-photos.fly.dev/api/thumb/1ekYqhMiXOdSWeEEEPLyGtFJcCBD7jRwk"
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1ekYqhMiXOdSWeEEEPLyGtFJcCBD7jRwk",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1OzPGXDP4LOxUnMWPLj3-VrP6LWQCXAOW"
       },
       "photos_captured": {
         "imei": "2026-05-16T14:24:00+09:00",
-        "before": "2026-05-16T14:23:00+09:00"
-      }
+        "before": "2026-05-16T14:23:00+09:00",
+        "after": "2026-05-16T15:29:00+09:00"
+      },
+      "repair_duration_min": 66
     },
     {
       "id": "1m-Gla8uOQGkwLPNwHGnmiO0hF0erzbcg",
@@ -66,17 +72,17 @@
       "repair_date": "2026-05-16",
       "repair_type": "back",
       "repair_description": "후면 유리 수리 완료",
-      "price": 0,
-      "vat_supply": 0,
-      "vat_amount": 0,
-      "technician": "",
-      "cause": null,
-      "cause_label": null,
+      "price": 120000,
+      "vat_supply": 109091,
+      "vat_amount": 10909,
+      "technician": "김선웅",
+      "cause": "drop",
+      "cause_label": "떨어뜨림",
       "repair_options": {},
       "repair_symptoms": {},
-      "gender": null,
-      "age_range": null,
-      "prev_repair_where": null,
+      "gender": "F",
+      "age_range": "20대",
+      "prev_repair_where": "first_repair",
       "videos": {
         "before": null,
         "progress": null,
@@ -93,7 +99,10 @@
           "url": "https://daolrepair-photos.fly.dev/api/thumb/1_EqwrJJB_OMdP5JRp3lNWVOpmEWeIJfV",
           "captured_at": "2026-05-16T13:53:00+09:00"
         },
-        "after": null
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1Rru_yIqlg_Ti35ejRQxpvyRorcs_pjC0",
+          "captured_at": "2026-05-16T14:34:00+09:00"
+        }
       },
       "kakao_sent_at": null,
       "created_at": "2026-05-16T04:53:21.588Z",
@@ -102,12 +111,15 @@
       "repair_type_normalized": "back",
       "photos_flat": {
         "imei": "https://daolrepair-photos.fly.dev/api/thumb/1z90spjCUx7iexrx_ii7YMdSPhuOgMunf",
-        "before": "https://daolrepair-photos.fly.dev/api/thumb/1_EqwrJJB_OMdP5JRp3lNWVOpmEWeIJfV"
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1_EqwrJJB_OMdP5JRp3lNWVOpmEWeIJfV",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1Rru_yIqlg_Ti35ejRQxpvyRorcs_pjC0"
       },
       "photos_captured": {
         "imei": "2026-05-16T13:53:00+09:00",
-        "before": "2026-05-16T13:53:00+09:00"
-      }
+        "before": "2026-05-16T13:53:00+09:00",
+        "after": "2026-05-16T14:34:00+09:00"
+      },
+      "repair_duration_min": 41
     },
     {
       "id": "17Osa-2vRXIhlo3Ft2Nh7EbLPf_-4xfCM",

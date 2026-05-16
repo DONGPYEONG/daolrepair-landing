@@ -619,6 +619,16 @@
     "technician": "김현기",
     "customer_name_masked": "박*미"
   },
+  "journal-2026-05-16-아이패드-ipad-7세대-screen-1zstheMY": {
+    "cert_id": "1zstheMY67rZFxK3buLKFHOcxEF3NEMny",
+    "store": "가산점",
+    "model": "iPad 7세대",
+    "repair_description": "액정 교체 수리 완료",
+    "price": 132000,
+    "repair_date": "2026-05-16",
+    "technician": "금동평",
+    "customer_name_masked": "서*연"
+  },
   "journal-2026-05-16-아이폰-iphone-13-battery-1DL6yZsn": {
     "cert_id": "1DL6yZsn17Ivfyca9Omah6pjcWdQhKkrS",
     "store": "목동점",
@@ -638,6 +648,16 @@
     "repair_date": "2026-05-16",
     "technician": "김영식",
     "customer_name_masked": "윤*겸"
+  },
+  "journal-2026-05-16-아이폰-iphone-17-back-1m-Gla8u": {
+    "cert_id": "1m-Gla8uOQGkwLPNwHGnmiO0hF0erzbcg",
+    "store": "신림점",
+    "model": "iPhone 17",
+    "repair_description": "후면 유리 수리 완료",
+    "price": 120000,
+    "repair_date": "2026-05-16",
+    "technician": "김선웅",
+    "customer_name_masked": "송*혜"
   },
   "journal-2026-05-16-애플워치-apple-watch-series-4-40mm-battery-1arNQcbL": {
     "cert_id": "1arNQcbLAuSM1L-sgg7Q-EyKoGJ7mW_gT",
