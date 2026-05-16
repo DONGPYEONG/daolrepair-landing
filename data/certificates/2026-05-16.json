@@ -1,6 +1,184 @@
 {
   "date": "2026-05-16",
-  "total": 0,
-  "fetched_at": "2026-05-16T00:18:39.391369+09:00",
-  "certificates": []
+  "total": 3,
+  "fetched_at": "2026-05-16T12:16:04.756426+09:00",
+  "certificates": [
+    {
+      "id": "17Osa-2vRXIhlo3Ft2Nh7EbLPf_-4xfCM",
+      "store": "가산점",
+      "store_address": "서울시 금천구 가산디지털 1로 168, 우림라이온스밸리 A동 117호",
+      "business_no": "603-13-92594",
+      "device": "아이폰",
+      "model": "iPhone 16 Pro",
+      "repair_date": "2026-05-16",
+      "repair_type": "screen+back",
+      "repair_description": "액정 교체, 후면 유리 수리 완료",
+      "price": 0,
+      "vat_supply": 0,
+      "vat_amount": 0,
+      "technician": "",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1VmB-xia2R4qO32I3mD1WyQtO2O3YJ5xC",
+          "captured_at": "2026-05-16T12:04:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1rKcOwU74umtuEEkv-tl7iebqCVzdJJPc",
+          "captured_at": "2026-05-16T12:04:00+09:00"
+        },
+        "after": null
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-16T03:03:56.853Z",
+      "customer_name_masked": "윤*겸",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "screen+back",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1VmB-xia2R4qO32I3mD1WyQtO2O3YJ5xC",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1rKcOwU74umtuEEkv-tl7iebqCVzdJJPc"
+      },
+      "photos_captured": {
+        "imei": "2026-05-16T12:04:00+09:00",
+        "before": "2026-05-16T12:04:00+09:00"
+      }
+    },
+    {
+      "id": "1DL6yZsn17Ivfyca9Omah6pjcWdQhKkrS",
+      "store": "목동점",
+      "store_address": "서울시 양천구 목동동로63, 대영프라자 107호",
+      "business_no": "459-15-02863",
+      "device": "아이폰",
+      "model": "iPhone 13",
+      "repair_date": "2026-05-16",
+      "repair_type": "battery",
+      "repair_description": "배터리 교체 수리 완료",
+      "price": 90000,
+      "vat_supply": 81818,
+      "vat_amount": 8182,
+      "technician": "김현기",
+      "cause": "natural_aging",
+      "cause_label": "노화수명",
+      "repair_options": {
+        "battery": "정품인증배터리"
+      },
+      "repair_symptoms": {
+        "battery": [
+          "성능치 80% 이하"
+        ]
+      },
+      "gender": "F",
+      "age_range": "40대",
+      "prev_repair_where": "first_repair",
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1xlOOplCN-xRUZm74pua3GkG3pzFYCboj",
+          "captured_at": "2026-05-16T11:33:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1ekDGUuX53XUZB55VTlMOccoPZp7hGQ4l",
+          "captured_at": "2026-05-16T11:33:00+09:00"
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1nrgS-lUPoi_3mg2yb2MwPKhAuFhHmS78",
+          "captured_at": "2026-05-16T12:11:00+09:00"
+        }
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-16T02:32:17.042Z",
+      "customer_name_masked": "고*경",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "battery",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1xlOOplCN-xRUZm74pua3GkG3pzFYCboj",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1ekDGUuX53XUZB55VTlMOccoPZp7hGQ4l",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1nrgS-lUPoi_3mg2yb2MwPKhAuFhHmS78"
+      },
+      "photos_captured": {
+        "imei": "2026-05-16T11:33:00+09:00",
+        "before": "2026-05-16T11:33:00+09:00",
+        "after": "2026-05-16T12:11:00+09:00"
+      },
+      "repair_duration_min": 38
+    },
+    {
+      "id": "1arNQcbLAuSM1L-sgg7Q-EyKoGJ7mW_gT",
+      "store": "목동점",
+      "store_address": "서울시 양천구 목동동로63, 대영프라자 107호",
+      "business_no": "459-15-02863",
+      "device": "애플워치",
+      "model": "Apple Watch Series 4 (40mm)",
+      "repair_date": "2026-05-16",
+      "repair_type": "battery",
+      "repair_description": "배터리 교체 수리 완료",
+      "price": 0,
+      "vat_supply": 0,
+      "vat_amount": 0,
+      "technician": "김현기",
+      "cause": "natural_aging",
+      "cause_label": "노화수명",
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": "F",
+      "age_range": "20대",
+      "prev_repair_where": "first_repair",
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1JCPXY4dRv_w48ToylHkiJ3p7yI_3_cfp",
+          "captured_at": "2026-05-16T11:06:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1PmrJFj43gesYV6kpAJnyTqmwYYWM9pWx",
+          "captured_at": "2026-05-16T11:05:00+09:00"
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1ytjJ95HMbRrZ5-1M9FZ4wEqj7ZiUSxq5",
+          "captured_at": "2026-05-16T11:27:00+09:00"
+        }
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-16T02:05:03.502Z",
+      "customer_name_masked": "박*경",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "battery",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1JCPXY4dRv_w48ToylHkiJ3p7yI_3_cfp",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1PmrJFj43gesYV6kpAJnyTqmwYYWM9pWx",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1ytjJ95HMbRrZ5-1M9FZ4wEqj7ZiUSxq5"
+      },
+      "photos_captured": {
+        "imei": "2026-05-16T11:06:00+09:00",
+        "before": "2026-05-16T11:05:00+09:00",
+        "after": "2026-05-16T11:27:00+09:00"
+      },
+      "repair_duration_min": 22
+    }
+  ]
 }

@@ -618,5 +618,25 @@
     "repair_date": "2026-05-15",
     "technician": "김현기",
     "customer_name_masked": "박*미"
+  },
+  "journal-2026-05-16-아이폰-iphone-13-battery-1DL6yZsn": {
+    "cert_id": "1DL6yZsn17Ivfyca9Omah6pjcWdQhKkrS",
+    "store": "목동점",
+    "model": "iPhone 13",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 90000,
+    "repair_date": "2026-05-16",
+    "technician": "김현기",
+    "customer_name_masked": "고*경"
+  },
+  "journal-2026-05-16-애플워치-apple-watch-series-4-40mm-battery-1arNQcbL": {
+    "cert_id": "1arNQcbLAuSM1L-sgg7Q-EyKoGJ7mW_gT",
+    "store": "목동점",
+    "model": "Apple Watch Series 4 (40mm)",
+    "repair_description": "배터리 교체 수리 완료",
+    "price": 0,
+    "repair_date": "2026-05-16",
+    "technician": "김현기",
+    "customer_name_masked": "박*경"
   }
 }
