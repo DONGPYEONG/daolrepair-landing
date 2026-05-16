@@ -76,6 +76,11 @@
     .pf-cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
     .pf-cta-btn { background: var(--orange); color: #fff; padding: 12px 24px; border-radius: 24px; font-size: 14px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
     .pf-cta-btn:hover { background: #C55E1A; }
+    /* 전체보기 버튼 — 그리드 하단 */
+    .pf-show-all-btn { background: var(--orange); color: #fff; padding: 16px 36px; border-radius: 28px; font-size: 15px; font-weight: 800; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; box-shadow: 0 4px 16px rgba(232,115,42,0.35); }
+    .pf-show-all-btn:hover { background: #C55E1A; transform: translateY(-2px); }
+    .pf-show-all-btn:active { transform: translateY(0); }
+    .pf-card-hidden { display: none; }
     .pf-cta-btn-ghost { background: transparent; color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.25); padding: 12px 24px; border-radius: 24px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
     .pf-cta-btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.4); color: #fff; }
 
@@ -237,6 +242,13 @@
     <div class="pf-empty">데이터를 불러오는 중입니다…</div>
   </div>
 
+  <div class="pf-show-all-wrap" id="pfShowAllWrap" style="display:none;text-align:center;margin:32px 0 0;">
+    <button type="button" id="pfShowAllBtn" class="pf-show-all-btn">
+      📂 전체 <span id="pfShowAllCount">0</span>건 모두 보기 →
+    </button>
+    <p style="font-size:13px;color:rgba(255,255,255,0.55);margin-top:10px;">최근 30건만 우선 표시 중 · 클릭하면 모든 수리 사례가 펼쳐집니다</p>
+  </div>
+
   <div class="pf-cta">
     <h3>본인 폰도 이렇게 살려드립니다</h3>
     <p>매장 방문 또는 택배로 정확한 진단·견적을 받으실 수 있습니다.<br>3개 직영점 · 90일 보증 · 실패 시 비용 0원.</p>
@@ -337,8 +349,15 @@ function daolCaseDetail(c){
       return;
     }
     var v = encodeURIComponent(d.updated_at || Date.now());
-    count.innerHTML = '총 <strong>' + cases.length + '건</strong> · 최근 갱신 ' + (d.updated_at ? new Date(d.updated_at).toLocaleString('ko-KR') : '');
-    grid.innerHTML = cases.map(function(c){
+    // 초기 30건만 우선 노출. 나머지는 pf-card-hidden 으로 감춤 + "전체보기" 버튼으로 펼침
+    var INITIAL_LIMIT = 30;
+    var total = cases.length;
+    var hasMore = total > INITIAL_LIMIT;
+    count.innerHTML = '최근 <strong>' + Math.min(INITIAL_LIMIT, total) + '건</strong> 우선 표시'
+      + (hasMore ? ' · 전체 <strong>' + total + '건</strong>' : '')
+      + ' · 갱신 ' + (d.updated_at ? new Date(d.updated_at).toLocaleString('ko-KR') : '');
+    grid.innerHTML = cases.map(function(c, idx){
+      var hiddenCls = idx >= INITIAL_LIMIT ? ' pf-card-hidden' : '';
       var beforeUrl = c.before_img + '?v=' + v;
       var afterUrl  = c.after_img  + '?v=' + v;
       var detail = (typeof daolCaseDetail === 'function')
@@ -350,7 +369,7 @@ function daolCaseDetail(c){
         ? '<a href="' + c.journal_url + '" class="pf-journal-link">📋 이 케이스 자세히 보기 →</a>'
         : '<a href="articles/journal.html" class="pf-journal-link">📋 다른 수리 사례 보기 →</a>';
       return [
-        '<div class="pf-card">',
+        '<div class="pf-card' + hiddenCls + '">',
           '<div class="pf-slider" data-pf-slider>',
             '<div class="pf-img pf-after" style="background-image:url(\'' + afterUrl + '\')"></div>',
             '<div class="pf-img pf-before" style="background-image:url(\'' + beforeUrl + '\')"></div>',
@@ -385,6 +404,18 @@ function daolCaseDetail(c){
         '</div>'
       ].join('');
     }).join('');
+
+    // "전체보기" 버튼 — 30건 넘으면 표시
+    if (hasMore) {
+      var wrap = document.getElementById('pfShowAllWrap');
+      document.getElementById('pfShowAllCount').textContent = total;
+      wrap.style.display = '';
+      document.getElementById('pfShowAllBtn').addEventListener('click', function(){
+        document.querySelectorAll('.pf-card-hidden').forEach(function(el){ el.classList.remove('pf-card-hidden'); });
+        wrap.style.display = 'none';
+        count.innerHTML = '총 <strong>' + total + '건</strong> 모두 표시 · 갱신 ' + (d.updated_at ? new Date(d.updated_at).toLocaleString('ko-KR') : '');
+      });
+    }
 
     // 각 슬라이더에 드래그 인터랙션 적용
     document.querySelectorAll('[data-pf-slider]').forEach(function(slider){

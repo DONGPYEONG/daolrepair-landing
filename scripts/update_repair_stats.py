@@ -943,15 +943,20 @@ def main():
 
     # ─── 6. JSON 저장 ───
     # 슬라이더는 최신 4개 (메인 페이지), 포트폴리오는 전체 (별도 페이지)
-    # 🚫 슬라이더 노출 제한 — 아이폰은 13시리즈 이상만 (옛 모델은 일지에만)
+    # 🚫 슬라이더 노출 제한 (사장님 명시):
+    # 1) "이렇게 살려냅니다" 메인 4개는 액정 교체 직관적인 것만 — 배터리·후면 등 X
+    # 2) 아이폰은 13시리즈 이상만 (옛 모델은 일지에만 노출)
     def _slider_eligible(c):
+        # (1) 액정 교체 케이스만 통과 (메인 슬라이더는 직관적인 BEFORE/AFTER 액정만)
+        rt = (c.get("repair_type") or "").lower()
+        t = (c.get("type") or "")
+        is_screen_only = ("screen" == rt or "화면 교체" == t or "액정 교체" == t)
+        if not is_screen_only:
+            return False
+        # (2) 아이폰만 13시리즈 이상 필터 (워치·패드는 모두 통과)
         m = c.get("model", "")
         if "아이폰" not in m and "iPhone" not in m and "iphone" not in m.lower():
-            # 아이폰 외(워치/패드/맥북/에어팟 등)는 모두 노출
             return True
-        # 아이폰만 13시리즈 이상 필터
-        OLD = ["6", "7", "8", "se", "SE", "x", "X", "xr", "XR", "xs", "XS", "9", "10", "11", "12"]
-        m_lower = m.lower()
         # 13/14/15/16/17 + Pro/Plus/Mini/Max 변형 모두 허용
         for ok in ["13", "14", "15", "16", "17", "18", "19"]:
             if ok in m:
