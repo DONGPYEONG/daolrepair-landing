@@ -1,7 +1,7 @@
 {
   "date": "2026-05-16",
   "total": 6,
-  "fetched_at": "2026-05-16T20:42:33.418107+09:00",
+  "fetched_at": "2026-05-16T22:57:05.014074+09:00",
   "certificates": [
     {
       "id": "1L5fUo13z55McZBdNM5Bq-w9d7r9qSWbo",
@@ -66,12 +66,7 @@
         "before": "2026-05-16T17:10:00+09:00",
         "after": "2026-05-16T17:32:00+09:00"
       },
-      "repair_duration_min": 22,
-      "photos_local": {
-        "imei": "data/certificates/photos/1L5fUo13z55McZBdNM5Bq-w9d7r9qSWbo/imei.jpg",
-        "before": "data/certificates/photos/1L5fUo13z55McZBdNM5Bq-w9d7r9qSWbo/before.jpg",
-        "after": "data/certificates/photos/1L5fUo13z55McZBdNM5Bq-w9d7r9qSWbo/after.jpg"
-      }
+      "repair_duration_min": 22
     },
     {
       "id": "1zstheMY67rZFxK3buLKFHOcxEF3NEMny",
@@ -130,12 +125,7 @@
         "before": "2026-05-16T14:23:00+09:00",
         "after": "2026-05-16T15:29:00+09:00"
       },
-      "repair_duration_min": 66,
-      "photos_local": {
-        "imei": "data/certificates/photos/1zstheMY67rZFxK3buLKFHOcxEF3NEMny/imei.jpg",
-        "before": "data/certificates/photos/1zstheMY67rZFxK3buLKFHOcxEF3NEMny/before.jpg",
-        "after": "data/certificates/photos/1zstheMY67rZFxK3buLKFHOcxEF3NEMny/after.jpg"
-      }
+      "repair_duration_min": 66
     },
     {
       "id": "1m-Gla8uOQGkwLPNwHGnmiO0hF0erzbcg",
@@ -194,12 +184,7 @@
         "before": "2026-05-16T13:53:00+09:00",
         "after": "2026-05-16T14:34:00+09:00"
       },
-      "repair_duration_min": 41,
-      "photos_local": {
-        "imei": "data/certificates/photos/1m-Gla8uOQGkwLPNwHGnmiO0hF0erzbcg/imei.jpg",
-        "before": "data/certificates/photos/1m-Gla8uOQGkwLPNwHGnmiO0hF0erzbcg/before.jpg",
-        "after": "data/certificates/photos/1m-Gla8uOQGkwLPNwHGnmiO0hF0erzbcg/after.jpg"
-      }
+      "repair_duration_min": 41
     },
     {
       "id": "17Osa-2vRXIhlo3Ft2Nh7EbLPf_-4xfCM",
@@ -264,12 +249,7 @@
         "before": "2026-05-16T12:04:00+09:00",
         "after": "2026-05-16T13:42:00+09:00"
       },
-      "repair_duration_min": 98,
-      "photos_local": {
-        "imei": "data/certificates/photos/17Osa-2vRXIhlo3Ft2Nh7EbLPf_-4xfCM/imei.jpg",
-        "before": "data/certificates/photos/17Osa-2vRXIhlo3Ft2Nh7EbLPf_-4xfCM/before.jpg",
-        "after": "data/certificates/photos/17Osa-2vRXIhlo3Ft2Nh7EbLPf_-4xfCM/after.jpg"
-      }
+      "repair_duration_min": 98
     },
     {
       "id": "1DL6yZsn17Ivfyca9Omah6pjcWdQhKkrS",
@@ -334,12 +314,7 @@
         "before": "2026-05-16T11:33:00+09:00",
         "after": "2026-05-16T12:11:00+09:00"
       },
-      "repair_duration_min": 38,
-      "photos_local": {
-        "imei": "data/certificates/photos/1DL6yZsn17Ivfyca9Omah6pjcWdQhKkrS/imei.jpg",
-        "before": "data/certificates/photos/1DL6yZsn17Ivfyca9Omah6pjcWdQhKkrS/before.jpg",
-        "after": "data/certificates/photos/1DL6yZsn17Ivfyca9Omah6pjcWdQhKkrS/after.jpg"
-      }
+      "repair_duration_min": 38
     },
     {
       "id": "1arNQcbLAuSM1L-sgg7Q-EyKoGJ7mW_gT",
@@ -398,12 +373,7 @@
         "before": "2026-05-16T11:05:00+09:00",
         "after": "2026-05-16T11:27:00+09:00"
       },
-      "repair_duration_min": 22,
-      "photos_local": {
-        "imei": "data/certificates/photos/1arNQcbLAuSM1L-sgg7Q-EyKoGJ7mW_gT/imei.jpg",
-        "before": "data/certificates/photos/1arNQcbLAuSM1L-sgg7Q-EyKoGJ7mW_gT/before.jpg",
-        "after": "data/certificates/photos/1arNQcbLAuSM1L-sgg7Q-EyKoGJ7mW_gT/after.jpg"
-      }
+      "repair_duration_min": 22
     }
   ]
 }
