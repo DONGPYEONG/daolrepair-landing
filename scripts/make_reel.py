@@ -1041,25 +1041,129 @@ def make_ba_cover(before_path: Path, after_path: Path,
     # 호기심 유발 후킹 — repair type 기반 자동 선택
     repair = (slug_meta.get("repair", "") if slug_meta else "")
     device = (slug_meta.get("device", "") if slug_meta else "")
+    # 수리 종류별 어울리는 어조 + 충분한 변형 (deterministic 선택)
+    # - 복구/살리기: screen·back·camera·water·mainboard (파손·고장 회복)
+    # - 교체/해결: battery·charge·button·speaker·sensor (부품 새것으로)
     CURIOSITY_HOOKS = {
-        "screen": ["이것도 살릴 수 있다고!?", "이 화면이 30분 만에...?", "박살난 액정 복구 가능?", "이거 그냥 버려야 할까?"],
-        "battery": ["성능치 80% 미만 → 100%!?", "이 배터리 살릴 수 있어!?", "갑자기 꺼지는 폰 어떡해?", "배터리 부풀음... 응급?"],
-        "back": ["뒷판 박살이 복구 가능!?", "이것도 정품급으로?", "후면 깨졌는데 그대로 쓰면?", "케이스로 가려도 될까?"],
-        "back-glass": ["뒷판 박살이 복구 가능!?", "이것도 정품급으로?"],
-        "charge": ["충전 안 되는 폰 살릴 수 있다고?", "케이블 3개 바꿔도 안되면?", "이거 단자 청소만으로?"],
-        "camera": ["카메라 흔들림 복구 가능!?", "OIS 손상도 살린다고?", "흐린 사진... 모듈 교체?"],
-        "water": ["물에 빠진 폰 살릴 수 있다고!?", "침수 며칠 후 발열...?", "쌀에 넣지 말고 이거!"],
-        "speaker": ["스피커 고장 → 복구 가능?", "한쪽 안 들리는 거 고친다고?"],
-        "button": ["전원 버튼 안 눌리는데 수리?", "버튼 고장 부품 교체로?"],
-        "sensor": ["Face ID 고장 → 수리 가능!?", "센서 손상도 복구된다고?"],
-        "mainboard": ["무한 사과 → 메인보드 살린다!?", "부팅 안 되는 폰 살릴 수 있어?"],
-        "screen+battery": ["액정+배터리 한 번에 살린다!?", "둘 다 망가졌는데 동시에?"],
-        "screen+back": ["앞뒤 다 깨졌는데 복구!?", "이것도 한 번에 살린다고?"],
-        "back+battery": ["후면+배터리 동시에 살리기?"],
-        "back+camera": ["후면·카메라 한 번에 복구?"],
+        "screen": [
+            "박살난 액정 복구 가능!?",
+            "줄·점 가득한 화면 살린다고?",
+            "터치 안 먹는 폰 어떡해?",
+            "이 화면이 30분 만에...?",
+            "공식 절반 가격에 정품?",
+            "검은 화면도 살릴 수 있다고?",
+            "박살 액정 → 새것처럼?",
+        ],
+        "battery": [
+            "성능치 80% 미만 → 새것처럼?",
+            "갑자기 꺼지는 폰 어떡해?",
+            "배터리 부풀어 화면 들뜸...?",
+            "30분 만에 새 배터리!?",
+            "메시지 없는 정품 인증 셀?",
+            "셀 교체 4만원대 가능!?",
+            "노화 배터리 어떻게 해야해?",
+        ],
+        "back": [
+            "뒷판 박살 → 정품급 그대로?",
+            "케이스로 가려도 괜찮을까?",
+            "후면 깨짐 → 단독 교체 가능?",
+            "공식 30만 vs 사설 절반?",
+            "MagSafe 흡착력 그대로 복원?",
+            "맥세이프 충전기에서 미끄러진 폰...",
+        ],
+        "back-glass": [
+            "뒷판 박살 → 정품급 그대로?",
+            "후면 깨짐 → 단독 교체 가능?",
+            "공식 30만 vs 사설 절반?",
+            "MagSafe 흡착력 그대로 복원?",
+        ],
+        "charge": [
+            "충전 안 되는 폰 어떡해?",
+            "케이블 3개 바꿔도 안 되면?",
+            "단자 청소만으로 해결!?",
+            "충전 들어왔다 끊겼다...?",
+            "충전구 부품 교체 30분?",
+            "젓가락으로 후비지 마세요!",
+        ],
+        "camera": [
+            "흔들리는 사진 → 멀쩡하게?",
+            "OIS 손상 모듈 교체!?",
+            "흐린 카메라 어떡해?",
+            "떨어뜨린 후 카메라 떨림...",
+            "후면 카메라 단독 수리?",
+            "Pro Max 카메라 살릴 수 있나?",
+        ],
+        "water": [
+            "물에 빠진 폰 살릴 수 있다고!?",
+            "쌀에 넣지 말고 이거 하세요",
+            "침수 며칠 후 발열... 어떡해?",
+            "1~2시간 안에 매장 가면?",
+            "메인보드 부식 제거 가능?",
+            "음료 쏟은 폰... 응급!",
+        ],
+        "speaker": [
+            "한쪽만 안 들리는 폰?",
+            "음악 소리 작아진 폰...?",
+            "스피커 단독 교체 가능?",
+            "통화는 되는데 음악만?",
+            "이어스피커 교체 30분?",
+        ],
+        "button": [
+            "전원 버튼 안 눌려요!",
+            "볼륨 버튼 고장 어떡해?",
+            "버튼 단독 교체 가능?",
+            "홈버튼 안 되는데...?",
+            "30분 부품 교체로 끝!?",
+        ],
+        "sensor": [
+            "Face ID 안 되는데 수리?",
+            "근접 센서 고장 어떡해?",
+            "통화 중 화면 안 꺼져요...?",
+            "센서 부품 단독 교체?",
+            "Face ID 매칭 작업 가능!?",
+        ],
+        "mainboard": [
+            "무한 사과 → 살릴 수 있다고!?",
+            "부팅 안 되는 폰 어떡해?",
+            "사과 로고만 반복... 응급?",
+            "메인보드 정밀 수리 가능!?",
+            "떨어뜨린 후 안 켜져요...",
+            "BGA 마이크로 솔더링 작업?",
+        ],
+        "screen+battery": [
+            "액정+배터리 한 번에!?",
+            "둘 다 망가졌는데 분해 1번?",
+            "동시 수리로 시간·비용 절약?",
+            "화면+배터리 동시 교체?",
+        ],
+        "screen+back": [
+            "앞뒤 다 깨졌는데 복구!?",
+            "화면+후면 동시 교체?",
+            "분해 1번에 둘 다 끝?",
+        ],
+        "back+battery": [
+            "후면+배터리 동시 교체?",
+            "분해 한 번에 둘 다!?",
+        ],
+        "back+camera": [
+            "후면·카메라 한 번에 복구?",
+            "동시 수리로 시간 절약?",
+        ],
     }
     import hashlib as _h
-    pool = CURIOSITY_HOOKS.get(repair) or ["이것도 살릴 수 있다고!?", "이게 복구가 가능해!?"]
+    # repair_type 정규화 (한글 → 영어 매핑)
+    repair_norm = repair.lower()
+    if "화면" in repair or "액정" in repair: repair_norm = "screen"
+    elif "배터리" in repair: repair_norm = "battery"
+    elif "후면" in repair or "뒷면" in repair: repair_norm = "back"
+    elif "충전" in repair: repair_norm = "charge"
+    elif "카메라" in repair: repair_norm = "camera"
+    elif "침수" in repair: repair_norm = "water"
+    elif "스피커" in repair: repair_norm = "speaker"
+    elif "버튼" in repair: repair_norm = "button"
+    elif "센서" in repair or "Face" in repair: repair_norm = "sensor"
+    elif "메인보드" in repair or "기판" in repair: repair_norm = "mainboard"
+    pool = CURIOSITY_HOOKS.get(repair_norm) or CURIOSITY_HOOKS.get("screen")
     seed = int(_h.md5((slug_meta.get("slug", "") if slug_meta else dst.stem).encode("utf-8")).hexdigest()[:8], 16)
     curiosity_text = pool[seed % len(pool)]
     # PII 보호 — 얼굴 자동 블러
