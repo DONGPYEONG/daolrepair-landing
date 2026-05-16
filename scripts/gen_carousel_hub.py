@@ -70,6 +70,8 @@ def build():
         ])
 
         # 자문자답 댓글 섹션 (4개 버튼 + 운영 가이드)
+        # ⚠ 댓글 텍스트는 data-* 속성에 저장 후 dataset 참조 — onclick JS literal에 직접 박으면
+        #   `&#x27;` 가 attribute 디코딩 단계에서 raw `'`로 풀려 JS string이 깨짐 (캡션 복사와 동일 패턴)
         if comments_parsed:
             c1 = html.escape(comments_parsed.get("comment1", ""), quote=True)
             r1 = html.escape(comments_parsed.get("reply1", ""), quote=True)
@@ -80,25 +82,29 @@ def build():
       <div class="comment-section-title">💬 게시 후 자문자답 (도달 ↑)</div>
       <div class="comment-step">
         <span class="comment-step-label">🕐 5분 후</span>
-        <button class="btn comment-btn comment-q" onclick="copyText(this, '{c1}', '댓글1 복사됨 ✓')">
+        <button class="btn comment-btn comment-q" data-text="{c1}"
+                onclick="copyText(this, this.dataset.text, '댓글1 복사됨 ✓')">
           📋 댓글 1 복사
         </button>
       </div>
       <div class="comment-step">
         <span class="comment-step-label">🕒 15분 후 (위 댓글에 답글)</span>
-        <button class="btn comment-btn comment-a" onclick="copyText(this, '{r1}', '답글1 복사됨 ✓')">
+        <button class="btn comment-btn comment-a" data-text="{r1}"
+                onclick="copyText(this, this.dataset.text, '답글1 복사됨 ✓')">
           📋 답글 1 복사
         </button>
       </div>
       <div class="comment-step">
         <span class="comment-step-label">🕧 30분 후</span>
-        <button class="btn comment-btn comment-q" onclick="copyText(this, '{c2}', '댓글2 복사됨 ✓')">
+        <button class="btn comment-btn comment-q" data-text="{c2}"
+                onclick="copyText(this, this.dataset.text, '댓글2 복사됨 ✓')">
           📋 댓글 2 복사
         </button>
       </div>
       <div class="comment-step">
         <span class="comment-step-label">📩 위 댓글에 답글</span>
-        <button class="btn comment-btn comment-a" onclick="copyText(this, '{r2}', '답글2 복사됨 ✓')">
+        <button class="btn comment-btn comment-a" data-text="{r2}"
+                onclick="copyText(this, this.dataset.text, '답글2 복사됨 ✓')">
           📋 답글 2 복사
         </button>
       </div>
