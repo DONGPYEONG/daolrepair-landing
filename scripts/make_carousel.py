@@ -21,7 +21,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps
 
 sys.path.insert(0, str(Path(__file__).parent))
 from carousel_data import CAROUSELS
@@ -414,6 +414,7 @@ def make_slide(slide: dict, dst: Path, page_num: int, total: int,
 
     # 발췌 박스
     excerpt = slide.get("excerpt", "")
+    content_end_y = body_y + body_count * body_line_h  # 사진 박스 시작점 계산용
     if excerpt:
         ex_y = body_y + body_count * body_line_h + 60
         ex_box_x1 = card_x1 + 40
@@ -423,7 +424,9 @@ def make_slide(slide: dict, dst: Path, page_num: int, total: int,
         ex_line_h = 46
         ex_lines = _wrap_text(d, excerpt, f_ex,
                               ex_box_x2 - ex_box_x1 - ex_pad * 2 - 20)
-        ex_lines = ex_lines[:5]
+        # 사진 있으면 발췌는 3줄로 압축 (사진 공간 확보), 없으면 5줄
+        max_ex_lines = 3 if slide.get("photo_path") or slide.get("photo_url") else 5
+        ex_lines = ex_lines[:max_ex_lines]
         ex_h = ex_pad * 2 + len(ex_lines) * ex_line_h
         d.rounded_rectangle((ex_box_x1, ex_y, ex_box_x2, ex_y + ex_h),
                             radius=12, fill=(244, 244, 240))
@@ -432,6 +435,46 @@ def make_slide(slide: dict, dst: Path, page_num: int, total: int,
         for i, line in enumerate(ex_lines):
             d.text((ex_box_x1 + ex_pad + 16, ex_y + ex_pad + i * ex_line_h),
                    line, font=f_ex, fill=(90, 90, 95))
+        content_end_y = ex_y + ex_h
+
+    # 사진 박스 (slide.photo_path 있으면) — BEFORE/AFTER 시각 임팩트
+    photo_path = slide.get("photo_path")
+    photo_badge = slide.get("photo_badge", "")  # "BEFORE" / "AFTER" / 빈값
+    if photo_path and Path(photo_path).exists():
+        ph_y1 = content_end_y + 36
+        ph_y2 = card_y2 - 130  # 시그니처 위
+        ph_x1 = card_x1 + 40
+        ph_x2 = card_x2 - 40
+        ph_w = ph_x2 - ph_x1
+        ph_h = ph_y2 - ph_y1
+        if ph_h > 180:  # 충분한 공간이 있을 때만 그림
+            try:
+                pimg = Image.open(photo_path).convert("RGB")
+                pimg_fit = ImageOps.fit(pimg, (ph_w, ph_h), method=Image.LANCZOS)
+                # 둥근 모서리 마스크
+                mask = Image.new("L", (ph_w, ph_h), 0)
+                ImageDraw.Draw(mask).rounded_rectangle(
+                    (0, 0, ph_w, ph_h), radius=18, fill=255
+                )
+                img.paste(pimg_fit, (ph_x1, ph_y1), mask)
+                d = ImageDraw.Draw(img)
+                # BEFORE/AFTER 배지 (사진 좌상단)
+                if photo_badge:
+                    f_bg = font("Bold", 30)
+                    bb = d.textbbox((0, 0), photo_badge, font=f_bg)
+                    bw_, bh_ = bb[2] - bb[0], bb[3] - bb[1]
+                    bg_pad_x, bg_pad_y = 16, 10
+                    bg_color = (220, 40, 40) if photo_badge == "BEFORE" else (40, 160, 80)
+                    d.rounded_rectangle(
+                        (ph_x1 + 18, ph_y1 + 18,
+                         ph_x1 + 18 + bw_ + bg_pad_x * 2,
+                         ph_y1 + 18 + bh_ + bg_pad_y * 2),
+                        radius=10, fill=bg_color,
+                    )
+                    d.text((ph_x1 + 18 + bg_pad_x, ph_y1 + 18 + bg_pad_y - 4),
+                           photo_badge, font=f_bg, fill=(255, 255, 255))
+            except Exception:
+                pass  # 사진 로드 실패 시 조용히 무시 (빈 카드로 fallback)
 
     # 카드 하단 시그니처
     quote_y = card_y2 - 110

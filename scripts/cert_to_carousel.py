@@ -58,6 +58,17 @@ def make_cert_carousel_data(cert):
 
     slug = f"cert-{date_str}-{rt}-{cert['id'][:8]}"
 
+    # BEFORE/AFTER 사진 경로 — _reel_tmp에 다운로드된 캐시 활용 (BA Reel이 사용하는 캐시 공유).
+    # _reel_tmp 파일명은 img_id(일지 글의 24자 ID)를 prefix로 쓰는데 cert['id'](33자) 와 끝부분이 다름.
+    # cert['id'][:8] 로 글롭해서 매칭 — slug에 쓰이는 prefix와 동일.
+    from pathlib import Path as _P
+    tmp_dir = _P(__file__).resolve().parent.parent / "output" / "_reel_tmp"
+    _prefix = cert["id"][:8]
+    _before_matches = sorted(tmp_dir.glob(f"{_prefix}*_before.jpg"))
+    _after_matches = sorted(tmp_dir.glob(f"{_prefix}*_after.jpg"))
+    before_path = _before_matches[0] if _before_matches else None
+    after_path = _after_matches[0] if _after_matches else None
+
     return {
         "slug": slug,
         "series_num": "정직 인증",
@@ -81,6 +92,8 @@ def make_cert_carousel_data(cert):
                 "highlight": "BEFORE",
                 "body": f"{customer} 고객님이 매장 방문 시 상태",
                 "excerpt": f"{model} 진단 결과 {repair.replace(' 수리 완료', '')} 필요. 다올리페어는 수리 전 모든 상태를 사진·서면 기록으로 남깁니다.",
+                "photo_path": str(before_path) if before_path else None,
+                "photo_badge": "BEFORE",
             },
             {
                 "num": "02",
@@ -88,13 +101,18 @@ def make_cert_carousel_data(cert):
                 "highlight": "AFTER",
                 "body": f"{repair}",
                 "excerpt": f"마스터 직영 정밀 수리 완료. 수리 후 1~7일 사이 발견되는 자연 불량은 90일 무상 A/S 적용.",
+                "photo_path": str(after_path) if after_path else None,
+                "photo_badge": "AFTER",
             },
             {
                 "num": "03",
-                "headline": "정직 가격 공개",
-                "highlight": f"{price:,}원",
+                # 가격 노출 정책 (2026-05-16 사장님 명시):
+                # 실 결제가는 단골 할인·케이스별 변동이 있어 정확 노출 X
+                # → "공식 대비 절약" 가치 메시지로 대체 (클레임 차단 + 가격 매력 유지)
+                "headline": "정직한 견적 안내",
+                "highlight": "공식 대비\n절반대",
                 "body": "추가비 0원 · 사전 안내된 그대로",
-                "excerpt": f"다올리페어는 수리 시작 전 정확한 견적 안내 후 진행. 추가 손상 발견 시 사전 동의 없이 작업하지 않습니다. {customer} 고객님 결제 금액 {price:,}원.",
+                "excerpt": "다올리페어는 수리 시작 전 정확한 견적 안내 후 진행. 추가 손상 발견 시 사전 동의 없이 작업하지 않습니다. 실 결제 금액은 모델·옵션·상태에 따라 다르며, 매장 진단 후 안내드립니다.",
             },
             {
                 "num": "04",
@@ -113,7 +131,7 @@ def make_cert_carousel_data(cert):
         ],
         "summary_headline": f"정직 = {store}",
         "summary_body": (
-            f"{customer} 고객님 {model} {repair.replace(' 수리 완료', '')}.\n실 결제 {price:,}원 + 90일 A/S.\n\n"
+            f"{customer} 고객님 {model} {repair.replace(' 수리 완료', '')}.\n공식 대비 절반대 진행 + 90일 A/S.\n\n"
             f"다올리페어는 모든 수리에 정식 확인서 + 영수증 발급.\n비교 견적 환영입니다."
         ),
         "summary_cta": "정직 견적 → 다올리페어.com",

@@ -779,15 +779,17 @@ def make_cert_card_image(cert, dst: Path) -> Path:
         d.text((inner_x + 200, y), value, font=f_value, fill=DARK)
         y += 85
 
-    # 가격 (있으면 강조)
-    if cert.get("price", 0) > 0:
-        y += 20
-        d.rectangle((card_x1 + 80, y, card_x2 - 80, y + 2), fill=(220, 220, 220))
-        y += 30
-        d.text((inner_x, y + 4), "수리 금액", font=f_label, fill=(140, 140, 140))
-        price_text = f"{cert['price']:,}원"
-        f_price = sdg("black", 56)
-        d.text((inner_x + 200, y - 6), price_text, font=f_price, fill=ORANGE)
+    # 가격 노출 정책 (2026-05-16 사장님 명시):
+    # 실 결제가는 단골 할인·케이스별 변동이 있어 정확 노출 X → "공식 대비 절약" 가치 메시지로 대체
+    # 클레임("왜 저는 다르냐?") 차단 + 단골 할인 자유도 유지 + 가격 매력은 유지
+    y += 20
+    d.rectangle((card_x1 + 80, y, card_x2 - 80, y + 2), fill=(220, 220, 220))
+    y += 32
+    f_msg_main = sdg("bold", 46)
+    f_msg_sub = sdg("medium", 36)
+    d.text((inner_x, y), "💰  공식 대비 절반대 진행", font=f_msg_main, fill=ORANGE)
+    y += 64
+    d.text((inner_x, y), "💬  무료 견적 후 진행", font=f_msg_sub, fill=(100, 100, 100))
 
     # 하단 안내
     foot_y = card_y2 + 80
