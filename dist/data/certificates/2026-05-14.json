@@ -1,7 +1,7 @@
 {
   "date": "2026-05-14",
   "total": 6,
-  "fetched_at": "2026-05-15T20:25:07.113875+09:00",
+  "fetched_at": "2026-05-16T23:03:48.064597+09:00",
   "certificates": [
     {
       "id": "1u-_HbcagkVWho4eXZ1kqpJGVVLauYLw-",
@@ -42,7 +42,8 @@
       "customer_phone_masked": "",
       "repair_type_normalized": "screen",
       "photos_flat": {},
-      "photos_captured": {}
+      "photos_captured": {},
+      "photos_local": {}
     },
     {
       "id": "1fgAGQtdxbEhnDbMlQM8p4n1TJPM_1qQX",
@@ -95,6 +96,10 @@
       "photos_captured": {
         "imei": "2026-05-14T13:57:00+09:00",
         "before": "2026-05-14T13:41:00+09:00"
+      },
+      "photos_local": {
+        "imei": "data/certificates/photos/1fgAGQtdxbEhnDbMlQM8p4n1TJPM_1qQX/imei.jpg",
+        "before": "data/certificates/photos/1fgAGQtdxbEhnDbMlQM8p4n1TJPM_1qQX/before.jpg"
       }
     },
     {
@@ -154,7 +159,12 @@
         "before": "2026-05-14T11:50:00+09:00",
         "after": "2026-05-14T15:41:00+09:00"
       },
-      "repair_duration_min": 231
+      "repair_duration_min": 231,
+      "photos_local": {
+        "imei": "data/certificates/photos/19FiLwNRNJ0rEKEkunhBakgiSrz4_tT35/imei.jpg",
+        "before": "data/certificates/photos/19FiLwNRNJ0rEKEkunhBakgiSrz4_tT35/before.jpg",
+        "after": "data/certificates/photos/19FiLwNRNJ0rEKEkunhBakgiSrz4_tT35/after.jpg"
+      }
     },
     {
       "id": "1yOof8bPibhd9CHBMaXNKbBw7u3OUF0TX",
@@ -207,6 +217,10 @@
       "photos_captured": {
         "imei": "2026-05-14T11:31:00+09:00",
         "before": "2026-05-14T11:31:00+09:00"
+      },
+      "photos_local": {
+        "imei": "data/certificates/photos/1yOof8bPibhd9CHBMaXNKbBw7u3OUF0TX/imei.jpg",
+        "before": "data/certificates/photos/1yOof8bPibhd9CHBMaXNKbBw7u3OUF0TX/before.jpg"
       }
     },
     {
@@ -266,7 +280,12 @@
         "before": "2026-05-14T11:24:00+09:00",
         "after": "2026-05-14T11:30:00+09:00"
       },
-      "repair_duration_min": 6
+      "repair_duration_min": 6,
+      "photos_local": {
+        "imei": "data/certificates/photos/1bQZRNi2f-wFMrUKYrF9nCs_NnJ2Ejl-O/imei.jpg",
+        "before": "data/certificates/photos/1bQZRNi2f-wFMrUKYrF9nCs_NnJ2Ejl-O/before.jpg",
+        "after": "data/certificates/photos/1bQZRNi2f-wFMrUKYrF9nCs_NnJ2Ejl-O/after.jpg"
+      }
     },
     {
       "id": "1Zo1BU6UtYIn8gdWmWCc_Rr9Sdo2WPhbQ",
@@ -325,7 +344,12 @@
         "before": "2026-05-14T10:06:00+09:00",
         "after": "2026-05-14T10:23:00+09:00"
       },
-      "repair_duration_min": 17
+      "repair_duration_min": 17,
+      "photos_local": {
+        "imei": "data/certificates/photos/1Zo1BU6UtYIn8gdWmWCc_Rr9Sdo2WPhbQ/imei.jpg",
+        "before": "data/certificates/photos/1Zo1BU6UtYIn8gdWmWCc_Rr9Sdo2WPhbQ/before.jpg",
+        "after": "data/certificates/photos/1Zo1BU6UtYIn8gdWmWCc_Rr9Sdo2WPhbQ/after.jpg"
+      }
     }
   ]
 }

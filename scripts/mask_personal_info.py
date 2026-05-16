@@ -180,6 +180,12 @@ def _pixelate(crop):
 
 
 def mask_image(path, blur_radius: int = 38, conf_threshold: float = 0.2, model: str = "", photo_type: str = "") -> bool:
+    # 🔋 배터리 성능치 화면 — 마스킹 절대 X (사장님 2026-05-16 명시)
+    # `수리전_기존성능치_*` · `수리후_교체후성능치_*` 슬롯 사진이 잘못 블러 처리되면
+    # 100% 회복 시각 증거가 사라짐. update_repair_stats 가 photo_type 으로 명시 전달.
+    if photo_type == "battery_health":
+        print(f"  🔋 배터리 성능치 화면 — 마스킹 스킵 (개인정보 X): {path.name}")
+        return False
     """이미지의 텍스트 영역 자동 블러 (시계·날짜만 살림).
 
     EXIF 회전 자동 적용 (모바일 사진은 회전 메타데이터로 인해 OCR 실패 잦음).

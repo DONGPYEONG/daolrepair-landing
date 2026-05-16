@@ -1,0 +1,814 @@
+{
+  "date": "2026-05-12",
+  "total": 13,
+  "fetched_at": "2026-05-16T23:02:47.076767+09:00",
+  "certificates": [
+    {
+      "id": "1bGWXkRJIO0Czc0eA1_tscS5XYCFQd1L7",
+      "store": "신림점",
+      "store_address": "서울시 관악구 난곡로 365-5 골드인하우스 102호",
+      "business_no": "417-25-64525",
+      "device": "애플워치",
+      "model": "Apple Watch SE (1세대)",
+      "repair_date": "2026-05-12",
+      "repair_type": "battery",
+      "repair_description": "배터리 교체 수리 완료",
+      "price": 0,
+      "vat_supply": 0,
+      "vat_amount": 0,
+      "technician": "",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1LxdkfpqY-BLxmjJbgLP-v7ZJ72nyoibz",
+          "captured_at": "2026-05-12T18:51:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1JcUu_xxe35UgmfbdwV2ZlcwBb5P1za21",
+          "captured_at": "2026-05-12T18:51:00+09:00"
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1iazaZUctbLWGWMsbakOPg7II6cv-WAsf",
+          "captured_at": "2026-05-12T14:18:00+09:00"
+        }
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-12T09:50:42.452Z",
+      "customer_name_masked": "박*지",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "battery",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1LxdkfpqY-BLxmjJbgLP-v7ZJ72nyoibz",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1JcUu_xxe35UgmfbdwV2ZlcwBb5P1za21",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1iazaZUctbLWGWMsbakOPg7II6cv-WAsf"
+      },
+      "photos_captured": {
+        "imei": "2026-05-12T18:51:00+09:00",
+        "before": "2026-05-12T18:51:00+09:00",
+        "after": "2026-05-12T14:18:00+09:00"
+      },
+      "photos_local": {
+        "imei": "data/certificates/photos/1bGWXkRJIO0Czc0eA1_tscS5XYCFQd1L7/imei.jpg",
+        "before": "data/certificates/photos/1bGWXkRJIO0Czc0eA1_tscS5XYCFQd1L7/before.jpg",
+        "after": "data/certificates/photos/1bGWXkRJIO0Czc0eA1_tscS5XYCFQd1L7/after.jpg"
+      }
+    },
+    {
+      "id": "1aZStHuKPZFy9VJC_3FNDwEO7G42jUHib",
+      "store": "신림점",
+      "store_address": "서울시 관악구 난곡로 365-5 골드인하우스 102호",
+      "business_no": "417-25-64525",
+      "device": "애플워치",
+      "model": "Apple Watch Series 10 (42mm)",
+      "repair_date": "2026-05-12",
+      "repair_type": "screen",
+      "repair_description": "케이블 교체, 액정 교체 수리 완료",
+      "price": 0,
+      "vat_supply": 0,
+      "vat_amount": 0,
+      "technician": "",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1Z4f0GOB0RHW-rd6nX0u_j_YTTDi7V5fB",
+          "captured_at": "2026-05-12T14:10:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1_byB3lFKzTzBb4Zg9MQw2qtDQjlHef4w",
+          "captured_at": "2026-05-12T18:05:00+09:00"
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1rHyt_eI91PZ5Md1WmbFbMTC1ZgChFUJq",
+          "captured_at": "2026-05-12T14:10:00+09:00"
+        }
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-12T09:05:10.778Z",
+      "customer_name_masked": "이*지",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "screen",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1Z4f0GOB0RHW-rd6nX0u_j_YTTDi7V5fB",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1_byB3lFKzTzBb4Zg9MQw2qtDQjlHef4w",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1rHyt_eI91PZ5Md1WmbFbMTC1ZgChFUJq"
+      },
+      "photos_captured": {
+        "imei": "2026-05-12T14:10:00+09:00",
+        "before": "2026-05-12T18:05:00+09:00",
+        "after": "2026-05-12T14:10:00+09:00"
+      },
+      "photos_local": {
+        "imei": "data/certificates/photos/1aZStHuKPZFy9VJC_3FNDwEO7G42jUHib/imei.jpg",
+        "before": "data/certificates/photos/1aZStHuKPZFy9VJC_3FNDwEO7G42jUHib/before.jpg",
+        "after": "data/certificates/photos/1aZStHuKPZFy9VJC_3FNDwEO7G42jUHib/after.jpg"
+      }
+    },
+    {
+      "id": "1VK82mS8pGhYCmeEl4wt7-Y6EK_4d2Ir5",
+      "store": "신림점",
+      "store_address": "서울시 관악구 난곡로 365-5 골드인하우스 102호",
+      "business_no": "417-25-64525",
+      "device": "애플워치",
+      "model": "Se2",
+      "repair_date": "2026-05-12",
+      "repair_type": "battery",
+      "repair_description": "배터리 교체 수리 완료",
+      "price": 200000,
+      "vat_supply": 181818,
+      "vat_amount": 18182,
+      "technician": "김선웅",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1B5NhmBA9tRmU-OEu-J3yNrQlIfy50pMy",
+          "captured_at": "2026-05-12T16:55:00+09:00"
+        },
+        "before": null,
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1yWL4X1x6nykOAOCxE5gpQIOfWp_PHKQw",
+          "captured_at": "2026-05-12T16:56:00+09:00"
+        }
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-12T07:55:34.233Z",
+      "customer_name_masked": "고*지",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "battery",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1B5NhmBA9tRmU-OEu-J3yNrQlIfy50pMy",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1yWL4X1x6nykOAOCxE5gpQIOfWp_PHKQw"
+      },
+      "photos_captured": {
+        "imei": "2026-05-12T16:55:00+09:00",
+        "after": "2026-05-12T16:56:00+09:00"
+      },
+      "photos_local": {
+        "imei": "data/certificates/photos/1VK82mS8pGhYCmeEl4wt7-Y6EK_4d2Ir5/imei.jpg",
+        "after": "data/certificates/photos/1VK82mS8pGhYCmeEl4wt7-Y6EK_4d2Ir5/after.jpg"
+      }
+    },
+    {
+      "id": "1Y5Bwg_Lm4X9FCnbpvLkisT0idqYPwyyD",
+      "store": "목동점",
+      "store_address": "서울시 양천구 목동동로63, 대영프라자 107호",
+      "business_no": "459-15-02863",
+      "device": "아이패드",
+      "model": "iPad Pro 11인치 (2세대)",
+      "repair_date": "2026-05-12",
+      "repair_type": "screen",
+      "repair_description": "액정 교체 수리 완료",
+      "price": 250000,
+      "vat_supply": 227273,
+      "vat_amount": 22727,
+      "technician": "김현기",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1P9SyD6ERebtLsKPrtoar0pxX8xhIy1Tn",
+          "captured_at": "2026-05-12T12:54:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1cdiS3rQz5BS4xKqGuCWqWqSAS-SARH2d",
+          "captured_at": "2026-05-12T12:54:00+09:00"
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1fX_kiwvQpVc8zBacxMOG0UBAhrbG0nGu",
+          "captured_at": "2026-05-12T16:58:00+09:00"
+        }
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-12T07:21:50.999Z",
+      "customer_name_masked": "오*호",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "screen",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1P9SyD6ERebtLsKPrtoar0pxX8xhIy1Tn",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1cdiS3rQz5BS4xKqGuCWqWqSAS-SARH2d",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1fX_kiwvQpVc8zBacxMOG0UBAhrbG0nGu"
+      },
+      "photos_captured": {
+        "imei": "2026-05-12T12:54:00+09:00",
+        "before": "2026-05-12T12:54:00+09:00",
+        "after": "2026-05-12T16:58:00+09:00"
+      },
+      "repair_duration_min": 244,
+      "photos_local": {
+        "imei": "data/certificates/photos/1Y5Bwg_Lm4X9FCnbpvLkisT0idqYPwyyD/imei.jpg",
+        "before": "data/certificates/photos/1Y5Bwg_Lm4X9FCnbpvLkisT0idqYPwyyD/before.jpg",
+        "after": "data/certificates/photos/1Y5Bwg_Lm4X9FCnbpvLkisT0idqYPwyyD/after.jpg"
+      }
+    },
+    {
+      "id": "1xxCt-YZ0xAl8ZSJeiwGPEUYgw1tin-dt",
+      "store": "신림점",
+      "store_address": "서울시 관악구 난곡로 365-5 골드인하우스 102호",
+      "business_no": "417-25-64525",
+      "device": "아이폰",
+      "model": "iPhone XR",
+      "repair_date": "2026-05-12",
+      "repair_type": "screen",
+      "repair_description": "액정 교체 수리 완료",
+      "price": 200000,
+      "vat_supply": 181818,
+      "vat_amount": 18182,
+      "technician": "김선웅",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1YA8nDO5afQBcitphPU652XLa698nm95j",
+          "captured_at": "2026-05-12T15:34:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/17kPaL8KZ-djBLH2Cu4luPou3Mpuy-VSe",
+          "captured_at": "2026-05-12T15:18:00+09:00"
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1OgS4TgKdduXt27Ex4SPcaRLpq2Rd8YwU",
+          "captured_at": "2026-05-12T15:34:00+09:00"
+        }
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-12T06:18:06.361Z",
+      "customer_name_masked": "김*하",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "screen",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1YA8nDO5afQBcitphPU652XLa698nm95j",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/17kPaL8KZ-djBLH2Cu4luPou3Mpuy-VSe",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1OgS4TgKdduXt27Ex4SPcaRLpq2Rd8YwU"
+      },
+      "photos_captured": {
+        "imei": "2026-05-12T15:34:00+09:00",
+        "before": "2026-05-12T15:18:00+09:00",
+        "after": "2026-05-12T15:34:00+09:00"
+      },
+      "repair_duration_min": 16,
+      "photos_local": {
+        "imei": "data/certificates/photos/1xxCt-YZ0xAl8ZSJeiwGPEUYgw1tin-dt/imei.jpg",
+        "before": "data/certificates/photos/1xxCt-YZ0xAl8ZSJeiwGPEUYgw1tin-dt/before.jpg",
+        "after": "data/certificates/photos/1xxCt-YZ0xAl8ZSJeiwGPEUYgw1tin-dt/after.jpg"
+      }
+    },
+    {
+      "id": "1ChixQPswCSH9JDZqIDXhdvS6WuznlpYb",
+      "store": "가산점",
+      "store_address": "서울시 금천구 가산디지털 1로 168, 우림라이온스밸리 A동 117호",
+      "business_no": "603-13-92594",
+      "device": "아이폰",
+      "model": "iPhone 14 Pro",
+      "repair_date": "2026-05-12",
+      "repair_type": "battery",
+      "repair_description": "배터리 교체 수리 완료",
+      "price": 0,
+      "vat_supply": 0,
+      "vat_amount": 0,
+      "technician": "",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": null,
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/15dMMHqtzEWPjS41XFOLItdyMwlQSsnOA",
+          "captured_at": "2026-05-12T15:16:00+09:00"
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1u4lRix6Hp77Pt-rMeDTBypAxaeADNgKH",
+          "captured_at": "2026-05-12T16:33:00+09:00"
+        }
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-12T06:15:30.169Z",
+      "customer_name_masked": "남*정",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "battery",
+      "photos_flat": {
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/15dMMHqtzEWPjS41XFOLItdyMwlQSsnOA",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1u4lRix6Hp77Pt-rMeDTBypAxaeADNgKH"
+      },
+      "photos_captured": {
+        "before": "2026-05-12T15:16:00+09:00",
+        "after": "2026-05-12T16:33:00+09:00"
+      },
+      "repair_duration_min": 77,
+      "photos_local": {
+        "before": "data/certificates/photos/1ChixQPswCSH9JDZqIDXhdvS6WuznlpYb/before.jpg",
+        "after": "data/certificates/photos/1ChixQPswCSH9JDZqIDXhdvS6WuznlpYb/after.jpg"
+      }
+    },
+    {
+      "id": "1x798OZw1OoLVLTeib7DvNgXYDlyhr-2F",
+      "store": "신림점",
+      "store_address": "서울시 관악구 난곡로 365-5 골드인하우스 102호",
+      "business_no": "417-25-64525",
+      "device": "아이폰",
+      "model": "iPhone 16 Pro Max",
+      "repair_date": "2026-05-12",
+      "repair_type": "charge",
+      "repair_description": "충전 포트 수리 완료",
+      "price": 0,
+      "vat_supply": 0,
+      "vat_amount": 0,
+      "technician": "",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1248o8bmAjeoDCXGHxF_F2qDsFxNwTUDc",
+          "captured_at": "2026-05-12T14:22:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1L43WImHUrQFNbUQIE79qQ4H23Lv99s3J",
+          "captured_at": "2026-05-12T14:42:00+09:00"
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1nrqUOIaZYd4Mvoo91jNfEwa36coS5Q6O",
+          "captured_at": "2026-05-12T14:22:00+09:00"
+        }
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-12T05:43:05.009Z",
+      "customer_name_masked": "이*희",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "charge",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1248o8bmAjeoDCXGHxF_F2qDsFxNwTUDc",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1L43WImHUrQFNbUQIE79qQ4H23Lv99s3J",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1nrqUOIaZYd4Mvoo91jNfEwa36coS5Q6O"
+      },
+      "photos_captured": {
+        "imei": "2026-05-12T14:22:00+09:00",
+        "before": "2026-05-12T14:42:00+09:00",
+        "after": "2026-05-12T14:22:00+09:00"
+      },
+      "photos_local": {
+        "imei": "data/certificates/photos/1x798OZw1OoLVLTeib7DvNgXYDlyhr-2F/imei.jpg",
+        "before": "data/certificates/photos/1x798OZw1OoLVLTeib7DvNgXYDlyhr-2F/before.jpg",
+        "after": "data/certificates/photos/1x798OZw1OoLVLTeib7DvNgXYDlyhr-2F/after.jpg"
+      }
+    },
+    {
+      "id": "1AoOnJZgAEYPAoSq4Lt6kwfUW7cfHHAye",
+      "store": "가산점",
+      "store_address": "서울시 금천구 가산디지털 1로 168, 우림라이온스밸리 A동 117호",
+      "business_no": "603-13-92594",
+      "device": "아이폰",
+      "model": "iPhone 12 Pro",
+      "repair_date": "2026-05-12",
+      "repair_type": "battery",
+      "repair_description": "배터리 교체 수리 완료",
+      "price": 120000,
+      "vat_supply": 109091,
+      "vat_amount": 10909,
+      "technician": "김영식",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/15BTDAAhpdd5bo5f4IsjzZZSPUrKu5zOM",
+          "captured_at": "2026-05-12T14:15:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1rVl-bPTKRgOPefOOvGefR_TPllP2_Mqv",
+          "captured_at": "2026-05-12T14:14:00+09:00"
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1h0RhTgaKvCyAPTYZrm5uBcFB-_GVj3TL",
+          "captured_at": "2026-05-12T14:54:00+09:00"
+        }
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-12T05:13:39.320Z",
+      "customer_name_masked": "박*옥",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "battery",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/15BTDAAhpdd5bo5f4IsjzZZSPUrKu5zOM",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1rVl-bPTKRgOPefOOvGefR_TPllP2_Mqv",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1h0RhTgaKvCyAPTYZrm5uBcFB-_GVj3TL"
+      },
+      "photos_captured": {
+        "imei": "2026-05-12T14:15:00+09:00",
+        "before": "2026-05-12T14:14:00+09:00",
+        "after": "2026-05-12T14:54:00+09:00"
+      },
+      "repair_duration_min": 40,
+      "photos_local": {
+        "imei": "data/certificates/photos/1AoOnJZgAEYPAoSq4Lt6kwfUW7cfHHAye/imei.jpg",
+        "before": "data/certificates/photos/1AoOnJZgAEYPAoSq4Lt6kwfUW7cfHHAye/before.jpg",
+        "after": "data/certificates/photos/1AoOnJZgAEYPAoSq4Lt6kwfUW7cfHHAye/after.jpg"
+      }
+    },
+    {
+      "id": "11BNtH7gTdSRbVov7ZSm79in_1mljPu9Z",
+      "store": "목동점",
+      "store_address": "서울시 양천구 목동동로63, 대영프라자 107호",
+      "business_no": "459-15-02863",
+      "device": "애플워치",
+      "model": "공시현-010668210201-sensor",
+      "repair_date": "2026-05-12",
+      "repair_type": "other",
+      "repair_description": "수리 완료",
+      "price": 100000,
+      "vat_supply": 90909,
+      "vat_amount": 9091,
+      "technician": "김현기",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1pLSU-u08YJUMJR4mIp-d8PtLkQrUB1Fj",
+          "captured_at": "2026-05-12T14:13:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1_4dEIMyPaCt_pKv0PdEkPiKgpTwZAWo4",
+          "captured_at": "2026-05-12T14:10:00+09:00"
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1MY36jWqoe1FlQStcAHVCUfmfe5FLatZg",
+          "captured_at": "2026-05-12T15:55:00+09:00"
+        }
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-12T05:10:44.246Z",
+      "customer_name_masked": "A******************)",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "other",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1pLSU-u08YJUMJR4mIp-d8PtLkQrUB1Fj",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1_4dEIMyPaCt_pKv0PdEkPiKgpTwZAWo4",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1MY36jWqoe1FlQStcAHVCUfmfe5FLatZg"
+      },
+      "photos_captured": {
+        "imei": "2026-05-12T14:13:00+09:00",
+        "before": "2026-05-12T14:10:00+09:00",
+        "after": "2026-05-12T15:55:00+09:00"
+      },
+      "repair_duration_min": 105,
+      "photos_local": {
+        "imei": "data/certificates/photos/11BNtH7gTdSRbVov7ZSm79in_1mljPu9Z/imei.jpg",
+        "before": "data/certificates/photos/11BNtH7gTdSRbVov7ZSm79in_1mljPu9Z/before.jpg",
+        "after": "data/certificates/photos/11BNtH7gTdSRbVov7ZSm79in_1mljPu9Z/after.jpg"
+      }
+    },
+    {
+      "id": "1P3hcrr2N9pn0xqmeH3M7nbUvb8vBjwyg",
+      "store": "가산점",
+      "store_address": "서울시 금천구 가산디지털 1로 168, 우림라이온스밸리 A동 117호",
+      "business_no": "603-13-92594",
+      "device": "아이폰",
+      "model": "iPhone 13 Pro",
+      "repair_date": "2026-05-12",
+      "repair_type": "screen",
+      "repair_description": "액정 교체 수리 완료",
+      "price": 200000,
+      "vat_supply": 181818,
+      "vat_amount": 18182,
+      "technician": "금동평",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": null,
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/18kIVm8zjr31nEi6IrIVm-h2HQzzEbdtP",
+          "captured_at": "2026-05-12T12:13:00+09:00"
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/18k4ZdyTCcT5SARUwyokSO2R-MVkJKTQ4",
+          "captured_at": "2026-05-12T12:25:00+09:00"
+        }
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-12T03:13:51.947Z",
+      "customer_name_masked": "소*섭",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "screen",
+      "photos_flat": {
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/18kIVm8zjr31nEi6IrIVm-h2HQzzEbdtP",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/18k4ZdyTCcT5SARUwyokSO2R-MVkJKTQ4"
+      },
+      "photos_captured": {
+        "before": "2026-05-12T12:13:00+09:00",
+        "after": "2026-05-12T12:25:00+09:00"
+      },
+      "repair_duration_min": 12,
+      "photos_local": {
+        "before": "data/certificates/photos/1P3hcrr2N9pn0xqmeH3M7nbUvb8vBjwyg/before.jpg",
+        "after": "data/certificates/photos/1P3hcrr2N9pn0xqmeH3M7nbUvb8vBjwyg/after.jpg"
+      }
+    },
+    {
+      "id": "1zlcqZigVMVr7kvCiRsvQCduKPDsU-EsO",
+      "store": "가산점",
+      "store_address": "서울시 금천구 가산디지털 1로 168, 우림라이온스밸리 A동 117호",
+      "business_no": "603-13-92594",
+      "device": "애플워치",
+      "model": "5 44mm",
+      "repair_date": "2026-05-12",
+      "repair_type": "battery",
+      "repair_description": "배터리 교체 수리 완료",
+      "price": 0,
+      "vat_supply": 0,
+      "vat_amount": 0,
+      "technician": "",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1p4DVHroUjseauSRrmCTItd5ynkXpBswc",
+          "captured_at": null
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1QUJXjt0sHa7wnidSXofebH5WCtbf1q7H",
+          "captured_at": null
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1gwVHMSxgIdcfiwnEudzWnpM6lIBD0kkB",
+          "captured_at": "2026-05-12T11:10:00+09:00"
+        }
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-12T02:09:14.723Z",
+      "customer_name_masked": "조*모",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "battery",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1p4DVHroUjseauSRrmCTItd5ynkXpBswc",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1QUJXjt0sHa7wnidSXofebH5WCtbf1q7H",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1gwVHMSxgIdcfiwnEudzWnpM6lIBD0kkB"
+      },
+      "photos_captured": {
+        "after": "2026-05-12T11:10:00+09:00"
+      },
+      "photos_local": {
+        "imei": "data/certificates/photos/1zlcqZigVMVr7kvCiRsvQCduKPDsU-EsO/imei.jpg",
+        "before": "data/certificates/photos/1zlcqZigVMVr7kvCiRsvQCduKPDsU-EsO/before.jpg",
+        "after": "data/certificates/photos/1zlcqZigVMVr7kvCiRsvQCduKPDsU-EsO/after.jpg"
+      }
+    },
+    {
+      "id": "1SfOeD-D9OvdLg5s4kgArDUDFz_O4hWTL",
+      "store": "목동점",
+      "store_address": "서울시 양천구 목동동로63, 대영프라자 107호",
+      "business_no": "459-15-02863",
+      "device": "애플워치",
+      "model": "Apple Watch SE (2세대)",
+      "repair_date": "2026-05-12",
+      "repair_type": "battery",
+      "repair_description": "배터리 교체 수리 완료",
+      "price": 0,
+      "vat_supply": 0,
+      "vat_amount": 0,
+      "technician": "",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1Hq82Ynv917miyNfm9sFC3oBlGEWbDT2g",
+          "captured_at": "2026-05-12T11:03:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1QBFJd287abxDFEwjkDST5rR6kWjGpj0N",
+          "captured_at": "2026-05-12T11:00:00+09:00"
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1OEHXeNUBhSig7h9W_aS425VMY4V8w2m3",
+          "captured_at": "2026-05-12T12:35:00+09:00"
+        }
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-12T02:00:15.342Z",
+      "customer_name_masked": "김*건",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "battery",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1Hq82Ynv917miyNfm9sFC3oBlGEWbDT2g",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1QBFJd287abxDFEwjkDST5rR6kWjGpj0N",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1OEHXeNUBhSig7h9W_aS425VMY4V8w2m3"
+      },
+      "photos_captured": {
+        "imei": "2026-05-12T11:03:00+09:00",
+        "before": "2026-05-12T11:00:00+09:00",
+        "after": "2026-05-12T12:35:00+09:00"
+      },
+      "repair_duration_min": 95,
+      "photos_local": {
+        "imei": "data/certificates/photos/1SfOeD-D9OvdLg5s4kgArDUDFz_O4hWTL/imei.jpg",
+        "before": "data/certificates/photos/1SfOeD-D9OvdLg5s4kgArDUDFz_O4hWTL/before.jpg",
+        "after": "data/certificates/photos/1SfOeD-D9OvdLg5s4kgArDUDFz_O4hWTL/after.jpg"
+      }
+    },
+    {
+      "id": "11Ntl7my10BTyYCAoTN9OAVGOx6G_iiHD",
+      "store": "목동점",
+      "store_address": "서울시 양천구 목동동로63, 대영프라자 107호",
+      "business_no": "459-15-02863",
+      "device": "아이폰",
+      "model": "iPhone 13",
+      "repair_date": "2026-05-12",
+      "repair_type": "screen+battery",
+      "repair_description": "액정 교체, 배터리 교체 수리 완료",
+      "price": 0,
+      "vat_supply": 0,
+      "vat_amount": 0,
+      "technician": "",
+      "cause": null,
+      "cause_label": null,
+      "repair_options": {},
+      "repair_symptoms": {},
+      "gender": null,
+      "age_range": null,
+      "prev_repair_where": null,
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1GKP4oxcxR7VHw199EkJlSEv1qdNKEUaY",
+          "captured_at": "2026-05-12T10:17:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1SZxLLkO406esSkAnjK1xpHiQGeIhwnQa",
+          "captured_at": "2026-05-12T10:17:00+09:00"
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1joFYXr-I0XBpslPzYxbYOoah2WMDY5sy",
+          "captured_at": "2026-05-12T12:45:00+09:00"
+        }
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-12T01:16:51.965Z",
+      "customer_name_masked": "백*권",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "screen+battery",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1GKP4oxcxR7VHw199EkJlSEv1qdNKEUaY",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1SZxLLkO406esSkAnjK1xpHiQGeIhwnQa",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1joFYXr-I0XBpslPzYxbYOoah2WMDY5sy"
+      },
+      "photos_captured": {
+        "imei": "2026-05-12T10:17:00+09:00",
+        "before": "2026-05-12T10:17:00+09:00",
+        "after": "2026-05-12T12:45:00+09:00"
+      },
+      "repair_duration_min": 148,
+      "photos_local": {
+        "imei": "data/certificates/photos/11Ntl7my10BTyYCAoTN9OAVGOx6G_iiHD/imei.jpg",
+        "before": "data/certificates/photos/11Ntl7my10BTyYCAoTN9OAVGOx6G_iiHD/before.jpg",
+        "after": "data/certificates/photos/11Ntl7my10BTyYCAoTN9OAVGOx6G_iiHD/after.jpg"
+      }
+    }
+  ]
+}

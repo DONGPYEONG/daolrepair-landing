@@ -1,7 +1,7 @@
 {
   "date": "2026-05-15",
   "total": 7,
-  "fetched_at": "2026-05-16T20:55:49.128143+09:00",
+  "fetched_at": "2026-05-16T23:04:35.368468+09:00",
   "certificates": [
     {
       "id": "17VhkJIgB3CipeSvKmJswooAwsPUEJF_V",
@@ -54,6 +54,10 @@
       "photos_captured": {
         "imei": "2026-05-15T19:01:00+09:00",
         "before": "2026-05-15T19:00:00+09:00"
+      },
+      "photos_local": {
+        "imei": "data/certificates/photos/17VhkJIgB3CipeSvKmJswooAwsPUEJF_V/imei.jpg",
+        "before": "data/certificates/photos/17VhkJIgB3CipeSvKmJswooAwsPUEJF_V/before.jpg"
       }
     },
     {
@@ -107,6 +111,10 @@
       "photos_captured": {
         "imei": "2026-05-15T17:17:00+09:00",
         "before": "2026-05-15T17:16:00+09:00"
+      },
+      "photos_local": {
+        "imei": "data/certificates/photos/1gnZPpenvrPNsV0fcMSMgyxcQmQjas64c/imei.jpg",
+        "before": "data/certificates/photos/1gnZPpenvrPNsV0fcMSMgyxcQmQjas64c/before.jpg"
       }
     },
     {
@@ -172,7 +180,12 @@
         "before": "2026-05-15T16:18:00+09:00",
         "after": "2026-05-15T16:39:00+09:00"
       },
-      "repair_duration_min": 21
+      "repair_duration_min": 21,
+      "photos_local": {
+        "imei": "data/certificates/photos/1_2PEmACjXdSqglKqJCNhFho6UUBhJ3Wv/imei.jpg",
+        "before": "data/certificates/photos/1_2PEmACjXdSqglKqJCNhFho6UUBhJ3Wv/before.jpg",
+        "after": "data/certificates/photos/1_2PEmACjXdSqglKqJCNhFho6UUBhJ3Wv/after.jpg"
+      }
     },
     {
       "id": "1hjihYqdTm78Hwpj-Xy7cUXlOYKdlo42p",
@@ -230,6 +243,11 @@
         "imei": "2026-05-15T15:19:00+09:00",
         "before": "2026-05-15T19:00:00+09:00",
         "after": "2026-05-15T17:21:00+09:00"
+      },
+      "photos_local": {
+        "imei": "data/certificates/photos/1hjihYqdTm78Hwpj-Xy7cUXlOYKdlo42p/imei.jpg",
+        "before": "data/certificates/photos/1hjihYqdTm78Hwpj-Xy7cUXlOYKdlo42p/before.jpg",
+        "after": "data/certificates/photos/1hjihYqdTm78Hwpj-Xy7cUXlOYKdlo42p/after.jpg"
       }
     },
     {
@@ -289,7 +307,12 @@
         "before": "2026-05-15T13:02:00+09:00",
         "after": "2026-05-15T13:16:00+09:00"
       },
-      "repair_duration_min": 14
+      "repair_duration_min": 14,
+      "photos_local": {
+        "imei": "data/certificates/photos/18X9B-rG1Tfls4UrgZ96Eavg4DaoWKrPb/imei.jpg",
+        "before": "data/certificates/photos/18X9B-rG1Tfls4UrgZ96Eavg4DaoWKrPb/before.jpg",
+        "after": "data/certificates/photos/18X9B-rG1Tfls4UrgZ96Eavg4DaoWKrPb/after.jpg"
+      }
     },
     {
       "id": "1vpx9NKKK_D9VbvsJvC2QUMjn2qL0NDRj",
@@ -348,7 +371,12 @@
         "before": "2026-05-15T12:13:00+09:00",
         "after": "2026-05-15T14:49:00+09:00"
       },
-      "repair_duration_min": 156
+      "repair_duration_min": 156,
+      "photos_local": {
+        "imei": "data/certificates/photos/1vpx9NKKK_D9VbvsJvC2QUMjn2qL0NDRj/imei.jpg",
+        "before": "data/certificates/photos/1vpx9NKKK_D9VbvsJvC2QUMjn2qL0NDRj/before.jpg",
+        "after": "data/certificates/photos/1vpx9NKKK_D9VbvsJvC2QUMjn2qL0NDRj/after.jpg"
+      }
     },
     {
       "id": "1CH0oLARzEdYQMk2x1qeSlYqTwKoIsdeg",
@@ -407,7 +435,12 @@
         "before": "2026-05-15T11:17:00+09:00",
         "after": "2026-05-15T11:23:00+09:00"
       },
-      "repair_duration_min": 6
+      "repair_duration_min": 6,
+      "photos_local": {
+        "imei": "data/certificates/photos/1CH0oLARzEdYQMk2x1qeSlYqTwKoIsdeg/imei.jpg",
+        "before": "data/certificates/photos/1CH0oLARzEdYQMk2x1qeSlYqTwKoIsdeg/before.jpg",
+        "after": "data/certificates/photos/1CH0oLARzEdYQMk2x1qeSlYqTwKoIsdeg/after.jpg"
+      }
     }
   ]
 }

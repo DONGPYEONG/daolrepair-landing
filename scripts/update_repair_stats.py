@@ -934,8 +934,15 @@ def main():
                 try:
                     from mask_personal_info import mask_image
                     model_for_mask = f"{c.get('device','')} {c.get('model','')}"
-                    mask_image(before_path, model=model_for_mask)
-                    mask_image(after_path, model=model_for_mask)
+                    # 🔋 배터리 케이스 또는 성능치 슬롯 파일 — 마스킹 스킵 명시
+                    # 100% 회복 화면이 블러로 가려지면 시각 증거 손실
+                    is_batt_case = c["repair_type"] in BATTERY_TYPES
+                    def _is_health_screen(fname: str) -> bool:
+                        return any(k in fname for k in ("기존성능치", "교체후성능치", "성능치"))
+                    before_pt = "battery_health" if (is_batt_case or _is_health_screen(before_file.get("name",""))) else ""
+                    after_pt  = "battery_health" if (is_batt_case or _is_health_screen(after_file.get("name",""))) else ""
+                    mask_image(before_path, model=model_for_mask, photo_type=before_pt)
+                    mask_image(after_path,  model=model_for_mask, photo_type=after_pt)
                     if has_back_pair:
                         mask_image(back_before_path, model=model_for_mask)
                         mask_image(back_after_path, model=model_for_mask)
