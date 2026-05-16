@@ -1331,6 +1331,23 @@ def _annotate_en(title: str) -> str:
         return title
 
 
+def _ensure_repair_keyword(title: str, type_kr: str) -> str:
+    """제목에 수리 부위 키워드 없으면 끝에 추가 (SEO).
+    사장님(2026-05-16) 명시 — "제목에 항상 어떤 거 교체했는지 들어가야 키워드에 잡힌다".
+    """
+    REPAIR_KEYWORDS = [
+        "액정", "화면", "배터리", "후면", "뒷판", "뒷면", "카메라",
+        "충전", "침수", "스피커", "메인보드", "센서", "버튼", "렌즈",
+        "유리", "교체", "수리",
+    ]
+    if not type_kr:
+        return title
+    if any(kw in title for kw in REPAIR_KEYWORDS):
+        return title
+    # 부위·키워드 누락 → 끝에 ({type_kr}) 추가 (예: "(후면 유리 교체)")
+    return f"{title} ({type_kr})"
+
+
 def make_title(c, used_titles=None):
     """후킹 제목 생성 — case_id 기반 deterministic + 중복 방지 + 메타 활용
 
@@ -1354,7 +1371,7 @@ def make_title(c, used_titles=None):
             if meta_title not in used:
                 if used_titles is not None:
                     used_titles.add(meta_title)
-                return _annotate_en(meta_title)
+                return _annotate_en(_ensure_repair_keyword(meta_title, TYPE_KR.get(type_key, "수리")))
 
     templates = TITLE_TEMPLATES.get(type_key, DEFAULT_TITLE_TEMPLATES)
     used = used_titles if used_titles is not None else set()
@@ -1378,7 +1395,7 @@ def make_title(c, used_titles=None):
         if title not in used:
             if used_titles is not None:
                 used_titles.add(title)
-            return _annotate_en(title)
+            return _annotate_en(_ensure_repair_keyword(title, TYPE_KR.get(type_key, "수리")))
 
     # 모든 템플릿이 사용됨 → 마지막에 모델·날짜 suffix 붙여 강제 유니크
     base = fmt(templates[start_idx])
