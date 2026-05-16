@@ -629,6 +629,16 @@
     "technician": "김현기",
     "customer_name_masked": "고*경"
   },
+  "journal-2026-05-16-아이폰-iphone-16-pro-screen+back-17Osa-2v": {
+    "cert_id": "17Osa-2vRXIhlo3Ft2Nh7EbLPf_-4xfCM",
+    "store": "가산점",
+    "model": "iPhone 16 Pro",
+    "repair_description": "액정 교체, 후면 유리 수리 완료",
+    "price": 450000,
+    "repair_date": "2026-05-16",
+    "technician": "김영식",
+    "customer_name_masked": "윤*겸"
+  },
   "journal-2026-05-16-애플워치-apple-watch-series-4-40mm-battery-1arNQcbL": {
     "cert_id": "1arNQcbLAuSM1L-sgg7Q-EyKoGJ7mW_gT",
     "store": "목동점",

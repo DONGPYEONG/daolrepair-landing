@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-16T13:32:06.633729+09:00",
+  "updated_at": "2026-05-16T13:52:48.258480+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11662,
@@ -36,43 +36,43 @@
       "model": "아이폰 iPhone 16 Pro",
       "type": "화면 + 후면 유리 교체",
       "branch": "가산점",
-      "minutes_ago": 88
+      "minutes_ago": 108
     },
     {
       "model": "아이폰 iPhone 13",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 119
+      "minutes_ago": 140
     },
     {
       "model": "애플워치 Apple Watch Series 4 (40mm)",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 147
+      "minutes_ago": 167
     },
     {
       "model": "아이폰 iPhone 13 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 1111
+      "minutes_ago": 1131
     },
     {
       "model": "아이폰 iPhone 12 mini",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 1215
+      "minutes_ago": 1236
     },
     {
       "model": "아이폰 iPhone 13 mini",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 1274
+      "minutes_ago": 1294
     },
     {
       "model": "아이폰 iPhone 14",
       "type": "수리",
       "branch": "신림점",
-      "minutes_ago": 1333
+      "minutes_ago": 1353
     }
   ],
   "top_repair_types": [
@@ -94,7 +94,7 @@
   ],
   "slider_cases": [
     {
-      "id": "case-2",
+      "id": "case-3",
       "model": "아이패드 iPad Pro 11인치 (2세대)",
       "type": "화면 교체",
       "branch": "목동점",
@@ -133,7 +133,7 @@
       "journal_url": "articles/journal-2026-05-12-아이패드-ipad-pro-11인치-2세대-screen-1Y5Bwg_L.html"
     },
     {
-      "id": "case-4",
+      "id": "case-5",
       "model": "아이폰 iPhone 13 Pro",
       "type": "화면 교체",
       "branch": "가산점",
@@ -172,7 +172,7 @@
       "journal_url": "articles/journal-2026-05-12-아이폰-iphone-13-pro-screen-1P3hcrr2.html"
     },
     {
-      "id": "case-7",
+      "id": "case-8",
       "model": "아이폰 17프로",
       "type": "화면 교체",
       "branch": "가산점",
@@ -198,7 +198,7 @@
       "journal_url": "articles/journal-2026-05-11-아이폰-17프로-screen-1pHB98Ey.html"
     },
     {
-      "id": "case-6",
+      "id": "case-7",
       "model": "아이폰 iPhone 15 Pro",
       "type": "화면 교체",
       "branch": "목동점",
@@ -240,6 +240,56 @@
   "portfolio_cases": [
     {
       "id": "case-1",
+      "model": "아이폰 iPhone 16 Pro",
+      "type": "화면 + 후면 유리 교체",
+      "branch": "가산점",
+      "date": "2026-05-16",
+      "createdTime": "2026-05-16T03:03:56.853Z",
+      "repair_time": "당일 · 3~4시간",
+      "before_img": "images/before-after/17Osa-2vRXIhlo3Ft2Nh7EbL/before.jpg",
+      "after_img": "images/before-after/17Osa-2vRXIhlo3Ft2Nh7EbL/after.jpg",
+      "progress_imgs": [
+        "images/before-after/17Osa-2vRXIhlo3Ft2Nh7EbL/progress1.jpg",
+        "images/before-after/17Osa-2vRXIhlo3Ft2Nh7EbL/progress2.jpg",
+        "images/before-after/17Osa-2vRXIhlo3Ft2Nh7EbL/progress3.jpg"
+      ],
+      "progress_labels": [
+        "내부분해",
+        "교체부품",
+        "수리작업중"
+      ],
+      "before_text": "화면 + 후면 파손",
+      "after_text": "화면 + 후면 교체",
+      "case_id": "17Osa-2vRXIhlo3Ft2Nh7EbLPf_-4xfCM",
+      "meta": {
+        "time": "1204",
+        "age": "20대",
+        "gender": "남성",
+        "age_gender": "20대 남성",
+        "options": "DD액정+후면유리",
+        "symptoms": [
+          {
+            "part": "screen",
+            "natural": "LCD까지 손상 — 패널 교체 필요",
+            "raw": "LCD손상"
+          }
+        ],
+        "cause": "떨어뜨림",
+        "time_natural": "낮 12시 4분",
+        "time_period": "점심시간",
+        "options_natural": "DD(OEM) 액정과 후면유리",
+        "options_list": [
+          "DD액정",
+          "후면유리"
+        ],
+        "symptom_natural": "LCD까지 손상 — 패널 교체 필요",
+        "symptom_parts": [
+          "screen"
+        ]
+      }
+    },
+    {
+      "id": "case-2",
       "model": "애플워치 Apple Watch SE (2세대)",
       "type": "화면 교체",
       "branch": "신림점",
@@ -278,7 +328,7 @@
       "journal_url": "articles/journal-2026-05-13-애플워치-apple-watch-se-2세대-screen-19YA6zSn.html"
     },
     {
-      "id": "case-2",
+      "id": "case-3",
       "model": "아이패드 iPad Pro 11인치 (2세대)",
       "type": "화면 교체",
       "branch": "목동점",
@@ -317,7 +367,7 @@
       "journal_url": "articles/journal-2026-05-12-아이패드-ipad-pro-11인치-2세대-screen-1Y5Bwg_L.html"
     },
     {
-      "id": "case-3",
+      "id": "case-4",
       "model": "아이폰 iPhone XR",
       "type": "화면 교체",
       "branch": "신림점",
@@ -366,7 +416,7 @@
       "journal_url": "articles/journal-2026-05-12-아이폰-iphone-xr-screen-1xxCt-YZ.html"
     },
     {
-      "id": "case-4",
+      "id": "case-5",
       "model": "아이폰 iPhone 13 Pro",
       "type": "화면 교체",
       "branch": "가산점",
@@ -405,7 +455,7 @@
       "journal_url": "articles/journal-2026-05-12-아이폰-iphone-13-pro-screen-1P3hcrr2.html"
     },
     {
-      "id": "case-5",
+      "id": "case-6",
       "model": "아이폰 iPhone 13",
       "type": "화면 + 배터리 교체",
       "branch": "목동점",
@@ -445,7 +495,7 @@
       "journal_url": "articles/journal-2026-05-12-아이폰-iphone-13-screen+battery-11Ntl7my.html"
     },
     {
-      "id": "case-6",
+      "id": "case-7",
       "model": "아이폰 iPhone 15 Pro",
       "type": "화면 교체",
       "branch": "목동점",
@@ -484,7 +534,7 @@
       "journal_url": "articles/journal-2026-05-11-아이폰-iphone-15-pro-screen-1camNuif.html"
     },
     {
-      "id": "case-7",
+      "id": "case-8",
       "model": "아이폰 17프로",
       "type": "화면 교체",
       "branch": "가산점",
@@ -510,7 +560,7 @@
       "journal_url": "articles/journal-2026-05-11-아이폰-17프로-screen-1pHB98Ey.html"
     },
     {
-      "id": "case-8",
+      "id": "case-9",
       "model": "아이폰 iPhone 11",
       "type": "화면 교체",
       "branch": "신림점",
@@ -548,7 +598,7 @@
       "journal_url": "articles/journal-2026-05-09-아이폰-iphone-11-screen-1z7zT5JR.html"
     },
     {
-      "id": "case-9",
+      "id": "case-10",
       "model": "아이폰 13",
       "type": "화면 교체",
       "branch": "가산점",
@@ -574,7 +624,7 @@
       "journal_url": "articles/journal-2026-05-09-아이폰-13-screen-1SF2kXMS.html"
     },
     {
-      "id": "case-10",
+      "id": "case-11",
       "model": "아이폰 17프로",
       "type": "화면 교체",
       "branch": "가산점",
@@ -600,7 +650,7 @@
       "journal_url": "articles/journal-2026-05-08-아이폰-17프로-screen-1osELxQa.html"
     },
     {
-      "id": "case-11",
+      "id": "case-12",
       "model": "아이폰 15프로",
       "type": "화면 교체",
       "branch": "가산점",
@@ -626,7 +676,7 @@
       "journal_url": "articles/journal-2026-05-07-아이폰-15프로-screen-1OyrzlRP.html"
     },
     {
-      "id": "case-12",
+      "id": "case-13",
       "model": "아이폰 16",
       "type": "화면 교체",
       "branch": "신림점",
@@ -652,7 +702,7 @@
       "journal_url": "articles/journal-2026-05-06-아이폰-16-screen-14mAIBCv.html"
     },
     {
-      "id": "case-13",
+      "id": "case-14",
       "model": "아이폰 14프로",
       "type": "후면 유리 교체",
       "branch": "신림점",
@@ -684,7 +734,7 @@
       "journal_url": "articles/journal-2026-05-06-아이폰-14프로-back-1Cc9oGIu.html"
     },
     {
-      "id": "case-14",
+      "id": "case-15",
       "model": "아이폰 12프로",
       "type": "후면 유리 교체",
       "branch": "목동점",
@@ -716,7 +766,7 @@
       "journal_url": "articles/journal-2026-05-04-아이폰-12프로-back-1Vv7RtlP.html"
     },
     {
-      "id": "case-15",
+      "id": "case-16",
       "model": "아이폰 15프로",
       "type": "후면 유리 교체",
       "branch": "신림점",
@@ -748,7 +798,7 @@
       "journal_url": "articles/journal-2026-05-01-아이폰-15프로-back-1f2FXtA6.html"
     },
     {
-      "id": "case-16",
+      "id": "case-17",
       "model": "아이폰 16프로",
       "type": "화면 + 후면 유리 교체",
       "branch": "목동점",
@@ -774,7 +824,7 @@
       "journal_url": "articles/journal-2026-04-30-아이폰-16프로-screen+back-1Qr6LX9H.html"
     },
     {
-      "id": "case-17",
+      "id": "case-18",
       "model": "아이폰 12",
       "type": "후면 유리 교체",
       "branch": "신림점",
@@ -806,7 +856,7 @@
       "journal_url": "articles/journal-2026-04-29-아이폰-12-back-1NVppdC5.html"
     },
     {
-      "id": "case-18",
+      "id": "case-19",
       "model": "아이폰 16프로",
       "type": "화면 교체",
       "branch": "신림점",
@@ -832,7 +882,7 @@
       "journal_url": "articles/journal-2026-04-28-아이폰-16프로-screen-11Ceo0pE.html"
     },
     {
-      "id": "case-19",
+      "id": "case-20",
       "model": "아이폰 14프로",
       "type": "후면 유리 교체",
       "branch": "신림점",
@@ -864,7 +914,7 @@
       "journal_url": "articles/journal-2026-04-27-아이폰-14프로-back-1vyc6Flj.html"
     },
     {
-      "id": "case-20",
+      "id": "case-21",
       "model": "아이폰 11",
       "type": "화면 교체",
       "branch": "신림점",
@@ -890,7 +940,7 @@
       "journal_url": "articles/journal-2026-04-24-아이폰-11-screen-1lOmdLXI.html"
     },
     {
-      "id": "case-21",
+      "id": "case-22",
       "model": "아이폰 15",
       "type": "후면 유리 교체",
       "branch": "목동점",
@@ -922,7 +972,7 @@
       "journal_url": "articles/journal-2026-04-20-아이폰-15-back-1U3GDVjv.html"
     },
     {
-      "id": "case-22",
+      "id": "case-23",
       "model": "아이폰 13미니",
       "type": "후면 유리 교체",
       "branch": "목동점",
@@ -954,7 +1004,7 @@
       "journal_url": "articles/journal-2026-04-18-아이폰-13미니-back-1fBI5NGp.html"
     },
     {
-      "id": "case-23",
+      "id": "case-24",
       "model": "아이폰 12프로맥스",
       "type": "화면 교체",
       "branch": "목동점",
@@ -980,7 +1030,7 @@
       "journal_url": "articles/journal-2026-04-18-아이폰-12프로맥스-screen-1YTvaa_L.html"
     },
     {
-      "id": "case-24",
+      "id": "case-25",
       "model": "에르메스 5세대 44mm",
       "type": "화면 + 배터리 교체",
       "branch": "가산점",
@@ -1006,7 +1056,7 @@
       "journal_url": "articles/journal-2026-04-17-에르메스-5세대-44mm-screen+battery-1ybYHdi_.html"
     },
     {
-      "id": "case-25",
+      "id": "case-26",
       "model": "아이폰 15PLUS",
       "type": "후면 유리 교체",
       "branch": "목동점",
@@ -1038,7 +1088,7 @@
       "journal_url": "articles/journal-2026-04-17-아이폰-15plus-back-1izFb94b.html"
     },
     {
-      "id": "case-26",
+      "id": "case-27",
       "model": "아이폰 6",
       "type": "화면 교체",
       "branch": "목동점",
@@ -1064,7 +1114,7 @@
       "journal_url": "articles/journal-2026-04-16-아이폰-6-screen-13Qv_rnP.html"
     },
     {
-      "id": "case-27",
+      "id": "case-28",
       "model": "아이폰7",
       "type": "화면 교체",
       "branch": "목동점",
@@ -1090,7 +1140,7 @@
       "journal_url": "articles/journal-2026-04-15-아이폰7-screen-1l_qsfwc.html"
     },
     {
-      "id": "case-28",
+      "id": "case-29",
       "model": "아이폰 iPhone 13",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1138,7 +1188,7 @@
       "journal_url": "articles/journal-2026-05-16-아이폰-iphone-13-battery-1DL6yZsn.html"
     },
     {
-      "id": "case-29",
+      "id": "case-30",
       "model": "애플워치 Apple Watch Series 4 (40mm)",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1175,7 +1225,7 @@
       "journal_url": "articles/journal-2026-05-16-애플워치-apple-watch-series-4-40mm-battery-1arNQcbL.html"
     },
     {
-      "id": "case-30",
+      "id": "case-31",
       "model": "아이폰 iPhone 13 mini",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1223,7 +1273,7 @@
       "journal_url": "articles/journal-2026-05-15-아이폰-iphone-13-mini-battery-1_2PEmAC.html"
     },
     {
-      "id": "case-31",
+      "id": "case-32",
       "model": "아이폰 iPhone 14",
       "type": "수리",
       "branch": "신림점",
@@ -1274,7 +1324,7 @@
       }
     },
     {
-      "id": "case-32",
+      "id": "case-33",
       "model": "아이폰 iPhone 13",
       "type": "배터리 교체",
       "branch": "가산점",
@@ -1324,7 +1374,7 @@
       "journal_url": "articles/journal-2026-05-15-아이폰-iphone-13-battery-18X9B-rG.html"
     },
     {
-      "id": "case-33",
+      "id": "case-34",
       "model": "애플워치 Apple Watch SE (1세대)",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1363,7 +1413,7 @@
       "journal_url": "articles/journal-2026-05-15-애플워치-apple-watch-se-1세대-battery-1vpx9NKK.html"
     },
     {
-      "id": "case-34",
+      "id": "case-35",
       "model": "아이폰 iPhone 13",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1413,7 +1463,7 @@
       "journal_url": "articles/journal-2026-05-15-아이폰-iphone-13-battery-1CH0oLAR.html"
     },
     {
-      "id": "case-35",
+      "id": "case-36",
       "model": "애플워치 Apple Watch Series 3 (38mm)",
       "type": "배터리 교체",
       "branch": "신림점",
@@ -1452,7 +1502,7 @@
       "journal_url": "articles/journal-2026-05-14-애플워치-apple-watch-series-3-38mm-battery-19FiLwNR.html"
     },
     {
-      "id": "case-36",
+      "id": "case-37",
       "model": "아이폰 iPhone 14",
       "type": "카메라 수리",
       "branch": "목동점",
@@ -1490,7 +1540,7 @@
       "journal_url": "articles/journal-2026-05-14-아이폰-iphone-14-camera-1bQZRNi2.html"
     },
     {
-      "id": "case-37",
+      "id": "case-38",
       "model": "아이폰 iPhone 15 Pro Max",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1540,7 +1590,7 @@
       "journal_url": "articles/journal-2026-05-14-아이폰-iphone-15-pro-max-battery-1Zo1BU6U.html"
     },
     {
-      "id": "case-38",
+      "id": "case-39",
       "model": "애플워치 Apple Watch SE (1세대)",
       "type": "배터리 교체",
       "branch": "목동점",
@@ -1579,7 +1629,7 @@
       "journal_url": "articles/journal-2026-05-13-애플워치-apple-watch-se-1세대-battery-1eip1zDM.html"
     },
     {
-      "id": "case-39",
+      "id": "case-40",
       "model": "애플워치 Apple Watch SE (1세대)",
       "type": "배터리 교체",
       "branch": "신림점",
@@ -1617,7 +1667,7 @@
       "journal_url": "articles/journal-2026-05-12-애플워치-apple-watch-se-1세대-battery-1bGWXkRJ.html"
     },
     {
-      "id": "case-40",
+      "id": "case-41",
       "model": "애플워치 Apple Watch Series 10 (42mm)",
       "type": "수리",
       "branch": "신림점",
@@ -1654,7 +1704,7 @@
       }
     },
     {
-      "id": "case-41",
+      "id": "case-42",
       "model": "아이폰 iPhone 14 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
@@ -1706,7 +1756,7 @@
       "journal_url": "articles/journal-2026-05-12-아이폰-iphone-14-pro-battery-1ChixQPs.html"
     },
     {
-      "id": "case-42",
+      "id": "case-43",
       "model": "아이폰 iPhone 16 Pro Max",
       "type": "충전 단자 수리",
       "branch": "신림점",
@@ -1744,7 +1794,7 @@
       "journal_url": "articles/journal-2026-05-12-아이폰-iphone-16-pro-max-charge-1x798OZw.html"
     },
     {
-      "id": "case-43",
+      "id": "case-44",
       "model": "아이폰 iPhone 12 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
@@ -1792,7 +1842,7 @@
       "journal_url": "articles/journal-2026-05-12-아이폰-iphone-12-pro-battery-1AoOnJZg.html"
     },
     {
-      "id": "case-44",
+      "id": "case-45",
       "model": "애플워치 Apple Watch SE (2세대)",
       "type": "센서 수리",
       "branch": "목동점",

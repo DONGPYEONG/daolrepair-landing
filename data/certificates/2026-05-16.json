@@ -1,18 +1,18 @@
 {
   "date": "2026-05-16",
-  "total": 3,
-  "fetched_at": "2026-05-16T13:32:46.274919+09:00",
+  "total": 4,
+  "fetched_at": "2026-05-16T13:56:29.290588+09:00",
   "certificates": [
     {
-      "id": "17Osa-2vRXIhlo3Ft2Nh7EbLPf_-4xfCM",
-      "store": "가산점",
-      "store_address": "서울시 금천구 가산디지털 1로 168, 우림라이온스밸리 A동 117호",
-      "business_no": "603-13-92594",
+      "id": "1m-Gla8uOQGkwLPNwHGnmiO0hF0erzbcg",
+      "store": "신림점",
+      "store_address": "서울시 관악구 난곡로 365-5 골드인하우스 102호",
+      "business_no": "417-25-64525",
       "device": "아이폰",
-      "model": "iPhone 16 Pro",
+      "model": "iPhone 17",
       "repair_date": "2026-05-16",
-      "repair_type": "screen+back",
-      "repair_description": "액정 교체, 후면 유리 수리 완료",
+      "repair_type": "back",
+      "repair_description": "후면 유리 수리 완료",
       "price": 0,
       "vat_supply": 0,
       "vat_amount": 0,
@@ -33,6 +33,65 @@
       },
       "photos": {
         "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1z90spjCUx7iexrx_ii7YMdSPhuOgMunf",
+          "captured_at": "2026-05-16T13:53:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1_EqwrJJB_OMdP5JRp3lNWVOpmEWeIJfV",
+          "captured_at": "2026-05-16T13:53:00+09:00"
+        },
+        "after": null
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-16T04:53:21.588Z",
+      "customer_name_masked": "송*혜",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "back",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1z90spjCUx7iexrx_ii7YMdSPhuOgMunf",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1_EqwrJJB_OMdP5JRp3lNWVOpmEWeIJfV"
+      },
+      "photos_captured": {
+        "imei": "2026-05-16T13:53:00+09:00",
+        "before": "2026-05-16T13:53:00+09:00"
+      }
+    },
+    {
+      "id": "17Osa-2vRXIhlo3Ft2Nh7EbLPf_-4xfCM",
+      "store": "가산점",
+      "store_address": "서울시 금천구 가산디지털 1로 168, 우림라이온스밸리 A동 117호",
+      "business_no": "603-13-92594",
+      "device": "아이폰",
+      "model": "iPhone 16 Pro",
+      "repair_date": "2026-05-16",
+      "repair_type": "screen+back",
+      "repair_description": "액정 교체, 후면 유리 수리 완료",
+      "price": 450000,
+      "vat_supply": 409091,
+      "vat_amount": 40909,
+      "technician": "김영식",
+      "cause": "drop",
+      "cause_label": "떨어뜨림",
+      "repair_options": {
+        "screen": "DD액정"
+      },
+      "repair_symptoms": {
+        "screen": [
+          "LCD손상"
+        ]
+      },
+      "gender": "M",
+      "age_range": "20대",
+      "prev_repair_where": "first_repair",
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
           "url": "https://daolrepair-photos.fly.dev/api/thumb/1VmB-xia2R4qO32I3mD1WyQtO2O3YJ5xC",
           "captured_at": "2026-05-16T12:04:00+09:00"
         },
@@ -40,7 +99,10 @@
           "url": "https://daolrepair-photos.fly.dev/api/thumb/1rKcOwU74umtuEEkv-tl7iebqCVzdJJPc",
           "captured_at": "2026-05-16T12:04:00+09:00"
         },
-        "after": null
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1CziuHWAbQrveBhThYtYqMjpszJnNwCco",
+          "captured_at": "2026-05-16T13:42:00+09:00"
+        }
       },
       "kakao_sent_at": null,
       "created_at": "2026-05-16T03:03:56.853Z",
@@ -49,12 +111,15 @@
       "repair_type_normalized": "screen+back",
       "photos_flat": {
         "imei": "https://daolrepair-photos.fly.dev/api/thumb/1VmB-xia2R4qO32I3mD1WyQtO2O3YJ5xC",
-        "before": "https://daolrepair-photos.fly.dev/api/thumb/1rKcOwU74umtuEEkv-tl7iebqCVzdJJPc"
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/1rKcOwU74umtuEEkv-tl7iebqCVzdJJPc",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1CziuHWAbQrveBhThYtYqMjpszJnNwCco"
       },
       "photos_captured": {
         "imei": "2026-05-16T12:04:00+09:00",
-        "before": "2026-05-16T12:04:00+09:00"
-      }
+        "before": "2026-05-16T12:04:00+09:00",
+        "after": "2026-05-16T13:42:00+09:00"
+      },
+      "repair_duration_min": 98
     },
     {
       "id": "1DL6yZsn17Ivfyca9Omah6pjcWdQhKkrS",
