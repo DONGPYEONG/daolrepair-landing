@@ -1227,128 +1227,219 @@ def make_ba_cover(before_path: Path, after_path: Path,
     curiosity_text = pool[seed % len(pool)]
 
     # LLM 스토리 캐시 override — 일지별 유니크 후킹이 있으면 우선 사용
-    # (build_reel이 slug_meta["cover_hook_override"]에 값을 넣어 전달)
     _override = (slug_meta.get("cover_hook_override") if slug_meta else "") or ""
     if _override.strip():
         curiosity_text = _override.strip()
+
     # PII 보호 — 얼굴 자동 블러
     before_img = blur_faces(Image.open(before_path).convert("RGB"))
-    # 전체 화면(9:16) cover-crop
     before_fit = fit_cover(before_img, W, H)
 
     img = Image.new("RGB", (W, H), (12, 12, 12))
     img.paste(before_fit, (0, 0))
-    d = ImageDraw.Draw(img)
 
     # 인스타 피드 4:5 안전 영역 (위·아래 285px 잘림)
     SAFE_TOP = 320
-    SAFE_BOTTOM = 1600
 
-    # 상단 그라데이션 어둠 (디바이스·수리 라벨 가독성)
-    top_overlay = Image.new("RGBA", (W, 480), (0, 0, 0, 0))
+    # ── 상단 부드러운 그라데이션 (검정→투명) — 라벨 가독성, 사진 살림
+    top_overlay = Image.new("RGBA", (W, 560), (0, 0, 0, 0))
     od = ImageDraw.Draw(top_overlay)
-    for i in range(480):
-        a = int(200 * ((480 - i) / 480) ** 0.7)
+    for i in range(560):
+        a = int(180 * ((560 - i) / 560) ** 0.8)
         od.line([(0, i), (W, i)], fill=(0, 0, 0, a))
     img_rgba = img.convert("RGBA")
     img_rgba.paste(top_overlay, (0, 0), top_overlay)
 
-    # 하단 그라데이션 어둠 (후킹 카피 가독성)
-    bot_overlay = Image.new("RGBA", (W, 600), (0, 0, 0, 0))
+    # ── 하단 부드러운 그라데이션 (말풍선 가독성)
+    bot_overlay = Image.new("RGBA", (W, 720), (0, 0, 0, 0))
     od2 = ImageDraw.Draw(bot_overlay)
-    for i in range(600):
-        a = int(200 * (i / 600) ** 0.7)
+    for i in range(720):
+        a = int(165 * (i / 720) ** 0.9)
         od2.line([(0, i), (W, i)], fill=(0, 0, 0, a))
-    img_rgba.paste(bot_overlay, (0, H - 600), bot_overlay)
+    img_rgba.paste(bot_overlay, (0, H - 720), bot_overlay)
     img = img_rgba.convert("RGB")
     d = ImageDraw.Draw(img)
 
-    # 상단 — 디바이스 + 모델 + 수리 라벨
+    # ── 헬퍼: 드롭 섀도우가 있는 둥근 사각형
+    def _rounded_with_shadow(canvas, rect, radius, fill, shadow_offset=(0, 8), shadow_alpha=140):
+        """canvas는 RGBA Image. rect=(x0,y0,x1,y1)."""
+        x0, y0, x1, y1 = int(rect[0]), int(rect[1]), int(rect[2]), int(rect[3])
+        w, h = x1 - x0, y1 - y0
+        shadow = Image.new("RGBA", (w + 40, h + 40), (0, 0, 0, 0))
+        sd = ImageDraw.Draw(shadow)
+        sd.rounded_rectangle((20, 20, 20 + w, 20 + h), radius=int(radius), fill=(0, 0, 0, shadow_alpha))
+        shadow = shadow.filter(ImageFilter.GaussianBlur(14))
+        canvas.alpha_composite(shadow, (int(x0 - 20 + shadow_offset[0]), int(y0 - 20 + shadow_offset[1])))
+        body = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
+        bd = ImageDraw.Draw(body)
+        bd.rounded_rectangle((x0, y0, x1, y1), radius=int(radius), fill=fill)
+        canvas.alpha_composite(body)
+
+    # ── 헬퍼: 회전 가능한 텍스트 스티커 (BEFORE 배지용)
+    def _sticker(canvas, text, font, fill_bg, fill_fg, angle=-4, padding=(34, 22), pos=(0, 0)):
+        tb = ImageDraw.Draw(Image.new("RGB", (10, 10))).textbbox((0, 0), text, font=font)
+        tw, th = tb[2] - tb[0], tb[3] - tb[1]
+        w, h = int(tw + padding[0] * 2), int(th + padding[1] * 2)
+        layer = Image.new("RGBA", (w + 60, h + 60), (0, 0, 0, 0))
+        ld = ImageDraw.Draw(layer)
+        # 섀도우
+        sh = Image.new("RGBA", (w + 60, h + 60), (0, 0, 0, 0))
+        ImageDraw.Draw(sh).rounded_rectangle((30, 36, 30 + w, 36 + h), radius=int(h // 3), fill=(0, 0, 0, 160))
+        sh = sh.filter(ImageFilter.GaussianBlur(12))
+        layer.alpha_composite(sh)
+        # 본체
+        ld.rounded_rectangle((30, 30, 30 + w, 30 + h), radius=int(h // 3), fill=fill_bg)
+        ld.text((30 + padding[0] - tb[0], 30 + padding[1] - tb[1]), text, font=font, fill=fill_fg)
+        layer = layer.rotate(angle, resample=Image.BICUBIC, expand=True)
+        canvas.alpha_composite(layer, (int(pos[0]), int(pos[1])))
+
+    canvas = img.convert("RGBA")
+
+    # ── 상단: 디바이스 + 수리 (Pill 한 줄 + 큰 수리 텍스트)
     if slug_meta:
         device_kr = (slug_meta.get("device") or "").strip()
         model_kr = (slug_meta.get("model") or "").replace("-", " ").strip()
         repair_kr = (slug_meta.get("repair") or "").strip()
         device_model = f"{device_kr} {model_kr}".strip()
-
+        # device pill
         if device_model:
-            df = sdg("bold", 56)
-            db = d.textbbox((0, 0), device_model, font=df)
-            dw_ = db[2] - db[0]
-            dy = SAFE_TOP
-            for off in [(-3, 0), (3, 0), (0, -3), (0, 3)]:
-                d.text(((W - dw_) // 2 + off[0], dy + off[1]),
-                       device_model, font=df, fill=(0, 0, 0))
-            d.text(((W - dw_) // 2, dy), device_model, font=df, fill=ORANGE)
-
+            df = sdg("bold", 52)
+            tb = ImageDraw.Draw(canvas).textbbox((0, 0), device_model, font=df)
+            tw_, th_ = tb[2] - tb[0], tb[3] - tb[1]
+            pill_w = tw_ + 64
+            pill_h = th_ + 32
+            pill_x = (W - pill_w) // 2
+            pill_y = SAFE_TOP - 30
+            _rounded_with_shadow(canvas, (pill_x, pill_y, pill_x + pill_w, pill_y + pill_h),
+                                 radius=pill_h // 2, fill=(255, 255, 255, 235))
+            cd = ImageDraw.Draw(canvas)
+            cd.text((pill_x + 32 - tb[0], pill_y + 16 - tb[1]), device_model, font=df, fill=(20, 20, 20))
+        # repair label — 큰 흰 글씨 + drop shadow (외곽선 X)
         if repair_kr:
-            rf_size = 84 if len(repair_kr) <= 8 else (72 if len(repair_kr) <= 14 else 60)
+            rf_size = 110 if len(repair_kr) <= 7 else (96 if len(repair_kr) <= 11 else 78)
             rf = sdg("bold", rf_size)
-            rb = d.textbbox((0, 0), repair_kr, font=rf)
-            rw = rb[2] - rb[0]
+            cd = ImageDraw.Draw(canvas)
+            rb = cd.textbbox((0, 0), repair_kr, font=rf)
+            rw, rh = rb[2] - rb[0], rb[3] - rb[1]
             rx = (W - rw) // 2
-            ry = SAFE_TOP + 80
-            for off in [(-3, 0), (3, 0), (0, -3), (0, 3), (-3, -3), (3, 3), (-3, 3), (3, -3)]:
-                d.text((rx + off[0], ry + off[1]), repair_kr, font=rf, fill=(0, 0, 0))
-            d.text((rx, ry), repair_kr, font=rf, fill=(255, 255, 255))
+            ry = SAFE_TOP + (pill_h if device_model else 0) + 24
+            # drop shadow (외곽선보다 모던)
+            shadow_layer = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
+            ImageDraw.Draw(shadow_layer).text((rx + 5, ry + 7), repair_kr, font=rf, fill=(0, 0, 0, 210))
+            shadow_layer = shadow_layer.filter(ImageFilter.GaussianBlur(4))
+            canvas.alpha_composite(shadow_layer)
+            ImageDraw.Draw(canvas).text((rx, ry), repair_kr, font=rf, fill=(255, 255, 255))
 
-    # 중앙 — BEFORE 배지 (좌측 상단)
-    bf = sdg("bold", 40)
-    bb = d.textbbox((0, 0), "🔥 BEFORE", font=bf)
-    bw = bb[2] - bb[0]
-    pad_x, pad_y = 22, 16
-    badge_x, badge_y = 40, SAFE_TOP + 240
-    d.rounded_rectangle((badge_x, badge_y, badge_x + bw + pad_x * 2, badge_y + (bb[3] - bb[1]) + pad_y * 2),
-                        radius=14, fill=(220, 40, 40))
-    d.text((badge_x + pad_x, badge_y + pad_y - 4), "🔥 BEFORE", font=bf, fill=(255, 255, 255))
+    # ── BEFORE 스티커 (좌측 위, 살짝 기울어진 라운드 sticker)
+    bf = sdg("bold", 56)
+    _sticker(canvas, "BEFORE", bf, fill_bg=(255, 222, 0, 255), fill_fg=(15, 15, 15),
+             angle=-6, padding=(40, 22), pos=(20, SAFE_TOP + 250))
 
-    # 호기심 후킹 카피 — 하단 (피드에서 손 멈추는 메시지)
-    # "이것도 살릴 수 있다고!?" 식으로 호기심 자극
-    # 글씨 크기 ↑ (피드 썸네일에서 손 멈추도록) — 잘림은 wrap·폭검증으로 방지
+    # ── 노란 형광펜 하이라이트 (curiosity_text 1줄에 적용 — 시선 잡기)
+    # 후킹이 너무 길면 말풍선만, 짧으면 형광펜 강조
     main_text = curiosity_text
+
+    # ── 메인 말풍선 (Speech Bubble) — 후킹 카피
     if len(main_text) <= 10:
-        main_size = 168
+        main_size = 124
+        wrap_width = 12
     elif len(main_text) <= 14:
-        main_size = 144
+        main_size = 110
+        wrap_width = 11
     else:
-        main_size = 120
+        main_size = 92
+        wrap_width = 13
+
     hf = sdg("bold", main_size)
-    bb_check = d.textbbox((0, 0), main_text, font=hf)
-    if bb_check[2] - bb_check[0] > W - 80:
-        main_size = max(100, main_size - 24)
+    cd = ImageDraw.Draw(canvas)
+    # 줄바꿈
+    wrapped_lines = textwrap.wrap(main_text, width=wrap_width)[:2]
+    wrapped = "\n".join(wrapped_lines)
+    hb = cd.multiline_textbbox((0, 0), wrapped, font=hf, align="center", spacing=14)
+    hw, hh = hb[2] - hb[0], hb[3] - hb[1]
+
+    # 폭 검증
+    if hw > W - 160:
+        main_size = max(76, main_size - 20)
         hf = sdg("bold", main_size)
-
-    # 두 줄로 줄바꿈 (긴 경우) — 글씨가 커진 만큼 wrap 폭도 짧게
-    if len(main_text) > 12:
-        wrapped = "\n".join(textwrap.wrap(main_text, width=10)[:2])
-        hb = d.multiline_textbbox((0, 0), wrapped, font=hf, align="center", spacing=14)
+        hb = cd.multiline_textbbox((0, 0), wrapped, font=hf, align="center", spacing=14)
         hw, hh = hb[2] - hb[0], hb[3] - hb[1]
-        ty = H - 380 - hh
-        for off in [(-7, 0), (7, 0), (0, -7), (0, 7), (-5, -5), (5, 5), (-5, 5), (5, -5)]:
-            d.multiline_text(((W - hw) // 2 + off[0], ty + off[1]),
-                             wrapped, font=hf, fill=(0, 0, 0), align="center", spacing=14)
-        d.multiline_text(((W - hw) // 2, ty), wrapped, font=hf,
-                         fill=ORANGE, align="center", spacing=14)
-    else:
-        hb = d.textbbox((0, 0), main_text, font=hf)
-        hw, hh = hb[2] - hb[0], hb[3] - hb[1]
-        ty = H - 380 - hh
-        for off in [(-7, 0), (7, 0), (0, -7), (0, 7), (-5, -5), (5, 5), (-5, 5), (5, -5)]:
-            d.text(((W - hw) // 2 + off[0], ty + off[1]),
-                   main_text, font=hf, fill=(0, 0, 0))
-        d.text(((W - hw) // 2, ty), main_text, font=hf, fill=ORANGE)
 
-    # 하단 — 다올리페어 어필
-    bottom_text = "👉 다올리페어가 살립니다"
-    btf = sdg("bold", 46)
-    btb = d.textbbox((0, 0), bottom_text, font=btf)
-    btw = btb[2] - btb[0]
-    bty = H - 250
-    for off in [(-2, 0), (2, 0), (0, -2), (0, 2)]:
-        d.text(((W - btw) // 2 + off[0], bty + off[1]),
-               bottom_text, font=btf, fill=(0, 0, 0))
-    d.text(((W - btw) // 2, bty), bottom_text, font=btf, fill=(255, 255, 255))
+    # 말풍선 박스 크기·위치
+    bubble_pad_x = 64
+    bubble_pad_y = 50
+    bubble_w = hw + bubble_pad_x * 2
+    bubble_h = hh + bubble_pad_y * 2
+    bubble_x = (W - bubble_w) // 2
+    bubble_y = H - 460 - bubble_h
 
-    # 우측 다올리페어 로고 워터마크 (안전 영역 안)
+    # 말풍선 본체 (흰 라운드 + 섀도우)
+    _rounded_with_shadow(canvas,
+                         (bubble_x, bubble_y, bubble_x + bubble_w, bubble_y + bubble_h),
+                         radius=44, fill=(255, 255, 255, 248))
+
+    # 말풍선 꼬리 (좌측 아래 → BEFORE 사진 가리킴)
+    tail = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
+    td = ImageDraw.Draw(tail)
+    tail_pts = [
+        (bubble_x + 130, bubble_y + bubble_h - 4),
+        (bubble_x + 220, bubble_y + bubble_h - 4),
+        (bubble_x + 80, bubble_y + bubble_h + 90),
+    ]
+    # 섀도우 먼저
+    sh_tail = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
+    ImageDraw.Draw(sh_tail).polygon([(x + 2, y + 8) for x, y in tail_pts], fill=(0, 0, 0, 140))
+    sh_tail = sh_tail.filter(ImageFilter.GaussianBlur(8))
+    canvas.alpha_composite(sh_tail)
+    td.polygon(tail_pts, fill=(255, 255, 255, 248))
+    canvas.alpha_composite(tail)
+
+    # 말풍선 안 텍스트 (검정, 외곽선 없음)
+    text_layer = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
+    tld = ImageDraw.Draw(text_layer)
+    text_x = bubble_x + bubble_pad_x - hb[0]
+    text_y = bubble_y + bubble_pad_y - hb[1]
+    tld.multiline_text((text_x, text_y), wrapped, font=hf, fill=(20, 20, 20),
+                       align="center", spacing=14)
+    canvas.alpha_composite(text_layer)
+
+    # ── 형광펜 — 후킹 텍스트 마지막 줄 핵심 단어 강조 (선택적)
+    # 단순화: 마지막 줄 너비의 노란 underline (말풍선 안)
+    if len(wrapped_lines) >= 1:
+        last_line = wrapped_lines[-1]
+        lb = cd.textbbox((0, 0), last_line, font=hf)
+        lw = lb[2] - lb[0]
+        # 마지막 줄 시작 y
+        line_h_each = (hh - 14 * (len(wrapped_lines) - 1)) // len(wrapped_lines) if wrapped_lines else hh
+        last_y = text_y + (len(wrapped_lines) - 1) * (line_h_each + 14)
+        ux = (W - lw) // 2
+        uy = last_y + int(line_h_each * 0.78)
+        hl_layer = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
+        ImageDraw.Draw(hl_layer).rectangle((ux - 10, uy, ux + lw + 10, uy + int(line_h_each * 0.32)),
+                                           fill=(255, 222, 0, 180))
+        canvas.alpha_composite(hl_layer)
+        # 텍스트 한번 더 (형광펜 위로)
+        text_layer2 = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
+        ImageDraw.Draw(text_layer2).multiline_text((text_x, text_y), wrapped, font=hf,
+                                                    fill=(20, 20, 20), align="center", spacing=14)
+        canvas.alpha_composite(text_layer2)
+
+    # ── 하단: 다올리페어 brand chip (clean pill)
+    bottom_text = "다올리페어 · 90일 보증 · 실패 0원"
+    btf = sdg("bold", 38)
+    cd = ImageDraw.Draw(canvas)
+    btb = cd.textbbox((0, 0), bottom_text, font=btf)
+    btw, bth = btb[2] - btb[0], btb[3] - btb[1]
+    chip_w = btw + 64
+    chip_h = bth + 30
+    chip_x = (W - chip_w) // 2
+    chip_y = H - 230
+    _rounded_with_shadow(canvas, (chip_x, chip_y, chip_x + chip_w, chip_y + chip_h),
+                         radius=chip_h // 2, fill=(*ORANGE, 245))
+    ImageDraw.Draw(canvas).text((chip_x + 32 - btb[0], chip_y + 15 - btb[1]),
+                                 bottom_text, font=btf, fill=(255, 255, 255))
+
+    # ── 로고 워터마크 (우측 상단, 안전 영역 안)
     if LOGO_PATH.exists():
         try:
             logo = Image.open(LOGO_PATH).convert("RGBA")
@@ -1361,14 +1452,20 @@ def make_ba_cover(before_path: Path, after_path: Path,
             ImageDraw.Draw(mask).rounded_rectangle(
                 (0, 0, *logo.size), radius=16, fill=255
             )
-            img_rgba = img.convert("RGBA")
-            img_rgba.paste(logo, (W - logo.size[0] - 30, 320), mask)
-            img = img_rgba.convert("RGB")
+            canvas.alpha_composite(_alpha_logo(logo, mask), (W - logo.size[0] - 30, 320))
         except Exception:
             pass
 
+    img = canvas.convert("RGB")
     img.save(dst, quality=92)
     return dst
+
+
+def _alpha_logo(logo: Image.Image, mask: Image.Image) -> Image.Image:
+    """logo(RGBA) + mask → 라운드 처리된 RGBA 이미지 반환 (alpha_composite 호환)."""
+    out = Image.new("RGBA", logo.size, (0, 0, 0, 0))
+    out.paste(logo, (0, 0), mask)
+    return out
 
 
 def make_step_image(main: str, sub: str, dst: Path) -> Path:
