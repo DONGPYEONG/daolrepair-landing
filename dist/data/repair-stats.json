@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-16T16:17:34.341853+09:00",
+  "updated_at": "2026-05-16T16:22:45.822439+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11666,
@@ -36,43 +36,43 @@
       "model": "아이패드 iPad 7세대",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 114
+      "minutes_ago": 119
     },
     {
       "model": "아이폰 iPhone 17",
       "type": "후면 유리 교체",
       "branch": "신림점",
-      "minutes_ago": 144
+      "minutes_ago": 149
     },
     {
       "model": "아이폰 iPhone 16 Pro",
       "type": "화면 + 후면 유리 교체",
       "branch": "가산점",
-      "minutes_ago": 253
+      "minutes_ago": 258
     },
     {
       "model": "아이폰 iPhone 13",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 285
+      "minutes_ago": 290
     },
     {
       "model": "애플워치 Apple Watch Series 4 (40mm)",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 312
+      "minutes_ago": 317
     },
     {
       "model": "아이폰 iPhone 13 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 1276
+      "minutes_ago": 1281
     },
     {
       "model": "아이폰 iPhone 12 mini",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 1381
+      "minutes_ago": 1386
     }
   ],
   "top_repair_types": [
@@ -250,11 +250,15 @@
       "after_img": "images/before-after/1zstheMY67rZFxK3buLKFHOc/after.jpg",
       "progress_imgs": [
         "images/before-after/1zstheMY67rZFxK3buLKFHOc/progress1.jpg",
-        "images/before-after/1zstheMY67rZFxK3buLKFHOc/progress2.jpg"
+        "images/before-after/1zstheMY67rZFxK3buLKFHOc/progress2.jpg",
+        "images/before-after/1zstheMY67rZFxK3buLKFHOc/progress3.jpg",
+        "images/before-after/1zstheMY67rZFxK3buLKFHOc/progress4.jpg"
       ],
       "progress_labels": [
         "내부분해",
-        "수리작업중"
+        "수리작업중",
+        "탈거부품",
+        "탈거부품"
       ],
       "before_text": "전면 액정 파손",
       "after_text": "전면 액정 교체 완료",
@@ -287,11 +291,15 @@
       "after_img": "images/before-after/1m-Gla8uOQGkwLPNwHGnmiO0/after.jpg",
       "progress_imgs": [
         "images/before-after/1m-Gla8uOQGkwLPNwHGnmiO0/progress1.jpg",
-        "images/before-after/1m-Gla8uOQGkwLPNwHGnmiO0/progress2.jpg"
+        "images/before-after/1m-Gla8uOQGkwLPNwHGnmiO0/progress2.jpg",
+        "images/before-after/1m-Gla8uOQGkwLPNwHGnmiO0/progress3.jpg",
+        "images/before-after/1m-Gla8uOQGkwLPNwHGnmiO0/progress4.jpg"
       ],
       "progress_labels": [
         "내부분해",
-        "교체부품"
+        "교체부품",
+        "교체부품",
+        "탈거부품"
       ],
       "before_text": "후면 유리 파손",
       "after_text": "후면 유리 교체 완료",
@@ -325,12 +333,14 @@
       "progress_imgs": [
         "images/before-after/17Osa-2vRXIhlo3Ft2Nh7EbL/progress1.jpg",
         "images/before-after/17Osa-2vRXIhlo3Ft2Nh7EbL/progress2.jpg",
-        "images/before-after/17Osa-2vRXIhlo3Ft2Nh7EbL/progress3.jpg"
+        "images/before-after/17Osa-2vRXIhlo3Ft2Nh7EbL/progress3.jpg",
+        "images/before-after/17Osa-2vRXIhlo3Ft2Nh7EbL/progress4.jpg"
       ],
       "progress_labels": [
         "내부분해",
         "교체부품",
-        "수리작업중"
+        "수리작업중",
+        "탈거부품"
       ],
       "before_text": "화면 + 후면 파손",
       "after_text": "화면 + 후면 교체",
@@ -1274,11 +1284,13 @@
       "after_img": "images/before-after/1arNQcbLAuSM1L-sgg7Q-EyK/after.jpg",
       "progress_imgs": [
         "images/before-after/1arNQcbLAuSM1L-sgg7Q-EyK/progress1.jpg",
-        "images/before-after/1arNQcbLAuSM1L-sgg7Q-EyK/progress2.jpg"
+        "images/before-after/1arNQcbLAuSM1L-sgg7Q-EyK/progress2.jpg",
+        "images/before-after/1arNQcbLAuSM1L-sgg7Q-EyK/progress3.jpg"
       ],
       "progress_labels": [
         "내부분해",
-        "교체부품"
+        "교체부품",
+        "탈거부품"
       ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
@@ -1311,11 +1323,15 @@
       "after_img": "images/before-after/1_2PEmACjXdSqglKqJCNhFho/after.jpg",
       "progress_imgs": [
         "images/before-after/1_2PEmACjXdSqglKqJCNhFho/progress1.jpg",
-        "images/before-after/1_2PEmACjXdSqglKqJCNhFho/progress2.jpg"
+        "images/before-after/1_2PEmACjXdSqglKqJCNhFho/progress2.jpg",
+        "images/before-after/1_2PEmACjXdSqglKqJCNhFho/progress3.jpg",
+        "images/before-after/1_2PEmACjXdSqglKqJCNhFho/progress4.jpg"
       ],
       "progress_labels": [
         "내부분해",
-        "교체부품"
+        "교체부품",
+        "탈거부품",
+        "탈거부품"
       ],
       "before_text": "이전 배터리 성능치",
       "after_text": "교체 후 배터리 성능치",
@@ -1360,12 +1376,16 @@
       "progress_imgs": [
         "images/before-after/1hjihYqdTm78Hwpj-Xy7cUXl/progress1.jpg",
         "images/before-after/1hjihYqdTm78Hwpj-Xy7cUXl/progress2.jpg",
-        "images/before-after/1hjihYqdTm78Hwpj-Xy7cUXl/progress3.jpg"
+        "images/before-after/1hjihYqdTm78Hwpj-Xy7cUXl/progress3.jpg",
+        "images/before-after/1hjihYqdTm78Hwpj-Xy7cUXl/progress4.jpg",
+        "images/before-after/1hjihYqdTm78Hwpj-Xy7cUXl/progress5.jpg"
       ],
       "progress_labels": [
         "내부분해",
         "교체부품",
-        "수리작업중"
+        "수리작업중",
+        "분해",
+        "기판상태"
       ],
       "before_text": "수리 전 상태",
       "after_text": "수리 완료",
@@ -1754,11 +1774,13 @@
       "progress_imgs": [
         "images/before-after/1aZStHuKPZFy9VJC_3FNDwEO/progress1.jpg",
         "images/before-after/1aZStHuKPZFy9VJC_3FNDwEO/progress2.jpg",
-        "images/before-after/1aZStHuKPZFy9VJC_3FNDwEO/progress3.jpg"
+        "images/before-after/1aZStHuKPZFy9VJC_3FNDwEO/progress3.jpg",
+        "images/before-after/1aZStHuKPZFy9VJC_3FNDwEO/progress4.jpg"
       ],
       "progress_labels": [
         "내부분해",
         "교체부품",
+        "수리작업중",
         "수리작업중"
       ],
       "before_text": "수리 전 상태",
