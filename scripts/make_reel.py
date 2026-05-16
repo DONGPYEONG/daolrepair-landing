@@ -1053,15 +1053,55 @@ def make_ba_cover(before_path: Path, after_path: Path,
             "공식 절반 가격에 정품?",
             "검은 화면도 살릴 수 있다고?",
             "박살 액정 → 새것처럼?",
+            "이거 모르고 28만원 낼 뻔",
+            "수리점이 안 알려주는 액정 가격",
+            "공식 거절당한 액정도 가능?",
+            "이 액정 보고 폰 바꾸지 마세요",
+            "액정 갈았는데 진짜 같다고??",
         ],
         "battery": [
             "성능치 80% 미만 → 새것처럼?",
             "갑자기 꺼지는 폰 어떡해?",
             "배터리 부풀어 화면 들뜸...?",
             "30분 만에 새 배터리!?",
-            "메시지 없는 정품 인증 셀?",
             "셀 교체 4만원대 가능!?",
             "노화 배터리 어떻게 해야해?",
+            "배터리만 갈면 새거처럼!?",
+            "이거 모르면 배터리값 30% 더 냄",
+            "갑자기 꺼지는 폰, 호구되지 마세요",
+            "성능 80%에 폰 바꾸지 마세요",
+            "공식 13만원 → 사설은?",
+            "배터리 부푼 폰 그냥 쓰지 마세요",
+            "30~50%인데 꺼지는 폰?",
+        ],
+        "watch-battery": [
+            "워치도 배터리 교체 된다고??",
+            "애플워치 진짜 수리됩니다",
+            "공식 거절당한 워치 살린다고?",
+            "워치는 새로 사라고? 아니요",
+            "이 워치도 살릴 수 있다고??",
+            "수명 다 됐다던 워치 부활!?",
+            "워치 셀 교체 가능한 거 아세요?",
+            "이거 모르고 워치 새로 살 뻔",
+            "워치 배터리 부풀어 화면 들뜸?",
+            "한 번 충전에 반나절도 안 가요?",
+        ],
+        "watch-screen": [
+            "워치 박살났는데 살아났어",
+            "애플워치 액정 정말 수리됩니다",
+            "이 워치도 살릴 수 있다고??",
+            "워치는 새로 사는 거 아니에요",
+            "공식 거절당한 워치도 가능",
+            "박살난 워치 액정 30분이면?",
+            "이거 모르면 워치 새로 살 뻔",
+            "워치 액정 수리 안 된다고? X",
+            "수리점이 안 알려주는 워치 가격",
+        ],
+        "watch-back": [
+            "워치 뒷판도 교체된다고??",
+            "워치 후면 깨짐... 살릴 수 있어요",
+            "이거 모르고 워치 버릴 뻔",
+            "워치 뒷판 단독 교체 가능?",
         ],
         "back": [
             "뒷판 박살 → 정품급 그대로?",
@@ -1070,6 +1110,9 @@ def make_ba_cover(before_path: Path, after_path: Path,
             "공식 30만 vs 사설 절반?",
             "MagSafe 흡착력 그대로 복원?",
             "맥세이프 충전기에서 미끄러진 폰...",
+            "이거 모르고 후면 30만원 낼 뻔",
+            "뒷판만 살짝 깨졌는데... 가능?",
+            "수리점이 안 알려주는 뒷판 가격",
         ],
         "back-glass": [
             "뒷판 박살 → 정품급 그대로?",
@@ -1100,6 +1143,21 @@ def make_ba_cover(before_path: Path, after_path: Path,
             "1~2시간 안에 매장 가면?",
             "메인보드 부식 제거 가능?",
             "음료 쏟은 폰... 응급!",
+            "쌀에 넣으면 호구됩니다",
+            "침수 폰, 안 켜진다고 끝 아닙니다",
+            "이거 모르면 침수 폰 버립니다",
+            "며칠 후 발열·꺼짐... 침수 의심?",
+        ],
+        "mainboard": [
+            "무한 사과 → 살릴 수 있다고!?",
+            "부팅 안 되는 폰 어떡해?",
+            "사과 로고만 반복... 응급?",
+            "메인보드 정밀 수리 가능!?",
+            "떨어뜨린 후 안 켜져요...",
+            "BGA 마이크로 솔더링 작업?",
+            "공식 거절당한 메인보드 살린다고?",
+            "이거 모르고 폰 버릴 뻔",
+            "안 켜지는 폰, 끝 아닙니다",
         ],
         "speaker": [
             "한쪽만 안 들리는 폰?",
@@ -1121,14 +1179,6 @@ def make_ba_cover(before_path: Path, after_path: Path,
             "통화 중 화면 안 꺼져요...?",
             "센서 부품 단독 교체?",
             "Face ID 매칭 작업 가능!?",
-        ],
-        "mainboard": [
-            "무한 사과 → 살릴 수 있다고!?",
-            "부팅 안 되는 폰 어떡해?",
-            "사과 로고만 반복... 응급?",
-            "메인보드 정밀 수리 가능!?",
-            "떨어뜨린 후 안 켜져요...",
-            "BGA 마이크로 솔더링 작업?",
         ],
         "screen+battery": [
             "액정+배터리 한 번에!?",
@@ -1163,6 +1213,13 @@ def make_ba_cover(before_path: Path, after_path: Path,
     elif "버튼" in repair: repair_norm = "button"
     elif "센서" in repair or "Face" in repair: repair_norm = "sensor"
     elif "메인보드" in repair or "기판" in repair: repair_norm = "mainboard"
+
+    # 워치 분기 — 애플워치·에르메스는 전용 풀로 (iPhone 전용 카피 박히는 문제 방지)
+    is_watch = bool(device) and ("워치" in device or "에르메스" in device or "watch" in device.lower())
+    if is_watch:
+        watch_map = {"battery": "watch-battery", "screen": "watch-screen", "back": "watch-back"}
+        repair_norm = watch_map.get(repair_norm, repair_norm)
+
     pool = CURIOSITY_HOOKS.get(repair_norm) or CURIOSITY_HOOKS.get("screen")
     seed = int(_h.md5((slug_meta.get("slug", "") if slug_meta else dst.stem).encode("utf-8")).hexdigest()[:8], 16)
     curiosity_text = pool[seed % len(pool)]
@@ -1238,35 +1295,36 @@ def make_ba_cover(before_path: Path, after_path: Path,
 
     # 호기심 후킹 카피 — 하단 (피드에서 손 멈추는 메시지)
     # "이것도 살릴 수 있다고!?" 식으로 호기심 자극
+    # 글씨 크기 ↑ (피드 썸네일에서 손 멈추도록) — 잘림은 wrap·폭검증으로 방지
     main_text = curiosity_text
-    if len(main_text) <= 12:
-        main_size = 120
-    elif len(main_text) <= 18:
-        main_size = 96
+    if len(main_text) <= 10:
+        main_size = 168
+    elif len(main_text) <= 14:
+        main_size = 144
     else:
-        main_size = 80
+        main_size = 120
     hf = sdg("bold", main_size)
     bb_check = d.textbbox((0, 0), main_text, font=hf)
     if bb_check[2] - bb_check[0] > W - 80:
-        main_size = max(72, main_size - 16)
+        main_size = max(100, main_size - 24)
         hf = sdg("bold", main_size)
 
-    # 두 줄로 줄바꿈 (긴 경우)
-    if len(main_text) > 14:
-        wrapped = "\n".join(textwrap.wrap(main_text, width=12)[:2])
-        hb = d.multiline_textbbox((0, 0), wrapped, font=hf, align="center", spacing=12)
+    # 두 줄로 줄바꿈 (긴 경우) — 글씨가 커진 만큼 wrap 폭도 짧게
+    if len(main_text) > 12:
+        wrapped = "\n".join(textwrap.wrap(main_text, width=10)[:2])
+        hb = d.multiline_textbbox((0, 0), wrapped, font=hf, align="center", spacing=14)
         hw, hh = hb[2] - hb[0], hb[3] - hb[1]
         ty = H - 380 - hh
-        for off in [(-5, 0), (5, 0), (0, -5), (0, 5), (-4, -4), (4, 4), (-4, 4), (4, -4)]:
+        for off in [(-7, 0), (7, 0), (0, -7), (0, 7), (-5, -5), (5, 5), (-5, 5), (5, -5)]:
             d.multiline_text(((W - hw) // 2 + off[0], ty + off[1]),
-                             wrapped, font=hf, fill=(0, 0, 0), align="center", spacing=12)
+                             wrapped, font=hf, fill=(0, 0, 0), align="center", spacing=14)
         d.multiline_text(((W - hw) // 2, ty), wrapped, font=hf,
-                         fill=ORANGE, align="center", spacing=12)
+                         fill=ORANGE, align="center", spacing=14)
     else:
         hb = d.textbbox((0, 0), main_text, font=hf)
         hw, hh = hb[2] - hb[0], hb[3] - hb[1]
         ty = H - 380 - hh
-        for off in [(-5, 0), (5, 0), (0, -5), (0, 5), (-4, -4), (4, 4), (-4, 4), (4, -4)]:
+        for off in [(-7, 0), (7, 0), (0, -7), (0, 7), (-5, -5), (5, 5), (-5, 5), (5, -5)]:
             d.text(((W - hw) // 2 + off[0], ty + off[1]),
                    main_text, font=hf, fill=(0, 0, 0))
         d.text(((W - hw) // 2, ty), main_text, font=hf, fill=ORANGE)
