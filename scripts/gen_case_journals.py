@@ -1319,10 +1319,22 @@ def _make_meta_title(c, type_key, meta):
     return rng.choice(variants)
 
 
+def _annotate_en(title: str) -> str:
+    """제목 내 한글 모델명에 영어 병기 — "아이폰 16 프로" → "아이폰 16 프로 (iPhone 16 Pro)".
+    사장님(2026-05-16) 명시 — 모든 신규 일지 제목·메타에 한글+영어 둘 다 노출.
+    """
+    try:
+        from model_name_map import annotate as _ann
+        return _ann(title)
+    except Exception:
+        return title
+
+
 def make_title(c, used_titles=None):
     """후킹 제목 생성 — case_id 기반 deterministic + 중복 방지 + 메타 활용
 
     used_titles: set, 이미 사용된 제목들. 충돌 시 다음 템플릿으로 자동 이동.
+    제목 결정 후 한글 모델명에 영어 병기 자동 적용.
     """
     type_key = c.get("repair_type") or c.get("type", "")
     # 한국어 type일 경우 영어로 매핑
@@ -1341,7 +1353,7 @@ def make_title(c, used_titles=None):
             if meta_title not in used:
                 if used_titles is not None:
                     used_titles.add(meta_title)
-                return meta_title
+                return _annotate_en(meta_title)
 
     templates = TITLE_TEMPLATES.get(type_key, DEFAULT_TITLE_TEMPLATES)
     used = used_titles if used_titles is not None else set()
@@ -1365,7 +1377,7 @@ def make_title(c, used_titles=None):
         if title not in used:
             if used_titles is not None:
                 used_titles.add(title)
-            return title
+            return _annotate_en(title)
 
     # 모든 템플릿이 사용됨 → 마지막에 모델·날짜 suffix 붙여 강제 유니크
     base = fmt(templates[start_idx])
@@ -1373,7 +1385,7 @@ def make_title(c, used_titles=None):
     title = base + suffix
     if used_titles is not None:
         used_titles.add(title)
-    return title
+    return _annotate_en(title)
 
 
 def make_body(c):

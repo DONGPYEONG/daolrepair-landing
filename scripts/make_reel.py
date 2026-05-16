@@ -1225,6 +1225,12 @@ def make_ba_cover(before_path: Path, after_path: Path,
     pool = CURIOSITY_HOOKS.get(repair_norm) or CURIOSITY_HOOKS.get("screen")
     seed = int(_h.md5((slug_meta.get("slug", "") if slug_meta else dst.stem).encode("utf-8")).hexdigest()[:8], 16)
     curiosity_text = pool[seed % len(pool)]
+
+    # LLM 스토리 캐시 override — 일지별 유니크 후킹이 있으면 우선 사용
+    # (build_reel이 slug_meta["cover_hook_override"]에 값을 넣어 전달)
+    _override = (slug_meta.get("cover_hook_override") if slug_meta else "") or ""
+    if _override.strip():
+        curiosity_text = _override.strip()
     # PII 보호 — 얼굴 자동 블러
     before_img = blur_faces(Image.open(before_path).convert("RGB"))
     # 전체 화면(9:16) cover-crop
@@ -1551,10 +1557,29 @@ def pick_music_file(slug: str) -> Path | None:
 
 
 # ── Reel 빌드 ─────────────────────────────────────────
+def _load_reel_story_cache() -> dict:
+    """LLM이 생성한 일지별 스토리 카피 캐시. gen_reel_story.py가 만듦."""
+    cache_path = ROOT / "output" / "_reel_story_cache.json"
+    if not cache_path.exists():
+        return {}
+    try:
+        import json as _json
+        return _json.loads(cache_path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
 def build_reel(journal_path: Path, output_dir: Path) -> tuple[Path, Path]:
     html = journal_path.read_text(encoding="utf-8")
     meta = extract_meta(html)
     slug_meta = parse_slug_meta(journal_path.stem)
+
+    # LLM 스토리 캐시 — 일지별 일관 카피. 있으면 사용, 없으면 기존 풀 fallback
+    _story_cache = _load_reel_story_cache()
+    _story = _story_cache.get(journal_path.stem)
+    if _story:
+        # BA 커버 후킹 override를 slug_meta에 끼워 넘김 (make_ba_cover가 읽음)
+        slug_meta["cover_hook_override"] = _story.get("cover_hook", "")
 
     img_id = meta["img_id"]
     if not img_id:
@@ -1590,6 +1615,21 @@ def build_reel(journal_path: Path, output_dir: Path) -> tuple[Path, Path]:
     # 2) 자막 이미지 — BEFORE는 hook image, 나머지는 step image
     hook_main, hook_sub = make_hook_copy(slug_meta, meta["symptoms"], journal_path.stem)
     step_caps = make_step_captions(slug_meta)
+
+    # LLM 스토리 캐시가 있으면 hook + step + after 카피를 일지별 유니크 카피로 교체
+    # (커버 후킹은 위에서 slug_meta["cover_hook_override"]로 이미 주입됨)
+    if _story:
+        hook_main = _story.get("before_main") or hook_main
+        hook_sub = _story.get("before_sub") or hook_sub
+        s1 = _story.get("step1", "")
+        s2 = _story.get("step2", "")
+        s3 = _story.get("step3", "")
+        am = _story.get("after_main", "")
+        asub = _story.get("after_sub", "")
+        # step_caps는 (main, sub) 튜플 4개 — STEP1·2·3 + AFTER
+        # LLM은 STEP main만 줌 (sub는 비움), AFTER는 main+sub 둘 다
+        if s1 and s2 and s3 and am:
+            step_caps = [(s1, ""), (s2, ""), (s3, ""), (am, asub)]
 
     cap_imgs = []
     hook_img_path = TMP_DIR / f"{img_id}_hook.png"

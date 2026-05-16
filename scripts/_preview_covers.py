@@ -14,6 +14,12 @@ TMP = ROOT / "output" / "_reel_tmp"
 OUT = Path("/tmp/reel_frames/preview")
 OUT.mkdir(parents=True, exist_ok=True)
 
+import json as _json
+_story_cache = {}
+_cache_path = ROOT / "output" / "_reel_story_cache.json"
+if _cache_path.exists():
+    _story_cache = _json.loads(_cache_path.read_text(encoding="utf-8"))
+
 samples = [
     {
         "id": "1CH0oLARzEdYQMk2x1qeSlYq",
@@ -53,6 +59,12 @@ for s in samples:
     if not before.exists():
         print(f"skip: {before} 없음")
         continue
+    # LLM 스토리 캐시에서 cover_hook 주입 (make_reel.build_reel과 동일 흐름)
+    sm = dict(s["slug_meta"])
+    story = _story_cache.get(sm["slug"])
+    if story:
+        sm["cover_hook_override"] = story.get("cover_hook", "")
+        print(f"  📖 story: {story.get('cover_hook')}")
     dst = OUT / s["out"]
-    mr.make_ba_cover(before, after, "", "", dst, slug_meta=s["slug_meta"])
+    mr.make_ba_cover(before, after, "", "", dst, slug_meta=sm)
     print(f"✅ {dst}")
