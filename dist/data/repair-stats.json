@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-16T19:20:06.050413+09:00",
+  "updated_at": "2026-05-16T20:55:27.460261+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11668,
@@ -36,43 +36,43 @@
       "model": "아이폰 iPhone 13 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 129
+      "minutes_ago": 225
     },
     {
       "model": "아이패드 iPad 7세대",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 296
+      "minutes_ago": 392
     },
     {
       "model": "아이폰 iPhone 17",
       "type": "후면 유리 교체",
       "branch": "신림점",
-      "minutes_ago": 326
+      "minutes_ago": 422
     },
     {
       "model": "아이폰 iPhone 16 Pro",
       "type": "화면 + 후면 유리 교체",
       "branch": "가산점",
-      "minutes_ago": 436
+      "minutes_ago": 531
     },
     {
       "model": "아이폰 iPhone 13",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 467
+      "minutes_ago": 563
     },
     {
       "model": "애플워치 Apple Watch Series 4 (40mm)",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 495
+      "minutes_ago": 590
     },
     {
       "model": "아이폰 iPhone 13 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 1459
+      "minutes_ago": 1554
     }
   ],
   "top_repair_types": [
@@ -1271,7 +1271,8 @@
         "symptom_parts": [
           "battery"
         ]
-      }
+      },
+      "journal_url": "articles/journal-2026-05-16-아이폰-iphone-13-pro-battery-1L5fUo13.html"
     },
     {
       "id": "case-32",
