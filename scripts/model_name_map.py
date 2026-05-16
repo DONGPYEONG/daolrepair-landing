@@ -132,6 +132,37 @@ def annotate(text: str) -> str:
     return out
 
 
+_EN_TO_KR = {v: k for k, v in MODEL_KR_TO_EN.items()}
+_EN_MODELS_LONGEST_FIRST = sorted(MODEL_KR_TO_EN.values(), key=len, reverse=True)
+
+
+def normalize(text: str) -> str:
+    """'아이폰 iPhone 13' 같은 어색한 한글족+영어 풀네임 → '아이폰 13 (iPhone 13)'.
+
+    annotate() 와 다른 점:
+    - annotate: 한글 모델명을 발견하면 옆에 "(영어)" 추가
+    - normalize: "한글족(아이폰/애플워치/...) + 영어풀네임" 패턴을 "한글모델명 (영어풀네임)" 으로 정상화
+
+    예: "아이폰 iPhone 13 자연 노화" → "아이폰 13 (iPhone 13) 자연 노화"
+        "애플워치 Apple Watch Series 4 (40mm)" → "애플워치 시리즈 4 (Apple Watch Series 4) (40mm)"
+    """
+    if not text:
+        return text
+    out = text
+    # 한글족 prefix: 아이폰 / 애플워치 / 아이패드 / 에르메스
+    family_re = r"(?:아이폰|애플워치|아이패드|에르메스)"
+    for en in _EN_MODELS_LONGEST_FIRST:
+        kr = _EN_TO_KR[en]
+        # "한글족 + \s+ + 영어모델" 형태. 단 이미 "(영어)" 형태로 감싸진 경우 skip.
+        # Negative lookbehind: 직전이 "(" 가 아닌 영어
+        pattern = re.compile(
+            r"(" + family_re + r")\s+" + re.escape(en) + r"(?!\s*\))",
+            flags=re.IGNORECASE,
+        )
+        out = pattern.sub(f"{kr} ({en})", out)
+    return out
+
+
 if __name__ == "__main__":
     # 셀프 테스트
     cases = [
@@ -145,3 +176,14 @@ if __name__ == "__main__":
     ]
     for c in cases:
         print(f"  {c!r}\n    → {annotate(c)!r}")
+
+    print("\n=== normalize 테스트 ===")
+    norm_cases = [
+        "아이폰 iPhone 13 자연 노화 — 목동점",
+        "20대 남성 손님 아이폰 iPhone 16 Pro 떨어뜨림",
+        "아이폰 iPhone 13 mini 배터리",
+        "애플워치 Apple Watch Series 4 (40mm) 배터리",
+        "아이폰 13 (iPhone 13) 배터리",  # idempotent
+    ]
+    for c in norm_cases:
+        print(f"  {c!r}\n    → {normalize(c)!r}")

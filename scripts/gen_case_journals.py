@@ -1322,10 +1322,11 @@ def _make_meta_title(c, type_key, meta):
 def _annotate_en(title: str) -> str:
     """제목 내 한글 모델명에 영어 병기 — "아이폰 16 프로" → "아이폰 16 프로 (iPhone 16 Pro)".
     사장님(2026-05-16) 명시 — 모든 신규 일지 제목·메타에 한글+영어 둘 다 노출.
+    어색한 "아이폰 iPhone 13" 형식도 normalize 단계에서 정상화.
     """
     try:
-        from model_name_map import annotate as _ann
-        return _ann(title)
+        from model_name_map import annotate as _ann, normalize as _norm
+        return _ann(_norm(title))
     except Exception:
         return title
 
@@ -3096,10 +3097,13 @@ def update_articles_index(journals_list):
     for j in sorted(journals_list, key=lambda x: (x.get("uploaded_at") or x.get("date") or ""), reverse=True):
         cat = model_to_cat(j.get("model", ""))
         journal_cat_count[cat] = journal_cat_count.get(cat, 0) + 1
+        # title·model에 한글+영어 표기 자동 정상화
+        _t = _annotate_en(j.get('title', ''))
+        _m = _annotate_en(j.get('model', ''))
         cards_html_lines.append(f'''    <a href="{j['slug']}.html" class="article-card" data-cat="{cat}" data-journal="true">
       <div class="card-category">📋 수리 일지 · {j.get('branch', '')}</div>
-      <div class="card-title">{j['title']}</div>
-      <div class="card-desc">{j.get('model', '')} {TYPE_KR.get(j.get('type', ''), '수리')} 실제 사례. 같은 증상 검색하시는 분들께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
+      <div class="card-title">{_t}</div>
+      <div class="card-desc">{_m} {TYPE_KR.get(j.get('type', ''), '수리')} 실제 사례. 같은 증상 검색하시는 분들께 도움 되는 진단·수리 과정 + Q&amp;A.</div>
       <div class="card-meta"><span>금동평 대표</span><span>{j.get('date', '')}</span><span>{j.get('branch', '')}</span></div>
     </a>''')
     cards_block = "\n    <!-- ── AUTO: 수리 일지 (스크립트 자동 생성) ── -->\n" + "\n".join(cards_html_lines) + "\n    <!-- /AUTO 수리 일지 -->\n"
@@ -3174,8 +3178,9 @@ def update_journal_page(journals_list):
     for j in sorted(journals_list, key=lambda x: (x.get("uploaded_at") or x.get("date") or ""), reverse=True):
         cat = model_to_cat(j.get("model", ""))
         slug = j.get("slug", "")
-        title = j.get("title", "")
-        model = j.get("model", "")
+        # title·model에 한글+영어 표기 자동 정상화 — "아이폰 iPhone 13" → "아이폰 13 (iPhone 13)"
+        title = _annotate_en(j.get("title", ""))
+        model = _annotate_en(j.get("model", ""))
         branch = j.get("branch", "")
         date = j.get("date", "")
         type_kr = TYPE_KR.get(j.get("type", ""), "수리")
