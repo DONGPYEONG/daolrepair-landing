@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-16T16:22:45.822439+09:00",
+  "updated_at": "2026-05-16T16:50:00.171116+09:00",
   "tracking_since": "2026-04-14",
   "stats": {
     "total": 11666,
@@ -36,43 +36,43 @@
       "model": "아이패드 iPad 7세대",
       "type": "화면 교체",
       "branch": "가산점",
-      "minutes_ago": 119
+      "minutes_ago": 146
     },
     {
       "model": "아이폰 iPhone 17",
       "type": "후면 유리 교체",
       "branch": "신림점",
-      "minutes_ago": 149
+      "minutes_ago": 176
     },
     {
       "model": "아이폰 iPhone 16 Pro",
       "type": "화면 + 후면 유리 교체",
       "branch": "가산점",
-      "minutes_ago": 258
+      "minutes_ago": 286
     },
     {
       "model": "아이폰 iPhone 13",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 290
+      "minutes_ago": 317
     },
     {
       "model": "애플워치 Apple Watch Series 4 (40mm)",
       "type": "배터리 교체",
       "branch": "목동점",
-      "minutes_ago": 317
+      "minutes_ago": 344
     },
     {
       "model": "아이폰 iPhone 13 Pro",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 1281
+      "minutes_ago": 1309
     },
     {
       "model": "아이폰 iPhone 12 mini",
       "type": "배터리 교체",
       "branch": "가산점",
-      "minutes_ago": 1386
+      "minutes_ago": 1413
     }
   ],
   "top_repair_types": [
@@ -318,8 +318,7 @@
           "후면유리"
         ]
       },
-      "journal_url": "articles/journal-2026-05-16-아이폰-iphone-17-back-1m-Gla8u.html",
-      "title": "아이폰 17 (iPhone 17) 후면 카메라 유리 파손 교체 — 신림점 당일 수리"
+      "journal_url": "articles/journal-2026-05-16-아이폰-iphone-17-back-1m-Gla8u.html"
     },
     {
       "id": "case-3",
