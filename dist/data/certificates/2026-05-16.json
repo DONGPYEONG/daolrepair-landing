@@ -1,8 +1,78 @@
 {
   "date": "2026-05-16",
-  "total": 5,
-  "fetched_at": "2026-05-16T17:08:17.508018+09:00",
+  "total": 6,
+  "fetched_at": "2026-05-16T20:42:33.418107+09:00",
   "certificates": [
+    {
+      "id": "1L5fUo13z55McZBdNM5Bq-w9d7r9qSWbo",
+      "store": "가산점",
+      "store_address": "서울시 금천구 가산디지털 1로 168, 우림라이온스밸리 A동 117호",
+      "business_no": "603-13-92594",
+      "device": "아이폰",
+      "model": "iPhone 13 Pro",
+      "repair_date": "2026-05-16",
+      "repair_type": "battery",
+      "repair_description": "배터리 교체 수리 완료",
+      "price": 110000,
+      "vat_supply": 100000,
+      "vat_amount": 10000,
+      "technician": "금동평",
+      "cause": "natural_aging",
+      "cause_label": "노화수명",
+      "repair_options": {
+        "battery": "정품인증배터리"
+      },
+      "repair_symptoms": {
+        "battery": [
+          "성능치 80% 이하"
+        ]
+      },
+      "gender": "F",
+      "age_range": "30대",
+      "prev_repair_where": "first_repair",
+      "videos": {
+        "before": null,
+        "progress": null,
+        "after": null,
+        "instagram": null,
+        "extra": null
+      },
+      "photos": {
+        "imei": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1SiBjXBess_c4X0lrrJkqmOscHTkd6hC_",
+          "captured_at": "2026-05-16T17:10:00+09:00"
+        },
+        "before": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/12J9r66CMzorzaZmAWsNRIyx3WYXHcc0g",
+          "captured_at": "2026-05-16T17:10:00+09:00"
+        },
+        "after": {
+          "url": "https://daolrepair-photos.fly.dev/api/thumb/1ZxKI6-cRvlYZ_DVduzUCgPbW4UfLUKHo",
+          "captured_at": "2026-05-16T17:32:00+09:00"
+        }
+      },
+      "kakao_sent_at": null,
+      "created_at": "2026-05-16T08:10:21.285Z",
+      "customer_name_masked": "강*진",
+      "customer_phone_masked": "",
+      "repair_type_normalized": "battery",
+      "photos_flat": {
+        "imei": "https://daolrepair-photos.fly.dev/api/thumb/1SiBjXBess_c4X0lrrJkqmOscHTkd6hC_",
+        "before": "https://daolrepair-photos.fly.dev/api/thumb/12J9r66CMzorzaZmAWsNRIyx3WYXHcc0g",
+        "after": "https://daolrepair-photos.fly.dev/api/thumb/1ZxKI6-cRvlYZ_DVduzUCgPbW4UfLUKHo"
+      },
+      "photos_captured": {
+        "imei": "2026-05-16T17:10:00+09:00",
+        "before": "2026-05-16T17:10:00+09:00",
+        "after": "2026-05-16T17:32:00+09:00"
+      },
+      "repair_duration_min": 22,
+      "photos_local": {
+        "imei": "data/certificates/photos/1L5fUo13z55McZBdNM5Bq-w9d7r9qSWbo/imei.jpg",
+        "before": "data/certificates/photos/1L5fUo13z55McZBdNM5Bq-w9d7r9qSWbo/before.jpg",
+        "after": "data/certificates/photos/1L5fUo13z55McZBdNM5Bq-w9d7r9qSWbo/after.jpg"
+      }
+    },
     {
       "id": "1zstheMY67rZFxK3buLKFHOcxEF3NEMny",
       "store": "가산점",
@@ -60,7 +130,12 @@
         "before": "2026-05-16T14:23:00+09:00",
         "after": "2026-05-16T15:29:00+09:00"
       },
-      "repair_duration_min": 66
+      "repair_duration_min": 66,
+      "photos_local": {
+        "imei": "data/certificates/photos/1zstheMY67rZFxK3buLKFHOcxEF3NEMny/imei.jpg",
+        "before": "data/certificates/photos/1zstheMY67rZFxK3buLKFHOcxEF3NEMny/before.jpg",
+        "after": "data/certificates/photos/1zstheMY67rZFxK3buLKFHOcxEF3NEMny/after.jpg"
+      }
     },
     {
       "id": "1m-Gla8uOQGkwLPNwHGnmiO0hF0erzbcg",
@@ -119,7 +194,12 @@
         "before": "2026-05-16T13:53:00+09:00",
         "after": "2026-05-16T14:34:00+09:00"
       },
-      "repair_duration_min": 41
+      "repair_duration_min": 41,
+      "photos_local": {
+        "imei": "data/certificates/photos/1m-Gla8uOQGkwLPNwHGnmiO0hF0erzbcg/imei.jpg",
+        "before": "data/certificates/photos/1m-Gla8uOQGkwLPNwHGnmiO0hF0erzbcg/before.jpg",
+        "after": "data/certificates/photos/1m-Gla8uOQGkwLPNwHGnmiO0hF0erzbcg/after.jpg"
+      }
     },
     {
       "id": "17Osa-2vRXIhlo3Ft2Nh7EbLPf_-4xfCM",
@@ -184,7 +264,12 @@
         "before": "2026-05-16T12:04:00+09:00",
         "after": "2026-05-16T13:42:00+09:00"
       },
-      "repair_duration_min": 98
+      "repair_duration_min": 98,
+      "photos_local": {
+        "imei": "data/certificates/photos/17Osa-2vRXIhlo3Ft2Nh7EbLPf_-4xfCM/imei.jpg",
+        "before": "data/certificates/photos/17Osa-2vRXIhlo3Ft2Nh7EbLPf_-4xfCM/before.jpg",
+        "after": "data/certificates/photos/17Osa-2vRXIhlo3Ft2Nh7EbLPf_-4xfCM/after.jpg"
+      }
     },
     {
       "id": "1DL6yZsn17Ivfyca9Omah6pjcWdQhKkrS",
@@ -249,7 +334,12 @@
         "before": "2026-05-16T11:33:00+09:00",
         "after": "2026-05-16T12:11:00+09:00"
       },
-      "repair_duration_min": 38
+      "repair_duration_min": 38,
+      "photos_local": {
+        "imei": "data/certificates/photos/1DL6yZsn17Ivfyca9Omah6pjcWdQhKkrS/imei.jpg",
+        "before": "data/certificates/photos/1DL6yZsn17Ivfyca9Omah6pjcWdQhKkrS/before.jpg",
+        "after": "data/certificates/photos/1DL6yZsn17Ivfyca9Omah6pjcWdQhKkrS/after.jpg"
+      }
     },
     {
       "id": "1arNQcbLAuSM1L-sgg7Q-EyKoGJ7mW_gT",
@@ -308,7 +398,12 @@
         "before": "2026-05-16T11:05:00+09:00",
         "after": "2026-05-16T11:27:00+09:00"
       },
-      "repair_duration_min": 22
+      "repair_duration_min": 22,
+      "photos_local": {
+        "imei": "data/certificates/photos/1arNQcbLAuSM1L-sgg7Q-EyKoGJ7mW_gT/imei.jpg",
+        "before": "data/certificates/photos/1arNQcbLAuSM1L-sgg7Q-EyKoGJ7mW_gT/before.jpg",
+        "after": "data/certificates/photos/1arNQcbLAuSM1L-sgg7Q-EyKoGJ7mW_gT/after.jpg"
+      }
     }
   ]
 }

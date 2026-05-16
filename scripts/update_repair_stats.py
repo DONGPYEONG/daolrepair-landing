@@ -505,56 +505,87 @@ def main():
     FORBIDDEN_PATTERNS = ["시리얼번호", "Apple ID", "apple id"]
 
     # 🛡️ 안전 2: 수리 종류별 BEFORE/AFTER 사진 우선순위
-    # 외관 손상이 보이는 종류 → 파손부위 클로즈업 우선
-    # 외관 변화 없는 종류(배터리·충전·센서 등) → 기기 사진 우선 (내부 사진 회피)
+    # 사장님(2026-05-16) 매장 앱 파일명 규칙 단일 진실 소스 — 메모리 룰
+    # [project_daolrepair_photo_filename_spec.md] 와 일치 유지.
     DEFAULT_BEFORE = [("수리전", "파손부위"), ("수리전", "기기후면"), ("수리전", "기기전면")]
     DEFAULT_AFTER  = [("수리후", "수리부위"), ("수리후", "기기후면"), ("수리후", "기기전면"), ("수리후", "작동화면")]
     DEVICE_FIRST_BEFORE = [("수리전", "기기후면"), ("수리전", "기기전면"), ("수리전", "파손부위")]
     DEVICE_FIRST_AFTER  = [("수리후", "기기후면"), ("수리후", "기기전면"), ("수리후", "작동화면"), ("수리후", "수리부위")]
-    # 🆕 screen 케이스 — AFTER는 '작동화면'(화면 켜진 상태) 1순위
-    # 비포의 깨진 화면과 직접 비교 효과 가장 큼. 기기전면은 OFF 상태라 반사·검은화면이 많음
+
+    # 🆕 screen 케이스 — BEFORE: 파손부위 / AFTER: 작동화면(켜진 상태)
     SCREEN_BEFORE = [("수리전", "파손부위"), ("수리전", "기기전면"), ("수리전", "기기후면")]
     SCREEN_AFTER  = [("수리후", "작동화면"), ("수리후", "기기전면"), ("수리후", "기기후면"), ("수리후", "수리부위")]
-    SCREEN_TYPES = {"screen", "screen+battery", "screen+back", "screen+back-glass"}
-    # 🆕 back-glass — AFTER는 후면 부위 사진만 (수리 부위가 후면이라 후면 사진이 자연스러움)
-    # ❌ "작동화면" 제외 (사장님 2026-05-16 명시) — 후면 수리에 화면 켜진 사진은 부적합.
-    # 매장 직원이 "수리후_기기전면" 라벨로 작동 화면을 올리는 사고 방지 안전장치.
+    SCREEN_TYPES = {"screen"}
+
+    # 🆕 back-glass — AFTER에 작동화면 X (사장님 명시). 후면 부위 사진만.
     BACKGLASS_BEFORE = [("수리전", "파손부위"), ("수리전", "기기후면"), ("수리전", "기기전면")]
     BACKGLASS_AFTER  = [("수리후", "기기후면"), ("수리후", "수리부위"), ("수리후", "기기전면")]
     BACKGLASS_TYPES = {"back", "back-glass"}
-    # 외관 변화 없어 파손부위 사진이 내부 분해/회로 사진일 가능성 높은 종류
-    # 배터리·충전 단자는 파손부위가 보통 의미 있는 사진(성능치 화면·단자 클로즈업)이라 제외
+
+    # 🆕 배터리 — 사장님(2026-05-16) 명시:
+    # BEFORE 1순위 = `기존성능치` (예: 78% 화면) — 외관 사진보다 수치 비교가 임팩트 큼
+    # AFTER  1순위 = `교체후성능치` (예: 100% 화면) — 100% 떴네! 효과
+    # 배터리에 `파손부위`·`수리부위` 라벨 없음 (외관 변화 없는 종류)
+    BATTERY_BEFORE = [
+        ("수리전", "기존성능치"),     # 1순위: 78% 등 진단 화면
+        ("수리전", "기기전면"),        # fallback
+        ("수리전", "기기후면"),
+    ]
+    BATTERY_AFTER = [
+        ("수리후", "교체후성능치"),    # 1순위: 100% 화면
+        ("수리후", "기기전면"),        # fallback (작동 화면)
+        ("수리후", "기기후면"),
+    ]
+    BATTERY_TYPES = {"battery", "battery+other", "배터리교체"}
+
+    # 🆕 충전포트(독커넥터) — 전용 슬롯 추가
+    # BEFORE: `충전불량화면` / AFTER: `충전정상화면` — 시각적 비교 효과 큼
+    CHARGE_BEFORE = [
+        ("수리전", "충전불량화면"),    # 1순위
+        ("수리전", "파손부위"),        # 단자 클로즈업
+        ("수리전", "기기전면"),
+    ]
+    CHARGE_AFTER = [
+        ("수리후", "충전정상화면"),    # 1순위
+        ("수리후", "수리부위"),        # 단자 교체 후
+        ("수리후", "기기전면"),
+    ]
+    CHARGE_TYPES = {"charge", "charge+other", "충전포트"}
+
+    # 외관 변화 없어 파손부위가 내부 사진일 가능성 높은 종류 → 기기 사진 우선
     DEVICE_FIRST_TYPES = {
         "sensor", "button", "speaker", "mainboard", "other",
     }
 
-    # 배터리 케이스는 기본적으로 수리부위(=성능치 화면)가 맞음
-    # 일부 케이스만 수리부위가 내부 사진 → 그 케이스만 별도 override 파일로 작동화면 우선
-    # data/battery-use-action-screen.txt 에 case_id 한 줄씩 추가
-    OVERRIDE_FILE = ROOT / "data" / "battery-use-action-screen.txt"
-    battery_action_override = set()
-    if OVERRIDE_FILE.exists():
-        for line in OVERRIDE_FILE.read_text(encoding="utf-8").splitlines():
-            line = line.split("#", 1)[0].strip()
-            if line:
-                battery_action_override.add(line)
+    # 🆕 액정+후면 동시 (screen+back 등) — 슬롯 라벨이 분할됨:
+    # `수리전_액정 교체 파손부위_*` · `수리전_후면 유리 파손부위_*`
+    # 다중 수리 케이스 패턴 (라벨에 공백 포함)
+    COMBO_SCREEN_BACK_BEFORE = [
+        ("수리전", "액정 교체 파손부위"),
+        ("수리전", "후면 유리 파손부위"),
+        ("수리전", "파손부위"),
+    ]
+    COMBO_SCREEN_BACK_AFTER = [
+        ("수리후", "액정 교체 수리부위"),
+        ("수리후", "작동화면"),
+        ("수리후", "기기후면"),
+    ]
+    COMBO_SCREEN_BACK_TYPES = {"screen+back", "screen+back-glass"}
 
-    BATTERY_AFTER_DEFAULT = [
-        ("수리후", "수리부위"),    # 1순위: 보통 100% 성능치 화면
-        ("수리후", "작동화면"),    # 2순위
-        ("수리후", "기기후면"),
-    ]
-    BATTERY_AFTER_OVERRIDE = [
-        ("수리후", "작동화면"),    # 1순위: override 케이스용
-        ("수리후", "기기후면"),
-        ("수리후", "수리부위"),
-    ]
-    BATTERY_TYPES = {"battery", "battery+other", "배터리교체"}
+    # 액정+배터리 — 액정 사진 우선 (시각적 임팩트), 배터리 성능치는 progress 로
+    SCREEN_BATTERY_BEFORE = [("수리전", "파손부위"), ("수리전", "기존성능치"), ("수리전", "기기전면")]
+    SCREEN_BATTERY_AFTER  = [("수리후", "작동화면"), ("수리후", "교체후성능치"), ("수리후", "수리부위")]
+    SCREEN_BATTERY_TYPES = {"screen+battery"}
 
     def get_patterns(repair_type, case_id=None):
         if repair_type in BATTERY_TYPES:
-            after = BATTERY_AFTER_OVERRIDE if (case_id and case_id in battery_action_override) else BATTERY_AFTER_DEFAULT
-            return DEFAULT_BEFORE, after
+            return BATTERY_BEFORE, BATTERY_AFTER
+        if repair_type in CHARGE_TYPES:
+            return CHARGE_BEFORE, CHARGE_AFTER
+        if repair_type in SCREEN_BATTERY_TYPES:
+            return SCREEN_BATTERY_BEFORE, SCREEN_BATTERY_AFTER
+        if repair_type in COMBO_SCREEN_BACK_TYPES:
+            return COMBO_SCREEN_BACK_BEFORE, COMBO_SCREEN_BACK_AFTER
         if repair_type in SCREEN_TYPES:
             return SCREEN_BEFORE, SCREEN_AFTER
         if repair_type in BACKGLASS_TYPES:
@@ -646,12 +677,17 @@ def main():
 
     def find_battery_after_with_vision(inner):
         """배터리 AFTER 후보 중 Vision으로 성능치 화면 찾기. 못 찾으면 기본 순서로."""
-        # 후보: 수리부위, 작동화면 (FORBIDDEN 통과 + 안전한 파일)
+        # 후보 우선순위 — 사장님 2026-05-16 파일명 규칙: `교체후성능치` 슬롯이 1순위
+        # `수리부위`·`작동화면`은 fallback (직원이 다른 라벨로 올렸을 때)
         candidates = []
-        for keyword in ("수리부위", "작동화면"):
+        for keyword in ("교체후성능치", "수리부위", "작동화면"):
             for f in inner:
                 if "수리후" in f["name"] and keyword in f["name"] and is_safe_file(f["name"]):
                     candidates.append(f); break
+        # 1순위 `교체후성능치`가 있으면 Vision 호출 없이 바로 사용 (사장님 명시 슬롯)
+        for f in inner:
+            if "수리후" in f["name"] and "교체후성능치" in f["name"] and is_safe_file(f["name"]):
+                return f
         if not candidates:
             return None
         # API 키 있으면 Vision으로 진짜 성능치 화면 찾기
@@ -772,7 +808,8 @@ def main():
         # 사장님(2026-05-16) 명시 — 매장에서 수리중 사진 다 올려도 일부만 들어감.
         # 우선순위 라벨(내부분해·교체부품·수리작업중)부터 한 장씩 + 그 외 "수리중" 사진도
         # 모두 추가 (라벨링 누락된 직원 실수 자동 보정). 최대 5장.
-        PROGRESS_PRIORITY = ["내부분해", "교체부품", "수리작업중", "조립중", "분해", "장착", "테스트"]
+        # 사장님(2026-05-16) 파일명 규칙 — `기판상태`·`탈거부품` 추가
+        PROGRESS_PRIORITY = ["내부분해", "교체부품", "탈거부품", "수리작업중", "기판상태", "조립중", "분해", "장착", "테스트"]
         progress_files = []  # [{file, label}]
         seen_ids = set()
         # 1순위: 우선순위 라벨 각 1장씩
